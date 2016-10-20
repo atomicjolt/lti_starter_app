@@ -23,7 +23,12 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => 'Canvas'
 
-    redirect_to relaunch_lti_tool_path
+    if request.env["omniauth.origin"].present?
+      redirect_to request.env["omniauth.origin"]
+    else
+      redirect_to relaunch_lti_tool_path
+    end
+
   end
 
   protected
