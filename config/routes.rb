@@ -42,9 +42,6 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    resources :accounts do
-      resources :users
-    end
     resources :jwts
     resources :courses, only: [] do
       resources :students, only: [:index]
