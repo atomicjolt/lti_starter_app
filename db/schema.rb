@@ -81,12 +81,12 @@ ActiveRecord::Schema.define(version: 20120209004849) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",        null: false
-    t.string   "encrypted_password",     default: "",        null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,         null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -98,15 +98,8 @@ ActiveRecord::Schema.define(version: 20120209004849) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "role"
-    t.string   "username"
-    t.string   "avatar"
     t.string   "time_zone",              default: "UTC"
     t.string   "password_salt"
-    t.string   "provider_avatar"
-    t.string   "profile_privacy",        default: "private"
-    t.string   "profile_privacy_token"
-    t.string   "active_avatar",          default: "none"
     t.string   "lti_user_id"
     t.string   "lti_provider"
     t.string   "lms_user_id"
