@@ -6,6 +6,7 @@ describe ApplicationController, type: :controller do
 
   before do
     @app = setup_lti_application
+    @launch_url = "http://test.host/anonymous" # url when posting to anonymous controller created below.
     allow(controller).to receive(:current_lti_application).and_return(@app)
     allow(LtiApplication).to receive(:find_by).with(:lti_key).and_return(@app)
   end
@@ -47,7 +48,7 @@ describe ApplicationController, type: :controller do
       request.env['CONTENT_TYPE'] = "application/x-www-form-urlencoded"
     end
     it "should ask the user to obtain an API token" do
-      params = lti_params({"launch_url" => lti_launches_url, "roles" => "Learner"})
+      params = lti_params({"launch_url" => @launch_url, "roles" => "Learner"})
       post :index, params
       expect(response).to have_http_status(302)
       expect(response).to redirect_to(user_canvas_omniauth_authorize_path(:canvas_url => @app.canvas_uri))
