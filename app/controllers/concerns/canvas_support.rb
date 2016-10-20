@@ -9,8 +9,8 @@ module Concerns
           Canvas.new(current_lti_application.lti_consumer_uri, current_lti_application.canvas_token)
         elsif auth = canvas_auth(current_lti_application)
           options = {
-            client_id: Rails.application.secrets.developer_id,
-            client_secret: Rails.application.secrets.developer_key,
+            client_id: Rails.application.secrets.canvas_developer_id,
+            client_secret: Rails.application.secrets.canvas_developer_key,
             redirect_uri: "https://#{request.host}/auth/canvas/callback",
             refresh_token: auth.refresh_token
           }

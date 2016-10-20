@@ -78,8 +78,8 @@ class Admin::LtiInstallsController < ApplicationController
       if authentications.present?
         authentications.each do |auth|
           options = {
-            client_id: Rails.application.secrets.developer_id,
-            client_secret: Rails.application.secrets.developer_key,
+            client_id: Rails.application.secrets.canvas_developer_id,
+            client_secret: Rails.application.secrets.canvas_developer_key,
             redirect_uri: "https://#{request.host}/auth/canvas/callback",
             refresh_token: auth.refresh_token
           }
