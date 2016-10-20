@@ -7,7 +7,7 @@ class Admin::CanvasAuthenticationsController < ApplicationController
 
     if canvas_url.blank?
       flash[:error] = "Please provide the url for your Canvas installation"
-      render :new
+      redirect_to admin_lti_installs_path
       return
     end
 
@@ -21,7 +21,7 @@ class Admin::CanvasAuthenticationsController < ApplicationController
       redirect_to user_canvas_omniauth_authorize_path(:canvas_url => canvas_url.to_s)
     rescue => ex
       flash[:error] = "We couldn't use the url you provided. Please check the url and try again. Error: #{ex}"
-      render :new
+      redirect_to admin_lti_installs_path
     end
 
   end
