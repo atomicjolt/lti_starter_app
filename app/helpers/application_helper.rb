@@ -19,11 +19,6 @@ module ApplicationHelper
 
   def user_id
     return params[:custom_canvas_user_id]
-   end
-
-  def client_images(*images)
-    map = images.map { |image| %Q{#{image.gsub('/', '_').gsub('.', '_')} : "#{image_path(image)}"} }
-    "{ #{map.join(", ")} }".html_safe
   end
 
 end
