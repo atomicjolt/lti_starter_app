@@ -36,7 +36,7 @@ def setup_lti_application
     lti_key: oauth_consumer_key,
     lti_secret: oauth_consumer_secret,
     canvas_token: "asdf",
-    canvas_uri: "atomicjolt.instructure.com"
+    lti_consumer_uri: "atomicjolt.instructure.com"
   )
 end
 

@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20120209004849) do
     t.string   "lti_key"
     t.string   "lti_secret"
     t.integer  "lti_type",                    default: 0
-    t.string   "canvas_uri"
+    t.string   "lti_consumer_uri"
     t.string   "client_application_name"
     t.string   "encrypted_canvas_token"
     t.string   "encrypted_canvas_token_salt"

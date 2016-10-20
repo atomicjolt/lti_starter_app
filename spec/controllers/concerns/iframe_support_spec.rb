@@ -51,7 +51,7 @@ describe ApplicationController, type: :controller do
       params = lti_params({"launch_url" => @launch_url, "roles" => "Instructor"})
       post :index, params
       expect(response).to have_http_status(302)
-      expect(response).to redirect_to(user_canvas_omniauth_authorize_path(:canvas_url => @app.canvas_uri))
+      expect(response).to redirect_to(user_canvas_omniauth_authorize_path(:canvas_url => @app.lti_consumer_uri))
     end
 
   end

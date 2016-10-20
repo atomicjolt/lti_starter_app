@@ -7,7 +7,7 @@ lti_applications = [{
   lti_key: "lti-starter-app",
   description: "LTI Starter App by Atomic Jolt",
   client_application_name: "app",
-  canvas_uri: "https://atomicjolt.instructure.com"
+  lti_consumer_uri: "https://atomicjolt.instructure.com"
 }]
 
 lti_applications.each do |attrs|

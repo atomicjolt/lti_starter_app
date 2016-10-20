@@ -42,7 +42,7 @@ module Lti
 
   def self.list_all
     LtiApplication.find_each do |app|
-      api = Canvas.new(app.canvas_uri, Rails.Application.secrets.canvas_token || app.canvas_token)
+      api = Canvas.new(app.lti_consumer_uri, Rails.Application.secrets.canvas_token || app.canvas_token)
 
       puts "Course LTI Tools"
       iterate_tools(api, :course_id, "LIST_YOUR_COURSES", "COURSES") do |external_tool, parent|
@@ -58,8 +58,8 @@ module Lti
 
   def self.destroy_all
     LtiApplication.find_each do |app|
-      puts "Removing LTI tool: #{app.name} Canvas url: #{app.canvas_uri}"
-      api = Canvas.new(app.canvas_uri, Rails.Application.secrets.canvas_token || app.canvas_token)
+      puts "Removing LTI tool: #{app.name} Canvas url: #{app.lti_consumer_uri}"
+      api = Canvas.new(app.lti_consumer_uri, Rails.Application.secrets.canvas_token || app.canvas_token)
 
       puts "Removing LTI tools from courses"
       iterate_tools(api, :course_id, "LIST_YOUR_COURSES", "COURSES") do |external_tool, parent|

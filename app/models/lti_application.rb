@@ -3,7 +3,7 @@ class LtiApplication < ActiveRecord::Base
   validates :lti_key, presence: true
   validates :lti_key, uniqueness: true
   validates :lti_secret, presence: true
-  validates :canvas_uri, presence: true
+  validates :lti_consumer_uri, presence: true
 
   before_validation :set_lti
 
