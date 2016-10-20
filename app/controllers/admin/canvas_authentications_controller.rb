@@ -1,9 +1,6 @@
 class Admin::CanvasAuthenticationsController < ApplicationController
   respond_to :html
 
-  def new
-  end
-
   def create
 
     canvas_url = params[:canvas_url]
