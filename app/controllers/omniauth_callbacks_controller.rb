@@ -60,7 +60,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         @user = current_user
         auth = request.env["omniauth.auth"]
         kind = params[:action].titleize # Should give us Facebook, Twitter, Linked In, etc
-        authentication = current_user.associate_oauth_account(auth)
+        authentication = current_user.associate_account(auth)
         current_user.save!
         flash[:notice] = "Your #{Rails.application.secrets.application_name} account has been associated with #{kind}"
         redirect_to after_sign_in_path_for(current_user) if should_redirect?
