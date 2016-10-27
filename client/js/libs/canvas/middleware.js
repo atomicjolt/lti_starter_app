@@ -25,7 +25,7 @@ function proxyCanvas(store, action, params){
     action.canvas.method,
     canvasProxyUrl,
     state.settings.apiUrl,
-    state.settings.jwt,
+    state.jwt,
     state.settings.csrfToken,
     { ...action.params, ...params, type: action.canvas.type },
     action.body
