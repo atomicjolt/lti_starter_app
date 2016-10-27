@@ -108,6 +108,11 @@ export const list_authentication_providers_account_authorization_configs = { typ
 //   The attribute to use to look up the user's login in Canvas. Either
 //   'id' (the default), or 'email'
 // 
+// - federated_attributes [Optional]
+// 
+//   See FederatedAttributesConfig. Valid provider attributes are 'email',
+//   'first_name', 'id', 'last_name', 'locale', and 'name'.
+// 
 // For GitHub, the additional recognized parameters are:
 // 
 // - domain [Optional]
@@ -212,6 +217,11 @@ export const list_authentication_providers_account_authorization_configs = { typ
 // 
 //   The attribute to use to look up the user's login in Canvas. Either
 //   'id' (the default), or 'emailAddress'
+// 
+// - federated_attributes [Optional]
+// 
+//   See FederatedAttributesConfig. Valid provider attributes are 'emailAddress',
+//   'firstName', 'id', 'formattedName', and 'lastName'.
 // 
 // For Microsoft, the additional recognized parameters are:
 // 
@@ -449,6 +459,11 @@ export const add_authentication_provider_authentication_providers = { type: "ADD
 //   The attribute to use to look up the user's login in Canvas. Either
 //   'id' (the default), or 'email'
 // 
+// - federated_attributes [Optional]
+// 
+//   See FederatedAttributesConfig. Valid provider attributes are 'email',
+//   'first_name', 'id', 'last_name', 'locale', and 'name'.
+// 
 // For GitHub, the additional recognized parameters are:
 // 
 // - domain [Optional]
@@ -553,6 +568,11 @@ export const add_authentication_provider_authentication_providers = { type: "ADD
 // 
 //   The attribute to use to look up the user's login in Canvas. Either
 //   'id' (the default), or 'emailAddress'
+// 
+// - federated_attributes [Optional]
+// 
+//   See FederatedAttributesConfig. Valid provider attributes are 'emailAddress',
+//   'firstName', 'id', 'formattedName', and 'lastName'.
 // 
 // For Microsoft, the additional recognized parameters are:
 // 

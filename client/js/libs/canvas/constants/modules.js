@@ -163,6 +163,22 @@ export const create_module_item = { type: "CREATE_MODULE_ITEM", method: "post", 
 // return canvasRequest(update_module_item, {course_id, module_id, id}, query);
 export const update_module_item = { type: "UPDATE_MODULE_ITEM", method: "put", key: "update_module_itemupdate_module_item_{course_id}_{module_id}_{id}", required: ["course_id","module_id","id"] };
 
+// Select a mastery path
+// Select a mastery path when module item includes several possible paths.
+// Requires Mastery Paths feature to be enabled.  Returns the assignments
+// which are included in the given path.
+//
+// API Docs: https://canvas.instructure.com/doc/api/modules.html
+// API Url: courses/{course_id}/modules/{module_id}/items/{id}/select_mastery_path
+//
+// Example:
+// const query = {
+//   assignment_set_id
+//   student_id
+// }
+// return canvasRequest(select_mastery_path, {course_id, module_id, id}, query);
+export const select_mastery_path = { type: "SELECT_MASTERY_PATH", method: "post", key: "select_mastery_pathselect_mastery_path_{course_id}_{module_id}_{id}", required: ["course_id","module_id","id"] };
+
 // Delete module item
 // Delete a module item
 //
