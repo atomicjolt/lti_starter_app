@@ -12,6 +12,7 @@
 //   enrollment_type
 //   enrollment_role
 //   enrollment_role_id
+//   enrollment_state
 //   include
 //   state
 // }
@@ -28,6 +29,7 @@ export const list_your_courses = { type: "LIST_YOUR_COURSES", method: "get", key
 // const query = {
 //   include
 //   state
+//   enrollment_state
 // }
 // return canvasRequest(list_courses_for_user, {user_id}, query);
 export const list_courses_for_user = { type: "LIST_COURSES_FOR_USER", method: "get", key: "list_courses_for_userlist_courses_for_user_user_id", required: ["user_id"] };
