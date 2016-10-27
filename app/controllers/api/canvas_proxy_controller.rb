@@ -4,11 +4,9 @@ class Api::CanvasProxyController < ApplicationController
   include Concerns::JwtToken
 
   before_action :validate_token
+  before_action :protect_canvas_api
 
   respond_to :json
-
-  def index
-  end
 
   def proxy
 

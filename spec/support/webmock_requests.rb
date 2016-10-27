@@ -177,6 +177,13 @@ RSpec.configure do |config|
         headers: canvas_headers
       )
 
+    stub_request(:get, %r|http[s]*://[a-zA-Z0-9]+\.[a-zA-Z0-9]+.*com/api/v1/course_accounts|).
+      to_return(
+        status: 200,
+        body: canvas_sub_accounts,
+        headers: canvas_headers
+      )
+
     #
     # LTI tools
     #

@@ -24,5 +24,9 @@ module Concerns
         current_user.authentications.find_by(provider_url: current_lti_application.lti_consumer_uri)
       end
 
+      def protect_canvas_api
+        canvas_api_permissions = current_lti_application.canvas_api_permissions.split(",")
+        user_not_authorized unless canvas_api_permissions.include?(params[:type])
+      end
   end
 end

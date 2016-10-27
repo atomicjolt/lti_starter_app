@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Api::CanvasProxyController, type: :controller do
 
   before do
-    @app = setup_lti_application
+    @app = setup_lti_application(canvas_api_permissions: "LIST_ACCOUNTS,LIST_YOUR_COURSES,CREATE_NEW_SUB_ACCOUNT,UPDATE_ACCOUNT")
     @user = FactoryGirl.create(:user)
     @user.confirm
     @user_token = AuthToken.issue_token({ user_id: @user.id })

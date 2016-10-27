@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20120209004849) do
+ActiveRecord::Schema.define(version: 20161026230713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20120209004849) do
     t.string   "encrypted_canvas_token_iv"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
+    t.text     "canvas_api_permissions"
   end
 
   add_index "lti_applications", ["lti_key"], name: "index_lti_applications_on_lti_key", unique: true, using: :btree
