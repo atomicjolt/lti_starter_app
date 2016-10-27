@@ -213,6 +213,10 @@ https://ltistarterapp.herokuapp.com/images/icon.png
 
 Once you press Save Key, a Developer ID and Key will be generated and displayed in the Details column of the Developer Keys table when you mouse over the row. Add these credentials to your .env file or `config/secrets.yml` file under CANVAS_DEVELOPER_ID and CANVAS_DEVELOPER_KEY (in .env) or `canvas_developer_id` and `canvas_developer_key` (in secrets.yml).
 
+## Canvas API
+-----------
+The LTI Starter app makes working with the Canvas API simple. See [Canvas](Canvas.md) for more information.
+
 
 ## Deployment
 
