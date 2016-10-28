@@ -59,6 +59,10 @@ The value can then be used when rendering:
 -----------
 Files added to the static directory will be copied directly into the build. These files will not be renamed.
 
+## Canvas API
+-----------
+The LTI Starter app makes working with the Canvas API simple. See [Canvas](Canvas.md) for more information.
+Not that working with the Canvas API will require a server side proxy that is not part of this project.
 
 #Tests
 -----------
