@@ -27,7 +27,9 @@ const select = (state) => {
 class Accounts extends React.Component {
 
   componentWillMount(){
-    this.props.canvasRequest(list_accounts)
+    const params = {};
+    const body = {};
+    this.props.canvasRequest(list_accounts, params, body);
   }
 
   render(){
@@ -38,7 +40,7 @@ class Accounts extends React.Component {
 
 }
 
-export default connect(select, canvasRequest)(Accounts);
+export default connect(select, { canvasRequest })(Accounts);
 `
 
 In the example above we need only import the canvasRequest action. ll Canvas API requests use this
