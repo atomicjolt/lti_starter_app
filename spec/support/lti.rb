@@ -31,14 +31,13 @@ end
 
 # Generate an lti application that uses the key and secret that are used to encode the LTI request.
 # This lti application can then be used when making a test LTI request.
-def setup_lti_application(options = {})
-  FactoryGirl.create(:lti_application,
+def setup_lti_application_instance(options = {})
+  FactoryGirl.create(:lti_application_instance,
     {
       lti_key: oauth_consumer_key,
       lti_secret: oauth_consumer_secret,
       canvas_token: "asdf",
-      lti_consumer_uri: "atomicjolt.instructure.com",
-      canvas_api_permissions: "LIST_ACCOUNTS,LIST_ACCOUNT_ADMINS"
+      lti_consumer_uri: "atomicjolt.instructure.com"
     }.merge(options)
   )
 end

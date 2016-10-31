@@ -3,9 +3,9 @@ require "rails_helper"
 RSpec.describe LtiLaunchesController, type: :controller do
 
   before do
-    @app = setup_lti_application
+    @app = setup_lti_application_instance
 
-    allow(controller).to receive(:current_lti_application).and_return(@app)
+    allow(controller).to receive(:current_lti_application_instance).and_return(@app)
     allow(LtiApplication).to receive(:find_by).with(:lti_key).and_return(@app)
   end
 

@@ -3,9 +3,9 @@ require "rails_helper"
 describe ApplicationController, type: :controller do
 
   before do
-    @app = setup_lti_application
+    @app = setup_lti_application_instance
     @launch_url = "http://test.host/anonymous" # url when posting to anonymous controller created below.
-    allow(controller).to receive(:current_lti_application).and_return(@app)
+    allow(controller).to receive(:current_lti_application_instance).and_return(@app)
     allow(LtiApplication).to receive(:find_by).with(:lti_key).and_return(@app)
   end
 

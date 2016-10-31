@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026230713) do
+ActiveRecord::Schema.define(version: 20161027182508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,23 +40,29 @@ ActiveRecord::Schema.define(version: 20161026230713) do
   add_index "authentications", ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
   add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
 
-  create_table "lti_applications", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
+  create_table "lti_application_instances", force: :cascade do |t|
+    t.integer  "lti_application_id"
     t.string   "lti_key"
     t.string   "lti_secret"
     t.integer  "lti_type",                    default: 0
     t.string   "lti_consumer_uri"
-    t.string   "client_application_name"
     t.string   "encrypted_canvas_token"
     t.string   "encrypted_canvas_token_salt"
     t.string   "encrypted_canvas_token_iv"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
-    t.text     "canvas_api_permissions"
   end
 
-  add_index "lti_applications", ["lti_key"], name: "index_lti_applications_on_lti_key", unique: true, using: :btree
+  add_index "lti_application_instances", ["lti_application_id"], name: "index_lti_application_instances_on_lti_application_id", using: :btree
+
+  create_table "lti_applications", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "client_application_name"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.text     "canvas_api_permissions"
+  end
 
   create_table "nonces", force: :cascade do |t|
     t.string   "nonce"

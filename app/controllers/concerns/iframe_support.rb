@@ -44,12 +44,12 @@ module Concerns
     def check_for_user_auth
       # if you need to check for different roles, see: https://github.com/instructure/ims-lti/blob/master/lib/ims/lti/role_checks.rb
       if !@tool_provider.context_student?
-        unless current_user.authentications.find_by(provider_url: current_lti_application.lti_consumer_uri)
+        unless current_user.authentications.find_by(provider_url: current_lti_application_instance.lti_consumer_uri)
 
           # store the lti launch url in the session, so we can relaunch the tool after the oauth
           session[:canvas_lti_tool_uri] = request.referer
-          session[:canvas_url] = current_lti_application.lti_consumer_uri
-          redirect_to user_canvas_omniauth_authorize_path(:canvas_url => current_lti_application.lti_consumer_uri)
+          session[:canvas_url] = current_lti_application_instance.lti_consumer_uri
+          redirect_to user_canvas_omniauth_authorize_path(:canvas_url => current_lti_application_instance.lti_consumer_uri)
         end
       end
     end
