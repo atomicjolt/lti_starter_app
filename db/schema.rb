@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20120209004849) do
+ActiveRecord::Schema.define(version: 20161027182508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,14 +40,12 @@ ActiveRecord::Schema.define(version: 20120209004849) do
   add_index "authentications", ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
   add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
 
-  create_table "lti_applications", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
+  create_table "lti_application_instances", force: :cascade do |t|
+    t.integer  "lti_application_id"
     t.string   "lti_key"
     t.string   "lti_secret"
     t.integer  "lti_type",                    default: 0
-    t.string   "canvas_uri"
-    t.string   "client_application_name"
+    t.string   "lti_consumer_uri"
     t.string   "encrypted_canvas_token"
     t.string   "encrypted_canvas_token_salt"
     t.string   "encrypted_canvas_token_iv"
@@ -55,7 +53,16 @@ ActiveRecord::Schema.define(version: 20120209004849) do
     t.datetime "updated_at",                              null: false
   end
 
-  add_index "lti_applications", ["lti_key"], name: "index_lti_applications_on_lti_key", unique: true, using: :btree
+  add_index "lti_application_instances", ["lti_application_id"], name: "index_lti_application_instances_on_lti_application_id", using: :btree
+
+  create_table "lti_applications", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "client_application_name"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.text     "canvas_api_permissions"
+  end
 
   create_table "nonces", force: :cascade do |t|
     t.string   "nonce"
@@ -81,12 +88,12 @@ ActiveRecord::Schema.define(version: 20120209004849) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",        null: false
-    t.string   "encrypted_password",     default: "",        null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,         null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -98,15 +105,8 @@ ActiveRecord::Schema.define(version: 20120209004849) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "role"
-    t.string   "username"
-    t.string   "avatar"
     t.string   "time_zone",              default: "UTC"
     t.string   "password_salt"
-    t.string   "provider_avatar"
-    t.string   "profile_privacy",        default: "private"
-    t.string   "profile_privacy_token"
-    t.string   "active_avatar",          default: "none"
     t.string   "lti_user_id"
     t.string   "lti_provider"
     t.string   "lms_user_id"

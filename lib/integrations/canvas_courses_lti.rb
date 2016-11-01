@@ -41,7 +41,7 @@ module Integrations
       if(id = self.find_tool_id(existing_tools, lti_options[:launch_url]))
         tool = self.find_tool(existing_tools, lti_options[:launch_url])
         # Make sure the the LTI key associated with the tool exists in our system.
-        lti_connected_resource = LtiApplication.find_by(lti_key: tool['consumer_key'])
+        lti_connected_resource = LtiApplicationInstance.find_by(lti_key: tool['consumer_key'])
         if lti_connected_resource.blank?
           # The user or account that connected to the tool is no longer in the system or has changed their LTI key. We need to update the key and secret.
           tool_config["consumer_key"] = consumer_key

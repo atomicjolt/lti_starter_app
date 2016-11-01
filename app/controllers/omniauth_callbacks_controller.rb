@@ -11,50 +11,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def canvas
     canvas_url = session[:canvas_url].strip
-    auth = @user.authentications.find_by(provider_url: canvas_url, provider: 'canvas')
-
-    # Option 1
-    # Assume that accounts will be created through seeds or an admin ui.
-    # We get the 'code' using the subdomain of the request which will be something like
-    # ltistarterapp.ngrok.io
-
-    code = request.subdomains.first
-
-    # Option 2
-    # Build new accounts based on the canvas_url subdomain.
-    # This will build new accounts using the canvas url.
-    # i.e. Doing the OAuth dance with http://atomicjolt.instructure.com will result
-    # in a new account with code 'atomicjolt'
-
-    # url = URI.parse(canvas_url)
-    # code = url.hostname.split('.')[0]
-
-    account = Account.find_by(code: code)
-
-    if account.blank?
-      # This is the first time. Create an account based on the Canvas subdomain.
-      account = Account.create!(
-        name: code,
-        code: code,
-        domain: "#{code}.#{request.domain}",
-        canvas_uri: canvas_url
-      )
-    end
-
-    # If the account canvas token has been set and the user is an admin, grab the token
-    # and store it for account level access.
-    # The first admin user to log in sets the account level token.
-    if account.canvas_token.blank?
-      api = Canvas.new(auth.provider_url, auth)
-      if api.is_account_admin
-        account.canvas_token = auth.token
-        account.save!
-      end
-    end
-
-    @user.account_id = account.id
 
     if @user.lti_provider.blank?
+      auth = @user.authentications.find_by(provider_url: canvas_url, provider: 'canvas')
       json = Yajl::Parser.parse(auth['json_response'])
       @user.lti_provider = UrlHelper.host(json['info']['url'])
       @user.lms_user_id = auth.uid
@@ -64,8 +23,12 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => 'Canvas'
 
-    #
-    redirect_to relaunch_lti_tool_path
+    if request.env["omniauth.origin"].present?
+      redirect_to request.env["omniauth.origin"]
+    else
+      redirect_to relaunch_lti_tool_path
+    end
+
   end
 
   protected
@@ -102,7 +65,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         @user = current_user
         auth = request.env["omniauth.auth"]
         kind = params[:action].titleize # Should give us Facebook, Twitter, Linked In, etc
-        authentication = current_user.associate_oauth_account(auth)
+        authentication = current_user.associate_account(auth)
         current_user.save!
         flash[:notice] = "Your #{Rails.application.secrets.application_name} account has been associated with #{kind}"
         redirect_to after_sign_in_path_for(current_user) if should_redirect?

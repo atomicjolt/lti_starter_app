@@ -211,13 +211,13 @@ class Canvas
           missing << p unless (params[parent].present? && params[parent][child].present?) ||
                               (payload.present? && payload[parent].present? && payload[parent][child].present?)
         else
-          missing << p unless params[p.to_sym].present? || payload[p.to_sym].present?
+          missing << p unless params[p.to_sym].present? || (payload.present? && payload[p.to_sym].present?)
         end
       end
     end
 
     if missing.length > 0
-      raise "Missing required parameter(s): #{missing.join(', ')}"
+      raise Canvas::MissingRequiredParameterException, "Missing required parameter(s): #{missing.join(', ')}"
     end
 
     # Generate the uri. Only allow path parameters
@@ -280,6 +280,9 @@ class Canvas
   end
 
   class InvalidAPIMethodRequestException < Exception
+  end
+
+  class MissingRequiredParameterException < Exception
   end
 
 end

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :current_lti_application
+  helper_method :current_lti_application_instance
 
   protected
 
@@ -17,12 +17,12 @@ class ApplicationController < ActionController::Base
     end
 
     def configure_permitted_parameters
-      devise_parameter_sanitizer.for(:sign_up) << :name
-      devise_parameter_sanitizer.for(:account_update) << :name
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:name])
     end
 
-    def current_lti_application
-      @current_lti_application ||= LtiApplication.find_by(lti_key: params[:oauth_consumer_key])
+    def current_lti_application_instance
+      @current_lti_application_instance ||= LtiApplicationInstance.find_by(lti_key: params[:oauth_consumer_key])
     end
 
     def current_ability
@@ -30,7 +30,10 @@ class ApplicationController < ActionController::Base
     end
 
     def user_not_authorized
-      render :file => "public/401.html", :status => :unauthorized
+      respond_to do |format|
+        format.html { render file: "public/401.html", status: :unauthorized }
+        format.json { render json: { }, status: :unauthorized }
+      end
     end
 
 end

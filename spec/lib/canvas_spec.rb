@@ -336,7 +336,12 @@ describe Canvas do
         url = Canvas.canvas_url("LIST_ACTIVE_COURSES_IN_ACCOUNT", params)
         expect(url).to eq("accounts/1/courses?with_enrollments=true")
       end
-
+      it "ensures required parameters are present" do
+        params = {}
+        expect {
+          Canvas.canvas_url("LIST_ACTIVE_COURSES_IN_ACCOUNT", params)
+        }.to raise_exception(Canvas::MissingRequiredParameterException)
+      end
     end
 
   end

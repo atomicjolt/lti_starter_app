@@ -208,6 +208,9 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
+    rails_apps_pages (0.6.7)
+    rails_apps_testing (0.3.12)
+    rails_layout (1.0.34)
     rails_serve_static_assets (0.0.5)
     rails_stdout_logging (0.0.5)
     railties (5.0.0.1)
@@ -323,6 +326,7 @@ DEPENDENCIES
   guard-rspec
   heroku_secrets!
   httparty
+  hub
   ims-lti (~> 1.1.13)
   jwt (~> 1.5.0)
   launchy

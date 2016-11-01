@@ -2,7 +2,9 @@ require 'rails_helper'
 
 describe Integrations::CanvasAccountsLti do
   before do
-    @lti_application = FactoryGirl.create(:lti_application)
+    @canvas_account = {
+      'id' => 1
+    }
     @token = "test"
     @consumer_key = "key"
     @shared_secret = "secret"
@@ -20,7 +22,7 @@ describe Integrations::CanvasAccountsLti do
         launch_url: @lti_launch_url,
         env: @env
       }
-      result = Integrations::CanvasAccountsLti.setup(@lti_application, @consumer_key, @shared_secret, @provider_url, @token, lti_options)
+      result = Integrations::CanvasAccountsLti.setup(@canvas_account, @consumer_key, @shared_secret, @provider_url, @token, lti_options)
       expect(result.parsed_response).to eq(@result)
     end
     it "should update an existing LTI tool in the specified account" do
@@ -29,7 +31,7 @@ describe Integrations::CanvasAccountsLti do
         launch_url: lti_launch_url,
         env: @env
       }
-      result = Integrations::CanvasAccountsLti.setup(@lti_application, @consumer_key, @shared_secret, @provider_url, @token, lti_options)
+      result = Integrations::CanvasAccountsLti.setup(@canvas_account, @consumer_key, @shared_secret, @provider_url, @token, lti_options)
       expect(result.parsed_response).to eq(@result)
     end
   end

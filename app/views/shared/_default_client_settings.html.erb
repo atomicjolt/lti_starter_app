@@ -7,10 +7,10 @@
     settings[:userId] = current_user.id
     settings[:email] = current_user.email
     settings[:displayName] = current_user.display_name
-    settings[:jwt] = jwt_token
-    settings[:course] = @course
+    settings[:oauthConsumerKey] = params[:oauth_consumer_key]
   end
 %>
 <script type="text/javascript">
   window.DEFAULT_SETTINGS = <%= settings.to_json.html_safe %>;
+  window.DEFAULT_JWT = '<%= signed_in? ? jwt_token : "" %>';
 </script>

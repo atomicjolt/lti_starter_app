@@ -3,12 +3,13 @@
   "version": "0.0.1",
   "description": "Javascript for the LTI Starter App.",
   "engines": {
-    "node": "5.10.1"
+    "node": "6.9.1"
   },
   "scripts": {
     "postinstall": "cd ./client && npm install",
     "build": "cd ./client && npm run build",
     "build_dev": "cd ./client && npm run build_dev",
+    "create": "cd ./client && npm run create",
     "release": "cd ./client && npm run release",
     "hot": "cd ./client && npm run hot",
     "live": "cd ./client && node server.js",
@@ -30,7 +31,7 @@
   "license": "MIT",
   "homepage": "https://github.com/atomicjolt/react_client_starter_app",
   "dependencies": {
-    "del": "^2.2.0"
+    "del": "^2.2.2"
   },
   "devDependencies": {}
 }

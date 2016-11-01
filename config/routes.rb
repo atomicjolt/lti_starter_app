@@ -37,14 +37,12 @@ Rails.application.routes.draw do
   resources :users
 
   namespace :admin do
+    root :to => "lti_installs#index"
     resources :canvas_authentications
     resources :lti_installs
   end
 
   namespace :api do
-    resources :accounts do
-      resources :users
-    end
     resources :jwts
     resources :courses, only: [] do
       resources :students, only: [:index]
