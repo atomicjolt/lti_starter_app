@@ -1,7 +1,6 @@
-class Admin::LtiInstallsController < ApplicationController
+class Admin::LtiInstallsController < Admin::AdminApplicationController
 
-  before_filter :authenticate_user!
-  before_filter :setup, only: [:new, :create]
+  before_action :setup, only: [:new, :create]
 
   def index
     @lti_applications = LtiApplication.order(:name)
