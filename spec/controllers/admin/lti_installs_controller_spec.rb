@@ -10,13 +10,13 @@ RSpec.describe Admin::LtiInstallsController, type: :controller do
     describe "GET new" do
       it "redirects the user to the canvas authentication page" do
         get :new, {account_ids: [1]}
-        expect(response).to redirect_to(sign_in_path)
+        expect(response).to have_http_status(302)
       end
     end
     describe "POST create" do
       it "redirects the user to the canvas authentication page" do
         post :create, { lti_install: {account_ids: ["43460000000000017"]}, lti_application_id: @application.id }
-        expect(response).to redirect_to(sign_in_path)
+        expect(response).to have_http_status(302)
       end
     end
   end

@@ -1,6 +1,6 @@
 # All options must be string keys. Symbols won't work. launch_url is required and should
 # look like lti_params({"launch_url" => lti_launches_url})
-def lti_params(options = {})
+def lti_params(oauth_consumer_key = "aconsumerkey", oauth_consumer_secret = "secret", options = {})
   raise "launch_url is a required parameter" unless options["launch_url"]
   # keys in params must be strings
   params = {
@@ -27,29 +27,4 @@ def lti_params(options = {})
 
  tc = IMS::LTI::ToolConsumer.new(oauth_consumer_key, oauth_consumer_secret, params)
  tc.generate_launch_data
-end
-
-# Generate an lti application that uses the key and secret that are used to encode the LTI request.
-# This lti application can then be used when making a test LTI request.
-def setup_lti_application_instance(options = {})
-  FactoryGirl.create(:lti_application_instance,
-    {
-      lti_key: oauth_consumer_key,
-      lti_secret: oauth_consumer_secret,
-      canvas_token: "asdf",
-      lti_consumer_uri: "atomicjolt.instructure.com"
-    }.merge(options)
-  )
-end
-
-def oauth_consumer_key
-  "aconsumerkey"
-end
-
-def oauth_consumer_secret
-  "secret"
-end
-
-def hash_to_params_string(hash)
-  hash.collect{|key, value| "#{CGI.escape(key.to_s)}=#{CGI.escape(value.to_s)}" }.join('&')
 end

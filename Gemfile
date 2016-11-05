@@ -9,7 +9,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.7'
 
 # Database
-gem 'pg'
+gem "pg"
+gem "apartment"
 
 # UI
 gem 'sass-rails'
@@ -82,6 +83,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'webmock'
+  gem 'test_after_commit'
 end
 
 group :production do

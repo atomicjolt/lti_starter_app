@@ -8,6 +8,7 @@ require 'capybara/rails'
 require 'database_cleaner'
 require 'shoulda/matchers'
 require 'webmock/rspec'
+require 'test_after_commit'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -33,7 +34,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = false # Spec in canvas_spec.rb tests pessimistic locking so we have to set transactional fixtures false
+  config.use_transactional_fixtures = true # Spec in canvas_spec.rb tests pessimistic locking so we have to set transactional fixtures false
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
@@ -52,8 +53,10 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     begin
-      DatabaseCleaner.strategy = :truncation
-      DatabaseCleaner.clean_with(:truncation)
+      DatabaseCleaner.strategy = :transaction
+      DatabaseCleaner.clean_with(:transaction)
+
+      DatabaseCleaner.strategy = :truncation, {only: ["authentications"]}
       DatabaseCleaner.start
       # FactoryGirl.lint
     ensure
