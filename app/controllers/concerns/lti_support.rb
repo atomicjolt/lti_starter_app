@@ -2,6 +2,10 @@ module Concerns
   module LtiSupport
     extend ActiveSupport::Concern
 
+    included do
+      helper_method :lti_provider
+    end
+
     protected
 
       def do_lti
