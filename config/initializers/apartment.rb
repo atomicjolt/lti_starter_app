@@ -88,7 +88,7 @@ end
 # }
 
 Rails.application.config.middleware.insert_before 'Warden::Manager', 'Apartment::Elevators::Generic', lambda { |request|
-  if lti_key = request.params["lti_key"]
+  if lti_key = request.params["oauth_consumer_key"]
     LtiApplicationInstance.find_by(lti_key: lti_key).try(:lti_key)
   end
 }
