@@ -4,13 +4,48 @@
     csrfToken: form_authenticity_token
   }
   if signed_in?
-    settings[:userId] = current_user.id
-    settings[:email] = current_user.email
-    settings[:displayName] = current_user.display_name
-    settings[:oauthConsumerKey] = params[:oauth_consumer_key]
-    settings[:lmsCourseId] = params[:custom_canvas_course_id]
-    settings[:lmsUserId] = current_user.lti_user_id
-    settings[:ltiProvider] = lti_provider
+    settings[:userId]                            = current_user.id
+    settings[:email]                             = current_user.email
+    settings[:displayName]                       = current_user.display_name
+    settings[:oauthConsumerKey]                  = params[:oauth_consumer_key]
+    settings[:lmsCourseId]                       = params[:custom_canvas_course_id]
+    settings[:lmsUserId]                         = current_user.lti_user_id
+    settings[:ltiProvider]                       = lti_provider
+
+    # LTI parameters
+    settings[:contextID]                         = params["context_id"]
+    settings[:contextLabel]                      = params["context_label"]
+    settings[:contextTitle]                      = params["context_title"]
+    settings[:customCanvasApiDomain]             = params["custom_canvas_api_domain"]
+    settings[:customCanvasCourseID]              = params["custom_canvas_course_id"]
+    settings[:customCanvasEnrollmentState]       = params["custom_canvas_enrollment_state"]
+    settings[:customCanvasUserID]                = params["custom_canvas_user_id"]
+    settings[:customCanvasUserLoginID]           = params["custom_canvas_user_login_id"]
+    settings[:extRoles]                          = params["ext_roles"]
+    settings[:launchPresentationDocumentTarget]  = params["launch_presentation_document_target"]
+    settings[:launchPresentationHeight]          = params["launch_presentation_height"]
+    settings[:launchPresentationLocale]          = params["launch_presentation_locale"]
+    settings[:launchPresentationReturnURL]       = params["launch_presentation_return_url"]
+    settings[:launchPresentationWidth]           = params["launch_presentation_width"]
+    settings[:lisCourseOfferingSourcedid]        = params["lis_course_offering_sourcedid"]
+    settings[:lisPersonContactEmailPrimary]      = params["lis_person_contact_email_primary"]
+    settings[:lisPersonNameFamily]               = params["lis_person_name_family"]
+    settings[:lisPersonNameFull]                 = params["lis_person_name_full"]
+    settings[:lisPersonNameGiven]                = params["lis_person_name_given"]
+    settings[:lisPersonSourcedid]                = params["lis_person_sourcedid"]
+    settings[:ltiMessageType]                    = params["lti_message_type"]
+    settings[:ltiVersion]                        = params["lti_version"]
+    settings[:oauthCallback]                     = params["oauth_callback"]
+    settings[:resourceLinkID]                    = params["resource_link_id"]
+    settings[:resourceLinkTitle]                 = params["resource_link_title"]
+    settings[:roles]                             = params["roles"]
+    settings[:toolConsumerInfoProductFamilyCode] = params["tool_consumer_info_product_family_code"]
+    settings[:toolConsumerInfoVersion]           = params["tool_consumer_info_version"]
+    settings[:toolConsumerInstanceContactEmail]  = params["tool_consumer_instance_contact_email"]
+    settings[:toolConsumerInstanceGuid]          = params["tool_consumer_instance_guid"]
+    settings[:toolConsumerInstanceName]          = params["tool_consumer_instance_name"]
+    settings[:userImage]                         = params["user_image"]
+
   end
 %>
 <script type="text/javascript">
