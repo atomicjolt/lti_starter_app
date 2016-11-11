@@ -16,12 +16,4 @@ module ApplicationHelper
     })
   end
 
-  def course_id
-    params[:custom_canvas_course_id]
-  end
-
-  def user_id
-    params[:custom_canvas_user_id]
-  end
-
 end
