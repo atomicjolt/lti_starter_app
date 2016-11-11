@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def canvas_url
-    session[:canvas_url] || Rails.application.secrets.canvas_url
+    session[:canvas_url] || current_lti_application_instance.lti_consumer_uri
   end
 
   def application_base_url
