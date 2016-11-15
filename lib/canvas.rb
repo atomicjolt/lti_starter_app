@@ -209,9 +209,9 @@ class Canvas
           parent = parts[0].to_sym
           child = parts[1].gsub("]", "").to_sym
           missing << p unless (params[parent].present? && params[parent][child].present?) ||
-                              (payload.present? && payload[parent].present? && payload[parent][child].present?)
+                              (payload.present? && !payload.is_a?(String) && payload[parent].present? && payload[parent][child].present?)
         else
-          missing << p unless params[p.to_sym].present? || (payload.present? && payload[p.to_sym].present?)
+          missing << p unless params[p.to_sym].present? || (payload.present? && !payload.is_a?(String) && payload[p.to_sym].present?)
         end
       end
     end

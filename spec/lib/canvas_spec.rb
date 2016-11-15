@@ -342,6 +342,57 @@ describe Canvas do
           Canvas.canvas_url("LIST_ACTIVE_COURSES_IN_ACCOUNT", params)
         }.to raise_exception(Canvas::MissingRequiredParameterException)
       end
+
+      context "with valid payload" do
+        it "passes a valid payload" do
+          params = {
+            course_id: 1,
+            assignment: {
+              name: "Atomic Jolt the course", submission_types: ["external_tool"], integration_id: "1", integration_data: {
+                provider: "atomic-test"
+              }, external_tool_tag_attributes: {
+                url: "https://test.atomicjolt.xyz/course?course_id=1"
+              }
+            }, type: "CREATE_ASSIGNMENT", oauth_consumer_key: "scorm-player", controller: "api/canvas_proxy", action: "proxy", canvas_proxy: {
+              assignment: {
+                name: "Atomic Jolt the course", submission_types: ["external_tool"], integration_id: "1", integration_data: {
+                  provider: "atomic-test"
+                }, external_tool_tag_attributes: {
+                  url: "https://test.atomicjolt.xyz/course?course_id=1"
+                }
+              }
+            }
+          }
+          payload = "{\"assignment\":{\"name\":\"Atomic Jolt the course\",\"submission_types\":[\"external_tool\"],\"integration_id\":\"1\",\"integration_data\":{\"provider\":\"atomic-test\"},\"external_tool_tag_attributes\":{\"url\":\"https://test.atomicjolt.xyz/course?course_id=1\"}}}"
+          url = Canvas.canvas_url("CREATE_ASSIGNMENT", params, payload)
+          expect(url).to eq("courses/1/assignments")
+        end
+
+        it "passes a payload with missing values" do
+          params = {
+            assignment: {
+              name: "Atomic Jolt the course", submission_types: ["external_tool"], integration_id: "1", integration_data: {
+                provider: "atomic-test"
+              }, external_tool_tag_attributes: {
+                url: "https://test.atomicjolt.xyz/course?course_id=1"
+              }
+            }, type: "CREATE_ASSIGNMENT", oauth_consumer_key: "scorm-player", controller: "api/canvas_proxy", action: "proxy", canvas_proxy: {
+              assignment: {
+                name: "Atomic Jolt the course", submission_types: ["external_tool"], integration_id: "1", integration_data: {
+                  provider: "atomic-test"
+                }, external_tool_tag_attributes: {
+                  url: "https://test.atomicjolt.xyz/course?course_id=1"
+                }
+              }
+            }
+          }
+          payload = "{\"assignment\":{\"name\":\"Atomic Jolt the course\",\"submission_types\":[\"external_tool\"],\"integration_id\":\"1\",\"integration_data\":{\"provider\":\"atomic-test\"},\"external_tool_tag_attributes\":{\"url\":\"https://test.atomicjolt.xyz/course?course_id=1\"}}}"
+          expect {
+            Canvas.canvas_url("CREATE_ASSIGNMENT", params, payload)
+          }.to raise_exception(Canvas::MissingRequiredParameterException)
+        end
+      end
+
     end
 
   end
