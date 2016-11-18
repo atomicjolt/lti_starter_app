@@ -21,6 +21,7 @@ def tunnel(config)
 end
 
 def config(subdomain, port)
+  puts "Starting tunnel on #{subdomain}:#{port}"
   %Q{{ "addr": "#{port}", "proto": "http", "subdomain": "#{subdomain}", "name": "#{subdomain}" }}
 end
 
