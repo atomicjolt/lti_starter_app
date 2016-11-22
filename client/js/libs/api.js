@@ -91,22 +91,26 @@ export default class Api{
     // Dispose of the request when the call is complete
     wrapper.promise.then((result) => {
       Api._disposeRequest(url);
-    });
+    }, ()=>{
+      Api._disposeRequest(url);
+    } );
 
     return wrapper.promise;
   }
 
   static _wrapRequest(url, requestMethod, requestType){
-    if (requestType === NetworkConstants.POST) {
+    if (requestType === NetworkConstants.GET){
+      if (!_pendingRequests[url]){
+        _pendingRequests[url] = {
+          request: requestMethod(url)
+        };
+      }
+      return _pendingRequests[url];
+    } else {
       return {
         request: requestMethod(url)
       };
-    } else if (!_pendingRequests[url]) {
-      _pendingRequests[url] = {
-        request: requestMethod(url)
-      };
     }
-    return _pendingRequests[url];
   }
 
   static _disposeRequest(url){
