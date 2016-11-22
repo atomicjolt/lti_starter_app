@@ -139,40 +139,44 @@ describe Canvas do
       end
 
       describe "concurrent requests" do
+
         after(:each) do
           ActiveRecord::Base.connection_pool.disconnect!
         end
 
-        it "only calls the refresh token Canvas API once" do
+        without_transactional_fixtures do
+          it "only calls the refresh token Canvas API once" do
 
-          Breakpoints.add_breakpoints(Canvas, :get_authentication_lock)
+            Breakpoints.add_breakpoints(Canvas, :get_authentication_lock)
 
-          thread1 = Breakpoints::Thread.new do
-            api = Canvas.new(@canvas_authentication.provider_url, @canvas_authentication, @options)
-            expect(HTTParty).to receive(:get).with("#{@base_uri}/api/v1/courses", headers: api.headers).and_return(@initial_result)
-            expect(HTTParty).to receive(:post).with("#{@base_uri}/login/oauth2/token", headers: api.headers, body: { grant_type: "refresh_token" }.merge(@options)).and_return(@refresh_result)
-            expect(HTTParty).to receive(:get).with("#{@base_uri}/api/v1/courses", headers: api.headers.merge({"Authorization"=>"Bearer anewtoken"})).and_return(@final_result)
-            api.api_get_request("courses")
+            thread1 = Breakpoints::Thread.new do
+              api = Canvas.new(@canvas_authentication.provider_url, @canvas_authentication, @options)
+              expect(HTTParty).to receive(:get).with("#{@base_uri}/api/v1/courses", headers: api.headers).and_return(@initial_result)
+              expect(HTTParty).to receive(:post).with("#{@base_uri}/login/oauth2/token", headers: api.headers, body: { grant_type: "refresh_token" }.merge(@options)).and_return(@refresh_result)
+              expect(HTTParty).to receive(:get).with("#{@base_uri}/api/v1/courses", headers: api.headers.merge({"Authorization"=>"Bearer anewtoken"})).and_return(@final_result)
+              api.api_get_request("courses")
+            end
+
+            thread2 = Breakpoints::Thread.new do
+              api = Canvas.new(@canvas_authentication.provider_url, @canvas_authentication, @options)
+              expect(HTTParty).to receive(:get).with("#{@base_uri}/api/v1/courses", headers: api.headers).and_return(@initial_result)
+              expect(HTTParty).not_to receive(:post)
+              expect(HTTParty).to receive(:get).with("#{@base_uri}/api/v1/courses", headers: api.headers.merge({"Authorization"=>"Bearer anewtoken"})).and_return(@final_result)
+              api.api_get_request("courses")
+            end
+
+            thread1.run_until(:after_get_authentication_lock)
+            thread2.run_until(:before_get_authentication_lock)
+
+            thread2.finish
+            sleep(1)
+
+            thread1.finish_wait
+            thread2.finish_wait
+
           end
-
-          thread2 = Breakpoints::Thread.new do
-            api = Canvas.new(@canvas_authentication.provider_url, @canvas_authentication, @options)
-            expect(HTTParty).to receive(:get).with("#{@base_uri}/api/v1/courses", headers: api.headers).and_return(@initial_result)
-            expect(HTTParty).not_to receive(:post)
-            expect(HTTParty).to receive(:get).with("#{@base_uri}/api/v1/courses", headers: api.headers.merge({"Authorization"=>"Bearer anewtoken"})).and_return(@final_result)
-            api.api_get_request("courses")
-          end
-
-          thread1.run_until(:after_get_authentication_lock)
-          thread2.run_until(:before_get_authentication_lock)
-
-          thread2.finish
-          sleep(1)
-
-          thread1.finish_wait
-          thread2.finish_wait
-
         end
+
       end
 
     end
