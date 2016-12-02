@@ -4,7 +4,7 @@ module Integrations
 
     def self.courses(canvas_authentication, lti_launch_url)
 
-      api = Canvas.new(canvas_authentication.provider_url, canvas_authentication.token)
+      api = Canvas::API.new(UrlHelper.scheme_host(canvas_authentication.provider_url), canvas_authentication.token)
 
       allowed_enrollments = %w(teacher ta designer)
       allowed_courses = []
@@ -30,7 +30,7 @@ module Integrations
 
       config_xml = Lti::Config.xml(lti_options)
 
-      api = Canvas.new(provider_url, token)
+      api = Canvas::API.new(UrlHelper.scheme_host(provider_url), token)
       existing_tools = api.proxy("LIST_EXTERNAL_TOOLS_COURSES", {course_id: course['id']})
 
       # Reset config for each iteration since we might not want the key and secret

@@ -4,6 +4,12 @@ GIT
   specs:
     heroku_secrets (0.0.2)
 
+PATH
+  remote: ../canvas-ref
+  specs:
+    canvas (1.0.0)
+      rails (~> 4.2.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -348,6 +354,7 @@ DEPENDENCIES
   binding_of_caller
   byebug
   cancancan
+  canvas!
   capybara
   database_cleaner
   devise
