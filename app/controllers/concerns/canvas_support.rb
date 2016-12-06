@@ -6,7 +6,7 @@ module Concerns
 
       def canvas_api
         if current_lti_application_instance.canvas_token.present?
-          Canvas::API.new(UrlHelper.scheme_host(current_lti_application_instance.lti_consumer_uri), current_lti_application_instance.canvas_token)
+          LMS::API.new(UrlHelper.scheme_host(current_lti_application_instance.lti_consumer_uri), current_lti_application_instance.canvas_token)
         elsif auth = canvas_auth(current_lti_application_instance)
           options = {
             client_id: Rails.application.secrets.canvas_developer_id,
@@ -14,7 +14,7 @@ module Concerns
             redirect_uri: "https://#{request.host}/auth/canvas/callback",
             refresh_token: auth.refresh_token
           }
-          Canvas::API.new(UrlHelper.scheme_host(current_lti_application_instance.lti_consumer_uri), auth, options)
+          LMS::API.new(UrlHelper.scheme_host(current_lti_application_instance.lti_consumer_uri), auth, options)
         else
           nil
         end

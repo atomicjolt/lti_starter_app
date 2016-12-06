@@ -28,7 +28,7 @@ gem 'cancancan'
 gem 'rolify'
 gem 'attr_encrypted'
 gem 'jwt', '~> 1.5.0' # json web token
-gem 'canvas', path: '../canvas-ref'
+gem 'lms-api', path: '../lms-api'
 
 # Email
 gem 'sendgrid'

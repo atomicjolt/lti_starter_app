@@ -5,9 +5,9 @@ GIT
     heroku_secrets (0.0.2)
 
 PATH
-  remote: ../canvas-ref
+  remote: ../lms-api
   specs:
-    canvas (1.0.0)
+    lms-api (1.0.0)
       rails (~> 4.2.7)
 
 GEM
@@ -354,7 +354,6 @@ DEPENDENCIES
   binding_of_caller
   byebug
   cancancan
-  canvas!
   capybara
   database_cleaner
   devise
@@ -370,6 +369,7 @@ DEPENDENCIES
   ims-lti (~> 1.1.13)
   jwt (~> 1.5.0)
   launchy
+  lms-api!
   mail_view
   mailcatcher
   non-stupid-digest-assets

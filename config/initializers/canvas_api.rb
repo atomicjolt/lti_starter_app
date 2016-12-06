@@ -1,3 +1,3 @@
-require 'canvas/api'
+require 'lms/api'
 
-Canvas::API.auth_state_model = Authentication
+LMS::API.auth_state_model = Authentication

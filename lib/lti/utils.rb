@@ -42,7 +42,7 @@ module Lti
 
   def self.list_all
     LtiApplicationInstance.find_each do |app|
-      api = Canvas::API.new(UrlHelper.scheme_host(app.lti_consumer_uri), Rails.Application.secrets.canvas_token || app.canvas_token)
+      api = LMS::API.new(UrlHelper.scheme_host(app.lti_consumer_uri), Rails.Application.secrets.canvas_token || app.canvas_token)
 
       puts "Course LTI Tools"
       iterate_tools(api, :course_id, "LIST_YOUR_COURSES", "COURSES") do |external_tool, parent|
@@ -59,7 +59,7 @@ module Lti
   def self.destroy_all
     LtiApplicationInstance.find_each do |app|
       puts "Removing LTI tool: #{app.lti_application.name} Canvas url: #{app.lti_consumer_uri}"
-      api = Canvas::API.new(UrlHelper.scheme_host(app.lti_consumer_uri), Rails.Application.secrets.canvas_token || app.canvas_token)
+      api = LMS::API.new(UrlHelper.scheme_host(app.lti_consumer_uri), Rails.Application.secrets.canvas_token || app.canvas_token)
 
       puts "Removing LTI tools from courses"
       iterate_tools(api, :course_id, "LIST_YOUR_COURSES", "COURSES") do |external_tool, parent|
@@ -89,7 +89,7 @@ module Lti
       puts "Removing LTI tool: #{external_tool["name"]} from #{parent["name"]}"
       begin
         result = api.proxy("DELETE_EXTERNAL_TOOL_#{constant}", {id_type => parent['id'], external_tool_id: external_tool['id']})
-      rescue Canvas::API::NotFoundException
+      rescue LMS::API::NotFoundException
         # It's possible we're trying to delete a tool we've already deleted. Move on
       end
     end
