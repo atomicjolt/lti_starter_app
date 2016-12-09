@@ -62,3 +62,6 @@ canvas.manifest
 rerun.txt
 /coverage/
 /spec/tmp
+
+# Becasue ben is weird
+/.idea/
