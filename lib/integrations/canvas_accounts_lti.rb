@@ -9,7 +9,7 @@ module Integrations
 
       config_xml = Lti::Config.xml(lti_options)
 
-      api = Canvas.new(provider_url, token)
+      api = LMS::API.new(UrlHelper.scheme_host(provider_url), token)
       existing_tools = api.proxy("LIST_EXTERNAL_TOOLS_ACCOUNTS", {account_id: account['id']}, nil, true)
 
       # Reset config for each iteration since we might not want the key and secret
