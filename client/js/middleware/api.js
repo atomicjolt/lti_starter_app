@@ -4,11 +4,12 @@ import { DONE } from '../constants/wrapper';
 const API = store => next => (action) => {
   function request(method, url, params, body, headers) {
     const state = store.getState();
-	const updatedParams = {
-      oauth_consumer_key: state.settings.oauthConsumerKey, // Add consumer key to requests so we can figure out which lti app requests are originating from
+    const updatedParams = {
+      // Add consumer key to requests so we can figure out which lti app requests are originating
+      oauth_consumer_key: state.settings.oauthConsumerKey,
       ...params
-    };    
-	const promise = api.execRequest(
+    };
+    const promise = api.execRequest(
       method,
       url,
       state.settings.apiUrl,
