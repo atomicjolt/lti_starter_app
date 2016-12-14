@@ -3,7 +3,7 @@ module Lti
   class Utils
 
     def self.lti_configs
-      LtiApplicationInstance.find_each do |app|
+      LtiApplicationInstance.find_each.map do |app|
         config = {
           title: app.lti_application.name,
           launch_url: "https://#{Rails.application.secrets.application_url}/lti_launches",
@@ -36,6 +36,7 @@ module Lti
         puts "-------------------------------------------------------------------------------------"
         puts "Key : #{app.lti_key}"
         puts "Secret : #{app.lti_secret}"
+        { app: app, config: Lti::Config.xml(course_navigation_config) }
       end
     end
   end
