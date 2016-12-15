@@ -9,7 +9,7 @@
 //
 // Example:
 // return canvasRequest(list_bookmarks, {});
-export const listBookmarks = { type: "LIST_BOOKMARKS", method: "get", key: "list_bookmarks", required: [] };
+export const listBookmarks = { type: 'LIST_BOOKMARKS', method: 'get', key: 'list_bookmarks', required: [] };
 
 // Create bookmark
 // Creates a bookmark.
@@ -25,7 +25,7 @@ export const listBookmarks = { type: "LIST_BOOKMARKS", method: "get", key: "list
 //   data
 // }
 // return canvasRequest(create_bookmark, {}, query);
-export const createBookmark = { type: "CREATE_BOOKMARK", method: "post", key: "create_bookmark", required: [] };
+export const createBookmark = { type: 'CREATE_BOOKMARK', method: 'post', key: 'create_bookmark', required: [] };
 
 // Get bookmark
 // Returns the details for a bookmark.
@@ -35,7 +35,7 @@ export const createBookmark = { type: "CREATE_BOOKMARK", method: "post", key: "c
 //
 // Example:
 // return canvasRequest(get_bookmark, {id});
-export const getBookmark = { type: "GET_BOOKMARK", method: "get", key: "get_bookmarkget_bookmark_id", required: ["id"] };
+export const getBookmark = { type: 'GET_BOOKMARK', method: 'get', key: 'get_bookmarkget_bookmark_id', required: ['id''] };
 
 // Update bookmark
 // Updates a bookmark
@@ -51,7 +51,7 @@ export const getBookmark = { type: "GET_BOOKMARK", method: "get", key: "get_book
 //   data
 // }
 // return canvasRequest(update_bookmark, {id}, query);
-export const updateBookmark = { type: "UPDATE_BOOKMARK", method: "put", key: "update_bookmarkupdate_bookmark_id", required: ["id"] };
+export const updateBookmark = { type: 'UPDATE_BOOKMARK', method: 'put', key: 'update_bookmarkupdate_bookmark_id', required: ['id''] };
 
 // Delete bookmark
 // Deletes a bookmark
@@ -61,4 +61,4 @@ export const updateBookmark = { type: "UPDATE_BOOKMARK", method: "put", key: "up
 //
 // Example:
 // return canvasRequest(delete_bookmark, {id});
-export const deleteBookmark = { type: "DELETE_BOOKMARK", method: "delete", key: "delete_bookmarkdelete_bookmark_id", required: ["id"] };
+export const deleteBookmark = { type: 'DELETE_BOOKMARK', method: 'delete', key: 'delete_bookmarkdelete_bookmark_id', required: ['id''] };

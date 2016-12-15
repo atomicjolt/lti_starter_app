@@ -9,7 +9,7 @@
 //
 // Example:
 // return canvasRequest(list_authentication_providers, {account_id});
-export const listAuthenticationProviders = { type: "LIST_AUTHENTICATION_PROVIDERS", method: "get", key: "list_authentication_providerslist_authentication_providers_account_id", required: ["account_id"] };
+export const listAuthenticationProviders = { type: 'LIST_AUTHENTICATION_PROVIDERS', method: 'get', key: 'list_authentication_providerslist_authentication_providers_account_id', required: ['account_id''] };
 
 // Add authentication provider
 // Add external authentication provider(s) for the account.
@@ -374,7 +374,7 @@ export const listAuthenticationProviders = { type: "LIST_AUTHENTICATION_PROVIDER
 //
 // Example:
 // return canvasRequest(add_authentication_provider, {account_id});
-export const addAuthenticationProvider = { type: "ADD_AUTHENTICATION_PROVIDER", method: "post", key: "add_authentication_provideradd_authentication_provider_account_id", required: ["account_id"] };
+export const addAuthenticationProvider = { type: 'ADD_AUTHENTICATION_PROVIDER', method: 'post', key: 'add_authentication_provideradd_authentication_provider_account_id', required: ['account_id''] };
 
 // Update authentication provider
 // Update an authentication provider using the same options as the create endpoint.
@@ -385,7 +385,7 @@ export const addAuthenticationProvider = { type: "ADD_AUTHENTICATION_PROVIDER", 
 //
 // Example:
 // return canvasRequest(update_authentication_provider, {account_id, id});
-export const updateAuthenticationProvider = { type: "UPDATE_AUTHENTICATION_PROVIDER", method: "put", key: "update_authentication_providerupdate_authentication_provider_{account_id}_{id}", required: ["account_id","id"] };
+export const updateAuthenticationProvider = { type: 'UPDATE_AUTHENTICATION_PROVIDER', method: 'put', key: 'update_authentication_providerupdate_authentication_provider_{account_id}_{id}', required: ['account_id','id''] };
 
 // Get authentication provider
 // Get the specified authentication provider
@@ -395,7 +395,7 @@ export const updateAuthenticationProvider = { type: "UPDATE_AUTHENTICATION_PROVI
 //
 // Example:
 // return canvasRequest(get_authentication_provider, {account_id, id});
-export const getAuthenticationProvider = { type: "GET_AUTHENTICATION_PROVIDER", method: "get", key: "get_authentication_providerget_authentication_provider_{account_id}_{id}", required: ["account_id","id"] };
+export const getAuthenticationProvider = { type: 'GET_AUTHENTICATION_PROVIDER', method: 'get', key: 'get_authentication_providerget_authentication_provider_{account_id}_{id}', required: ['account_id','id''] };
 
 // Delete authentication provider
 // Delete the config
@@ -405,7 +405,7 @@ export const getAuthenticationProvider = { type: "GET_AUTHENTICATION_PROVIDER", 
 //
 // Example:
 // return canvasRequest(delete_authentication_provider, {account_id, id});
-export const deleteAuthenticationProvider = { type: "DELETE_AUTHENTICATION_PROVIDER", method: "delete", key: "delete_authentication_providerdelete_authentication_provider_{account_id}_{id}", required: ["account_id","id"] };
+export const deleteAuthenticationProvider = { type: 'DELETE_AUTHENTICATION_PROVIDER', method: 'delete', key: 'delete_authentication_providerdelete_authentication_provider_{account_id}_{id}', required: ['account_id','id''] };
 
 // show account auth settings
 // The way to get the current state of each account level setting
@@ -418,7 +418,7 @@ export const deleteAuthenticationProvider = { type: "DELETE_AUTHENTICATION_PROVI
 //
 // Example:
 // return canvasRequest(show_account_auth_settings, {account_id});
-export const showAccountAuthSettings = { type: "SHOW_ACCOUNT_AUTH_SETTINGS", method: "get", key: "show_account_auth_settingsshow_account_auth_settings_account_id", required: ["account_id"] };
+export const showAccountAuthSettings = { type: 'SHOW_ACCOUNT_AUTH_SETTINGS', method: 'get', key: 'show_account_auth_settingsshow_account_auth_settings_account_id', required: ['account_id''] };
 
 // update account auth settings
 // For various cases of mixed SSO configurations, you may need to set some
@@ -437,4 +437,4 @@ export const showAccountAuthSettings = { type: "SHOW_ACCOUNT_AUTH_SETTINGS", met
 //
 // Example:
 // return canvasRequest(update_account_auth_settings, {account_id});
-export const updateAccountAuthSettings = { type: "UPDATE_ACCOUNT_AUTH_SETTINGS", method: "put", key: "update_account_auth_settingsupdate_account_auth_settings_account_id", required: ["account_id"] };
+export const updateAccountAuthSettings = { type: 'UPDATE_ACCOUNT_AUTH_SETTINGS', method: 'put', key: 'update_account_auth_settingsupdate_account_auth_settings_account_id', required: ['account_id''] };

@@ -9,7 +9,7 @@
 //
 // Example:
 // return canvasRequest(delete_assignment, {course_id, id});
-export const deleteAssignment = { type: "DELETE_ASSIGNMENT", method: "delete", key: "delete_assignmentdelete_assignment_{course_id}_{id}", required: ["course_id","id"] };
+export const deleteAssignment = { type: 'DELETE_ASSIGNMENT', method: 'delete', key: 'delete_assignmentdelete_assignment_{course_id}_{id}', required: ['course_id','id''] };
 
 // List assignments
 // Returns the list of assignments for the current context.
@@ -27,7 +27,7 @@ export const deleteAssignment = { type: "DELETE_ASSIGNMENT", method: "delete", k
 //   assignment_ids
 // }
 // return canvasRequest(list_assignments, {course_id}, query);
-export const listAssignments = { type: "LIST_ASSIGNMENTS", method: "get", key: "list_assignmentslist_assignments_course_id", required: ["course_id"] };
+export const listAssignments = { type: 'LIST_ASSIGNMENTS', method: 'get', key: 'list_assignmentslist_assignments_course_id', required: ['course_id''] };
 
 // List assignments for user
 // Returns the list of assignments for the specified user if the current user has rights to view.
@@ -38,7 +38,7 @@ export const listAssignments = { type: "LIST_ASSIGNMENTS", method: "get", key: "
 //
 // Example:
 // return canvasRequest(list_assignments_for_user, {user_id, course_id});
-export const listAssignmentsForUser = { type: "LIST_ASSIGNMENTS_FOR_USER", method: "get", key: "list_assignments_for_userlist_assignments_for_user_{user_id}_{course_id}", required: ["user_id","course_id"] };
+export const listAssignmentsForUser = { type: 'LIST_ASSIGNMENTS_FOR_USER', method: 'get', key: 'list_assignments_for_userlist_assignments_for_user_{user_id}_{course_id}', required: ['user_id','course_id''] };
 
 // Get a single assignment
 // Returns the assignment with the given id.
@@ -55,7 +55,7 @@ export const listAssignmentsForUser = { type: "LIST_ASSIGNMENTS_FOR_USER", metho
 //   all_dates
 // }
 // return canvasRequest(get_single_assignment, {course_id, id}, query);
-export const getSingleAssignment = { type: "GET_SINGLE_ASSIGNMENT", method: "get", key: "get_single_assignmentget_single_assignment_{course_id}_{id}", required: ["course_id","id"] };
+export const getSingleAssignment = { type: 'GET_SINGLE_ASSIGNMENT', method: 'get', key: 'get_single_assignmentget_single_assignment_{course_id}_{id}', required: ['course_id','id''] };
 
 // Create an assignment
 // Create a new assignment for this course. The assignment is created in the
@@ -96,7 +96,7 @@ export const getSingleAssignment = { type: "GET_SINGLE_ASSIGNMENT", method: "get
 //   assignment[omit_from_final_grade]
 // }
 // return canvasRequest(create_assignment, {course_id}, query);
-export const createAssignment = { type: "CREATE_ASSIGNMENT", method: "post", key: "create_assignmentcreate_assignment_course_id", required: ["course_id"] };
+export const createAssignment = { type: 'CREATE_ASSIGNMENT', method: 'post', key: 'create_assignmentcreate_assignment_course_id', required: ['course_id''] };
 
 // Edit an assignment
 // Modify an existing assignment.
@@ -143,7 +143,7 @@ export const createAssignment = { type: "CREATE_ASSIGNMENT", method: "post", key
 //   assignment[omit_from_final_grade]
 // }
 // return canvasRequest(edit_assignment, {course_id, id}, query);
-export const editAssignment = { type: "EDIT_ASSIGNMENT", method: "put", key: "edit_assignmentedit_assignment_{course_id}_{id}", required: ["course_id","id"] };
+export const editAssignment = { type: 'EDIT_ASSIGNMENT', method: 'put', key: 'edit_assignmentedit_assignment_{course_id}_{id}', required: ['course_id','id''] };
 
 // List assignment overrides
 // Returns the list of overrides for this assignment that target
@@ -154,7 +154,7 @@ export const editAssignment = { type: "EDIT_ASSIGNMENT", method: "put", key: "ed
 //
 // Example:
 // return canvasRequest(list_assignment_overrides, {course_id, assignment_id});
-export const listAssignmentOverrides = { type: "LIST_ASSIGNMENT_OVERRIDES", method: "get", key: "list_assignment_overrideslist_assignment_overrides_{course_id}_{assignment_id}", required: ["course_id","assignment_id"] };
+export const listAssignmentOverrides = { type: 'LIST_ASSIGNMENT_OVERRIDES', method: 'get', key: 'list_assignment_overrideslist_assignment_overrides_{course_id}_{assignment_id}', required: ['course_id','assignment_id''] };
 
 // Get a single assignment override
 // Returns details of the the override with the given id.
@@ -164,7 +164,7 @@ export const listAssignmentOverrides = { type: "LIST_ASSIGNMENT_OVERRIDES", meth
 //
 // Example:
 // return canvasRequest(get_single_assignment_override, {course_id, assignment_id, id});
-export const getSingleAssignmentOverride = { type: "GET_SINGLE_ASSIGNMENT_OVERRIDE", method: "get", key: "get_single_assignment_overrideget_single_assignment_override_{course_id}_{assignment_id}_{id}", required: ["course_id","assignment_id","id"] };
+export const getSingleAssignmentOverride = { type: 'GET_SINGLE_ASSIGNMENT_OVERRIDE', method: 'get', key: 'get_single_assignment_overrideget_single_assignment_override_{course_id}_{assignment_id}_{id}', required: ['course_id','assignment_id','id''] };
 
 // Redirect to the assignment override for a group
 // Responds with a redirect to the override for the given group, if any
@@ -175,7 +175,7 @@ export const getSingleAssignmentOverride = { type: "GET_SINGLE_ASSIGNMENT_OVERRI
 //
 // Example:
 // return canvasRequest(redirect_to_assignment_override_for_group, {group_id, assignment_id});
-export const redirectToAssignmentOverrideForGroup = { type: "REDIRECT_TO_ASSIGNMENT_OVERRIDE_FOR_GROUP", method: "get", key: "redirect_to_assignment_override_for_groupredirect_to_assignment_override_for_group_{group_id}_{assignment_id}", required: ["group_id","assignment_id"] };
+export const redirectToAssignmentOverrideForGroup = { type: 'REDIRECT_TO_ASSIGNMENT_OVERRIDE_FOR_GROUP', method: 'get', key: 'redirect_to_assignment_override_for_groupredirect_to_assignment_override_for_group_{group_id}_{assignment_id}', required: ['group_id','assignment_id''] };
 
 // Redirect to the assignment override for a section
 // Responds with a redirect to the override for the given section, if any
@@ -186,7 +186,7 @@ export const redirectToAssignmentOverrideForGroup = { type: "REDIRECT_TO_ASSIGNM
 //
 // Example:
 // return canvasRequest(redirect_to_assignment_override_for_section, {course_section_id, assignment_id});
-export const redirectToAssignmentOverrideForSection = { type: "REDIRECT_TO_ASSIGNMENT_OVERRIDE_FOR_SECTION", method: "get", key: "redirect_to_assignment_override_for_sectionredirect_to_assignment_override_for_section_{course_section_id}_{assignment_id}", required: ["course_section_id","assignment_id"] };
+export const redirectToAssignmentOverrideForSection = { type: 'REDIRECT_TO_ASSIGNMENT_OVERRIDE_FOR_SECTION', method: 'get', key: 'redirect_to_assignment_override_for_sectionredirect_to_assignment_override_for_section_{course_section_id}_{assignment_id}', required: ['course_section_id','assignment_id''] };
 
 // Create an assignment override
 // One of student_ids, group_id, or course_section_id must be present. At most
@@ -208,7 +208,7 @@ export const redirectToAssignmentOverrideForSection = { type: "REDIRECT_TO_ASSIG
 //   assignment_override[lock_at]
 // }
 // return canvasRequest(create_assignment_override, {course_id, assignment_id}, query);
-export const createAssignmentOverride = { type: "CREATE_ASSIGNMENT_OVERRIDE", method: "post", key: "create_assignment_overridecreate_assignment_override_{course_id}_{assignment_id}", required: ["course_id","assignment_id"] };
+export const createAssignmentOverride = { type: 'CREATE_ASSIGNMENT_OVERRIDE', method: 'post', key: 'create_assignment_overridecreate_assignment_override_{course_id}_{assignment_id}', required: ['course_id','assignment_id''] };
 
 // Update an assignment override
 // All current overridden values must be supplied if they are to be retained;
@@ -229,7 +229,7 @@ export const createAssignmentOverride = { type: "CREATE_ASSIGNMENT_OVERRIDE", me
 //   assignment_override[lock_at]
 // }
 // return canvasRequest(update_assignment_override, {course_id, assignment_id, id}, query);
-export const updateAssignmentOverride = { type: "UPDATE_ASSIGNMENT_OVERRIDE", method: "put", key: "update_assignment_overrideupdate_assignment_override_{course_id}_{assignment_id}_{id}", required: ["course_id","assignment_id","id"] };
+export const updateAssignmentOverride = { type: 'UPDATE_ASSIGNMENT_OVERRIDE', method: 'put', key: 'update_assignment_overrideupdate_assignment_override_{course_id}_{assignment_id}_{id}', required: ['course_id','assignment_id','id''] };
 
 // Delete an assignment override
 // Deletes an override and returns its former details.
@@ -239,7 +239,7 @@ export const updateAssignmentOverride = { type: "UPDATE_ASSIGNMENT_OVERRIDE", me
 //
 // Example:
 // return canvasRequest(delete_assignment_override, {course_id, assignment_id, id});
-export const deleteAssignmentOverride = { type: "DELETE_ASSIGNMENT_OVERRIDE", method: "delete", key: "delete_assignment_overridedelete_assignment_override_{course_id}_{assignment_id}_{id}", required: ["course_id","assignment_id","id"] };
+export const deleteAssignmentOverride = { type: 'DELETE_ASSIGNMENT_OVERRIDE', method: 'delete', key: 'delete_assignment_overridedelete_assignment_override_{course_id}_{assignment_id}_{id}', required: ['course_id','assignment_id','id''] };
 
 // Batch retrieve overrides in a course
 // Returns a list of specified overrides in this course, providing
@@ -255,7 +255,7 @@ export const deleteAssignmentOverride = { type: "DELETE_ASSIGNMENT_OVERRIDE", me
 //   assignment_overrides[assignment_id] (required)
 // }
 // return canvasRequest(batch_retrieve_overrides_in_course, {course_id}, query);
-export const batchRetrieveOverridesInCourse = { type: "BATCH_RETRIEVE_OVERRIDES_IN_COURSE", method: "get", key: "batch_retrieve_overrides_in_coursebatch_retrieve_overrides_in_course_course_id", required: ["course_id"] };
+export const batchRetrieveOverridesInCourse = { type: 'BATCH_RETRIEVE_OVERRIDES_IN_COURSE', method: 'get', key: 'batch_retrieve_overrides_in_coursebatch_retrieve_overrides_in_course_course_id', required: ['course_id''] };
 
 // Batch create overrides in a course
 // Creates the specified overrides for each assignment.  Handles creation in a
@@ -277,7 +277,7 @@ export const batchRetrieveOverridesInCourse = { type: "BATCH_RETRIEVE_OVERRIDES_
 //   assignment_overrides (required)
 // }
 // return canvasRequest(batch_create_overrides_in_course, {course_id}, query);
-export const batchCreateOverridesInCourse = { type: "BATCH_CREATE_OVERRIDES_IN_COURSE", method: "post", key: "batch_create_overrides_in_coursebatch_create_overrides_in_course_course_id", required: ["course_id"] };
+export const batchCreateOverridesInCourse = { type: 'BATCH_CREATE_OVERRIDES_IN_COURSE', method: 'post', key: 'batch_create_overrides_in_coursebatch_create_overrides_in_course_course_id', required: ['course_id''] };
 
 // Batch update overrides in a course
 // Updates a list of specified overrides for each assignment.  Handles overrides
@@ -302,4 +302,4 @@ export const batchCreateOverridesInCourse = { type: "BATCH_CREATE_OVERRIDES_IN_C
 //   assignment_overrides (required)
 // }
 // return canvasRequest(batch_update_overrides_in_course, {course_id}, query);
-export const batchUpdateOverridesInCourse = { type: "BATCH_UPDATE_OVERRIDES_IN_COURSE", method: "put", key: "batch_update_overrides_in_coursebatch_update_overrides_in_course_course_id", required: ["course_id"] };
+export const batchUpdateOverridesInCourse = { type: 'BATCH_UPDATE_OVERRIDES_IN_COURSE', method: 'put', key: 'batch_update_overrides_in_coursebatch_update_overrides_in_course_course_id', required: ['course_id''] };

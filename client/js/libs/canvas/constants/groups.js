@@ -13,7 +13,7 @@
 //   include
 // }
 // return canvasRequest(list_your_groups, {}, query);
-export const listYourGroups = { type: "LIST_YOUR_GROUPS", method: "get", key: "list_your_groups", required: [] };
+export const listYourGroups = { type: 'LIST_YOUR_GROUPS', method: 'get', key: 'list_your_groups', required: [] };
 
 // List the groups available in a context.
 // Returns the list of active groups in the given context that are visible to user.
@@ -27,7 +27,7 @@ export const listYourGroups = { type: "LIST_YOUR_GROUPS", method: "get", key: "l
 //   include
 // }
 // return canvasRequest(list_groups_available_in_context_accounts, {account_id}, query);
-export const listGroupsAvailableInContextAccounts = { type: "LIST_GROUPS_AVAILABLE_IN_CONTEXT_ACCOUNTS", method: "get", key: "list_groups_available_in_context_accountslist_groups_available_in_context_accounts_account_id", required: ["account_id"] };
+export const listGroupsAvailableInContextAccounts = { type: 'LIST_GROUPS_AVAILABLE_IN_CONTEXT_ACCOUNTS', method: 'get', key: 'list_groups_available_in_context_accountslist_groups_available_in_context_accounts_account_id', required: ['account_id''] };
 
 // List the groups available in a context.
 // Returns the list of active groups in the given context that are visible to user.
@@ -41,7 +41,7 @@ export const listGroupsAvailableInContextAccounts = { type: "LIST_GROUPS_AVAILAB
 //   include
 // }
 // return canvasRequest(list_groups_available_in_context_courses, {course_id}, query);
-export const listGroupsAvailableInContextCourses = { type: "LIST_GROUPS_AVAILABLE_IN_CONTEXT_COURSES", method: "get", key: "list_groups_available_in_context_courseslist_groups_available_in_context_courses_course_id", required: ["course_id"] };
+export const listGroupsAvailableInContextCourses = { type: 'LIST_GROUPS_AVAILABLE_IN_CONTEXT_COURSES', method: 'get', key: 'list_groups_available_in_context_courseslist_groups_available_in_context_courses_course_id', required: ['course_id''] };
 
 // Get a single group
 // Returns the data for a single group, or a 401 if the caller doesn't have
@@ -55,7 +55,7 @@ export const listGroupsAvailableInContextCourses = { type: "LIST_GROUPS_AVAILABL
 //   include
 // }
 // return canvasRequest(get_single_group, {group_id}, query);
-export const getSingleGroup = { type: "GET_SINGLE_GROUP", method: "get", key: "get_single_groupget_single_group_group_id", required: ["group_id"] };
+export const getSingleGroup = { type: 'GET_SINGLE_GROUP', method: 'get', key: 'get_single_groupget_single_group_group_id', required: ['group_id''] };
 
 // Create a group
 // Creates a new group. Groups created using the "/api/v1/groups/"
@@ -73,7 +73,7 @@ export const getSingleGroup = { type: "GET_SINGLE_GROUP", method: "get", key: "g
 //   storage_quota_mb
 // }
 // return canvasRequest(create_group_groups, {}, query);
-export const createGroupGroups = { type: "CREATE_GROUP_GROUPS", method: "post", key: "create_group_groups", required: [] };
+export const createGroupGroups = { type: 'CREATE_GROUP_GROUPS', method: 'post', key: 'create_group_groups', required: [] };
 
 // Create a group
 // Creates a new group. Groups created using the "/api/v1/groups/"
@@ -91,7 +91,7 @@ export const createGroupGroups = { type: "CREATE_GROUP_GROUPS", method: "post", 
 //   storage_quota_mb
 // }
 // return canvasRequest(create_group_group_categories, {group_category_id}, query);
-export const createGroupGroupCategories = { type: "CREATE_GROUP_GROUP_CATEGORIES", method: "post", key: "create_group_group_categoriescreate_group_group_categories_group_category_id", required: ["group_category_id"] };
+export const createGroupGroupCategories = { type: 'CREATE_GROUP_GROUP_CATEGORIES', method: 'post', key: 'create_group_group_categoriescreate_group_group_categories_group_category_id', required: ['group_category_id''] };
 
 // Edit a group
 // Modifies an existing group.  Note that to set an avatar image for the
@@ -114,7 +114,7 @@ export const createGroupGroupCategories = { type: "CREATE_GROUP_GROUP_CATEGORIES
 //   members
 // }
 // return canvasRequest(edit_group, {group_id}, query);
-export const editGroup = { type: "EDIT_GROUP", method: "put", key: "edit_groupedit_group_group_id", required: ["group_id"] };
+export const editGroup = { type: 'EDIT_GROUP', method: 'put', key: 'edit_groupedit_group_group_id', required: ['group_id''] };
 
 // Delete a group
 // Deletes a group and removes all members.
@@ -124,7 +124,7 @@ export const editGroup = { type: "EDIT_GROUP", method: "put", key: "edit_grouped
 //
 // Example:
 // return canvasRequest(delete_group, {group_id});
-export const deleteGroup = { type: "DELETE_GROUP", method: "delete", key: "delete_groupdelete_group_group_id", required: ["group_id"] };
+export const deleteGroup = { type: 'DELETE_GROUP', method: 'delete', key: 'delete_groupdelete_group_group_id', required: ['group_id''] };
 
 // Invite others to a group
 // Sends an invitation to all supplied email addresses which will allow the
@@ -138,7 +138,7 @@ export const deleteGroup = { type: "DELETE_GROUP", method: "delete", key: "delet
 //   invitees (required)
 // }
 // return canvasRequest(invite_others_to_group, {group_id}, query);
-export const inviteOthersToGroup = { type: "INVITE_OTHERS_TO_GROUP", method: "post", key: "invite_others_to_groupinvite_others_to_group_group_id", required: ["group_id"] };
+export const inviteOthersToGroup = { type: 'INVITE_OTHERS_TO_GROUP', method: 'post', key: 'invite_others_to_groupinvite_others_to_group_group_id', required: ['group_id''] };
 
 // List group's users
 // Returns a list of users in the group.
@@ -152,7 +152,7 @@ export const inviteOthersToGroup = { type: "INVITE_OTHERS_TO_GROUP", method: "po
 //   include
 // }
 // return canvasRequest(list_group_s_users, {group_id}, query);
-export const listGroupSUsers = { type: "LIST_GROUP_S_USERS", method: "get", key: "list_group_s_userslist_group_s_users_group_id", required: ["group_id"] };
+export const listGroupSUsers = { type: 'LIST_GROUP_S_USERS', method: 'get', key: 'list_group_s_userslist_group_s_users_group_id', required: ['group_id''] };
 
 // Upload a file
 // Upload a file to the group.
@@ -170,7 +170,7 @@ export const listGroupSUsers = { type: "LIST_GROUP_S_USERS", method: "get", key:
 //
 // Example:
 // return canvasRequest(groups_upload_file, {group_id});
-export const groupsUploadFile = { type: "GROUPS_UPLOAD_FILE", method: "post", key: "groups_upload_filegroups_upload_file_group_id", required: ["group_id"] };
+export const groupsUploadFile = { type: 'GROUPS_UPLOAD_FILE', method: 'post', key: 'groups_upload_filegroups_upload_file_group_id', required: ['group_id''] };
 
 // Preview processed html
 // Preview html content processed for this group
@@ -183,7 +183,7 @@ export const groupsUploadFile = { type: "GROUPS_UPLOAD_FILE", method: "post", ke
 //   html
 // }
 // return canvasRequest(groups_preview_processed_html, {group_id}, query);
-export const groupsPreviewProcessedHtml = { type: "GROUPS_PREVIEW_PROCESSED_HTML", method: "post", key: "groups_preview_processed_htmlgroups_preview_processed_html_group_id", required: ["group_id"] };
+export const groupsPreviewProcessedHtml = { type: 'GROUPS_PREVIEW_PROCESSED_HTML', method: 'post', key: 'groups_preview_processed_htmlgroups_preview_processed_html_group_id', required: ['group_id''] };
 
 // Group activity stream
 // Returns the current user's group-specific activity stream, paginated.
@@ -196,7 +196,7 @@ export const groupsPreviewProcessedHtml = { type: "GROUPS_PREVIEW_PROCESSED_HTML
 //
 // Example:
 // return canvasRequest(group_activity_stream, {group_id});
-export const groupActivityStream = { type: "GROUP_ACTIVITY_STREAM", method: "get", key: "group_activity_streamgroup_activity_stream_group_id", required: ["group_id"] };
+export const groupActivityStream = { type: 'GROUP_ACTIVITY_STREAM', method: 'get', key: 'group_activity_streamgroup_activity_stream_group_id', required: ['group_id''] };
 
 // Group activity stream summary
 // Returns a summary of the current user's group-specific activity stream.
@@ -209,7 +209,7 @@ export const groupActivityStream = { type: "GROUP_ACTIVITY_STREAM", method: "get
 //
 // Example:
 // return canvasRequest(group_activity_stream_summary, {group_id});
-export const groupActivityStreamSummary = { type: "GROUP_ACTIVITY_STREAM_SUMMARY", method: "get", key: "group_activity_stream_summarygroup_activity_stream_summary_group_id", required: ["group_id"] };
+export const groupActivityStreamSummary = { type: 'GROUP_ACTIVITY_STREAM_SUMMARY', method: 'get', key: 'group_activity_stream_summarygroup_activity_stream_summary_group_id', required: ['group_id''] };
 
 // List group memberships
 // List the members of a group.
@@ -222,7 +222,7 @@ export const groupActivityStreamSummary = { type: "GROUP_ACTIVITY_STREAM_SUMMARY
 //   filter_states
 // }
 // return canvasRequest(list_group_memberships, {group_id}, query);
-export const listGroupMemberships = { type: "LIST_GROUP_MEMBERSHIPS", method: "get", key: "list_group_membershipslist_group_memberships_group_id", required: ["group_id"] };
+export const listGroupMemberships = { type: 'LIST_GROUP_MEMBERSHIPS', method: 'get', key: 'list_group_membershipslist_group_memberships_group_id', required: ['group_id''] };
 
 // Get a single group membership
 // Returns the group membership with the given membership id or user id.
@@ -232,7 +232,7 @@ export const listGroupMemberships = { type: "LIST_GROUP_MEMBERSHIPS", method: "g
 //
 // Example:
 // return canvasRequest(get_single_group_membership_memberships, {group_id, membership_id});
-export const getSingleGroupMembershipMemberships = { type: "GET_SINGLE_GROUP_MEMBERSHIP_MEMBERSHIPS", method: "get", key: "get_single_group_membership_membershipsget_single_group_membership_memberships_{group_id}_{membership_id}", required: ["group_id","membership_id"] };
+export const getSingleGroupMembershipMemberships = { type: 'GET_SINGLE_GROUP_MEMBERSHIP_MEMBERSHIPS', method: 'get', key: 'get_single_group_membership_membershipsget_single_group_membership_memberships_{group_id}_{membership_id}', required: ['group_id','membership_id''] };
 
 // Get a single group membership
 // Returns the group membership with the given membership id or user id.
@@ -242,7 +242,7 @@ export const getSingleGroupMembershipMemberships = { type: "GET_SINGLE_GROUP_MEM
 //
 // Example:
 // return canvasRequest(get_single_group_membership_users, {group_id, user_id});
-export const getSingleGroupMembershipUsers = { type: "GET_SINGLE_GROUP_MEMBERSHIP_USERS", method: "get", key: "get_single_group_membership_usersget_single_group_membership_users_{group_id}_{user_id}", required: ["group_id","user_id"] };
+export const getSingleGroupMembershipUsers = { type: 'GET_SINGLE_GROUP_MEMBERSHIP_USERS', method: 'get', key: 'get_single_group_membership_usersget_single_group_membership_users_{group_id}_{user_id}', required: ['group_id','user_id''] };
 
 // Create a membership
 // Join, or request to join, a group, depending on the join_level of the
@@ -257,7 +257,7 @@ export const getSingleGroupMembershipUsers = { type: "GET_SINGLE_GROUP_MEMBERSHI
 //   user_id
 // }
 // return canvasRequest(create_membership, {group_id}, query);
-export const createMembership = { type: "CREATE_MEMBERSHIP", method: "post", key: "create_membershipcreate_membership_group_id", required: ["group_id"] };
+export const createMembership = { type: 'CREATE_MEMBERSHIP', method: 'post', key: 'create_membershipcreate_membership_group_id', required: ['group_id''] };
 
 // Update a membership
 // Accept a membership request, or add/remove moderator rights.
@@ -271,7 +271,7 @@ export const createMembership = { type: "CREATE_MEMBERSHIP", method: "post", key
 //   moderator
 // }
 // return canvasRequest(update_membership_memberships, {group_id, membership_id}, query);
-export const updateMembershipMemberships = { type: "UPDATE_MEMBERSHIP_MEMBERSHIPS", method: "put", key: "update_membership_membershipsupdate_membership_memberships_{group_id}_{membership_id}", required: ["group_id","membership_id"] };
+export const updateMembershipMemberships = { type: 'UPDATE_MEMBERSHIP_MEMBERSHIPS', method: 'put', key: 'update_membership_membershipsupdate_membership_memberships_{group_id}_{membership_id}', required: ['group_id','membership_id''] };
 
 // Update a membership
 // Accept a membership request, or add/remove moderator rights.
@@ -285,7 +285,7 @@ export const updateMembershipMemberships = { type: "UPDATE_MEMBERSHIP_MEMBERSHIP
 //   moderator
 // }
 // return canvasRequest(update_membership_users, {group_id, user_id}, query);
-export const updateMembershipUsers = { type: "UPDATE_MEMBERSHIP_USERS", method: "put", key: "update_membership_usersupdate_membership_users_{group_id}_{user_id}", required: ["group_id","user_id"] };
+export const updateMembershipUsers = { type: 'UPDATE_MEMBERSHIP_USERS', method: 'put', key: 'update_membership_usersupdate_membership_users_{group_id}_{user_id}', required: ['group_id','user_id''] };
 
 // Leave a group
 // Leave a group if you are allowed to leave (some groups, such as sets of
@@ -297,7 +297,7 @@ export const updateMembershipUsers = { type: "UPDATE_MEMBERSHIP_USERS", method: 
 //
 // Example:
 // return canvasRequest(leave_group_memberships, {group_id, membership_id});
-export const leaveGroupMemberships = { type: "LEAVE_GROUP_MEMBERSHIPS", method: "delete", key: "leave_group_membershipsleave_group_memberships_{group_id}_{membership_id}", required: ["group_id","membership_id"] };
+export const leaveGroupMemberships = { type: 'LEAVE_GROUP_MEMBERSHIPS', method: 'delete', key: 'leave_group_membershipsleave_group_memberships_{group_id}_{membership_id}', required: ['group_id','membership_id''] };
 
 // Leave a group
 // Leave a group if you are allowed to leave (some groups, such as sets of
@@ -309,4 +309,4 @@ export const leaveGroupMemberships = { type: "LEAVE_GROUP_MEMBERSHIPS", method: 
 //
 // Example:
 // return canvasRequest(leave_group_users, {group_id, user_id});
-export const leaveGroupUsers = { type: "LEAVE_GROUP_USERS", method: "delete", key: "leave_group_usersleave_group_users_{group_id}_{user_id}", required: ["group_id","user_id"] };
+export const leaveGroupUsers = { type: 'LEAVE_GROUP_USERS', method: 'delete', key: 'leave_group_usersleave_group_users_{group_id}_{user_id}', required: ['group_id','user_id''] };

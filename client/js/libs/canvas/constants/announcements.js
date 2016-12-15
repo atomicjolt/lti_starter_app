@@ -16,4 +16,4 @@
 //   end_date
 // }
 // return canvasRequest(list_announcements, {}, query);
-export const listAnnouncements = { type: "LIST_ANNOUNCEMENTS", method: "get", key: "list_announcements", required: [] };
+export const listAnnouncements = { type: 'LIST_ANNOUNCEMENTS', method: 'get', key: 'list_announcements', required: [] };
