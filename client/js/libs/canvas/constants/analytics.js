@@ -31,7 +31,7 @@
 //
 // Example:
 // return canvasRequest(get_department_level_participation_data_terms, {account_id, term_id});
-export const getDepartmentLevelParticipationDataTerms = { type: "GET_DEPARTMENT_LEVEL_PARTICIPATION_DATA_TERMS", method: "get", key: "get_department_level_participation_data_termsget_department_level_participation_data_terms_{account_id}_{term_id}", required: ["account_id","term_id"] };
+export const getDepartmentLevelParticipationDataTerms = { type: 'GET_DEPARTMENT_LEVEL_PARTICIPATION_DATA_TERMS', method: 'get', key: 'get_department_level_participation_data_termsget_department_level_participation_data_terms_{account_id}_{term_id}', required: ['account_id','term_id''] };
 
 // Get department-level participation data
 // Returns page view hits summed across all courses in the department. Two
@@ -63,7 +63,7 @@ export const getDepartmentLevelParticipationDataTerms = { type: "GET_DEPARTMENT_
 //
 // Example:
 // return canvasRequest(get_department_level_participation_data_current, {account_id});
-export const getDepartmentLevelParticipationDataCurrent = { type: "GET_DEPARTMENT_LEVEL_PARTICIPATION_DATA_CURRENT", method: "get", key: "get_department_level_participation_data_currentget_department_level_participation_data_current_account_id", required: ["account_id"] };
+export const getDepartmentLevelParticipationDataCurrent = { type: 'GET_DEPARTMENT_LEVEL_PARTICIPATION_DATA_CURRENT', method: 'get', key: 'get_department_level_participation_data_currentget_department_level_participation_data_current_account_id', required: ['account_id''] };
 
 // Get department-level participation data
 // Returns page view hits summed across all courses in the department. Two
@@ -95,7 +95,7 @@ export const getDepartmentLevelParticipationDataCurrent = { type: "GET_DEPARTMEN
 //
 // Example:
 // return canvasRequest(get_department_level_participation_data_completed, {account_id});
-export const getDepartmentLevelParticipationDataCompleted = { type: "GET_DEPARTMENT_LEVEL_PARTICIPATION_DATA_COMPLETED", method: "get", key: "get_department_level_participation_data_completedget_department_level_participation_data_completed_account_id", required: ["account_id"] };
+export const getDepartmentLevelParticipationDataCompleted = { type: 'GET_DEPARTMENT_LEVEL_PARTICIPATION_DATA_COMPLETED', method: 'get', key: 'get_department_level_participation_data_completedget_department_level_participation_data_completed_account_id', required: ['account_id''] };
 
 // Get department-level grade data
 // Returns the distribution of grades for students in courses in the
@@ -115,7 +115,7 @@ export const getDepartmentLevelParticipationDataCompleted = { type: "GET_DEPARTM
 //
 // Example:
 // return canvasRequest(get_department_level_grade_data_terms, {account_id, term_id});
-export const getDepartmentLevelGradeDataTerms = { type: "GET_DEPARTMENT_LEVEL_GRADE_DATA_TERMS", method: "get", key: "get_department_level_grade_data_termsget_department_level_grade_data_terms_{account_id}_{term_id}", required: ["account_id","term_id"] };
+export const getDepartmentLevelGradeDataTerms = { type: 'GET_DEPARTMENT_LEVEL_GRADE_DATA_TERMS', method: 'get', key: 'get_department_level_grade_data_termsget_department_level_grade_data_terms_{account_id}_{term_id}', required: ['account_id','term_id''] };
 
 // Get department-level grade data
 // Returns the distribution of grades for students in courses in the
@@ -135,7 +135,7 @@ export const getDepartmentLevelGradeDataTerms = { type: "GET_DEPARTMENT_LEVEL_GR
 //
 // Example:
 // return canvasRequest(get_department_level_grade_data_current, {account_id});
-export const getDepartmentLevelGradeDataCurrent = { type: "GET_DEPARTMENT_LEVEL_GRADE_DATA_CURRENT", method: "get", key: "get_department_level_grade_data_currentget_department_level_grade_data_current_account_id", required: ["account_id"] };
+export const getDepartmentLevelGradeDataCurrent = { type: 'GET_DEPARTMENT_LEVEL_GRADE_DATA_CURRENT', method: 'get', key: 'get_department_level_grade_data_currentget_department_level_grade_data_current_account_id', required: ['account_id''] };
 
 // Get department-level grade data
 // Returns the distribution of grades for students in courses in the
@@ -155,7 +155,7 @@ export const getDepartmentLevelGradeDataCurrent = { type: "GET_DEPARTMENT_LEVEL_
 //
 // Example:
 // return canvasRequest(get_department_level_grade_data_completed, {account_id});
-export const getDepartmentLevelGradeDataCompleted = { type: "GET_DEPARTMENT_LEVEL_GRADE_DATA_COMPLETED", method: "get", key: "get_department_level_grade_data_completedget_department_level_grade_data_completed_account_id", required: ["account_id"] };
+export const getDepartmentLevelGradeDataCompleted = { type: 'GET_DEPARTMENT_LEVEL_GRADE_DATA_COMPLETED', method: 'get', key: 'get_department_level_grade_data_completedget_department_level_grade_data_completed_account_id', required: ['account_id''] };
 
 // Get department-level statistics
 // Returns numeric statistics about the department and term (or filter).
@@ -167,7 +167,7 @@ export const getDepartmentLevelGradeDataCompleted = { type: "GET_DEPARTMENT_LEVE
 //
 // Example:
 // return canvasRequest(get_department_level_statistics_terms, {account_id, term_id});
-export const getDepartmentLevelStatisticsTerms = { type: "GET_DEPARTMENT_LEVEL_STATISTICS_TERMS", method: "get", key: "get_department_level_statistics_termsget_department_level_statistics_terms_{account_id}_{term_id}", required: ["account_id","term_id"] };
+export const getDepartmentLevelStatisticsTerms = { type: 'GET_DEPARTMENT_LEVEL_STATISTICS_TERMS', method: 'get', key: 'get_department_level_statistics_termsget_department_level_statistics_terms_{account_id}_{term_id}', required: ['account_id','term_id''] };
 
 // Get department-level statistics
 // Returns numeric statistics about the department and term (or filter).
@@ -179,7 +179,7 @@ export const getDepartmentLevelStatisticsTerms = { type: "GET_DEPARTMENT_LEVEL_S
 //
 // Example:
 // return canvasRequest(get_department_level_statistics_current, {account_id});
-export const getDepartmentLevelStatisticsCurrent = { type: "GET_DEPARTMENT_LEVEL_STATISTICS_CURRENT", method: "get", key: "get_department_level_statistics_currentget_department_level_statistics_current_account_id", required: ["account_id"] };
+export const getDepartmentLevelStatisticsCurrent = { type: 'GET_DEPARTMENT_LEVEL_STATISTICS_CURRENT', method: 'get', key: 'get_department_level_statistics_currentget_department_level_statistics_current_account_id', required: ['account_id''] };
 
 // Get department-level statistics
 // Returns numeric statistics about the department and term (or filter).
@@ -191,7 +191,7 @@ export const getDepartmentLevelStatisticsCurrent = { type: "GET_DEPARTMENT_LEVEL
 //
 // Example:
 // return canvasRequest(get_department_level_statistics_completed, {account_id});
-export const getDepartmentLevelStatisticsCompleted = { type: "GET_DEPARTMENT_LEVEL_STATISTICS_COMPLETED", method: "get", key: "get_department_level_statistics_completedget_department_level_statistics_completed_account_id", required: ["account_id"] };
+export const getDepartmentLevelStatisticsCompleted = { type: 'GET_DEPARTMENT_LEVEL_STATISTICS_COMPLETED', method: 'get', key: 'get_department_level_statistics_completedget_department_level_statistics_completed_account_id', required: ['account_id''] };
 
 // Get course-level participation data
 // Returns page view hits and participation numbers grouped by day through the
@@ -205,7 +205,7 @@ export const getDepartmentLevelStatisticsCompleted = { type: "GET_DEPARTMENT_LEV
 //
 // Example:
 // return canvasRequest(get_course_level_participation_data, {course_id});
-export const getCourseLevelParticipationData = { type: "GET_COURSE_LEVEL_PARTICIPATION_DATA", method: "get", key: "get_course_level_participation_dataget_course_level_participation_data_course_id", required: ["course_id"] };
+export const getCourseLevelParticipationData = { type: 'GET_COURSE_LEVEL_PARTICIPATION_DATA', method: 'get', key: 'get_course_level_participation_dataget_course_level_participation_data_course_id', required: ['course_id''] };
 
 // Get course-level assignment data
 // Returns a list of assignments for the course sorted by due date. For
@@ -220,7 +220,7 @@ export const getCourseLevelParticipationData = { type: "GET_COURSE_LEVEL_PARTICI
 //   async
 // }
 // return canvasRequest(get_course_level_assignment_data, {course_id}, query);
-export const getCourseLevelAssignmentData = { type: "GET_COURSE_LEVEL_ASSIGNMENT_DATA", method: "get", key: "get_course_level_assignment_dataget_course_level_assignment_data_course_id", required: ["course_id"] };
+export const getCourseLevelAssignmentData = { type: 'GET_COURSE_LEVEL_ASSIGNMENT_DATA', method: 'get', key: 'get_course_level_assignment_dataget_course_level_assignment_data_course_id', required: ['course_id''] };
 
 // Get course-level student summary data
 // Returns a summary of per-user access information for all students in
@@ -241,7 +241,7 @@ export const getCourseLevelAssignmentData = { type: "GET_COURSE_LEVEL_ASSIGNMENT
 //   student_id
 // }
 // return canvasRequest(get_course_level_student_summary_data, {course_id}, query);
-export const getCourseLevelStudentSummaryData = { type: "GET_COURSE_LEVEL_STUDENT_SUMMARY_DATA", method: "get", key: "get_course_level_student_summary_dataget_course_level_student_summary_data_course_id", required: ["course_id"] };
+export const getCourseLevelStudentSummaryData = { type: 'GET_COURSE_LEVEL_STUDENT_SUMMARY_DATA', method: 'get', key: 'get_course_level_student_summary_dataget_course_level_student_summary_data_course_id', required: ['course_id''] };
 
 // Get user-in-a-course-level participation data
 // Returns page view hits grouped by hour, and participation details through the
@@ -255,7 +255,7 @@ export const getCourseLevelStudentSummaryData = { type: "GET_COURSE_LEVEL_STUDEN
 //
 // Example:
 // return canvasRequest(get_user_in_a_course_level_participation_data, {course_id, student_id});
-export const getUserInACourseLevelParticipationData = { type: "GET_USER_IN_A_COURSE_LEVEL_PARTICIPATION_DATA", method: "get", key: "get_user_in_a_course_level_participation_dataget_user_in_a_course_level_participation_data_{course_id}_{student_id}", required: ["course_id","student_id"] };
+export const getUserInACourseLevelParticipationData = { type: 'GET_USER_IN_A_COURSE_LEVEL_PARTICIPATION_DATA', method: 'get', key: 'get_user_in_a_course_level_participation_dataget_user_in_a_course_level_participation_data_{course_id}_{student_id}', required: ['course_id','student_id''] };
 
 // Get user-in-a-course-level assignment data
 // Returns a list of assignments for the course sorted by due date. For
@@ -268,7 +268,7 @@ export const getUserInACourseLevelParticipationData = { type: "GET_USER_IN_A_COU
 //
 // Example:
 // return canvasRequest(get_user_in_a_course_level_assignment_data, {course_id, student_id});
-export const getUserInACourseLevelAssignmentData = { type: "GET_USER_IN_A_COURSE_LEVEL_ASSIGNMENT_DATA", method: "get", key: "get_user_in_a_course_level_assignment_dataget_user_in_a_course_level_assignment_data_{course_id}_{student_id}", required: ["course_id","student_id"] };
+export const getUserInACourseLevelAssignmentData = { type: 'GET_USER_IN_A_COURSE_LEVEL_ASSIGNMENT_DATA', method: 'get', key: 'get_user_in_a_course_level_assignment_dataget_user_in_a_course_level_assignment_data_{course_id}_{student_id}', required: ['course_id','student_id''] };
 
 // Get user-in-a-course-level messaging data
 // Returns messaging "hits" grouped by day through the entire history of the
@@ -282,4 +282,4 @@ export const getUserInACourseLevelAssignmentData = { type: "GET_USER_IN_A_COURSE
 //
 // Example:
 // return canvasRequest(get_user_in_a_course_level_messaging_data, {course_id, student_id});
-export const getUserInACourseLevelMessagingData = { type: "GET_USER_IN_A_COURSE_LEVEL_MESSAGING_DATA", method: "get", key: "get_user_in_a_course_level_messaging_dataget_user_in_a_course_level_messaging_data_{course_id}_{student_id}", required: ["course_id","student_id"] };
+export const getUserInACourseLevelMessagingData = { type: 'GET_USER_IN_A_COURSE_LEVEL_MESSAGING_DATA', method: 'get', key: 'get_user_in_a_course_level_messaging_dataget_user_in_a_course_level_messaging_data_{course_id}_{student_id}', required: ['course_id','student_id''] };

@@ -14,7 +14,7 @@
 //   include
 // }
 // return canvasRequest(list_accounts, {}, query);
-export const listAccounts = { type: "LIST_ACCOUNTS", method: "get", key: "list_accounts", required: [] };
+export const listAccounts = { type: 'LIST_ACCOUNTS', method: 'get', key: 'list_accounts', required: [] };
 
 // List accounts for course admins
 // List accounts that the current user can view through their admin course enrollments.
@@ -26,7 +26,7 @@ export const listAccounts = { type: "LIST_ACCOUNTS", method: "get", key: "list_a
 //
 // Example:
 // return canvasRequest(list_accounts_for_course_admins, {});
-export const listAccountsForCourseAdmins = { type: "LIST_ACCOUNTS_FOR_COURSE_ADMINS", method: "get", key: "list_accounts_for_course_admins", required: [] };
+export const listAccountsForCourseAdmins = { type: 'LIST_ACCOUNTS_FOR_COURSE_ADMINS', method: 'get', key: 'list_accounts_for_course_admins', required: [] };
 
 // Get a single account
 // Retrieve information on an individual account, given by id or sis
@@ -37,7 +37,7 @@ export const listAccountsForCourseAdmins = { type: "LIST_ACCOUNTS_FOR_COURSE_ADM
 //
 // Example:
 // return canvasRequest(get_single_account, {id});
-export const getSingleAccount = { type: "GET_SINGLE_ACCOUNT", method: "get", key: "get_single_accountget_single_account_id", required: ["id"] };
+export const getSingleAccount = { type: 'GET_SINGLE_ACCOUNT', method: 'get', key: 'get_single_accountget_single_account_id', required: ['id''] };
 
 // Get the sub-accounts of an account
 // List accounts that are sub-accounts of the given account.
@@ -50,7 +50,7 @@ export const getSingleAccount = { type: "GET_SINGLE_ACCOUNT", method: "get", key
 //   recursive
 // }
 // return canvasRequest(get_sub_accounts_of_account, {account_id}, query);
-export const getSubAccountsOfAccount = { type: "GET_SUB_ACCOUNTS_OF_ACCOUNT", method: "get", key: "get_sub_accounts_of_accountget_sub_accounts_of_account_account_id", required: ["account_id"] };
+export const getSubAccountsOfAccount = { type: 'GET_SUB_ACCOUNTS_OF_ACCOUNT', method: 'get', key: 'get_sub_accounts_of_accountget_sub_accounts_of_account_account_id', required: ['account_id''] };
 
 // List active courses in an account
 // Retrieve the list of courses in this account.
@@ -73,7 +73,7 @@ export const getSubAccountsOfAccount = { type: "GET_SUB_ACCOUNTS_OF_ACCOUNT", me
 //   include
 // }
 // return canvasRequest(list_active_courses_in_account, {account_id}, query);
-export const listActiveCoursesInAccount = { type: "LIST_ACTIVE_COURSES_IN_ACCOUNT", method: "get", key: "list_active_courses_in_accountlist_active_courses_in_account_account_id", required: ["account_id"] };
+export const listActiveCoursesInAccount = { type: 'LIST_ACTIVE_COURSES_IN_ACCOUNT', method: 'get', key: 'list_active_courses_in_accountlist_active_courses_in_account_account_id', required: ['account_id''] };
 
 // Update an account
 // Update an existing account.
@@ -96,7 +96,7 @@ export const listActiveCoursesInAccount = { type: "LIST_ACTIVE_COURSES_IN_ACCOUN
 //   account[settings][restrict_student_future_listing][locked]
 // }
 // return canvasRequest(update_account, {id}, query);
-export const updateAccount = { type: "UPDATE_ACCOUNT", method: "put", key: "update_accountupdate_account_id", required: ["id"] };
+export const updateAccount = { type: 'UPDATE_ACCOUNT', method: 'put', key: 'update_accountupdate_account_id', required: ['id''] };
 
 // Delete a user from the root account
 // Delete a user record from a Canvas root account. If a user is associated
@@ -112,7 +112,7 @@ export const updateAccount = { type: "UPDATE_ACCOUNT", method: "put", key: "upda
 //
 // Example:
 // return canvasRequest(delete_user_from_root_account, {account_id, user_id});
-export const deleteUserFromRootAccount = { type: "DELETE_USER_FROM_ROOT_ACCOUNT", method: "delete", key: "delete_user_from_root_accountdelete_user_from_root_account_{account_id}_{user_id}", required: ["account_id","user_id"] };
+export const deleteUserFromRootAccount = { type: 'DELETE_USER_FROM_ROOT_ACCOUNT', method: 'delete', key: 'delete_user_from_root_accountdelete_user_from_root_account_{account_id}_{user_id}', required: ['account_id','user_id''] };
 
 // Create a new sub-account
 // Add a new sub-account to a given account.
@@ -129,4 +129,4 @@ export const deleteUserFromRootAccount = { type: "DELETE_USER_FROM_ROOT_ACCOUNT"
 //   account[default_group_storage_quota_mb]
 // }
 // return canvasRequest(create_new_sub_account, {account_id}, query);
-export const createNewSubAccount = { type: "CREATE_NEW_SUB_ACCOUNT", method: "post", key: "create_new_sub_accountcreate_new_sub_account_account_id", required: ["account_id"] };
+export const createNewSubAccount = { type: 'CREATE_NEW_SUB_ACCOUNT', method: 'post', key: 'create_new_sub_accountcreate_new_sub_account_account_id', required: ['account_id''] };

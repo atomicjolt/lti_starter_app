@@ -13,7 +13,7 @@
 //   end_time
 // }
 // return canvasRequest(query_by_login, {login_id}, query);
-export const queryByLogin = { type: "QUERY_BY_LOGIN", method: "get", key: "query_by_loginquery_by_login_login_id", required: ["login_id"] };
+export const queryByLogin = { type: 'QUERY_BY_LOGIN', method: 'get', key: 'query_by_loginquery_by_login_login_id', required: ['login_id''] };
 
 // Query by account.
 // List authentication events for a given account.
@@ -27,7 +27,7 @@ export const queryByLogin = { type: "QUERY_BY_LOGIN", method: "get", key: "query
 //   end_time
 // }
 // return canvasRequest(query_by_account, {account_id}, query);
-export const queryByAccount = { type: "QUERY_BY_ACCOUNT", method: "get", key: "query_by_accountquery_by_account_account_id", required: ["account_id"] };
+export const queryByAccount = { type: 'QUERY_BY_ACCOUNT', method: 'get', key: 'query_by_accountquery_by_account_account_id', required: ['account_id''] };
 
 // Query by user.
 // List authentication events for a given user.
@@ -41,4 +41,4 @@ export const queryByAccount = { type: "QUERY_BY_ACCOUNT", method: "get", key: "q
 //   end_time
 // }
 // return canvasRequest(query_by_user, {user_id}, query);
-export const queryByUser = { type: "QUERY_BY_USER", method: "get", key: "query_by_userquery_by_user_user_id", required: ["user_id"] };
+export const queryByUser = { type: 'QUERY_BY_USER', method: 'get', key: 'query_by_userquery_by_user_user_id', required: ['user_id''] };

@@ -9,7 +9,7 @@
 //
 // Example:
 // return canvasRequest(get_kaltura_config, {});
-export const getKalturaConfig = { type: "GET_KALTURA_CONFIG", method: "get", key: "get_kaltura_config", required: [] };
+export const getKalturaConfig = { type: 'GET_KALTURA_CONFIG', method: 'get', key: 'get_kaltura_config', required: [] };
 
 // Start Kaltura session
 // Start a new Kaltura session, so that new media can be recorded and uploaded
@@ -20,4 +20,4 @@ export const getKalturaConfig = { type: "GET_KALTURA_CONFIG", method: "get", key
 //
 // Example:
 // return canvasRequest(start_kaltura_session, {});
-export const startKalturaSession = { type: "START_KALTURA_SESSION", method: "post", key: "start_kaltura_session", required: [] };
+export const startKalturaSession = { type: 'START_KALTURA_SESSION', method: 'post', key: 'start_kaltura_session', required: [] };

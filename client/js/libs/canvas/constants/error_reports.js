@@ -19,4 +19,4 @@
 //   error[http_env]
 // }
 // return canvasRequest(create_error_report, {}, query);
-export const createErrorReport = { type: "CREATE_ERROR_REPORT", method: "post", key: "create_error_report", required: [] };
+export const createErrorReport = { type: 'CREATE_ERROR_REPORT', method: 'post', key: 'create_error_report', required: [] };
