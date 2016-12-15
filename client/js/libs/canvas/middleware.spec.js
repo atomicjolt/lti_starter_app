@@ -1,10 +1,11 @@
-import canvasRequest              from './action';
-import { listAccounts }           from './constants/accounts';
-import { listCoursesForUser }     from './constants/courses';
-import CanvasMiddlware            from './middleware';
-import Helper                     from '../../../specs_support/helper';
+import canvasRequest          from './action';
+import { listAccounts }       from './constants/accounts';
+import { listCoursesForUser } from './constants/courses';
+import CanvasMiddlware        from './middleware';
+import Helper                 from '../../../specs_support/helper';
 
 describe('Canvas Middleware', () => {
+
   Helper.stubAjax();
 
   it('implements Redux middleware interface', () => {
@@ -13,16 +14,11 @@ describe('Canvas Middleware', () => {
     const next = () => {};
     const action = middleware(next);
 
-    // api middleware takes one arg
-    expect(CanvasMiddlware.length).toBe(1);
-    // api middleware must return a function to handle next
-    expect(typeof middleware).toBe('function');
-    // next handler returned by api middleware must take one argument
-    expect(middleware.length).toBe(1);
-    // next handler must return a function to handle action
-    expect(typeof action).toBe('function');
-    // action handler must take one argument
-    expect(action.length).toBe(1);
+    expect(CanvasMiddlware.length).toBe(1);     // api middleware takes one arg
+    expect(typeof middleware).toBe('function'); // api middleware must return a function to handle next
+    expect(middleware.length).toBe(1);          // next handler returned by api middleware must take one argument
+    expect(typeof action).toBe('function');     // next handler must return a function to handle action
+    expect(action.length).toBe(1);              // action handler must take one argument
   });
 
   it('passes action on to next middleware', () => {
@@ -78,4 +74,5 @@ describe('Canvas Middleware', () => {
       done();
     }, 0);
   });
+
 });

@@ -19,7 +19,7 @@ export const listPolls = { type: 'LIST_POLLS', method: 'get', key: 'list_polls',
 //
 // Example:
 // return canvasRequest(get_single_poll, {id});
-export const getSinglePoll = { type: 'GET_SINGLE_POLL', method: 'get', key: 'get_single_pollget_single_poll_id', required: ['id''] };
+export const getSinglePoll = { type: 'GET_SINGLE_POLL', method: 'get', key: 'get_single_pollget_single_poll_id', required: ['id'] };
 
 // Create a single poll
 // Create a new poll for the current user
@@ -47,7 +47,7 @@ export const createSinglePoll = { type: 'CREATE_SINGLE_POLL', method: 'post', ke
 //   polls[description]
 // }
 // return canvasRequest(update_single_poll, {id}, query);
-export const updateSinglePoll = { type: 'UPDATE_SINGLE_POLL', method: 'put', key: 'update_single_pollupdate_single_poll_id', required: ['id''] };
+export const updateSinglePoll = { type: 'UPDATE_SINGLE_POLL', method: 'put', key: 'update_single_pollupdate_single_poll_id', required: ['id'] };
 
 // Delete a poll
 // <b>204 No Content</b> response code is returned if the deletion was successful.
@@ -57,4 +57,4 @@ export const updateSinglePoll = { type: 'UPDATE_SINGLE_POLL', method: 'put', key
 //
 // Example:
 // return canvasRequest(delete_poll, {id});
-export const deletePoll = { type: 'DELETE_POLL', method: 'delete', key: 'delete_polldelete_poll_id', required: ['id''] };
+export const deletePoll = { type: 'DELETE_POLL', method: 'delete', key: 'delete_polldelete_poll_id', required: ['id'] };

@@ -9,7 +9,7 @@
 //
 // Example:
 // return canvasRequest(list_poll_sessions_for_poll, {poll_id});
-export const listPollSessionsForPoll = { type: 'LIST_POLL_SESSIONS_FOR_POLL', method: 'get', key: 'list_poll_sessions_for_polllist_poll_sessions_for_poll_poll_id', required: ['poll_id''] };
+export const listPollSessionsForPoll = { type: 'LIST_POLL_SESSIONS_FOR_POLL', method: 'get', key: 'list_poll_sessions_for_polllist_poll_sessions_for_poll_poll_id', required: ['poll_id'] };
 
 // Get the results for a single poll session
 // Returns the poll session with the given id
@@ -19,7 +19,7 @@ export const listPollSessionsForPoll = { type: 'LIST_POLL_SESSIONS_FOR_POLL', me
 //
 // Example:
 // return canvasRequest(get_results_for_single_poll_session, {poll_id, id});
-export const getResultsForSinglePollSession = { type: 'GET_RESULTS_FOR_SINGLE_POLL_SESSION', method: 'get', key: 'get_results_for_single_poll_sessionget_results_for_single_poll_session_{poll_id}_{id}', required: ['poll_id','id''] };
+export const getResultsForSinglePollSession = { type: 'GET_RESULTS_FOR_SINGLE_POLL_SESSION', method: 'get', key: 'get_results_for_single_poll_sessionget_results_for_single_poll_session_{poll_id}_{id}', required: ['poll_id','id'] };
 
 // Create a single poll session
 // Create a new poll session for this poll
@@ -34,7 +34,7 @@ export const getResultsForSinglePollSession = { type: 'GET_RESULTS_FOR_SINGLE_PO
 //   poll_sessions[has_public_results]
 // }
 // return canvasRequest(create_single_poll_session, {poll_id}, query);
-export const createSinglePollSession = { type: 'CREATE_SINGLE_POLL_SESSION', method: 'post', key: 'create_single_poll_sessioncreate_single_poll_session_poll_id', required: ['poll_id''] };
+export const createSinglePollSession = { type: 'CREATE_SINGLE_POLL_SESSION', method: 'post', key: 'create_single_poll_sessioncreate_single_poll_session_poll_id', required: ['poll_id'] };
 
 // Update a single poll session
 // Update an existing poll session for this poll
@@ -49,7 +49,7 @@ export const createSinglePollSession = { type: 'CREATE_SINGLE_POLL_SESSION', met
 //   poll_sessions[has_public_results]
 // }
 // return canvasRequest(update_single_poll_session, {poll_id, id}, query);
-export const updateSinglePollSession = { type: 'UPDATE_SINGLE_POLL_SESSION', method: 'put', key: 'update_single_poll_sessionupdate_single_poll_session_{poll_id}_{id}', required: ['poll_id','id''] };
+export const updateSinglePollSession = { type: 'UPDATE_SINGLE_POLL_SESSION', method: 'put', key: 'update_single_poll_sessionupdate_single_poll_session_{poll_id}_{id}', required: ['poll_id','id'] };
 
 // Delete a poll session
 // <b>204 No Content</b> response code is returned if the deletion was successful.
@@ -59,7 +59,7 @@ export const updateSinglePollSession = { type: 'UPDATE_SINGLE_POLL_SESSION', met
 //
 // Example:
 // return canvasRequest(delete_poll_session, {poll_id, id});
-export const deletePollSession = { type: 'DELETE_POLL_SESSION', method: 'delete', key: 'delete_poll_sessiondelete_poll_session_{poll_id}_{id}', required: ['poll_id','id''] };
+export const deletePollSession = { type: 'DELETE_POLL_SESSION', method: 'delete', key: 'delete_poll_sessiondelete_poll_session_{poll_id}_{id}', required: ['poll_id','id'] };
 
 // Open a poll session
 // 
@@ -69,7 +69,7 @@ export const deletePollSession = { type: 'DELETE_POLL_SESSION', method: 'delete'
 //
 // Example:
 // return canvasRequest(open_poll_session, {poll_id, id});
-export const openPollSession = { type: 'OPEN_POLL_SESSION', method: 'get', key: 'open_poll_sessionopen_poll_session_{poll_id}_{id}', required: ['poll_id','id''] };
+export const openPollSession = { type: 'OPEN_POLL_SESSION', method: 'get', key: 'open_poll_sessionopen_poll_session_{poll_id}_{id}', required: ['poll_id','id'] };
 
 // Close an opened poll session
 // 
@@ -79,7 +79,7 @@ export const openPollSession = { type: 'OPEN_POLL_SESSION', method: 'get', key: 
 //
 // Example:
 // return canvasRequest(close_opened_poll_session, {poll_id, id});
-export const closeOpenedPollSession = { type: 'CLOSE_OPENED_POLL_SESSION', method: 'get', key: 'close_opened_poll_sessionclose_opened_poll_session_{poll_id}_{id}', required: ['poll_id','id''] };
+export const closeOpenedPollSession = { type: 'CLOSE_OPENED_POLL_SESSION', method: 'get', key: 'close_opened_poll_sessionclose_opened_poll_session_{poll_id}_{id}', required: ['poll_id','id'] };
 
 // List opened poll sessions
 // Lists all opened poll sessions available to the current user.

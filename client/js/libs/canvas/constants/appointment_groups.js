@@ -55,7 +55,7 @@ export const createAppointmentGroup = { type: 'CREATE_APPOINTMENT_GROUP', method
 //   include
 // }
 // return canvasRequest(get_single_appointment_group, {id}, query);
-export const getSingleAppointmentGroup = { type: 'GET_SINGLE_APPOINTMENT_GROUP', method: 'get', key: 'get_single_appointment_groupget_single_appointment_group_id', required: ['id''] };
+export const getSingleAppointmentGroup = { type: 'GET_SINGLE_APPOINTMENT_GROUP', method: 'get', key: 'get_single_appointment_groupget_single_appointment_group_id', required: ['id'] };
 
 // Update an appointment group
 // Update and return an appointment group. If new_appointments are specified,
@@ -81,7 +81,7 @@ export const getSingleAppointmentGroup = { type: 'GET_SINGLE_APPOINTMENT_GROUP',
 //   appointment_group[participant_visibility]
 // }
 // return canvasRequest(update_appointment_group, {id}, query);
-export const updateAppointmentGroup = { type: 'UPDATE_APPOINTMENT_GROUP', method: 'put', key: 'update_appointment_groupupdate_appointment_group_id', required: ['id''] };
+export const updateAppointmentGroup = { type: 'UPDATE_APPOINTMENT_GROUP', method: 'put', key: 'update_appointment_groupupdate_appointment_group_id', required: ['id'] };
 
 // Delete an appointment group
 // Delete an appointment group (and associated time slots and reservations)
@@ -95,7 +95,7 @@ export const updateAppointmentGroup = { type: 'UPDATE_APPOINTMENT_GROUP', method
 //   cancel_reason
 // }
 // return canvasRequest(delete_appointment_group, {id}, query);
-export const deleteAppointmentGroup = { type: 'DELETE_APPOINTMENT_GROUP', method: 'delete', key: 'delete_appointment_groupdelete_appointment_group_id', required: ['id''] };
+export const deleteAppointmentGroup = { type: 'DELETE_APPOINTMENT_GROUP', method: 'delete', key: 'delete_appointment_groupdelete_appointment_group_id', required: ['id'] };
 
 // List user participants
 // List users that are (or may be) participating in this appointment group.
@@ -110,7 +110,7 @@ export const deleteAppointmentGroup = { type: 'DELETE_APPOINTMENT_GROUP', method
 //   registration_status
 // }
 // return canvasRequest(list_user_participants, {id}, query);
-export const listUserParticipants = { type: 'LIST_USER_PARTICIPANTS', method: 'get', key: 'list_user_participantslist_user_participants_id', required: ['id''] };
+export const listUserParticipants = { type: 'LIST_USER_PARTICIPANTS', method: 'get', key: 'list_user_participantslist_user_participants_id', required: ['id'] };
 
 // List student group participants
 // List student groups that are (or may be) participating in this appointment
@@ -125,7 +125,7 @@ export const listUserParticipants = { type: 'LIST_USER_PARTICIPANTS', method: 'g
 //   registration_status
 // }
 // return canvasRequest(list_student_group_participants, {id}, query);
-export const listStudentGroupParticipants = { type: 'LIST_STUDENT_GROUP_PARTICIPANTS', method: 'get', key: 'list_student_group_participantslist_student_group_participants_id', required: ['id''] };
+export const listStudentGroupParticipants = { type: 'LIST_STUDENT_GROUP_PARTICIPANTS', method: 'get', key: 'list_student_group_participantslist_student_group_participants_id', required: ['id'] };
 
 // Get next appointment
 // Return the next appointment available to sign up for. The appointment
