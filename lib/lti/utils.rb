@@ -43,7 +43,7 @@ module Lti
 
   def self.list_all
     LtiApplicationInstance.find_each do |app|
-      api = LMS::API.new(
+      api = LMS::Canvas.new(
         UrlHelper.scheme_host(app.lti_consumer_uri),
         Rails.Application.secrets.canvas_token || app.canvas_token
       )
@@ -63,7 +63,7 @@ module Lti
   def self.destroy_all
     LtiApplicationInstance.find_each do |app|
       puts "Removing LTI tool: #{app.lti_application.name} Canvas url: #{app.lti_consumer_uri}"
-      api = LMS::API.new(
+      api = LMS::Canvas.new(
         UrlHelper.scheme_host(app.lti_consumer_uri),
         Rails.Application.secrets.canvas_token || app.canvas_token
       )
@@ -104,7 +104,7 @@ module Lti
           "DELETE_EXTERNAL_TOOL_#{constant}",
           { id_type => parent["id"], external_tool_id: external_tool["id"] }
         )
-      rescue LMS::API::NotFoundException
+      rescue LMS::Canvas::NotFoundException
         # It's possible we're trying to delete a tool we've already deleted. Move on
       end
     end

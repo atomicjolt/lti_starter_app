@@ -6,7 +6,7 @@ module Concerns
 
     def canvas_api
       if current_lti_application_instance.canvas_token.present?
-        LMS::API.new(
+        LMS::Canvas.new(
           UrlHelper.scheme_host(current_lti_application_instance.lti_consumer_uri),
           current_lti_application_instance.canvas_token
         )
@@ -17,7 +17,7 @@ module Concerns
           redirect_uri: "https://#{request.host}/auth/canvas/callback",
           refresh_token: auth.refresh_token
         }
-        LMS::API.new(
+        LMS::Canvas.new(
           UrlHelper.scheme_host(current_lti_application_instance.lti_consumer_uri),
           auth,
           options

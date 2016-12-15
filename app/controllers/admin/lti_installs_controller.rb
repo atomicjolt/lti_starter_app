@@ -82,7 +82,7 @@ class Admin::LtiInstallsController < Admin::AdminApplicationController
             redirect_uri: "https://#{request.host}/auth/canvas/callback",
             refresh_token: auth.refresh_token
           }
-          api = LMS::API.new(UrlHelper.scheme_host(auth.provider_url), auth, options)
+          api = LMS::Canvas.new(UrlHelper.scheme_host(auth.provider_url), auth, options)
           @accounts[auth] = api.all_accounts.map{|a| OpenStruct.new(a.merge(auth: auth)) }
           @courses[auth] = api.proxy("LIST_YOUR_COURSES", {}, nil, true).map{|a| OpenStruct.new(a.merge(auth: auth)) }
         end
