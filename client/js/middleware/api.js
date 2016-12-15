@@ -2,7 +2,7 @@ import api from '../libs/api';
 import { DONE } from '../constants/wrapper';
 
 const API = store => next => (action) => {
-  function request(method, url, params, body, headers) {
+  function request(method, url, params, body, headers, timeout) {
     const state = store.getState();
     const updatedParams = {
       // Add consumer key to requests so we can figure out which lti app requests are originating
@@ -17,7 +17,8 @@ const API = store => next => (action) => {
       state.settings.csrfToken,
       updatedParams,
       body,
-      headers);
+      headers,
+      timeout);
 
     if (promise) {
       promise.then(
