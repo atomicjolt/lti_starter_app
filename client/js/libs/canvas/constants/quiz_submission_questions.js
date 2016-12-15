@@ -14,7 +14,7 @@
 //   include
 // }
 // return canvasRequest(get_all_quiz_submission_questions, {quiz_submission_id}, query);
-export const getAllQuizSubmissionQuestions = { type: 'GET_ALL_QUIZ_SUBMISSION_QUESTIONS', method: 'get', key: 'get_all_quiz_submission_questionsget_all_quiz_submission_questions_quiz_submission_id', required: ['quiz_submission_id''] };
+export const getAllQuizSubmissionQuestions = { type: 'GET_ALL_QUIZ_SUBMISSION_QUESTIONS', method: 'get', key: 'get_all_quiz_submission_questionsget_all_quiz_submission_questions_quiz_submission_id', required: ['quiz_submission_id'] };
 
 // Answering questions
 // Provide or update an answer to one or more QuizQuestions.
@@ -30,7 +30,7 @@ export const getAllQuizSubmissionQuestions = { type: 'GET_ALL_QUIZ_SUBMISSION_QU
 //   quiz_questions
 // }
 // return canvasRequest(answering_questions, {quiz_submission_id}, query);
-export const answeringQuestions = { type: 'ANSWERING_QUESTIONS', method: 'post', key: 'answering_questionsanswering_questions_quiz_submission_id', required: ['quiz_submission_id''] };
+export const answeringQuestions = { type: 'ANSWERING_QUESTIONS', method: 'post', key: 'answering_questionsanswering_questions_quiz_submission_id', required: ['quiz_submission_id'] };
 
 // Flagging a question.
 // Set a flag on a quiz question to indicate that you want to return to it
@@ -46,7 +46,7 @@ export const answeringQuestions = { type: 'ANSWERING_QUESTIONS', method: 'post',
 //   access_code
 // }
 // return canvasRequest(flagging_question, {quiz_submission_id, id}, query);
-export const flaggingQuestion = { type: 'FLAGGING_QUESTION', method: 'put', key: 'flagging_questionflagging_question_{quiz_submission_id}_{id}', required: ['quiz_submission_id','id''] };
+export const flaggingQuestion = { type: 'FLAGGING_QUESTION', method: 'put', key: 'flagging_questionflagging_question_{quiz_submission_id}_{id}', required: ['quiz_submission_id','id'] };
 
 // Unflagging a question.
 // Remove the flag that you previously set on a quiz question after you've
@@ -62,4 +62,4 @@ export const flaggingQuestion = { type: 'FLAGGING_QUESTION', method: 'put', key:
 //   access_code
 // }
 // return canvasRequest(unflagging_question, {quiz_submission_id, id}, query);
-export const unflaggingQuestion = { type: 'UNFLAGGING_QUESTION', method: 'put', key: 'unflagging_questionunflagging_question_{quiz_submission_id}_{id}', required: ['quiz_submission_id','id''] };
+export const unflaggingQuestion = { type: 'UNFLAGGING_QUESTION', method: 'put', key: 'unflagging_questionunflagging_question_{quiz_submission_id}_{id}', required: ['quiz_submission_id','id'] };

@@ -34,7 +34,7 @@ export const listFavoriteGroups = { type: 'LIST_FAVORITE_GROUPS', method: 'get',
 //
 // Example:
 // return canvasRequest(add_course_to_favorites, {id});
-export const addCourseToFavorites = { type: 'ADD_COURSE_TO_FAVORITES', method: 'post', key: 'add_course_to_favoritesadd_course_to_favorites_id', required: ['id''] };
+export const addCourseToFavorites = { type: 'ADD_COURSE_TO_FAVORITES', method: 'post', key: 'add_course_to_favoritesadd_course_to_favorites_id', required: ['id'] };
 
 // Add group to favorites
 // Add a group to the current user's favorites.  If the group is already
@@ -45,7 +45,7 @@ export const addCourseToFavorites = { type: 'ADD_COURSE_TO_FAVORITES', method: '
 //
 // Example:
 // return canvasRequest(add_group_to_favorites, {id});
-export const addGroupToFavorites = { type: 'ADD_GROUP_TO_FAVORITES', method: 'post', key: 'add_group_to_favoritesadd_group_to_favorites_id', required: ['id''] };
+export const addGroupToFavorites = { type: 'ADD_GROUP_TO_FAVORITES', method: 'post', key: 'add_group_to_favoritesadd_group_to_favorites_id', required: ['id'] };
 
 // Remove course from favorites
 // Remove a course from the current user's favorites.
@@ -55,7 +55,7 @@ export const addGroupToFavorites = { type: 'ADD_GROUP_TO_FAVORITES', method: 'po
 //
 // Example:
 // return canvasRequest(remove_course_from_favorites, {id});
-export const removeCourseFromFavorites = { type: 'REMOVE_COURSE_FROM_FAVORITES', method: 'delete', key: 'remove_course_from_favoritesremove_course_from_favorites_id', required: ['id''] };
+export const removeCourseFromFavorites = { type: 'REMOVE_COURSE_FROM_FAVORITES', method: 'delete', key: 'remove_course_from_favoritesremove_course_from_favorites_id', required: ['id'] };
 
 // Remove group from favorites
 // Remove a group from the current user's favorites.
@@ -65,7 +65,7 @@ export const removeCourseFromFavorites = { type: 'REMOVE_COURSE_FROM_FAVORITES',
 //
 // Example:
 // return canvasRequest(remove_group_from_favorites, {id});
-export const removeGroupFromFavorites = { type: 'REMOVE_GROUP_FROM_FAVORITES', method: 'delete', key: 'remove_group_from_favoritesremove_group_from_favorites_id', required: ['id''] };
+export const removeGroupFromFavorites = { type: 'REMOVE_GROUP_FROM_FAVORITES', method: 'delete', key: 'remove_group_from_favoritesremove_group_from_favorites_id', required: ['id'] };
 
 // Reset course favorites
 // Reset the current user's course favorites to the default

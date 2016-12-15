@@ -10,7 +10,7 @@
 //
 // Example:
 // return canvasRequest(list_user_communication_channels, {user_id});
-export const listUserCommunicationChannels = { type: 'LIST_USER_COMMUNICATION_CHANNELS', method: 'get', key: 'list_user_communication_channelslist_user_communication_channels_user_id', required: ['user_id''] };
+export const listUserCommunicationChannels = { type: 'LIST_USER_COMMUNICATION_CHANNELS', method: 'get', key: 'list_user_communication_channelslist_user_communication_channels_user_id', required: ['user_id'] };
 
 // Create a communication channel
 // Creates a new communication channel for the specified user.
@@ -26,7 +26,7 @@ export const listUserCommunicationChannels = { type: 'LIST_USER_COMMUNICATION_CH
 //   skip_confirmation
 // }
 // return canvasRequest(create_communication_channel, {user_id}, query);
-export const createCommunicationChannel = { type: 'CREATE_COMMUNICATION_CHANNEL', method: 'post', key: 'create_communication_channelcreate_communication_channel_user_id', required: ['user_id''] };
+export const createCommunicationChannel = { type: 'CREATE_COMMUNICATION_CHANNEL', method: 'post', key: 'create_communication_channelcreate_communication_channel_user_id', required: ['user_id'] };
 
 // Delete a communication channel
 // Delete an existing communication channel.
@@ -36,7 +36,7 @@ export const createCommunicationChannel = { type: 'CREATE_COMMUNICATION_CHANNEL'
 //
 // Example:
 // return canvasRequest(delete_communication_channel_id, {user_id, id});
-export const deleteCommunicationChannelId = { type: 'DELETE_COMMUNICATION_CHANNEL_ID', method: 'delete', key: 'delete_communication_channel_iddelete_communication_channel_id_{user_id}_{id}', required: ['user_id','id''] };
+export const deleteCommunicationChannelId = { type: 'DELETE_COMMUNICATION_CHANNEL_ID', method: 'delete', key: 'delete_communication_channel_iddelete_communication_channel_id_{user_id}_{id}', required: ['user_id','id'] };
 
 // Delete a communication channel
 // Delete an existing communication channel.
@@ -46,4 +46,4 @@ export const deleteCommunicationChannelId = { type: 'DELETE_COMMUNICATION_CHANNE
 //
 // Example:
 // return canvasRequest(delete_communication_channel_type, {user_id, type, address});
-export const deleteCommunicationChannelType = { type: 'DELETE_COMMUNICATION_CHANNEL_TYPE', method: 'delete', key: 'delete_communication_channel_typedelete_communication_channel_type_{user_id}_{type}_{address}', required: ['user_id','type','address''] };
+export const deleteCommunicationChannelType = { type: 'DELETE_COMMUNICATION_CHANNEL_TYPE', method: 'delete', key: 'delete_communication_channel_typedelete_communication_channel_type_{user_id}_{type}_{address}', required: ['user_id','type','address'] };
