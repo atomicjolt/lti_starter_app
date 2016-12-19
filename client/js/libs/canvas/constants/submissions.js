@@ -26,7 +26,7 @@
 //   submission[media_comment_type]
 // }
 // return canvasRequest(submit_assignment_courses, {course_id, assignment_id}, query);
-export const submitAssignmentCourses = { type: 'SUBMIT_ASSIGNMENT_COURSES', method: 'post', key: 'submit_assignment_coursessubmit_assignment_courses_{course_id}_{assignment_id}', required: ['course_id','assignment_id'] };
+export const submitAssignmentCourses = { type: 'SUBMIT_ASSIGNMENT_COURSES', method: 'post', key: 'submit_assignment_coursessubmit_assignment_courses_{course_id}_{assignment_id}', required: ['course_id', 'assignment_id'] };
 
 // Submit an assignment
 // Make a submission for an assignment. You must be enrolled as a student in
@@ -53,7 +53,7 @@ export const submitAssignmentCourses = { type: 'SUBMIT_ASSIGNMENT_COURSES', meth
 //   submission[media_comment_type]
 // }
 // return canvasRequest(submit_assignment_sections, {section_id, assignment_id}, query);
-export const submitAssignmentSections = { type: 'SUBMIT_ASSIGNMENT_SECTIONS', method: 'post', key: 'submit_assignment_sectionssubmit_assignment_sections_{section_id}_{assignment_id}', required: ['section_id','assignment_id'] };
+export const submitAssignmentSections = { type: 'SUBMIT_ASSIGNMENT_SECTIONS', method: 'post', key: 'submit_assignment_sectionssubmit_assignment_sections_{section_id}_{assignment_id}', required: ['section_id', 'assignment_id'] };
 
 // List assignment submissions
 // Get all existing submissions for an assignment.
@@ -67,7 +67,7 @@ export const submitAssignmentSections = { type: 'SUBMIT_ASSIGNMENT_SECTIONS', me
 //   grouped
 // }
 // return canvasRequest(list_assignment_submissions_courses, {course_id, assignment_id}, query);
-export const listAssignmentSubmissionsCourses = { type: 'LIST_ASSIGNMENT_SUBMISSIONS_COURSES', method: 'get', key: 'list_assignment_submissions_courseslist_assignment_submissions_courses_{course_id}_{assignment_id}', required: ['course_id','assignment_id'] };
+export const listAssignmentSubmissionsCourses = { type: 'LIST_ASSIGNMENT_SUBMISSIONS_COURSES', method: 'get', key: 'list_assignment_submissions_courseslist_assignment_submissions_courses_{course_id}_{assignment_id}', required: ['course_id', 'assignment_id'] };
 
 // List assignment submissions
 // Get all existing submissions for an assignment.
@@ -81,7 +81,7 @@ export const listAssignmentSubmissionsCourses = { type: 'LIST_ASSIGNMENT_SUBMISS
 //   grouped
 // }
 // return canvasRequest(list_assignment_submissions_sections, {section_id, assignment_id}, query);
-export const listAssignmentSubmissionsSections = { type: 'LIST_ASSIGNMENT_SUBMISSIONS_SECTIONS', method: 'get', key: 'list_assignment_submissions_sectionslist_assignment_submissions_sections_{section_id}_{assignment_id}', required: ['section_id','assignment_id'] };
+export const listAssignmentSubmissionsSections = { type: 'LIST_ASSIGNMENT_SUBMISSIONS_SECTIONS', method: 'get', key: 'list_assignment_submissions_sectionslist_assignment_submissions_sections_{section_id}_{assignment_id}', required: ['section_id', 'assignment_id'] };
 
 // List submissions for multiple assignments
 // Get all existing submissions for a given set of students and assignments.
@@ -132,7 +132,7 @@ export const listSubmissionsForMultipleAssignmentsSections = { type: 'LIST_SUBMI
 //   include
 // }
 // return canvasRequest(get_single_submission_courses, {course_id, assignment_id, user_id}, query);
-export const getSingleSubmissionCourses = { type: 'GET_SINGLE_SUBMISSION_COURSES', method: 'get', key: 'get_single_submission_coursesget_single_submission_courses_{course_id}_{assignment_id}_{user_id}', required: ['course_id','assignment_id','user_id'] };
+export const getSingleSubmissionCourses = { type: 'GET_SINGLE_SUBMISSION_COURSES', method: 'get', key: 'get_single_submission_coursesget_single_submission_courses_{course_id}_{assignment_id}_{user_id}', required: ['course_id', 'assignment_id', 'user_id'] };
 
 // Get a single submission
 // Get a single submission, based on user id.
@@ -145,7 +145,7 @@ export const getSingleSubmissionCourses = { type: 'GET_SINGLE_SUBMISSION_COURSES
 //   include
 // }
 // return canvasRequest(get_single_submission_sections, {section_id, assignment_id, user_id}, query);
-export const getSingleSubmissionSections = { type: 'GET_SINGLE_SUBMISSION_SECTIONS', method: 'get', key: 'get_single_submission_sectionsget_single_submission_sections_{section_id}_{assignment_id}_{user_id}', required: ['section_id','assignment_id','user_id'] };
+export const getSingleSubmissionSections = { type: 'GET_SINGLE_SUBMISSION_SECTIONS', method: 'get', key: 'get_single_submission_sectionsget_single_submission_sections_{section_id}_{assignment_id}_{user_id}', required: ['section_id', 'assignment_id', 'user_id'] };
 
 // Upload a file
 // Upload a file to a submission.
@@ -162,7 +162,7 @@ export const getSingleSubmissionSections = { type: 'GET_SINGLE_SUBMISSION_SECTIO
 //
 // Example:
 // return canvasRequest(upload_file_courses, {course_id, assignment_id, user_id});
-export const uploadFileCourses = { type: 'UPLOAD_FILE_COURSES', method: 'post', key: 'upload_file_coursesupload_file_courses_{course_id}_{assignment_id}_{user_id}', required: ['course_id','assignment_id','user_id'] };
+export const uploadFileCourses = { type: 'UPLOAD_FILE_COURSES', method: 'post', key: 'upload_file_coursesupload_file_courses_{course_id}_{assignment_id}_{user_id}', required: ['course_id', 'assignment_id', 'user_id'] };
 
 // Upload a file
 // Upload a file to a submission.
@@ -179,7 +179,7 @@ export const uploadFileCourses = { type: 'UPLOAD_FILE_COURSES', method: 'post', 
 //
 // Example:
 // return canvasRequest(upload_file_sections, {section_id, assignment_id, user_id});
-export const uploadFileSections = { type: 'UPLOAD_FILE_SECTIONS', method: 'post', key: 'upload_file_sectionsupload_file_sections_{section_id}_{assignment_id}_{user_id}', required: ['section_id','assignment_id','user_id'] };
+export const uploadFileSections = { type: 'UPLOAD_FILE_SECTIONS', method: 'post', key: 'upload_file_sectionsupload_file_sections_{section_id}_{assignment_id}_{user_id}', required: ['section_id', 'assignment_id', 'user_id'] };
 
 // Grade or comment on a submission
 // Comment on and/or update the grading for a student's assignment submission.
@@ -203,7 +203,7 @@ export const uploadFileSections = { type: 'UPLOAD_FILE_SECTIONS', method: 'post'
 //   rubric_assessment
 // }
 // return canvasRequest(grade_or_comment_on_submission_courses, {course_id, assignment_id, user_id}, query);
-export const gradeOrCommentOnSubmissionCourses = { type: 'GRADE_OR_COMMENT_ON_SUBMISSION_COURSES', method: 'put', key: 'grade_or_comment_on_submission_coursesgrade_or_comment_on_submission_courses_{course_id}_{assignment_id}_{user_id}', required: ['course_id','assignment_id','user_id'] };
+export const gradeOrCommentOnSubmissionCourses = { type: 'GRADE_OR_COMMENT_ON_SUBMISSION_COURSES', method: 'put', key: 'grade_or_comment_on_submission_coursesgrade_or_comment_on_submission_courses_{course_id}_{assignment_id}_{user_id}', required: ['course_id', 'assignment_id', 'user_id'] };
 
 // Grade or comment on a submission
 // Comment on and/or update the grading for a student's assignment submission.
@@ -227,7 +227,7 @@ export const gradeOrCommentOnSubmissionCourses = { type: 'GRADE_OR_COMMENT_ON_SU
 //   rubric_assessment
 // }
 // return canvasRequest(grade_or_comment_on_submission_sections, {section_id, assignment_id, user_id}, query);
-export const gradeOrCommentOnSubmissionSections = { type: 'GRADE_OR_COMMENT_ON_SUBMISSION_SECTIONS', method: 'put', key: 'grade_or_comment_on_submission_sectionsgrade_or_comment_on_submission_sections_{section_id}_{assignment_id}_{user_id}', required: ['section_id','assignment_id','user_id'] };
+export const gradeOrCommentOnSubmissionSections = { type: 'GRADE_OR_COMMENT_ON_SUBMISSION_SECTIONS', method: 'put', key: 'grade_or_comment_on_submission_sectionsgrade_or_comment_on_submission_sections_{section_id}_{assignment_id}_{user_id}', required: ['section_id', 'assignment_id', 'user_id'] };
 
 // List gradeable students
 // List students eligible to submit the assignment. The caller must have permission to view grades.
@@ -241,7 +241,7 @@ export const gradeOrCommentOnSubmissionSections = { type: 'GRADE_OR_COMMENT_ON_S
 //
 // Example:
 // return canvasRequest(list_gradeable_students, {course_id, assignment_id});
-export const listGradeableStudents = { type: 'LIST_GRADEABLE_STUDENTS', method: 'get', key: 'list_gradeable_studentslist_gradeable_students_{course_id}_{assignment_id}', required: ['course_id','assignment_id'] };
+export const listGradeableStudents = { type: 'LIST_GRADEABLE_STUDENTS', method: 'get', key: 'list_gradeable_studentslist_gradeable_students_{course_id}_{assignment_id}', required: ['course_id', 'assignment_id'] };
 
 // Grade or comment on multiple submissions
 // Update the grading and comments on multiple student's assignment
@@ -289,7 +289,7 @@ export const gradeOrCommentOnMultipleSubmissionsCoursesSubmissions = { type: 'GR
 //   grade_data[<student_id>][file_ids]
 // }
 // return canvasRequest(grade_or_comment_on_multiple_submissions_courses_assignments, {course_id, assignment_id}, query);
-export const gradeOrCommentOnMultipleSubmissionsCoursesAssignments = { type: 'GRADE_OR_COMMENT_ON_MULTIPLE_SUBMISSIONS_COURSES_ASSIGNMENTS', method: 'post', key: 'grade_or_comment_on_multiple_submissions_courses_assignmentsgrade_or_comment_on_multiple_submissions_courses_assignments_{course_id}_{assignment_id}', required: ['course_id','assignment_id'] };
+export const gradeOrCommentOnMultipleSubmissionsCoursesAssignments = { type: 'GRADE_OR_COMMENT_ON_MULTIPLE_SUBMISSIONS_COURSES_ASSIGNMENTS', method: 'post', key: 'grade_or_comment_on_multiple_submissions_courses_assignmentsgrade_or_comment_on_multiple_submissions_courses_assignments_{course_id}_{assignment_id}', required: ['course_id', 'assignment_id'] };
 
 // Grade or comment on multiple submissions
 // Update the grading and comments on multiple student's assignment
@@ -337,7 +337,7 @@ export const gradeOrCommentOnMultipleSubmissionsSectionsSubmissions = { type: 'G
 //   grade_data[<student_id>][file_ids]
 // }
 // return canvasRequest(grade_or_comment_on_multiple_submissions_sections_assignments, {section_id, assignment_id}, query);
-export const gradeOrCommentOnMultipleSubmissionsSectionsAssignments = { type: 'GRADE_OR_COMMENT_ON_MULTIPLE_SUBMISSIONS_SECTIONS_ASSIGNMENTS', method: 'post', key: 'grade_or_comment_on_multiple_submissions_sections_assignmentsgrade_or_comment_on_multiple_submissions_sections_assignments_{section_id}_{assignment_id}', required: ['section_id','assignment_id'] };
+export const gradeOrCommentOnMultipleSubmissionsSectionsAssignments = { type: 'GRADE_OR_COMMENT_ON_MULTIPLE_SUBMISSIONS_SECTIONS_ASSIGNMENTS', method: 'post', key: 'grade_or_comment_on_multiple_submissions_sections_assignmentsgrade_or_comment_on_multiple_submissions_sections_assignments_{section_id}_{assignment_id}', required: ['section_id', 'assignment_id'] };
 
 // Mark submission as read
 // No request fields are necessary.
@@ -349,7 +349,7 @@ export const gradeOrCommentOnMultipleSubmissionsSectionsAssignments = { type: 'G
 //
 // Example:
 // return canvasRequest(mark_submission_as_read_courses, {course_id, assignment_id, user_id});
-export const markSubmissionAsReadCourses = { type: 'MARK_SUBMISSION_AS_READ_COURSES', method: 'put', key: 'mark_submission_as_read_coursesmark_submission_as_read_courses_{course_id}_{assignment_id}_{user_id}', required: ['course_id','assignment_id','user_id'] };
+export const markSubmissionAsReadCourses = { type: 'MARK_SUBMISSION_AS_READ_COURSES', method: 'put', key: 'mark_submission_as_read_coursesmark_submission_as_read_courses_{course_id}_{assignment_id}_{user_id}', required: ['course_id', 'assignment_id', 'user_id'] };
 
 // Mark submission as read
 // No request fields are necessary.
@@ -361,7 +361,7 @@ export const markSubmissionAsReadCourses = { type: 'MARK_SUBMISSION_AS_READ_COUR
 //
 // Example:
 // return canvasRequest(mark_submission_as_read_sections, {section_id, assignment_id, user_id});
-export const markSubmissionAsReadSections = { type: 'MARK_SUBMISSION_AS_READ_SECTIONS', method: 'put', key: 'mark_submission_as_read_sectionsmark_submission_as_read_sections_{section_id}_{assignment_id}_{user_id}', required: ['section_id','assignment_id','user_id'] };
+export const markSubmissionAsReadSections = { type: 'MARK_SUBMISSION_AS_READ_SECTIONS', method: 'put', key: 'mark_submission_as_read_sectionsmark_submission_as_read_sections_{section_id}_{assignment_id}_{user_id}', required: ['section_id', 'assignment_id', 'user_id'] };
 
 // Mark submission as unread
 // No request fields are necessary.
@@ -373,7 +373,7 @@ export const markSubmissionAsReadSections = { type: 'MARK_SUBMISSION_AS_READ_SEC
 //
 // Example:
 // return canvasRequest(mark_submission_as_unread_courses, {course_id, assignment_id, user_id});
-export const markSubmissionAsUnreadCourses = { type: 'MARK_SUBMISSION_AS_UNREAD_COURSES', method: 'delete', key: 'mark_submission_as_unread_coursesmark_submission_as_unread_courses_{course_id}_{assignment_id}_{user_id}', required: ['course_id','assignment_id','user_id'] };
+export const markSubmissionAsUnreadCourses = { type: 'MARK_SUBMISSION_AS_UNREAD_COURSES', method: 'delete', key: 'mark_submission_as_unread_coursesmark_submission_as_unread_courses_{course_id}_{assignment_id}_{user_id}', required: ['course_id', 'assignment_id', 'user_id'] };
 
 // Mark submission as unread
 // No request fields are necessary.
@@ -385,4 +385,4 @@ export const markSubmissionAsUnreadCourses = { type: 'MARK_SUBMISSION_AS_UNREAD_
 //
 // Example:
 // return canvasRequest(mark_submission_as_unread_sections, {section_id, assignment_id, user_id});
-export const markSubmissionAsUnreadSections = { type: 'MARK_SUBMISSION_AS_UNREAD_SECTIONS', method: 'delete', key: 'mark_submission_as_unread_sectionsmark_submission_as_unread_sections_{section_id}_{assignment_id}_{user_id}', required: ['section_id','assignment_id','user_id'] };
+export const markSubmissionAsUnreadSections = { type: 'MARK_SUBMISSION_AS_UNREAD_SECTIONS', method: 'delete', key: 'mark_submission_as_unread_sectionsmark_submission_as_unread_sections_{section_id}_{assignment_id}_{user_id}', required: ['section_id', 'assignment_id', 'user_id'] };

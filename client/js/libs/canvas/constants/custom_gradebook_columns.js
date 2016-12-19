@@ -38,7 +38,7 @@ export const createCustomGradebookColumn = { type: 'CREATE_CUSTOM_GRADEBOOK_COLU
 //
 // Example:
 // return canvasRequest(update_custom_gradebook_column, {course_id, id});
-export const updateCustomGradebookColumn = { type: 'UPDATE_CUSTOM_GRADEBOOK_COLUMN', method: 'put', key: 'update_custom_gradebook_columnupdate_custom_gradebook_column_{course_id}_{id}', required: ['course_id','id'] };
+export const updateCustomGradebookColumn = { type: 'UPDATE_CUSTOM_GRADEBOOK_COLUMN', method: 'put', key: 'update_custom_gradebook_columnupdate_custom_gradebook_column_{course_id}_{id}', required: ['course_id', 'id'] };
 
 // Delete a custom gradebook column
 // Permanently deletes a custom column and its associated data
@@ -48,7 +48,7 @@ export const updateCustomGradebookColumn = { type: 'UPDATE_CUSTOM_GRADEBOOK_COLU
 //
 // Example:
 // return canvasRequest(delete_custom_gradebook_column, {course_id, id});
-export const deleteCustomGradebookColumn = { type: 'DELETE_CUSTOM_GRADEBOOK_COLUMN', method: 'delete', key: 'delete_custom_gradebook_columndelete_custom_gradebook_column_{course_id}_{id}', required: ['course_id','id'] };
+export const deleteCustomGradebookColumn = { type: 'DELETE_CUSTOM_GRADEBOOK_COLUMN', method: 'delete', key: 'delete_custom_gradebook_columndelete_custom_gradebook_column_{course_id}_{id}', required: ['course_id', 'id'] };
 
 // Reorder custom columns
 // Puts the given columns in the specified order
@@ -76,7 +76,7 @@ export const reorderCustomColumns = { type: 'REORDER_CUSTOM_COLUMNS', method: 'p
 //   include_hidden
 // }
 // return canvasRequest(list_entries_for_column, {course_id, id}, query);
-export const listEntriesForColumn = { type: 'LIST_ENTRIES_FOR_COLUMN', method: 'get', key: 'list_entries_for_columnlist_entries_for_column_{course_id}_{id}', required: ['course_id','id'] };
+export const listEntriesForColumn = { type: 'LIST_ENTRIES_FOR_COLUMN', method: 'get', key: 'list_entries_for_columnlist_entries_for_column_{course_id}_{id}', required: ['course_id', 'id'] };
 
 // Update column data
 // Set the content of a custom column
@@ -89,4 +89,4 @@ export const listEntriesForColumn = { type: 'LIST_ENTRIES_FOR_COLUMN', method: '
 //   column_data[content] (required)
 // }
 // return canvasRequest(update_column_data, {course_id, id, user_id}, query);
-export const updateColumnData = { type: 'UPDATE_COLUMN_DATA', method: 'put', key: 'update_column_dataupdate_column_data_{course_id}_{id}_{user_id}', required: ['course_id','id','user_id'] };
+export const updateColumnData = { type: 'UPDATE_COLUMN_DATA', method: 'put', key: 'update_column_dataupdate_column_data_{course_id}_{id}_{user_id}', required: ['course_id', 'id', 'user_id'] };

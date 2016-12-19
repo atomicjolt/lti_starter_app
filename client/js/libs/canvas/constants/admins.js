@@ -29,7 +29,7 @@ export const makeAccountAdmin = { type: 'MAKE_ACCOUNT_ADMIN', method: 'post', ke
 //   role_id
 // }
 // return canvasRequest(remove_account_admin, {account_id, user_id}, query);
-export const removeAccountAdmin = { type: 'REMOVE_ACCOUNT_ADMIN', method: 'delete', key: 'remove_account_adminremove_account_admin_{account_id}_{user_id}', required: ['account_id','user_id'] };
+export const removeAccountAdmin = { type: 'REMOVE_ACCOUNT_ADMIN', method: 'delete', key: 'remove_account_adminremove_account_admin_{account_id}_{user_id}', required: ['account_id', 'user_id'] };
 
 // List account admins
 // List the admins in the account

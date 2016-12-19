@@ -41,4 +41,4 @@ export const listAvailableTabsForCourseOrGroupGroups = { type: 'LIST_AVAILABLE_T
 //   hidden
 // }
 // return canvasRequest(update_tab_for_course, {course_id, tab_id}, query);
-export const updateTabForCourse = { type: 'UPDATE_TAB_FOR_COURSE', method: 'put', key: 'update_tab_for_courseupdate_tab_for_course_{course_id}_{tab_id}', required: ['course_id','tab_id'] };
+export const updateTabForCourse = { type: 'UPDATE_TAB_FOR_COURSE', method: 'put', key: 'update_tab_for_courseupdate_tab_for_course_{course_id}_{tab_id}', required: ['course_id', 'tab_id'] };

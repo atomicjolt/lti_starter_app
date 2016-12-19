@@ -56,4 +56,4 @@ export const importSisData = { type: 'IMPORT_SIS_DATA', method: 'post', key: 'im
 //
 // Example:
 // return canvasRequest(get_sis_import_status, {account_id, id});
-export const getSisImportStatus = { type: 'GET_SIS_IMPORT_STATUS', method: 'get', key: 'get_sis_import_statusget_sis_import_status_{account_id}_{id}', required: ['account_id','id'] };
+export const getSisImportStatus = { type: 'GET_SIS_IMPORT_STATUS', method: 'get', key: 'get_sis_import_statusget_sis_import_status_{account_id}_{id}', required: ['account_id', 'id'] };

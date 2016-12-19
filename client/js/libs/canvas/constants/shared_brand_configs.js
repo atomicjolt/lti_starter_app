@@ -25,7 +25,7 @@ export const shareBrandconfigTheme = { type: 'SHARE_BRANDCONFIG_THEME', method: 
 //
 // Example:
 // return canvasRequest(update_shared_theme, {account_id, id});
-export const updateSharedTheme = { type: 'UPDATE_SHARED_THEME', method: 'put', key: 'update_shared_themeupdate_shared_theme_{account_id}_{id}', required: ['account_id','id'] };
+export const updateSharedTheme = { type: 'UPDATE_SHARED_THEME', method: 'put', key: 'update_shared_themeupdate_shared_theme_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // Un-share a BrandConfig (Theme)
 // Delete a SharedBrandConfig, which will unshare it so you nor anyone else in

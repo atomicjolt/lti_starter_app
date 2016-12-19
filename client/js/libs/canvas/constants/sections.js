@@ -41,7 +41,7 @@ export const createCourseSection = { type: 'CREATE_COURSE_SECTION', method: 'pos
 //
 // Example:
 // return canvasRequest(cross_list_section, {id, new_course_id});
-export const crossListSection = { type: 'CROSS_LIST_SECTION', method: 'post', key: 'cross_list_sectioncross_list_section_{id}_{new_course_id}', required: ['id','new_course_id'] };
+export const crossListSection = { type: 'CROSS_LIST_SECTION', method: 'post', key: 'cross_list_sectioncross_list_section_{id}_{new_course_id}', required: ['id', 'new_course_id'] };
 
 // De-cross-list a Section
 // Undo cross-listing of a Section, returning it to its original course.
@@ -81,7 +81,7 @@ export const editSection = { type: 'EDIT_SECTION', method: 'put', key: 'edit_sec
 //   include
 // }
 // return canvasRequest(get_section_information_courses, {course_id, id}, query);
-export const getSectionInformationCourses = { type: 'GET_SECTION_INFORMATION_COURSES', method: 'get', key: 'get_section_information_coursesget_section_information_courses_{course_id}_{id}', required: ['course_id','id'] };
+export const getSectionInformationCourses = { type: 'GET_SECTION_INFORMATION_COURSES', method: 'get', key: 'get_section_information_coursesget_section_information_courses_{course_id}_{id}', required: ['course_id', 'id'] };
 
 // Get section information
 // Gets details about a specific section

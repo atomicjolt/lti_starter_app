@@ -168,7 +168,7 @@ export const listRecentlyLoggedInStudents = { type: 'LIST_RECENTLY_LOGGED_IN_STU
 //
 // Example:
 // return canvasRequest(get_single_user, {course_id, id});
-export const getSingleUser = { type: 'GET_SINGLE_USER', method: 'get', key: 'get_single_userget_single_user_{course_id}_{id}', required: ['course_id','id'] };
+export const getSingleUser = { type: 'GET_SINGLE_USER', method: 'get', key: 'get_single_userget_single_user_{course_id}_{id}', required: ['course_id', 'id'] };
 
 // Preview processed html
 // Preview html content processed for this course
@@ -293,7 +293,7 @@ export const getSingleCourseCourses = { type: 'GET_SINGLE_COURSE_COURSES', metho
 //   include
 // }
 // return canvasRequest(get_single_course_accounts, {account_id, id}, query);
-export const getSingleCourseAccounts = { type: 'GET_SINGLE_COURSE_ACCOUNTS', method: 'get', key: 'get_single_course_accountsget_single_course_accounts_{account_id}_{id}', required: ['account_id','id'] };
+export const getSingleCourseAccounts = { type: 'GET_SINGLE_COURSE_ACCOUNTS', method: 'get', key: 'get_single_course_accountsget_single_course_accounts_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // Update a course
 // Update an existing course.
@@ -390,7 +390,7 @@ export const resetCourse = { type: 'RESET_COURSE', method: 'post', key: 'reset_c
 //
 // Example:
 // return canvasRequest(get_course_copy_status, {course_id, id});
-export const getCourseCopyStatus = { type: 'GET_COURSE_COPY_STATUS', method: 'get', key: 'get_course_copy_statusget_course_copy_status_{course_id}_{id}', required: ['course_id','id'] };
+export const getCourseCopyStatus = { type: 'GET_COURSE_COPY_STATUS', method: 'get', key: 'get_course_copy_statusget_course_copy_status_{course_id}_{id}', required: ['course_id', 'id'] };
 
 // Copy course content
 // DEPRECATED: Please use the {api:ContentMigrationsController#create Content Migrations API}

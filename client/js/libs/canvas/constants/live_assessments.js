@@ -9,7 +9,7 @@
 //
 // Example:
 // return canvasRequest(create_live_assessment_results, {course_id, assessment_id});
-export const createLiveAssessmentResults = { type: 'CREATE_LIVE_ASSESSMENT_RESULTS', method: 'post', key: 'create_live_assessment_resultscreate_live_assessment_results_{course_id}_{assessment_id}', required: ['course_id','assessment_id'] };
+export const createLiveAssessmentResults = { type: 'CREATE_LIVE_ASSESSMENT_RESULTS', method: 'post', key: 'create_live_assessment_resultscreate_live_assessment_results_{course_id}_{assessment_id}', required: ['course_id', 'assessment_id'] };
 
 // List live assessment results
 // Returns a list of live assessment results
@@ -22,7 +22,7 @@ export const createLiveAssessmentResults = { type: 'CREATE_LIVE_ASSESSMENT_RESUL
 //   user_id
 // }
 // return canvasRequest(list_live_assessment_results, {course_id, assessment_id}, query);
-export const listLiveAssessmentResults = { type: 'LIST_LIVE_ASSESSMENT_RESULTS', method: 'get', key: 'list_live_assessment_resultslist_live_assessment_results_{course_id}_{assessment_id}', required: ['course_id','assessment_id'] };
+export const listLiveAssessmentResults = { type: 'LIST_LIVE_ASSESSMENT_RESULTS', method: 'get', key: 'list_live_assessment_resultslist_live_assessment_results_{course_id}_{assessment_id}', required: ['course_id', 'assessment_id'] };
 
 // Create or find a live assessment
 // Creates or finds an existing live assessment with the given key and aligns it with

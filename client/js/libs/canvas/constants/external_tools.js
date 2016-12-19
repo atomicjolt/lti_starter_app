@@ -92,7 +92,7 @@ export const getSessionlessLaunchUrlForExternalToolAccounts = { type: 'GET_SESSI
 //
 // Example:
 // return canvasRequest(get_single_external_tool_courses, {course_id, external_tool_id});
-export const getSingleExternalToolCourses = { type: 'GET_SINGLE_EXTERNAL_TOOL_COURSES', method: 'get', key: 'get_single_external_tool_coursesget_single_external_tool_courses_{course_id}_{external_tool_id}', required: ['course_id','external_tool_id'] };
+export const getSingleExternalToolCourses = { type: 'GET_SINGLE_EXTERNAL_TOOL_COURSES', method: 'get', key: 'get_single_external_tool_coursesget_single_external_tool_courses_{course_id}_{external_tool_id}', required: ['course_id', 'external_tool_id'] };
 
 // Get a single external tool
 // Returns the specified external tool.
@@ -102,7 +102,7 @@ export const getSingleExternalToolCourses = { type: 'GET_SINGLE_EXTERNAL_TOOL_CO
 //
 // Example:
 // return canvasRequest(get_single_external_tool_accounts, {account_id, external_tool_id});
-export const getSingleExternalToolAccounts = { type: 'GET_SINGLE_EXTERNAL_TOOL_ACCOUNTS', method: 'get', key: 'get_single_external_tool_accountsget_single_external_tool_accounts_{account_id}_{external_tool_id}', required: ['account_id','external_tool_id'] };
+export const getSingleExternalToolAccounts = { type: 'GET_SINGLE_EXTERNAL_TOOL_ACCOUNTS', method: 'get', key: 'get_single_external_tool_accountsget_single_external_tool_accounts_{account_id}_{external_tool_id}', required: ['account_id', 'external_tool_id'] };
 
 // Create an external tool
 // Create an external tool in the specified course/account.
@@ -250,7 +250,7 @@ export const createExternalToolAccounts = { type: 'CREATE_EXTERNAL_TOOL_ACCOUNTS
 //
 // Example:
 // return canvasRequest(edit_external_tool_courses, {course_id, external_tool_id});
-export const editExternalToolCourses = { type: 'EDIT_EXTERNAL_TOOL_COURSES', method: 'put', key: 'edit_external_tool_coursesedit_external_tool_courses_{course_id}_{external_tool_id}', required: ['course_id','external_tool_id'] };
+export const editExternalToolCourses = { type: 'EDIT_EXTERNAL_TOOL_COURSES', method: 'put', key: 'edit_external_tool_coursesedit_external_tool_courses_{course_id}_{external_tool_id}', required: ['course_id', 'external_tool_id'] };
 
 // Edit an external tool
 // Update the specified external tool. Uses same parameters as create
@@ -260,7 +260,7 @@ export const editExternalToolCourses = { type: 'EDIT_EXTERNAL_TOOL_COURSES', met
 //
 // Example:
 // return canvasRequest(edit_external_tool_accounts, {account_id, external_tool_id});
-export const editExternalToolAccounts = { type: 'EDIT_EXTERNAL_TOOL_ACCOUNTS', method: 'put', key: 'edit_external_tool_accountsedit_external_tool_accounts_{account_id}_{external_tool_id}', required: ['account_id','external_tool_id'] };
+export const editExternalToolAccounts = { type: 'EDIT_EXTERNAL_TOOL_ACCOUNTS', method: 'put', key: 'edit_external_tool_accountsedit_external_tool_accounts_{account_id}_{external_tool_id}', required: ['account_id', 'external_tool_id'] };
 
 // Delete an external tool
 // Remove the specified external tool
@@ -270,7 +270,7 @@ export const editExternalToolAccounts = { type: 'EDIT_EXTERNAL_TOOL_ACCOUNTS', m
 //
 // Example:
 // return canvasRequest(delete_external_tool_courses, {course_id, external_tool_id});
-export const deleteExternalToolCourses = { type: 'DELETE_EXTERNAL_TOOL_COURSES', method: 'delete', key: 'delete_external_tool_coursesdelete_external_tool_courses_{course_id}_{external_tool_id}', required: ['course_id','external_tool_id'] };
+export const deleteExternalToolCourses = { type: 'DELETE_EXTERNAL_TOOL_COURSES', method: 'delete', key: 'delete_external_tool_coursesdelete_external_tool_courses_{course_id}_{external_tool_id}', required: ['course_id', 'external_tool_id'] };
 
 // Delete an external tool
 // Remove the specified external tool
@@ -280,4 +280,4 @@ export const deleteExternalToolCourses = { type: 'DELETE_EXTERNAL_TOOL_COURSES',
 //
 // Example:
 // return canvasRequest(delete_external_tool_accounts, {account_id, external_tool_id});
-export const deleteExternalToolAccounts = { type: 'DELETE_EXTERNAL_TOOL_ACCOUNTS', method: 'delete', key: 'delete_external_tool_accountsdelete_external_tool_accounts_{account_id}_{external_tool_id}', required: ['account_id','external_tool_id'] };
+export const deleteExternalToolAccounts = { type: 'DELETE_EXTERNAL_TOOL_ACCOUNTS', method: 'delete', key: 'delete_external_tool_accountsdelete_external_tool_accounts_{account_id}_{external_tool_id}', required: ['account_id', 'external_tool_id'] };

@@ -232,7 +232,7 @@ export const listGroupMemberships = { type: 'LIST_GROUP_MEMBERSHIPS', method: 'g
 //
 // Example:
 // return canvasRequest(get_single_group_membership_memberships, {group_id, membership_id});
-export const getSingleGroupMembershipMemberships = { type: 'GET_SINGLE_GROUP_MEMBERSHIP_MEMBERSHIPS', method: 'get', key: 'get_single_group_membership_membershipsget_single_group_membership_memberships_{group_id}_{membership_id}', required: ['group_id','membership_id'] };
+export const getSingleGroupMembershipMemberships = { type: 'GET_SINGLE_GROUP_MEMBERSHIP_MEMBERSHIPS', method: 'get', key: 'get_single_group_membership_membershipsget_single_group_membership_memberships_{group_id}_{membership_id}', required: ['group_id', 'membership_id'] };
 
 // Get a single group membership
 // Returns the group membership with the given membership id or user id.
@@ -242,7 +242,7 @@ export const getSingleGroupMembershipMemberships = { type: 'GET_SINGLE_GROUP_MEM
 //
 // Example:
 // return canvasRequest(get_single_group_membership_users, {group_id, user_id});
-export const getSingleGroupMembershipUsers = { type: 'GET_SINGLE_GROUP_MEMBERSHIP_USERS', method: 'get', key: 'get_single_group_membership_usersget_single_group_membership_users_{group_id}_{user_id}', required: ['group_id','user_id'] };
+export const getSingleGroupMembershipUsers = { type: 'GET_SINGLE_GROUP_MEMBERSHIP_USERS', method: 'get', key: 'get_single_group_membership_usersget_single_group_membership_users_{group_id}_{user_id}', required: ['group_id', 'user_id'] };
 
 // Create a membership
 // Join, or request to join, a group, depending on the join_level of the
@@ -271,7 +271,7 @@ export const createMembership = { type: 'CREATE_MEMBERSHIP', method: 'post', key
 //   moderator
 // }
 // return canvasRequest(update_membership_memberships, {group_id, membership_id}, query);
-export const updateMembershipMemberships = { type: 'UPDATE_MEMBERSHIP_MEMBERSHIPS', method: 'put', key: 'update_membership_membershipsupdate_membership_memberships_{group_id}_{membership_id}', required: ['group_id','membership_id'] };
+export const updateMembershipMemberships = { type: 'UPDATE_MEMBERSHIP_MEMBERSHIPS', method: 'put', key: 'update_membership_membershipsupdate_membership_memberships_{group_id}_{membership_id}', required: ['group_id', 'membership_id'] };
 
 // Update a membership
 // Accept a membership request, or add/remove moderator rights.
@@ -285,7 +285,7 @@ export const updateMembershipMemberships = { type: 'UPDATE_MEMBERSHIP_MEMBERSHIP
 //   moderator
 // }
 // return canvasRequest(update_membership_users, {group_id, user_id}, query);
-export const updateMembershipUsers = { type: 'UPDATE_MEMBERSHIP_USERS', method: 'put', key: 'update_membership_usersupdate_membership_users_{group_id}_{user_id}', required: ['group_id','user_id'] };
+export const updateMembershipUsers = { type: 'UPDATE_MEMBERSHIP_USERS', method: 'put', key: 'update_membership_usersupdate_membership_users_{group_id}_{user_id}', required: ['group_id', 'user_id'] };
 
 // Leave a group
 // Leave a group if you are allowed to leave (some groups, such as sets of
@@ -297,7 +297,7 @@ export const updateMembershipUsers = { type: 'UPDATE_MEMBERSHIP_USERS', method: 
 //
 // Example:
 // return canvasRequest(leave_group_memberships, {group_id, membership_id});
-export const leaveGroupMemberships = { type: 'LEAVE_GROUP_MEMBERSHIPS', method: 'delete', key: 'leave_group_membershipsleave_group_memberships_{group_id}_{membership_id}', required: ['group_id','membership_id'] };
+export const leaveGroupMemberships = { type: 'LEAVE_GROUP_MEMBERSHIPS', method: 'delete', key: 'leave_group_membershipsleave_group_memberships_{group_id}_{membership_id}', required: ['group_id', 'membership_id'] };
 
 // Leave a group
 // Leave a group if you are allowed to leave (some groups, such as sets of
@@ -309,4 +309,4 @@ export const leaveGroupMemberships = { type: 'LEAVE_GROUP_MEMBERSHIPS', method: 
 //
 // Example:
 // return canvasRequest(leave_group_users, {group_id, user_id});
-export const leaveGroupUsers = { type: 'LEAVE_GROUP_USERS', method: 'delete', key: 'leave_group_usersleave_group_users_{group_id}_{user_id}', required: ['group_id','user_id'] };
+export const leaveGroupUsers = { type: 'LEAVE_GROUP_USERS', method: 'delete', key: 'leave_group_usersleave_group_users_{group_id}_{user_id}', required: ['group_id', 'user_id'] };
