@@ -33,7 +33,7 @@ export const listRubricsCourses = { type: 'LIST_RUBRICS_COURSES', method: 'get',
 //   style
 // }
 // return canvasRequest(get_single_rubric_accounts, {account_id, id}, query);
-export const getSingleRubricAccounts = { type: 'GET_SINGLE_RUBRIC_ACCOUNTS', method: 'get', key: 'get_single_rubric_accountsget_single_rubric_accounts_{account_id}_{id}', required: ['account_id','id'] };
+export const getSingleRubricAccounts = { type: 'GET_SINGLE_RUBRIC_ACCOUNTS', method: 'get', key: 'get_single_rubric_accountsget_single_rubric_accounts_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // Get a single rubric
 // Returns the rubric with the given id.
@@ -47,4 +47,4 @@ export const getSingleRubricAccounts = { type: 'GET_SINGLE_RUBRIC_ACCOUNTS', met
 //   style
 // }
 // return canvasRequest(get_single_rubric_courses, {course_id, id}, query);
-export const getSingleRubricCourses = { type: 'GET_SINGLE_RUBRIC_COURSES', method: 'get', key: 'get_single_rubric_coursesget_single_rubric_courses_{course_id}_{id}', required: ['course_id','id'] };
+export const getSingleRubricCourses = { type: 'GET_SINGLE_RUBRIC_COURSES', method: 'get', key: 'get_single_rubric_coursesget_single_rubric_courses_{course_id}_{id}', required: ['course_id', 'id'] };

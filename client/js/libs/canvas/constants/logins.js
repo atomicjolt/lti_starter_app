@@ -53,7 +53,7 @@ export const createUserLogin = { type: 'CREATE_USER_LOGIN', method: 'post', key:
 //   login[integration_id]
 // }
 // return canvasRequest(edit_user_login, {account_id, id}, query);
-export const editUserLogin = { type: 'EDIT_USER_LOGIN', method: 'put', key: 'edit_user_loginedit_user_login_{account_id}_{id}', required: ['account_id','id'] };
+export const editUserLogin = { type: 'EDIT_USER_LOGIN', method: 'put', key: 'edit_user_loginedit_user_login_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // Delete a user login
 // Delete an existing login.
@@ -63,4 +63,4 @@ export const editUserLogin = { type: 'EDIT_USER_LOGIN', method: 'put', key: 'edi
 //
 // Example:
 // return canvasRequest(delete_user_login, {user_id, id});
-export const deleteUserLogin = { type: 'DELETE_USER_LOGIN', method: 'delete', key: 'delete_user_logindelete_user_login_{user_id}_{id}', required: ['user_id','id'] };
+export const deleteUserLogin = { type: 'DELETE_USER_LOGIN', method: 'delete', key: 'delete_user_logindelete_user_login_{user_id}_{id}', required: ['user_id', 'id'] };

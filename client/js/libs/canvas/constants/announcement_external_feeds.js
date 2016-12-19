@@ -59,7 +59,7 @@ export const createExternalFeedGroups = { type: 'CREATE_EXTERNAL_FEED_GROUPS', m
 //
 // Example:
 // return canvasRequest(delete_external_feed_courses, {course_id, external_feed_id});
-export const deleteExternalFeedCourses = { type: 'DELETE_EXTERNAL_FEED_COURSES', method: 'delete', key: 'delete_external_feed_coursesdelete_external_feed_courses_{course_id}_{external_feed_id}', required: ['course_id','external_feed_id'] };
+export const deleteExternalFeedCourses = { type: 'DELETE_EXTERNAL_FEED_COURSES', method: 'delete', key: 'delete_external_feed_coursesdelete_external_feed_courses_{course_id}_{external_feed_id}', required: ['course_id', 'external_feed_id'] };
 
 // Delete an external feed
 // Deletes the external feed.
@@ -69,4 +69,4 @@ export const deleteExternalFeedCourses = { type: 'DELETE_EXTERNAL_FEED_COURSES',
 //
 // Example:
 // return canvasRequest(delete_external_feed_groups, {group_id, external_feed_id});
-export const deleteExternalFeedGroups = { type: 'DELETE_EXTERNAL_FEED_GROUPS', method: 'delete', key: 'delete_external_feed_groupsdelete_external_feed_groups_{group_id}_{external_feed_id}', required: ['group_id','external_feed_id'] };
+export const deleteExternalFeedGroups = { type: 'DELETE_EXTERNAL_FEED_GROUPS', method: 'delete', key: 'delete_external_feed_groupsdelete_external_feed_groups_{group_id}_{external_feed_id}', required: ['group_id', 'external_feed_id'] };

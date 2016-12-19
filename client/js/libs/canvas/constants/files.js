@@ -140,7 +140,7 @@ export const getFileFiles = { type: 'GET_FILE_FILES', method: 'get', key: 'get_f
 //   include
 // }
 // return canvasRequest(get_file_courses, {course_id, id}, query);
-export const getFileCourses = { type: 'GET_FILE_COURSES', method: 'get', key: 'get_file_coursesget_file_courses_{course_id}_{id}', required: ['course_id','id'] };
+export const getFileCourses = { type: 'GET_FILE_COURSES', method: 'get', key: 'get_file_coursesget_file_courses_{course_id}_{id}', required: ['course_id', 'id'] };
 
 // Get file
 // Returns the standard attachment json object
@@ -153,7 +153,7 @@ export const getFileCourses = { type: 'GET_FILE_COURSES', method: 'get', key: 'g
 //   include
 // }
 // return canvasRequest(get_file_groups, {group_id, id}, query);
-export const getFileGroups = { type: 'GET_FILE_GROUPS', method: 'get', key: 'get_file_groupsget_file_groups_{group_id}_{id}', required: ['group_id','id'] };
+export const getFileGroups = { type: 'GET_FILE_GROUPS', method: 'get', key: 'get_file_groupsget_file_groups_{group_id}_{id}', required: ['group_id', 'id'] };
 
 // Get file
 // Returns the standard attachment json object
@@ -166,7 +166,7 @@ export const getFileGroups = { type: 'GET_FILE_GROUPS', method: 'get', key: 'get
 //   include
 // }
 // return canvasRequest(get_file_users, {user_id, id}, query);
-export const getFileUsers = { type: 'GET_FILE_USERS', method: 'get', key: 'get_file_usersget_file_users_{user_id}_{id}', required: ['user_id','id'] };
+export const getFileUsers = { type: 'GET_FILE_USERS', method: 'get', key: 'get_file_usersget_file_users_{user_id}_{id}', required: ['user_id', 'id'] };
 
 // Update file
 // Update some settings on the specified file
@@ -344,7 +344,7 @@ export const resolvePathGroups = { type: 'RESOLVE_PATH_GROUPS', method: 'get', k
 //
 // Example:
 // return canvasRequest(get_folder_courses, {course_id, id});
-export const getFolderCourses = { type: 'GET_FOLDER_COURSES', method: 'get', key: 'get_folder_coursesget_folder_courses_{course_id}_{id}', required: ['course_id','id'] };
+export const getFolderCourses = { type: 'GET_FOLDER_COURSES', method: 'get', key: 'get_folder_coursesget_folder_courses_{course_id}_{id}', required: ['course_id', 'id'] };
 
 // Get folder
 // Returns the details for a folder
@@ -357,7 +357,7 @@ export const getFolderCourses = { type: 'GET_FOLDER_COURSES', method: 'get', key
 //
 // Example:
 // return canvasRequest(get_folder_users, {user_id, id});
-export const getFolderUsers = { type: 'GET_FOLDER_USERS', method: 'get', key: 'get_folder_usersget_folder_users_{user_id}_{id}', required: ['user_id','id'] };
+export const getFolderUsers = { type: 'GET_FOLDER_USERS', method: 'get', key: 'get_folder_usersget_folder_users_{user_id}_{id}', required: ['user_id', 'id'] };
 
 // Get folder
 // Returns the details for a folder
@@ -370,7 +370,7 @@ export const getFolderUsers = { type: 'GET_FOLDER_USERS', method: 'get', key: 'g
 //
 // Example:
 // return canvasRequest(get_folder_groups, {group_id, id});
-export const getFolderGroups = { type: 'GET_FOLDER_GROUPS', method: 'get', key: 'get_folder_groupsget_folder_groups_{group_id}_{id}', required: ['group_id','id'] };
+export const getFolderGroups = { type: 'GET_FOLDER_GROUPS', method: 'get', key: 'get_folder_groupsget_folder_groups_{group_id}_{id}', required: ['group_id', 'id'] };
 
 // Get folder
 // Returns the details for a folder

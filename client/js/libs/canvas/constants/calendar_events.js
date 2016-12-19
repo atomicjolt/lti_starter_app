@@ -105,7 +105,7 @@ export const reserveTimeSlot = { type: 'RESERVE_TIME_SLOT', method: 'post', key:
 //   cancel_existing
 // }
 // return canvasRequest(reserve_time_slot_participant_id, {id, participant_id}, query);
-export const reserveTimeSlotParticipantId = { type: 'RESERVE_TIME_SLOT_PARTICIPANT_ID', method: 'post', key: 'reserve_time_slot_participant_idreserve_time_slot_participant_id_{id}_{participant_id}', required: ['id','participant_id'] };
+export const reserveTimeSlotParticipantId = { type: 'RESERVE_TIME_SLOT_PARTICIPANT_ID', method: 'post', key: 'reserve_time_slot_participant_idreserve_time_slot_participant_id_{id}_{participant_id}', required: ['id', 'participant_id'] };
 
 // Update a calendar event
 // Update and return a calendar event

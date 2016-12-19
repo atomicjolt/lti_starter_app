@@ -32,7 +32,7 @@ export const listAssignmentGroups = { type: 'LIST_ASSIGNMENT_GROUPS', method: 'g
 //   grading_period_id
 // }
 // return canvasRequest(get_assignment_group, {course_id, assignment_group_id}, query);
-export const getAssignmentGroup = { type: 'GET_ASSIGNMENT_GROUP', method: 'get', key: 'get_assignment_groupget_assignment_group_{course_id}_{assignment_group_id}', required: ['course_id','assignment_group_id'] };
+export const getAssignmentGroup = { type: 'GET_ASSIGNMENT_GROUP', method: 'get', key: 'get_assignment_groupget_assignment_group_{course_id}_{assignment_group_id}', required: ['course_id', 'assignment_group_id'] };
 
 // Create an Assignment Group
 // Create a new assignment group for this course.
@@ -59,7 +59,7 @@ export const createAssignmentGroup = { type: 'CREATE_ASSIGNMENT_GROUP', method: 
 //
 // Example:
 // return canvasRequest(edit_assignment_group, {course_id, assignment_group_id});
-export const editAssignmentGroup = { type: 'EDIT_ASSIGNMENT_GROUP', method: 'put', key: 'edit_assignment_groupedit_assignment_group_{course_id}_{assignment_group_id}', required: ['course_id','assignment_group_id'] };
+export const editAssignmentGroup = { type: 'EDIT_ASSIGNMENT_GROUP', method: 'put', key: 'edit_assignment_groupedit_assignment_group_{course_id}_{assignment_group_id}', required: ['course_id', 'assignment_group_id'] };
 
 // Destroy an Assignment Group
 // Deletes the assignment group with the given id.
@@ -72,4 +72,4 @@ export const editAssignmentGroup = { type: 'EDIT_ASSIGNMENT_GROUP', method: 'put
 //   move_assignments_to
 // }
 // return canvasRequest(destroy_assignment_group, {course_id, assignment_group_id}, query);
-export const destroyAssignmentGroup = { type: 'DESTROY_ASSIGNMENT_GROUP', method: 'delete', key: 'destroy_assignment_groupdestroy_assignment_group_{course_id}_{assignment_group_id}', required: ['course_id','assignment_group_id'] };
+export const destroyAssignmentGroup = { type: 'DESTROY_ASSIGNMENT_GROUP', method: 'delete', key: 'destroy_assignment_groupdestroy_assignment_group_{course_id}_{assignment_group_id}', required: ['course_id', 'assignment_group_id'] };

@@ -21,7 +21,7 @@ export const daysInGradebookHistoryForThisCourse = { type: 'DAYS_IN_GRADEBOOK_HI
 //
 // Example:
 // return canvasRequest(details_for_given_date_in_gradebook_history_for_this_course, {course_id, date});
-export const detailsForGivenDateInGradebookHistoryForThisCourse = { type: 'DETAILS_FOR_GIVEN_DATE_IN_GRADEBOOK_HISTORY_FOR_THIS_COURSE', method: 'get', key: 'details_for_given_date_in_gradebook_history_for_this_coursedetails_for_given_date_in_gradebook_history_for_this_course_{course_id}_{date}', required: ['course_id','date'] };
+export const detailsForGivenDateInGradebookHistoryForThisCourse = { type: 'DETAILS_FOR_GIVEN_DATE_IN_GRADEBOOK_HISTORY_FOR_THIS_COURSE', method: 'get', key: 'details_for_given_date_in_gradebook_history_for_this_coursedetails_for_given_date_in_gradebook_history_for_this_course_{course_id}_{date}', required: ['course_id', 'date'] };
 
 // Lists submissions
 // Gives a nested list of submission versions
@@ -31,7 +31,7 @@ export const detailsForGivenDateInGradebookHistoryForThisCourse = { type: 'DETAI
 //
 // Example:
 // return canvasRequest(lists_submissions, {course_id, date, grader_id, assignment_id});
-export const listsSubmissions = { type: 'LISTS_SUBMISSIONS', method: 'get', key: 'lists_submissionslists_submissions_{course_id}_{date}_{grader_id}_{assignment_id}', required: ['course_id','date','grader_id','assignment_id'] };
+export const listsSubmissions = { type: 'LISTS_SUBMISSIONS', method: 'get', key: 'lists_submissionslists_submissions_{course_id}_{date}_{grader_id}_{assignment_id}', required: ['course_id', 'date', 'grader_id', 'assignment_id'] };
 
 // List uncollated submission versions
 // Gives a paginated, uncollated list of submission versions for all matching

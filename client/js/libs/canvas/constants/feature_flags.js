@@ -76,7 +76,7 @@ export const listEnabledFeaturesUsers = { type: 'LIST_ENABLED_FEATURES_USERS', m
 //
 // Example:
 // return canvasRequest(get_feature_flag_courses, {course_id, feature});
-export const getFeatureFlagCourses = { type: 'GET_FEATURE_FLAG_COURSES', method: 'get', key: 'get_feature_flag_coursesget_feature_flag_courses_{course_id}_{feature}', required: ['course_id','feature'] };
+export const getFeatureFlagCourses = { type: 'GET_FEATURE_FLAG_COURSES', method: 'get', key: 'get_feature_flag_coursesget_feature_flag_courses_{course_id}_{feature}', required: ['course_id', 'feature'] };
 
 // Get feature flag
 // Get the feature flag that applies to a given Account, Course, or User.
@@ -90,7 +90,7 @@ export const getFeatureFlagCourses = { type: 'GET_FEATURE_FLAG_COURSES', method:
 //
 // Example:
 // return canvasRequest(get_feature_flag_accounts, {account_id, feature});
-export const getFeatureFlagAccounts = { type: 'GET_FEATURE_FLAG_ACCOUNTS', method: 'get', key: 'get_feature_flag_accountsget_feature_flag_accounts_{account_id}_{feature}', required: ['account_id','feature'] };
+export const getFeatureFlagAccounts = { type: 'GET_FEATURE_FLAG_ACCOUNTS', method: 'get', key: 'get_feature_flag_accountsget_feature_flag_accounts_{account_id}_{feature}', required: ['account_id', 'feature'] };
 
 // Get feature flag
 // Get the feature flag that applies to a given Account, Course, or User.
@@ -104,7 +104,7 @@ export const getFeatureFlagAccounts = { type: 'GET_FEATURE_FLAG_ACCOUNTS', metho
 //
 // Example:
 // return canvasRequest(get_feature_flag_users, {user_id, feature});
-export const getFeatureFlagUsers = { type: 'GET_FEATURE_FLAG_USERS', method: 'get', key: 'get_feature_flag_usersget_feature_flag_users_{user_id}_{feature}', required: ['user_id','feature'] };
+export const getFeatureFlagUsers = { type: 'GET_FEATURE_FLAG_USERS', method: 'get', key: 'get_feature_flag_usersget_feature_flag_users_{user_id}_{feature}', required: ['user_id', 'feature'] };
 
 // Set feature flag
 // Set a feature flag for a given Account, Course, or User. This call will fail if a parent account sets
@@ -118,7 +118,7 @@ export const getFeatureFlagUsers = { type: 'GET_FEATURE_FLAG_USERS', method: 'ge
 //   state
 // }
 // return canvasRequest(set_feature_flag_courses, {course_id, feature}, query);
-export const setFeatureFlagCourses = { type: 'SET_FEATURE_FLAG_COURSES', method: 'put', key: 'set_feature_flag_coursesset_feature_flag_courses_{course_id}_{feature}', required: ['course_id','feature'] };
+export const setFeatureFlagCourses = { type: 'SET_FEATURE_FLAG_COURSES', method: 'put', key: 'set_feature_flag_coursesset_feature_flag_courses_{course_id}_{feature}', required: ['course_id', 'feature'] };
 
 // Set feature flag
 // Set a feature flag for a given Account, Course, or User. This call will fail if a parent account sets
@@ -132,7 +132,7 @@ export const setFeatureFlagCourses = { type: 'SET_FEATURE_FLAG_COURSES', method:
 //   state
 // }
 // return canvasRequest(set_feature_flag_accounts, {account_id, feature}, query);
-export const setFeatureFlagAccounts = { type: 'SET_FEATURE_FLAG_ACCOUNTS', method: 'put', key: 'set_feature_flag_accountsset_feature_flag_accounts_{account_id}_{feature}', required: ['account_id','feature'] };
+export const setFeatureFlagAccounts = { type: 'SET_FEATURE_FLAG_ACCOUNTS', method: 'put', key: 'set_feature_flag_accountsset_feature_flag_accounts_{account_id}_{feature}', required: ['account_id', 'feature'] };
 
 // Set feature flag
 // Set a feature flag for a given Account, Course, or User. This call will fail if a parent account sets
@@ -146,7 +146,7 @@ export const setFeatureFlagAccounts = { type: 'SET_FEATURE_FLAG_ACCOUNTS', metho
 //   state
 // }
 // return canvasRequest(set_feature_flag_users, {user_id, feature}, query);
-export const setFeatureFlagUsers = { type: 'SET_FEATURE_FLAG_USERS', method: 'put', key: 'set_feature_flag_usersset_feature_flag_users_{user_id}_{feature}', required: ['user_id','feature'] };
+export const setFeatureFlagUsers = { type: 'SET_FEATURE_FLAG_USERS', method: 'put', key: 'set_feature_flag_usersset_feature_flag_users_{user_id}_{feature}', required: ['user_id', 'feature'] };
 
 // Remove feature flag
 // Remove feature flag for a given Account, Course, or User.  (Note that the flag must
@@ -159,7 +159,7 @@ export const setFeatureFlagUsers = { type: 'SET_FEATURE_FLAG_USERS', method: 'pu
 //
 // Example:
 // return canvasRequest(remove_feature_flag_courses, {course_id, feature});
-export const removeFeatureFlagCourses = { type: 'REMOVE_FEATURE_FLAG_COURSES', method: 'delete', key: 'remove_feature_flag_coursesremove_feature_flag_courses_{course_id}_{feature}', required: ['course_id','feature'] };
+export const removeFeatureFlagCourses = { type: 'REMOVE_FEATURE_FLAG_COURSES', method: 'delete', key: 'remove_feature_flag_coursesremove_feature_flag_courses_{course_id}_{feature}', required: ['course_id', 'feature'] };
 
 // Remove feature flag
 // Remove feature flag for a given Account, Course, or User.  (Note that the flag must
@@ -172,7 +172,7 @@ export const removeFeatureFlagCourses = { type: 'REMOVE_FEATURE_FLAG_COURSES', m
 //
 // Example:
 // return canvasRequest(remove_feature_flag_accounts, {account_id, feature});
-export const removeFeatureFlagAccounts = { type: 'REMOVE_FEATURE_FLAG_ACCOUNTS', method: 'delete', key: 'remove_feature_flag_accountsremove_feature_flag_accounts_{account_id}_{feature}', required: ['account_id','feature'] };
+export const removeFeatureFlagAccounts = { type: 'REMOVE_FEATURE_FLAG_ACCOUNTS', method: 'delete', key: 'remove_feature_flag_accountsremove_feature_flag_accounts_{account_id}_{feature}', required: ['account_id', 'feature'] };
 
 // Remove feature flag
 // Remove feature flag for a given Account, Course, or User.  (Note that the flag must
@@ -185,4 +185,4 @@ export const removeFeatureFlagAccounts = { type: 'REMOVE_FEATURE_FLAG_ACCOUNTS',
 //
 // Example:
 // return canvasRequest(remove_feature_flag_users, {user_id, feature});
-export const removeFeatureFlagUsers = { type: 'REMOVE_FEATURE_FLAG_USERS', method: 'delete', key: 'remove_feature_flag_usersremove_feature_flag_users_{user_id}_{feature}', required: ['user_id','feature'] };
+export const removeFeatureFlagUsers = { type: 'REMOVE_FEATURE_FLAG_USERS', method: 'delete', key: 'remove_feature_flag_usersremove_feature_flag_users_{user_id}_{feature}', required: ['user_id', 'feature'] };

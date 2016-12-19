@@ -101,7 +101,7 @@ export const listEnrollmentsUsers = { type: 'LIST_ENROLLMENTS_USERS', method: 'g
 //
 // Example:
 // return canvasRequest(enrollment_by_id, {account_id, id});
-export const enrollmentById = { type: 'ENROLLMENT_BY_ID', method: 'get', key: 'enrollment_by_idenrollment_by_id_{account_id}_{id}', required: ['account_id','id'] };
+export const enrollmentById = { type: 'ENROLLMENT_BY_ID', method: 'get', key: 'enrollment_by_idenrollment_by_id_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // Enroll a user
 // Create a new user enrollment for a course or section.
@@ -161,7 +161,7 @@ export const enrollUserSections = { type: 'ENROLL_USER_SECTIONS', method: 'post'
 //   task
 // }
 // return canvasRequest(conclude_deactivate_or_delete_enrollment, {course_id, id}, query);
-export const concludeDeactivateOrDeleteEnrollment = { type: 'CONCLUDE_DEACTIVATE_OR_DELETE_ENROLLMENT', method: 'delete', key: 'conclude_deactivate_or_delete_enrollmentconclude_deactivate_or_delete_enrollment_{course_id}_{id}', required: ['course_id','id'] };
+export const concludeDeactivateOrDeleteEnrollment = { type: 'CONCLUDE_DEACTIVATE_OR_DELETE_ENROLLMENT', method: 'delete', key: 'conclude_deactivate_or_delete_enrollmentconclude_deactivate_or_delete_enrollment_{course_id}_{id}', required: ['course_id', 'id'] };
 
 // Re-activate an enrollment
 // Activates an inactive enrollment
@@ -171,4 +171,4 @@ export const concludeDeactivateOrDeleteEnrollment = { type: 'CONCLUDE_DEACTIVATE
 //
 // Example:
 // return canvasRequest(re_activate_enrollment, {course_id, id});
-export const reActivateEnrollment = { type: 'RE_ACTIVATE_ENROLLMENT', method: 'put', key: 're_activate_enrollmentre_activate_enrollment_{course_id}_{id}', required: ['course_id','id'] };
+export const reActivateEnrollment = { type: 'RE_ACTIVATE_ENROLLMENT', method: 'put', key: 're_activate_enrollmentre_activate_enrollment_{course_id}_{id}', required: ['course_id', 'id'] };

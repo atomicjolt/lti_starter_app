@@ -46,7 +46,7 @@ export const answeringQuestions = { type: 'ANSWERING_QUESTIONS', method: 'post',
 //   access_code
 // }
 // return canvasRequest(flagging_question, {quiz_submission_id, id}, query);
-export const flaggingQuestion = { type: 'FLAGGING_QUESTION', method: 'put', key: 'flagging_questionflagging_question_{quiz_submission_id}_{id}', required: ['quiz_submission_id','id'] };
+export const flaggingQuestion = { type: 'FLAGGING_QUESTION', method: 'put', key: 'flagging_questionflagging_question_{quiz_submission_id}_{id}', required: ['quiz_submission_id', 'id'] };
 
 // Unflagging a question.
 // Remove the flag that you previously set on a quiz question after you've
@@ -62,4 +62,4 @@ export const flaggingQuestion = { type: 'FLAGGING_QUESTION', method: 'put', key:
 //   access_code
 // }
 // return canvasRequest(unflagging_question, {quiz_submission_id, id}, query);
-export const unflaggingQuestion = { type: 'UNFLAGGING_QUESTION', method: 'put', key: 'unflagging_questionunflagging_question_{quiz_submission_id}_{id}', required: ['quiz_submission_id','id'] };
+export const unflaggingQuestion = { type: 'UNFLAGGING_QUESTION', method: 'put', key: 'unflagging_questionunflagging_question_{quiz_submission_id}_{id}', required: ['quiz_submission_id', 'id'] };

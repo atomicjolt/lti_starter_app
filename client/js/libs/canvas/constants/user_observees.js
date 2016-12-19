@@ -46,7 +46,7 @@ export const addObserveeWithCredentials = { type: 'ADD_OBSERVEE_WITH_CREDENTIALS
 //
 // Example:
 // return canvasRequest(show_observee, {user_id, observee_id});
-export const showObservee = { type: 'SHOW_OBSERVEE', method: 'get', key: 'show_observeeshow_observee_{user_id}_{observee_id}', required: ['user_id','observee_id'] };
+export const showObservee = { type: 'SHOW_OBSERVEE', method: 'get', key: 'show_observeeshow_observee_{user_id}_{observee_id}', required: ['user_id', 'observee_id'] };
 
 // Add an observee
 // Registers a user as being observed by the given user.
@@ -56,7 +56,7 @@ export const showObservee = { type: 'SHOW_OBSERVEE', method: 'get', key: 'show_o
 //
 // Example:
 // return canvasRequest(add_observee, {user_id, observee_id});
-export const addObservee = { type: 'ADD_OBSERVEE', method: 'put', key: 'add_observeeadd_observee_{user_id}_{observee_id}', required: ['user_id','observee_id'] };
+export const addObservee = { type: 'ADD_OBSERVEE', method: 'put', key: 'add_observeeadd_observee_{user_id}_{observee_id}', required: ['user_id', 'observee_id'] };
 
 // Remove an observee
 // Unregisters a user as being observed by the given user.
@@ -66,4 +66,4 @@ export const addObservee = { type: 'ADD_OBSERVEE', method: 'put', key: 'add_obse
 //
 // Example:
 // return canvasRequest(remove_observee, {user_id, observee_id});
-export const removeObservee = { type: 'REMOVE_OBSERVEE', method: 'delete', key: 'remove_observeeremove_observee_{user_id}_{observee_id}', required: ['user_id','observee_id'] };
+export const removeObservee = { type: 'REMOVE_OBSERVEE', method: 'delete', key: 'remove_observeeremove_observee_{user_id}_{observee_id}', required: ['user_id', 'observee_id'] };

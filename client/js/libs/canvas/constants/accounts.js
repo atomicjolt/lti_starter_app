@@ -112,7 +112,7 @@ export const updateAccount = { type: 'UPDATE_ACCOUNT', method: 'put', key: 'upda
 //
 // Example:
 // return canvasRequest(delete_user_from_root_account, {account_id, user_id});
-export const deleteUserFromRootAccount = { type: 'DELETE_USER_FROM_ROOT_ACCOUNT', method: 'delete', key: 'delete_user_from_root_accountdelete_user_from_root_account_{account_id}_{user_id}', required: ['account_id','user_id'] };
+export const deleteUserFromRootAccount = { type: 'DELETE_USER_FROM_ROOT_ACCOUNT', method: 'delete', key: 'delete_user_from_root_accountdelete_user_from_root_account_{account_id}_{user_id}', required: ['account_id', 'user_id'] };
 
 // Create a new sub-account
 // Add a new sub-account to a given account.

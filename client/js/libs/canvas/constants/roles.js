@@ -27,7 +27,7 @@ export const listRoles = { type: 'LIST_ROLES', method: 'get', key: 'list_rolesli
 //   role
 // }
 // return canvasRequest(get_single_role, {account_id, id}, query);
-export const getSingleRole = { type: 'GET_SINGLE_ROLE', method: 'get', key: 'get_single_roleget_single_role_{account_id}_{id}', required: ['account_id','id'] };
+export const getSingleRole = { type: 'GET_SINGLE_ROLE', method: 'get', key: 'get_single_roleget_single_role_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // Create a new role
 // Create a new course-level or account-level role.
@@ -64,7 +64,7 @@ export const createNewRole = { type: 'CREATE_NEW_ROLE', method: 'post', key: 'cr
 //   role
 // }
 // return canvasRequest(deactivate_role, {account_id, id}, query);
-export const deactivateRole = { type: 'DEACTIVATE_ROLE', method: 'delete', key: 'deactivate_roledeactivate_role_{account_id}_{id}', required: ['account_id','id'] };
+export const deactivateRole = { type: 'DEACTIVATE_ROLE', method: 'delete', key: 'deactivate_roledeactivate_role_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // Activate a role
 // Re-activates an inactive role (allowing it to be assigned to new users)
@@ -78,7 +78,7 @@ export const deactivateRole = { type: 'DEACTIVATE_ROLE', method: 'delete', key: 
 //   role
 // }
 // return canvasRequest(activate_role, {account_id, id}, query);
-export const activateRole = { type: 'ACTIVATE_ROLE', method: 'post', key: 'activate_roleactivate_role_{account_id}_{id}', required: ['account_id','id'] };
+export const activateRole = { type: 'ACTIVATE_ROLE', method: 'post', key: 'activate_roleactivate_role_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // Update a role
 // Update permissions for an existing role.
@@ -104,4 +104,4 @@ export const activateRole = { type: 'ACTIVATE_ROLE', method: 'post', key: 'activ
 //   permissions[<X>][applies_to_descendants]
 // }
 // return canvasRequest(update_role, {account_id, id}, query);
-export const updateRole = { type: 'UPDATE_ROLE', method: 'put', key: 'update_roleupdate_role_{account_id}_{id}', required: ['account_id','id'] };
+export const updateRole = { type: 'UPDATE_ROLE', method: 'put', key: 'update_roleupdate_role_{account_id}_{id}', required: ['account_id', 'id'] };

@@ -443,7 +443,7 @@ export const getCustomColors = { type: 'GET_CUSTOM_COLORS', method: 'get', key: 
 //
 // Example:
 // return canvasRequest(get_custom_color, {id, asset_string});
-export const getCustomColor = { type: 'GET_CUSTOM_COLOR', method: 'get', key: 'get_custom_colorget_custom_color_{id}_{asset_string}', required: ['id','asset_string'] };
+export const getCustomColor = { type: 'GET_CUSTOM_COLOR', method: 'get', key: 'get_custom_colorget_custom_color_{id}_{asset_string}', required: ['id', 'asset_string'] };
 
 // Update custom color
 // Updates a custom color for a user for a given context.  This allows
@@ -460,7 +460,7 @@ export const getCustomColor = { type: 'GET_CUSTOM_COLOR', method: 'get', key: 'g
 //   hexcode
 // }
 // return canvasRequest(update_custom_color, {id, asset_string}, query);
-export const updateCustomColor = { type: 'UPDATE_CUSTOM_COLOR', method: 'put', key: 'update_custom_colorupdate_custom_color_{id}_{asset_string}', required: ['id','asset_string'] };
+export const updateCustomColor = { type: 'UPDATE_CUSTOM_COLOR', method: 'put', key: 'update_custom_colorupdate_custom_color_{id}_{asset_string}', required: ['id', 'asset_string'] };
 
 // Edit a user
 // Modify an existing user. To modify a user's login, see the documentation for logins.
@@ -498,7 +498,7 @@ export const editUser = { type: 'EDIT_USER', method: 'put', key: 'edit_useredit_
 //
 // Example:
 // return canvasRequest(merge_user_into_another_user_destination_user_id, {id, destination_user_id});
-export const mergeUserIntoAnotherUserDestinationUserId = { type: 'MERGE_USER_INTO_ANOTHER_USER_DESTINATION_USER_ID', method: 'put', key: 'merge_user_into_another_user_destination_user_idmerge_user_into_another_user_destination_user_id_{id}_{destination_user_id}', required: ['id','destination_user_id'] };
+export const mergeUserIntoAnotherUserDestinationUserId = { type: 'MERGE_USER_INTO_ANOTHER_USER_DESTINATION_USER_ID', method: 'put', key: 'merge_user_into_another_user_destination_user_idmerge_user_into_another_user_destination_user_id_{id}_{destination_user_id}', required: ['id', 'destination_user_id'] };
 
 // Merge user into another user
 // Merge a user into another user.
@@ -516,7 +516,7 @@ export const mergeUserIntoAnotherUserDestinationUserId = { type: 'MERGE_USER_INT
 //
 // Example:
 // return canvasRequest(merge_user_into_another_user_accounts, {id, destination_account_id, destination_user_id});
-export const mergeUserIntoAnotherUserAccounts = { type: 'MERGE_USER_INTO_ANOTHER_USER_ACCOUNTS', method: 'put', key: 'merge_user_into_another_user_accountsmerge_user_into_another_user_accounts_{id}_{destination_account_id}_{destination_user_id}', required: ['id','destination_account_id','destination_user_id'] };
+export const mergeUserIntoAnotherUserAccounts = { type: 'MERGE_USER_INTO_ANOTHER_USER_ACCOUNTS', method: 'put', key: 'merge_user_into_another_user_accountsmerge_user_into_another_user_accounts_{id}_{destination_account_id}_{destination_user_id}', required: ['id', 'destination_account_id', 'destination_user_id'] };
 
 // Split merged users into separate users
 // Merged users cannot be fully restored to their previous state, but this will

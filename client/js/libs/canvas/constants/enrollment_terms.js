@@ -31,7 +31,7 @@ export const createEnrollmentTerm = { type: 'CREATE_ENROLLMENT_TERM', method: 'p
 //   enrollment_term[sis_term_id]
 // }
 // return canvasRequest(update_enrollment_term, {account_id, id}, query);
-export const updateEnrollmentTerm = { type: 'UPDATE_ENROLLMENT_TERM', method: 'put', key: 'update_enrollment_termupdate_enrollment_term_{account_id}_{id}', required: ['account_id','id'] };
+export const updateEnrollmentTerm = { type: 'UPDATE_ENROLLMENT_TERM', method: 'put', key: 'update_enrollment_termupdate_enrollment_term_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // Delete enrollment term
 // Delete the specified enrollment term.
@@ -41,7 +41,7 @@ export const updateEnrollmentTerm = { type: 'UPDATE_ENROLLMENT_TERM', method: 'p
 //
 // Example:
 // return canvasRequest(delete_enrollment_term, {account_id, id});
-export const deleteEnrollmentTerm = { type: 'DELETE_ENROLLMENT_TERM', method: 'delete', key: 'delete_enrollment_termdelete_enrollment_term_{account_id}_{id}', required: ['account_id','id'] };
+export const deleteEnrollmentTerm = { type: 'DELETE_ENROLLMENT_TERM', method: 'delete', key: 'delete_enrollment_termdelete_enrollment_term_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // List enrollment terms
 // Return all of the terms in the account.

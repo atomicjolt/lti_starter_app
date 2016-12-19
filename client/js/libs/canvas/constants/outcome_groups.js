@@ -100,7 +100,7 @@ export const showOutcomeGroupGlobal = { type: 'SHOW_OUTCOME_GROUP_GLOBAL', metho
 //
 // Example:
 // return canvasRequest(show_outcome_group_accounts, {account_id, id});
-export const showOutcomeGroupAccounts = { type: 'SHOW_OUTCOME_GROUP_ACCOUNTS', method: 'get', key: 'show_outcome_group_accountsshow_outcome_group_accounts_{account_id}_{id}', required: ['account_id','id'] };
+export const showOutcomeGroupAccounts = { type: 'SHOW_OUTCOME_GROUP_ACCOUNTS', method: 'get', key: 'show_outcome_group_accountsshow_outcome_group_accounts_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // Show an outcome group
 // 
@@ -110,7 +110,7 @@ export const showOutcomeGroupAccounts = { type: 'SHOW_OUTCOME_GROUP_ACCOUNTS', m
 //
 // Example:
 // return canvasRequest(show_outcome_group_courses, {course_id, id});
-export const showOutcomeGroupCourses = { type: 'SHOW_OUTCOME_GROUP_COURSES', method: 'get', key: 'show_outcome_group_coursesshow_outcome_group_courses_{course_id}_{id}', required: ['course_id','id'] };
+export const showOutcomeGroupCourses = { type: 'SHOW_OUTCOME_GROUP_COURSES', method: 'get', key: 'show_outcome_group_coursesshow_outcome_group_courses_{course_id}_{id}', required: ['course_id', 'id'] };
 
 // Update an outcome group
 // Modify an existing outcome group. Fields not provided are left as is;
@@ -152,7 +152,7 @@ export const updateOutcomeGroupGlobal = { type: 'UPDATE_OUTCOME_GROUP_GLOBAL', m
 //   parent_outcome_group_id
 // }
 // return canvasRequest(update_outcome_group_accounts, {account_id, id}, query);
-export const updateOutcomeGroupAccounts = { type: 'UPDATE_OUTCOME_GROUP_ACCOUNTS', method: 'put', key: 'update_outcome_group_accountsupdate_outcome_group_accounts_{account_id}_{id}', required: ['account_id','id'] };
+export const updateOutcomeGroupAccounts = { type: 'UPDATE_OUTCOME_GROUP_ACCOUNTS', method: 'put', key: 'update_outcome_group_accountsupdate_outcome_group_accounts_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // Update an outcome group
 // Modify an existing outcome group. Fields not provided are left as is;
@@ -173,7 +173,7 @@ export const updateOutcomeGroupAccounts = { type: 'UPDATE_OUTCOME_GROUP_ACCOUNTS
 //   parent_outcome_group_id
 // }
 // return canvasRequest(update_outcome_group_courses, {course_id, id}, query);
-export const updateOutcomeGroupCourses = { type: 'UPDATE_OUTCOME_GROUP_COURSES', method: 'put', key: 'update_outcome_group_coursesupdate_outcome_group_courses_{course_id}_{id}', required: ['course_id','id'] };
+export const updateOutcomeGroupCourses = { type: 'UPDATE_OUTCOME_GROUP_COURSES', method: 'put', key: 'update_outcome_group_coursesupdate_outcome_group_courses_{course_id}_{id}', required: ['course_id', 'id'] };
 
 // Delete an outcome group
 // Deleting an outcome group deletes descendant outcome groups and outcome
@@ -205,7 +205,7 @@ export const deleteOutcomeGroupGlobal = { type: 'DELETE_OUTCOME_GROUP_GLOBAL', m
 //
 // Example:
 // return canvasRequest(delete_outcome_group_accounts, {account_id, id});
-export const deleteOutcomeGroupAccounts = { type: 'DELETE_OUTCOME_GROUP_ACCOUNTS', method: 'delete', key: 'delete_outcome_group_accountsdelete_outcome_group_accounts_{account_id}_{id}', required: ['account_id','id'] };
+export const deleteOutcomeGroupAccounts = { type: 'DELETE_OUTCOME_GROUP_ACCOUNTS', method: 'delete', key: 'delete_outcome_group_accountsdelete_outcome_group_accounts_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // Delete an outcome group
 // Deleting an outcome group deletes descendant outcome groups and outcome
@@ -221,7 +221,7 @@ export const deleteOutcomeGroupAccounts = { type: 'DELETE_OUTCOME_GROUP_ACCOUNTS
 //
 // Example:
 // return canvasRequest(delete_outcome_group_courses, {course_id, id});
-export const deleteOutcomeGroupCourses = { type: 'DELETE_OUTCOME_GROUP_COURSES', method: 'delete', key: 'delete_outcome_group_coursesdelete_outcome_group_courses_{course_id}_{id}', required: ['course_id','id'] };
+export const deleteOutcomeGroupCourses = { type: 'DELETE_OUTCOME_GROUP_COURSES', method: 'delete', key: 'delete_outcome_group_coursesdelete_outcome_group_courses_{course_id}_{id}', required: ['course_id', 'id'] };
 
 // List linked outcomes
 // List the immediate OutcomeLink children of the outcome group. Paginated.
@@ -247,7 +247,7 @@ export const listLinkedOutcomesGlobal = { type: 'LIST_LINKED_OUTCOMES_GLOBAL', m
 //   outcome_style
 // }
 // return canvasRequest(list_linked_outcomes_accounts, {account_id, id}, query);
-export const listLinkedOutcomesAccounts = { type: 'LIST_LINKED_OUTCOMES_ACCOUNTS', method: 'get', key: 'list_linked_outcomes_accountslist_linked_outcomes_accounts_{account_id}_{id}', required: ['account_id','id'] };
+export const listLinkedOutcomesAccounts = { type: 'LIST_LINKED_OUTCOMES_ACCOUNTS', method: 'get', key: 'list_linked_outcomes_accountslist_linked_outcomes_accounts_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // List linked outcomes
 // List the immediate OutcomeLink children of the outcome group. Paginated.
@@ -260,7 +260,7 @@ export const listLinkedOutcomesAccounts = { type: 'LIST_LINKED_OUTCOMES_ACCOUNTS
 //   outcome_style
 // }
 // return canvasRequest(list_linked_outcomes_courses, {course_id, id}, query);
-export const listLinkedOutcomesCourses = { type: 'LIST_LINKED_OUTCOMES_COURSES', method: 'get', key: 'list_linked_outcomes_courseslist_linked_outcomes_courses_{course_id}_{id}', required: ['course_id','id'] };
+export const listLinkedOutcomesCourses = { type: 'LIST_LINKED_OUTCOMES_COURSES', method: 'get', key: 'list_linked_outcomes_courseslist_linked_outcomes_courses_{course_id}_{id}', required: ['course_id', 'id'] };
 
 // Create/link an outcome
 // Link an outcome into the outcome group. The outcome to link can either be
@@ -345,7 +345,7 @@ export const createLinkOutcomeGlobal = { type: 'CREATE_LINK_OUTCOME_GLOBAL', met
 //   calculation_int
 // }
 // return canvasRequest(create_link_outcome_global_outcome_id, {id, outcome_id}, query);
-export const createLinkOutcomeGlobalOutcomeId = { type: 'CREATE_LINK_OUTCOME_GLOBAL_OUTCOME_ID', method: 'put', key: 'create_link_outcome_global_outcome_idcreate_link_outcome_global_outcome_id_{id}_{outcome_id}', required: ['id','outcome_id'] };
+export const createLinkOutcomeGlobalOutcomeId = { type: 'CREATE_LINK_OUTCOME_GLOBAL_OUTCOME_ID', method: 'put', key: 'create_link_outcome_global_outcome_idcreate_link_outcome_global_outcome_id_{id}_{outcome_id}', required: ['id', 'outcome_id'] };
 
 // Create/link an outcome
 // Link an outcome into the outcome group. The outcome to link can either be
@@ -388,7 +388,7 @@ export const createLinkOutcomeGlobalOutcomeId = { type: 'CREATE_LINK_OUTCOME_GLO
 //   calculation_int
 // }
 // return canvasRequest(create_link_outcome_accounts, {account_id, id}, query);
-export const createLinkOutcomeAccounts = { type: 'CREATE_LINK_OUTCOME_ACCOUNTS', method: 'post', key: 'create_link_outcome_accountscreate_link_outcome_accounts_{account_id}_{id}', required: ['account_id','id'] };
+export const createLinkOutcomeAccounts = { type: 'CREATE_LINK_OUTCOME_ACCOUNTS', method: 'post', key: 'create_link_outcome_accountscreate_link_outcome_accounts_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // Create/link an outcome
 // Link an outcome into the outcome group. The outcome to link can either be
@@ -430,7 +430,7 @@ export const createLinkOutcomeAccounts = { type: 'CREATE_LINK_OUTCOME_ACCOUNTS',
 //   calculation_int
 // }
 // return canvasRequest(create_link_outcome_accounts_outcome_id, {account_id, id, outcome_id}, query);
-export const createLinkOutcomeAccountsOutcomeId = { type: 'CREATE_LINK_OUTCOME_ACCOUNTS_OUTCOME_ID', method: 'put', key: 'create_link_outcome_accounts_outcome_idcreate_link_outcome_accounts_outcome_id_{account_id}_{id}_{outcome_id}', required: ['account_id','id','outcome_id'] };
+export const createLinkOutcomeAccountsOutcomeId = { type: 'CREATE_LINK_OUTCOME_ACCOUNTS_OUTCOME_ID', method: 'put', key: 'create_link_outcome_accounts_outcome_idcreate_link_outcome_accounts_outcome_id_{account_id}_{id}_{outcome_id}', required: ['account_id', 'id', 'outcome_id'] };
 
 // Create/link an outcome
 // Link an outcome into the outcome group. The outcome to link can either be
@@ -473,7 +473,7 @@ export const createLinkOutcomeAccountsOutcomeId = { type: 'CREATE_LINK_OUTCOME_A
 //   calculation_int
 // }
 // return canvasRequest(create_link_outcome_courses, {course_id, id}, query);
-export const createLinkOutcomeCourses = { type: 'CREATE_LINK_OUTCOME_COURSES', method: 'post', key: 'create_link_outcome_coursescreate_link_outcome_courses_{course_id}_{id}', required: ['course_id','id'] };
+export const createLinkOutcomeCourses = { type: 'CREATE_LINK_OUTCOME_COURSES', method: 'post', key: 'create_link_outcome_coursescreate_link_outcome_courses_{course_id}_{id}', required: ['course_id', 'id'] };
 
 // Create/link an outcome
 // Link an outcome into the outcome group. The outcome to link can either be
@@ -515,7 +515,7 @@ export const createLinkOutcomeCourses = { type: 'CREATE_LINK_OUTCOME_COURSES', m
 //   calculation_int
 // }
 // return canvasRequest(create_link_outcome_courses_outcome_id, {course_id, id, outcome_id}, query);
-export const createLinkOutcomeCoursesOutcomeId = { type: 'CREATE_LINK_OUTCOME_COURSES_OUTCOME_ID', method: 'put', key: 'create_link_outcome_courses_outcome_idcreate_link_outcome_courses_outcome_id_{course_id}_{id}_{outcome_id}', required: ['course_id','id','outcome_id'] };
+export const createLinkOutcomeCoursesOutcomeId = { type: 'CREATE_LINK_OUTCOME_COURSES_OUTCOME_ID', method: 'put', key: 'create_link_outcome_courses_outcome_idcreate_link_outcome_courses_outcome_id_{course_id}_{id}_{outcome_id}', required: ['course_id', 'id', 'outcome_id'] };
 
 // Unlink an outcome
 // Unlinking an outcome only deletes the outcome itself if this was the last
@@ -528,7 +528,7 @@ export const createLinkOutcomeCoursesOutcomeId = { type: 'CREATE_LINK_OUTCOME_CO
 //
 // Example:
 // return canvasRequest(unlink_outcome_global, {id, outcome_id});
-export const unlinkOutcomeGlobal = { type: 'UNLINK_OUTCOME_GLOBAL', method: 'delete', key: 'unlink_outcome_globalunlink_outcome_global_{id}_{outcome_id}', required: ['id','outcome_id'] };
+export const unlinkOutcomeGlobal = { type: 'UNLINK_OUTCOME_GLOBAL', method: 'delete', key: 'unlink_outcome_globalunlink_outcome_global_{id}_{outcome_id}', required: ['id', 'outcome_id'] };
 
 // Unlink an outcome
 // Unlinking an outcome only deletes the outcome itself if this was the last
@@ -541,7 +541,7 @@ export const unlinkOutcomeGlobal = { type: 'UNLINK_OUTCOME_GLOBAL', method: 'del
 //
 // Example:
 // return canvasRequest(unlink_outcome_accounts, {account_id, id, outcome_id});
-export const unlinkOutcomeAccounts = { type: 'UNLINK_OUTCOME_ACCOUNTS', method: 'delete', key: 'unlink_outcome_accountsunlink_outcome_accounts_{account_id}_{id}_{outcome_id}', required: ['account_id','id','outcome_id'] };
+export const unlinkOutcomeAccounts = { type: 'UNLINK_OUTCOME_ACCOUNTS', method: 'delete', key: 'unlink_outcome_accountsunlink_outcome_accounts_{account_id}_{id}_{outcome_id}', required: ['account_id', 'id', 'outcome_id'] };
 
 // Unlink an outcome
 // Unlinking an outcome only deletes the outcome itself if this was the last
@@ -554,7 +554,7 @@ export const unlinkOutcomeAccounts = { type: 'UNLINK_OUTCOME_ACCOUNTS', method: 
 //
 // Example:
 // return canvasRequest(unlink_outcome_courses, {course_id, id, outcome_id});
-export const unlinkOutcomeCourses = { type: 'UNLINK_OUTCOME_COURSES', method: 'delete', key: 'unlink_outcome_coursesunlink_outcome_courses_{course_id}_{id}_{outcome_id}', required: ['course_id','id','outcome_id'] };
+export const unlinkOutcomeCourses = { type: 'UNLINK_OUTCOME_COURSES', method: 'delete', key: 'unlink_outcome_coursesunlink_outcome_courses_{course_id}_{id}_{outcome_id}', required: ['course_id', 'id', 'outcome_id'] };
 
 // List subgroups
 // List the immediate OutcomeGroup children of the outcome group. Paginated.
@@ -574,7 +574,7 @@ export const listSubgroupsGlobal = { type: 'LIST_SUBGROUPS_GLOBAL', method: 'get
 //
 // Example:
 // return canvasRequest(list_subgroups_accounts, {account_id, id});
-export const listSubgroupsAccounts = { type: 'LIST_SUBGROUPS_ACCOUNTS', method: 'get', key: 'list_subgroups_accountslist_subgroups_accounts_{account_id}_{id}', required: ['account_id','id'] };
+export const listSubgroupsAccounts = { type: 'LIST_SUBGROUPS_ACCOUNTS', method: 'get', key: 'list_subgroups_accountslist_subgroups_accounts_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // List subgroups
 // List the immediate OutcomeGroup children of the outcome group. Paginated.
@@ -584,7 +584,7 @@ export const listSubgroupsAccounts = { type: 'LIST_SUBGROUPS_ACCOUNTS', method: 
 //
 // Example:
 // return canvasRequest(list_subgroups_courses, {course_id, id});
-export const listSubgroupsCourses = { type: 'LIST_SUBGROUPS_COURSES', method: 'get', key: 'list_subgroups_courseslist_subgroups_courses_{course_id}_{id}', required: ['course_id','id'] };
+export const listSubgroupsCourses = { type: 'LIST_SUBGROUPS_COURSES', method: 'get', key: 'list_subgroups_courseslist_subgroups_courses_{course_id}_{id}', required: ['course_id', 'id'] };
 
 // Create a subgroup
 // Creates a new empty subgroup under the outcome group with the given title
@@ -616,7 +616,7 @@ export const createSubgroupGlobal = { type: 'CREATE_SUBGROUP_GLOBAL', method: 'p
 //   vendor_guid
 // }
 // return canvasRequest(create_subgroup_accounts, {account_id, id}, query);
-export const createSubgroupAccounts = { type: 'CREATE_SUBGROUP_ACCOUNTS', method: 'post', key: 'create_subgroup_accountscreate_subgroup_accounts_{account_id}_{id}', required: ['account_id','id'] };
+export const createSubgroupAccounts = { type: 'CREATE_SUBGROUP_ACCOUNTS', method: 'post', key: 'create_subgroup_accountscreate_subgroup_accounts_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // Create a subgroup
 // Creates a new empty subgroup under the outcome group with the given title
@@ -632,7 +632,7 @@ export const createSubgroupAccounts = { type: 'CREATE_SUBGROUP_ACCOUNTS', method
 //   vendor_guid
 // }
 // return canvasRequest(create_subgroup_courses, {course_id, id}, query);
-export const createSubgroupCourses = { type: 'CREATE_SUBGROUP_COURSES', method: 'post', key: 'create_subgroup_coursescreate_subgroup_courses_{course_id}_{id}', required: ['course_id','id'] };
+export const createSubgroupCourses = { type: 'CREATE_SUBGROUP_COURSES', method: 'post', key: 'create_subgroup_coursescreate_subgroup_courses_{course_id}_{id}', required: ['course_id', 'id'] };
 
 // Import an outcome group
 // Creates a new subgroup of the outcome group with the same title and
@@ -680,7 +680,7 @@ export const importOutcomeGroupGlobal = { type: 'IMPORT_OUTCOME_GROUP_GLOBAL', m
 //   source_outcome_group_id (required)
 // }
 // return canvasRequest(import_outcome_group_accounts, {account_id, id}, query);
-export const importOutcomeGroupAccounts = { type: 'IMPORT_OUTCOME_GROUP_ACCOUNTS', method: 'post', key: 'import_outcome_group_accountsimport_outcome_group_accounts_{account_id}_{id}', required: ['account_id','id'] };
+export const importOutcomeGroupAccounts = { type: 'IMPORT_OUTCOME_GROUP_ACCOUNTS', method: 'post', key: 'import_outcome_group_accountsimport_outcome_group_accounts_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // Import an outcome group
 // Creates a new subgroup of the outcome group with the same title and
@@ -704,4 +704,4 @@ export const importOutcomeGroupAccounts = { type: 'IMPORT_OUTCOME_GROUP_ACCOUNTS
 //   source_outcome_group_id (required)
 // }
 // return canvasRequest(import_outcome_group_courses, {course_id, id}, query);
-export const importOutcomeGroupCourses = { type: 'IMPORT_OUTCOME_GROUP_COURSES', method: 'post', key: 'import_outcome_group_coursesimport_outcome_group_courses_{course_id}_{id}', required: ['course_id','id'] };
+export const importOutcomeGroupCourses = { type: 'IMPORT_OUTCOME_GROUP_COURSES', method: 'post', key: 'import_outcome_group_coursesimport_outcome_group_courses_{course_id}_{id}', required: ['course_id', 'id'] };
