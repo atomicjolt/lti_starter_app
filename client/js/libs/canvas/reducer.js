@@ -1,11 +1,7 @@
-"use strict";
-
-import Immutable           from "immutable";
+// Note. This reducer doesn't work and will need a fair amount 
 import _                   from "lodash";
 
-const initialState = Immutable.fromJS({});
-
-export default (state = initialState, action) => {
+export default (state = {}, action) => {
 
   if(action.canvas){
     const state = state.get(action.canvas.key);
@@ -17,7 +13,8 @@ export default (state = initialState, action) => {
           const mapped = _.reduce(action.payload, (result, as) => { result[as.id] = as; return result; }, {});
           return state.merge(mapped);
         case 'post':
-          return state.set(action.payload.id, action.payload);
+          const newState = _.deepClone(state);
+          newState[action.payload.id] = action.payload;
         case 'put':
           return state;
         case 'delete':

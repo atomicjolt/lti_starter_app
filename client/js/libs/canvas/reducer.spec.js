@@ -1,7 +1,4 @@
-"use strict";
-
-import _             from "lodash";
-import Immutable     from "immutable";
+import _            from "lodash";
 import reducer      from "./reducer";
 
 describe("canvas reducer", () => {
@@ -10,7 +7,7 @@ describe("canvas reducer", () => {
 
     it("has no data", () => {
       const state = reducer(undefined, {});
-      expect(state.toJS()).toEqual({});
+      expect(state).toEqual({});
     });
 
   });
