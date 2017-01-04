@@ -1,12 +1,14 @@
 # LTI Starter App [![Build Status](https://travis-ci.org/atomicjolt/lti_starter_app.svg?branch=master)](https://travis-ci.org/atomicjolt/lti_starter_app) [![Coverage Status](https://coveralls.io/repos/github/atomicjolt/lti_starter_app/badge.svg?branch=master)](https://coveralls.io/github/atomicjolt/lti_starter_app?branch=master)
 -----------------------
-This project provides a starting point for building a LTI tools using React with Ruby on Rails as a backend.
-There are many starter kits that will help you get started with React and Redux. This is the one created by, maintained by and used by [Atomic Jolt](http://www.atomicjolt.com).
+This project provides a starting point for building a LTI tools using React with
+Ruby on Rails as a backend. There are many starter kits that will help you get
+started with React and Redux. This is the one created by, maintained by and used
+by [Atomic Jolt](http://www.atomicjolt.com).
 
 
 ## Build a new application using the LTI Starter App Rails application template:
-Since the project is not public you will need to have a local copy of the lti_starter_app project.
-Be sure to use the correct relative path:
+Since the project is not public you will need to have a local copy of the
+lti_starter_app project. Be sure to use the correct relative path:
 
 `rails new my_app -m ./lti_starter_app/template.rb`
 
@@ -15,7 +17,9 @@ Be sure to use the correct relative path:
 -----------
 
 ### With Foreman
-Foreman makes it simple to startup all the services required to run the application in development mode. To start the application using foreman simply run:
+Foreman makes it simple to startup all the services required to run the
+application in development mode. To start the application using foreman simply
+run:
 
 ```
 $ foreman start -f Procfile.dev
@@ -27,7 +31,8 @@ Make sure you have the latest version of Foreman installed.
 Foreman will automatically find and read the .env file.
 
 ### Without Foreman
-If you need to run services individually or just don't like Foreman you can run each service seperately:
+If you need to run services individually or just don't like Foreman you can run
+each service seperately:
 
 ```
 $ rails server
@@ -40,8 +45,8 @@ $ npm run hot
 ### File Modifications
 
 #### Change bin/bootstrap
-In bin/bootstrap change the following line to point to a dropbox folder containing the correct config files for
-the project:
+In bin/bootstrap change the following line to point to a dropbox folder
+containing the correct config files for the project:
 DROPBOX_FOLDER=aj-dev/lti_starter_app
 
 #### Change .env
@@ -51,11 +56,14 @@ Note: the App and Assets subdomains must be different.
 
 #### Modify application name
 1. Open application.rb and change `ltistarterapp` to the name you choose.
-2. Do a global search and replace for `lti_starter_app` and change it to the name you choose.
-3. Do a global search and replace for `ltistarterapp` (use only letters or numbers for this name. Special characters like '_' will result in errors).
+2. Do a global search and replace for `lti_starter_app` and change it to the
+name you choose.
+3. Do a global search and replace for `ltistarterapp` (use only letters or
+numbers for this name. Special characters like '_' will result in errors).
 
 ### Setup script
-Run the setup script to configure your local nginx and to setup symlinks to your configuration files (database.yml, etc)
+Run the setup script to configure your local nginx and to setup symlinks to your
+configuration files (database.yml, etc)
 
 ```
 $ ./bin/setup
@@ -63,9 +71,10 @@ $ ./bin/setup
 
 ## Assets
 -----------
-Any files added to the assets directory can be used by in code and assigned to a variable. This
-allows for referring to assets using dynamically generated strings. The assets will be built according to
-the rules specified in your webpack configuration. Typically, this means that in production the names will
+Any files added to the assets directory can be used by in code and assigned to a
+variable. This allows for referring to assets using dynamically generated
+strings. The assets will be built according to the rules specified in your
+webpack configuration. Typically, this means that in production the names will
 be changed to include a SHA.
 
 First importing the assets:
@@ -85,24 +94,31 @@ The value can then be used when rendering:
 
 ## Static
 -----------
-Files added to the static directory will be copied directly into the build. These files will not be renamed.
+Files added to the static directory will be copied directly into the build.
+These files will not be renamed.
 
 ## Canvas API
 -----------
-The LTI Starter app makes working with the Canvas API simple. See [Canvas](Canvas.md) for more information.
-Not that working with the Canvas API will require a server side proxy that is not part of this project.
+The LTI Starter app makes working with the Canvas API simple. See
+[Canvas](Canvas.md) for more information. Not that working with the Canvas API
+will require a server side proxy that is not part of this project.
 
 #Tests
 -----------
 Karma and Jasmine are used for testing. To run tests run:
 
 #### Secrets file
-Rename `config/secrets.example.yml` to `config/secrets.yml`. Open the file and change each entry to values that are relevant for your application.
+Rename `config/secrets.example.yml` to `config/secrets.yml`. Open the file and
+change each entry to values that are relevant for your application.
 
 *This file should not be committed to your repository.*
 
-You will need to [obtain a Developer ID and Key from an Account Admin for the instance of Canvas the tool will be installed in](#canvas_developer_key).
-You will also need to setup a default account and provide that account's "code" for the "application_code" entry in secrets.yml. See the [seeds](#seeds) section below for information on setting up the default account.
+You will need to [obtain a Developer ID and Key from an Account Admin for the
+instance of Canvas the tool will be installed in](#canvas_developer_key). 
+
+Youwill also need to setup a default lti application and lti application 
+instance. See the [seeds](#seeds) section below for information on setting
+up the default account.
 
 ### Project Dependencies
 
