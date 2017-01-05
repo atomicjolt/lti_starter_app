@@ -1,5 +1,4 @@
 class UrlHelper
-
   def self.safe_host(url)
     return nil if url.blank?
     UrlHelper.host(url)
@@ -22,14 +21,20 @@ class UrlHelper
     "#{parsed.scheme}://#{parsed.host}"
   end
 
-  def self.host_from_instance_guid(url)
-    url = URI.parse(self.ensure_scheme(url))
-    parts = url.host.split('.')
-    if parts.length > 2
-      parts[1, parts.length].join('.')
-    else
-      parts.join('.')
-    end
+  def self.scheme_host_port(url)
+    return nil unless url.present?
+    parsed = URI.parse(ensure_scheme(url))
+    port = parsed.port != 80 && parsed.port != 443 ? ":#{parsed.port}" : ""
+    "#{parsed.scheme}://#{parsed.host}#{port}"
   end
 
+  def self.host_from_instance_guid(url)
+    url = URI.parse(ensure_scheme(url))
+    parts = url.host.split(".")
+    if parts.length > 2
+      parts[1, parts.length].join(".")
+    else
+      parts.join(".")
+    end
+  end
 end

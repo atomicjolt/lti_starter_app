@@ -7,7 +7,7 @@ module Concerns
     def canvas_api
       if current_lti_application_instance.canvas_token.present?
         LMS::Canvas.new(
-          UrlHelper.scheme_host(current_lti_application_instance.lti_consumer_uri),
+          UrlHelper.scheme_host_port(current_lti_application_instance.lti_consumer_uri),
           current_lti_application_instance.canvas_token
         )
       elsif auth = canvas_auth(current_lti_application_instance)
@@ -18,7 +18,7 @@ module Concerns
           refresh_token: auth.refresh_token
         }
         LMS::Canvas.new(
-          UrlHelper.scheme_host(current_lti_application_instance.lti_consumer_uri),
+          UrlHelper.scheme_host_port(current_lti_application_instance.lti_consumer_uri),
           auth,
           options
         )
@@ -37,6 +37,5 @@ module Concerns
         split(",")
       user_not_authorized unless canvas_api_permissions.include?(params[:type])
     end
-
   end
 end
