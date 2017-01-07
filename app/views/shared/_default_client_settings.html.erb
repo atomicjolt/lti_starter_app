@@ -11,6 +11,8 @@
     settings[:lmsCourseId]                       = params[:custom_canvas_course_id]
     settings[:lmsUserId]                         = current_user.lti_user_id
     settings[:ltiProvider]                       = lti_provider
+    settings[:canvas_oauth_path]                 = @canvas_oauth_path
+    settings[:canvas_auth_required]              = @canvas_auth_required
 
     # LTI parameters
     settings[:contextID]                         = params["context_id"]

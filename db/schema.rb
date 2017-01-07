@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027182508) do
+ActiveRecord::Schema.define(version: 20170105051107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,15 @@ ActiveRecord::Schema.define(version: 20161027182508) do
   end
 
   add_index "nonces", ["nonce"], name: "index_nonces_on_nonce", unique: true, using: :btree
+
+  create_table "oauth_states", force: :cascade do |t|
+    t.string   "state"
+    t.text     "payload"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "oauth_states", ["state"], name: "index_oauth_states_on_state", using: :btree
 
   create_table "permissions", force: :cascade do |t|
     t.integer  "role_id"

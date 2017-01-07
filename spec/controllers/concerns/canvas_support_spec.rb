@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe ApplicationController, type: :controller do
-
   before do
     @app = FactoryGirl.create(:lti_application_instance)
     allow(controller).to receive(:current_lti_application_instance).and_return(@app)
@@ -22,13 +21,12 @@ describe ApplicationController, type: :controller do
   end
 
   it "provides access to the canvas api" do
-    get :index, lti_key: @app.lti_key, format: :json, type: 'LIST_ACCOUNTS'
+    get :index, lti_key: @app.lti_key, format: :json, type: "LIST_ACCOUNTS"
     expect(response).to have_http_status(:success)
   end
 
   it "doesn't allow access to unauthorized API endpoints" do
-    get :index, lti_key: @app.lti_key, format: :json, type: 'LIST_ACCOUNTS_FOR_COURSE_ADMINS'
+    get :index, lti_key: @app.lti_key, format: :json, type: "LIST_ACCOUNTS_FOR_COURSE_ADMINS"
     expect(response).to have_http_status(:unauthorized)
   end
-
 end

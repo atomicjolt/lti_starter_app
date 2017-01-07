@@ -40,6 +40,9 @@ module LtiStarterApp
       end
     end
 
+    # Middleware that can restore state after an Oauth request
+    config.middleware.insert_before 0, "OauthStateMiddleware"
+
     config.webpack = {
      use_manifest: false,
      asset_manifest: {},

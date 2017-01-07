@@ -230,10 +230,20 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :canvas, Rails.application.secrets.canvas_developer_id, Rails.application.secrets.canvas_developer_key, :setup => lambda{|env|
+  CANVAS_SETUP = lambda do |env|
     request = Rack::Request.new(env)
-    env['omniauth.strategy'].options[:client_options].site = request.params['canvas_url'] || request.session['canvas_url'] || 'https://canvas.instructure.com'
-  }
+    site = env["canvas.url"] ||
+           request.params["canvas_url"] ||
+           request.session["canvas_url"] ||
+           "https://canvas.instructure.com"
+
+    env["omniauth.strategy"].options[:client_options].site = site
+  end
+
+  config.omniauth :canvas,
+                  Rails.application.secrets.canvas_developer_id,
+                  Rails.application.secrets.canvas_developer_key,
+                  setup: CANVAS_SETUP
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
