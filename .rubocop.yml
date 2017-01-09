@@ -48,7 +48,7 @@ Style/CharacterLiteral:
 
 Style/ClassAndModuleChildren:
   Description: 'Checks style of children classes and modules.'
-  Enabled: true
+  Enabled: false
   EnforcedStyle: nested
 
 Metrics/ClassLength:
@@ -146,6 +146,17 @@ Style/EvenOdd:
 Style/ExtraSpacing:
   Description: 'Do not use unnecessary spacing.'
   Enabled: true
+
+Style/EmptyLinesAroundClassBody:
+  Description: 'Do not allow extra lines around class body.'
+  Enabled: false
+
+Style/EmptyLinesAroundModuleBody:
+  Description: 'Do not allow extra lines around module body.'
+  Enabled: false
+
+Style/BracesAroundHashParameters:
+  Enabled: false
 
 Style/FileName:
   Description: 'Use snake_case for source file names.'
