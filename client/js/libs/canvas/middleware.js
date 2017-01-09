@@ -36,6 +36,8 @@ function proxyCanvas(store, action, params){
     action.body
   ).then((response, error) => {
 
+    let lastPage = false;
+
     if(action.canvas.method == "get" && response.header){
       const nextUrl = getNextUrl(response.headers['link']);
       if(nextUrl){
@@ -43,6 +45,8 @@ function proxyCanvas(store, action, params){
         if(params){
           proxyCanvas(store, action, params);
         }
+      } else {
+        lastPage = true;
       }
     }
 
@@ -50,6 +54,7 @@ function proxyCanvas(store, action, params){
       type:     action.canvas.type + DONE,
       payload:  response.body,
       original: action,
+      lastPage,
       response,
       error
     }); // Dispatch the new data
