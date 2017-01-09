@@ -7,6 +7,8 @@ export function getNextUrl(link){
     });
     if(url){
       return url.split(';')[0].replace(/[\<\>\s]/g, "");
+    } else {
+      return null;
     }
   }
 }
