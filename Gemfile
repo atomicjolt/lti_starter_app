@@ -13,22 +13,22 @@ gem "pg"
 gem "apartment"
 
 # UI
-gem "sass-rails"
-gem "uglifier"
 gem "autoprefixer-rails"
 gem "non-stupid-digest-assets" # also compile assets without digest (fixes font problem)
+gem "sass-rails"
+gem "uglifier"
 
 # authentication, authorization, integrations
-gem "devise"
-gem "omniauth"
-gem "omniauth-canvas", "~>1.0.0"
-gem "oauth", "~> 0.5.0"
-gem "ims-lti", "~> 1.1.13" # IMS LTI tool consumers and providers
-gem "cancancan"
-gem "rolify"
 gem "attr_encrypted"
+gem "cancancan"
+gem "devise"
+gem "ims-lti", "~> 1.1.13" # IMS LTI tool consumers and providers
 gem "jwt", "~> 1.5.0" # json web token
 gem "lms-api"
+gem "oauth", "~> 0.5.0"
+gem "omniauth"
+gem "omniauth-canvas", "~>1.0.0"
+gem "rolify"
 
 # Email
 gem "sendgrid"
@@ -45,37 +45,38 @@ gem "heroku_secrets", git: "https://github.com/alexpeattie/heroku_secrets.git"
 
 # API Related
 gem "httparty"
-gem "rack-cors", :require => "rack/cors"
+gem "rack-cors", require: "rack/cors"
 
 # Paging
 gem "will_paginate"
 
 group :development do
-  gem "spring"
   gem "better_errors"
-  gem "binding_of_caller", :platforms=>[:mri_21]
+  gem "binding_of_caller", platforms: [:mri_21]
   gem "guard-bundler"
   gem "guard-rails"
   gem "guard-rspec"
-  gem "hub", :require=>nil
+  gem "hub", require: nil
   gem "mail_view"
   gem "mailcatcher"
   gem "quiet_assets"
   gem "rails_apps_pages"
   gem "rails_apps_testing"
   gem "rails_layout"
-  gem "rb-fchange", :require=>false
-  gem "rb-fsevent", :require=>false
-  gem "rb-inotify", :require=>false
+  gem "rb-fchange", require: false
+  gem "rb-fsevent", require: false
+  gem "rb-inotify", require: false
+  gem "spring"
 end
 
 group :development, :test do
-  gem "dotenv-rails"
   gem "byebug"
+  gem "coveralls", require: false
+  gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "faker"
   gem "rspec-rails"
-  gem "coveralls", :require=>false
+  gem "rubocop"
 end
 
 group :test do
@@ -91,4 +92,3 @@ end
 group :production do
   gem "rails_12factor"
 end
-
