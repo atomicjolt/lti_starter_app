@@ -2,7 +2,7 @@
 # Apartment can support many different "Elevators" that can take care of this routing to your data.
 # Require whichever Elevator you're using below or none if you have a custom one.
 #
-require 'apartment/elevators/generic'
+require "apartment/elevators/generic"
 # require 'apartment/elevators/domain'
 # require 'apartment/elevators/subdomain'
 # require 'apartment/elevators/first_subdomain'
@@ -11,7 +11,6 @@ require 'apartment/elevators/generic'
 # Apartment Configuration
 #
 Apartment.configure do |config|
-
   # Add any models that you do not want to be multi-tenanted, but remain in the global (public) namespace.
   # A typical example would be a Customer or Tenant model that stores each Tenant's information.
   #
@@ -88,7 +87,9 @@ end
 # }
 
 Rails.application.config.middleware.insert_before "Warden::Manager", "Apartment::Elevators::Generic", lambda { |request|
-  if lti_key = request.params["oauth_consumer_key"] || request.env["oauth.state"]["oauth_consumer_key"]
+  if lti_key = request.params["oauth_consumer_key"] ||
+      (request.env["oauth.state"] &&
+       request.env["oauth.state"]["oauth_consumer_key"])
     lti_key
   else
     raise "Please specify a valid oauth_consumer_key for this request"

@@ -1,9 +1,11 @@
 require "rails_helper"
 
 RSpec.describe Api::CanvasProxyController, type: :controller do
-
   before do
-    @lti_application = FactoryGirl.create(:lti_application, canvas_api_permissions: "LIST_ACCOUNTS,LIST_YOUR_COURSES,CREATE_NEW_SUB_ACCOUNT,UPDATE_ACCOUNT")
+    @lti_application = FactoryGirl.create(
+      :lti_application,
+      canvas_api_permissions: "LIST_ACCOUNTS,LIST_YOUR_COURSES,CREATE_NEW_SUB_ACCOUNT,UPDATE_ACCOUNT"
+    )
     @application_instance = FactoryGirl.create(:lti_application_instance, lti_application: @lti_application)
     @user = FactoryGirl.create(:user)
     @user.confirm
@@ -20,11 +22,10 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
   end
 
   describe "proxy" do
-
     before do
       allow(controller).to receive(:current_lti_application_instance).and_return(@application_instance)
       allow(LtiApplication).to receive(:find_by).with(:lti_key).and_return(@application_instance)
-      request.headers['Authorization'] = @user_token
+      request.headers["Authorization"] = @user_token
       allow(controller.request).to receive(:host).and_return("example.com")
     end
 
@@ -41,7 +42,13 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
       end
       it "should successfully call the canvas api to generate a url to get courses with extra params" do
         type = "LIST_YOUR_COURSES"
-        get "proxy", type: type, lti_key: @application_instance.lti_key, account_id: 1, include: [1, 2], per_page: 100, format: :json
+        get :proxy,
+            type: type,
+            lti_key: @application_instance.lti_key,
+            account_id: 1,
+            include: [1, 2],
+            per_page: 100,
+            format: :json
         expect(response).to have_http_status(:success)
       end
     end
@@ -49,19 +56,28 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
     describe "POST" do
       it "successfully posts to the canvas api" do
         type = "CREATE_NEW_SUB_ACCOUNT"
-        post :proxy, { account: { name: "Canvas Demo Courses" }, type: type, lti_key: @application_instance.lti_key, account_id: 1 }, format: :json
-        expect(JSON.parse(response.body)['name']).to eq("Canvas Demo Courses")
+        payload = {
+          account: { name: "Canvas Demo Courses" }
+        }.to_json
+        post :proxy, payload, type: type, lti_key: @application_instance.lti_key, account_id: 1, format: :json
+        expect(JSON.parse(response.body)["name"]).to eq("Canvas Demo Courses")
       end
     end
 
     describe "PUT" do
       it "successfully puts to the canvas api" do
         type = "UPDATE_ACCOUNT"
-        put :proxy, type: type, lti_key: @application_instance.lti_key, id: 1, name: "Canvas Demo Courses", format: :json
-        expect(JSON.parse(response.body)['name']).to eq("Canvas Demo Courses")
+        payload = {
+          name: "Canvas Demo Courses"
+        }.to_json
+        put :proxy,
+            payload,
+            type: type,
+            lti_key: @application_instance.lti_key,
+            id: 1,
+            format: :json
+        expect(JSON.parse(response.body)["name"]).to eq("Canvas Demo Courses")
       end
     end
-
   end
-
 end
