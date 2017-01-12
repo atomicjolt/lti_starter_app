@@ -91,6 +91,8 @@ Rails.application.config.middleware.insert_before "Warden::Manager", "Apartment:
       (request.env["oauth.state"] &&
        request.env["oauth.state"]["oauth_consumer_key"])
     lti_key
+  elsif lti_application_instance = LtiApplicationInstance.find_by(domain: request.host_with_port)
+    lti_application_instance.lti_key
   else
     raise "Please specify a valid oauth_consumer_key for this request"
   end

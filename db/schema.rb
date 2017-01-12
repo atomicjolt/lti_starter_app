@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170105051107) do
+ActiveRecord::Schema.define(version: 20170111234331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,13 +44,14 @@ ActiveRecord::Schema.define(version: 20170105051107) do
     t.integer  "lti_application_id"
     t.string   "lti_key"
     t.string   "lti_secret"
-    t.integer  "lti_type",                    default: 0
+    t.integer  "lti_type",                                 default: 0
     t.string   "lti_consumer_uri"
     t.string   "encrypted_canvas_token"
     t.string   "encrypted_canvas_token_salt"
     t.string   "encrypted_canvas_token_iv"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+    t.string   "domain",                      limit: 2048
   end
 
   add_index "lti_application_instances", ["lti_application_id"], name: "index_lti_application_instances_on_lti_application_id", using: :btree
