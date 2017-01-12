@@ -1,4 +1,7 @@
-import React                          from 'react'; // if you use jsx, you have to have React imported
+'use strict';
+
+// if you use jsx, you have to import React
+import React                          from 'react';
 import { Router, Route, IndexRoute }  from 'react-router';
 
 import appHistory                     from './history';
