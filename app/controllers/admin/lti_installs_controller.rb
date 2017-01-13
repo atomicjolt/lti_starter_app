@@ -3,7 +3,7 @@ class Admin::LtiInstallsController < Admin::AdminApplicationController
   before_action :setup, only: [:new, :create]
 
   def index
-    @lti_applications = LtiApplication.order(:name)
+    #@lti_applications = LtiApplication.order(:name)
   end
 
   def show

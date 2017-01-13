@@ -1,13 +1,8 @@
-<h1>LTI Applications</h1>
-
-<h3>Canvas Authentication</h3>
-<p>Authorize your instance of Canvas to enable interaction with the Canvas API.</p>
-
-<%= form_for :canvas_authentication, url: admin_canvas_authentications_path, html: { role: 'form' } do |f| -%>
-  <label>Canvas Url:</label>
-  <%= text_field_tag(:canvas_url, canvas_url, { class: 'form-control' }) %>
-  <%= submit_tag 'Login using Canvas' %>
+<% content_for :head do -%>
+  <%= webpack_styles_tag 'styles' %>
 <% end -%>
 
-
-<%= render partial: 'lti_application', collection: @lti_applications %>
+<%= render 'shared/default_client_settings' %>
+<%= webpack_manifest_script %>
+<div id="main-app"></div>
+<%= webpack_bundle_tag "lti_admin_app" %>
