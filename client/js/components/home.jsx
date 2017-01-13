@@ -2,7 +2,7 @@ import React       from 'react';
 import { connect } from 'react-redux';
 import assets      from '../libs/assets';
 
-export class Home extends React.Component {
+export default class Home extends React.Component {
 
   render(){
     const img = assets('./images/atomicjolt.jpg');
@@ -13,5 +13,3 @@ export class Home extends React.Component {
     );
   }
 }
-
-export default connect(select)(Home);
