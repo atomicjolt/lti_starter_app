@@ -3,6 +3,11 @@ puts "CREATED ADMIN USER: " << admin.email
 
 # Add an LTI Application
 applications = [{
+  name: "LTI Admin",
+  description: "LTI tool administration",
+  client_application_name: "lti_admin_app",
+  canvas_api_permissions: "",
+}, {
   name: "LTI Starter App",
   description: "LTI Starter App by Atomic Jolt",
   client_application_name: "app",
@@ -11,6 +16,11 @@ applications = [{
 }]
 
 application_instances = [{
+  application: "LTI Admin",
+  lti_key: "lti-admin-tool",
+  lti_consumer_uri: "https://atomicjolt.instructure.com",
+  domain: Rails.application.secrets.application_url
+}, {
   application: "LTI Starter App",
   lti_key: Rails.application.secrets.default_lti_key,
   lti_secret: Rails.application.secrets.default_lti_secret,
@@ -23,7 +33,7 @@ application_instances = [{
   # need a different domain for that tool since Canvas uses the domain to find the LTI tool among
   # all installed LTI tools. If two tools share the same domain then the tool discovered by Canvas
   # to do the LTI launch will be indeterminate
-  domain: Rails.application.secrets.application_url
+  domain: "admin.#{ENV['APP_URL']}"
 }]
 
 applications.each do |attrs|
