@@ -1,6 +1,6 @@
-class LtiApplicationInstance < ActiveRecord::Base
+class ApplicationInstance < ActiveRecord::Base
 
-  belongs_to :lti_application
+  belongs_to :application
 
   validates :lti_key, presence: true
   validates :lti_key, uniqueness: true
@@ -22,8 +22,8 @@ class LtiApplicationInstance < ActiveRecord::Base
   private
 
     def set_lti
-      self.lti_type ||= LtiApplicationInstance.lti_types[:basic]
-      self.lti_key = (self.lti_key || self.lti_application.name).try(:parameterize).try(:dasherize)
+      self.lti_type ||= ApplicationInstance.lti_types[:basic]
+      self.lti_key = (self.lti_key || self.application.name).try(:parameterize).try(:dasherize)
       self.lti_secret = ::SecureRandom::hex(64) unless self.lti_secret.present?
     end
 

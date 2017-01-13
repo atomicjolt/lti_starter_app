@@ -14,7 +14,7 @@ Apartment.configure do |config|
   # Add any models that you do not want to be multi-tenanted, but remain in the global (public) namespace.
   # A typical example would be a Customer or Tenant model that stores each Tenant's information.
   #
-  config.excluded_models = %w{LtiApplication LtiApplicationInstance OauthState}
+  config.excluded_models = %w{Application ApplicationInstance OauthState}
 
   # In order to migrate all of your Tenants you need to provide a list of Tenant names to Apartment.
   # You can make this dynamic by providing a Proc object to be called on migrations.
@@ -46,7 +46,7 @@ Apartment.configure do |config|
   #   end
   # end
   #
-  config.tenant_names = lambda { LtiApplicationInstance.pluck(:lti_key) }
+  config.tenant_names = lambda { ApplicationInstance.pluck(:lti_key) }
 
   #
   # ==> PostgreSQL only options
@@ -91,8 +91,8 @@ Rails.application.config.middleware.insert_before "Warden::Manager", "Apartment:
       (request.env["oauth.state"] &&
        request.env["oauth.state"]["oauth_consumer_key"])
     lti_key
-  elsif lti_application_instance = LtiApplicationInstance.find_by(domain: request.host_with_port)
-    lti_application_instance.lti_key
+  elsif application_instance = ApplicationInstance.find_by(domain: request.host_with_port)
+    application_instance.lti_key
   else
     raise "Please specify a valid oauth_consumer_key for this request"
   end

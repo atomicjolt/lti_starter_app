@@ -3,9 +3,9 @@ require "rack/mock"
 
 describe OauthStateMiddleware do
   before do
-    @lti_application_instance = FactoryGirl.create(:lti_application_instance)
+    @application_instance = FactoryGirl.create(:application_instance)
     @payload = {
-      oauth_consumer_key: @lti_application_instance.lti_key
+      oauth_consumer_key: @application_instance.lti_key
     }
     @oauth_state = FactoryGirl.create(:oauth_state, payload: @payload.to_json)
     @state = @oauth_state.state
@@ -17,8 +17,8 @@ describe OauthStateMiddleware do
 
   it "Restores env based on existing oauth_state" do
     @middleware.call(@env)
-    expect(@env["canvas.url"]).to eq(@lti_application_instance.lti_consumer_uri)
-    expect(@env["oauth.state"]["oauth_consumer_key"]).to eq(@lti_application_instance.lti_key)
+    expect(@env["canvas.url"]).to eq(@application_instance.lti_consumer_uri)
+    expect(@env["oauth.state"]["oauth_consumer_key"]).to eq(@application_instance.lti_key)
   end
 
   it "Deletes the Oauth State" do

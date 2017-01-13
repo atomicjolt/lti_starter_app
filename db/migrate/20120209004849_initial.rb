@@ -24,7 +24,7 @@ class Initial < ActiveRecord::Migration
   add_index "authentications", ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
   add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
 
-  create_table "lti_applications", force: :cascade do |t|
+  create_table "applications", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.string   "lti_key"
@@ -39,7 +39,7 @@ class Initial < ActiveRecord::Migration
     t.datetime "updated_at",                  null: false
   end
 
-  add_index "lti_applications", ["lti_key"], name: "index_lti_applications_on_lti_key", unique: true, using: :btree
+  add_index "applications", ["lti_key"], name: "index_applications_on_lti_key", unique: true, using: :btree
 
   create_table "nonces", force: :cascade do |t|
     t.string   "nonce"

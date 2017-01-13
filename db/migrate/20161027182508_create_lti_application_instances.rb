@@ -1,7 +1,7 @@
-class CreateLtiApplicationInstances < ActiveRecord::Migration
+class CreateApplicationInstances < ActiveRecord::Migration
   def change
-    create_table :lti_application_instances do |t|
-      t.integer  :lti_application_id
+    create_table :application_instances do |t|
+      t.integer  :application_id
       t.string   :lti_key
       t.string   :lti_secret
       t.integer  :lti_type, default: 0
@@ -11,13 +11,13 @@ class CreateLtiApplicationInstances < ActiveRecord::Migration
       t.string   :encrypted_canvas_token_iv
       t.timestamps null: false
     end
-    add_index :lti_application_instances, :lti_application_id
-    remove_column :lti_applications, :lti_key
-    remove_column :lti_applications, :lti_secret
-    remove_column :lti_applications, :lti_type
-    remove_column :lti_applications, :lti_consumer_uri
-    remove_column :lti_applications, :encrypted_canvas_token
-    remove_column :lti_applications, :encrypted_canvas_token_salt
-    remove_column :lti_applications, :encrypted_canvas_token_iv
+    add_index :application_instances, :application_id
+    remove_column :applications, :lti_key
+    remove_column :applications, :lti_secret
+    remove_column :applications, :lti_type
+    remove_column :applications, :lti_consumer_uri
+    remove_column :applications, :encrypted_canvas_token
+    remove_column :applications, :encrypted_canvas_token_salt
+    remove_column :applications, :encrypted_canvas_token_iv
   end
 end

@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe LtiApplication, type: :model do
+RSpec.describe Application, type: :model do
 
-  describe "create lti application" do
+  describe "create application" do
     before do
-      @lti_consumer_uri = "example.com"
+      @consumer_uri = "example.com"
     end
 
     it "requires a name" do

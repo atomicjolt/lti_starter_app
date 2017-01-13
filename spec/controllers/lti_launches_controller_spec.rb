@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe LtiLaunchesController, type: :controller do
 
   before do
-    @app = FactoryGirl.create(:lti_application_instance)
-    allow(controller).to receive(:current_lti_application_instance).and_return(@app)
+    @app = FactoryGirl.create(:application_instance)
+    allow(controller).to receive(:current_application_instance).and_return(@app)
   end
 
   describe "index" do

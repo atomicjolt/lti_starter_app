@@ -2,11 +2,11 @@ require "rails_helper"
 
 RSpec.describe Api::CanvasProxyController, type: :controller do
   before do
-    @lti_application = FactoryGirl.create(
-      :lti_application,
+    @application = FactoryGirl.create(
+      :application,
       canvas_api_permissions: "LIST_ACCOUNTS,LIST_YOUR_COURSES,CREATE_NEW_SUB_ACCOUNT,UPDATE_ACCOUNT"
     )
-    @application_instance = FactoryGirl.create(:lti_application_instance, lti_application: @lti_application)
+    @application_instance = FactoryGirl.create(:application_instance, application: @application)
     @user = FactoryGirl.create(:user)
     @user.confirm
     @user_token = AuthToken.issue_token({ user_id: @user.id })
@@ -23,8 +23,8 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
 
   describe "proxy" do
     before do
-      allow(controller).to receive(:current_lti_application_instance).and_return(@application_instance)
-      allow(LtiApplication).to receive(:find_by).with(:lti_key).and_return(@application_instance)
+      allow(controller).to receive(:current_application_instance).and_return(@application_instance)
+      allow(Application).to receive(:find_by).with(:lti_key).and_return(@application_instance)
       request.headers["Authorization"] = @user_token
       allow(controller.request).to receive(:host).and_return("example.com")
     end

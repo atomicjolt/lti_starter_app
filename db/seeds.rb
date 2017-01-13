@@ -2,7 +2,7 @@ admin = CreateAdminService.create_admin
 puts "CREATED ADMIN USER: " << admin.email
 
 # Add an LTI Application
-lti_applications = [{
+applications = [{
   name: "LTI Starter App",
   description: "LTI Starter App by Atomic Jolt",
   client_application_name: "app",
@@ -10,8 +10,8 @@ lti_applications = [{
   canvas_api_permissions: "LIST_ACCOUNTS",
 }]
 
-lti_application_instances = [{
-  lti_application: "LTI Starter App",
+application_instances = [{
+  application: "LTI Starter App",
   lti_key: Rails.application.secrets.default_lti_key,
   lti_secret: Rails.application.secrets.default_lti_secret,
   lti_consumer_uri: "https://atomicjolt.instructure.com",
@@ -26,24 +26,24 @@ lti_application_instances = [{
   domain: Rails.application.secrets.application_url
 }]
 
-lti_applications.each do |attrs|
-  if lti_application = LtiApplication.find_by(name: attrs[:name])
-    lti_application.update_attributes!(attrs)
+applications.each do |attrs|
+  if application = Application.find_by(name: attrs[:name])
+    application.update_attributes!(attrs)
   else
-    LtiApplication.create!(attrs)
+    Application.create!(attrs)
   end
 end
 
-lti_application_instances.each do |attrs|
-  lti_application = LtiApplication.find_by(name: attrs.delete(:lti_application))
-  attrs = attrs.merge(lti_application_id: lti_application.id)
-  if lti_application_instance = LtiApplicationInstance.find_by(lti_key: attrs[:lti_key])
+application_instances.each do |attrs|
+  application = Application.find_by(name: attrs.delete(:application))
+  attrs = attrs.merge(application_id: application.id)
+  if application_instance = ApplicationInstance.find_by(lti_key: attrs[:lti_key])
     # Don't change production lti keys or set keys to nil
     attrs.delete(:lti_secret) if attrs[:lti_secret].blank? || Rails.env.production?
 
-    lti_application_instance.update_attributes!(attrs)
+    application_instance.update_attributes!(attrs)
   else
-    LtiApplicationInstance.create!(attrs)
+    ApplicationInstance.create!(attrs)
   end
 end
 

@@ -3,17 +3,17 @@ module Lti
   class Utils
 
     def self.lti_configs
-      LtiApplicationInstance.find_each.map do |app|
+      ApplicationInstance.find_each.map do |app|
         domain = app.domain || Rails.application.secrets.application_url
         config = {
-          title: app.lti_application.name,
+          title: app.application.name,
           launch_url: "https://#{domain}/lti_launches",
           domain: domain,
           icon: "https://#{domain}/images/oauth_icon.png",
-          description: app.lti_application.description
+          description: app.application.description
         }
         puts "*************************************************************************************"
-        puts "LTI configuration for #{app.lti_application.name}"
+        puts "LTI configuration for #{app.application.name}"
         puts ""
         basic_out(config)
         course_navigation_config = course_nav_out(config)
@@ -57,7 +57,7 @@ module Lti
   end
 
   def self.list_all
-    LtiApplicationInstance.find_each do |app|
+    ApplicationInstance.find_each do |app|
       api = LMS::Canvas.new(
         UrlHelper.scheme_host(app.lti_consumer_uri),
         Rails.Application.secrets.canvas_token || app.canvas_token
@@ -76,8 +76,8 @@ module Lti
   end
 
   def self.destroy_all
-    LtiApplicationInstance.find_each do |app|
-      puts "Removing LTI tool: #{app.lti_application.name} Canvas url: #{app.lti_consumer_uri}"
+    ApplicationInstance.find_each do |app|
+      puts "Removing LTI tool: #{app.application.name} Canvas url: #{app.lti_consumer_uri}"
       api = LMS::Canvas.new(
         UrlHelper.scheme_host(app.lti_consumer_uri),
         Rails.Application.secrets.canvas_token || app.canvas_token

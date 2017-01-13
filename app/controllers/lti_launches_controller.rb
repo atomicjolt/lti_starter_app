@@ -15,7 +15,7 @@ class LtiLaunchesController < ApplicationController
 
     @canvas_oauth_path = user_canvas_omniauth_authorize_url(
       oauth_consumer_key: params[:oauth_consumer_key],
-      canvas_url: current_lti_application_instance.lti_consumer_uri,
+      canvas_url: current_application_instance.lti_consumer_uri,
       out_of_band: true
     )
   end

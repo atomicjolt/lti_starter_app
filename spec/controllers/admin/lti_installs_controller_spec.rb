@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Admin::LtiInstallsController, type: :controller do
   before do
-    @application = FactoryGirl.create(:lti_application)
+    @application = FactoryGirl.create(:application)
   end
 
   context "not logged in" do

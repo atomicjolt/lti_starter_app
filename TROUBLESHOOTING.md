@@ -64,8 +64,8 @@ run `./bin/deploy_heroku` instead of `git push heroku`
 
     22 <li>Configuration Type: Paste XML</li>
     23 <li>Give it a name, eg: <%= Rails.application.secrets.application_name %></li>
-    24 <li>Paste in this Consumer Key: <strong><%= current_lti_application_instance.lti_key %></strong></li>
-    25 <li>Paste in this Shared Secret: <strong><%= current_lti_application_instance.lti_secret %></strong></li>
+    24 <li>Paste in this Consumer Key: <strong><%= current_application_instance.lti_key %></strong></li>
+    25 <li>Paste in this Shared Secret: <strong><%= current_application_instance.lti_secret %></strong></li>
     26 <li>Paste in the following XML:</li>
     27 </ol>
 
