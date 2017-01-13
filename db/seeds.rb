@@ -17,9 +17,9 @@ applications = [{
 
 application_instances = [{
   application: "LTI Admin",
-  lti_key: "lti-admin-tool",
+  lti_key: "admin",
   lti_consumer_uri: "https://atomicjolt.instructure.com",
-  domain: Rails.application.secrets.application_url
+  domain: "admin.#{ENV['APP_URL']}"
 }, {
   application: "LTI Starter App",
   lti_key: Rails.application.secrets.default_lti_key,
@@ -33,7 +33,7 @@ application_instances = [{
   # need a different domain for that tool since Canvas uses the domain to find the LTI tool among
   # all installed LTI tools. If two tools share the same domain then the tool discovered by Canvas
   # to do the LTI launch will be indeterminate
-  domain: "admin.#{ENV['APP_URL']}"
+  domain: "#{Rails.application.secrets.default_lti_key}.#{ENV['APP_URL']}"
 }]
 
 applications.each do |attrs|
