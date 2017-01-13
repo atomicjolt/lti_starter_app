@@ -1,0 +1,50 @@
+.c-btn{
+  height: 3.5rem;
+  border-radius: 1.8rem;
+  padding: 0 3rem;
+  @include semi-bold;
+  font-size: 1.4rem;
+  line-height: 3.5rem;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  @include transition(all 0.1s ease);
+
+  &:focus{
+    outline: none;
+  }
+}
+
+.c-btn--yellow{
+  background: $yellow;
+  color: $text-color;
+
+  &:hover{
+    @include transform(scale(1.02));
+  }
+  &:active{
+    @include transform(scale(0.98));
+  }
+}
+
+.c-btn--back{
+  padding: 0 0 0 3rem;
+  color: $light-gray;
+  background: none;
+  border-radius: none;
+  position: relative;
+
+  i{
+    position: absolute;
+    top: 0.4rem;
+    left: 0;
+    font-size: 2.5rem;
+  }
+
+  &:hover{
+    color: $white;
+  }
+  &:active{
+    @include transform(scale(0.95));
+  }
+}

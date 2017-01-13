@@ -53,7 +53,8 @@ module.exports = {
   },
 
   cssEntries: {
-    styles: clientAppPath + 'styles/styles.js'
+    styles: clientAppPath + 'styles/styles.js',
+    admin_styles: clientAppPath + 'styles/admin_styles.js'
   }
 
 };

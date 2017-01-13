@@ -1,0 +1,121 @@
+.c-table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.c-table--lti{
+  tbody{
+
+    td{
+
+      &:nth-of-type(2){
+
+        span{
+          @include semi-bold;
+          font-size: 1.4rem;
+          color: $gray;
+        }
+      }
+    }
+  }
+}
+
+.c-table--instances{
+
+  tbody{
+
+    td{
+      vertical-align: middle;
+
+      &:nth-of-type(1){
+
+        div{
+          @include regular;
+          font-size: 1.2rem;
+          color: $gray;
+        }
+      }
+      &:nth-of-type(2){
+
+        span{
+          @include regular;
+          font-size: 1.2rem;
+          color: $gray;
+        }
+      }
+      &:nth-of-type(3){
+
+        span{
+          @include regular;
+          font-size: 1.2rem;
+          color: $gray;
+        }
+      }
+    }
+  }
+}
+
+  thead{
+
+    th{
+      text-align: left;
+      background: $lightest-gray;
+      padding: 1rem 2rem;
+
+      span{
+        @include semi-bold;
+        font-size: 1.2rem;
+        color: $subtext-color;
+      }
+    }
+  }
+
+  tbody{
+
+    td{
+      border-bottom: 0.1rem solid $lighter-gray;
+      border-top: 0.1rem solid $lighter-gray;
+      padding: 1.5rem 2rem;
+      text-align: left;
+
+      &:nth-of-type(1){
+
+        a{
+          @include semi-bold;
+          font-size: 1.4rem;
+          color: $blue;
+
+          &:hover{
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .c-delete{
+    width: 3rem;
+    height: 3rem;
+    border-radius: $radius;
+    background: $lightest-gray;
+    display: block;
+    float: right;
+    @include transition(all 0.1s ease);
+
+    i{
+      font-size: 2rem;
+      color: $light-gray;
+      position: relative;
+      top: 0.5rem;
+      left: 0.5rem;
+      @include transition(all 0.1s ease);
+    }
+
+    &:hover i{
+      color: $gray;
+    }
+    &:active{
+      @include transform(scale(0.9));
+    }
+  }

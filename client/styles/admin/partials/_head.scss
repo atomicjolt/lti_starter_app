@@ -1,0 +1,39 @@
+.c-head{
+  height: 6rem;
+  padding: 0 2rem;
+  background: $dark-gray;
+  @include display-flex;
+  @include align-items(center);
+  @include justify-content(space-between);
+  position: relative;
+}
+
+.c-back{
+  width: 15rem;
+}
+
+.c-logo{
+  position: absolute;
+  @include center(both);
+  height: 3.5rem;
+  z-index: 10;
+}
+
+.c-user{
+
+}
+
+  .c-username{
+    @include semi-bold;
+    color: $light-gray;
+    font-size: 1.4rem;
+    position: relative;
+    padding-right: 3rem;
+
+    i{
+      position: absolute;
+      font-size: 2.5rem;
+      top: -0.4rem;
+      right: 0;
+    }
+  }
