@@ -4,4 +4,5 @@ class Application < ActiveRecord::Base
   validates :name, presence: true
   validates :name, uniqueness: true
 
+  enum kind: [:lti, :admin]
 end

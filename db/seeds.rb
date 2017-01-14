@@ -7,6 +7,7 @@ applications = [{
   description: "LTI tool administration",
   client_application_name: "lti_admin_app",
   canvas_api_permissions: "",
+  kind: Application.kinds[:admin],
 }, {
   name: "LTI Starter App",
   description: "LTI Starter App by Atomic Jolt",
