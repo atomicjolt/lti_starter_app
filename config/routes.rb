@@ -50,6 +50,8 @@ Rails.application.routes.draw do
         resources :students, only: [:index]
       end
     end
+
+    resources :lti_applications
   end
 
   mount MailPreview => 'mail_view' if Rails.env.development?
