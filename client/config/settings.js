@@ -48,7 +48,7 @@ module.exports = {
   staticDir: `${clientAppPath}static`,
 
   entries: {
-    app: `${clientAppPath}js/app.jsx`
+    app: `${clientAppPath}js/app.jsx`,
     lti_admin_app: `${clientAppPath}js/lti_admin_app.jsx`
   },
 
