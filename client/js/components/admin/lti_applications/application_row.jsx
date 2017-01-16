@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 
 export default function ApplicationRow(props) {
   return (
