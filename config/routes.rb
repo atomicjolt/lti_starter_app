@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     root :to => "lti_installs#index"
     resources :canvas_authentications
     resources :lti_installs
+    resources :application_instance
   end
 
   namespace :api do
