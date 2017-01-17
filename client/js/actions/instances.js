@@ -15,6 +15,6 @@ export function getInstances() {
   return {
     type   : Constants.GET_INSTANCES,
     method : Network.GET,
-    url    : '/admin/app_instance',
+    url    : '/admin/app_instances',
   };
 }
