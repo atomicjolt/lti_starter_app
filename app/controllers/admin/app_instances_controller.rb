@@ -1,11 +1,9 @@
-class Admin::ApplicationInstanceController < ApplicationController
+class Admin::AppInstancesController < ApplicationController
 
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :only_admins!
 
   def index
-    byebug
-    t=0
     applications = Application.all
   end
 
