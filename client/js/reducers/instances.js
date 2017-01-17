@@ -6,4 +6,4 @@ export default function instances(state = initialState, action) {
     default:
       return state;
   }
-};
+}
