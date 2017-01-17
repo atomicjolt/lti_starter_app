@@ -12,14 +12,6 @@ import { getInitialSettings } from './reducers/settings';
 // Polyfill es6 promises for IE
 es6Promise.polyfill();
 
-// Needed for onTouchTap
-// Can go away when react 1.0 release
-// Check this repo:
-// https://github.com/zilverline/react-tap-event-plugin
-import injectTapEventPlugin from "react-tap-event-plugin";
-injectTapEventPlugin();
-
-
 class Root extends React.Component {
   render() {
     const devTools = __DEV__ ? <DevTools /> : null;
