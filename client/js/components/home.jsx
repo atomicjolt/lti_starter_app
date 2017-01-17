@@ -4,7 +4,7 @@ import assets      from '../libs/assets';
 
 export default class Home extends React.Component {
 
-  render(){
+  render() {
     const img = assets('./images/atomicjolt.jpg');
     return (
       <div>
