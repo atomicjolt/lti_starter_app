@@ -1,5 +1,5 @@
 import React      from 'react';
-import _          from 'lodash'
+import _          from 'lodash';
 
 export default function instance(props) {
   return (
@@ -11,7 +11,7 @@ export default function instance(props) {
       <td><span>{props.lti_key}</span></td>
       <td><span>{props.domain}</span></td>
       <td>
-        <button className="c-delete" onClick={props.delete()}>
+        <button className="c-delete" onClick={props.delete}>
           <i className="i-delete" />
         </button>
       </td>

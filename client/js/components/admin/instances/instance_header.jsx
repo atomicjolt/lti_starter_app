@@ -30,7 +30,7 @@ export default class InstanceHeader extends React.Component {
       <div className="c-info">
         <div className="c-title">
           <h1>Instances</h1>
-          <h3>Attendance
+          <h3>{this.props.appName || 'App Name' }
             <button
               style={styles.buttonIcon}
               onClick={() => this.setState({ settingsOpen: !this.state.settingsOpen })}

@@ -9,6 +9,7 @@ export default class InstanceList extends React.Component {
 
   deleteInstance() {
     // TODO : Write Me!
+    console.log('delete me');
   }
 
   render() {

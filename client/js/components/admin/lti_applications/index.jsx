@@ -13,7 +13,7 @@ export class Home extends React.Component {
   static propTypes = {
     getLtiApplications: React.PropTypes.func.isRequired,
     ltiApplications: React.PropTypes.array,
-  }
+  };
 
   componentDidMount() {
     this.props.getLtiApplications();
