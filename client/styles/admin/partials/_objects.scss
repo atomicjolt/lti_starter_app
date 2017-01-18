@@ -1,9 +1,27 @@
 .o-contain{
-  margin: -6rem auto 0;
-  padding: 6rem 2rem 0;
+  margin: -6rem 0 0;
+  padding: 6rem 0 0 34rem;
   height: 100%;
+  position: relative;
 }
 
 .o-contain--full{
+  margin: -6rem auto 0;
+  padding: 6rem 2rem 0;
   max-width: 100rem;
 }
+
+  .o-left{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 34rem;
+    height: 100%;
+    background: $darker-gray;
+    padding-top: 6rem;
+  }
+
+  .o-right{
+    padding: 0 2rem;
+    height: 100%;
+  }
