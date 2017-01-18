@@ -29,7 +29,6 @@ export class Home extends React.Component {
         />
       );
     });
-
     return (
       <div className="o-contain o-contain--full">
 
