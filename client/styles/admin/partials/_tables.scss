@@ -101,14 +101,14 @@
     background: $lightest-gray;
     display: block;
     float: right;
+    border: none;
+    cursor: pointer;
     @include transition(all 0.1s ease);
 
     i{
       font-size: 2rem;
       color: $light-gray;
       position: relative;
-      top: 0.5rem;
-      left: 0.5rem;
       @include transition(all 0.1s ease);
     }
 

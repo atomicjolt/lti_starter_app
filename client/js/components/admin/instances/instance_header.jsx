@@ -17,16 +17,19 @@ export default function instanceHeader(props) {
       <div className="c-title">
         <h1>Instances</h1>
         <h3>Attendance
-          <button style={styles.buttonIcon} onClick={() => props.openSettings()}>
+          <button style={styles.buttonIcon} onClick={props.openSettings}>
             <i className="i-settings" />
           </button>
         </h3>
       </div>
-      <button className="c-btn c-btn--yellow">New Instance</button>
+      <button className="c-btn c-btn--yellow" onClick={props.newInstance}>
+        New Instance
+      </button>
     </div>
   );
 }
 
 instanceHeader.propTypes = {
-  openSettings: React.PropTypes.func.isRequired,
+  openSettings : React.PropTypes.func.isRequired,
+  newInstance  : React.PropTypes.func.isRequired,
 };

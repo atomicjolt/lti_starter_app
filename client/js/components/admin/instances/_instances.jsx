@@ -1,7 +1,7 @@
 import React                from 'react';
 import { connect }          from 'react-redux';
 import InstanceHeader       from './instance_header';
-import Search               from './search';
+import Search               from '../common/search';
 import InstanceList         from './instance_list';
 import * as InstanceActions from '../../../actions/instances';
 
@@ -11,12 +11,17 @@ const select = state => ({
 
 export class Instances extends React.Component {
   static propTypes = {
-    instances: React.PropTypes.shape({}).isRequired,
-    getInstances: React.PropTypes.func.isRequired,
+    instances    : React.PropTypes.shape({}).isRequired,
+    getInstances : React.PropTypes.func.isRequired,
   };
 
   componentWillMount() {
     this.props.getInstances();
+  }
+
+  newInstance() {
+    // TODO: write me
+    console.log('new instance');
   }
 
   search(searchText) {
@@ -26,7 +31,10 @@ export class Instances extends React.Component {
   render() {
     return (
       <div className="o-contain o-contain--full">
-        <InstanceHeader />
+        <InstanceHeader
+          openSettings={() => console.log('write me')}
+          newInstance={() => this.newInstance()}
+        />
         <Search
           search={text => this.search(text)}
         />

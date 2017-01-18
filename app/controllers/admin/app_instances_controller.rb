@@ -5,6 +5,7 @@ class Admin::AppInstancesController < ApplicationController
 
   def index
     applications = ApplicationInstance.all
+    render json: applications
   end
 
   private
