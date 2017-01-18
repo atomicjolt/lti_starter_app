@@ -4,7 +4,7 @@ import { Router, Route, IndexRoute }  from 'react-router';
 
 import appHistory                     from './history';
 import Index                          from './components/layout/index';
-import Home                          from './components/home';
+import Home                           from './components/home';
 import NotFound                       from './components/common/not_found';
 
 export default (
