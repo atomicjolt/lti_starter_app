@@ -24,7 +24,7 @@ export class Instances extends React.Component {
 
   newInstance() {
     // TODO: write me
-    // console.log('new instance');
+    console.log('new instance');
   }
 
   search(searchText) {

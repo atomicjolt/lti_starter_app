@@ -1,0 +1,105 @@
+.c-tool{
+  padding: 2.5rem 2rem;
+  border-bottom: 0.1rem solid $gray;
+  position: relative;
+
+  i.i-settings{
+    font-size: 2rem;
+    color: $gray;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    @include transition(all 0.1s ease);
+
+    &:hover{
+      color: $yellow;
+    }
+    &:active{
+      @include transform(scale(0.9));
+    }
+  }
+}
+
+  .c-tool__subtitle{
+    font-size: 1.2rem;
+    color: $yellow;
+    text-transform: uppercase;
+    @include regular;
+    letter-spacing: 0.1rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .c-tool__title{
+    font-size: 2.4rem;
+    color: $white;
+    @include semi-bold;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .c-tool__instance{
+    font-size: 1.6rem;
+    color: $light-gray;
+    @include semi-bold;
+    line-height: 1.1;
+    margin: 0rem 0 0;
+  }
+
+
+.c-filters{
+  padding: 2.5rem 2rem;
+}
+
+  .c-accounts{
+    font-size: 1.2rem;
+    color: $light-gray;
+    text-transform: uppercase;
+    @include regular;
+    letter-spacing: 0.1rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .c-filter-list{
+
+  }
+
+    .c-filter__item{
+      margin-top: 0.1rem;
+
+      & > a span{
+        @include semi-bold;
+        font-size: 1.6rem;
+        color: $white;
+        border-right: 0.5rem solid $darker-gray;
+        display: block;
+        padding: 0.5rem 0.5rem 0.5rem 3rem;
+        position: relative;
+
+        i{
+          font-size: 2rem;
+          position: absolute;
+          left: 0.5rem;
+          top: 0.4rem;
+          @include transform(rotate(-90deg));
+          @include transition(all 0.1s ease);
+        }
+
+        &:hover{
+          background: $dark-gray;
+          border-right-color: $dark-gray;
+        }
+      }
+
+      &.is-active > a span{
+        background: $gray2;
+        border-right-color: $yellow;
+
+        i{
+          @include transform(rotate(0));
+        }
+      }
+    }
+
+      .c-filter__dropdown{
+        padding-left: 1rem;
+      }
