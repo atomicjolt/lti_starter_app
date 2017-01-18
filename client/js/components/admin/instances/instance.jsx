@@ -1,8 +1,6 @@
 import React      from 'react';
 
 export default function instance(props) {
-  console.log(props);
-
   return (
     <tr>
       <td>
