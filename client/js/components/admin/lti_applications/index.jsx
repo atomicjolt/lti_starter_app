@@ -26,6 +26,7 @@ export class Home extends React.Component {
           key={index}
           name={application.name}
           instances={application.instances}
+          id={application.id}
         />
       );
     });

@@ -7,6 +7,7 @@ import * as InstanceActions from '../../../actions/instances';
 
 const select = state => ({
   instances: state.instances,
+
 });
 
 export class Instances extends React.Component {
@@ -16,12 +17,15 @@ export class Instances extends React.Component {
   };
 
   componentWillMount() {
-    this.props.getInstances();
+    const applicationId = this.props.params.applicationId;
+    debugger
+    this.props.getInstructureInstances(applicationId);
+
   }
 
   newInstance() {
     // TODO: write me
-    console.log('new instance');
+    // console.log('new instance');
   }
 
   search(searchText) {
@@ -29,6 +33,7 @@ export class Instances extends React.Component {
   }
 
   render() {
+    debugger
     return (
       <div className="o-contain o-contain--full">
         <InstanceHeader

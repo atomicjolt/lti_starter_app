@@ -11,10 +11,11 @@ const requests = [
 
 export const Constants = wrapper(actions, requests);
 
-export function getInstances() {
+export function getInstructureInstances(applicationId) {
   return {
     type   : Constants.GET_INSTANCES,
     method : Network.GET,
     url    : '/admin/app_instances',
+    params :  { application_id: applicationId }
   };
 }

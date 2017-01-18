@@ -4,7 +4,7 @@ class Admin::AppInstancesController < ApplicationController
   before_action :only_admins!
 
   def index
-    applications = ApplicationInstance.all
+    applications = ApplicationInstance.where(application_id: params[:application_id])
     render json: applications
   end
 

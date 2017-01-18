@@ -12,6 +12,7 @@ export default (
   <Router history={appHistory}>
     <Route path="/" component={Index}>
       <IndexRoute component={Admin} />
+      <Route path="/instances/:applicationId" component={Instances} />
     </Route>
     <Route path="*" component={NotFound} />
   </Router>
