@@ -13,7 +13,7 @@ export default class Index extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="app-index">
         {this.props.children}
       </div>
     );
