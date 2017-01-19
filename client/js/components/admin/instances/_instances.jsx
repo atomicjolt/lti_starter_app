@@ -16,7 +16,7 @@ export class Instances extends React.Component {
   };
 
   componentWillMount() {
-    this.props.getInstances();
+    this.props.getInstances(this.props.params.applicationId);
   }
 
   newInstance() {

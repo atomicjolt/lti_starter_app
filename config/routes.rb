@@ -52,7 +52,11 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :lti_applications
+    resources :lti_applications do
+      resources :instances
+    end
+
+    resources :canvas_accounts, only: [:index]
   end
 
   mount MailPreview => 'mail_view' if Rails.env.development?

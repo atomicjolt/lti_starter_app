@@ -1,10 +1,11 @@
 import React      from 'react';
+import { Link }   from 'react-router';
 
 export default function instance(props) {
   return (
     <tr>
       <td>
-        <a href="">{_.capitalize(_.replace(props.lti_consumer_uri.split('.')[0], 'https://', ''))}</a>
+        <Link to={`instances/${props.id}/installs`}>{_.capitalize(_.replace(props.lti_consumer_uri.split('.')[0], 'https://', ''))}</Link>
         <div>{_.replace(props.lti_consumer_uri, 'https://', '')}</div>
       </td>
       <td><span>{props.lti_key}</span></td>

@@ -6,15 +6,18 @@ const actions = [];
 
 // Actions that make an api request
 const requests = [
-  'GET_INSTANCES',
+  'GET_ALL_ACCOUNTS',
 ];
 
 export const Constants = wrapper(actions, requests);
 
-export function getInstances(applicationId) {
+export function getAllAccounts(oauthConsumerKey) {
   return {
-    type   : Constants.GET_INSTANCES,
-    method : Network.GET,
-    url    : `/api/lti_applications/${applicationId}/instances`,
+    type: Constants.GET_ALL_ACCOUNTS,
+    method: Network.GET,
+    url: 'api/canvas_accounts',
+    params: {
+      oauth_consumer_key: oauthConsumerKey
+    }
   };
 }

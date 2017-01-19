@@ -5,7 +5,7 @@ import ReactDOM               from 'react-dom';
 import { Provider }           from 'react-redux';
 import routes                 from './admin_routes';
 import DevTools               from './dev/dev_tools';
-import configureStore         from './store/configure_store';
+import configureStore         from './store/configure_admin_store';
 import jwt                    from './loaders/jwt';
 import { getInitialSettings } from './reducers/settings';
 

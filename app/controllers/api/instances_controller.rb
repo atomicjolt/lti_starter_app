@@ -1,10 +1,12 @@
-class Admin::AppInstancesController < ApplicationController
+class Api::InstancesController < ApplicationController
+  include Concerns::JwtToken
 
   before_action :authenticate_user!
   before_action :only_admins!
+  before_action :validate_token
 
   def index
-    applications = ApplicationInstance.all
+    applications = ApplicationInstance.where(application_id: params[:lti_application_id])
     render json: applications
   end
 
