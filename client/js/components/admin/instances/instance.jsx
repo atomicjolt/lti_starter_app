@@ -6,7 +6,7 @@ export default function instance(props) {
   return (
     <tr>
       <td>
-        <Link to={`/installs/${7}`}>{_.capitalize(_.replace(props.lti_consumer_uri.split('.')[0], 'https://', ''))}</Link>
+        <Link to={`/installs/${props.id}`}>{_.capitalize(_.replace(props.lti_consumer_uri.split('.')[0], 'https://', ''))}</Link>
         <div>{_.replace(props.lti_consumer_uri, 'https://', '')}</div>
       </td>
       <td><span>{props.lti_key}</span></td>
@@ -21,8 +21,9 @@ export default function instance(props) {
 }
 
 instance.propTypes = {
-  delete           : React.PropTypes.func.isRequired,
-  lti_consumer_uri : React.PropTypes.string,
-  lti_key          : React.PropTypes.string,
-  domain           : React.PropTypes.string,
+  delete: React.PropTypes.func.isRequired,
+  lti_consumer_uri: React.PropTypes.string.isRequired,
+  lti_key: React.PropTypes.string.isRequired,
+  domain: React.PropTypes.string.isRequired,
+  id: React.PropTypes.number.isRequired,
 };

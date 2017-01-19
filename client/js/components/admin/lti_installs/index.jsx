@@ -13,7 +13,7 @@ function select(state) {
 export class Home extends React.Component {
   static propTypes = {
     getAccounts: React.PropTypes.func.isRequired
-  }
+  };
 
   componentDidMount() {
     // this.props.getAccounts(1);
