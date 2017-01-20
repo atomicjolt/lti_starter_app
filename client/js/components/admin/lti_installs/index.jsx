@@ -35,7 +35,10 @@ export class Home extends React.Component {
   render() {
     return (
       <div style={{ height: '100%' }}>
-        <Header back={() => hashHistory.goBack()} userName={this.props.userName} />
+        <Header
+          back={() => hashHistory.goBack()}
+          userName={this.props.userName}
+        />
         <div className="o-contain">
           <Sidebar accounts={this.props.accounts} />
           <InstallPane courses={this.props.courses} accounts={this.props.accounts} />
