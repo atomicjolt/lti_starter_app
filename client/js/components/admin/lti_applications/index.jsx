@@ -1,5 +1,6 @@
 import React                  from 'react';
 import { connect }            from 'react-redux';
+import _                      from 'lodash';
 import { getLtiApplications } from '../../../actions/lti_applications';
 import ApplicationRow         from './application_row';
 
@@ -12,8 +13,8 @@ function select(state) {
 export class Home extends React.Component {
   static propTypes = {
     getLtiApplications: React.PropTypes.func.isRequired,
-    ltiApplications: React.PropTypes.array,
-  };
+    ltiApplications: React.PropTypes.shape({}).isRequired
+  }
 
   componentDidMount() {
     this.props.getLtiApplications();
@@ -24,9 +25,7 @@ export class Home extends React.Component {
       return (
         <ApplicationRow
           key={index}
-          name={application.name}
-          instances={application.instances}
-          id={application.id}
+          {...application}
         />
       );
     });

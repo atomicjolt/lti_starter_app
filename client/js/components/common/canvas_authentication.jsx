@@ -1,21 +1,25 @@
-import React       from 'react';
-import { connect } from 'react-redux';
+import _              from 'lodash';
+import React          from 'react';
+import { connect }    from 'react-redux';
 
 const select = state => ({
-  canvasOauthPath: state.settings.canvas_oauth_path
+  settings: state.settings
 });
 
 export class CanvasAuthentication extends React.Component {
 
-  authorize(){
-    window.open(this.props.canvasOauthPath, 'Authenticate', 'width=600,height=600');
+  renderSettings(){
+    return _.map(this.props.settings, (value, key) => {
+      return <input key={key} type="hidden" value={value} name={key} />
+    })
   }
 
   render(){
     return (
-      <a target="popup"
-        onClick={e => this.authorize}
-        href={this.props.canvasOauthPath}>Authorize Application</a>
+      <form action={this.props.settings.canvas_oauth_path}>
+        <input type="submit" value="Authorize" />
+        { this.renderSettings() }
+      </form>
     );
   }
 }

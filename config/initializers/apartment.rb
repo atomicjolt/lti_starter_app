@@ -87,14 +87,12 @@ end
 # }
 
 Rails.application.config.middleware.insert_before "Warden::Manager", "Apartment::Elevators::Generic", lambda { |request|
-  if lti_key = request.params["oauth_consumer_key"] ||
-      (request.env["oauth.state"] &&
-       request.env["oauth.state"]["oauth_consumer_key"])
+  if lti_key = request.params["oauth_consumer_key"]
     lti_key
   elsif application_instance = ApplicationInstance.find_by(domain: request.host_with_port)
     application_instance.lti_key
   else
-    raise "Please specify a valid oauth_consumer_key for this request"
+    raise "Please specify a valid oauth_consumer_key or valid domain name for this request"
   end
 }
 

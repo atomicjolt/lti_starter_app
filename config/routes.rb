@@ -45,6 +45,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :jwts
+    resources :oauths
     resources :courses, only: [] do
       resources :students, only: [:index]
       resources :sections, only: [] do
@@ -52,7 +53,11 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :lti_applications
+    resources :lti_applications do
+      resources :instances
+    end
+
+    resources :canvas_accounts, only: [:index]
   end
 
   mount MailPreview => 'mail_view' if Rails.env.development?

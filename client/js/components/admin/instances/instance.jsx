@@ -6,7 +6,7 @@ export default function instance(props) {
   return (
     <tr>
       <td>
-        <Link to={`/installs/${props.id}`}>{_.capitalize(_.replace(props.lti_consumer_uri.split('.')[0], 'https://', ''))}</Link>
+        <Link to={`instances/${props.id}/installs`}>{_.capitalize(_.replace(props.lti_consumer_uri.split('.')[0], 'https://', ''))}</Link>
         <div>{_.replace(props.lti_consumer_uri, 'https://', '')}</div>
       </td>
       <td><span>{props.lti_key}</span></td>
