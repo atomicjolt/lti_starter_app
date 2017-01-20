@@ -2,8 +2,8 @@ import React        from 'react';
 
 export default class DropDownItem extends React.Component {
   static propTypes = {
-    children  : React.PropTypes.node.isRequired,
-    onClick   : React.PropTypes.func,
+    children: React.PropTypes.node.isRequired,
+    onClick: React.PropTypes.func,
   };
 
   constructor() {
@@ -17,10 +17,10 @@ export default class DropDownItem extends React.Component {
         backgroundColor: this.state.hovered ? 'grey' : 'white',
       },
       button: {
-        border          : 'none',
-        backgroundColor : 'transparent',
-        fontSize        : '1em',
-        cursor          : 'pointer',
+        border: 'none',
+        backgroundColor: 'transparent',
+        fontSize: '1em',
+        cursor: 'pointer',
       }
     };
   }

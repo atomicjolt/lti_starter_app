@@ -14,7 +14,7 @@ const select = state => ({
 export class Instances extends React.Component {
   static propTypes = {
     instances: React.PropTypes.shape({}).isRequired,
-    getInstances: React.PropTypes.func.isRequired,
+    getInstructureInstances: React.PropTypes.func.isRequired,
     ltiApplications: React.PropTypes.shape({}).isRequired,
     params: React.PropTypes.shape({
       applicationId: React.PropTypes.string.isRequired,
@@ -32,15 +32,6 @@ export class Instances extends React.Component {
 
   }
 
-  newInstance() {
-    // TODO: write me
-    // console.log('new instance');
-  }
-
-  search(searchText) {
-    // TODO: write me
-  }
-
   getStyles() {
     return {
       modal: {
@@ -52,6 +43,15 @@ export class Instances extends React.Component {
         }
       }
     };
+  }
+
+  search(searchText) {
+    // TODO: write me
+  }
+
+  newInstance() {
+    // TODO: write me
+    // console.log('new instance');
   }
 
   render() {

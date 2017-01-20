@@ -21,14 +21,12 @@ export class Home extends React.Component {
   }
 
   render() {
-    const applicationRows = _.map(this.props.ltiApplications, (application, index) => {
-      return (
+    const applicationRows = _.map(this.props.ltiApplications, (application, index) => (
         <ApplicationRow
           key={index}
           {...application}
         />
       );
-    });
     return (
       <div className="o-contain o-contain--full">
 

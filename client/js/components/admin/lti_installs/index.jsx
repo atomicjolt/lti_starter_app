@@ -12,7 +12,8 @@ function select(state) {
 
 export class Home extends React.Component {
   static propTypes = {
-    getAccounts: React.PropTypes.func.isRequired
+    accounts: React.PropTypes.shape({}).isRequired,
+    courses: React.PropTypes.shape({}).isRequired,
   };
 
   componentDidMount() {
