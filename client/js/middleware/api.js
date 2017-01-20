@@ -6,15 +6,15 @@ const API = store => next => (action) => {
     const state = store.getState();
     const updatedParams = {
       // Add consumer key to requests to indicate which lti app requests are originating from
-      oauth_consumer_key: state.settings.oauthConsumerKey,
+      oauth_consumer_key: state.settings.oauth_consumer_key,
       ...params
     };
     const promise = api.execRequest(
       method,
       url,
-      state.settings.apiUrl,
+      state.settings.api_url,
       state.jwt,
-      state.settings.csrfToken,
+      state.settings.csrf_token,
       updatedParams,
       body,
       headers,

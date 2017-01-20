@@ -1,4 +1,6 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  include Concerns::LtiSupport
+
   before_filter :verify_oauth_response, except: [:passthru]
   before_filter :associated_using_oauth, except: [:passthru]
   before_filter :find_using_oauth, except: [:passthru]
@@ -22,15 +24,12 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     @user.save!
 
-    flash[:notice] = I18n.t "devise.omniauth_callbacks.success", kind: "Canvas"
+    @lti_launch = true
+    @canvas_oauth_path = user_canvas_omniauth_authorize_url
+    @canvas_url = current_application_instance.lti_consumer_uri
+    @canvas_auth_required = false
 
-    if request.env["oauth.state"]["out_of_band"] == "true"
-      render :out_of_band
-    elsif request.env["omniauth.origin"].present?
-      redirect_to request.env["omniauth.origin"]
-    else
-      redirect_to relaunch_lti_tool_path
-    end
+    render "lti_launches/index", layout: "client"
   end
 
   protected
