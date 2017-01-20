@@ -1,5 +1,4 @@
 import React from 'react';
-import Heading from '../admin/common/heading';
 
 export default class Index extends React.Component {
 
@@ -15,7 +14,6 @@ export default class Index extends React.Component {
   render() {
     return (
       <div className="app-index">
-        <Heading />
         {this.props.children}
       </div>
     );
