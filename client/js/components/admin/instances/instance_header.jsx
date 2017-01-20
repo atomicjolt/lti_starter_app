@@ -3,18 +3,20 @@ import DropDown        from './settings_drop_down';
 
 export default class InstanceHeader extends React.Component {
   static propTypes = {
-    newInstance  : React.PropTypes.func.isRequired,
-    instance     : React.PropTypes.object.isRequired,
+    newInstance: React.PropTypes.func.isRequired,
+    instance: React.PropTypes.object.shape({
+      name: React.PropTypes.string,
+    }).isRequired,
   };
 
   static getStyles() {
     return {
       buttonIcon: {
-        border          : 'none',
-        backgroundColor : 'transparent',
-        color           : 'grey',
-        fontSize        : '1em',
-        cursor          : 'pointer',
+        border: 'none',
+        backgroundColor: 'transparent',
+        color: 'grey',
+        fontSize: '1em',
+        cursor: 'pointer',
       },
     };
   }

@@ -12,8 +12,10 @@ const select = state => ({
 
 export class Instances extends React.Component {
   static propTypes = {
-    instances    : React.PropTypes.shape({}).isRequired,
-    getInstances : React.PropTypes.func.isRequired,
+    instances: React.PropTypes.shape({}).isRequired,
+    getInstances: React.PropTypes.func.isRequired,
+    ltiApplications: React.PropTypes.shape({}).isRequired,
+    params: React.PropTypes.number
   };
 
   componentWillMount() {
