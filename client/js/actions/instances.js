@@ -13,8 +13,8 @@ export const Constants = wrapper(actions, requests);
 
 export function getInstances(applicationId) {
   return {
-    type   : Constants.GET_INSTANCES,
-    method : Network.GET,
-    url    : `/api/lti_applications/${applicationId}/instances`,
+    type: Constants.GET_INSTANCES,
+    method: Network.GET,
+    url: `/api/lti_applications/${applicationId}/instances`,
   };
 }

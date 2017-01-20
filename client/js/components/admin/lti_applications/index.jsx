@@ -1,7 +1,7 @@
 import React                  from 'react';
 import { connect }            from 'react-redux';
 import _                      from 'lodash';
-import { getLtiApplications } from '../../../actions/lti_applications';
+import { getInstructureInstances } from '../../../actions/lti_applications';
 import ApplicationRow         from './application_row';
 
 function select(state) {
@@ -12,24 +12,24 @@ function select(state) {
 
 export class Home extends React.Component {
   static propTypes = {
-    getLtiApplications: React.PropTypes.func.isRequired,
+    getInstructureInstances: React.PropTypes.func.isRequired,
     ltiApplications: React.PropTypes.shape({}).isRequired
   }
 
   componentDidMount() {
-    this.props.getLtiApplications();
+    this.props.getInstructureInstances();
   }
 
   render() {
     const applicationRows = _.map(this.props.ltiApplications, (application, index) => (
-        <ApplicationRow
-          key={index}
-          {...application}
-        />
-      );
+      <ApplicationRow
+        key={index}
+        {...application}
+      />
+    ));
+
     return (
       <div className="o-contain o-contain--full">
-
         <div className="c-info">
           <div className="c-title">
             <h1>LTI Applications</h1>
@@ -39,7 +39,6 @@ export class Home extends React.Component {
             <i className="i-search" />
           </div>
         </div>
-
         <table className="c-table c-table--lti">
           <thead>
             <tr>
@@ -51,10 +50,9 @@ export class Home extends React.Component {
             { applicationRows }
           </tbody>
         </table>
-
       </div>
     );
   }
 }
 
-export default connect(select, { getLtiApplications })(Home);
+export default connect(select, { getInstructureInstances })(Home);

@@ -14,7 +14,7 @@ const select = state => ({
 export class Instances extends React.Component {
   static propTypes = {
     instances: React.PropTypes.shape({}).isRequired,
-    getInstructureInstances: React.PropTypes.func.isRequired,
+    getInstances: React.PropTypes.func.isRequired,
     ltiApplications: React.PropTypes.shape({}).isRequired,
     params: React.PropTypes.shape({
       applicationId: React.PropTypes.string.isRequired,
@@ -27,9 +27,7 @@ export class Instances extends React.Component {
   }
 
   componentWillMount() {
-    const applicationId = this.props.params.applicationId;
-    this.props.getInstructureInstances(applicationId);
-
+    this.props.getInstances(this.props.params.applicationId);
   }
 
   getStyles() {
