@@ -96,4 +96,6 @@ export class BaseInstances extends React.Component {
   }
 }
 
-export default connect(select, { ...InstanceActions, ...{ getInstructureInstances } })(BaseInstances);
+export default connect(select, {
+  ...InstanceActions, ...{ getInstructureInstances }
+})(BaseInstances);
