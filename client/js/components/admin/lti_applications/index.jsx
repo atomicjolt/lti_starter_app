@@ -12,7 +12,7 @@ function select(state) {
 export class Home extends React.Component {
   static propTypes = {
     getLtiApplications: React.PropTypes.func.isRequired,
-    ltiApplications: React.PropTypes.array,
+    ltiApplications: React.PropTypes.object,
   }
 
   componentDidMount() {

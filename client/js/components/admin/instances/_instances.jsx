@@ -7,6 +7,7 @@ import * as InstanceActions from '../../../actions/instances';
 
 const select = state => ({
   instances: state.instances,
+  ltiApplications: state.ltiApplications,
 });
 
 export class Instances extends React.Component {
@@ -21,7 +22,7 @@ export class Instances extends React.Component {
 
   newInstance() {
     // TODO: write me
-    console.log('new instance');
+    // console.log('new instance');
   }
 
   search(searchText) {
@@ -29,11 +30,13 @@ export class Instances extends React.Component {
   }
 
   render() {
+
     return (
       <div className="o-contain o-contain--full">
         <InstanceHeader
           openSettings={() => console.log('write me')}
           newInstance={() => this.newInstance()}
+          instance={this.props.ltiApplications[this.props.params.applicationId]}
         />
         <Search
           search={text => this.search(text)}

@@ -1,17 +1,13 @@
-import React    from 'react';
-import DropDown from './settings_drop_down';
+import React           from 'react';
+import DropDown        from './settings_drop_down';
 
 export default class InstanceHeader extends React.Component {
   static propTypes = {
     newInstance  : React.PropTypes.func.isRequired,
+    instance     : React.PropTypes.object.isRequired,
   };
 
-  constructor() {
-    super();
-    this.state = { settingsOpen: false }
-  }
-
-  getStyles() {
+  static getStyles() {
     return {
       buttonIcon: {
         border          : 'none',
@@ -23,14 +19,18 @@ export default class InstanceHeader extends React.Component {
     };
   }
 
-  render() {
-    const styles = this.getStyles();
+  constructor() {
+    super();
+    this.state = { settingsOpen: false };
+  }
 
+  render() {
+    const styles = InstanceHeader.getStyles();
     return (
       <div className="c-info">
         <div className="c-title">
           <h1>Instances</h1>
-          <h3>Attendance
+          <h3>{this.props.instance.name}
             <button
               style={styles.buttonIcon}
               onClick={() => this.setState({ settingsOpen: !this.state.settingsOpen })}
