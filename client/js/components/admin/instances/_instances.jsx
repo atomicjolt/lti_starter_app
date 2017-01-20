@@ -15,7 +15,7 @@ export class Instances extends React.Component {
     instances: React.PropTypes.shape({}).isRequired,
     getInstances: React.PropTypes.func.isRequired,
     ltiApplications: React.PropTypes.shape({}).isRequired,
-    params: React.PropTypes.number
+    params: React.PropTypes.number.isRequired
   };
 
   componentWillMount() {

@@ -11,7 +11,7 @@ export default function ApplicationRow(props) {
 }
 
 ApplicationRow.propTypes = {
-  name      : React.PropTypes.string.isRequired,
-  instances : React.PropTypes.number.isRequired,
-  id        : React.PropTypes.number.isRequired,
+  name: React.PropTypes.string.isRequired,
+  instances: React.PropTypes.number.isRequired,
+  id: React.PropTypes.number.isRequired,
 };
