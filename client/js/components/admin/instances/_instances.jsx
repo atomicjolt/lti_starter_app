@@ -21,16 +21,7 @@ export class Instances extends React.Component {
     }).isRequired
   };
 
-  constructor() {
-    super();
-    this.state = { modalOpen: false };
-  }
-
-  componentWillMount() {
-    this.props.getInstances(this.props.params.applicationId);
-  }
-
-  getStyles() {
+  static getStyles() {
     return {
       modal: {
         overlay: {
@@ -43,17 +34,25 @@ export class Instances extends React.Component {
     };
   }
 
+  constructor() {
+    super();
+    this.state = { modalOpen: false };
+  }
+
+  componentWillMount() {
+    this.props.getInstances(this.props.params.applicationId);
+  }
+
   search(searchText) {
     // TODO: write me
   }
 
   newInstance() {
     // TODO: write me
-    // console.log('new instance');
   }
 
   render() {
-    const styles = this.getStyles();
+    const styles = Instances.getStyles();
     return (
       <div className="o-contain o-contain--full">
         <Modal
