@@ -11,7 +11,7 @@ const select = state => ({
   ltiApplications: state.ltiApplications,
 });
 
-export class Instances extends React.Component {
+export class BaseInstances extends React.Component {
   static propTypes = {
     instances: React.PropTypes.shape({}).isRequired,
     getInstances: React.PropTypes.func.isRequired,
@@ -52,7 +52,7 @@ export class Instances extends React.Component {
   // }
 
   render() {
-    const styles = Instances.getStyles();
+    const styles = BaseInstances.getStyles();
     return (
       <div className="o-contain o-contain--full">
         <Modal
@@ -80,4 +80,4 @@ export class Instances extends React.Component {
   }
 }
 
-export default connect(select, InstanceActions)(Instances);
+export default connect(select, InstanceActions)(BaseInstances);
