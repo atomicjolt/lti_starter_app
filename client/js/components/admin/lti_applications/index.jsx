@@ -24,8 +24,7 @@ export class Home extends React.Component {
       return (
         <ApplicationRow
           key={index}
-          name={application.name}
-          instances={application.instances}
+          {...application}
         />
       );
     });

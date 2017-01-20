@@ -6,7 +6,7 @@ import Auth    from './common/canvas_authentication'
 
 export default class Home extends React.Component {
 
-  render(){
+  render() {
     const img = assets('./images/atomicjolt.jpg');
     return (
       <div>

@@ -1,9 +1,10 @@
-import React from 'react';
+import React    from 'react';
+import { Link } from 'react-router';
 
 export default function ApplicationRow(props) {
   return (
     <tr>
-      <td><a href="">{props.name}</a></td>
+      <td><Link to={`/applications/${props.id}/instances`}>{props.name}</Link></td>
       <td><span>{props.instances}</span></td>
     </tr>
   );
@@ -12,4 +13,4 @@ export default function ApplicationRow(props) {
 ApplicationRow.propTypes = {
   name: React.PropTypes.string.isRequired,
   instances: React.PropTypes.number.isRequired,
-}
+};

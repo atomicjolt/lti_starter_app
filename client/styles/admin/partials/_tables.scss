@@ -55,6 +55,41 @@
   }
 }
 
+.c-table--installs{
+
+  tbody{
+
+    tr.is-installed{
+
+    }
+
+    td{
+      vertical-align: middle;
+
+      &:nth-of-type(1){
+        span{
+          font-size: 1rem;
+          @include semi-bold;
+          text-transform: uppercase;
+          margin-left: 1rem;
+          margin-top: 0.3rem;
+          color: $light-gray;
+          display: inline-block;
+        }
+      }
+
+      &:nth-of-type(2){
+
+        span{
+          @include regular;
+          font-size: 1.2rem;
+          color: $gray;
+        }
+      }
+    }
+  }
+}
+
   thead{
 
     th{
@@ -66,6 +101,7 @@
         @include semi-bold;
         font-size: 1.2rem;
         color: $subtext-color;
+        text-transform: uppercase;
       }
     }
   }
@@ -101,14 +137,14 @@
     background: $lightest-gray;
     display: block;
     float: right;
+    border: none;
+    cursor: pointer;
     @include transition(all 0.1s ease);
 
     i{
       font-size: 2rem;
       color: $light-gray;
       position: relative;
-      top: 0.5rem;
-      left: 0.5rem;
       @include transition(all 0.1s ease);
     }
 
