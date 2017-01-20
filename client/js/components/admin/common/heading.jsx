@@ -18,7 +18,7 @@ export class Heading extends React.Component {
           paddingLeft: '20px',
         }}>
           <img src={img} alt="AtomicJolt Logo" height="40px" />
-          <div style={{ 
+          <div style={{
             float: "right",
             paddingTop: '10px',
             paddingRight: '20px',

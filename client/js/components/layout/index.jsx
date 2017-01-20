@@ -1,5 +1,5 @@
 import React   from 'react';
-import Heading from '../common/heading';
+import Heading from '../admin/common/heading';
 
 export default class Index extends React.Component {
 
