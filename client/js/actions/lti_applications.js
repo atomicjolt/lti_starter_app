@@ -11,7 +11,7 @@ const requests = [
 
 export const Constants = wrapper(actions, requests);
 
-export function getLtiApplications() {
+export function getInstructureInstances() {
   return {
     type   : Constants.GET_LTI_APPLICATIONS,
     method : Network.GET,

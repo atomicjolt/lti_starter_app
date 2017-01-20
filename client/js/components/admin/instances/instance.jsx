@@ -1,5 +1,6 @@
 import React      from 'react';
 import { Link }   from 'react-router';
+import _          from 'lodash';
 
 export default function instance(props) {
   return (
@@ -11,7 +12,7 @@ export default function instance(props) {
       <td><span>{props.lti_key}</span></td>
       <td><span>{props.domain}</span></td>
       <td>
-        <button className="c-delete" onClick={props.delete()}>
+        <button className="c-delete" onClick={props.delete}>
           <i className="i-delete" />
         </button>
       </td>
@@ -20,8 +21,9 @@ export default function instance(props) {
 }
 
 instance.propTypes = {
-  delete           : React.PropTypes.func.isRequired,
-  lti_consumer_uri : React.PropTypes.string,
-  lti_key          : React.PropTypes.string,
-  domain           : React.PropTypes.string,
+  delete: React.PropTypes.func.isRequired,
+  lti_consumer_uri: React.PropTypes.string.isRequired,
+  lti_key: React.PropTypes.string.isRequired,
+  domain: React.PropTypes.string.isRequired,
+  id: React.PropTypes.number.isRequired,
 };

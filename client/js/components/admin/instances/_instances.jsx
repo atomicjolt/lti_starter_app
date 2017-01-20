@@ -1,5 +1,6 @@
 import React                from 'react';
 import { connect }          from 'react-redux';
+import Modal                from 'react-modal';
 import InstanceHeader       from './instance_header';
 import Search               from '../common/search';
 import InstanceList         from './instance_list';
@@ -10,7 +11,7 @@ const select = state => ({
   ltiApplications: state.ltiApplications,
 });
 
-export class Instances extends React.Component {
+export class BaseInstances extends React.Component {
   static propTypes = {
     instances: React.PropTypes.shape({}).isRequired,
     getInstances: React.PropTypes.func.isRequired,
@@ -20,30 +21,56 @@ export class Instances extends React.Component {
     }).isRequired
   };
 
+  static getStyles() {
+    return {
+      modal: {
+        overlay: {
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        },
+        content: {
+
+        }
+      }
+    };
+  }
+
+  constructor() {
+    super();
+    this.state = { modalOpen: false };
+  }
+
   componentWillMount() {
     this.props.getInstances(this.props.params.applicationId);
   }
 
-  newInstance() {
-    // TODO: write me
-    // console.log('new instance');
-  }
+  // search(searchText) {
+  //   // TODO: write me
+  // }
 
-  search(searchText) {
-    // TODO: write me
-  }
+  // newInstance() {
+  //   // TODO: write me
+  // }
 
   render() {
-
+    const styles = BaseInstances.getStyles();
     return (
       <div className="o-contain o-contain--full">
+        <Modal
+          isOpen={this.state.modalOpen}
+          onAfterOpen={() => {}}
+          onRequestClose={() => this.setState({ modalOpen: false })}
+          style={styles.modal}
+          contentLabel="Modal"
+        >
+          <h1>Attendance</h1>
+        </Modal>
         <InstanceHeader
-          openSettings={() => console.log('write me')}
-          newInstance={() => this.newInstance()}
+          openSettings={() => {}}
+          newInstance={() => this.setState({ modalOpen: true })}
           instance={this.props.ltiApplications[this.props.params.applicationId]}
         />
         <Search
-          search={text => this.search(text)}
+          search={() => {}}
         />
         <InstanceList
           instances={this.props.instances}
@@ -53,4 +80,4 @@ export class Instances extends React.Component {
   }
 }
 
-export default connect(select, InstanceActions)(Instances);
+export default connect(select, InstanceActions)(BaseInstances);
