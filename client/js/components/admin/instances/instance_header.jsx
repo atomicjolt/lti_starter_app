@@ -4,7 +4,7 @@ import DropDown        from './settings_drop_down';
 export default class InstanceHeader extends React.Component {
   static propTypes = {
     newInstance: React.PropTypes.func.isRequired,
-    instance: React.PropTypes.object.shape({
+    instance: React.PropTypes.shape({
       name: React.PropTypes.string,
     }).isRequired,
   };
