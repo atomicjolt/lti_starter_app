@@ -43,13 +43,13 @@ export class Instances extends React.Component {
     this.props.getInstances(this.props.params.applicationId);
   }
 
-  search(searchText) {
-    // TODO: write me
-  }
+  // search(searchText) {
+  //   // TODO: write me
+  // }
 
-  newInstance() {
-    // TODO: write me
-  }
+  // newInstance() {
+  //   // TODO: write me
+  // }
 
   render() {
     const styles = Instances.getStyles();
@@ -57,7 +57,7 @@ export class Instances extends React.Component {
       <div className="o-contain o-contain--full">
         <Modal
           isOpen={this.state.modalOpen}
-          onAfterOpen={() => console.log('opened')}
+          onAfterOpen={() => {}}
           onRequestClose={() => this.setState({ modalOpen: false })}
           style={styles.modal}
           contentLabel="Modal"
@@ -65,12 +65,12 @@ export class Instances extends React.Component {
           <h1>Attendance</h1>
         </Modal>
         <InstanceHeader
-          openSettings={() => console.log('write me')}
+          openSettings={() => {}}
           newInstance={() => this.setState({ modalOpen: true })}
           instance={this.props.ltiApplications[this.props.params.applicationId]}
         />
         <Search
-          search={text => this.search(text)}
+          search={() => {}}
         />
         <InstanceList
           instances={this.props.instances}
