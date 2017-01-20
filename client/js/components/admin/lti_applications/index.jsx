@@ -1,6 +1,6 @@
 import React                  from 'react';
 import { connect }            from 'react-redux';
-import _                      from 'lodash'
+import _                      from 'lodash';
 import { getLtiApplications } from '../../../actions/lti_applications';
 import ApplicationRow         from './application_row';
 
