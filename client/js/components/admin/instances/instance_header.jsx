@@ -6,7 +6,7 @@ export default class InstanceHeader extends React.Component {
     newInstance: React.PropTypes.func.isRequired,
     instance: React.PropTypes.shape({
       name: React.PropTypes.string,
-    }).isRequired,
+    }),
   };
 
   static getStyles() {
@@ -27,12 +27,14 @@ export default class InstanceHeader extends React.Component {
   }
 
   render() {
+    const { instance, newInstance } = this.props;
     const styles = InstanceHeader.getStyles();
+
     return (
       <div className="c-info">
         <div className="c-title">
           <h1>Instances</h1>
-          <h3>{this.props.instance.name || 'App Name'}
+          <h3>{instance ? instance.name : 'App Name'}
             <button
               style={styles.buttonIcon}
               onClick={() => this.setState({ settingsOpen: !this.state.settingsOpen })}
@@ -42,7 +44,7 @@ export default class InstanceHeader extends React.Component {
           </h3>
           { this.state.settingsOpen ? <DropDown /> : null }
         </div>
-        <button className="c-btn c-btn--yellow" onClick={this.props.newInstance}>
+        <button className="c-btn c-btn--yellow" onClick={newInstance}>
           New Instance
         </button>
       </div>

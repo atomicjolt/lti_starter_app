@@ -1,40 +1,30 @@
 import React        from 'react';
 import assets       from '../../../libs/assets';
 
-const Heading = () => {
+export default function heading(props) {
   const img = assets('./images/atomicjolt.svg');
-  const styles = {
-    bar: {
-      background: 'black',
-      height: '50px',
-      borderBottom: 'solid #EFC210 1px',
-      display: 'block',
-    },
-    h1: {
-      textAlign: 'center',
-      color: '#EFC210',
-      paddingTop: '5px',
-      paddingLeft: '20px',
-    },
-    color: {
-      float: 'right',
-      paddingTop: '10px',
-      paddingRight: '20px',
-      color: 'lightgrey',
-      fontFamily: 'Roboto, sans-serif',
-    }
-  };
 
   return (
-    <div style={styles.bar}>
-      <h1 style={styles.h1}>
-        <img src={img} alt="AtomicJolt Logo" height="40px" />
-        <div style={styles.color}>
-          pronto
-        </div>
-      </h1>
-    </div>
+    <header className="c-head">
+      <div className="c-back">
+        {
+          props.back ? <button className="c-btn c-btn--back" onClick={props.back}>
+            <i className="i-back" />
+            Back
+          </button> : null
+        }
+      </div>
+      <img className="c-logo" src={img} alt="Atomic Jolt Logo" />
+      <ul className="c-user">
+        <li>
+          <div className="c-username">{props.userName}<i className="i-dropdown" /></div>
+        </li>
+      </ul>
+    </header>
   );
 };
 
-export default Heading;
+heading.propTypes = {
+  back: React.PropTypes.func,
+  userName: React.PropTypes.string,
+};

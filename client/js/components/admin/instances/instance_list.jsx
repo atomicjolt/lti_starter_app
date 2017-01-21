@@ -1,6 +1,6 @@
 import React    from 'react';
 import _        from 'lodash';
-import Instance from './instance'
+import Instance from './instance';
 
 export default class InstanceList extends React.Component {
   static propTypes = {
