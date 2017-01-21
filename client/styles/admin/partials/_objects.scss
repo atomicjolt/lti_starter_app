@@ -25,3 +25,47 @@
     padding: 0 2rem;
     height: 100%;
   }
+
+.o-grid{
+  margin-left: -2rem;
+  margin-right: -2rem;
+  @include clearfix;
+}
+
+.o-grid__modal-top{
+  border-bottom: 0.2rem solid $lighter-gray;
+  padding-bottom: 2rem;
+  margin-bottom: 4rem;
+}
+
+.o-grid__bottom{
+  margin-bottom: 2rem;
+}
+
+  .o-grid__item{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    float: left;
+  }
+
+  .u-half{
+    width: 50% !important;
+  }
+
+  .u-third{
+    width: 33.333% !important;
+  }
+
+.c-modal{
+  .c-btn{
+    float: right;
+  }
+}
+
+.u-m-right{
+  margin-right: 1rem !important;
+}
+
+.u-m-bottom{
+  margin-bottom: 2rem !important;
+}

@@ -3,6 +3,7 @@ import { connect }          from 'react-redux';
 import InstanceHeader       from './instance_header';
 import Search               from '../common/search';
 import InstanceList         from './instance_list';
+import NewInstanceModal     from './new_instance_modal';
 import * as InstanceActions from '../../../actions/instances';
 
 const select = state => ({
@@ -20,13 +21,28 @@ export class Instances extends React.Component {
     }).isRequired
   };
 
+  constructor() {
+    super();
+
+    this.state = {
+      newInstanceModalOpen: false,
+    };
+  }
+
   componentWillMount() {
     this.props.getInstances(this.props.params.applicationId);
   }
 
   newInstance() {
-    // TODO: write me
-    // console.log('new instance');
+    this.setState({
+      newInstanceModalOpen: true,
+    });
+  }
+
+  closeNewInstanceModal() {
+    this.setState({
+      newInstanceModalOpen: false,
+    });
   }
 
   search(searchText) {
@@ -47,6 +63,11 @@ export class Instances extends React.Component {
         />
         <InstanceList
           instances={this.props.instances}
+        />
+        <NewInstanceModal
+          isOpen={this.state.newInstanceModalOpen}
+          instances={this.props.instances}
+          closeModal={() => this.closeNewInstanceModal()}
         />
       </div>
     );

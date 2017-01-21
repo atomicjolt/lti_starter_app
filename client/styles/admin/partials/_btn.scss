@@ -47,6 +47,26 @@
   }
 }
 
+.c-btn--gray--large{
+  background: $lightest-gray;
+  color: $gray;
+  padding: 0 2rem;
+  float: right;
+  height: 3.5rem;
+  border-radius: 1.8rem;
+  line-height: 3.5rem;
+  font-size: 1.4rem;
+
+  &:hover{
+    background: $lighter-gray;
+    color: $text-color;
+    @include transform(scale(1.02));
+  }
+  &:active{
+    @include transform(scale(0.98));
+  }
+}
+
 .c-btn--back{
   padding: 0 0 0 3rem;
   color: $light-gray;
