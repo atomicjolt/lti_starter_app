@@ -31,7 +31,8 @@ export class NewDomainModal extends React.Component {
         className="c-modal c-modal--newdomain is-open"
       >
         <h2 className="c-modal__title">New Domain</h2>
-        <form action={this.props.settings.canvas_oauth_path}>
+        <form action="/users/auth/canvas">
+          <input type="hidden" name="oauth_consumer_key" value="admin" />
           { this.renderSettings() }
           <div className="o-grid o-grid__modal-top">
             <div className="o-grid__item u-half">
