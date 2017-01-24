@@ -1,0 +1,58 @@
+.c-modal__background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 900;
+}
+
+.c-modal{
+  position: absolute;
+  top: -90rem;
+  @include center(horizontal);
+  background: $white;
+  box-shadow: 0 0 1rem rgba(0,0,0,0.5);
+  @include transition(all 0.3s ease);
+  outline: none;
+
+  &.is-open{
+    top: 5rem;
+  }
+}
+
+.c-modal--settings{
+  width: 80rem;
+  padding: 3rem 4rem;
+}
+
+.c-modal--newdomain {
+  width: 80rem;
+  padding: 3rem 4rem;
+  z-index: 1000
+}
+
+.c-modal__title{
+  @include bold;
+  letter-spacing: 0.1rem;
+  font-size: 2.4rem;
+  color: $dark-gray;
+  margin: 0;
+}
+
+.c-modal__instance{
+  @include semi-bold;
+  font-size: 1.8rem;
+  color: $subtext-color;
+  margin: 0 0 3rem;
+}
+
+.c-modal__subtitle{
+  font-size: 1.8rem;
+  @include semi-bold;
+  color: $subtext-color;
+  margin: 0 0 2rem;
+}
