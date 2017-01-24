@@ -113,7 +113,7 @@ export default class NewInstanceModal extends React.Component {
           </div>
         </div>
         <button className="c-btn c-btn--yellow">Save</button>
-        <button className="c-btn c-btn--gray--large u-m-right">Cancel</button>
+        <button className="c-btn c-btn--gray--large u-m-right" onClick={() => this.closeModal()}>Cancel</button>
         <NewDomainModal
           isOpen={this.state.newDomainModalOpen}
           closeModal={() => this.closeNewDomainModal()}
