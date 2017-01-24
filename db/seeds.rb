@@ -27,7 +27,7 @@ application_instances = [{
   application: "LTI Admin",
   lti_key: "lti-admin",
   url: "https://atomicjolt.instructure.com",
-  domain: "lti-admin.#{ENV['APP_URL']}"
+  domain: "admin.#{ENV['APP_URL']}"
 }, {
   application: "LTI Starter App",
   lti_key: Rails.application.secrets.default_lti_key,
