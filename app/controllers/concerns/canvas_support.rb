@@ -7,7 +7,7 @@ module Concerns
     def canvas_api
       if current_application_instance.canvas_token.present?
         LMS::Canvas.new(
-          UrlHelper.scheme_host_port(current_application_instance.lti_consumer_uri),
+          UrlHelper.scheme_host_port(current_application_instance.site.url),
           current_application_instance.canvas_token
         )
       elsif auth = canvas_auth(current_application_instance)
@@ -18,7 +18,7 @@ module Concerns
           refresh_token: auth.refresh_token
         }
         LMS::Canvas.new(
-          UrlHelper.scheme_host_port(current_application_instance.lti_consumer_uri),
+          UrlHelper.scheme_host_port(current_application_instance.site.url),
           auth,
           options
         )
@@ -27,7 +27,7 @@ module Concerns
 
     def canvas_auth(current_application_instance)
       current_user.authentications.find_by(
-        provider_url: current_application_instance.lti_consumer_uri
+        provider_url: current_application_instance.site.url
       )
     end
 

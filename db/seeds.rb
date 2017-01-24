@@ -1,6 +1,13 @@
 admin = CreateAdminService.create_admin
 puts "CREATED ADMIN USER: " << admin.email
 
+# Add sites
+sites = [{
+  url: "https://atomicjolt.instructure.com",
+  oauth_key: Rails.application.secrets.canvas_developer_id,
+  oauth_secret: Rails.application.secrets.canvas_developer_key
+}]
+
 # Add an LTI Application
 applications = [{
   name: "LTI Admin",
@@ -18,14 +25,14 @@ applications = [{
 
 application_instances = [{
   application: "LTI Admin",
-  lti_key: "admin",
-  lti_consumer_uri: "https://atomicjolt.instructure.com",
+  lti_key: "lti-admin",
+  url: "https://atomicjolt.instructure.com",
   domain: "admin.#{ENV['APP_URL']}"
 }, {
   application: "LTI Starter App",
   lti_key: Rails.application.secrets.default_lti_key,
   lti_secret: Rails.application.secrets.default_lti_secret,
-  lti_consumer_uri: "https://atomicjolt.instructure.com",
+  url: "https://atomicjolt.instructure.com",
   # This is only required if the app needs API access and doesn't want each user to do the oauth dance
   canvas_token: Rails.application.secrets.canvas_token,
   # Each application instance can have it's own custom domain. Typically, this is not needed
@@ -37,6 +44,14 @@ application_instances = [{
   domain: "#{Rails.application.secrets.default_lti_key}.#{ENV['APP_URL']}"
 }]
 
+sites.each do |attrs|
+  if site = Site.find_by(url: attrs[:url])
+    site.update_attributes!(attrs)
+  else
+    Site.create!(attrs)
+  end
+end
+
 applications.each do |attrs|
   if application = Application.find_by(name: attrs[:name])
     application.update_attributes!(attrs)
@@ -47,7 +62,9 @@ end
 
 application_instances.each do |attrs|
   application = Application.find_by(name: attrs.delete(:application))
-  attrs = attrs.merge(application_id: application.id)
+  site = Site.find_by(url: attrs.delete(:url))
+  attrs = attrs.merge(application_id: application.id, site_id: site.id)
+
   if application_instance = ApplicationInstance.find_by(lti_key: attrs[:lti_key])
     # Don't change production lti keys or set keys to nil
     attrs.delete(:lti_secret) if attrs[:lti_secret].blank? || Rails.env.production?

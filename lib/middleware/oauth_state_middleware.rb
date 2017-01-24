@@ -13,7 +13,7 @@ class OauthStateMiddleware
           request.update_param(key, value)
         end
         application_instance = ApplicationInstance.find_by(lti_key: state_params["oauth_consumer_key"])
-        env["canvas.url"] = application_instance.lti_consumer_uri
+        env["canvas.url"] = application_instance.site.url
         oauth_state.destroy
       else
         raise OauthStateMiddlewareException, "Invalid state in OAuth callback"

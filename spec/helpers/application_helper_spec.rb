@@ -15,7 +15,7 @@ describe ApplicationHelper do
         define_method(:current_application_instance) { application_instance }
       end
 
-      expect(helper.canvas_url).to eq(application_instance.lti_consumer_uri)
+      expect(helper.canvas_url).to eq(application_instance.site.url)
     end
   end
 
@@ -33,5 +33,4 @@ describe ApplicationHelper do
       expect(result).to be
     end
   end
-
 end

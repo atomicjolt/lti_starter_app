@@ -18,7 +18,7 @@ describe OauthStateMiddleware do
 
   it "Restores env based on existing oauth_state" do
     @middleware.call(@env)
-    expect(@env["canvas.url"]).to eq(@application_instance.lti_consumer_uri)
+    expect(@env["canvas.url"]).to eq(@application_instance.site.url)
     request = Rack::Request.new(@env)
     expect(request.params["oauth_consumer_key"]).to eq(@application_instance.lti_key)
   end

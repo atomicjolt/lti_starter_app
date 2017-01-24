@@ -26,7 +26,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     @lti_launch = true
     @canvas_oauth_path = user_canvas_omniauth_authorize_url
-    @canvas_url = current_application_instance.lti_consumer_uri
+    @canvas_url = current_application_instance.site.url
     @canvas_auth_required = false
 
     render "lti_launches/index", layout: "client"

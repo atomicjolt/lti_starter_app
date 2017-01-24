@@ -1,15 +1,16 @@
 class ApplicationInstance < ActiveRecord::Base
 
   belongs_to :application
+  belongs_to :site
 
   validates :lti_key, presence: true
   validates :lti_key, uniqueness: true
   validates :lti_secret, presence: true
-  validates :lti_consumer_uri, presence: true
+  validates :site_id, presence: true
 
   before_validation :set_lti
   before_validation on: [:update] do
-    errors.add(:lti_key, 'cannot be changed after creation') if lti_key_changed?
+    errors.add(:lti_key, "cannot be changed after creation") if lti_key_changed?
   end
 
   enum lti_type: [:basic, :course_navigation, :account_navigation]
@@ -21,18 +22,18 @@ class ApplicationInstance < ActiveRecord::Base
 
   private
 
-    def set_lti
-      self.lti_type ||= ApplicationInstance.lti_types[:basic]
-      self.lti_key = (self.lti_key || self.application.name).try(:parameterize).try(:dasherize)
-      self.lti_secret = ::SecureRandom::hex(64) unless self.lti_secret.present?
-    end
+  def set_lti
+    self.lti_type ||= ApplicationInstance.lti_types[:basic]
+    self.lti_key = (lti_key || application.name).try(:parameterize).try(:dasherize)
+    self.lti_secret = ::SecureRandom::hex(64) unless lti_secret.present?
+  end
 
-    def create_schema
-      Apartment::Tenant.create lti_key
-    end
+  def create_schema
+    Apartment::Tenant.create lti_key
+  end
 
-    def destroy_schema
-      Apartment::Tenant.drop lti_key
-    end
+  def destroy_schema
+    Apartment::Tenant.drop lti_key
+  end
 
 end

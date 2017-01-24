@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def canvas_url
-    session[:canvas_url] || current_application_instance.lti_consumer_uri
+    session[:canvas_url] || current_application_instance.site.url
   end
 
   def application_base_url

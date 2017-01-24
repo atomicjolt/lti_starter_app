@@ -59,7 +59,7 @@ module Lti
   def self.list_all
     ApplicationInstance.find_each do |app|
       api = LMS::Canvas.new(
-        UrlHelper.scheme_host(app.lti_consumer_uri),
+        UrlHelper.scheme_host(app.site.url),
         Rails.Application.secrets.canvas_token || app.canvas_token
       )
 
@@ -77,9 +77,9 @@ module Lti
 
   def self.destroy_all
     ApplicationInstance.find_each do |app|
-      puts "Removing LTI tool: #{app.application.name} Canvas url: #{app.lti_consumer_uri}"
+      puts "Removing LTI tool: #{app.application.name} Canvas url: #{app.site.url}"
       api = LMS::Canvas.new(
-        UrlHelper.scheme_host(app.lti_consumer_uri),
+        UrlHelper.scheme_host(app.site.url),
         Rails.Application.secrets.canvas_token || app.canvas_token
       )
 

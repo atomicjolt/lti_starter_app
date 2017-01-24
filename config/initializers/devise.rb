@@ -232,12 +232,17 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   CANVAS_SETUP = lambda do |env|
     request = Rack::Request.new(env)
-    site = env["canvas.url"] ||
-           request.params["canvas_url"] ||
-           request.session["canvas_url"] ||
-           "https://canvas.instructure.com"
 
-    env["omniauth.strategy"].options[:client_options].site = site
+    url = env["canvas.url"] ||
+      request.params["canvas_url"] ||
+      request.session["canvas_url"] ||
+      "https://canvas.instructure.com"
+
+    site = Site.find_by(url: url)
+
+    env["omniauth.strategy"].options[:consumer_key] = site.oauth_key
+    env["omniauth.strategy"].options[:consumer_secret] = site.oauth_secret
+    env["omniauth.strategy"].options[:client_options].site = url
   end
 
   config.omniauth :canvas,

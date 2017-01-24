@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe ApplicationController, type: :controller do
-
   render_views
 
   before do
@@ -23,7 +22,8 @@ describe ApplicationController, type: :controller do
       end
     end
     before do
-      request.env["HTTP_USER_AGENT"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Safari/602.1.50"
+      user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Safari/602.1.50"
+      request.env["HTTP_USER_AGENT"] = user_agent
     end
     it "redirects to allow for cookies in the iframe" do
       post :index
@@ -56,10 +56,8 @@ describe ApplicationController, type: :controller do
       post :index, params
       expect(response).to have_http_status(302)
       expect(response).to redirect_to(
-        user_canvas_omniauth_authorize_path(canvas_url: @app.lti_consumer_uri)
+        user_canvas_omniauth_authorize_path(canvas_url: @app.site.url)
       )
     end
-
   end
-
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170114001933) do
+ActiveRecord::Schema.define(version: 20170120234606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,16 +21,17 @@ ActiveRecord::Schema.define(version: 20170114001933) do
     t.string   "lti_key"
     t.string   "lti_secret"
     t.integer  "lti_type",                                 default: 0
-    t.string   "lti_consumer_uri"
     t.string   "encrypted_canvas_token"
     t.string   "encrypted_canvas_token_salt"
     t.string   "encrypted_canvas_token_iv"
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
     t.string   "domain",                      limit: 2048
+    t.integer  "site_id"
   end
 
   add_index "application_instances", ["application_id"], name: "index_application_instances_on_application_id", using: :btree
+  add_index "application_instances", ["site_id"], name: "index_application_instances_on_site_id", using: :btree
 
   create_table "applications", force: :cascade do |t|
     t.string   "name"
@@ -97,6 +98,16 @@ ActiveRecord::Schema.define(version: 20170114001933) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "sites", force: :cascade do |t|
+    t.string   "url",          limit: 2048
+    t.string   "oauth_key"
+    t.string   "oauth_secret"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "sites", ["url"], name: "index_sites_on_url", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
