@@ -11,7 +11,7 @@ export class NewDomainModal extends React.Component {
     isOpen: React.PropTypes.bool.isRequired,
     closeModal: React.PropTypes.func.isRequired,
     settings: React.PropTypes.shape({
-      canvas_oauth_path: React.PropTypes.string
+      lti_key: React.PropTypes.string
     })
   };
 
@@ -32,7 +32,11 @@ export class NewDomainModal extends React.Component {
       >
         <h2 className="c-modal__title">New Domain</h2>
         <form action="/users/auth/canvas">
-          <input type="hidden" name="oauth_consumer_key" value="admin" />
+          <input
+            type="hidden"
+            name="oauth_consumer_key"
+            value={this.props.settings.lti_key}
+          />
           { this.renderSettings() }
           <div className="o-grid o-grid__modal-top">
             <div className="o-grid__item u-half">
