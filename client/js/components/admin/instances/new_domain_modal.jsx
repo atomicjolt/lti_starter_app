@@ -48,9 +48,9 @@ export class NewDomainModal extends React.Component {
               </label>
             </div>
             <div className="o-grid__item u-half">
-              <label htmlFor="canvas_domain" className="c-input">
+              <label htmlFor="canvas_url" className="c-input">
                 <span>Canvas Domain</span>
-                <input name="canvas_domain" type="text" />
+                <input name="canvas_url" type="text" />
               </label>
             </div>
           </div>
