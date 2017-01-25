@@ -1,5 +1,7 @@
 class Api::ApplicationsController < Api::ApiApplicationController
 
+  load_and_authorize_resource :application
+
   def index
     applications = Application.lti
     json_applications = applications.map do |application|
