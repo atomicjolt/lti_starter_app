@@ -12,6 +12,7 @@ RSpec.describe Api::ApplicationsController, type: :controller do
     @admin_token = AuthToken.issue_token({ user_id: @admin.id })
 
     @application = FactoryGirl.create(:application)
+    @application_instance = FactoryGirl.create(:application_instance, application: @application)
   end
 
   context "no jwt" do
@@ -46,8 +47,9 @@ RSpec.describe Api::ApplicationsController, type: :controller do
         it "renders all canvas accounts as json" do
           get :index, format: :json
           expect(response).to have_http_status(200)
-          applications = JSON.parse(response.body)["applications"]
+          applications = JSON.parse(response.body)
           expect(applications.count).to be > 0
+          expect(applications[0]["application_instances_count"]).to be 1
         end
       end
     end

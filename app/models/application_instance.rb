@@ -1,6 +1,6 @@
 class ApplicationInstance < ActiveRecord::Base
 
-  belongs_to :application
+  belongs_to :application, counter_cache: true
   belongs_to :site
 
   validates :lti_key, presence: true
