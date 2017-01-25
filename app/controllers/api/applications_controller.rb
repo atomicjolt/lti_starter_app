@@ -9,7 +9,7 @@ class Api::ApplicationsController < Api::ApiApplicationController
       json[:instances] = ApplicationInstance.where(application_id: application.id).count
       json
     end
-    render status: 200, json: { lti_applications: json_applications }
+    render status: 200, json: { applications: json_applications }
   end
 
 end

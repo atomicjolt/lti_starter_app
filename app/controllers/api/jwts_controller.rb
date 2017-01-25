@@ -8,5 +8,3 @@ class Api::JwtsController < Api::ApiApplicationController
   end
 
 end
-
-

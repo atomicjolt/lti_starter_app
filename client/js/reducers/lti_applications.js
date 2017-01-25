@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
 
     case LtiApplicationConstants.GET_LTI_APPLICATIONS_DONE:
       const newState = _.cloneDeep(state);
-      _.forEach(action.payload.lti_applications, (app) => {
+      _.forEach(action.payload.applications, (app) => {
         newState[app.id] = app;
       });
       return newState;
