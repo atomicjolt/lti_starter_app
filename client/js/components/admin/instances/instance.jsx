@@ -6,8 +6,8 @@ export default function instance(props) {
   return (
     <tr>
       <td>
-        <Link to={`instances/${props.id}/installs`}>{_.capitalize(_.replace(props.domain.split('.')[1], 'https://', ''))}</Link>
-        <div>{_.replace(props.domain, 'https://', '')}</div>
+        <Link to={`instances/${props.id}/installs`}>{_.capitalize(_.replace(props.url.split('.')[1], 'https://', ''))}</Link>
+        <div>{_.replace(props.url, 'https://', '')}</div>
       </td>
       <td><span>{props.lti_key}</span></td>
       <td><span>{props.domain}</span></td>

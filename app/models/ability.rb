@@ -33,7 +33,6 @@ class Ability
 
     basic(user)
     admin(user) if user.admin?
-
   end
 
   def basic(user)

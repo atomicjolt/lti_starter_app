@@ -1,12 +1,8 @@
-class Api::CanvasAccountsController < ApplicationController
+class Api::CanvasAccountsController < Api::ApiApplicationController
 
   include Concerns::CanvasSupport
-  include Concerns::JwtToken
 
-  before_action :validate_token
   before_action :protect_canvas_api
-
-  respond_to :json
 
   def index
     result = canvas_api.all_accounts

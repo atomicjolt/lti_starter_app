@@ -1,15 +1,11 @@
-class Api::StudentsController < ApplicationController
-
-  before_action :validate_token
-
-  respond_to :json
+class Api::StudentsController < Api::ApiApplicationController
 
   def index
-    if params[:section_id]
-      students = current_user.sections.find(params[:section_id]).students 
-    else
-      students = current_user.courses.find(params[:course_id]).students 
-    end
+    students = if params[:section_id]
+                 current_user.sections.find(params[:section_id]).students
+               else
+                 current_user.courses.find(params[:course_id]).students
+               end
     render json: students.order(:sortable_name)
   end
 

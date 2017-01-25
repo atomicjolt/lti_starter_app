@@ -6,15 +6,15 @@ const actions = [];
 
 // Actions that make an api request
 const requests = [
-  'GET_LTI_APPLICATIONS',
+  'GET_INSTANCES',
 ];
 
 export const Constants = wrapper(actions, requests);
 
-export function getInstructureInstances() {
+export function getInstances(applicationId) {
   return {
-    type   : Constants.GET_LTI_APPLICATIONS,
-    method : Network.GET,
-    url    : 'api/lti_applications',
+    type: Constants.GET_INSTANCES,
+    method: Network.GET,
+    url: `/api/applications/${applicationId}/application_instances`,
   };
 }

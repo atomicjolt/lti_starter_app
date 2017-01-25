@@ -1,10 +1,4 @@
-class Api::LtiApplicationsController < ApplicationController
-
-  include Concerns::JwtToken
-
-  before_action :validate_token
-
-  respond_to :json
+class Api::ApplicationsController < Api::ApiApplicationController
 
   def index
     applications = Application.lti

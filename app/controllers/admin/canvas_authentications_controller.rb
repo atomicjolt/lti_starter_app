@@ -1,4 +1,4 @@
-class Admin::CanvasAuthenticationsController < ApplicationController
+class Admin::CanvasAuthenticationsController < Admin::AdminApplicationController
   respond_to :html
 
   def create

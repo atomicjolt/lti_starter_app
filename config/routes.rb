@@ -53,8 +53,8 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :lti_applications do
-      resources :instances
+    resources :applications do
+      resources :application_instances
     end
 
     resources :canvas_accounts, only: [:index]

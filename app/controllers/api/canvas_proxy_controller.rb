@@ -1,12 +1,8 @@
-class Api::CanvasProxyController < ApplicationController
+class Api::CanvasProxyController < Api::ApiApplicationController
 
   include Concerns::CanvasSupport
-  include Concerns::JwtToken
 
-  before_action :validate_token
   before_action :protect_canvas_api
-
-  respond_to :json
 
   def proxy
     result = canvas_api.proxy(params[:type], params, request.body.read)

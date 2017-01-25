@@ -1,7 +1,7 @@
 import React                  from 'react';
 import { connect }            from 'react-redux';
 import { hashHistory }        from 'react-router';
-import { getLtiApplications } from '../../../actions/lti_applications';
+import { getLtiApplications } from '../../../actions/applications';
 import Header                 from '../common/heading';
 import Sidebar                from './sidebar';
 import InstallPane            from './install_pane';

@@ -8,8 +8,8 @@ import Search               from '../common/search';
 import InstanceList         from './instance_list';
 import NewInstanceModal     from './new_instance_modal';
 import Heading              from '../common/heading';
-import * as InstanceActions from '../../../actions/instances';
-import { getInstructureInstances } from '../../../actions/lti_applications';
+import * as InstanceActions from '../../../actions/application_instances';
+import { getInstructureInstances } from '../../../actions/applications';
 
 const select = state => ({
   instances: state.instances,

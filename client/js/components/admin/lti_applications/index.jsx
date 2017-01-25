@@ -1,7 +1,7 @@
 import React                       from 'react';
 import { connect }                 from 'react-redux';
 import _                           from 'lodash';
-import { getInstructureInstances } from '../../../actions/lti_applications';
+import { getInstructureInstances } from '../../../actions/applications';
 import Heading                     from '../common/heading';
 import ApplicationRow              from './application_row';
 
