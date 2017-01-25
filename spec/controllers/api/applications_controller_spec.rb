@@ -11,12 +11,10 @@ RSpec.describe Api::ApplicationsController, type: :controller do
     @admin.add_to_role("administrator")
     @admin_token = AuthToken.issue_token({ user_id: @admin.id })
 
-    @application_instance = FactoryGirl.create(:application_instance)
-    allow(controller.request).to receive(:host).and_return("example.com")
-    request.headers["Content-Type"] = "application/json"
+    @application = FactoryGirl.create(:application)
   end
 
-  context "not logged in" do
+  context "no jwt" do
     describe "GET index" do
       it "returns unauthorized" do
         get :index, format: :json
