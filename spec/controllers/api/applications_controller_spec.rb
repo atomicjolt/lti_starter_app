@@ -45,9 +45,11 @@ RSpec.describe Api::ApplicationsController, type: :controller do
 
     describe "GET index" do
       context "user is an admin that has authenticated with canvas" do
-        it "renders all application instances as json" do
+        it "renders all canvas accounts as json" do
           get :index, format: :json
           expect(response).to have_http_status(200)
+          accounts = JSON.parse(response.body)["accounts"]
+          expect(accounts.count).to be > 0
         end
       end
     end
