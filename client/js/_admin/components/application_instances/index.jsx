@@ -1,6 +1,5 @@
 import React                           from 'react';
 import { connect }                     from 'react-redux';
-import Modal                           from 'react-modal';
 import { hashHistory }                 from 'react-router';
 import _                               from 'lodash';
 import InstanceHeader                  from './instance_header';
@@ -10,11 +9,14 @@ import NewInstanceModal                from './new_instance_modal';
 import Heading                         from '../common/heading';
 import * as ApplicationInstanceActions from '../../actions/application_instances';
 import { getApplications }             from '../../actions/applications';
+import { getSites }                    from '../../actions/sites';
 
 const select = state => ({
   applicationInstances: state.applicationInstances,
   applications: state.applications,
   userName: state.settings.display_name,
+  settings: state.settings,
+  sites: state.sites,
 });
 
 export class BaseInstances extends React.Component {
@@ -22,11 +24,14 @@ export class BaseInstances extends React.Component {
     applicationInstances: React.PropTypes.shape({}).isRequired,
     getApplicationInstances: React.PropTypes.func.isRequired,
     getApplications: React.PropTypes.func.isRequired,
+    getSites: React.PropTypes.func.isRequired,
+    sites: React.PropTypes.shape({}).isRequired,
     applications: React.PropTypes.shape({}).isRequired,
     params: React.PropTypes.shape({
       applicationId: React.PropTypes.string.isRequired,
     }).isRequired,
     userName: React.PropTypes.string,
+    settings: React.PropTypes.shape({}).isRequired,
   };
 
   constructor() {
@@ -39,6 +44,7 @@ export class BaseInstances extends React.Component {
     if (_.isEmpty(this.props.applications)) {
       this.props.getApplications();
     }
+    this.props.getSites();
   }
 
   render() {
@@ -53,6 +59,7 @@ export class BaseInstances extends React.Component {
             isOpen={this.state.modalOpen}
             applicationInstances={this.props.applicationInstances}
             closeModal={() => this.setState({ modalOpen: false })}
+            sites={this.props.sites}
           />
           <InstanceHeader
             openSettings={() => {}}
@@ -64,6 +71,7 @@ export class BaseInstances extends React.Component {
           />
           <InstanceList
             applicationInstances={this.props.applicationInstances}
+            settings={this.props.settings}
           />
         </div>
       </div>
@@ -72,5 +80,5 @@ export class BaseInstances extends React.Component {
 }
 
 export default connect(select, {
-  ...ApplicationInstanceActions, ...{ getApplications }
+  ...ApplicationInstanceActions, ...{ getApplications }, ...{ getSites }
 })(BaseInstances);

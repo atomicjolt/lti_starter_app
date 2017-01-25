@@ -1,58 +1,58 @@
 import React              from 'react';
 import ReactModal         from 'react-modal';
 import ReactSelect        from 'react-select';
-import NewDomainModal     from './new_domain_modal';
+import NewSiteModal       from './new_site_modal';
 
 export default class NewInstanceModal extends React.Component {
   static propTypes = {
     isOpen: React.PropTypes.bool.isRequired,
     closeModal: React.PropTypes.func.isRequired,
-    instances: React.PropTypes.shape({})
+    sites: React.PropTypes.shape({})
   };
 
   constructor() {
     super();
     this.state = {
-      newDomainModalOpen: false,
-      selectedDomain: ''
+      newSiteModalOpen: false,
+      selectedSite: ''
     };
   }
 
-  selectDomain(option) {
+  selectSite(option) {
     if (_.isFunction(option.onSelect)) {
       option.onSelect();
     }
-    this.setState({ selectedDomain: option.value })
+    this.setState({ selectedSite: option.value })
   }
 
-  newDomain() {
-    this.setState({ newDomainModalOpen: true });
+  newSite() {
+    this.setState({ newSiteModalOpen: true });
   }
 
-  closeNewDomainModal() {
-    this.setState({ newDomainModalOpen: false, selectedDomain: '' });
+  closeNewSiteModal() {
+    this.setState({ newSiteModalOpen: false, selectedSite: '' });
   }
 
   showInstanceModal() {
-    if (this.props.isOpen && !this.state.newDomainModalOpen) {
+    if (this.props.isOpen && !this.state.newSiteModalOpen) {
       return 'is-open';
     }
     return '';
   }
 
   closeModal() {
-    this.setState({ newDomainModalOpen: false, selectedDomain: '' });
+    this.closeNewSiteModal();
     this.props.closeModal();
   }
 
   render() {
-    const options = _.map(this.props.instances, instance => ({
-      label: instance.domain,
-      value: instance.id
+    const options = _.map(this.props.sites, site => ({
+      label: site.url,
+      value: site.id
     })).concat({
       label: <div>Add New</div>,
       value: 'new',
-      onSelect: () => this.newDomain()
+      onSelect: () => this.newSite()
     });
 
     return (
@@ -71,12 +71,12 @@ export default class NewInstanceModal extends React.Component {
             <div className="c-input"><span>Domain</span>
               <ReactSelect
                 tabIndex="-1"
-                ref={(ref) => { this.domainSelector = ref; }}
+                ref={(ref) => { this.siteSelector = ref; }}
                 options={options}
-                value={this.state.selectedDomain}
-                name="Domain"
+                value={this.state.selectedSite}
+                name="site"
                 placeholder="Select a Domain"
-                onChange={option => this.selectDomain(option)}
+                onChange={option => this.selectSite(option)}
                 searchable={false}
                 arrowRenderer={() => null}
                 clearable={false}
@@ -114,9 +114,9 @@ export default class NewInstanceModal extends React.Component {
         </div>
         <button className="c-btn c-btn--yellow">Save</button>
         <button className="c-btn c-btn--gray--large u-m-right" onClick={() => this.closeModal()}>Cancel</button>
-        <NewDomainModal
-          isOpen={this.state.newDomainModalOpen}
-          closeModal={() => this.closeNewDomainModal()}
+        <NewSiteModal
+          isOpen={this.state.newSiteModalOpen}
+          closeModal={() => this.closeNewSiteModal()}
         />
       </ReactModal>
     );

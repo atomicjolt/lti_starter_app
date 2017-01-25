@@ -4,8 +4,8 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   load_and_authorize_resource :application_instance, through: :application
 
   def index
-    @application_instances = @application_instances.includes(:site)
-    render json: @application_instances
+    @application_instances = @application_instances
+    render json: @application_instances.as_json(include: :site)
   end
 
   def create

@@ -1,12 +1,13 @@
-import React       from 'react';
-import { connect } from 'react-redux';
-import ReactModal  from 'react-modal';
+import React          from 'react';
+import { connect }    from 'react-redux';
+import ReactModal     from 'react-modal';
+import SettingsInputs from '../common/settings_inputs';
 
 const select = state => ({
   settings: state.settings
 });
 
-export class NewDomainModal extends React.Component {
+export class NewSiteModal extends React.Component {
   static propTypes = {
     isOpen: React.PropTypes.bool.isRequired,
     closeModal: React.PropTypes.func.isRequired,
@@ -15,12 +16,6 @@ export class NewDomainModal extends React.Component {
     })
   };
 
-  renderSettings(){
-    return _.map(this.props.settings, (value, key) => {
-      return (<input key={key} type="hidden" value={value} name={key} />);
-    });
-  }
-
   render() {
     return (
       <ReactModal
@@ -28,16 +23,11 @@ export class NewDomainModal extends React.Component {
         onRequestClose={() => this.props.closeModal()}
         contentLabel="Modal"
         overlayClassName="unused"
-        className="c-modal c-modal--newdomain is-open"
+        className="c-modal c-modal--newsite is-open"
       >
         <h2 className="c-modal__title">New Domain</h2>
         <form action="/users/auth/canvas">
-          <input
-            type="hidden"
-            name="oauth_consumer_key"
-            value={this.props.settings.lti_key}
-          />
-          { this.renderSettings() }
+          <SettingsInputs settings={this.props.settings} />
           <div className="o-grid o-grid__modal-top">
             <div className="o-grid__item u-half">
               <label htmlFor="canvas_developer_id" className="c-input">
@@ -61,6 +51,7 @@ export class NewDomainModal extends React.Component {
 
           <button type="submit" className="c-btn c-btn--yellow">Authenticate</button>
           <button
+            type="button"
             className="c-btn c-btn--gray--large u-m-right"
             onClick={() => this.props.closeModal()}
           >
@@ -72,4 +63,4 @@ export class NewDomainModal extends React.Component {
   }
 }
 
-export default connect(select)(NewDomainModal);
+export default connect(select)(NewSiteModal);

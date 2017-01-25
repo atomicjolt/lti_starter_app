@@ -54,6 +54,7 @@ Rails.application.routes.draw do
     end
 
     resources :canvas_accounts, only: [:index]
+    resources :sites, only: [:index]
   end
 
   mount MailPreview => "mail_view" if Rails.env.development?

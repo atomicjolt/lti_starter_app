@@ -4,7 +4,8 @@ import Instance from './instance';
 
 export default class InstanceList extends React.Component {
   static propTypes = {
-    instances: React.PropTypes.shape({}).isRequired,
+    applicationInstances: React.PropTypes.shape({}).isRequired,
+    settings: React.PropTypes.shape({}).isRequired,
   };
 
   deleteInstance() {
@@ -24,10 +25,11 @@ export default class InstanceList extends React.Component {
         </thead>
         <tbody>
           {
-            _.map(this.props.instances, (instance, key) => (
+            _.map(this.props.applicationInstances, (instance, key) => (
               <Instance
                 key={`instance_${key}`}
                 {...instance}
+                settings={this.props.settings}
                 delete={() => this.deleteInstance()}
               />
             ))
