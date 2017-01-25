@@ -245,10 +245,7 @@ Devise.setup do |config|
     env["omniauth.strategy"].options[:client_options].site = url
   end
 
-  config.omniauth :canvas,
-                  Rails.application.secrets.canvas_developer_id,
-                  Rails.application.secrets.canvas_developer_key,
-                  setup: CANVAS_SETUP
+  config.omniauth :canvas, setup: CANVAS_SETUP
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
