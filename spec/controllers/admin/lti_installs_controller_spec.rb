@@ -23,7 +23,6 @@ RSpec.describe Admin::LtiInstallsController, type: :controller do
         expect(response).to have_http_status(401)
       end
     end
-
   end
 
   context "as admin" do
@@ -37,7 +36,5 @@ RSpec.describe Admin::LtiInstallsController, type: :controller do
         end
       end
     end
-
   end
-
 end
