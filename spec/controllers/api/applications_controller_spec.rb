@@ -46,8 +46,8 @@ RSpec.describe Api::ApplicationsController, type: :controller do
         it "renders all canvas accounts as json" do
           get :index, format: :json
           expect(response).to have_http_status(200)
-          accounts = JSON.parse(response.body)["accounts"]
-          expect(accounts.count).to be > 0
+          applications = JSON.parse(response.body)["applications"]
+          expect(applications.count).to be > 0
         end
       end
     end
