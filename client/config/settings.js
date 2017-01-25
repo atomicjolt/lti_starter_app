@@ -48,13 +48,13 @@ module.exports = {
   staticDir: `${clientAppPath}static`,
 
   entries: {
-    app: `${clientAppPath}js/app.jsx`,
-    lti_admin_app: `${clientAppPath}js/lti_admin_app.jsx`
+    app       : `${clientAppPath}js/app.jsx`,
+    admin_app : `${clientAppPath}js/_admin/app.jsx`
   },
 
   cssEntries: {
-    styles: `${clientAppPath}styles/styles.js`,
-    admin_styles: `${clientAppPath}styles/admin_styles.js`
+    styles       : `${clientAppPath}styles/styles.js`,
+    admin_styles : `${clientAppPath}styles/admin_styles.js`
   }
 
 };

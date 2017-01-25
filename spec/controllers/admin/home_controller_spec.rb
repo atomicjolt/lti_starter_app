@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Admin::LtiInstallsController, type: :controller do
+RSpec.describe Admin::HomeController, type: :controller do
   before do
     @application = FactoryGirl.create(:application)
   end
