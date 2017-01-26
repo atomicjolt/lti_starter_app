@@ -1,20 +1,60 @@
-import React          from 'react';
-import { connect }    from 'react-redux';
-import ReactModal     from 'react-modal';
-import SettingsInputs from '../common/settings_inputs';
+import React                from 'react';
+import { connect }          from 'react-redux';
+import ReactModal           from 'react-modal';
+
+import CanvasAuthentication from '../../../components/common/canvas_authentication';
+import NewSiteForm          from './new_site_form';
+import { createSite }       from '../../actions/sites';
 
 const select = state => ({
-  settings: state.settings
+  settings    : state.settings,
+  siteToOauth : state.siteToOauth
 });
 
 export class NewSiteModal extends React.Component {
   static propTypes = {
-    isOpen: React.PropTypes.bool.isRequired,
-    closeModal: React.PropTypes.func.isRequired,
-    settings: React.PropTypes.shape({
-      lti_key: React.PropTypes.string
-    })
+    createSite    : React.PropTypes.func.isRequired,
+    isOpen        : React.PropTypes.bool.isRequired,
+    siteToOauth   : React.PropTypes.string.isRequired,
+    closeModal    : React.PropTypes.func.isRequired,
   };
+
+  constructor() {
+    super();
+    this.state = {
+      newSite: {}
+    };
+  }
+
+  getCanvasAuthForm() {
+    if (this.props.siteToOauth) {
+      return (
+        <CanvasAuthentication
+          autoSubmit
+          hideButton
+          overrides={{
+            canvas_url : this.props.siteToOauth,
+            admin_path : window.location.href
+          }}
+        />
+      );
+    }
+
+    return null;
+  }
+
+  setupSite() {
+    this.props.createSite(this.state.newSite);
+  }
+
+  newSiteChange(e) {
+    this.setState({
+      newSite: {
+        ...this.state.newSite,
+        [e.target.name]: e.target.value
+      }
+    });
+  }
 
   render() {
     return (
@@ -25,42 +65,17 @@ export class NewSiteModal extends React.Component {
         overlayClassName="unused"
         className="c-modal c-modal--newsite is-open"
       >
+        {this.getCanvasAuthForm()}
         <h2 className="c-modal__title">New Domain</h2>
-        <form action="/users/auth/canvas">
-          <SettingsInputs settings={this.props.settings} />
-          <div className="o-grid o-grid__modal-top">
-            <div className="o-grid__item u-half">
-              <label htmlFor="canvas_developer_id" className="c-input">
-                <span>Canvas Developer ID</span>
-                <input name="canvas_developer_id" type="text" />
-              </label>
-            </div>
-            <div className="o-grid__item u-half">
-              <label htmlFor="canvas_developer_key" className="c-input">
-                <span>Canvas Developer Key</span>
-                <input name="canvas_developer_key" type="text" />
-              </label>
-            </div>
-            <div className="o-grid__item u-half">
-              <label htmlFor="canvas_url" className="c-input">
-                <span>Canvas Domain</span>
-                <input name="canvas_url" type="text" />
-              </label>
-            </div>
-          </div>
-
-          <button type="submit" className="c-btn c-btn--yellow">Authenticate</button>
-          <button
-            type="button"
-            className="c-btn c-btn--gray--large u-m-right"
-            onClick={() => this.props.closeModal()}
-          >
-            Cancel
-          </button>
-        </form>
+        <NewSiteForm
+          onChange={e => this.newSiteChange(e)}
+          setupSite={() => this.setupSite()}
+          closeModal={() => this.props.closeModal()}
+          {...this.state.newSite}
+        />
       </ReactModal>
     );
   }
 }
 
-export default connect(select)(NewSiteModal);
+export default connect(select, { createSite })(NewSiteModal);

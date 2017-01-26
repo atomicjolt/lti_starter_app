@@ -5,6 +5,7 @@ import jwt                    from '../../reducers/jwt';
 import applications           from './applications';
 import applicationInstances   from './application_instances';
 import sites                  from './sites';
+import siteToOauth            from './site_to_oauth';
 
 const rootReducer = combineReducers({
   settings,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   applications,
   applicationInstances,
   sites,
+  siteToOauth,
 });
 
 export default rootReducer;
