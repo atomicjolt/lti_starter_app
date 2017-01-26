@@ -7,8 +7,8 @@ class Api::SitesController < Api::ApiApplicationController
   end
 
   def create
-    site = Site.create!(site_params)
-    render status: 200, json: site
+    @site.save!
+    render status: 200, json: @site
   end
 
   private

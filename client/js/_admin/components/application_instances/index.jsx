@@ -60,6 +60,8 @@ export class BaseInstances extends React.Component {
             applicationInstances={this.props.applicationInstances}
             closeModal={() => this.setState({ modalOpen: false })}
             sites={this.props.sites}
+            createApplicationInstance={this.props.createApplicationInstance}
+            applicationId={this.props.params.applicationId}
           />
           <InstanceHeader
             openSettings={() => {}}
