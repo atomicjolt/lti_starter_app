@@ -34,7 +34,7 @@ export class NewSiteModal extends React.Component {
           hideButton
           overrides={{
             canvas_url : this.props.siteToOauth,
-            admin_path : window.location.href
+            admin_url  : window.location.href
           }}
         />
       );
