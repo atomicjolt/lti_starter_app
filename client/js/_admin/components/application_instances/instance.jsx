@@ -19,7 +19,6 @@ export default class Instance extends React.Component {
   };
 
   checkAuthentication(e) {
-    // TODO if we auth new domains we wont' include those in this conditional and the user will have to re-auth
     if (!_.find(this.props.settings.user_canvas_domains, canvasUrl =>
       canvasUrl === this.props.site.url
     )) {
