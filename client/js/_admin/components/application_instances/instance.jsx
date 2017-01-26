@@ -47,7 +47,7 @@ export default class Instance extends React.Component {
             <input
               type="hidden"
               name="admin_url"
-              value={`${window.location.protocol}//${window.location.host}/${window.location.pathname}#${path}`}
+              value={`${window.location.protocol}//${window.location.host}${window.location.pathname}#${path}`}
             />
           </form>
           <Link
