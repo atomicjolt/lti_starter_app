@@ -29,8 +29,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @canvas_url = current_application_instance.site.url
     @canvas_auth_required = false
 
-    if params["admin_path"].present?
-      redirect_to params["admin_path"]
+    if params["admin_url"].present?
+      redirect_to params["admin_url"]
     else
       render "lti_launches/index", layout: "client"
     end
