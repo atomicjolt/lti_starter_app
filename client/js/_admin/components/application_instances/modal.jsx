@@ -1,7 +1,7 @@
 import React        from 'react';
 import ReactModal   from 'react-modal';
-import NewSiteModal from '../site_modal/new_site_modal';
-import InstanceForm from './new_form';
+import NewSiteModal from '../sites/modal';
+import InstanceForm from './form';
 
 export default class newApplicationInstanceModal extends React.Component {
   static propTypes = {

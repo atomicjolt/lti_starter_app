@@ -5,7 +5,7 @@ import _                               from 'lodash';
 import Header                          from './header';
 import Search                          from '../common/search';
 import List                            from './list';
-import NewModal                        from './create_modal/new_modal';
+import Modal                           from './modal';
 import Heading                         from '../common/heading';
 import * as ApplicationInstanceActions from '../../actions/application_instances';
 import { getApplications }             from '../../actions/applications';
@@ -55,7 +55,7 @@ export class BaseInstances extends React.Component {
           userName={this.props.userName}
         />
         <div className="o-contain o-contain--full">
-          <NewModal
+          <Modal
             isOpen={this.state.modalOpen}
             applicationInstances={this.props.applicationInstances}
             closeModal={() => this.setState({ modalOpen: false })}

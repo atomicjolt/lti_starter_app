@@ -12,7 +12,7 @@ export default function NewSiteForm(props) {
       <div className="o-grid o-grid__modal-top">
         {
           _.map(FIELDS, (fieldLabel, field) => (
-            <div className="o-grid__item u-half">
+            <div key={field} className="o-grid__item u-half">
               <label htmlFor={`new_site_${field}`} className="c-input">
                 <span>{fieldLabel}</span>
                 <input

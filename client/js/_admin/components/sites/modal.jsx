@@ -2,9 +2,9 @@ import React                from 'react';
 import { connect }          from 'react-redux';
 import ReactModal           from 'react-modal';
 
-import CanvasAuthentication from '../../../../components/common/canvas_authentication';
-import NewSiteForm          from './new_site_form';
-import { createSite }       from '../../../actions/sites';
+import CanvasAuthentication from '../../../components/common/canvas_authentication';
+import SiteForm             from './form';
+import { createSite }       from '../../actions/sites';
 
 const select = state => ({
   settings    : state.settings,
@@ -15,11 +15,11 @@ export class NewSiteModal extends React.Component {
   static propTypes = {
     createSite    : React.PropTypes.func.isRequired,
     isOpen        : React.PropTypes.bool.isRequired,
-    siteToOauth   : React.PropTypes.string.isRequired,
     closeModal    : React.PropTypes.func.isRequired,
     settings      : React.PropTypes.shape({
       lti_key     : React.PropTypes.string
-    }).isRequired
+    }).isRequired,
+    siteToOauth   : React.PropTypes.string,
   };
 
   constructor() {
@@ -71,7 +71,7 @@ export class NewSiteModal extends React.Component {
       >
         {this.getCanvasAuthForm()}
         <h2 className="c-modal__title">New Domain</h2>
-        <NewSiteForm
+        <SiteForm
           onChange={e => this.newSiteChange(e)}
           setupSite={() => this.setupSite()}
           closeModal={() => this.props.closeModal()}
