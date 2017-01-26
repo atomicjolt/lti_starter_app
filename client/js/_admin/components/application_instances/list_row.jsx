@@ -3,7 +3,7 @@ import { Link }       from 'react-router';
 import _              from 'lodash';
 import SettingsInputs from '../common/settings_inputs';
 
-export default class Instance extends React.Component {
+export default class ListRow extends React.Component {
   static propTypes = {
     delete: React.PropTypes.func.isRequired,
     lti_key: React.PropTypes.string,
@@ -13,7 +13,7 @@ export default class Instance extends React.Component {
       url: React.PropTypes.string
     }).isRequired,
     settings: React.PropTypes.shape({
-      lti_key: React.PropTypes.shape,
+      lti_key: React.PropTypes.string,
       user_canvas_domains: React.PropTypes.arrayOf(React.PropTypes.string),
     }).isRequired
   };

@@ -4,7 +4,7 @@ import ListRow from './list_row';
 
 export default class List extends React.Component {
   static propTypes = {
-    applicationInstances: React.PropTypes.shape({}).isRequired,
+    applicationInstances: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
     settings: React.PropTypes.shape({}).isRequired,
   };
 
