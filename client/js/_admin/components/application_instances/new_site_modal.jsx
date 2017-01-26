@@ -17,6 +17,9 @@ export class NewSiteModal extends React.Component {
     isOpen        : React.PropTypes.bool.isRequired,
     siteToOauth   : React.PropTypes.string.isRequired,
     closeModal    : React.PropTypes.func.isRequired,
+    settings      : React.PropTypes.shape({
+      lti_key     : React.PropTypes.string
+    }).isRequired
   };
 
   constructor() {
@@ -33,8 +36,9 @@ export class NewSiteModal extends React.Component {
           autoSubmit
           hideButton
           overrides={{
-            canvas_url : this.props.siteToOauth,
-            admin_url  : window.location.href
+            canvas_url         : this.props.siteToOauth,
+            admin_url          : window.location.href,
+            oauth_consumer_key : this.props.settings.lti_key,
           }}
         />
       );
