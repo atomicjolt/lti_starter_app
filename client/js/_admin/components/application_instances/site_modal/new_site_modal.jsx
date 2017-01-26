@@ -2,9 +2,9 @@ import React                from 'react';
 import { connect }          from 'react-redux';
 import ReactModal           from 'react-modal';
 
-import CanvasAuthentication from '../../../components/common/canvas_authentication';
+import CanvasAuthentication from '../../../../components/common/canvas_authentication';
 import NewSiteForm          from './new_site_form';
-import { createSite }       from '../../actions/sites';
+import { createSite }       from '../../../actions/sites';
 
 const select = state => ({
   settings    : state.settings,

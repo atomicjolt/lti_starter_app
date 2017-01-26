@@ -1,8 +1,8 @@
 import React    from 'react';
 import _        from 'lodash';
-import Instance from './instance';
+import ListRow from './list_row';
 
-export default class InstanceList extends React.Component {
+export default class List extends React.Component {
   static propTypes = {
     applicationInstances: React.PropTypes.shape({}).isRequired,
     settings: React.PropTypes.shape({}).isRequired,
@@ -26,7 +26,7 @@ export default class InstanceList extends React.Component {
         <tbody>
           {
             _.map(this.props.applicationInstances, (instance, key) => (
-              <Instance
+              <ListRow
                 key={`instance_${key}`}
                 {...instance}
                 settings={this.props.settings}

@@ -1,7 +1,7 @@
-import React                          from 'react';
-import ReactModal                     from 'react-modal';
-import NewSiteModal                   from './new_site_modal';
-import NewInstanceForm                from './new_instance_form';
+import React        from 'react';
+import ReactModal   from 'react-modal';
+import NewSiteModal from '../site_modal/new_site_modal';
+import InstanceForm from './new_form';
 
 export default class NewInstanceModal extends React.Component {
   static propTypes = {
@@ -68,7 +68,7 @@ export default class NewInstanceModal extends React.Component {
       >
         <h2 className="c-modal__title">Attendance Settings</h2>
         <h3 className="c-modal__instance">Air University</h3>
-        <NewInstanceForm
+        <InstanceForm
           {...this.state.newInstance}
           onChange={(e) => { this.newInstanceChange(e); }}
           createInstance={() => this.createInstance()}

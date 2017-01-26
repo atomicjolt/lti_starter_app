@@ -2,10 +2,10 @@ import React                           from 'react';
 import { connect }                     from 'react-redux';
 import { hashHistory }                 from 'react-router';
 import _                               from 'lodash';
-import InstanceHeader                  from './instance_header';
+import Header                          from './header';
 import Search                          from '../common/search';
-import InstanceList                    from './instance_list';
-import NewInstanceModal                from './new_instance_modal';
+import List                            from './list';
+import NewModal                        from './create_modal/new_modal';
 import Heading                         from '../common/heading';
 import * as ApplicationInstanceActions from '../../actions/application_instances';
 import { getApplications }             from '../../actions/applications';
@@ -55,7 +55,7 @@ export class BaseInstances extends React.Component {
           userName={this.props.userName}
         />
         <div className="o-contain o-contain--full">
-          <NewInstanceModal
+          <NewModal
             isOpen={this.state.modalOpen}
             applicationInstances={this.props.applicationInstances}
             closeModal={() => this.setState({ modalOpen: false })}
@@ -63,7 +63,7 @@ export class BaseInstances extends React.Component {
             createApplicationInstance={this.props.createApplicationInstance}
             applicationId={this.props.params.applicationId}
           />
-          <InstanceHeader
+          <Header
             openSettings={() => {}}
             newInstance={() => this.setState({ modalOpen: true })}
             instance={this.props.applications[this.props.params.applicationId]}
@@ -71,7 +71,7 @@ export class BaseInstances extends React.Component {
           <Search
             search={() => {}}
           />
-          <InstanceList
+          <List
             applicationInstances={this.props.applicationInstances}
             settings={this.props.settings}
           />
