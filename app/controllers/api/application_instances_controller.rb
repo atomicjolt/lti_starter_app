@@ -9,7 +9,8 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   end
 
   def create
-    render json: @application_instance
+    @application_instance.save!
+    render json: @application_instance.as_json(include: :site)
   end
 
   def destroy
@@ -20,7 +21,13 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   private
 
   def application_instance_params
-    params.require(:application_instance).permit(:name)
+    params.require(:application_instance).permit(
+      :site_id,
+      :lti_secret,
+      :canvas_token,
+      :lti_key,
+      :lti_type
+    )
   end
 
 end
