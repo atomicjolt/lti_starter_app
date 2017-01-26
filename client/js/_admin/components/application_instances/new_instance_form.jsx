@@ -121,5 +121,5 @@ NewInstanceForm.propTypes = {
   createInstance : React.PropTypes.func.isRequired,
   newSite        : React.PropTypes.func.isRequired,
   site_id        : React.PropTypes.string,
-  sites          : React.PropTypes.arrayOf(React.PropTypes.shape({}))
+  sites          : React.PropTypes.shape({})
 };
