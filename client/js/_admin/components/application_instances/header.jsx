@@ -1,9 +1,9 @@
 import React           from 'react';
 import DropDown        from './settings_drop_down';
 
-export default class InstanceHeader extends React.Component {
+export default class Header extends React.Component {
   static propTypes = {
-    newInstance: React.PropTypes.func.isRequired,
+    newApplicationInstance: React.PropTypes.func.isRequired,
     instance: React.PropTypes.shape({
       name: React.PropTypes.string,
     }),
@@ -27,8 +27,8 @@ export default class InstanceHeader extends React.Component {
   }
 
   render() {
-    const { instance, newInstance } = this.props;
-    const styles = InstanceHeader.getStyles();
+    const { instance, newApplicationInstance } = this.props;
+    const styles = Header.getStyles();
 
     return (
       <div className="c-info">
@@ -44,7 +44,7 @@ export default class InstanceHeader extends React.Component {
           </h3>
           { this.state.settingsOpen ? <DropDown /> : null }
         </div>
-        <button className="c-btn c-btn--yellow" onClick={newInstance}>
+        <button className="c-btn c-btn--yellow" onClick={newApplicationInstance}>
           New Instance
         </button>
       </div>

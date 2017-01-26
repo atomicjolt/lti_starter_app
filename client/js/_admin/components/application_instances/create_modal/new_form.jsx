@@ -13,7 +13,7 @@ const TYPE_RADIOS = {
   course_navigation  : 'Course Navigation',
 };
 
-export default function NewInstanceForm(props) {
+export default function newApplicationInstanceForm(props) {
   function selectSite(option) {
     if (_.isFunction(option.onSelect)) {
       option.onSelect();
@@ -115,7 +115,7 @@ export default function NewInstanceForm(props) {
   );
 }
 
-NewInstanceForm.propTypes = {
+newApplicationInstanceForm.propTypes = {
   onChange       : React.PropTypes.func.isRequired,
   closeModal     : React.PropTypes.func.isRequired,
   createInstance : React.PropTypes.func.isRequired,

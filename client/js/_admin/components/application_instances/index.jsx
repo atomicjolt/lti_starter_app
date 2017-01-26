@@ -65,7 +65,7 @@ export class BaseInstances extends React.Component {
           />
           <Header
             openSettings={() => {}}
-            newInstance={() => this.setState({ modalOpen: true })}
+            newApplicationInstance={() => this.setState({ modalOpen: true })}
             instance={this.props.applications[this.props.params.applicationId]}
           />
           <Search

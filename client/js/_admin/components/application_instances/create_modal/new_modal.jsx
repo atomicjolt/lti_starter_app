@@ -3,7 +3,7 @@ import ReactModal   from 'react-modal';
 import NewSiteModal from '../site_modal/new_site_modal';
 import InstanceForm from './new_form';
 
-export default class NewInstanceModal extends React.Component {
+export default class newApplicationInstanceModal extends React.Component {
   static propTypes = {
     isOpen: React.PropTypes.bool.isRequired,
     closeModal: React.PropTypes.func.isRequired,
@@ -16,7 +16,7 @@ export default class NewInstanceModal extends React.Component {
     this.state = {
       newSiteModalOpen: false,
       selectedSite: '',
-      newInstance: {}
+      newApplicationInstance: {}
     };
   }
 
@@ -40,10 +40,10 @@ export default class NewInstanceModal extends React.Component {
     this.props.closeModal();
   }
 
-  newInstanceChange(e) {
+  newApplicationInstanceChange(e) {
     this.setState({
-      newInstance: {
-        ...this.state.newInstance,
+      newApplicationInstance: {
+        ...this.state.newApplicationInstance,
         [e.target.name]: e.target.value
       }
     });
@@ -52,7 +52,7 @@ export default class NewInstanceModal extends React.Component {
   createInstance() {
     this.props.createApplicationInstance(
       this.props.applicationId,
-      this.state.newInstance
+      this.state.newApplicationInstance
     );
     this.props.closeModal();
   }
@@ -69,8 +69,8 @@ export default class NewInstanceModal extends React.Component {
         <h2 className="c-modal__title">Attendance Settings</h2>
         <h3 className="c-modal__instance">Air University</h3>
         <InstanceForm
-          {...this.state.newInstance}
-          onChange={(e) => { this.newInstanceChange(e); }}
+          {...this.state.newApplicationInstance}
+          onChange={(e) => { this.newApplicationInstanceChange(e); }}
           createInstance={() => this.createInstance()}
           sites={this.props.sites}
           closeModal={() => this.closeModal()}
