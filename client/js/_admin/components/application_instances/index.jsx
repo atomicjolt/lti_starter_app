@@ -3,7 +3,6 @@ import { connect }                     from 'react-redux';
 import { hashHistory }                 from 'react-router';
 import _                               from 'lodash';
 import Header                          from './header';
-import Search                          from '../common/search';
 import List                            from './list';
 import Modal                           from './modal';
 import Heading                         from '../common/heading';
@@ -67,9 +66,6 @@ export class BaseInstances extends React.Component {
             openSettings={() => {}}
             newApplicationInstance={() => this.setState({ modalOpen: true })}
             instance={this.props.applications[this.props.params.applicationId]}
-          />
-          <Search
-            search={() => {}}
           />
           <List
             applicationInstances={this.props.applicationInstances}
