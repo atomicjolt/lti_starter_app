@@ -15,4 +15,5 @@
 <script type="text/javascript">
   window.DEFAULT_SETTINGS = <%= settings.to_json.html_safe %>;
   window.DEFAULT_JWT = '<%= signed_in? ? jwt_token : "" %>';
+  window.SIGN_OUT = '<li><%= link_to 'Sign out', destroy_user_session_path, :method=>'get' %></li>'
 </script>

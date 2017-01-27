@@ -1,5 +1,5 @@
 import React      from 'react';
-import Item       from '../common/drop_down_item';
+import Item       from './drop_down_item';
 
 export default function settingDropDown(props) {
   const styles = {
@@ -8,6 +8,8 @@ export default function settingDropDown(props) {
       backgroundColor : 'white',
       fontSize        : '2em',
       position        : 'absolute',
+      right           : '10px',
+      top             : '75%',
       border          : '1px solid black',
       borderRadius    : '5px',
       padding         : '5px',
@@ -16,13 +18,8 @@ export default function settingDropDown(props) {
 
   return (
     <ul style={styles.settingsDropDown}>
-      <Item>Settings</Item>
-      <Item>Other Settings</Item>
-      <Item>More Settings</Item>
+      <Item><div dangerouslySetInnerHTML={{ __html: window.SIGN_OUT }} /></Item>
+      <Item>Logout and Delete Authentications</Item>
     </ul>
   );
 }
-
-settingDropDown.propTypes = {
-
-};
