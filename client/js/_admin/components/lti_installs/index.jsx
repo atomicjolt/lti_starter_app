@@ -4,19 +4,12 @@ import _                     from 'lodash';
 import history               from '../../history';
 import { getapplications }   from '../../actions/applications';
 import { getCanvasAccounts } from '../../actions/accounts';
-<<<<<<< HEAD
-import canvasRequest         from '../../../libs/canvas/action';
-import Heading               from '../common/heading';
-import Sidebar               from './sidebar';
-import InstallPane           from './install_pane';
-=======
 import { listActiveCoursesInAccount } from '../../../libs/canvas/constants/accounts';
 import { listExternalToolsCourses } from '../../../libs/canvas/constants/external_tools';
-import Header              from '../common/heading';
-import Sidebar             from './sidebar';
+import Heading               from '../common/heading';
+import Sidebar               from './sidebar';
 import InstallPane         from './install_pane';
 import canvasRequest       from '../../../libs/canvas/action';
->>>>>>> courses showing and external tools loaded
 
 function select(state) {
   return {
@@ -37,17 +30,12 @@ export class Home extends React.Component {
     canvasRequest: React.PropTypes.func.isRequired,
   };
 
-<<<<<<< HEAD
   constructor() {
     super();
-    this.state = { account: null };
-=======
-  constructor(props) {
-    super(props);
     this.state = {
+      account: null,
       external_tool_run: true,
     };
->>>>>>> courses showing and external tools loaded
   }
 
   componentDidMount() {
@@ -55,8 +43,6 @@ export class Home extends React.Component {
     this.props.getCanvasAccounts();
   }
 
-<<<<<<< HEAD
-=======
   componentDidUpdate() {
     if (_.isEmpty(this.props.courses) && !_.isEmpty(this.props.accounts)) {
       const accountId = this.props.accounts[0].id;
@@ -73,7 +59,6 @@ export class Home extends React.Component {
     }
   }
 
->>>>>>> courses showing and external tools loaded
   render() {
     if (_.isEmpty(this.props.accounts) || _.isEmpty(this.props.courses)) { return null; }
     this.getExternalTools();
@@ -82,17 +67,13 @@ export class Home extends React.Component {
       <div style={{ height: '100%' }}>
         <Heading back={() => history.goBack()} />
         <div className="o-contain">
-<<<<<<< HEAD
           <Sidebar
             accounts={this.props.accounts}
-            application={this.props.applications[2]}
+            application={this.props.applications[applicationInstanceId]}
             canvasRequest={this.props.canvasRequest}
             setAccount={account => this.setState({ account })}
             activeAccount={this.state.account}
           />
-=======
-          <Sidebar accounts={this.props.accounts} application={this.props.applications[applicationInstanceId]} />
->>>>>>> courses showing and external tools loaded
           <InstallPane courses={this.props.courses} accounts={this.props.accounts} />
         </div>
       </div>
