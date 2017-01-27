@@ -24,19 +24,17 @@ export class Home extends React.Component {
     courses: React.PropTypes.shape({}).isRequired,
     userName: React.PropTypes.string.isRequired,
     getCanvasAccounts: React.PropTypes.func.isRequired,
+    canvasRequest: React.PropTypes.func.isRequired,
   };
+
+  constructor() {
+    super();
+    this.state = { account: null };
+  }
 
   componentDidMount() {
     this.props.getCanvasAccounts();
   }
-
-  // <!-- <ul className="c-dropdown">
-  // <li>
-  // <a href="">
-  // <span className="c-menu-item">Logout</span>
-  // </a>
-  // </li>
-  //  </ul> -->
 
   render() {
     if (_.isEmpty(this.props.accounts)) { return null; }
@@ -48,6 +46,8 @@ export class Home extends React.Component {
             accounts={this.props.accounts}
             application={this.props.applications[2]}
             canvasRequest={this.props.canvasRequest}
+            setAccount={account => this.setState({ account })}
+            activeAccount={this.state.account}
           />
           <InstallPane courses={this.props.courses} accounts={this.props.accounts} />
         </div>

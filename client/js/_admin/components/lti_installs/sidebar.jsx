@@ -15,11 +15,19 @@ export default function Sidebar(props) {
       <div className="c-filters">
         <h4 className="c-accounts">Accounts</h4>
         <ul className="c-filter-list">
-          <li className="c-filter__item is-active"><a href=""><span><i className="i-dropdown" />{schoolName}</span></a>
+          <li className={props.activeAccount ? 'c-filter__item' : 'c-filter__item is-active'}>
+            <a href="">
+              <span>
+                <i className="i-dropdown" />
+                {schoolName}
+              </span>
+            </a>
             <SubAccounts
               // Need to only show if clicked.
               accounts={props.accounts[1]}
               canvasRequest={props.canvasRequest}
+              setAccount={props.setAccount}
+              activeAccount={props.activeAccount}
             />
           </li>
         </ul>
@@ -34,5 +42,8 @@ Sidebar.propTypes = {
   })).isRequired,
   accounts: React.PropTypes.arrayOf(React.PropTypes.shape({
     name: React.PropTypes.string.isRequired,
-  })).isRequired
+  })).isRequired,
+  canvasRequest: React.PropTypes.func.isRequired,
+  setAccount: React.PropTypes.func.isRequired,
+  activeAccount: React.PropTypes.shape({}),
 };

@@ -5,12 +5,22 @@ import { getSubAccountsOfAccount } from '../../../libs/canvas/constants/accounts
 export default class SubAccounts extends React.Component {
 
   getSubAccounts(account) {
+    const { activeAccount } = this.props;
     this.props.canvasRequest(getSubAccountsOfAccount, { account_id: account.id }, {}, account);
+    this.props.setAccount(activeAccount && activeAccount.id === account.id ? null : account);
+  }
+
+  shouldShowAccounts(account) {
+    const { activeAccount } = this.props;
+    return account.subAccounts && activeAccount
+      && (activeAccount.id === account.id || activeAccount.parent_account_id === account.id);
   }
 
   accounts(accounts) {
+    const { activeAccount } = this.props;
+
     return _.map(accounts, account => (
-      <li className="c-filter__item">
+      <li className={activeAccount && activeAccount.id === account.id ? 'c-filter__item is-active' : 'c-filter__item'}>
         <a onClick={() => this.getSubAccounts(account)}>
           <span>
             <i className="i-dropdown" />
@@ -18,7 +28,7 @@ export default class SubAccounts extends React.Component {
           </span>
         </a>
         {
-          account.subAccounts ? <ul className="c-filter__dropdown">
+          this.shouldShowAccounts(account) ? <ul className="c-filter__dropdown">
             {this.accounts(account.subAccounts)}
           </ul> : null
         }
@@ -38,6 +48,8 @@ export default class SubAccounts extends React.Component {
 
 SubAccounts.propTypes = {
   accounts: React.PropTypes.arrayOf(React.PropTypes.shape({
-
-  })).isRequired
+  })).isRequired,
+  canvasRequest: React.PropTypes.func.isRequired,
+  setAccount: React.PropTypes.func.isRequired,
+  activeAccount: React.PropTypes.shape({}),
 };
