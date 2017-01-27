@@ -36,10 +36,6 @@ export class Home extends React.Component {
             <div className="c-title">
               <h1>LTI Applications</h1>
             </div>
-            <div className="c-search">
-              <input type="text" placeholder="Search..." />
-              <i className="i-search" />
-            </div>
           </div>
           <table className="c-table c-table--lti">
             <thead>

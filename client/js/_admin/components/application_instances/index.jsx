@@ -3,7 +3,6 @@ import { connect }                     from 'react-redux';
 import { hashHistory }                 from 'react-router';
 import _                               from 'lodash';
 import Header                          from './header';
-import Search                          from '../common/search';
 import List                            from './list';
 import Modal                           from './modal';
 import Heading                         from '../common/heading';
@@ -11,8 +10,9 @@ import * as ApplicationInstanceActions from '../../actions/application_instances
 import { getApplications }             from '../../actions/applications';
 import { getSites }                    from '../../actions/sites';
 
-const select = state => ({
-  applicationInstances: state.applicationInstances,
+const select = (state, props) => ({
+  applicationInstances: _.filter(state.applicationInstances,
+    { application_id: parseInt(props.params.applicationId, 10) }),
   applications: state.applications,
   userName: state.settings.display_name,
   settings: state.settings,
@@ -21,7 +21,7 @@ const select = state => ({
 
 export class BaseInstances extends React.Component {
   static propTypes = {
-    applicationInstances: React.PropTypes.shape({}).isRequired,
+    applicationInstances: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
     getApplicationInstances: React.PropTypes.func.isRequired,
     getApplications: React.PropTypes.func.isRequired,
     getSites: React.PropTypes.func.isRequired,
@@ -67,9 +67,6 @@ export class BaseInstances extends React.Component {
             openSettings={() => {}}
             newApplicationInstance={() => this.setState({ modalOpen: true })}
             instance={this.props.applications[this.props.params.applicationId]}
-          />
-          <Search
-            search={() => {}}
           />
           <List
             applicationInstances={this.props.applicationInstances}
