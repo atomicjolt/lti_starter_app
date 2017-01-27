@@ -11,13 +11,11 @@ export default (state = initialState, action) => {
       _.forEach(action.payload.accounts, (account) => {
         if (account.parent_account_id == null) {
           newState[0] = account;
+        } else if (_.isUndefined(newState[account.parent_account_id])) {
+          newState[account.parent_account_id] = {};
+          newState[account.parent_account_id][account.id] = account;
         } else {
-          if (newState[account.parent_account_id] === undefined) {
-            newState[account.parent_account_id] = [];
-            newState[account.parent_account_id].push(account);
-          } else {
-            newState[account.parent_account_id].push(account);
-          }
+          newState[account.parent_account_id][account.id] = account;
         }
       });
       return newState;

@@ -28,7 +28,11 @@ export class Home extends React.Component {
 
   render() {
     const applicationRows = _.map(this.props.applications, (application, index) => (
-      <ApplicationRow key={index} application={application} saveApplication={this.props.saveApplication} />
+      <ApplicationRow
+        key={index}
+        application={application}
+        saveApplication={this.props.saveApplication}
+      />
     ));
 
     return (
@@ -57,4 +61,4 @@ export class Home extends React.Component {
   }
 }
 
-export default connect(select, { getApplications })(Home);
+export default connect(select, { getApplications, saveApplication })(Home);

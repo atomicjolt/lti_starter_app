@@ -17,7 +17,7 @@ export default class Modal extends React.Component {
         save={this.props.save}
         contentLabel="Modal"
         overlayClassName="c-modal__background"
-        className={`c-modal c-modal--settings is-open}`}
+        className="c-modal c-modal--settings is-open"
       >
         <h2 className="c-modal__title">{this.props.application.name} Settings</h2>
         <Form

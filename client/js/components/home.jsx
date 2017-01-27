@@ -1,8 +1,7 @@
 import React       from 'react';
-import { connect } from 'react-redux';
 import assets      from '../libs/assets';
 
-import Auth    from './common/canvas_authentication'
+import Auth    from './common/canvas_authentication';
 
 export default class Home extends React.Component {
 
