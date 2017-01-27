@@ -1,7 +1,8 @@
 import React               from 'react';
 import { connect }         from 'react-redux';
 import _                   from 'lodash';
-import { getApplications } from '../../actions/applications';
+import { getApplications,
+         saveApplication } from '../../actions/applications';
 import Heading             from '../common/heading';
 import ApplicationRow      from './application_row';
 
@@ -14,10 +15,12 @@ function select(state) {
 
 export class Home extends React.Component {
   static propTypes = {
+    saveApplication: React.PropTypes.func.isRequired,
     getApplications: React.PropTypes.func.isRequired,
     applications: React.PropTypes.shape({}).isRequired,
     userName: React.PropTypes.string,
   };
+
 
   componentDidMount() {
     this.props.getApplications();
@@ -25,7 +28,7 @@ export class Home extends React.Component {
 
   render() {
     const applicationRows = _.map(this.props.applications, (application, index) => (
-      <ApplicationRow key={index} application={application} />
+      <ApplicationRow key={index} application={application} saveApplication={this.props.saveApplication} />
     ));
 
     return (

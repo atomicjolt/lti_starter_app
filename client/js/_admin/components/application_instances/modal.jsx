@@ -1,9 +1,9 @@
-import React        from 'react';
-import ReactModal   from 'react-modal';
-import NewSiteModal from '../sites/modal';
-import InstanceForm from './form';
+import React                   from 'react';
+import ReactModal              from 'react-modal';
+import NewSiteModal            from '../sites/modal';
+import ApplicationInstanceForm from './form';
 
-export default class newApplicationInstanceModal extends React.Component {
+export default class Modal extends React.Component {
   static propTypes = {
     isOpen: React.PropTypes.bool.isRequired,
     closeModal: React.PropTypes.func.isRequired,
@@ -68,7 +68,7 @@ export default class newApplicationInstanceModal extends React.Component {
       >
         <h2 className="c-modal__title">Attendance Settings</h2>
         <h3 className="c-modal__instance">Air University</h3>
-        <InstanceForm
+        <ApplicationInstanceForm
           {...this.state.newApplicationInstance}
           onChange={(e) => { this.newApplicationInstanceChange(e); }}
           createInstance={() => this.createInstance()}

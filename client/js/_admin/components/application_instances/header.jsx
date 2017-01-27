@@ -9,43 +9,16 @@ export default class Header extends React.Component {
     }),
   };
 
-  static getStyles() {
-    return {
-      buttonIcon: {
-        border: 'none',
-        backgroundColor: 'transparent',
-        color: 'grey',
-        fontSize: '1em',
-        cursor: 'pointer',
-      },
-    };
-  }
-
-  constructor() {
-    super();
-    this.state = { settingsOpen: false };
-  }
-
   render() {
     const { instance, newApplicationInstance } = this.props;
-    const styles = Header.getStyles();
 
     return (
       <div className="c-info">
         <div className="c-title">
-          <h1>Instances</h1>
-          <h3>{instance ? instance.name : 'App Name'}
-            <button
-              style={styles.buttonIcon}
-              onClick={() => this.setState({ settingsOpen: !this.state.settingsOpen })}
-            >
-              <i className="i-settings" />
-            </button>
-          </h3>
-          { this.state.settingsOpen ? <DropDown /> : null }
+          <h1>{instance ? instance.name : 'App Name'} Instances</h1>
         </div>
         <button className="c-btn c-btn--yellow" onClick={newApplicationInstance}>
-          New Instance
+          New Application Instance
         </button>
       </div>
     );
