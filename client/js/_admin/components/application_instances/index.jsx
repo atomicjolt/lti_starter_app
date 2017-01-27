@@ -1,7 +1,7 @@
 import React                           from 'react';
 import { connect }                     from 'react-redux';
-import { hashHistory }                 from 'react-router';
 import _                               from 'lodash';
+import history                         from '../../history';
 import Header                          from './header';
 import List                            from './list';
 import Modal                           from './modal';
@@ -51,8 +51,7 @@ export class BaseInstances extends React.Component {
     return (
       <div>
         <Heading
-          back={() => hashHistory.goBack()}
-          userName={this.props.userName}
+          back={() => history.goBack()}
         />
         <div className="o-contain o-contain--full">
           <Modal

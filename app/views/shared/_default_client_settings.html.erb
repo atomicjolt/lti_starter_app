@@ -15,7 +15,7 @@
         settings[:lms_course_id]                          = params[:custom_canvas_course_id]
         settings[:lms_user_id]                            = current_user.lti_user_id
         settings[:lti_provider]                           = lti_provider
-        settings[:canvas_oauth_path]                      = user_canvas_omniauth_authorize_url
+        settings[:canvas_oauth_url]                      = user_canvas_omniauth_authorize_url
         settings[:canvas_auth_required]                   = @canvas_auth_required
 
         # LTI parameters

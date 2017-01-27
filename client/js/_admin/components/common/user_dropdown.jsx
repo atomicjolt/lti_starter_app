@@ -18,8 +18,13 @@ export default function settingDropDown(props) {
 
   return (
     <ul style={styles.settingsDropDown}>
-      <Item><div dangerouslySetInnerHTML={{ __html: window.SIGN_OUT }} /></Item>
-      <Item>Logout and Delete Authentications</Item>
+      <Item><a href={props.signOutUrl}>Sign Out</a></Item>
+      <Item><a href={ `${props.signOutUrl}?destroy_authentications=true` }>Delete Canvas Authentications and Sign Out</a></Item>
     </ul>
   );
 }
+
+settingDropDown.propTypes = {
+  signOutUrl: React.PropTypes.string.isRequired,
+};
+

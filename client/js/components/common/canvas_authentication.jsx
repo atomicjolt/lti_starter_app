@@ -18,7 +18,7 @@ export class CanvasAuthentication extends React.Component {
     hideButton : React.PropTypes.bool,
     autoSubmit : React.PropTypes.bool,
     settings   : React.PropTypes.shape({
-      canvas_oauth_path: React.PropTypes.string,
+      canvas_oauth_url: React.PropTypes.string,
     }).isRequired,
   }
 
@@ -44,7 +44,7 @@ export class CanvasAuthentication extends React.Component {
     return (
       <form
         ref={(ref) => { this.form = ref; }}
-        action={this.props.settings.canvas_oauth_path}
+        action={this.props.settings.canvas_oauth_url}
       >
         { this.getButton() }
         { this.renderSettings() }

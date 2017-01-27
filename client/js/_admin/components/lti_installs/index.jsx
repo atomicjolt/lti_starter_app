@@ -1,12 +1,12 @@
-import React               from 'react';
-import { connect }         from 'react-redux';
-import { hashHistory }     from 'react-router';
-import _                   from 'lodash';
-import { getapplications } from '../../actions/applications';
+import React                 from 'react';
+import { connect }           from 'react-redux';
+import _                     from 'lodash';
+import history               from '../../history';
+import { getapplications }   from '../../actions/applications';
 import { getCanvasAccounts } from '../../actions/accounts';
-import Header              from '../common/heading';
-import Sidebar             from './sidebar';
-import InstallPane         from './install_pane';
+import Heading               from '../common/heading';
+import Sidebar               from './sidebar';
+import InstallPane           from './install_pane';
 
 function select(state) {
   return {
@@ -41,10 +41,7 @@ export class Home extends React.Component {
     if (_.isEmpty(this.props.accounts)) { return null; }
     return (
       <div style={{ height: '100%' }}>
-        <Header
-          back={() => hashHistory.goBack()}
-          userName={this.props.userName}
-        />
+        <Heading back={() => history.goBack()} />
         <div className="o-contain">
           <Sidebar accounts={this.props.accounts} application={this.props.applications[2]} />
           <InstallPane courses={this.props.courses} accounts={this.props.accounts} />

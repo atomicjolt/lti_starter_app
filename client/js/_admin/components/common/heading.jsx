@@ -1,11 +1,18 @@
 import React            from 'react';
+import { connect }      from 'react-redux';
 import assets           from '../../../libs/assets';
 import UserDropdown     from '../common/user_dropdown';
 
-export default class heading extends React.Component {
+const select = (state, props) => ({
+  userName: state.settings.display_name,
+  signOutUrl: state.settings.sign_out_url,
+});
+
+export class heading extends React.Component {
   static propTypes = {
     back: React.PropTypes.func,
     userName: React.PropTypes.string,
+    signOutUrl: React.PropTypes.string.isRequired,
   };
 
   constructor() {
@@ -50,13 +57,11 @@ export default class heading extends React.Component {
             </button>
           </li>
         </ul>
-        {this.state.showDropDown ? <UserDropdown /> : null }
+        {this.state.showDropDown ? <UserDropdown signOutUrl={this.props.signOutUrl} /> : null }
       </header>
     );
   }
 }
 
-heading.propTypes = {
-  back: React.PropTypes.func,
-  userName: React.PropTypes.string,
-};
+
+export default connect(select)(heading);

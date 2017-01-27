@@ -30,7 +30,7 @@ export class Home extends React.Component {
 
     return (
       <div>
-        <Heading userName={this.props.userName} />
+        <Heading />
         <div className="o-contain o-contain--full">
           <div className="c-info">
             <div className="c-title">
