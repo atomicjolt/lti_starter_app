@@ -31,7 +31,7 @@ export default function newApplicationInstanceForm(props) {
 
   const options = _.map(props.sites, site => ({
     label: site.url,
-    value: site.id
+    value: `${site.id}`
   })).concat({
     label: <div>Add New</div>,
     value: 'new',
@@ -77,7 +77,7 @@ export default function newApplicationInstanceForm(props) {
       <div className="o-grid o-grid__bottom">
         {
           _.map(TYPE_RADIOS, (typeLabel, typeValue) => (
-            <div className="o-grid__item u-third">
+            <div key={typeValue} className="o-grid__item u-third">
               <label
                 htmlFor={`lti_type_${typeValue}`}
                 className="c-checkbox"

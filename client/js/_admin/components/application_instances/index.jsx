@@ -70,6 +70,7 @@ export class BaseInstances extends React.Component {
           <List
             applicationInstances={this.props.applicationInstances}
             settings={this.props.settings}
+            deleteApplicationInstance={this.props.deleteApplicationInstance}
           />
         </div>
       </div>

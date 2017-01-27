@@ -8,6 +8,7 @@ const actions = [];
 const requests = [
   'GET_APPLICATION_INSTANCES',
   'CREATE_APPLICATION_INSTANCE',
+  'DELETE_APPLICATION_INSTANCE'
 ];
 
 export const Constants = wrapper(actions, requests);
@@ -28,5 +29,14 @@ export function createApplicationInstance(applicationId, applicationInstance) {
     body   : {
       application_instance: applicationInstance,
     }
+  };
+}
+
+export function deleteApplicationInstance(applicationId, applicationInstanceId) {
+  return {
+    type   : Constants.DELETE_APPLICATION_INSTANCE,
+    method : Network.DEL,
+    url    : `/api/applications/${applicationId}/application_instances/${applicationInstanceId}`,
+    applicationInstanceId,
   };
 }

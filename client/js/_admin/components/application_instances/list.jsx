@@ -6,11 +6,8 @@ export default class List extends React.Component {
   static propTypes = {
     applicationInstances: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
     settings: React.PropTypes.shape({}).isRequired,
+    deleteApplicationInstance: React.PropTypes.func.isRequired,
   };
-
-  deleteInstance() {
-    // TODO : Write Me!
-  }
 
   render() {
     return (
@@ -30,7 +27,7 @@ export default class List extends React.Component {
                 key={`instance_${key}`}
                 {...instance}
                 settings={this.props.settings}
-                delete={() => this.deleteInstance()}
+                delete={this.props.deleteApplicationInstance}
               />
             ))
           }

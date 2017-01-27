@@ -19,6 +19,12 @@ export default function instances(state = initialState, action) {
       return newState;
     }
 
+    case ApplicationInstancesConstants.DELETE_APPLICATION_INSTANCE_DONE: {
+      const newState = _.cloneDeep(state);
+      delete newState[action.original.applicationInstanceId];
+      return newState;
+    }
+
     default:
       return state;
   }

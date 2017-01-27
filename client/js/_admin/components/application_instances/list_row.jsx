@@ -9,6 +9,7 @@ export default class ListRow extends React.Component {
     lti_key: React.PropTypes.string,
     domain: React.PropTypes.string,
     id: React.PropTypes.number.isRequired,
+    application_id: React.PropTypes.number.isRequired,
     site: React.PropTypes.shape({
       url: React.PropTypes.string
     }).isRequired,
@@ -60,7 +61,12 @@ export default class ListRow extends React.Component {
         <td><span>{this.props.lti_key}</span></td>
         <td><span>{this.props.domain}</span></td>
         <td>
-          <button className="c-delete" onClick={this.props.delete}>
+          <button
+            className="c-delete"
+            onClick={() => {
+              this.props.delete(this.props.application_id, this.props.id);
+            }}
+          >
             <i className="i-delete" />
           </button>
         </td>
