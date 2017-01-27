@@ -7,6 +7,7 @@ import applicationInstances   from './application_instances';
 import sites                  from './sites';
 import siteToOauth            from './site_to_oauth';
 import accounts               from './accounts';
+import courses                from './courses';
 
 const rootReducer = combineReducers({
   settings,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   sites,
   siteToOauth,
   accounts,
+  courses,
 });
 
 export default rootReducer;

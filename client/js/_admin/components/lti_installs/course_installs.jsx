@@ -3,9 +3,9 @@ import _                from 'lodash';
 import CourseInstallRow from './course_install_row';
 
 export default function CourseInstalls(props) {
-  const courses = _.map(props.courses, course => (
-    <CourseInstallRow courseName={course.name} isInstalled={course.installed} />
-  ));
+  const courses = _.map(props.courses, (course) => {
+    return <CourseInstallRow key={course.id} courseName={course.name} isInstalled={course.external_tools} />;
+  });
 
   return (
     <table className="c-table c-table--installs">

@@ -13,7 +13,6 @@ export default function InstallPane(props) {
         <input type="text" placeholder="Search..." />
         <i className="i-search" />
       </div>
-
       <CourseInstalls courses={props.courses} />
     </div>
   );

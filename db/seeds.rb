@@ -13,7 +13,7 @@ applications = [{
   name: "LTI Admin",
   description: "LTI tool administration",
   client_application_name: "lti_admin_app",
-  canvas_api_permissions: "GET_SUB_ACCOUNTS_OF_ACCOUNT",
+  canvas_api_permissions: "LIST_ACTIVE_COURSES_IN_ACCOUNT,LIST_EXTERNAL_TOOLS_COURSES,GET_SUB_ACCOUNTS_OF_ACCOUNT",
   kind: Application.kinds[:admin],
 }, {
   name: "LTI Starter App",

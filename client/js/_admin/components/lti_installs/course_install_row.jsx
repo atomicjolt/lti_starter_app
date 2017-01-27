@@ -1,7 +1,10 @@
 import React from 'react';
 
 export default function CourseInstallRow(props) {
-  const installText = props.isInstalled ? 'Uninstall' : 'Install';
+  // find out if it is the correct tool installed
+  // matching on the lti_secret of the tool.
+  const installText = props.external_tools ? 'Uninstall' : 'Install';
+  // props.canvasRequest("LIST_EXTERNAL_TOOLS_COURSES", { course_id: course.id });
   return (
     <tr>
       <td><a href="">{props.courseName}</a></td>
@@ -12,5 +15,5 @@ export default function CourseInstallRow(props) {
 
 CourseInstallRow.propTypes = {
   courseName: React.PropTypes.string.isRequired,
-  isInstalled: React.PropTypes.bool.isRequired
+  external_tools: React.PropTypes.bool
 };
