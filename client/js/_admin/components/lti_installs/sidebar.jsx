@@ -19,6 +19,7 @@ export default function Sidebar(props) {
             <SubAccounts
               // Need to only show if clicked.
               accounts={props.accounts[1]}
+              canvasRequest={props.canvasRequest}
             />
           </li>
         </ul>

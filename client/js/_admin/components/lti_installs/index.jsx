@@ -4,6 +4,7 @@ import _                     from 'lodash';
 import history               from '../../history';
 import { getapplications }   from '../../actions/applications';
 import { getCanvasAccounts } from '../../actions/accounts';
+import canvasRequest         from '../../../libs/canvas/action';
 import Heading               from '../common/heading';
 import Sidebar               from './sidebar';
 import InstallPane           from './install_pane';
@@ -43,7 +44,11 @@ export class Home extends React.Component {
       <div style={{ height: '100%' }}>
         <Heading back={() => history.goBack()} />
         <div className="o-contain">
-          <Sidebar accounts={this.props.accounts} application={this.props.applications[2]} />
+          <Sidebar
+            accounts={this.props.accounts}
+            application={this.props.applications[2]}
+            canvasRequest={this.props.canvasRequest}
+          />
           <InstallPane courses={this.props.courses} accounts={this.props.accounts} />
         </div>
       </div>
@@ -51,4 +56,4 @@ export class Home extends React.Component {
   }
 }
 
-export default connect(select, { getapplications, getCanvasAccounts })(Home);
+export default connect(select, { getapplications, getCanvasAccounts, canvasRequest })(Home);

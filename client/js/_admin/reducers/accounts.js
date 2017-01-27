@@ -21,6 +21,16 @@ export default (state = initialState, action) => {
       return newState;
     }
 
+    case 'GET_SUB_ACCOUNTS_OF_ACCOUNT_DONE': {
+      _.forEach(action.payload, (account) => {
+        if (_.isUndefined(action.original.localData.subAccounts)) {
+          action.original.localData.subAccounts = {};
+        }
+        action.original.localData.subAccounts[account.id] = account;
+      });
+      return _.cloneDeep(state);
+    }
+
     default:
       return state;
   }
