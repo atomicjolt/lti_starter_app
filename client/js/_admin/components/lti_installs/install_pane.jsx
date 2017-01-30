@@ -23,7 +23,7 @@ InstallPane.propTypes = {
     name: React.PropTypes.string,
     installCount: React.PropTypes.number
   }).isRequired,
-  courses: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired
+  courses: React.PropTypes.shape({}).isRequired,
 };
 
 InstallPane.defaultProps = {

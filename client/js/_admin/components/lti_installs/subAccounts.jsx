@@ -48,7 +48,7 @@ export default class SubAccounts extends React.Component {
 
 SubAccounts.propTypes = {
   accounts: React.PropTypes.arrayOf(React.PropTypes.shape({
-  })).isRequired,
+  })),
   canvasRequest: React.PropTypes.func.isRequired,
   setAccount: React.PropTypes.func.isRequired,
   activeAccount: React.PropTypes.shape({}),

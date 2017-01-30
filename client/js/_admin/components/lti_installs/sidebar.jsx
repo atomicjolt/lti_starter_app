@@ -39,10 +39,8 @@ export default function Sidebar(props) {
 Sidebar.propTypes = {
   application: React.PropTypes.arrayOf(React.PropTypes.shape({
     name: React.PropTypes.string.isRequired,
-  })).isRequired,
-  accounts: React.PropTypes.arrayOf(React.PropTypes.shape({
-    name: React.PropTypes.string.isRequired,
-  })).isRequired,
+  })),
+  accounts: React.PropTypes.shape({}),
   canvasRequest: React.PropTypes.func.isRequired,
   setAccount: React.PropTypes.func.isRequired,
   activeAccount: React.PropTypes.shape({}),
