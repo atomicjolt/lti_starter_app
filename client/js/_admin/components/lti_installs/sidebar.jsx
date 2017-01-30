@@ -2,13 +2,13 @@ import React from 'react';
 import SubAccounts from './subAccounts';
 
 export default function Sidebar(props) {
-  const schoolName = props.accounts[0].name;
+  const schoolName = props.accounts[0] ? props.accounts[0].name : 'Loading...';
   return (
     <div className="o-left">
       <div className="c-tool">
         <a href=""><i className="i-settings" /></a>
         <h4 className="c-tool__subtitle">LTI Tool</h4>
-        <h3 className="c-tool__title">{props.application.name}</h3>
+        <h3 className="c-tool__title">{props.application ? props.application.name : 'n/a'}</h3>
         <h4 className="c-tool__instance">{schoolName}</h4>
       </div>
 

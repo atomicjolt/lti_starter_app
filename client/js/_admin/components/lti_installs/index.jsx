@@ -44,6 +44,7 @@ export class Home extends React.Component {
   }
 
   componentDidUpdate() {
+    // TODO: this is making a mess
     if (_.isEmpty(this.props.courses) && !_.isEmpty(this.props.accounts)) {
       const accountId = this.props.accounts[0].id;
       this.props.canvasRequest(listActiveCoursesInAccount, { account_id: accountId, per_page: 100 });
@@ -60,7 +61,7 @@ export class Home extends React.Component {
   }
 
   render() {
-    if (_.isEmpty(this.props.accounts) || _.isEmpty(this.props.courses)) { return null; }
+    // if (_.isEmpty(this.props.accounts) || _.isEmpty(this.props.courses)) { return null; }
     this.getExternalTools();
     const applicationInstanceId = parseInt(this.props.params.applicationInstanceId);
     return (
