@@ -1,0 +1,24 @@
+<div class="c-login">
+  <div class="c-title">
+    <h2>Forgot your password?</h2>
+  </div>
+
+  <div>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <%= f.label :email, class: "c-input" do %>
+        <%= f.email_field :email, autofocus: true %>
+      <% end %>
+      
+      <div class="actions">
+        <%= f.submit "Send me reset password instructions", class:"c-btn c-btn--yellow"%>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="links">
+    <%= render "shared/links" %>
+  </div>
+
+</div>
