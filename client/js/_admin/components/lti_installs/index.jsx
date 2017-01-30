@@ -75,7 +75,7 @@ export class Home extends React.Component {
             setAccount={account => this.setState({ account })}
             activeAccount={this.state.account}
           />
-          <InstallPane courses={this.props.courses} accounts={this.props.accounts} />
+          <InstallPane courses={this.props.courses} account={this.state.account} />
         </div>
       </div>
     );

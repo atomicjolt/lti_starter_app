@@ -1,5 +1,5 @@
 import React from 'react';
-import SubAccounts from './subAccounts';
+import SubAccounts from './sub_accounts';
 
 export default function Sidebar(props) {
   const schoolName = props.accounts[0] ? props.accounts[0].name : 'Loading...';
@@ -37,9 +37,9 @@ export default function Sidebar(props) {
 }
 
 Sidebar.propTypes = {
-  application: React.PropTypes.arrayOf(React.PropTypes.shape({
+  application: React.PropTypes.shape({
     name: React.PropTypes.string.isRequired,
-  })),
+  }),
   accounts: React.PropTypes.shape({}),
   canvasRequest: React.PropTypes.func.isRequired,
   setAccount: React.PropTypes.func.isRequired,

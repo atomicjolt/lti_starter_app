@@ -6,8 +6,8 @@ export default function InstallPane(props) {
   return (
     <div className="o-right">
       <AccountInstall
-        accountName={props.currentAccount.name}
-        accountInstalls={props.currentAccount.installCount}
+        accountName={props.account ? props.account.name : 'Root'}
+        accountInstalls={props.account ? props.account.installCount : null}
       />
       <div className="c-search c-search--small">
         <input type="text" placeholder="Search..." />
@@ -19,13 +19,10 @@ export default function InstallPane(props) {
 }
 
 InstallPane.propTypes = {
-  currentAccount: React.PropTypes.shape({
+  account: React.PropTypes.shape({
     name: React.PropTypes.string,
     installCount: React.PropTypes.number
-  }).isRequired,
+  }),
   courses: React.PropTypes.shape({}).isRequired,
 };
 
-InstallPane.defaultProps = {
-  currentAccount: {}
-};

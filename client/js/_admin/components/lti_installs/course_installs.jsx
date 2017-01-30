@@ -23,10 +23,5 @@ export default function CourseInstalls(props) {
 }
 
 CourseInstalls.propTypes = {
-  courses: React.PropTypes.arrayOf(
-    React.PropTypes.shape({
-      name: React.PropTypes.string,
-      installed: React.PropTypes.bool
-    })
-  ).isRequired
+  courses: React.PropTypes.shape({}).isRequired
 };

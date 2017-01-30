@@ -20,7 +20,10 @@ export default class SubAccounts extends React.Component {
     const { activeAccount } = this.props;
 
     return _.map(accounts, account => (
-      <li className={activeAccount && activeAccount.id === account.id ? 'c-filter__item is-active' : 'c-filter__item'}>
+      <li
+        key={`account_${account.id}`}
+        className={activeAccount && activeAccount.id === account.id ? 'c-filter__item is-active' : 'c-filter__item'}
+      >
         <a onClick={() => this.getSubAccounts(account)}>
           <span>
             <i className="i-dropdown" />
@@ -37,7 +40,6 @@ export default class SubAccounts extends React.Component {
   }
 
   render() {
-
     return (
       <ul className="c-filter__dropdown">
         {this.accounts(this.props.accounts)}
@@ -47,8 +49,7 @@ export default class SubAccounts extends React.Component {
 }
 
 SubAccounts.propTypes = {
-  accounts: React.PropTypes.arrayOf(React.PropTypes.shape({
-  })),
+  accounts: React.PropTypes.shape({}),
   canvasRequest: React.PropTypes.func.isRequired,
   setAccount: React.PropTypes.func.isRequired,
   activeAccount: React.PropTypes.shape({}),

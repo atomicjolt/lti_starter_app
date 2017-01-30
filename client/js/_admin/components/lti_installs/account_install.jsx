@@ -14,5 +14,5 @@ export default function AccountInstall(props) {
 
 AccountInstall.propTypes = {
   accountName: React.PropTypes.string.isRequired,
-  accountInstalls: React.PropTypes.number.isRequired,
+  accountInstalls: React.PropTypes.number,
 };
