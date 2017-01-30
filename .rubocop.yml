@@ -104,7 +104,7 @@ Rails/Delegate:
   Description: 'Prefer delegate method for delegations.'
   Enabled: false
 
-Style/DeprecatedHashMethods:
+Style/PreferredHashMethods:
   Description: 'Checks for use of deprecated Hash methods.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#hash-key'
   Enabled: false
@@ -387,9 +387,7 @@ Style/StringLiterals:
 Style/TrailingCommaInArguments:
   Description: 'Checks for trailing comma in argument lists.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas'
-  EnforcedStyleForMultiline:
-    - consistent_comma
-    - no_comma
+  EnforcedStyleForMultiline: consistent_comma
   SupportedStyles:
     - comma
     - consistent_comma
@@ -399,9 +397,7 @@ Style/TrailingCommaInArguments:
 Style/TrailingCommaInLiteral:
   Description: 'Checks for trailing comma in array and hash literals.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas'
-  EnforcedStyleForMultiline:
-    - consistent_comma
-    - no_comma
+  EnforcedStyleForMultiline: consistent_comma
   SupportedStyles:
     - comma
     - consistent_comma
