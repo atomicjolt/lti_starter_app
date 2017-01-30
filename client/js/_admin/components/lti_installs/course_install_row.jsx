@@ -7,7 +7,7 @@ export default function CourseInstallRow(props) {
   // props.canvasRequest("LIST_EXTERNAL_TOOLS_COURSES", { course_id: course.id });
   return (
     <tr>
-      <td><a href="">{props.courseName}</a></td>
+      <td><div className="c-table--inactive">{props.courseName}</div></td>
       <td><button className="c-btn c-btn--gray">{installText}</button></td>
     </tr>
   );

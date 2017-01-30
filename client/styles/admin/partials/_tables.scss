@@ -76,6 +76,12 @@
           color: $light-gray;
           display: inline-block;
         }
+
+        .c-table--inactive{
+          @include semi-bold;
+          font-size: 1.4rem;
+          color: $text-color;
+        }
       }
 
       &:nth-of-type(2){
