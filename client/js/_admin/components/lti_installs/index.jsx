@@ -34,7 +34,6 @@ export class Home extends React.Component {
     super();
     this.state = {
       account: null,
-      external_tool_run: true,
     };
   }
 
@@ -43,26 +42,25 @@ export class Home extends React.Component {
     this.props.getCanvasAccounts();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     // TODO: this is making a mess
     if (_.isEmpty(this.props.courses) && !_.isEmpty(this.props.accounts)) {
       const accountId = this.props.accounts[0].id;
       this.props.canvasRequest(listActiveCoursesInAccount, { account_id: accountId, per_page: 100 });
     }
-  }
 
-  getExternalTools() {
-    if (this.state.external_tool_run) {
-      _.forEach(this.props.courses, course => (
-      this.props.canvasRequest(listExternalToolsCourses, { course_id: course.id })
-      ));
-      this.setState({ external_tool_run: false });
+    if (_.isEmpty(prevProps.courses) && !_.isEmpty(this.props.courses)) {
+      this.getExternalTools();
     }
   }
 
+  getExternalTools() {
+    _.forEach(this.props.courses, course => (
+    this.props.canvasRequest(listExternalToolsCourses, { course_id: course.id })
+    ));
+  }
+
   render() {
-    // if (_.isEmpty(this.props.accounts) || _.isEmpty(this.props.courses)) { return null; }
-    this.getExternalTools();
     const applicationInstanceId = parseInt(this.props.params.applicationInstanceId);
     return (
       <div style={{ height: '100%' }}>
