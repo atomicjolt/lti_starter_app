@@ -24,12 +24,10 @@ export default class SubAccounts extends React.Component {
         key={`account_${account.id}`}
         className={activeAccount && activeAccount.id === account.id ? 'c-filter__item is-active' : 'c-filter__item'}
       >
-        <a onClick={() => this.getSubAccounts(account)}>
-          <span>
-            <i className="i-dropdown" />
-            {account.name}
-          </span>
-        </a>
+        <span>
+          <i className="i-dropdown" />
+          {account.name}
+        </span>
         {
           this.shouldShowAccounts(account) ? <ul className="c-filter__dropdown">
             {this.accounts(account.subAccounts)}

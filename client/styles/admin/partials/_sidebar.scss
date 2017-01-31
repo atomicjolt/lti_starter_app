@@ -66,7 +66,7 @@
     .c-filter__item{
       margin-top: 0.1rem;
 
-      & > a span{
+      & > span{
         @include semi-bold;
         font-size: 1.6rem;
         color: $white;
@@ -74,6 +74,7 @@
         display: block;
         padding: 0.5rem 0.5rem 0.5rem 3rem;
         position: relative;
+        cursor: pointer;
 
         i{
           font-size: 2rem;

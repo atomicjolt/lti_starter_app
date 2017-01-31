@@ -16,12 +16,10 @@ export default function Sidebar(props) {
         <h4 className="c-accounts">Accounts</h4>
         <ul className="c-filter-list">
           <li className={props.activeAccount ? 'c-filter__item' : 'c-filter__item is-active'}>
-            <a href="">
-              <span>
-                <i className="i-dropdown" />
-                {schoolName}
-              </span>
-            </a>
+            <span>
+              <i className="i-dropdown" />
+              {schoolName}
+            </span>
             <SubAccounts
               // Need to only show if clicked.
               accounts={props.accounts[1]}
