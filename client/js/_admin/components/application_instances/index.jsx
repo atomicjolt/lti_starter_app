@@ -60,16 +60,16 @@ export class BaseInstances extends React.Component {
             closeModal={() => this.setState({ modalOpen: false })}
             sites={this.props.sites}
             createApplicationInstance={this.props.createApplicationInstance}
-            applicationId={this.props.params.applicationId}
+            application={this.props.applications[this.props.params.applicationId]}
           />
           <Header
             openSettings={() => {}}
             newApplicationInstance={() => this.setState({ modalOpen: true })}
-            instance={this.props.applications[this.props.params.applicationId]}
+            application={this.props.applications[this.props.params.applicationId]}
           />
           <List
             applicationInstances={this.props.applicationInstances}
-            settings={this.props.settings}
+            settings={this.props.settings}s
             deleteApplicationInstance={this.props.deleteApplicationInstance}
           />
         </div>

@@ -9,6 +9,10 @@ export default class Modal extends React.Component {
     closeModal: React.PropTypes.func.isRequired,
     sites: React.PropTypes.shape({}),
     createApplicationInstance: React.PropTypes.func.isRequired,
+    appliction: React.PropTypes.shape({
+      name: React.PropTypes.string,
+      id: React.PropTypes.number,
+    })
   };
 
   constructor() {
@@ -51,13 +55,16 @@ export default class Modal extends React.Component {
 
   createInstance() {
     this.props.createApplicationInstance(
-      this.props.applicationId,
+      this.props.application.id,
       this.state.newApplicationInstance
     );
     this.props.closeModal();
   }
 
   render() {
+    const application = this.props.application;
+    const applicationName = application ? application.name : 'Application';
+
     return (
       <ReactModal
         isOpen={this.props.isOpen}
@@ -66,8 +73,9 @@ export default class Modal extends React.Component {
         overlayClassName="c-modal__background"
         className={`c-modal c-modal--settings ${this.showInstanceModal()}`}
       >
-        <h2 className="c-modal__title">Attendance Settings</h2>
-        <h3 className="c-modal__instance">Air University</h3>
+        <h2 className="c-modal__title">
+          New {applicationName} Instance
+        </h2>
         <ApplicationInstanceForm
           {...this.state.newApplicationInstance}
           onChange={(e) => { this.newApplicationInstanceChange(e); }}
