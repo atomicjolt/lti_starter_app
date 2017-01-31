@@ -2784,6 +2784,10 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
+focus-group@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/focus-group/-/focus-group-0.3.1.tgz#e0f32ed86b0dabdd6ffcebdf898ecb32e47fedce"
+
 for-in@^0.1.5:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-0.1.6.tgz#c9f96e89bfad18a545af5ec3ed352a1d9e5b4dc8"
@@ -5743,6 +5747,13 @@ react-addons-test-utils@^15.4.2:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
+react-aria-menubutton@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/react-aria-menubutton/-/react-aria-menubutton-4.3.0.tgz#352aba495040efeb37acae291b1f52b0ca3d109f"
+  dependencies:
+    focus-group "^0.3.1"
+    teeny-tap "^0.2.0"
+
 react-base16-styling@^0.4.1:
   version "0.4.6"
   resolved "https://registry.yarnpkg.com/react-base16-styling/-/react-base16-styling-0.4.6.tgz#ac23cb19b278974d965003b88f06a038d790bc80"
@@ -5803,12 +5814,6 @@ react-modal@^1.6.5:
     exenv "1.2.0"
     lodash.assign "^4.2.0"
 
-react-onclickoutside@^5.7.1:
-  version "5.8.3"
-  resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-5.8.3.tgz#488a03f97eb18b191673ba5d5d3317e942982994"
-  dependencies:
-    object-assign "^4.0.1"
-
 react-proxy-loader@0.3.4:
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/react-proxy-loader/-/react-proxy-loader-0.3.4.tgz#49dfeafa49d6637b0c7428ba7c0d39abb08094ca"
@@ -5853,12 +5858,6 @@ react-router@3.0.0:
     invariant "^2.2.1"
     loose-envify "^1.2.0"
     warning "^3.0.0"
-
-react-select-search@^0.5.5:
-  version "0.5.5"
-  resolved "https://registry.yarnpkg.com/react-select-search/-/react-select-search-0.5.5.tgz#4fbd958355e1cd850f568ea25862d8567866b1df"
-  dependencies:
-    react-onclickoutside "^5.7.1"
 
 react-select@^1.0.0-rc.2:
   version "1.0.0-rc.2"
@@ -6965,6 +6964,10 @@ tar@^2.0.0, tar@~2.2.1:
     block-stream "*"
     fstream "^1.0.2"
     inherits "2"
+
+teeny-tap@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/teeny-tap/-/teeny-tap-0.2.0.tgz#167e645182d06ac222d62bb2ab67947a70a58a68"
 
 text-table@~0.2.0:
   version "0.2.0"

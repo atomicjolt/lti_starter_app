@@ -1,12 +1,16 @@
-import React            from 'react';
-import { connect }      from 'react-redux';
-import assets           from '../../../libs/assets';
-import UserDropdown     from '../common/user_dropdown';
+import React                               from 'react';
+import { connect }                         from 'react-redux';
+import { Wrapper, Button, Menu, MenuItem } from 'react-aria-menubutton';
+import assets                              from '../../../libs/assets';
 
 const select = (state, props) => ({
   userName: state.settings.display_name,
   signOutUrl: state.settings.sign_out_url,
 });
+
+function handleSelection(value) {
+  window.location = value;
+}
 
 export class heading extends React.Component {
   static propTypes = {
@@ -15,24 +19,8 @@ export class heading extends React.Component {
     signOutUrl: React.PropTypes.string.isRequired,
   };
 
-  constructor() {
-    super();
-    this.state = { showDropDown: false };
-  }
-
-  getStyles() {
-    return {
-      userName: {
-        backgroundColor: 'transparent',
-        border: 'none',
-        cursor: 'pointer'
-      }
-    };
-  }
-
   render() {
     const img = assets('./images/atomicjolt.svg');
-    const styles = this.getStyles();
 
     return (
       <header className="c-head">
@@ -45,19 +33,39 @@ export class heading extends React.Component {
           }
         </div>
         <img className="c-logo" src={img} alt="Atomic Jolt Logo" />
-        <ul className="c-user">
-          <li>
-            <button
-              className="c-username"
-              style={styles.userName}
-              onClick={() => this.setState({ showDropDown: !this.state.showDropDown })}
-            >
-              {this.props.userName}
-              <i className="i-dropdown" />
-            </button>
-          </li>
-        </ul>
-        {this.state.showDropDown ? <UserDropdown signOutUrl={this.props.signOutUrl} /> : null }
+        <Wrapper
+          className="c-user"
+          onSelection={handleSelection}
+        >
+          <Button className="c-username">
+            <span>{this.props.userName}</span>
+            <i className="i-dropdown" />
+          </Button>
+          <Menu className="c-dropdown">
+            <ul>
+              <li>
+                <MenuItem
+                  value={this.props.signOutUrl}
+                  text="Logout"
+                  className="c-menu-item"
+                >
+                  <a href={this.props.signOutUrl}><span>Logout</span></a>
+                </MenuItem>
+              </li>
+              <li>
+                <MenuItem
+                  value={`${this.props.signOutUrl}?destroy_authentications=true`}
+                  text="Delete"
+                  className="c-menu-item"
+                >
+                  <a href={`${this.props.signOutUrl}?destroy_authentications=true`}>
+                    <span>Delete Canvas Authentications and Sign Out</span>
+                  </a>
+                </MenuItem>
+              </li>
+            </ul>
+          </Menu>
+        </Wrapper>
       </header>
     );
   }
