@@ -1,5 +1,4 @@
 import React      from 'react';
-import Item       from '../common/drop_down_item';
 
 export default function settingDropDown(props) {
   const styles = {
@@ -16,9 +15,9 @@ export default function settingDropDown(props) {
 
   return (
     <ul style={styles.settingsDropDown}>
-      <Item>Settings</Item>
-      <Item>Other Settings</Item>
-      <Item>More Settings</Item>
+      <li>Settings</li>
+      <li>Other Settings</li>
+      <li>More Settings</li>
     </ul>
   );
 }
