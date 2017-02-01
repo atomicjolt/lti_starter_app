@@ -9,7 +9,7 @@ includes links to the relevant documentation and examples.
 ## Example React Component
 -------------------------------
 
-`
+```javascript
 "use strict";
 
 import React             from "react";
@@ -41,7 +41,7 @@ class Accounts extends React.Component {
 }
 
 export default connect(select, { canvasRequest })(Accounts);
-`
+```
 
 In the example above we need only import the canvasRequest action. ll Canvas API requests use this
 one action to make requests.
@@ -53,7 +53,9 @@ Only Canvas API endpoints that are whitelisted with the application are authoriz
 in an 'unauthorized' being returned from the server. Add API calls to the 'canvas_api_permissions' attribute
 of the application as a comma separated list. ie
 
-  `my_applications.canvas_api_permissions = "LIST_ACCOUNTS,GET_SINGLE_ACCOUNT"
+```ruby
+my_applications.canvas_api_permissions = "LIST_ACCOUNTS,GET_SINGLE_ACCOUNT"
+```
 
 Definitions for the API endpoints can be found in libs/canvas_urls.rb.
 
