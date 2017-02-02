@@ -1,7 +1,7 @@
 import React                 from 'react';
 import { connect }           from 'react-redux';
 import _                     from 'lodash';
-import history               from '../../history';
+import appHistory            from '../../history';
 import { getapplications }   from '../../actions/applications';
 import { getCanvasAccounts } from '../../actions/accounts';
 import { listActiveCoursesInAccount } from '../../../libs/canvas/constants/accounts';
@@ -64,7 +64,7 @@ export class Home extends React.Component {
     const applicationInstanceId = parseInt(this.props.params.applicationInstanceId);
     return (
       <div style={{ height: '100%' }}>
-        <Heading back={() => history.goBack()} />
+        <Heading back={() => appHistory.goBack()} />
         <div className="o-contain">
           <Sidebar
             accounts={this.props.accounts}
