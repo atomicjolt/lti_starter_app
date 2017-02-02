@@ -1,34 +1,34 @@
 import _             from 'lodash';
 import { Constants } from '../actions/accounts';
 
-const initialState = {};
+const initialState = {
+  accounts: {},
+  loading: false,
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
 
     case Constants.GET_CANVAS_ACCOUNTS_DONE: {
       const newState = _.cloneDeep(state);
-      _.forEach(action.payload.accounts, (account) => {
-        if (account.parent_account_id == null) {
-          newState[0] = account;
-        } else if (_.isUndefined(newState[account.parent_account_id])) {
-          newState[account.parent_account_id] = {};
-          newState[account.parent_account_id][account.id] = account;
-        } else {
-          newState[account.parent_account_id][account.id] = account;
-        }
+      newState.loading = false;
+      _.forEach(action.payload, (account) => {
+        newState.accounts[account.id] = account;
       });
+
+      return newState;
+    }
+
+    case Constants.GET_CANVAS_ACCOUNTS: {
+      const newState = _.cloneDeep(state);
+      newState.loading = _.isEmpty(newState.accounts);
+
       return newState;
     }
 
     case 'GET_SUB_ACCOUNTS_OF_ACCOUNT_DONE': {
-      _.forEach(action.payload, (account) => {
-        if (_.isUndefined(action.original.localData.subAccounts)) {
-          action.original.localData.subAccounts = {};
-        }
-        action.original.localData.subAccounts[account.id] = account;
-      });
-      return _.cloneDeep(state);
+      action.original.localData["sub_accounts"] = action.payload;
+      return state;
     }
 
     default:
