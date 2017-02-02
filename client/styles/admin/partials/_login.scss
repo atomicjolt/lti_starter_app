@@ -1,8 +1,12 @@
 .c-login {
-  padding: 0 25rem;
-
   .c-title {
     padding: 2rem 0;
+
+    h2 {
+      font-size: 2.4rem;
+      @include semi-bold;
+      color: $yellow;
+    }
   }
 
   .actions {

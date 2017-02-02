@@ -66,12 +66,17 @@
     .c-filter__item{
       margin-top: 0.1rem;
 
-      & > span{
+      & > button{
         @include semi-bold;
         font-size: 1.6rem;
         color: $white;
+        border: none;
+        background-color: $darker-gray;
         border-right: 0.5rem solid $darker-gray;
         display: block;
+        width: 100%;
+        outline: none;
+        text-align: left;
         padding: 0.5rem 0.5rem 0.5rem 3rem;
         position: relative;
         cursor: pointer;
@@ -91,7 +96,7 @@
         }
       }
 
-      &.is-active > a span{
+      &.is-active > button{
         background: $gray2;
         border-right-color: $yellow;
 

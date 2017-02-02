@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
 
 @mixin display-flex {
   display: -webkit-box;
@@ -16,6 +17,16 @@
 @mixin flex($flex...) {
   -webkit-flex: $flex;
   flex: $flex;
+}
+
+@mixin no-select{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 
 @mixin center($position) {

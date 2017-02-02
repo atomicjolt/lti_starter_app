@@ -41,12 +41,12 @@
 
     &:focus {
       outline: none;
-      background-color: $gray2;
+      background-color: $darker-gray;
     }
 
     &:hover {
-      background-color: $gray2;
-      cursor: pointer; 
+      background-color: $darker-gray;
+      cursor: pointer;
     }
   }
 
@@ -55,7 +55,7 @@
     display: block;
     top: 100%;
     right: 0;
-    background: $dark-gray;
+    background: $darker-gray;
     color: $light-gray;
 
     .c-menu-item {
@@ -68,11 +68,11 @@
       }
 
       &:hover {
-        background-color: $gray2;
+        background-color: $dark-gray;
       }
 
       &:focus {
-        background-color: $gray2;
+        background-color: $dark-gray;
         outline: none;
       }
     }
