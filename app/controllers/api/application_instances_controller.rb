@@ -4,12 +4,19 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   load_and_authorize_resource :application_instance, through: :application
 
   def index
-    @application_instances = @application_instances
-    render json: @application_instances.as_json(include: :site)
+    application_instances = @application_instances.map do |app|
+      app_json = app.as_json(include: :site)
+      app_json["lti_config_xml"] = app.lti_config_xml
+      app_json
+    end
+
+    render json: application_instances
   end
 
   def show
-    render json: @application_instance
+    application_instance = @application_instance.as_json(include: :site)
+    application_instance["lti_config_xml"] = @application_instance.lti_config_xml
+    render json: application_instance
   end
 
   def create
