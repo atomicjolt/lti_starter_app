@@ -20,6 +20,10 @@ class ApplicationInstance < ActiveRecord::Base
   after_create :create_schema
   after_commit :destroy_schema, on: :destroy
 
+  def lti_config_xml
+    Lti::Utils.lti_config_xml(self)
+  end
+
   private
 
   def set_lti
