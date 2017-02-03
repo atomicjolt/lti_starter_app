@@ -21,7 +21,7 @@ export default function CourseInstalls(props) {
         </tr>
       </thead>
       <tbody>
-        {courses}
+        {_.isEmpty(props.loadingCourses) ? courses : null}
       </tbody>
     </table>
   );
