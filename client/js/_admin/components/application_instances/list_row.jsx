@@ -30,7 +30,7 @@ export default class ListRow extends React.Component {
   }
 
   render() {
-    const path = `application_instances/${this.props.id}/installs`;
+    const path = `applications/${this.props.application_id}/application_instances/${this.props.id}/installs`;
     return (
       <tr>
         <td>

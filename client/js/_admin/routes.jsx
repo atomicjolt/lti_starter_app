@@ -14,7 +14,7 @@ export default (
     <Route path="/" component={Index}>
       <IndexRoute component={Admin} />
       <Route path="/applications/:applicationId/application_instances" component={ApplicationInstances} />
-      <Route path="/application_instances/:applicationInstanceId/installs" component={Installs} />
+      <Route path="/applications/:applicationId/application_instances/:applicationInstanceId/installs" component={Installs} />
     </Route>
     <Route path="*" component={NotFound} />
   </Router>
