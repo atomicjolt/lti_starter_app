@@ -1,34 +1,37 @@
-import React                 from 'react';
-import { connect }           from 'react-redux';
-import _                     from 'lodash';
-import ReactModal            from 'react-modal';
-import appHistory            from '../../history';
-import { getapplications }   from '../../actions/applications';
-import * as AccountActions   from '../../actions/accounts';
+import React                        from 'react';
+import { connect }                  from 'react-redux';
+import _                            from 'lodash';
+import ReactModal                   from 'react-modal';
+import appHistory                   from '../../history';
+import { getapplications }          from '../../actions/applications';
+import { getApplicationInstance }   from '../../actions/application_instances';
+import * as AccountActions          from '../../actions/accounts';
 import {
   listActiveCoursesInAccount,
   getSubAccountsOfAccount
- } from '../../../libs/canvas/constants/accounts';
+ }                                  from '../../../libs/canvas/constants/accounts';
 import { listExternalToolsCourses } from '../../../libs/canvas/constants/external_tools';
-import Heading               from '../common/heading';
-import Sidebar               from './sidebar';
-import InstallPane         from './install_pane';
-import canvasRequest       from '../../../libs/canvas/action';
+import Heading                      from '../common/heading';
+import Sidebar                      from './sidebar';
+import InstallPane                  from './install_pane';
+import canvasRequest                from '../../../libs/canvas/action';
 
-function select(state) {
+function select(state, props) {
+  const instanceId = props.params.applicationInstanceId
+
   return {
+    applicationInstance: state.applicationInstances[instanceId],
     applications: state.applications,
     accounts: state.accounts.accounts,
     loading_accounts: state.accounts.loading,
     courses: _.sortBy(state.courses, course => course.name),
     userName: state.settings.display_name,
+    loadingCourses: state.loadingCourses,
   };
 }
 
 function recursiveGetAccounts(account, canvasReq) {
-  if (account.sub_accounts && account.sub_accounts.length === 0) {
-    return;
-  }
+  if (account.sub_accounts && account.sub_accounts.length === 0) return;
 
   if (account.sub_accounts === undefined) {
     canvasReq(
@@ -64,11 +67,15 @@ export class Home extends React.Component {
   componentDidMount() {
     // listExternalToolsCourses
     this.props.getCanvasAccounts();
+    this.props.getApplicationInstance(
+      this.props.params.applicationId,
+      this.props.params.applicationInstanceId
+    );
   }
 
   componentDidUpdate(prevProps) {
     // TODO: this is making a mess
-    if (_.isEmpty(prevProps.accounts) && !_.isEmpty(this.props.accounts)) {
+    if (!_.isEqual(prevProps.accounts, this.props.accounts)) {
       _.each(
         this.props.accounts,
         account => recursiveGetAccounts(account, this.props.canvasRequest)
@@ -82,16 +89,6 @@ export class Home extends React.Component {
         { account_id: accountId, per_page: 100 }
       );
     }
-
-    if (_.isEmpty(prevProps.courses) && !_.isEmpty(this.props.courses)) {
-      this.getExternalTools();
-    }
-  }
-
-  getExternalTools() {
-    // _.forEach(this.props.courses, course => (
-    // this.props.canvasRequest(listExternalToolsCourses, { course_id: course.id })
-    // ));
   }
 
   getSubAccountIds(account) {
@@ -114,6 +111,15 @@ export class Home extends React.Component {
     } else {
       this.setState({ activeAccounts: activeAccounts.concat(account) });
     }
+  }
+
+  loadExternalTools(courseId) {
+    this.props.canvasRequest(
+      listExternalToolsCourses,
+      { course_id: courseId },
+      null,
+      courseId,
+    );
   }
 
   render() {
@@ -141,7 +147,13 @@ export class Home extends React.Component {
             setAccountActive={(account, depth) => this.setAccountActive(account, depth)}
             activeAccounts={this.state.activeAccounts}
           />
-          <InstallPane courses={accountCourses} account={this.state.account} />
+          <InstallPane
+            loadingCourses={this.props.loadingCourses}
+            applicationInstance={this.props.applicationInstance}
+            courses={accountCourses}
+            account={this.state.account}
+            loadExternalTools={courseId => this.loadExternalTools(courseId)}
+          />
         </div>
         <ReactModal
           isOpen={this.props.loading_accounts}
@@ -157,4 +169,7 @@ export class Home extends React.Component {
   }
 }
 
-export default connect(select, { getapplications, canvasRequest, ...AccountActions })(Home);
+export default connect(
+  select,
+  { getapplications, canvasRequest, getApplicationInstance, ...AccountActions }
+)(Home);
