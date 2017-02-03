@@ -4,7 +4,12 @@ import CourseInstallRow from './course_install_row';
 
 export default function CourseInstalls(props) {
   const courses = _.map(props.courses, (course) => {
-    return <CourseInstallRow key={course.id} courseName={course.name} isInstalled={course.external_tools} />;
+    const isInstalled = _.find(
+      course.external_tools,
+      tool => tool.consumer_key === props.applicationInstance.lti_key
+    );
+
+    return <CourseInstallRow key={course.id} courseName={course.name} isInstalled={isInstalled} />;
   });
 
   return (
