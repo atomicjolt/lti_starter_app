@@ -13,6 +13,12 @@ export default function instances(state = initialState, action) {
       return newState;
     }
 
+    case ApplicationInstancesConstants.GET_APPLICATION_INSTANCE_DONE: {
+      const newState = _.cloneDeep(state);
+      newState[action.payload.id] = action.payload;
+      return newState;
+    }
+
     case ApplicationInstancesConstants.CREATE_APPLICATION_INSTANCE_DONE: {
       const newState = _.cloneDeep(state);
       newState[action.payload.id] = action.payload;
