@@ -8,10 +8,14 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
     render json: @application_instances.as_json(include: :site)
   end
 
+  def show
+    render json: @application_instance
+  end
+
   def create
     @application_instance.domain =
       "#{@application_instance.lti_key}.#{ENV['APP_URL']}"
-      
+
     @application_instance.save!
     render json: @application_instance.as_json(include: :site)
   end

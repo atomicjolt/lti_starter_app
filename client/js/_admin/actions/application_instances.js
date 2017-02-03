@@ -7,6 +7,7 @@ const actions = [];
 // Actions that make an api request
 const requests = [
   'GET_APPLICATION_INSTANCES',
+  'GET_APPLICATION_INSTANCE',
   'CREATE_APPLICATION_INSTANCE',
   'DELETE_APPLICATION_INSTANCE'
 ];
@@ -18,6 +19,14 @@ export function getApplicationInstances(applicationId) {
     type   : Constants.GET_APPLICATION_INSTANCES,
     method : Network.GET,
     url    : `/api/applications/${applicationId}/application_instances`,
+  };
+}
+
+export function getApplicationInstance(applicationId, applicationInstanceId) {
+  return {
+    type   : Constants.GET_APPLICATION_INSTANCE,
+    method : Network.GET,
+    url    : `/api/applications/${applicationId}/application_instances/${applicationInstanceId}`,
   };
 }
 
