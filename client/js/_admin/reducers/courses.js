@@ -8,7 +8,7 @@ export default (state = initialState, action) => {
       const newState = _.cloneDeep(state);
       _.forEach(action.payload, (course) => {
         if (newState[course.id]) {
-          course.external_tools = newState[course.id]["external_tools"];
+          course.external_tools = newState[course.id]['external_tools'];
         }
 
         newState[course.id] = course;
@@ -28,6 +28,20 @@ export default (state = initialState, action) => {
         course.external_tools[exTool.id] = exTool;
       });
 
+      return newState;
+    }
+
+    case 'CREATE_EXTERNAL_TOOL_COURSES_DONE': {
+      const newState = _.cloneDeep(state);
+      const course = newState[action.original.params.course_id];
+      course.external_tools[action.payload.id] = action.payload;
+      return newState;
+    }
+
+    case 'DELETE_EXTERNAL_TOOL_COURSES_DONE': {
+      const newState = _.cloneDeep(state);
+      const course = newState[action.original.params.course_id];
+      delete course.external_tools[action.payload.id];
       return newState;
     }
 

@@ -4,12 +4,21 @@ import CourseInstallRow from './course_install_row';
 
 export default function CourseInstalls(props) {
   const courses = _.map(props.courses, (course) => {
-    const isInstalled = _.find(
+    const installedTool = _.find(
       course.external_tools,
       tool => tool.consumer_key === props.applicationInstance.lti_key
     );
 
-    return <CourseInstallRow key={course.id} courseName={course.name} isInstalled={isInstalled} />;
+    return (
+      <CourseInstallRow
+        key={course.id}
+        courseName={course.name}
+        courseId={course.id}
+        installedTool={installedTool}
+        canvasRequest={props.canvasRequest}
+        applicationInstance={props.applicationInstance}
+      />
+    );
   });
 
   return (
@@ -28,5 +37,8 @@ export default function CourseInstalls(props) {
 }
 
 CourseInstalls.propTypes = {
-  courses: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired
+  courses             : React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
+  loadingCourses      : React.PropTypes.shape({}),
+  // canvasRequest       : React.PropTypes.func,
+  applicationInstance : React.PropTypes.shape({}),
 };
