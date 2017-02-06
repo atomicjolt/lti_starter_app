@@ -21,7 +21,7 @@ const select = (state, props) => ({
 
 export class BaseInstances extends React.Component {
   static propTypes = {
-    applicationInstances: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
+    applicationInstances: React.PropTypes.arrayOf(React.PropTypes.shape({})),
     getApplicationInstances: React.PropTypes.func.isRequired,
     getApplications: React.PropTypes.func.isRequired,
     getSites: React.PropTypes.func.isRequired,

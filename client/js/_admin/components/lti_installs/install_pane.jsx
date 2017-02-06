@@ -1,5 +1,5 @@
 import React          from 'react';
-import ReactPaginate  from 'react-paginate';
+import _              from 'lodash';
 import AccountInstall from './account_install';
 import CourseInstalls from './course_installs';
 import Pagination     from './pagination';
@@ -8,24 +8,28 @@ const PAGE_SIZE = 10;
 
 export default class InstallPane extends React.Component {
   static propTypes = {
-    account: React.PropTypes.shape({
-      name: React.PropTypes.string,
-      installCount: React.PropTypes.number
+    courses             : React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
+    loadExternalTools   : React.PropTypes.func,
+    applicationInstance : React.PropTypes.shape({}),
+    canvasRequest       : React.PropTypes.func,
+    loadingCourses      : React.PropTypes.shape({}),
+    account             : React.PropTypes.shape({
+      name         : React.PropTypes.string,
+      installCount : React.PropTypes.number
     }),
-    courses: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
   };
 
   constructor() {
     super();
     this.state = {
-      currentPage: 0,
-      searchPrefix: '',
+      currentPage  : 0,
+      searchPrefix : '',
     };
   }
 
   componentDidMount() {
     if (!_.isEmpty(this.props.courses)) {
-      this.loadExternalTools()
+      this.loadExternalTools();
     }
   }
 
@@ -39,7 +43,7 @@ export default class InstallPane extends React.Component {
   }
 
   searchedCourses() {
-    return _.filter(this.props.courses, (course) => (
+    return _.filter(this.props.courses, course => (
       _.includes(
         _.lowerCase(course.name),
         _.lowerCase(this.state.searchPrefix)
@@ -52,7 +56,7 @@ export default class InstallPane extends React.Component {
       searchedCourses,
       this.state.currentPage * PAGE_SIZE,
      (this.state.currentPage * PAGE_SIZE) + PAGE_SIZE
-   )
+   );
   }
 
   loadExternalTools() {
@@ -60,7 +64,7 @@ export default class InstallPane extends React.Component {
       if (course.external_tools === undefined) {
         this.props.loadExternalTools(course.id);
       }
-    })
+    });
   }
 
   updateSearchPrefix = _.debounce((searchPrefix) => {
@@ -68,15 +72,15 @@ export default class InstallPane extends React.Component {
   }, 150)
 
   render() {
-    console.log("rerender");
     const searchedCourses = this.searchedCourses();
     const pageCount = _.ceil(searchedCourses.length / PAGE_SIZE);
-
     return (
       <div className="o-right">
         <AccountInstall
-          accountName={this.props.account ? this.props.account.name : 'Root'}
+          account={this.props.account}
           accountInstalls={this.props.account ? this.props.account.installCount : null}
+          applicationInstance={this.props.applicationInstance}
+          canvasRequest={this.props.canvasRequest}
         />
         <div className="c-search c-search--small">
           <input
@@ -86,21 +90,25 @@ export default class InstallPane extends React.Component {
           />
           <i className="i-search" />
         </div>
-        {  !_.isEmpty(this.props.loadingCourses) ?
-          <div className="c-modal--error loading">
-            <div className="c-loading-icon" />
-          </div> :
-          <CourseInstalls
-            applicationInstance={this.props.applicationInstance}
-            courses={this.pageCourses(searchedCourses)}
-          />
+        {
+          !_.isEmpty(this.props.loadingCourses) ?
+            <div className="c-modal--error loading">
+              <div className="c-loading-icon" />
+            </div> : null
         }
+        <CourseInstalls
+          applicationInstance={this.props.applicationInstance}
+          courses={this.pageCourses(searchedCourses)}
+          loadingCourses={this.props.loadingCourses}
+          canvasRequest={this.props.canvasRequest}
+        />
         <Pagination
-          setPage={change => this.setState({ currentPage: change.selected})}
+          setPage={change => this.setState({ currentPage: change.selected })}
           pageCount={pageCount}
           courses={this.props.courses}
           pageSize={PAGE_SIZE}
           loadingCourses={this.props.loadingCourses}
+          currentPage={this.state.currentPage}
         />
       </div>
     );

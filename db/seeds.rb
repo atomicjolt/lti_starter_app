@@ -13,8 +13,11 @@ sites = [
 admin_api_permissions = %w(
   LIST_ACTIVE_COURSES_IN_ACCOUNT
   LIST_EXTERNAL_TOOLS_COURSES
+  CREATE_EXTERNAL_TOOL_COURSES
+  DELETE_EXTERNAL_TOOL_COURSES
   LIST_EXTERNAL_TOOLS_ACCOUNTS
   CREATE_EXTERNAL_TOOL_ACCOUNTS
+  DELETE_EXTERNAL_TOOL_ACCOUNTS
   GET_SUB_ACCOUNTS_OF_ACCOUNT
 ).join(",")
 
@@ -48,6 +51,7 @@ application_instances = [
     lti_key: Rails.application.secrets.default_lti_key,
     lti_secret: Rails.application.secrets.default_lti_secret,
     url: "https://atomicjolt.instructure.com",
+    lti_type: "account_navigation",
     # This is only required if the app needs API access and doesn't want each user to do the oauth dance
     canvas_token: Rails.application.secrets.canvas_token,
     # Each application instance can have it's own custom domain. Typically, this is not needed
