@@ -1,6 +1,5 @@
 import React               from 'react';
 import _                   from 'lodash';
-import { getSubAccountsOfAccount } from '../../../libs/canvas/constants/accounts';
 
 export default class SubAccounts extends React.Component {
   isActive(account) {
@@ -45,8 +44,7 @@ export default class SubAccounts extends React.Component {
 }
 
 SubAccounts.propTypes = {
-  accounts: React.PropTypes.arrayOf(React.PropTypes.shape({})),
-  canvasRequest: React.PropTypes.func.isRequired,
-  setAccountActive: React.PropTypes.func.isRequired,
-  activeAccounts: React.PropTypes.arrayOf(React.PropTypes.number),
+  accounts         : React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
+  setAccountActive : React.PropTypes.func.isRequired,
+  activeAccounts   : React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
 };

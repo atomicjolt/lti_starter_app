@@ -43,5 +43,5 @@ Sidebar.propTypes = {
   accounts: React.PropTypes.shape({}),
   canvasRequest: React.PropTypes.func.isRequired,
   setAccountActive: React.PropTypes.func.isRequired,
-  activeAccounts: React.PropTypes.arrayOf(React.PropTypes.number),
+  activeAccounts: React.PropTypes.arrayOf(React.PropTypes.shape({})),
 };
