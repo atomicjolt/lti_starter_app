@@ -26,6 +26,7 @@ class ApplicationInstance < ActiveRecord::Base
     self.lti_type ||= ApplicationInstance.lti_types[:basic]
     self.lti_key = (lti_key || application.name).try(:parameterize).try(:dasherize)
     self.lti_secret = ::SecureRandom::hex(64) unless lti_secret.present?
+    self.tenant = ::SecureRandom::hex(4) unless tenant.present?
   end
 
   def create_schema
