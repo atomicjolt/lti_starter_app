@@ -9,50 +9,50 @@
     settings[:display_name] = current_user.display_name
 
     if @lti_launch
+      settings[:canvas_url]                             = @canvas_url
+      settings[:oauth_consumer_key]                     = params[:oauth_consumer_key]
+      settings[:lms_course_id]                          = params[:custom_canvas_course_id]
+      settings[:lms_user_id]                            = current_user.lti_user_id
+      settings[:lti_provider]                           = lti_provider
+      settings[:lms_course_name]                        = params[:context_title]
+      settings[:canvas_oauth_path]                      = @canvas_oauth_path
+      settings[:canvas_auth_required]                   = @canvas_auth_required
 
-        settings[:canvas_url]                             = @canvas_url
-        settings[:oauth_consumer_key]                     = params[:oauth_consumer_key]
-        settings[:lms_course_id]                          = params[:custom_canvas_course_id]
-        settings[:lms_user_id]                            = current_user.lti_user_id
-        settings[:lti_provider]                           = lti_provider
-        settings[:canvas_oauth_path]                      = @canvas_oauth_path
-        settings[:canvas_auth_required]                   = @canvas_auth_required
-
-        # LTI parameters
-        settings[:context_id]                             = params["context_id"]
-        settings[:context_label]                          = params["context_label"]
-        settings[:context_title]                          = params["context_title"]
-        settings[:custom_canvas_api_domain]               = params["custom_canvas_api_domain"]
-        settings[:custom_canvas_course_id]                = params["custom_canvas_course_id"]
-        settings[:custom_canvas_enrollment_state]         = params["custom_canvas_enrollment_state"]
-        settings[:custom_canvas_user_id]                  = params["custom_canvas_user_id"]
-        settings[:custom_canvas_user_login_id]            = params["custom_canvas_user_login_id"]
-        settings[:ext_roles]                              = params["ext_roles"]
-        settings[:launch_presentation_document_target]    = params["launch_presentation_document_target"]
-        settings[:launch_presentation_height]             = params["launch_presentation_height"]
-        settings[:launch_presentation_locale]             = params["launch_presentation_locale"]
-        settings[:launch_presentation_return_url]         = params["launch_presentation_return_url"]
-        settings[:launch_presentation_width]              = params["launch_presentation_width"]
-        settings[:lis_course_offering_sourcedid]          = params["lis_course_offering_sourcedid"]
-        settings[:lis_person_contact_email_primary]       = params["lis_person_contact_email_primary"]
-        settings[:lis_person_name_family]                 = params["lis_person_name_family"]
-        settings[:lis_person_name_full]                   = params["lis_person_name_full"]
-        settings[:lis_person_name_given]                  = params["lis_person_name_given"]
-        settings[:lis_person_sourcedid]                   = params["lis_person_sourcedid"]
-        settings[:lti_message_type]                       = params["lti_message_type"]
-        settings[:lti_version]                            = params["lti_version"]
-        settings[:oauth_callback]                         = params["oauth_callback"]
-        settings[:resource_link_id]                       = params["resource_link_id"]
-        settings[:resource_link_title]                    = params["resource_link_title"]
-        settings[:roles]                                  = params["roles"]
-        settings[:tool_consumer_info_product_family_code] = params["tool_consumer_info_product_family_code"]
-        settings[:tool_consumer_info_version]             = params["tool_consumer_info_version"]
-        settings[:tool_consumer_instance_contact_email]   = params["tool_consumer_instance_contact_email"]
-        settings[:tool_consumer_instance_guid]            = params["tool_consumer_instance_guid"]
-        settings[:tool_consumer_instance_name]            = params["tool_consumer_instance_name"]
-        settings[:user_image]                             = params["user_image"]
+      # LTI parameters
+      settings[:context_id]                             = params["context_id"]
+      settings[:context_label]                          = params["context_label"]
+      settings[:context_title]                          = params["context_title"]
+      settings[:custom_canvas_api_domain]               = params["custom_canvas_api_domain"]
+      settings[:custom_canvas_course_id]                = params["custom_canvas_course_id"]
+      settings[:custom_canvas_account_id]               = params["custom_canvas_account_id"]
+      settings[:custom_canvas_enrollment_state]         = params["custom_canvas_enrollment_state"]
+      settings[:custom_canvas_user_id]                  = params["custom_canvas_user_id"]
+      settings[:custom_canvas_user_login_id]            = params["custom_canvas_user_login_id"]
+      settings[:ext_roles]                              = params["ext_roles"]
+      settings[:launch_presentation_document_target]    = params["launch_presentation_document_target"]
+      settings[:launch_presentation_height]             = params["launch_presentation_height"]
+      settings[:launch_presentation_locale]             = params["launch_presentation_locale"]
+      settings[:launch_presentation_return_url]         = params["launch_presentation_return_url"]
+      settings[:launch_presentation_width]              = params["launch_presentation_width"]
+      settings[:lis_course_offering_sourcedid]          = params["lis_course_offering_sourcedid"]
+      settings[:lis_person_contact_email_primary]       = params["lis_person_contact_email_primary"]
+      settings[:lis_person_name_family]                 = params["lis_person_name_family"]
+      settings[:lis_person_name_full]                   = params["lis_person_name_full"]
+      settings[:lis_person_name_given]                  = params["lis_person_name_given"]
+      settings[:lis_person_sourcedid]                   = params["lis_person_sourcedid"]
+      settings[:lti_message_type]                       = params["lti_message_type"]
+      settings[:lti_version]                            = params["lti_version"]
+      settings[:oauth_callback]                         = params["oauth_callback"]
+      settings[:resource_link_id]                       = params["resource_link_id"]
+      settings[:resource_link_title]                    = params["resource_link_title"]
+      settings[:roles]                                  = params["roles"]
+      settings[:tool_consumer_info_product_family_code] = params["tool_consumer_info_product_family_code"]
+      settings[:tool_consumer_info_version]             = params["tool_consumer_info_version"]
+      settings[:tool_consumer_instance_contact_email]   = params["tool_consumer_instance_contact_email"]
+      settings[:tool_consumer_instance_guid]            = params["tool_consumer_instance_guid"]
+      settings[:tool_consumer_instance_name]            = params["tool_consumer_instance_name"]
+      settings[:user_image]                             = params["user_image"]
     end
-
   end
 %>
 <script type="text/javascript">
