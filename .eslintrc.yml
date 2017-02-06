@@ -49,3 +49,4 @@ rules:
       "mode": "minimum"
     }
   }]
+  react/require-default-props: off
