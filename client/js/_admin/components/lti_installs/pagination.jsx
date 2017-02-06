@@ -3,7 +3,6 @@ import ReactPaginate from 'react-paginate';
 
 export default function Pagination(props) {
   if (props.courses.length < props.pageSize) return null;
-  if (!_.isEmpty(props.loadingCourses)) return null;
 
   return (
     <ReactPaginate
@@ -13,6 +12,7 @@ export default function Pagination(props) {
       pageRangeDisplayed={5}
       marginPagesDisplayed={1}
       onPageChange={props.setPage}
+      initialPage={props.currentPage}
     />
   );
 }
