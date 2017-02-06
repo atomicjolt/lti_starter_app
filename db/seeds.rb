@@ -3,7 +3,7 @@ puts "CREATED ADMIN USER: " << admin.email
 
 # Add sites
 sites = [{
-  url: "https://atomicjolt.instructure.com",
+  url: Rails.application.secrets.canvas_url,
   oauth_key: Rails.application.secrets.canvas_developer_id,
   oauth_secret: Rails.application.secrets.canvas_developer_key
 }]
@@ -25,14 +25,16 @@ applications = [{
 
 application_instances = [{
   application: "LTI Admin",
+  tenant: "lti-admin",
   lti_key: "lti-admin",
-  url: "https://atomicjolt.instructure.com",
+  url: Rails.application.secrets.canvas_url,
   domain: "admin.#{ENV['APP_URL']}"
 }, {
   application: "LTI Starter App",
+  tenant: "starter-app",
   lti_key: Rails.application.secrets.default_lti_key,
   lti_secret: Rails.application.secrets.default_lti_secret,
-  url: "https://atomicjolt.instructure.com",
+  url: Rails.application.secrets.canvas_url,
   # This is only required if the app needs API access and doesn't want each user to do the oauth dance
   canvas_token: Rails.application.secrets.canvas_token,
   # Each application instance can have it's own custom domain. Typically, this is not needed
