@@ -1,19 +1,27 @@
 #Atomic Client
 -----------------------
-There are many starter kits that will help you get started with React and Redux. This is the one created by, maintained by and used by [Atomic Jolt](http://www.atomicjolt.com). Atomic Jolt uses this as application as a starting place for our [Ruby on Rails React starter application](https://github.com/atomicjolt/react_starter_app) and our [Firebase React starter appliction](https://github.com/atomicjolt/react_firebase_starter_app).
+There are many starter kits that will help you get started with React and Redux.
+This is the one created by, maintained by and used by [Atomic Jolt](http://www.atomicjolt.com).
+Atomic Jolt uses this as application as a starting place for our
+[Ruby on Rails and React starter application](https://github.com/atomicjolt/react_rails_starter_app)
+and our [Firebase React starter appliction](https://github.com/atomicjolt/react_firebase_starter_app).
 
 
 #Getting Started:
 -----------------------
 
-Make sure to install git and npm before you start then:
+Make sure to install git, npm and yarn before you start then:
 
 1. git clone https://github.com/atomicjolt/react_client_starter_app.git my_project_name
-2. Rename .env.example to .env. This file contains the port the server will use. The default 8080 should be fine, but you can also use a local domain or ngrok if you wish.
-3. npm install
+2. Rename .env.example to .env. This file contains the port the server will use.
+   The default 8080 should be fine, but you can also use a local domain or ngrok if you wish.
+3. Install packages with
+
+    `yarn`
+
 4. Start server with:
 
-  `npm run hot`
+  `yarn hot`
 
 then visit http://localhost:8080
 
@@ -68,7 +76,7 @@ Not that working with the Canvas API will require a server side proxy that is no
 -----------
 Karma and Jasmine are used for testing. To run tests run:
 
-  `npm run test`
+  `yarn test`
 
 
 #Check for updates
@@ -90,27 +98,23 @@ Inside the client directory run:
 
   You can also use a .env file. See the [s3-website](https://github.com/klaemo/s3-website) documentation for more options.
 
-  2. Install the s3-website node package globally:
-
-    `npm install -g s3-website`
-
-  3. Edit configuration.
+  2. Edit configuration.
 
     Open up .s3-website.json and set the desired bucket name
 
-  4. Configure the bucket as a website
+  3. Configure the bucket as a website
 
-    `npm run create`
+    `yarn create`
 
-  5. Deploy.
+  4. Deploy.
 
-    `npm run release`
+    `yarn release`
 
 #Production
 -----------------------
 If you want to see what your application will look like in production run
 
-  `npm run live`
+  `yarn live`
 
 This will serve files from the build/prod directory.
 
@@ -120,17 +124,17 @@ This will serve files from the build/prod directory.
 
   Build a development release without deploying:
 
-  `npm run build_dev`
+  `yarn build_dev`
 
 
   Build a release without deploying:
 
-  `npm run build`
+  `yarn build`
 
 
   Build a release and deploy:
 
-  `npm run release`
+  `yarn release`
 
 
 License and attribution
