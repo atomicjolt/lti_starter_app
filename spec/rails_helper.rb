@@ -56,7 +56,7 @@ RSpec.configure do |config|
       DatabaseCleaner.strategy = :transaction
       DatabaseCleaner.clean_with(:transaction)
 
-      DatabaseCleaner.strategy = :truncation, {only: ["authentications"]}
+      DatabaseCleaner.strategy = :truncation, { only: ["authentications"] }
       DatabaseCleaner.start
       # FactoryGirl.lint
     ensure

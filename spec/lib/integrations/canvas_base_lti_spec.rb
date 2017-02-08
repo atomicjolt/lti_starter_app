@@ -1,7 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Integrations::CanvasBaseLti do
-
   before do
     @existing_tools = [
       {
@@ -14,12 +13,14 @@ describe Integrations::CanvasBaseLti do
         "consumer_key" => nil,
         "created_at" => "2037-07-21T13:29:31Z",
         "updated_at" => "2037-07-28T19:38:31Z",
-        "custom_fields" => {"key" => "value"},
-        "account_navigation" => {"url" => "...", "text" => "..."},
-        "user_navigation" => {"url" => "...", "text" => "..."},
-        "course_navigation" => {"url" => "...", "text" => "...", "visibility" => "members", "default" => true},
-        "editor_button" => {"url" => "...", "text" => "...", "selection_width" => 50, "selection_height" => 50, "icon_url" => "..."},
-        "resource_selection" => {"url" => "...", "text" => "...", "selection_width" => 50, "selection_height" => 50}
+        "custom_fields" => { "key" => "value" },
+        "account_navigation" => { "url" => "...", "text" => "..." },
+        "user_navigation" => { "url" => "...", "text" => "..." },
+        "course_navigation" => { "url" => "...", "text" => "...", "visibility" => "members", "default" => true },
+        "editor_button" => {
+          "url" => "...", "text" => "...", "selection_width" => 50, "selection_height" => 50, "icon_url" => "..."
+        },
+        "resource_selection" => { "url" => "...", "text" => "...", "selection_width" => 50, "selection_height" => 50 },
       }, {
         "id" => 2,
         "name" => "Another BLTI Example",
@@ -29,8 +30,8 @@ describe Integrations::CanvasBaseLti do
         "privacy_level" => "anonymous",
         "consumer_key" => nil,
         "created_at" => "2037-07-21T13:29:31Z",
-        "updated_at" => "2037-07-28T19:38:31Z"
-        }
+        "updated_at" => "2037-07-28T19:38:31Z",
+      }
     ]
     @non_existing_tools = []
     @tool_launch_url = "http://www.example.com/launch"
@@ -53,5 +54,4 @@ describe Integrations::CanvasBaseLti do
       expect(Integrations::CanvasBaseLti.find_tool(@non_existing_tools, @tool_launch_url)).to eq(nil)
     end
   end
-  
 end

@@ -29,7 +29,7 @@ RSpec.describe ApplicationInstance, type: :model do
       lti_key = "the-lti-key"
       @application_instance = described_class.create!(
         site: @site,
-        lti_key: lti_key
+        lti_key: lti_key,
       )
       expect(@application_instance.lti_key).to eq(lti_key)
     end

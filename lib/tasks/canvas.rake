@@ -1,10 +1,6 @@
 namespace :canvas do
-
   desc "Sync students with Canvas"
-  task :sync_students => [:environment] do |t, args|
-    Course.all.each do  |course|
-      course.sync_students
-    end
+  task sync_students: [:environment] do |_t, _args|
+    Course.all.each(&:sync_students)
   end
-
 end

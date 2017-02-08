@@ -1,9 +1,9 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Integrations::CanvasAccountsLti do
   before do
     @canvas_account = {
-      'id' => 1
+      "id" => 1,
     }
     @token = "test"
     @consumer_key = "key"
@@ -20,20 +20,33 @@ describe Integrations::CanvasAccountsLti do
     it "should create a new LTI tool in the specified account" do
       lti_options = {
         launch_url: @lti_launch_url,
-        env: @env
+        env: @env,
       }
-      result = Integrations::CanvasAccountsLti.setup(@canvas_account, @consumer_key, @shared_secret, @provider_url, @token, lti_options)
+      result = Integrations::CanvasAccountsLti.setup(
+        @canvas_account,
+        @consumer_key,
+        @shared_secret,
+        @provider_url,
+        @token,
+        lti_options,
+      )
       expect(result.parsed_response).to eq(@result)
     end
     it "should update an existing LTI tool in the specified account" do
       lti_launch_url = "https://www.edu-apps.org/tool_redirect?id=ck12"
       lti_options = {
         launch_url: lti_launch_url,
-        env: @env
+        env: @env,
       }
-      result = Integrations::CanvasAccountsLti.setup(@canvas_account, @consumer_key, @shared_secret, @provider_url, @token, lti_options)
+      result = Integrations::CanvasAccountsLti.setup(
+        @canvas_account,
+        @consumer_key,
+        @shared_secret,
+        @provider_url,
+        @token,
+        lti_options,
+      )
       expect(result.parsed_response).to eq(@result)
     end
   end
-
 end

@@ -9,8 +9,8 @@ source "https://rubygems.org"
 gem "rails", "4.2.7"
 
 # Database
-gem "pg"
 gem "apartment"
+gem "pg"
 
 # UI
 gem "autoprefixer-rails"
@@ -82,8 +82,8 @@ group :test do
   gem "launchy"
   gem "selenium-webdriver"
   gem "shoulda-matchers"
-  gem "webmock"
   gem "test_after_commit"
+  gem "webmock"
 end
 
 group :production do

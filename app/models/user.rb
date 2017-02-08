@@ -126,8 +126,8 @@ class User < ActiveRecord::Base
   end
 
   def self.convert_name_to_initials(sortable_name)
-    parts = sortable_name.split(',')
-    initials = "#{parts[1].strip[0]}#{parts[0].strip[0]}".upcase
+    parts = sortable_name.split(",")
+    "#{parts[1].strip[0]}#{parts[0].strip[0]}".upcase
   rescue
     return "?" unless sortable_name && !sortable_name.empty?
     return sortable_name[0..1].upcase if sortable_name.length > 1

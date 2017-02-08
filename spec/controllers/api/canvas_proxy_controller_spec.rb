@@ -4,7 +4,7 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
   before do
     @application = FactoryGirl.create(
       :application,
-      canvas_api_permissions: "LIST_ACCOUNTS,LIST_YOUR_COURSES,CREATE_NEW_SUB_ACCOUNT,UPDATE_ACCOUNT"
+      canvas_api_permissions: "LIST_ACCOUNTS,LIST_YOUR_COURSES,CREATE_NEW_SUB_ACCOUNT,UPDATE_ACCOUNT",
     )
     @application_instance = FactoryGirl.create(:application_instance, application: @application)
     @user = FactoryGirl.create(:user)
@@ -57,7 +57,7 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
       it "successfully posts to the canvas api" do
         type = "CREATE_NEW_SUB_ACCOUNT"
         payload = {
-          account: { name: "Canvas Demo Courses" }
+          account: { name: "Canvas Demo Courses" },
         }.to_json
         post :proxy, payload, type: type, lti_key: @application_instance.lti_key, account_id: 1, format: :json
         expect(JSON.parse(response.body)["name"]).to eq("Canvas Demo Courses")
@@ -68,7 +68,7 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
       it "successfully puts to the canvas api" do
         type = "UPDATE_ACCOUNT"
         payload = {
-          name: "Canvas Demo Courses"
+          name: "Canvas Demo Courses",
         }.to_json
         put :proxy,
             payload,

@@ -17,13 +17,13 @@ module Concerns
     # Javascript which opens a page in the top level window that sets a cookie
     # and redirect back to the canvas url that launches our lti tool
     def check_for_iframes_problem
-      agent = request.env['HTTP_USER_AGENT']
-      if ((cookies.count == 0 && agent) && (
+      agent = request.env["HTTP_USER_AGENT"]
+      if (cookies.count == 0 && agent) && (
            (agent.match(/[^\(]*[^\)]Safari\//) && !agent.match(/[^\(]*[^\)]Chrome\//)) ||
            agent.match(/[^\(]*[^\)]MSIE\//)
-         ))
+      )
         @redirect_url = request.referer # this is the Canvas LTI Launch URL
-        render layout: false, template: 'iframe_support/iframe_cookies_fix'
+        render layout: false, template: "iframe_support/iframe_cookies_fix"
       end
     end
 
@@ -49,7 +49,7 @@ module Concerns
           # store the lti launch url in the session, so we can relaunch the tool after the oauth
           session[:canvas_lti_tool_uri] = request.referer
           session[:canvas_url] = current_application_instance.site.url
-          redirect_to user_canvas_omniauth_authorize_path(:canvas_url => current_application_instance.site.url)
+          redirect_to user_canvas_omniauth_authorize_path(canvas_url: current_application_instance.site.url)
         end
       end
     end

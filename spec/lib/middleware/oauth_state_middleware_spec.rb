@@ -5,7 +5,7 @@ describe OauthStateMiddleware do
   before do
     @application_instance = FactoryGirl.create(:application_instance)
     @payload = {
-      oauth_consumer_key: @application_instance.lti_key
+      oauth_consumer_key: @application_instance.lti_key,
     }
     @oauth_state = FactoryGirl.create(:oauth_state, payload: @payload.to_json)
     @state = @oauth_state.state
