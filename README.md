@@ -133,6 +133,57 @@ code which will launch a React application whose entry point is 'app.jsx'
 <%= webpack_bundle_tag 'app' %>
 ```
 
+### <a name="seeds"></a>Setting up Database
+
+If you have setup .env and the secrets.yml file then the seeds file shouldn't need to be changed. However,
+if you need to customize the values in the database or add addition records to the database,
+open db/seeds.rb and configuration a default account for development and production.
+Here's a summary of the values and their purpose:
+
+- **code:** Uniquely identifies the account. This is used for the subdomain when running
+applications on a single domain. By default this will be set to APP_SUBDOMAIN from the .env file.
+- **domain:** Custom domain name. By default this is set to application_url from the secrets.yml file.
+- **name:** Name the account anything you'd like. By default this is set to application_name from the secrets.yml file.
+- **lti_key:** A unique key for the LTI application you are building. This will be provided to Canvas. By default this will be set to APP_SUBDOMAIN from the .env file.
+- **lti_secret:** The shared secret for your LTI application. This will be provided to Canvas
+and will be used to sign the LTI request. Generate this value using `rake secret`. Alternatively if you leave this field empty an LTI secret will be automatically generated for the account.
+- **canvas_uri:** The URI of the Canvas institution to be associated with a specific account.
+
+### <a name="canvas_developer_key"></a>Obtain a Canvas Developer Key
+
+Only a Canvas Account Admin can create a developer key for your LTI Application. To create a key, go to
+Accounts, Developer Keys and enter the info described below below. Be sure to replace `lti.atomicjolt.xyz` with your domain.
+(atomicjolt.xyz will only work for AtomicJolt employees). Also, note that 'lti' is the subdomain specified in the .env file
+You will need an ID and secret for development and for production. The development URI will use atomicjolt.xyz while the
+production URI will use your domain (e.g. ltistarterapp.herokuapp.com).
+
+**Oauth2 Redirect URI:**
+https://lti.atomicjolt.xyz/auth/[provider]/callback
+**Key Name:**
+Can be anything you choose (e.g. LTI Starter App)
+
+**Owner Email:***
+Address that will receive email about technical issues related to the tool.
+
+**Tool ID:**
+Unique ID for the tool (e.g. ltistarterapp)
+
+**Redirect URI:**
+https://lti.atomicjolt.xyz/users/auth/canvas/callback
+OR
+https://ltistarterapp.herokuapp.com/users/auth/canvas/callback
+
+**Icon URL:**
+https://lti.atomicjolt.xyz/images/icon.png
+OR
+https://ltistarterapp.herokuapp.com/images/icon.png
+
+Once you press Save Key, a Developer ID and Key will be generated and displayed in the Details column of the Developer Keys table when you mouse over the row. Add these credentials to your .env file or `config/secrets.yml` file under CANVAS_DEVELOPER_ID and CANVAS_DEVELOPER_KEY (in .env) or `canvas_developer_id` and `canvas_developer_key` (in secrets.yml).
+
+## Canvas API
+-----------
+The LTI Starter app makes working with the Canvas API simple. See [Canvas](Canvas.md) for more information.
+
 #### Assets
 -----------
 Any files added to the assets directory can be used by in code and assigned to a variable. This
