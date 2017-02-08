@@ -153,17 +153,11 @@ $ yarn
 ```
 
 
-To find outdated modules run:
+#### Check for updates
+-----------
+Inside the client directory run:
 
-```
-$ npm-check-updates
-```
-
-Updated packages by passing -u
-
-```
-$ npm-check-updates -u
-```
+  `yarn upgrade-interactive`
 
 
 #### React
