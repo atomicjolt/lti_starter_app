@@ -26,6 +26,11 @@ Once setup Start Rails and the webpack server:
 ### File Modifications
 -----------
 
+#### Change bin/bootstrap
+In bin/bootstrap change the following line to point to a dropbox folder
+containing the correct config files for the project:
+DROPBOX_FOLDER=aj-dev/lti_starter_app
+
 #### Setup .env
 -----------
 Rename `.env.example` to `.env` and configure it to your liking.
