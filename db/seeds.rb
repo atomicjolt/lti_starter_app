@@ -1,5 +1,6 @@
-admin = CreateAdminService.create_admin
+admin = CreateAdminService.new.call
 puts "CREATED ADMIN USER: " << admin.email
+admin.save!
 
 # Add sites
 sites = [
