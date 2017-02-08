@@ -63,7 +63,7 @@ describe('Canvas Middleware', () => {
     const middleware = CanvasMiddlware(store);
     const nextHandler = () => {};
     const actionHandler = middleware(nextHandler);
-    expect(() => { actionHandler(action); }).toThrow('Missing required parameter(s): user_id');
+    expect(() => { actionHandler(action); }).toThrow(new Error('Missing required parameter(s): user_id'));
   });
 
   xit('correctly supplies required parameters', (done) => {

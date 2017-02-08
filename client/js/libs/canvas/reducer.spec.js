@@ -1,18 +1,17 @@
-import _            from "lodash";
-import reducer      from "./reducer";
+import reducer      from './reducer';
 
-describe("canvas reducer", () => {
+describe('canvas reducer', () => {
 
-  describe("initial state", () => {
+  describe('initial state', () => {
 
-    it("has no data", () => {
+    it('has no data', () => {
       const state = reducer(undefined, {});
       expect(state).toEqual({});
     });
 
   });
 
-  describe("get requests - load data", () => {
+  describe('get requests - load data', () => {
 
   });
 
