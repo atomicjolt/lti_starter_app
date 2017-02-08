@@ -162,6 +162,13 @@ Karma and Jasmine are used for testing. To run tests run:
   `yarn test`
 
 
+#### Check for updates
+-----------
+Inside the client directory run:
+
+  `yarn upgrade-interactive`
+
+
 ## Deployment
 -----------
 
