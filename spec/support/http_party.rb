@@ -20,8 +20,8 @@ end
 
 def http_party_response(code, code_response, body, request_object, headers)
   last_modified = Date.new(2010, 1, 15).to_s
-  content_length = '1024'
-  response_object = Net::HTTPOK.new('1.1', code.to_s, code_response)
+  content_length = "1024"
+  response_object = Net::HTTPOK.new("1.1", code.to_s, code_response)
   allow(response_object).to receive_messages(body: body)
   response_object['last-modified'] = last_modified
   response_object['content-length'] = content_length
