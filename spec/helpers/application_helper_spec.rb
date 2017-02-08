@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe ApplicationHelper do
-
   describe "#canvas_url" do
     it "provides the canvas url from settings" do
       application_instance = FactoryGirl.create(:application_instance)

@@ -79,15 +79,16 @@ describe UrlHelper do
       expect(UrlHelper.scheme_host_port("foo.example.com?some=thing")).to eq("http://foo.example.com")
     end
     it "should return the scheme and host with a port" do
-      expect(UrlHelper.scheme_host_port("https://www.example.com:1244")).to eq("https://www.example.com:1244")
-      expect(UrlHelper.scheme_host_port("https://www.example.com:1234/some/path")).to eq("https://www.example.com:1234")
-      expect(UrlHelper.scheme_host_port("https://www.example.com:1234?some=thing")).to eq("https://www.example.com:1234")
-      expect(UrlHelper.scheme_host_port("http://www.example.com:1234")).to eq("http://www.example.com:1234")
-      expect(UrlHelper.scheme_host_port("http://www.example.com:1234/some/path")).to eq("http://www.example.com:1234")
-      expect(UrlHelper.scheme_host_port("http://www.example.com:1234?some=thing")).to eq("http://www.example.com:1234")
-      expect(UrlHelper.scheme_host_port("www.example.com:1234")).to eq("http://www.example.com:1234")
-      expect(UrlHelper.scheme_host_port("www.example.com:1234/some/path")).to eq("http://www.example.com:1234")
-      expect(UrlHelper.scheme_host_port("www.example.com:1234?some=thing")).to eq("http://www.example.com:1234")
+      example = "www.example.com"
+      expect(UrlHelper.scheme_host_port("https://#{example}:1244")).to eq("https://#{example}:1244")
+      expect(UrlHelper.scheme_host_port("https://#{example}:1234/some/path")).to eq("https://#{example}:1234")
+      expect(UrlHelper.scheme_host_port("https://#{example}:1234?some=thing")).to eq("https://#{example}:1234")
+      expect(UrlHelper.scheme_host_port("http://#{example}:1234")).to eq("http://#{example}:1234")
+      expect(UrlHelper.scheme_host_port("http://#{example}:1234/some/path")).to eq("http://#{example}:1234")
+      expect(UrlHelper.scheme_host_port("http://#{example}:1234?some=thing")).to eq("http://#{example}:1234")
+      expect(UrlHelper.scheme_host_port("#{example}:1234")).to eq("http://#{example}:1234")
+      expect(UrlHelper.scheme_host_port("#{example}:1234/some/path")).to eq("http://#{example}:1234")
+      expect(UrlHelper.scheme_host_port("#{example}:1234?some=thing")).to eq("http://#{example}:1234")
       expect(UrlHelper.scheme_host_port("https://localhost:1244")).to eq("https://localhost:1244")
       expect(UrlHelper.scheme_host_port("https://localhost:1234/some/path")).to eq("https://localhost:1234")
       expect(UrlHelper.scheme_host_port("https://localhost:1234?some=thing")).to eq("https://localhost:1234")
@@ -99,15 +100,16 @@ describe UrlHelper do
       expect(UrlHelper.scheme_host_port("localhost:1234?some=thing")).to eq("http://localhost:1234")
     end
     it "should return the scheme and host with subdomain and with a port" do
-      expect(UrlHelper.scheme_host_port("https://foo.example.com:1234")).to eq("https://foo.example.com:1234")
-      expect(UrlHelper.scheme_host_port("https://foo.example.com:1234/some/path")).to eq("https://foo.example.com:1234")
-      expect(UrlHelper.scheme_host_port("https://foo.example.com:1234?some=thing")).to eq("https://foo.example.com:1234")
-      expect(UrlHelper.scheme_host_port("http://foo.example.com:1234")).to eq("http://foo.example.com:1234")
-      expect(UrlHelper.scheme_host_port("http://foo.example.com:1234/some/path")).to eq("http://foo.example.com:1234")
-      expect(UrlHelper.scheme_host_port("http://foo.example.com:1234?some=thing")).to eq("http://foo.example.com:1234")
-      expect(UrlHelper.scheme_host_port("foo.example.com:1234")).to eq("http://foo.example.com:1234")
-      expect(UrlHelper.scheme_host_port("foo.example.com:1234/some/path")).to eq("http://foo.example.com:1234")
-      expect(UrlHelper.scheme_host_port("foo.example.com:1234?some=thing")).to eq("http://foo.example.com:1234")
+      example = "foo.example.com"
+      expect(UrlHelper.scheme_host_port("https://#{example}:1234")).to eq("https://#{example}:1234")
+      expect(UrlHelper.scheme_host_port("https://#{example}:1234/some/path")).to eq("https://#{example}:1234")
+      expect(UrlHelper.scheme_host_port("https://#{example}:1234?some=thing")).to eq("https://#{example}:1234")
+      expect(UrlHelper.scheme_host_port("http://#{example}:1234")).to eq("http://#{example}:1234")
+      expect(UrlHelper.scheme_host_port("http://#{example}:1234/some/path")).to eq("http://#{example}:1234")
+      expect(UrlHelper.scheme_host_port("http://#{example}:1234?some=thing")).to eq("http://#{example}:1234")
+      expect(UrlHelper.scheme_host_port("#{example}:1234")).to eq("http://#{example}:1234")
+      expect(UrlHelper.scheme_host_port("#{example}:1234/some/path")).to eq("http://#{example}:1234")
+      expect(UrlHelper.scheme_host_port("#{example}:1234?some=thing")).to eq("http://#{example}:1234")
     end
   end
 

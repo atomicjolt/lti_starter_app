@@ -1,9 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Nonce, type: :model do
-
   describe "valid?" do
-
     it "is true when nonce is unique" do
       nonce = "asdf1234"
       expect(described_class.valid?(nonce)).to be true
@@ -21,18 +19,14 @@ RSpec.describe Nonce, type: :model do
       expect(Rails.logger).to receive(:warn).with("Failed to create nonce: #{nonce}")
       described_class.valid?(nonce)
     end
-
   end
 
   describe "clean" do
-
     it "Removes old nonces" do
       Time.freeze do
         expect(described_class).to receive(:delete_all).with(["created_at < ?", Time.now - 6.hours])
         described_class.clean
       end
     end
-
   end
-
 end

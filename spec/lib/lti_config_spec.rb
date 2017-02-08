@@ -1,7 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Lti::Config do
-
   before do
     @launch_url = "http://www.example.com/launch"
     @domain = "www.example.com"
@@ -10,19 +9,19 @@ RSpec.describe Lti::Config do
       title: "Atomic LTI test",
       description: "This is the test application for the Atomic LTI engine",
       icon: "#{@domain}/images/oauth_icon.png",
-      domain: @domain
+      domain: @domain,
     }
   end
 
   describe "course_navigation" do
     it "generates xml to install the lti tool as course navigation" do
-      xml = described_class.course_navigation(@basic_config)
+      described_class.course_navigation(@basic_config)
     end
   end
 
   describe "account_navigation" do
     it "generates xml to install the lti tool as account navigation" do
-      xml = described_class.account_navigation(@basic_config)
+      described_class.account_navigation(@basic_config)
     end
   end
 
@@ -31,7 +30,7 @@ RSpec.describe Lti::Config do
       args = {
         launch_url: @launch_url,
       }
-      xml = described_class.xml(args)
+      described_class.xml(args)
     end
     it "generates extended configuration xml for an LTI tool with an editor button" do
       button_url = "http://www.example.com/button_image.png"
@@ -39,7 +38,7 @@ RSpec.describe Lti::Config do
       args = {
         launch_url: @launch_url,
         button_url: button_url,
-        button_text: button_text
+        button_text: button_text,
       }
       xml = described_class.xml(args)
       expect(xml).to be_present
@@ -50,11 +49,11 @@ RSpec.describe Lti::Config do
         text: "Course level tool",
         visibility: "admins",
         default: "enabled",
-        enabled: true
+        enabled: true,
       }
       args = {
         launch_url: @launch_url,
-        course_navigation: course_navigation
+        course_navigation: course_navigation,
       }
       xml = described_class.xml(args)
       expect(xml).to be_present
@@ -65,11 +64,11 @@ RSpec.describe Lti::Config do
         text: "test",
         visibility: "admins",
         default: "enabled",
-        enabled: true
+        enabled: true,
       }
       args = {
         launch_url: @launch_url,
-        account_navigation: account_navigation
+        account_navigation: account_navigation,
       }
       xml = described_class.xml(args)
       expect(xml).to be_present
@@ -80,7 +79,7 @@ RSpec.describe Lti::Config do
       title = "LTI Tool Title"
       args = {
         launch_url: @launch_url,
-        title: title
+        title: title,
       }
       xml = described_class.xml(args)
       expect(xml).to be_present
@@ -90,12 +89,11 @@ RSpec.describe Lti::Config do
       description = "LTI Tool Description"
       args = {
         launch_url: @launch_url,
-        description: description
+        description: description,
       }
       xml = described_class.xml(args)
       expect(xml).to be_present
       expect(xml).to include(description)
     end
   end
-
 end

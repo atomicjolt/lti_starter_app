@@ -10,7 +10,7 @@ module Lti
           launch_url: "https://#{domain}/lti_launches",
           domain: domain,
           icon: "https://#{domain}/images/oauth_icon.png",
-          description: app.application.description
+          description: app.application.description,
         }
         puts "*************************************************************************************"
         puts "LTI configuration for #{app.application.name}"
@@ -60,7 +60,7 @@ module Lti
     ApplicationInstance.find_each do |app|
       api = LMS::Canvas.new(
         UrlHelper.scheme_host(app.site.url),
-        Rails.Application.secrets.canvas_token || app.canvas_token
+        Rails.Application.secrets.canvas_token || app.canvas_token,
       )
 
       puts "Course LTI Tools"
@@ -80,7 +80,7 @@ module Lti
       puts "Removing LTI tool: #{app.application.name} Canvas url: #{app.site.url}"
       api = LMS::Canvas.new(
         UrlHelper.scheme_host(app.site.url),
-        Rails.Application.secrets.canvas_token || app.canvas_token
+        Rails.Application.secrets.canvas_token || app.canvas_token,
       )
 
       puts "Removing LTI tools from courses"
@@ -102,7 +102,7 @@ module Lti
           "LIST_EXTERNAL_TOOLS_#{constant}",
           { id_type => parent["id"] },
           nil,
-          true
+          true,
         )
         external_tools.each do |external_tool|
           yield external_tool, parent
@@ -117,7 +117,7 @@ module Lti
       begin
         api.proxy(
           "DELETE_EXTERNAL_TOOL_#{constant}",
-          { id_type => parent["id"], external_tool_id: external_tool["id"] }
+          { id_type => parent["id"], external_tool_id: external_tool["id"] },
         )
       rescue LMS::Canvas::NotFoundException
         # It's possible we're trying to delete a tool we've already deleted. Move on

@@ -22,9 +22,9 @@ def lti_params(oauth_consumer_key = "aconsumerkey", oauth_consumer_secret = "sec
     "tool_consumer_instance_guid" =>         "lmsng.school.edu",
     "tool_consumer_instance_description" =>  "University of School (LMSng)",
     "oauth_callback" =>                      "about:blank",
-    "ext_submit" =>                          "Press to Launch"
- }.merge(options)
+    "ext_submit" =>                          "Press to Launch",
+  }.merge(options)
 
- tc = IMS::LTI::ToolConsumer.new(oauth_consumer_key, oauth_consumer_secret, params)
- tc.generate_launch_data
+  tc = IMS::LTI::ToolConsumer.new(oauth_consumer_key, oauth_consumer_secret, params)
+  tc.generate_launch_data
 end

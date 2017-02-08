@@ -18,7 +18,7 @@ class Breakpoints
       klass.send(:alias_method, :"_before_breakpoint_#{method}", method)
       klass.send(:define_method, method) do |*args|
         Breakpoints.break(:"before_#{method}")
-        ret_val = self.send(:"_before_breakpoint_#{method}", *args)
+        ret_val = send(:"_before_breakpoint_#{method}", *args)
         Breakpoints.break(:"after_#{method}")
         ret_val
       end
@@ -28,11 +28,11 @@ class Breakpoints
     # @param breakpoint [Symbol]
     def break(breakpoint)
       if ::Thread.current[:breakpoints] &&
-        ::Thread.current[:breakpoints].include?(breakpoint)
-          ::Thread.current[:breakpoints_reached] << breakpoint
-          puts "breaking on #{breakpoint}"
-          self.main_thread.run
-          ::Thread.stop
+          ::Thread.current[:breakpoints].include?(breakpoint)
+        ::Thread.current[:breakpoints_reached] << breakpoint
+        puts "breaking on #{breakpoint}"
+        main_thread.run
+        ::Thread.stop
       end
     end
   end
@@ -85,13 +85,13 @@ class Breakpoints
 
     # Run the thread until it reaches the given breakpoint.
     # @param breakpoint [Symbol]
-    def run_until(breakpoint=nil)
+    def run_until(breakpoint = nil)
       Breakpoints.main_thread = ::Thread.current
       if breakpoint && @thread
         @thread[:breakpoints] ||= Set.new
         @thread[:breakpoints_reached] ||= Set.new
         @thread[:breakpoints] << breakpoint
-        self.finish_wait
+        finish_wait
         return
       end
 
@@ -114,7 +114,6 @@ class Breakpoints
       end
       ::Thread.stop
     end
-
 
     # Run the thread without stopping
     def run

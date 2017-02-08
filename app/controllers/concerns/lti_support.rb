@@ -31,7 +31,7 @@ module Concerns
         UrlHelper.safe_host(
           request.referer ||
           params["launch_presentation_return_url"] ||
-          params["custom_canvas_api_domain"]
+          params["custom_canvas_api_domain"],
         )
     end
 
@@ -40,36 +40,8 @@ module Concerns
       user = User.find_by(lti_provider: lti_provider, lti_user_id: lti_user_id)
 
       if user.blank?
-        # Generate a name from the LTI params
-        name = if params[:lis_person_name_full].present?
-                 params[:lis_person_name_full]
-               else
-                 "#{params[:lis_person_name_given]} #{params[:lis_person_name_family]}"
-               end
-        name = name.strip
-        name = params[:roles] if name.blank? # If the name is blank then use their role
-
-        # If there isn't an email then we have to make one up. We use the user_id and instance guid
-        domain = params["custom_canvas_api_domain"] || Rails.application.secrets.application_url
-        email = params[:lis_person_contact_email_primary]
-        email = "user-#{params[:user_id]}@#{domain}" if email.blank? && params[:user_id].present?
-        # If there isn't an email then we have to make one up. We use the user_id and instance guid
-        email = generate_email(domain) if email.blank?
-
-        user = User.new(email: email, name: name)
-        user.password              = ::SecureRandom::hex(15)
-        user.password_confirmation = user.password
-        user.lti_user_id           = lti_user_id
-        user.lti_provider          = lti_provider
-        user.lms_user_id           = params[:custom_canvas_user_id] || params[:user_id]
-        user.skip_confirmation!
-
-        count = 0 # don't go infinite
-        while !safe_save_email(user) && count < 10
-          user.email = generate_email(domain)
-          count = count + 1
-        end
-
+        user = _generate_new_lti_user(params)
+        _attempt_uniq_email(user)
       end
 
       user
@@ -93,6 +65,47 @@ module Concerns
       else
         raise ex
       end
+    end
+
+    def _attempt_uniq_email(user)
+      count = 0 # don't go infinite
+      while !safe_save_email(user) && count < 10
+        user.email = generate_email(domain)
+        count = count + 1
+      end
+    end
+
+    def _generate_new_lti_user(params)
+      lti_user_id = params[:user_id]
+      # Generate a name from the LTI params
+      name = if params[:lis_person_name_full].present?
+               params[:lis_person_name_full]
+             else
+               "#{params[:lis_person_name_given]} #{params[:lis_person_name_family]}"
+             end
+      name = name.strip
+      name = params[:roles] if name.blank? # If the name is blank then use their role
+
+      email = _assemble_email
+
+      user = User.new(email: email, name: name)
+      user.password              = ::SecureRandom::hex(15)
+      user.password_confirmation = user.password
+      user.lti_user_id           = lti_user_id
+      user.lti_provider          = lti_provider
+      user.lms_user_id           = params[:custom_canvas_user_id] || params[:user_id]
+      user.skip_confirmation!
+      user
+    end
+
+    def _assemble_email
+      # If there isn't an email then we have to make one up. We use the user_id and instance guid
+      domain = params["custom_canvas_api_domain"] || Rails.application.secrets.application_url
+      email = params[:lis_person_contact_email_primary]
+      email = "user-#{params[:user_id]}@#{domain}" if email.blank? && params[:user_id].present?
+      # If there isn't an email then we have to make one up. We use the user_id and instance guid
+      email = generate_email(domain) if email.blank?
+      email
     end
 
   end
