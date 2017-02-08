@@ -25,8 +25,7 @@ describe ApplicationController, type: :controller do
       end
     end
     before do
-      user_agent = USER_AGENT
-      request.env["HTTP_USER_AGENT"] = user_agent
+      request.env["HTTP_USER_AGENT"] = USER_AGENT
     end
     it "redirects to allow for cookies in the iframe" do
       post :index
