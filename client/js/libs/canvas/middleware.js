@@ -9,7 +9,7 @@ function checkRequired(action) {
   if (action.canvas.required.length > 0) {
     const missing = _.difference(action.canvas.required, _.keys(action.params));
     if (missing.length > 0) {
-      throw `Missing required parameter(s): ${missing.join(", ")}`;
+      throw new Error(`Missing required parameter(s): ${missing.join(', ')}`);
     }
   }
 }
