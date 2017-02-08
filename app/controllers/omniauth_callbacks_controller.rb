@@ -37,30 +37,41 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def verify_oauth_response
     # Check for OAuth errors
     if request.env["omniauth.auth"].blank?
-      error_type = env["omniauth.error.type"]
-      error = if request.env["omniauth.strategy"].present? && request.env["omniauth.strategy"].name.present?
-                %{
-                  There was a problem communicating with #{request.env['omniauth.strategy'].name.titleize}.
-                  Error: #{error_type}
-                }
-              else
-                "There was a problem communicating with the remote service. Error: #{error_type}"
-              end
-
-      flash[:error] = if request.env["omniauth.strategy"].name == "canvas"
-                        error
-                      else
-                        %{#{error} If this problem persists try signing up with a different service
-                          or create an #{Rails.application.secrets.application_name} account with
-                          just an email and password.
-                        }.html_safe
-                      end
-
+      error = oauth_error_message
+      flash[:error] = format_oauth_error_message(error)
       if request.env["omniauth.origin"].present?
         redirect_to request.env["omniauth.origin"]
       else
         redirect_to new_user_registration_url
       end
+    end
+  end
+
+  def oauth_error_message
+    # Keep these and use them for debugging omniauth.
+    # exception = request.env['omniauth.error']
+    # error_type = request.env['omniauth.error.type']
+    # strategy = request.env['omniauth.error.strategy']
+    # exception.error_reason
+    error_type = request.env["omniauth.error.type"]
+    if request.env["omniauth.strategy"].present? && request.env["omniauth.strategy"].name.present?
+      %{
+        There was a problem communicating with #{request.env['omniauth.strategy'].name.titleize}.
+        Error: #{error_type}
+      }
+    else
+      "There was a problem communicating with the remote service. Error: #{error_type}"
+    end
+  end
+
+  def format_oauth_error_message(error)
+    if request.env["omniauth.strategy"].name == "canvas"
+      error
+    else
+      %{#{error} If this problem persists try signing up with a different service
+        or create an #{Rails.application.secrets.application_name} account with
+        just an email and password.
+      }.html_safe
     end
   end
 
