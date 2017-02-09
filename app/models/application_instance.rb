@@ -3,8 +3,7 @@ class ApplicationInstance < ActiveRecord::Base
   belongs_to :application
   belongs_to :site
 
-  validates :lti_key, presence: true
-  validates :lti_key, uniqueness: true
+  validates :lti_key, presence: true, uniqueness: true
   validates :lti_secret, presence: true
   validates :site_id, presence: true
 
