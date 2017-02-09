@@ -41,15 +41,13 @@ RSpec.describe Api::CanvasAccountsController, type: :controller do
   context "as admin" do
     before do
       request.headers["Authorization"] = @admin_token
-      allow_any_instance_of(LMS::Canvas).to receive(:all_accounts).and_return([
-        {}
-      ])
+      allow_any_instance_of(LMS::Canvas).to receive(:all_accounts).and_return([{}])
     end
 
     describe "GET index" do
       context "user is an admin that has authenticated with canvas" do
         it "renders all canvas accounts as json" do
-          get :index, { oauth_consumer_key: @application_instance.lti_key}, format: :json
+          get :index, { oauth_consumer_key: @application_instance.lti_key }, format: :json
           expect(response).to have_http_status(200)
           accounts = JSON.parse(response.body)
           expect(accounts.count).to be > 0

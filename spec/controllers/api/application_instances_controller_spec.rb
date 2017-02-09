@@ -54,7 +54,7 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
         site = FactoryGirl.create(:site)
         attrs = {
           lti_key: "test-key",
-          site_id: site.id
+          site_id: site.id,
         }
         post :create, { application_id: @application.id, application_instance: attrs, format: :json }
         expect(response).to have_http_status(200)
