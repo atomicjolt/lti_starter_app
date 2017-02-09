@@ -1,5 +1,4 @@
 import React       from 'react';
-import ReactSelect from 'react-select';
 
 export default function Form(props) {
 
@@ -13,13 +12,13 @@ export default function Form(props) {
               id="description"
               name="description"
               type="text"
-              value={props[field] || ''}
+              value={props.description || ''}
               onChange={props.onChange}
             />
           </label>
         </div>
         <div className="o-grid__item u-half">
-          <label htmlFor={`instance_${field}`} className="c-input">
+          <label htmlFor="permissions" className="c-input">
             <span>Canvas API Permissions</span>
           </label>
         </div>
@@ -46,4 +45,5 @@ export default function Form(props) {
 Form.propTypes = {
   onChange       : React.PropTypes.func.isRequired,
   closeModal     : React.PropTypes.func.isRequired,
+  description    : React.PropTypes.string
 };

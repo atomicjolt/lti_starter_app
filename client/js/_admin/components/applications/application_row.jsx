@@ -13,12 +13,7 @@ export default class ApplicationRow extends React.Component {
     saveApplication: React.PropTypes.func.isRequired,
   }
 
-  constructor() {
-    super();
-    this.state = { modalOpen: false };
-  }
-
-  getStyles(){
+  static getStyles() {
     return {
       buttonIcon: {
         border: 'none',
@@ -28,6 +23,11 @@ export default class ApplicationRow extends React.Component {
         cursor: 'pointer',
       }
     };
+  }
+
+  constructor() {
+    super();
+    this.state = { modalOpen: false };
   }
 
   render() {

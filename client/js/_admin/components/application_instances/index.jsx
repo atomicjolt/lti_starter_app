@@ -24,13 +24,14 @@ export class BaseInstances extends React.Component {
     applicationInstances: React.PropTypes.arrayOf(React.PropTypes.shape({})),
     getApplicationInstances: React.PropTypes.func.isRequired,
     getApplications: React.PropTypes.func.isRequired,
+    createApplicationInstance: React.PropTypes.func,
+    deleteApplicationInstance: React.PropTypes.func,
     getSites: React.PropTypes.func.isRequired,
     sites: React.PropTypes.shape({}).isRequired,
     applications: React.PropTypes.shape({}).isRequired,
     params: React.PropTypes.shape({
       applicationId: React.PropTypes.string.isRequired,
     }).isRequired,
-    userName: React.PropTypes.string,
     settings: React.PropTypes.shape({}).isRequired,
   };
 
