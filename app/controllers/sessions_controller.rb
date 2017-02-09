@@ -21,7 +21,7 @@ class SessionsController < Devise::SessionsController
           userId: resource.id,
           email: resource.email,
           displayName: resource.name,
-          jwt_token: token
+          jwt_token: token,
         }
       end
     end

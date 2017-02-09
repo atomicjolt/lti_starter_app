@@ -1,10 +1,10 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Integrations::CanvasCoursesLti do
   before do
     @course_name = "a great course name"
     @course_id = 2
-    @course = {"id" => @course_id, "name" => @course_name}
+    @course = { "id" => @course_id, "name" => @course_name }
     @token = "test"
     @consumer_key = "key"
     @shared_secret = "secret"
@@ -22,9 +22,16 @@ describe Integrations::CanvasCoursesLti do
       lti_options = {
         launch_url: @lti_launch_url,
         button_url: @lti_rich_editor_button_image_url,
-        env: @env
+        env: @env,
       }
-      result = Integrations::CanvasCoursesLti.setup(@course, @consumer_key, @shared_secret, @provider_url, @token, lti_options)
+      result = Integrations::CanvasCoursesLti.setup(
+        @course,
+        @consumer_key,
+        @shared_secret,
+        @provider_url,
+        @token,
+        lti_options,
+      )
       expect(result.parsed_response).to eq(@result)
     end
     it "should update an existing LTI tool in the specified course" do
@@ -32,11 +39,17 @@ describe Integrations::CanvasCoursesLti do
       lti_options = {
         launch_url: lti_launch_url,
         button_url: @lti_rich_editor_button_image_url,
-        env: @env
+        env: @env,
       }
-      result = Integrations::CanvasCoursesLti.setup(@course, @consumer_key, @shared_secret, @provider_url, @token, lti_options)
+      result = Integrations::CanvasCoursesLti.setup(
+        @course,
+        @consumer_key,
+        @shared_secret,
+        @provider_url,
+        @token,
+        lti_options,
+      )
       expect(result.parsed_response).to eq(@result)
     end
   end
-
 end

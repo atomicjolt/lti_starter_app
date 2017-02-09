@@ -1,10 +1,11 @@
-admin = CreateAdminService.create_admin
+admin = CreateAdminService.new.call
 puts "CREATED ADMIN USER: " << admin.email
+admin.save!
 
 # Add sites
 sites = [
   {
-    url: "https://atomicjolt.instructure.com",
+    url: Rails.application.secrets.canvas_url,
     oauth_key: Rails.application.secrets.canvas_developer_id,
     oauth_secret: Rails.application.secrets.canvas_developer_key,
   },
@@ -42,16 +43,18 @@ applications = [
 application_instances = [
   {
     application: "LTI Admin",
+    tenant: "lti-admin",
     lti_key: "lti-admin",
-    url: "https://atomicjolt.instructure.com",
-    domain: "admin.#{ENV['APP_URL']}",
+    url: Rails.application.secrets.canvas_url,
+    domain: "admin.#{Rails.application.secrets.domain_name}",
+    lti_type: "account_navigation",
   },
   {
     application: "LTI Starter App",
+    tenant: "starter-app",
     lti_key: Rails.application.secrets.default_lti_key,
     lti_secret: Rails.application.secrets.default_lti_secret,
-    url: "https://atomicjolt.instructure.com",
-    lti_type: "account_navigation",
+    url: Rails.application.secrets.canvas_url,
     # This is only required if the app needs API access and doesn't want each user to do the oauth dance
     canvas_token: Rails.application.secrets.canvas_token,
     # Each application instance can have it's own custom domain. Typically, this is not needed
@@ -60,7 +63,7 @@ application_instances = [
     # need a different domain for that tool since Canvas uses the domain to find the LTI tool among
     # all installed LTI tools. If two tools share the same domain then the tool discovered by Canvas
     # to do the LTI launch will be indeterminate
-    domain: "#{Rails.application.secrets.default_lti_key}.#{ENV['APP_URL']}",
+    domain: "#{Rails.application.secrets.default_lti_key}.#{Rails.application.secrets.domain_name}",
   },
 ]
 

@@ -1,5 +1,4 @@
 FactoryGirl.define do
-
   sequence :lti_key do |n|
     "lti_key_#{n}"
   end
@@ -47,5 +46,4 @@ FactoryGirl.define do
   sequence :address do |n|
     "#{n} West #{n} South"
   end
-
 end

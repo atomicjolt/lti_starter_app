@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe ApplicationController, type: :controller do
-
   before do
     @app = FactoryGirl.create(:application_instance)
     @launch_url = "http://test.host/anonymous" # url when posting to anonymous controller created below.
@@ -18,17 +17,16 @@ describe ApplicationController, type: :controller do
     def index
       render text: "User: #{current_user.display_name}"
     end
-
   end
 
   describe "LTI" do
     before do
-      request.env['CONTENT_TYPE'] = "application/x-www-form-urlencoded"
+      request.env["CONTENT_TYPE"] = "application/x-www-form-urlencoded"
     end
 
     context "valid LTI request" do
       it "sets up the user, logs them in and renders the lti launch page" do
-        params = lti_params(@app.lti_key, @app.lti_secret, {"launch_url" => @launch_url, "roles" => "Learner"})
+        params = lti_params(@app.lti_key, @app.lti_secret, { "launch_url" => @launch_url, "roles" => "Learner" })
         post :index, params
         expect(response).to have_http_status(200)
         expect(response.body).to include("User:")
@@ -37,13 +35,11 @@ describe ApplicationController, type: :controller do
 
     context "invalid LTI request" do
       it "should return unauthorized status" do
-        params = lti_params(@app.lti_key, @app.lti_secret, {"launch_url" => @launch_url})
-        params[:context_title] = 'invalid'
+        params = lti_params(@app.lti_key, @app.lti_secret, { "launch_url" => @launch_url })
+        params[:context_title] = "invalid"
         post :index, params
         expect(response).to have_http_status(401)
       end
     end
-
   end
-
 end

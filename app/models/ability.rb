@@ -39,7 +39,7 @@ class Ability
     can :manage, User, id: user.id
   end
 
-  def admin(user)
+  def admin(_user)
     can :manage, :all
   end
 

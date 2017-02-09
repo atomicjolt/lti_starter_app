@@ -8,5 +8,4 @@ class Admin::AdminApplicationController < ApplicationController
   def only_admins!
     user_not_authorized unless current_user.admin?
   end
-
 end

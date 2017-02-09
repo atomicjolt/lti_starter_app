@@ -2,7 +2,7 @@ module ControllerMacros
   def login_admin
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:admin]
-      @admin ||= CreateAdminService.create_admin
+      @admin ||= CreateAdminService.new.call
       sign_in @admin
     end
   end

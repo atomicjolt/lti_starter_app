@@ -20,7 +20,8 @@ Apartment.configure do |config|
   # You can make this dynamic by providing a Proc object to be called on migrations.
   # This object should yield either:
   # - an array of strings representing each Tenant name.
-  # - a hash which keys are tenant names, and values custom db config (must contain all key/values required in database.yml)
+  # - a hash which keys are tenant names,
+  #   and values custom db config (must contain all key/values required in database.yml)
   #
   # config.tenant_names = lambda{ Customer.pluck(:tenant_name) }
   # config.tenant_names = ['tenant1', 'tenant2']
@@ -87,10 +88,10 @@ end
 # }
 
 Rails.application.config.middleware.insert_before "Warden::Manager", "Apartment::Elevators::Generic", lambda { |request|
-  if lti_key = request.params["oauth_consumer_key"]
-    lti_key
-  elsif application_instance = ApplicationInstance.find_by(domain: request.host_with_port)
-    application_instance.lti_key
+  key = request.params["oauth_consumer_key"]
+  host = request.host_with_port
+  if application_instance = ApplicationInstance.find_by(lti_key: key) || ApplicationInstance.find_by(domain: host)
+    application_instance.tenant
   else
     raise "Please specify a valid oauth_consumer_key or valid domain name for this request"
   end
