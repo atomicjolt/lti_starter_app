@@ -1,6 +1,7 @@
 import React       from 'react';
 import { connect } from 'react-redux';
 import ReactModal  from 'react-modal';
+import _           from 'lodash';
 
 const select = state => ({
   settings: state.settings
@@ -15,10 +16,11 @@ export class NewDomainModal extends React.Component {
     })
   };
 
-  renderSettings(){
-    return _.map(this.props.settings, (value, key) => {
-      return (<input key={key} type="hidden" value={value} name={key} />);
-    });
+  renderSettings() {
+    return _.map(
+      this.props.settings,
+      (value, key) => <input key={key} type="hidden" value={value} name={key} />
+    );
   }
 
   render() {

@@ -1,7 +1,7 @@
 import React      from 'react';
 import Item       from './drop_down_item';
 
-export default function settingDropDown(props) {
+export default function settingDropDown() {
   const styles = {
     settingsDropDown: {
       display         : 'inline-block',
