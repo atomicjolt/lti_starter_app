@@ -51,7 +51,7 @@ RSpec.describe Api::CanvasAccountsController, type: :controller do
         it "renders all canvas accounts as json" do
           get :index, { oauth_consumer_key: @application_instance.lti_key}, format: :json
           expect(response).to have_http_status(200)
-          accounts = JSON.parse(response.body)["accounts"]
+          accounts = JSON.parse(response.body)
           expect(accounts.count).to be > 0
         end
       end
