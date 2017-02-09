@@ -7,8 +7,9 @@ export default (state = initialState, action) => {
     case 'LIST_ACTIVE_COURSES_IN_ACCOUNT_DONE': {
       const newState = _.cloneDeep(state);
       _.forEach(action.payload, (course) => {
+        const newCourse = _.cloneDeep(course);
         if (newState[course.id]) {
-          course.external_tools = newState[course.id]['external_tools'];
+          newCourse.external_tools = newState[course.id].external_tools;
         }
 
         newState[course.id] = course;

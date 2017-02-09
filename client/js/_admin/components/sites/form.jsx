@@ -1,4 +1,5 @@
 import React from 'react';
+import _     from 'lodash';
 
 const FIELDS = {
   oauth_key    : 'Canvas Developer ID',
@@ -47,6 +48,6 @@ export default function NewSiteForm(props) {
 }
 
 NewSiteForm.propTypes = {
-  setupSite  : React.PropTypes.func.isRequired,
+  // setupSite  : React.PropTypes.func.isRequired,
   closeModal : React.PropTypes.func.isRequired,
 };

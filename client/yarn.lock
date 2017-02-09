@@ -5800,6 +5800,12 @@ react-modal@^1.6.5:
     exenv "1.2.0"
     lodash.assign "^4.2.0"
 
+react-paginate@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/react-paginate/-/react-paginate-4.1.1.tgz#32a51b198669999604df23e34bab2f58273e7612"
+  dependencies:
+    classnames "^2.2.5"
+
 react-proxy-loader@0.3.4:
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/react-proxy-loader/-/react-proxy-loader-0.3.4.tgz#49dfeafa49d6637b0c7428ba7c0d39abb08094ca"

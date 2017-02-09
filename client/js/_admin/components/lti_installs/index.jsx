@@ -17,7 +17,6 @@ import {
 import {
   listExternalToolsCourses,
   listExternalToolsAccounts,
-  createExternalToolCourses,
 } from '../../../libs/canvas/constants/external_tools';
 
 function select(state, props) {

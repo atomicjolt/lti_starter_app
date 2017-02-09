@@ -31,7 +31,7 @@ export default class ApplicationRow extends React.Component {
   }
 
   render() {
-    const styles = this.getStyles();
+    const styles = ApplicationRow.getStyles();
     return (
       <tr>
         <td>

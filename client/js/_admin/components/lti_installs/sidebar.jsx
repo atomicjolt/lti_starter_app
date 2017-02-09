@@ -40,6 +40,9 @@ Sidebar.propTypes = {
   application: React.PropTypes.shape({
     name: React.PropTypes.string.isRequired,
   }),
+  applicationInstance: React.PropTypes.shape({
+    name: React.PropTypes.string
+  }),
   accounts: React.PropTypes.shape({}),
   canvasRequest: React.PropTypes.func.isRequired,
   setAccountActive: React.PropTypes.func.isRequired,

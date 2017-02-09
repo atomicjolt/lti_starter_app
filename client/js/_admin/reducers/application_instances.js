@@ -1,5 +1,6 @@
 import _    from 'lodash';
 import { Constants as ApplicationInstancesConstants } from '../actions/application_instances';
+
 const initialState = {};
 
 export default function instances(state = initialState, action) {

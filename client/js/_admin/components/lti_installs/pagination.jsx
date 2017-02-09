@@ -21,5 +21,6 @@ Pagination.propTypes = {
   setPage: React.PropTypes.func.isRequired,
   pageCount: React.PropTypes.number.isRequired,
   courses: React.PropTypes.arrayOf(React.PropTypes.shape({})),
-  pageSize: React.PropTypes.number
+  pageSize: React.PropTypes.number,
+  currentPage: React.PropTypes.number
 };

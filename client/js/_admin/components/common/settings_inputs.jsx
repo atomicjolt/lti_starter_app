@@ -1,4 +1,5 @@
 import React from 'react';
+import _     from 'lodash';
 
 export default function SettingsInputs(props) {
   return (
@@ -9,14 +10,16 @@ export default function SettingsInputs(props) {
         value={props.settings.lti_key}
       />
       {
-        _.map(props.settings, (value, key) => {
-          return <input key={key} type="hidden" value={value} name={key} />;
-        })
+        _.map(props.settings, (value, key) => (
+          <input key={key} type="hidden" value={value} name={key} />
+        ))
       }
     </div>
   );
 }
 
 SettingsInputs.propTypes = {
-  settings: React.PropTypes.shape({}).isRequired
+  settings: React.PropTypes.shape({
+    lti_key: React.PropTypes.string
+  }).isRequired
 };

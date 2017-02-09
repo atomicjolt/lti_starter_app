@@ -10,7 +10,6 @@ export default class Modal extends React.Component {
     sites: React.PropTypes.shape({}),
     createApplicationInstance: React.PropTypes.func.isRequired,
     application: React.PropTypes.shape({
-      name: React.PropTypes.string,
       id: React.PropTypes.number,
     })
   };

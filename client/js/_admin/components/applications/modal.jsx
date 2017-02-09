@@ -5,8 +5,12 @@ import Form         from './form';
 export default class Modal extends React.Component {
 
   static propTypes = {
+    application: React.PropTypes.shape({
+      name: React.PropTypes.string,
+    }),
     isOpen: React.PropTypes.bool.isRequired,
     closeModal: React.PropTypes.func.isRequired,
+    save: React.PropTypes.func,
   };
 
   render() {

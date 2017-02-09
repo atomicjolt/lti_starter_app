@@ -14,7 +14,6 @@ export default class InstallPane extends React.Component {
     canvasRequest       : React.PropTypes.func,
     loadingCourses      : React.PropTypes.shape({}),
     account             : React.PropTypes.shape({
-      name         : React.PropTypes.string,
       installCount : React.PropTypes.number
     }),
   };
