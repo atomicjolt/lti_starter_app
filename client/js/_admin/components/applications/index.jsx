@@ -18,7 +18,6 @@ export class Home extends React.Component {
     saveApplication: React.PropTypes.func.isRequired,
     getApplications: React.PropTypes.func.isRequired,
     applications: React.PropTypes.shape({}).isRequired,
-    userName: React.PropTypes.string,
   };
 
 

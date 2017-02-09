@@ -1,4 +1,5 @@
 import React       from 'react';
+import _           from 'lodash';
 import ReactSelect from 'react-select';
 
 const TEXT_FIELDS = {
@@ -116,10 +117,10 @@ export default function newApplicationInstanceForm(props) {
 }
 
 newApplicationInstanceForm.propTypes = {
-  onChange       : React.PropTypes.func.isRequired,
+  // onChange       : React.PropTypes.func.isRequired,
   closeModal     : React.PropTypes.func.isRequired,
-  createInstance : React.PropTypes.func.isRequired,
-  newSite        : React.PropTypes.func.isRequired,
+  // createInstance : React.PropTypes.func.isRequired,
+  // newSite        : React.PropTypes.func.isRequired,
   site_id        : React.PropTypes.string,
   sites          : React.PropTypes.shape({
     url : React.PropTypes.string,
