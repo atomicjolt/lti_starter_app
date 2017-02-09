@@ -7,14 +7,18 @@ const select = state => ({
 });
 
 export class CanvasAuthentication extends React.Component {
+  static propTypes = {
+    settings: React.PropTypes.object.isRequired,
+  };
 
-  renderSettings(){
-    return _.map(this.props.settings, (value, key) => {
-      return <input key={key} type="hidden" value={value} name={key} />
-    })
+  renderSettings() {
+    return _.map(
+      this.props.settings,
+      (value, key) => <input key={key} type="hidden" value={value} name={key} />
+    );
   }
 
-  render(){
+  render() {
     return (
       <form action={this.props.settings.canvas_oauth_path}>
         <input type="submit" value="Authorize" />

@@ -7,7 +7,7 @@ export default class InstanceList extends React.Component {
     instances: React.PropTypes.shape({}).isRequired,
   };
 
-  deleteInstance() {
+  static deleteInstance() {
     // TODO : Write Me!
   }
 
@@ -28,7 +28,7 @@ export default class InstanceList extends React.Component {
               <Instance
                 key={`instance_${key}`}
                 {...instance}
-                delete={() => this.deleteInstance()}
+                delete={() => InstanceList.deleteInstance()}
               />
             ))
           }

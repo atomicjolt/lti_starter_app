@@ -1,7 +1,8 @@
 import React              from 'react';
 import ReactModal         from 'react-modal';
 import ReactSelect        from 'react-select';
-import NewDomainModal     from './new_domain_modal';
+import _                  from 'lodash';
+import DomainModal        from './new_domain_modal';
 
 export default class NewInstanceModal extends React.Component {
   static propTypes = {
@@ -22,7 +23,7 @@ export default class NewInstanceModal extends React.Component {
     if (_.isFunction(option.onSelect)) {
       option.onSelect();
     }
-    this.setState({ selectedDomain: option.value })
+    this.setState({ selectedDomain: option.value });
   }
 
   newDomain() {
@@ -84,37 +85,37 @@ export default class NewInstanceModal extends React.Component {
             </div>
           </div>
           <div className="o-grid__item u-half">
-            <label className="c-input"><span>LTI Key</span><input type="text" /></label>
+            <label className="c-input" htmlFor="ltiKey"><span>LTI Key</span><input id="ltiKey" type="text" /></label>
           </div>
           <div className="o-grid__item u-half">
-            <label className="c-input"><span>LTI Secret</span><input type="text" /></label>
+            <label className="c-input" htmlFor="ltiSecret"><span>LTI Secret</span><input id="ltiSecret" type="text" /></label>
           </div>
           <div className="o-grid__item u-half">
-            <label className="c-input"><span>LTI Consumer</span><input type="text" /></label>
+            <label className="c-input" htmlFor="ltiConsumer"><span>LTI Consumer</span><input id="ltiConsumer" type="text" /></label>
           </div>
           <div className="o-grid__item u-half">
-            <label className="c-input"><span>Canvas Token</span><input type="text" /></label>
+            <label className="c-input" htmlFor="canvasToken"><span>Canvas Token</span><input id="canvasToken" type="text" /></label>
           </div>
         </div>
 
         <h3 className="c-modal__subtitle">Install Settings</h3>
         <div className="o-grid o-grid__bottom">
           <div className="o-grid__item u-third">
-            <label className="c-checkbox"><input type="checkbox" />Account Navigation</label>
+            <label className="c-checkbox" htmlFor="accountNavigation"><input id="accountNavigation" type="checkbox" />Account Navigation</label>
           </div>
           <div className="o-grid__item u-third">
-            <label className="c-checkbox"><input type="checkbox" />General</label>
+            <label className="c-checkbox" htmlFor="general"><input id="general" type="checkbox" />General</label>
           </div>
           <div className="o-grid__item u-third">
-            <label className="c-checkbox"><input type="checkbox" />Editor Button</label>
+            <label className="c-checkbox" htmlFor="editorButton"><input id="editorButton" type="checkbox" />Editor Button</label>
           </div>
           <div className="o-grid__item u-third">
-            <label className="c-checkbox"><input type="checkbox" />Course Navigation</label>
+            <label className="c-checkbox" htmlFor="courseNavigation"><input id="courseNavigation" type="checkbox" />Course Navigation</label>
           </div>
         </div>
         <button className="c-btn c-btn--yellow">Save</button>
         <button className="c-btn c-btn--gray--large u-m-right" onClick={() => this.closeModal()}>Cancel</button>
-        <NewDomainModal
+        <DomainModal
           isOpen={this.state.newDomainModalOpen}
           closeModal={() => this.closeNewDomainModal()}
         />

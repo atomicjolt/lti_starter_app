@@ -22,7 +22,7 @@ export default function heading(props) {
       </ul>
     </header>
   );
-};
+}
 
 heading.propTypes = {
   back: React.PropTypes.func,

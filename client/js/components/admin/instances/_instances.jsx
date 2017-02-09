@@ -1,6 +1,5 @@
 import React                from 'react';
 import { connect }          from 'react-redux';
-import Modal                from 'react-modal';
 import { hashHistory }      from 'react-router';
 import _                    from 'lodash';
 import InstanceHeader       from './instance_header';

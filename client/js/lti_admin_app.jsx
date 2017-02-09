@@ -12,7 +12,11 @@ import { getInitialSettings } from './reducers/settings';
 // Polyfill es6 promises for IE
 es6Promise.polyfill();
 
-class Root extends React.Component {
+class Root extends React.PureComponent {
+  static propTypes = {
+    store: React.PropTypes.object.isRequired,
+  };
+
   render() {
     const devTools = __DEV__ ? <DevTools /> : null;
     const { store } = this.props;
