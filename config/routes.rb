@@ -36,14 +36,12 @@ Rails.application.routes.draw do
   resources :users
 
   namespace :admin do
-    root to: "lti_installs#index"
-    resources :canvas_authentications
-    resources :lti_installs
-    resources :app_instances
+    root to: "home#index"
   end
 
   namespace :api do
     resources :jwts
+    resources :canvas_accounts
     resources :oauths
     resources :courses, only: [] do
       resources :students, only: [:index]
@@ -52,11 +50,12 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :lti_applications do
-      resources :instances
+    resources :applications do
+      resources :application_instances
     end
 
     resources :canvas_accounts, only: [:index]
+    resources :sites
   end
 
   mount MailPreview => "mail_view" if Rails.env.development?

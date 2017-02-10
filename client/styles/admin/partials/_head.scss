@@ -1,6 +1,6 @@
 .c-head{
   height: 6rem;
-  padding: 0 2rem;
+  padding: 0 0 0 2rem;
   background: $dark-gray;
   @include display-flex;
   @include align-items(center);
@@ -21,20 +21,59 @@
 }
 
 .c-user{
-
+  margin-left: auto;
+  height: 100%;
 }
 
   .c-username{
     @include semi-bold;
+    @include display-flex;
     color: $light-gray;
     font-size: 1.4rem;
     position: relative;
-    padding-right: 3rem;
+    padding: 0rem 2rem;
+    height: 100%;
+    align-items: center;
 
     i{
-      position: absolute;
       font-size: 2.5rem;
-      top: -0.4rem;
-      right: 0;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: $darker-gray;
+    }
+
+    &:hover {
+      background-color: $darker-gray;
+      cursor: pointer;
+    }
+  }
+
+  .c-dropdown {
+    position: absolute;
+    display: block;
+    top: 100%;
+    right: 0;
+    background: $darker-gray;
+    color: $light-gray;
+
+    .c-menu-item {
+      @include semi-bold;
+      font-size: 1.4rem;
+
+      a {
+        padding: 1rem;
+        display: block;
+      }
+
+      &:hover {
+        background-color: $dark-gray;
+      }
+
+      &:focus {
+        background-color: $dark-gray;
+        outline: none;
+      }
     }
   }

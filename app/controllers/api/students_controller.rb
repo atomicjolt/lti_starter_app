@@ -1,8 +1,4 @@
-class Api::StudentsController < ApplicationController
-
-  before_action :validate_token
-
-  respond_to :json
+class Api::StudentsController < Api::ApiApplicationController
 
   def index
     students = if params[:section_id]

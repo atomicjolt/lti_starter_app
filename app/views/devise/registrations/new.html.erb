@@ -1,34 +1,39 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="c-login">
+  <div class="c-title">
+    <h1>Sign up</h1>
   </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <%= f.label :email, class: "c-input" do %>
+      <span>Email</span>
+      <%= f.email_field :email, autofocus: true %>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+    <%= f.label :name, class: "c-input" do %>
+      <span>Name</span>
+      <%= f.text_field :name %>
+    <% end %>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <%= f.label :password, class: "c-input" do %>
+      <span>Password
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %></span>
+      <%= f.password_field :password, autocomplete: "off" %>
+    <% end %>
 
-<%= render "devise/shared/links" %>
+      <%= f.label :password_confirmation, class: "c-input" do %>
+        <span>Password confirmation</span>
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      <% end %>
+
+    <div class="actions">
+      <%= f.submit "Sign up", class:"c-btn c-btn--yellow" %>
+    </div>
+  <% end %>
+
+  <div class="links">
+    <%= render "shared/links" %>
+  </div>

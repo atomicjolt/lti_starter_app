@@ -1,6 +1,6 @@
 class ApplicationInstance < ActiveRecord::Base
 
-  belongs_to :application
+  belongs_to :application, counter_cache: true
   belongs_to :site
 
   validates :lti_key, presence: true, uniqueness: true
@@ -18,6 +18,10 @@ class ApplicationInstance < ActiveRecord::Base
 
   after_create :create_schema
   after_commit :destroy_schema, on: :destroy
+
+  def lti_config_xml
+    Lti::Utils.lti_config_xml(self)
+  end
 
   private
 

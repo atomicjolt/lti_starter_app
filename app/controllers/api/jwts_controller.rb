@@ -1,10 +1,4 @@
-class Api::JwtsController < ApplicationController
-
-  include Concerns::JwtToken
-
-  before_action :validate_token
-
-  respond_to :json
+class Api::JwtsController < Api::ApiApplicationController
 
   def show
     token = AuthToken.issue_token({ user_id: current_user.id })

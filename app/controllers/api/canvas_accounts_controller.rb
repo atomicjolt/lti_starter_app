@@ -1,15 +1,21 @@
-class Api::CanvasAccountsController < ApplicationController
+class Api::CanvasAccountsController < Api::ApiApplicationController
 
   include Concerns::CanvasSupport
-  include Concerns::JwtToken
 
-  before_action :validate_token
-  before_action :protect_canvas_api
-
-  respond_to :json
+  authorize_resource class: false
 
   def index
-    result = canvas_api.all_accounts
-    render json: { accounts: result }
+    accounts = canvas_api.proxy("LIST_ACCOUNTS", {}, nil, true).map do |account|
+      account["sub_accounts"] = canvas_api.proxy(
+        "GET_SUB_ACCOUNTS_OF_ACCOUNT",
+        { account_id: account["id"] },
+        nil,
+        true,
+      )
+
+      account
+    end
+
+    render json: accounts
   end
 end

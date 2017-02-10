@@ -7,21 +7,46 @@ const select = state => ({
 });
 
 export class CanvasAuthentication extends React.Component {
+  static defaultProps = {
+    overrides  : {},
+    hideButton : false,
+    autoSubmit : false,
+  }
+
   static propTypes = {
-    settings: React.PropTypes.object.isRequired,
-  };
+    overrides  : React.PropTypes.shape({}),
+    hideButton : React.PropTypes.bool,
+    autoSubmit : React.PropTypes.bool,
+    settings   : React.PropTypes.shape({
+      canvas_oauth_url: React.PropTypes.string,
+    }).isRequired,
+  }
+
+  componentDidMount() {
+    if (this.props.autoSubmit) {
+      this.form.submit();
+    }
+  }
+
+  getButton() {
+    if (this.props.hideButton) return null;
+    return <input type="submit" value="Authorize" />;
+  }
 
   renderSettings() {
-    return _.map(
-      this.props.settings,
-      (value, key) => <input key={key} type="hidden" value={value} name={key} />
-    );
+    const settings = { ...this.props.settings, ...this.props.overrides };
+    return _.map(settings, (value, key) => (
+      <input key={key} type="hidden" value={value} name={key} />
+    ));
   }
 
   render() {
     return (
-      <form action={this.props.settings.canvas_oauth_path}>
-        <input type="submit" value="Authorize" />
+      <form
+        ref={(ref) => { this.form = ref; }}
+        action={this.props.settings.canvas_oauth_url}
+      >
+        { this.getButton() }
         { this.renderSettings() }
       </form>
     );

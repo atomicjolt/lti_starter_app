@@ -76,6 +76,12 @@
           color: $light-gray;
           display: inline-block;
         }
+
+        .c-table--inactive{
+          @include semi-bold;
+          font-size: 1.4rem;
+          color: $text-color;
+        }
       }
 
       &:nth-of-type(2){
@@ -154,4 +160,64 @@
     &:active{
       @include transform(scale(0.9));
     }
+  }
+
+  .pagination{
+    position: relative;
+    @include center(horizontal);
+    display: inline-block;
+    margin: 3rem 0;
+
+    li{
+      display: inline-block;
+
+      a{
+        display: inline-block;
+        @include semi-bold;
+        font-size: 1.4rem;
+        color: $gray;
+        width: 2rem;
+        height: 3rem;
+        margin: 0 0.2rem;
+        text-align: center;
+        line-height: 3rem;
+        cursor: pointer;
+        outline: none;
+
+        @include no-select;
+
+        &:hover{
+          color: $text-color;
+        }
+      }
+    }
+  }
+
+  li.disabled{
+    opacity: 0;
+  }
+
+  li.previous a, li.next a{
+    width: auto;
+    padding: 0 2rem;
+    border-radius: 1.5rem;
+    background: $lightest-gray;
+    margin: 0 1rem;
+  }
+
+  li.break{
+    @include semi-bold;
+    font-size: 1.4rem;
+    color: $gray;
+    width: 2rem;
+    height: 3rem;
+    margin: 0 0.2rem;
+    text-align: center;
+    line-height: 3rem;
+    @include no-select;
+  }
+
+  li.selected a{
+    border-bottom: 0.2rem solid $text-color;
+    color: $text-color;
   }

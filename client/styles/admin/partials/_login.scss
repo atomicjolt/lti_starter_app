@@ -1,0 +1,32 @@
+.c-login {
+  .c-title {
+    padding: 2rem 0;
+
+    h2 {
+      font-size: 2.4rem;
+      @include semi-bold;
+      color: $yellow;
+    }
+  }
+
+  .actions {
+    @include display-flex;
+
+    .c-btn {
+      margin-left: auto;
+    }
+  }
+
+  .links {
+    a{
+      @include semi-bold;
+      font-size: 1.4rem;
+      color: $blue;
+
+      &:hover{
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}

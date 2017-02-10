@@ -1,0 +1,31 @@
+<div class="c-login">
+  <div class="c-title">
+    <h1>Log in</h1>
+  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= f.label :email, class: "c-input" do %>
+      <span>Email</span>
+      <%= f.email_field :email, autofocus: true %>
+    <% end %>
+
+    <%= f.label :password, class: "c-input" do %>
+      <span>Password</span>
+      <%= f.password_field :password, autocomplete: "off" %>
+    <% end %>
+
+    <% if devise_mapping.rememberable? -%>
+      <%= f.label :remember_me, class: "c-checkbox" do %>
+        <%= f.check_box :remember_me %>
+        <span>Remember me</span>
+      <% end %>
+    <% end -%>
+
+    <div class="actions">
+      <%= f.submit "Log in", class:"c-btn c-btn--yellow" %>
+    </div>
+  <% end %>
+
+  <div class="links">
+    <%= render "shared/links" %>
+  </div>
+</div>
