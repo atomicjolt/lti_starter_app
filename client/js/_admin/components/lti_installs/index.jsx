@@ -3,7 +3,6 @@ import { connect }                  from 'react-redux';
 import _                            from 'lodash';
 import ReactModal                   from 'react-modal';
 import appHistory                   from '../../history';
-import { getapplications }          from '../../actions/applications';
 import { getApplicationInstance }   from '../../actions/application_instances';
 import * as AccountActions          from '../../actions/accounts';
 import Heading                      from '../common/heading';
@@ -50,7 +49,7 @@ function recursiveGetAccounts(account, canvasReq) {
   }
 }
 
-export class Home extends React.Component {
+export class Index extends React.Component {
   static propTypes = {
     accounts               : React.PropTypes.shape({}).isRequired,
     applications           : React.PropTypes.shape({}).isRequired,
@@ -199,5 +198,5 @@ export class Home extends React.Component {
 
 export default connect(
   select,
-  { getapplications, canvasRequest, getApplicationInstance, ...AccountActions }
-)(Home);
+  { canvasRequest, getApplicationInstance, ...AccountActions }
+)(Index);

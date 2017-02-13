@@ -7,7 +7,6 @@ import List                            from './list';
 import Modal                           from './modal';
 import Heading                         from '../common/heading';
 import * as ApplicationInstanceActions from '../../actions/application_instances';
-import { getApplications }             from '../../actions/applications';
 import { getSites }                    from '../../actions/sites';
 
 const select = (state, props) => ({
@@ -23,7 +22,6 @@ export class BaseInstances extends React.Component {
   static propTypes = {
     applicationInstances: React.PropTypes.arrayOf(React.PropTypes.shape({})),
     getApplicationInstances: React.PropTypes.func.isRequired,
-    getApplications: React.PropTypes.func.isRequired,
     createApplicationInstance: React.PropTypes.func,
     deleteApplicationInstance: React.PropTypes.func,
     getSites: React.PropTypes.func.isRequired,
@@ -42,9 +40,6 @@ export class BaseInstances extends React.Component {
 
   componentWillMount() {
     this.props.getApplicationInstances(this.props.params.applicationId);
-    if (_.isEmpty(this.props.applications)) {
-      this.props.getApplications();
-    }
     this.props.getSites();
   }
 
@@ -80,5 +75,5 @@ export class BaseInstances extends React.Component {
 }
 
 export default connect(select, {
-  ...ApplicationInstanceActions, ...{ getApplications }, ...{ getSites }
+  ...ApplicationInstanceActions, ...{ getSites }
 })(BaseInstances);

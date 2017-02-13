@@ -1,8 +1,7 @@
 import React               from 'react';
 import { connect }         from 'react-redux';
 import _                   from 'lodash';
-import { getApplications,
-         saveApplication } from '../../actions/applications';
+import { saveApplication } from '../../actions/applications';
 import Heading             from '../common/heading';
 import ApplicationRow      from './application_row';
 
@@ -13,17 +12,12 @@ function select(state) {
   };
 }
 
-export class Home extends React.Component {
+export class Index extends React.Component {
+
   static propTypes = {
     saveApplication: React.PropTypes.func.isRequired,
-    getApplications: React.PropTypes.func.isRequired,
     applications: React.PropTypes.shape({}).isRequired,
   };
-
-
-  componentDidMount() {
-    this.props.getApplications();
-  }
 
   render() {
     const applicationRows = _.map(this.props.applications, (application, index) => (
@@ -60,4 +54,4 @@ export class Home extends React.Component {
   }
 }
 
-export default connect(select, { getApplications, saveApplication })(Home);
+export default connect(select, { saveApplication })(Index);
