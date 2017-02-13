@@ -51,7 +51,7 @@ application_instances = [
   },
   {
     application: "LTI Starter App",
-    tenant: "lti-starter-app",
+    tenant: Rails.application.secrets.default_lti_key,
     lti_key: Rails.application.secrets.default_lti_key,
     lti_secret: Rails.application.secrets.default_lti_secret,
     url: Rails.application.secrets.canvas_url,
