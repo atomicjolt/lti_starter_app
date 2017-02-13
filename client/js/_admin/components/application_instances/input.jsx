@@ -6,7 +6,7 @@ export default function Input(props) {
   let before;
   let after;
 
-  if(_.includes(['radio', 'checkbox'], props.inputProps.type)) {
+  if (_.includes(['radio', 'checkbox'], props.inputProps.type)) {
     after = <span>{props.labelText}</span>;
   } else {
     before = <span>{props.labelText}</span>;
@@ -22,6 +22,7 @@ export default function Input(props) {
 }
 
 Input.propTypes = {
+  labelText: React.PropTypes.string,
   inputProps: React.PropTypes.shape({
     id: React.PropTypes.string,
     value: React.PropTypes.string,

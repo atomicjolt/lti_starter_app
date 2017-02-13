@@ -1,32 +1,31 @@
 import React        from 'react';
 import TestUtils    from 'react-addons-test-utils';
-import { Provider } from 'react-redux';
 import Stub         from '../../../../specs_support/stub';
 import Input         from './input';
 
 describe('input', () => {
 
   let result;
-  let props = {
+  const props = {
     inputProps: {
-      id: "IM AN ID",
-      value: "IM A VALUE",
+      id: 'IM AN ID',
+      value: 'IM A VALUE',
       checked: true,
-      name: "the name",
-      type: "radio",
+      name: 'the name',
+      type: 'radio',
       onChange: () => {},
     },
-    className: "imaclass",
-    labelText: "IMA LABEL",
+    className: 'imaclass',
+    labelText: 'IMA LABEL',
   };
 
   describe('text', () => {
 
     beforeEach(() => {
-      props.inputProps.type = "text";
+      props.inputProps.type = 'text';
       result = TestUtils.renderIntoDocument(
         <Stub>
-          <Input {...props}/>
+          <Input {...props} />
         </Stub>
       );
     });
@@ -46,10 +45,10 @@ describe('input', () => {
   describe('radio', () => {
 
     beforeEach(() => {
-      props.inputProps.type = "radio";
+      props.inputProps.type = 'radio';
       result = TestUtils.renderIntoDocument(
         <Stub>
-          <Input {...props}/>
+          <Input {...props} />
         </Stub>
       );
     });

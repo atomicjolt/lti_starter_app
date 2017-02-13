@@ -1,8 +1,8 @@
+import _               from 'lodash';
 import React           from 'react';
 import TestUtils       from 'react-addons-test-utils';
-import { Provider }    from 'react-redux';
-import Form            from './form';
-import { TEXT_FIELDS,
+import Form,
+       { TEXT_FIELDS,
          TYPE_RADIOS } from './form';
 
 describe('application instance form', () => {
@@ -16,11 +16,11 @@ describe('application instance form', () => {
       closeModal:     () => { modalClosed = true; },
       createInstance: () => {},
       newSite:        () => {},
-      site_id:        "foo",
+      site_id:        'foo',
       sites:          {},
     };
     result = TestUtils.renderIntoDocument(
-      <Form {...props}/>
+      <Form {...props} />
     );
   });
 
