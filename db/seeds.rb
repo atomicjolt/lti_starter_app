@@ -27,7 +27,7 @@ applications = [
   {
     name: "LTI Admin",
     description: "LTI tool administration",
-    client_application_name: "lti_admin_app",
+    client_application_name: "admin_app",
     canvas_api_permissions: admin_api_permissions,
     kind: Application.kinds[:admin],
   },
