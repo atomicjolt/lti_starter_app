@@ -1,11 +1,13 @@
 import React               from 'react';
 import { connect }         from 'react-redux';
 import { getApplications } from '../../actions/applications';
+import { getSites }        from '../../actions/sites';
 
 export class Index extends React.Component {
 
   static propTypes = {
     children: React.PropTypes.node,
+    getSites: React.PropTypes.func.isRequired,
     getApplications: React.PropTypes.func.isRequired,
   };
 
@@ -15,6 +17,7 @@ export class Index extends React.Component {
 
   componentDidMount() {
     this.props.getApplications();
+    this.props.getSites();
   }
 
   render() {
@@ -27,4 +30,4 @@ export class Index extends React.Component {
 
 }
 
-export default connect(null, { getApplications })(Index);
+export default connect(null, { getApplications, getSites })(Index);
