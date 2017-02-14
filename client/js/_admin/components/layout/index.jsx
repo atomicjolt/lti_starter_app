@@ -1,13 +1,20 @@
-import React from 'react';
+import React               from 'react';
+import { connect }         from 'react-redux';
+import { getApplications } from '../../actions/applications';
 
-export default class Index extends React.Component {
+export class Index extends React.Component {
 
   static propTypes = {
     children: React.PropTypes.node,
+    getApplications: React.PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     children: '',
+  }
+
+  componentDidMount() {
+    this.props.getApplications();
   }
 
   render() {
@@ -19,3 +26,5 @@ export default class Index extends React.Component {
   }
 
 }
+
+export default connect(null, { getApplications })(Index);

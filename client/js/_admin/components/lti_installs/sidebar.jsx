@@ -10,7 +10,7 @@ export default function Sidebar(props) {
       <div className="c-tool">
         <a href=""><i className="i-settings" /></a>
         <h4 className="c-tool__subtitle">LTI Tool</h4>
-        <h3 className="c-tool__title">{props.applicationInstance ? props.application.name : 'n/a'}</h3>
+        <h3 className="c-tool__title">{props.application ? props.application.name : 'n/a'}</h3>
         <h4 className="c-tool__instance">{schoolName}</h4>
       </div>
 
