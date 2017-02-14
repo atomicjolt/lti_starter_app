@@ -36,6 +36,7 @@ export function Index(props) {
             <tr>
               <th><span>NAME</span></th>
               <th><span>INSTANCES</span></th>
+              <th><span>SETTINGS</span></th>
             </tr>
           </thead>
           <tbody>
