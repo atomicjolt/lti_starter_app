@@ -18,6 +18,7 @@ This application requires:
 -   Ruby
 -   Rails
 -   PostGreSQL
+-   NodeJS
 -   yarn
 
 Learn more about:
