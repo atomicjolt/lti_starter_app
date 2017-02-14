@@ -24,6 +24,7 @@ This application requires:
 Learn more about:
 -   [Installing Rails](http://railsapps.github.io/installing-rails.html).
 -   [Installing PostGreSQL](https://wiki.postgresql.org/wiki/Detailed_installation_guides).
+-   [Installing NodeJS with nvm](https://github.com/creationix/nvm).
 -   [Installing Yarn](https://yarnpkg.com/lang/en/docs/install).
 
 #### Canvas Developer ID and Key
@@ -34,7 +35,7 @@ You will also need to setup a default lti application and lti application instan
 
 
 ## Running LTI Starter App
------------
+
 After [setting up the LTI Starter App](#setup), start Rails and the webpack server:
 ```
   rails server
@@ -43,7 +44,6 @@ After [setting up the LTI Starter App](#setup), start Rails and the webpack serv
 
 
 ## <a name="setup"></a>Setting up LTI Starter App
------------
 
 ### File Modifications
 -----------
@@ -71,6 +71,7 @@ Run the setup script to configure your local nginx and to setup symlinks to your
 ```
 $ ./bin/setup
 ```
+
 
 #### Secrets file
 Rename `config/secrets.example.yml` to `config/secrets.yml` and rename `config/database.example.yml` to `config/database.yml`.
@@ -130,15 +131,11 @@ Once you press Save Key, a Developer ID and Key will be generated and displayed 
 
 
 ## Canvas API
------------
+
 The LTI Starter app makes working with the Canvas API simple. See [Canvas](Canvas.md) for more information. Note that working with the Canvas API will require a server side proxy that is not part of this project.
 
 
-## Development
------------
-
-### Client
------------
+## Development Details
 
 #### Webpack
 Webpack is used to build the client side application. Configure the client application in client/config/settings.js
@@ -177,7 +174,6 @@ The value can then be used when rendering:
 #### Static
 Files added to the static directory will be copied directly into the build. These files will not be renamed.
 
-
 #### Check for updates
 Inside the client directory run:
 ```
@@ -186,7 +182,6 @@ yarn upgrade-interactive
 
 
 ## Deployment
------------
 
 ### Heroku
 -----------
@@ -208,7 +203,7 @@ $ git push heroku master
 By default `config/unicorn.rb` is setup to deploy to Heroku. Open that file, comment out the Heroku section and uncomment the other configuration to setup unicorn for deployment to another service like AWS.
 
 ## Examples
------------
+
 Atomic Jolt has built a number of applications based on this source.
 
 ### Demo Arigato
@@ -219,12 +214,12 @@ Source Code: [https://github.com/atomicjolt/demo_arigato](https://github.com/ato
 
 
 ## Database
------------
+
 This application uses PostgreSQL with ActiveRecord.
 
 
 ## Tests
------------
+
 You may need to install chromedriver if you haven't already.
 
 ```
