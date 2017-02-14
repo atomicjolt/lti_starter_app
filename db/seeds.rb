@@ -27,7 +27,7 @@ applications = [
   {
     name: "LTI Admin",
     description: "LTI tool administration",
-    client_application_name: "lti_admin_app",
+    client_application_name: "admin_app",
     canvas_api_permissions: admin_api_permissions,
     kind: Application.kinds[:admin],
   },
@@ -51,7 +51,7 @@ application_instances = [
   },
   {
     application: "LTI Starter App",
-    tenant: "starter-app",
+    tenant: Rails.application.secrets.default_lti_key,
     lti_key: Rails.application.secrets.default_lti_key,
     lti_secret: Rails.application.secrets.default_lti_secret,
     url: Rails.application.secrets.canvas_url,
