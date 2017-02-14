@@ -23,8 +23,8 @@ export function getApplications() {
 export function saveApplication(application) {
   return {
     type   : Constants.SAVE_APPLICATION,
-    method : Network.POST,
-    url    : 'api/applications',
+    method : Network.PUT,
+    url    : `api/applications/${application.id}`,
     body   : {
       application
     }
