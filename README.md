@@ -1,5 +1,5 @@
 # LTI Starter App [![Build Status](https://travis-ci.org/atomicjolt/lti_starter_app.svg?branch=master)](https://travis-ci.org/atomicjolt/lti_starter_app) [![Coverage Status](https://coveralls.io/repos/github/atomicjolt/lti_starter_app/badge.svg?branch=master)](https://coveralls.io/github/atomicjolt/lti_starter_app?branch=master)
------------------------
+
 There are many starter kits that will help you get started with React and Redux. This is the one created by, maintained by and used by [Atomic Jolt](http://www.atomicjolt.com). Atomic Jolt uses this as application as a starting place for Ruby on Rails applications that utilize React.
 
 
@@ -239,7 +239,7 @@ $ yarn test
 ```
 
 ## TODO
------------
+
 If an admin changes the developer key and secret then existing authentications are invalid. This will result in a 500 error. You will see the following in the log:
 LMS::Canvas::InvalidRequestException (Status: 400 Error:  ....
 
