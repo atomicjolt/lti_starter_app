@@ -18,6 +18,21 @@ RSpec.describe ApplicationInstance, type: :model do
       expect(@application_instance.lti_secret).to be_present
     end
 
+    it "sets a default tenant to the lti_key" do
+      @application_instance = described_class.create!(site: @site, application: @application)
+      expect(@application_instance.tenant).to eq(@application_instance.lti_key)
+    end
+
+    it "doesn't change the tenant" do
+      @application_instance = described_class.create!(
+        site: @site,
+        application: @application,
+        tenant: "bfcoder",
+      )
+      expect(@application_instance.tenant).to_not eq(@application_instance.lti_key)
+      expect(@application_instance.tenant).to eq("bfcoder")
+    end
+
     it "sets a valid lti_key using the name" do
       name = "A Test"
       application = FactoryGirl.create(:application, name: name)
