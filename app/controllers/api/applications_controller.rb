@@ -6,4 +6,15 @@ class Api::ApplicationsController < Api::ApiApplicationController
     render status: 200, json: @applications
   end
 
+  def update
+    @application.update(application_params)
+    respond_with(@application)
+  end
+
+  private
+
+  def application_params
+    params.require(:application).permit(:name, :description)
+  end
+
 end
