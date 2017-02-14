@@ -17,6 +17,6 @@ export default function Header(props) {
 Header.propTypes = {
   newApplicationInstance: React.PropTypes.func.isRequired,
   application: React.PropTypes.shape({
-    // name: React.PropTypes.string,
+    name: React.PropTypes.string,
   }),
 };
