@@ -130,9 +130,7 @@ Once you press Save Key, a Developer ID and Key will be generated and displayed 
 
 ## Canvas API
 -----------
-The LTI Starter app makes working with the Canvas API simple. See
-[Canvas](Canvas.md) for more information. Note that working with the Canvas API
-will require a server side proxy that is not part of this project.
+The LTI Starter app makes working with the Canvas API simple. See [Canvas](Canvas.md) for more information. Note that working with the Canvas API will require a server side proxy that is not part of this project.
 
 
 ## Development
@@ -159,10 +157,7 @@ The React Rails Starter App uses React. All client side code can be found in the
 ```
 
 #### Assets
-Any files added to the assets directory can be used by in code and assigned to a variable. This
-allows for referring to assets using dynamically generated strings. The assets will be built according to
-the rules specified in your webpack configuration. Typically, this means that in production the names will
-be changed to include a SHA.
+Any files added to the assets directory can be used by in code and assigned to a variable. This allows for referring to assets using dynamically generated strings. The assets will be built according to the rules specified in your webpack configuration. Typically, this means that in production the names will be changed to include a SHA.
 
 First importing the assets:
   `import assets from '../libs/assets';`
