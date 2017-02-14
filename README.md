@@ -16,16 +16,10 @@ rails new my_app -m https://raw.githubusercontent.com/atomicjolt/lti_starter_app
 This application requires:
 
 -   Ruby
--   Rails
--   PostGreSQL
--   NodeJS
--   yarn
-
-Learn more about:
--   [Installing Rails](http://railsapps.github.io/installing-rails.html).
--   [Installing PostGreSQL](https://wiki.postgresql.org/wiki/Detailed_installation_guides).
--   [Installing NodeJS with nvm](https://github.com/creationix/nvm).
--   [Installing Yarn](https://yarnpkg.com/lang/en/docs/install).
+-   Rails ([Info / Installation](http://railsapps.github.io/installing-rails.html))
+-   PostGreSQL ([Info / Installation](https://wiki.postgresql.org/wiki/Detailed_installation_guides))
+-   NodeJS  ([Info / Installation](https://github.com/creationix/nvm))
+-   yarn ([Info / Installation](https://yarnpkg.com/lang/en/docs/install))
 
 #### Canvas Developer ID and Key
 You will need to [obtain a Developer ID and Key from an Account Admin for the instance of Canvas the tool will be installed in](#canvas_developer_key).
