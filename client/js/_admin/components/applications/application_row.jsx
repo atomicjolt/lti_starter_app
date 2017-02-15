@@ -19,7 +19,7 @@ export default class ApplicationRow extends React.Component {
         border: 'none',
         backgroundColor: 'transparent',
         color: 'grey',
-        fontSize: '1em',
+        fontSize: '1.5em',
         cursor: 'pointer',
       }
     };
