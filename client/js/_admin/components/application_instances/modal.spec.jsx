@@ -32,6 +32,7 @@ describe('application instance modal', () => {
   it('uses the application name as the title', () => {
     const modal = TestUtils.findRenderedComponentWithType(result, Modal);
     expect(modal).not.toBeUndefined(name);
+    // TODO we need better specs but reaching into the modal has turned out to be a pain.
     // const h2s = TestUtils.scryRenderedDOMComponentsWithTag(result, 'h2');
     // const h2 = _.find(h2s, { className: 'c-modal__title' });
     // expect(h2.textContent).toContain(name);
