@@ -31,6 +31,6 @@ export default function List(props) {
 
 List.propTypes = {
   applicationInstances: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
-  // settings: React.PropTypes.shape({}).isRequired,
+  settings: React.PropTypes.shape({}).isRequired,
   deleteApplicationInstance: React.PropTypes.func.isRequired,
 };

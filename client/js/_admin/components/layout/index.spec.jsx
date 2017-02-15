@@ -4,8 +4,12 @@ import { Provider } from 'react-redux';
 import Helper       from '../../../../specs_support/helper';
 import { Index }    from './index';
 
-describe('index', () => {
+describe('layout index', () => {
   let result;
+
+  let getSites = false;
+  let getApplications = false;
+
   let props;
 
   const text = 'hello';
@@ -14,7 +18,8 @@ describe('index', () => {
   beforeEach(() => {
     props = {
       children,
-      getApplications: () => {},
+      getApplications: () => { getApplications = true; },
+      getSites: () => { getSites = true; },
     };
 
     result = TestUtils.renderIntoDocument(
@@ -30,6 +35,14 @@ describe('index', () => {
   it('renders the child component', () => {
     const child = TestUtils.findRenderedDOMComponentWithTag(result, 'h1');
     expect(child.textContent).toBe(text);
+  });
+
+  it('Loads sites', () => {
+    expect(getSites).toBe(true);
+  });
+
+  it('Loads applications', () => {
+    expect(getApplications).toBe(true);
   });
 
 });
