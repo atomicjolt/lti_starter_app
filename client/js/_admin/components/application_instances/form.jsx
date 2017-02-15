@@ -41,17 +41,20 @@ export default class Form extends React.Component {
     this.props.onChange(event);
   }
 
-  renderInput(outerClassName, className, type, fieldLabel, field) {
+  renderInput(outerClassName, className, type, altName, fieldLabel, field) {
+    const id = `instance_${field}`;
+    const name = altName || field;
+    const value = type === 'radio' ? field : this.props[field] || '';
     return (
       <div key={field} className={outerClassName}>
         <Input
           className={className}
           labelText={fieldLabel}
           inputProps={{
-            id:       `instance_${field}`,
-            name:     field,
+            id,
+            name,
             type,
-            value:    this.props[field] || '',
+            value,
             onChange: this.props.onChange
           }}
         />
@@ -87,11 +90,19 @@ export default class Form extends React.Component {
               />
             </div>
           </div>
-          { _.map(TEXT_FIELDS, (...args) => this.renderInput('o-grid__item u-half', 'c-input', 'text', ...args)) }
+          {
+            _.map(TEXT_FIELDS, (...args) =>
+              this.renderInput('o-grid__item u-half', 'c-input', 'text', undefined, ...args)
+            )
+          }
         </div>
         <h3 className="c-modal__subtitle">Install Settings</h3>
         <div className="o-grid o-grid__bottom">
-          { _.map(TYPE_RADIOS, (...args) => this.renderInput('o-grid__item u-third', 'c-checkbox', 'radio', ...args)) }
+          {
+            _.map(TYPE_RADIOS, (...args) =>
+              this.renderInput('o-grid__item u-third', 'c-checkbox', 'radio', 'lti_type', ...args)
+            )
+          }
         </div>
         <button
           type="button"
