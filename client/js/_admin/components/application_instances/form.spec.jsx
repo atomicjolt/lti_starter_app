@@ -46,7 +46,8 @@ describe('application instance form', () => {
         const inputs = TestUtils.scryRenderedDOMComponentsWithTag(result, 'input');
         const input = _.find(inputs, { id: `instance_${field}` });
         expect(input).toBeDefined();
-        expect(input.name).toBe(field);
+        expect(input.name).toBe('lti_type');
+        expect(input.value).toBe(field);
         expect(input.type).toBe('radio');
       });
     });
