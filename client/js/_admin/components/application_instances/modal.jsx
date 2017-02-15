@@ -68,7 +68,7 @@ export default class Modal extends React.Component {
       <ReactModal
         isOpen={this.props.isOpen}
         onRequestClose={() => this.closeModal()}
-        contentLabel="Modal"
+        contentLabel="Application Instances Modal"
         overlayClassName="c-modal__background"
         className={`c-modal c-modal--settings ${this.showInstanceModal()}`}
       >

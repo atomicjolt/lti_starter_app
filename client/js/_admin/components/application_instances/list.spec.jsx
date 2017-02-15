@@ -3,7 +3,7 @@ import TestUtils from 'react-addons-test-utils';
 import Stub      from '../../../../specs_support/stub';
 import List      from './list';
 
-describe('header', () => {
+describe('application instances list', () => {
 
   let result;
   const props = {

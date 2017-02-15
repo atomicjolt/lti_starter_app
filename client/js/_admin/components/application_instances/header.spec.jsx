@@ -3,7 +3,7 @@ import TestUtils from 'react-addons-test-utils';
 import Stub      from '../../../../specs_support/stub';
 import Header    from './header';
 
-describe('header', () => {
+describe('application instances header', () => {
 
   let result;
   const props = {

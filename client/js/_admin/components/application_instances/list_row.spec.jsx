@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import Helper       from '../../../../specs_support/helper';
 import ListRow      from './list_row';
 
-describe('header', () => {
+describe('application instances list row', () => {
 
   let result;
   let deleted = false;
