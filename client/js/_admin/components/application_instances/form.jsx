@@ -23,7 +23,8 @@ export default class Form extends React.Component {
     createInstance: React.PropTypes.func.isRequired,
     newSite:        React.PropTypes.func.isRequired,
     site_id:        React.PropTypes.string,
-    sites:          React.PropTypes.shape({})
+    sites:          React.PropTypes.shape({}),
+    isUpdate:       React.PropTypes.bool,
   };
 
   selectSite(option) {
@@ -41,7 +42,7 @@ export default class Form extends React.Component {
     this.props.onChange(event);
   }
 
-  renderInput(outerClassName, className, type, altName, fieldLabel, field) {
+  renderInput(outerClassName, className, type, altName, isUpdate, fieldLabel, field) {
     const id = `instance_${field}`;
     const name = altName || field;
     const inputProps = {
@@ -54,6 +55,9 @@ export default class Form extends React.Component {
       inputProps.checked = this.props[altName] === field;
       inputProps.value = field;
     } else {
+      if (isUpdate && field === 'lti_key') {
+        inputProps.disabled = true;
+      }
       inputProps.value = this.props[field] || '';
     }
     return (
@@ -97,7 +101,7 @@ export default class Form extends React.Component {
           </div>
           {
             _.map(TEXT_FIELDS, (...args) =>
-              this.renderInput('o-grid__item u-half', 'c-input', 'text', undefined, ...args)
+              this.renderInput('o-grid__item u-half', 'c-input', 'text', undefined, this.props.isUpdate, ...args)
             )
           }
         </div>
@@ -105,7 +109,7 @@ export default class Form extends React.Component {
         <div className="o-grid o-grid__bottom">
           {
             _.map(TYPE_RADIOS, (...args) =>
-              this.renderInput('o-grid__item u-third', 'c-checkbox', 'radio', 'lti_type', ...args)
+              this.renderInput('o-grid__item u-third', 'c-checkbox', 'radio', 'lti_type', this.props.isUpdate, ...args)
             )
           }
         </div>

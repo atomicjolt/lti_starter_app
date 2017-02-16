@@ -26,7 +26,8 @@ Input.propTypes = {
   inputProps: React.PropTypes.shape({
     id: React.PropTypes.string,
     value: React.PropTypes.string,
-    checked:  React.PropTypes.bool,
+    checked: React.PropTypes.bool,
+    disabled: React.PropTypes.bool,
     name: React.PropTypes.string,
     type: React.PropTypes.string.isRequired,
     onChange: React.PropTypes.func,

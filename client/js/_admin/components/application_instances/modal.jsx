@@ -76,6 +76,7 @@ export default class Modal extends React.Component {
       title = 'Update';
       siteId = this.state.newApplicationInstance.site_id || this.props.applicationInstance.site.id;
     }
+    const isUpdate = this.props.applicationInstance && this.props.applicationInstance.id;
     return (
       <ReactModal
         isOpen={this.props.isOpen}
@@ -95,6 +96,7 @@ export default class Modal extends React.Component {
           site_id={`${siteId}`}
           closeModal={() => this.closeModal()}
           newSite={() => this.newSite()}
+          isUpdate={isUpdate}
         />
         <NewSiteModal
           isOpen={this.state.newSiteModalOpen}
