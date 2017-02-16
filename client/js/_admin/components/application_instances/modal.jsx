@@ -8,18 +8,24 @@ export default class Modal extends React.Component {
     isOpen: React.PropTypes.bool.isRequired,
     closeModal: React.PropTypes.func.isRequired,
     sites: React.PropTypes.shape({}),
-    createApplicationInstance: React.PropTypes.func.isRequired,
+    save: React.PropTypes.func.isRequired,
+    applicationInstance: React.PropTypes.shape({
+      id: React.PropTypes.number,
+      site: React.PropTypes.shape({
+        id: React.PropTypes.number,
+      })
+    }),
     application: React.PropTypes.shape({
       id: React.PropTypes.number,
     })
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       newSiteModalOpen: false,
       selectedSite: '',
-      newApplicationInstance: {}
+      newApplicationInstance: props.applicationInstance || {}
     };
   }
 
@@ -53,7 +59,7 @@ export default class Modal extends React.Component {
   }
 
   createInstance() {
-    this.props.createApplicationInstance(
+    this.props.save(
       this.props.application.id,
       this.state.newApplicationInstance
     );
@@ -63,7 +69,13 @@ export default class Modal extends React.Component {
   render() {
     const application = this.props.application;
     const applicationName = application ? application.name : 'Application';
-
+    let title = 'New';
+    let siteId;
+    if (this.state.newApplicationInstance.site_id ||
+        (this.props.applicationInstance && this.props.applicationInstance.id)) {
+      title = 'Update';
+      siteId = this.state.newApplicationInstance.site_id || this.props.applicationInstance.site.id;
+    }
     return (
       <ReactModal
         isOpen={this.props.isOpen}
@@ -73,13 +85,14 @@ export default class Modal extends React.Component {
         className={`c-modal c-modal--settings ${this.showInstanceModal()}`}
       >
         <h2 className="c-modal__title">
-          New {applicationName} Instance
+          {title} {applicationName} Instance
         </h2>
         <ApplicationInstanceForm
           {...this.state.newApplicationInstance}
           onChange={(e) => { this.newApplicationInstanceChange(e); }}
           createInstance={() => this.createInstance()}
           sites={this.props.sites}
+          site_id={`${siteId}`}
           closeModal={() => this.closeModal()}
           newSite={() => this.newSite()}
         />

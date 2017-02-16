@@ -10,6 +10,7 @@ export default function List(props) {
           <th><span>INSTANCE</span></th>
           <th><span>LTI KEY</span></th>
           <th><span>DOMAIN</span></th>
+          <th><span>SETTINGS</span></th>
           <th />
         </tr>
       </thead>
@@ -19,7 +20,11 @@ export default function List(props) {
             <ListRow
               key={`instance_${key}`}
               {...instance}
+              application={props.application}
+              applicationInstance={instance}
               settings={props.settings}
+              sites={props.sites}
+              save={props.saveApplicationInstance}
               delete={props.deleteApplicationInstance}
             />
           ))
@@ -32,5 +37,8 @@ export default function List(props) {
 List.propTypes = {
   applicationInstances: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
   settings: React.PropTypes.shape({}).isRequired,
+  sites: React.PropTypes.shape({}).isRequired,
+  application: React.PropTypes.shape({}),
+  saveApplicationInstance: React.PropTypes.func.isRequired,
   deleteApplicationInstance: React.PropTypes.func.isRequired,
 };

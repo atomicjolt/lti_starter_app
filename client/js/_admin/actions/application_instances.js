@@ -9,7 +9,8 @@ const requests = [
   'GET_APPLICATION_INSTANCES',
   'GET_APPLICATION_INSTANCE',
   'CREATE_APPLICATION_INSTANCE',
-  'DELETE_APPLICATION_INSTANCE'
+  'DELETE_APPLICATION_INSTANCE',
+  'SAVE_APPLICATION_INSTANCE',
 ];
 
 export const Constants = wrapper(actions, requests);
@@ -36,6 +37,17 @@ export function createApplicationInstance(applicationId, applicationInstance) {
     method : Network.POST,
     url    : `/api/applications/${applicationId}/application_instances`,
     body   : {
+      application_instance: applicationInstance,
+    }
+  };
+}
+
+export function saveApplicationInstance(applicationId, applicationInstance) {
+  return {
+    type: Constants.SAVE_APPLICATION_INSTANCE,
+    method: Network.PUT,
+    url: `/api/applications/${applicationId}/application_instances/${applicationInstance.id}`,
+    body: {
       application_instance: applicationInstance,
     }
   };

@@ -44,19 +44,24 @@ export default class Form extends React.Component {
   renderInput(outerClassName, className, type, altName, fieldLabel, field) {
     const id = `instance_${field}`;
     const name = altName || field;
-    const value = type === 'radio' ? field : this.props[field] || '';
+    const inputProps = {
+      id,
+      name,
+      type,
+      onChange: this.props.onChange
+    };
+    if (type === 'radio') {
+      inputProps.checked = this.props[altName] === field;
+      inputProps.value = field;
+    } else {
+      inputProps.value = this.props[field] || '';
+    }
     return (
       <div key={field} className={outerClassName}>
         <Input
           className={className}
           labelText={fieldLabel}
-          inputProps={{
-            id,
-            name,
-            type,
-            value,
-            onChange: this.props.onChange
-          }}
+          inputProps={inputProps}
         />
       </div>
     );
