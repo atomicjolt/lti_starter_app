@@ -41,14 +41,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :jwts
-    resources :canvas_accounts
     resources :oauths
-    resources :courses, only: [] do
-      resources :students, only: [:index]
-      resources :sections, only: [] do
-        resources :students, only: [:index]
-      end
-    end
 
     resources :applications do
       resources :application_instances
