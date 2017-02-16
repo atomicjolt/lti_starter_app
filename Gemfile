@@ -12,12 +12,6 @@ gem "rails", "4.2.7"
 gem "apartment"
 gem "pg"
 
-# UI
-gem "autoprefixer-rails"
-gem "non-stupid-digest-assets" # also compile assets without digest (fixes font problem)
-gem "sass-rails"
-gem "uglifier"
-
 # authentication, authorization, integrations
 gem "attr_encrypted"
 gem "cancancan"
@@ -50,7 +44,11 @@ gem "rack-cors", require: "rack/cors"
 # Paging
 gem "will_paginate"
 
+# Also compile assets without digest (fixes font problem)
+gem "non-stupid-digest-assets"
+
 group :development do
+  gem "autoprefixer-rails"
   gem "better_errors"
   gem "binding_of_caller", platforms: [:mri_21]
   gem "hub", require: nil
@@ -63,7 +61,9 @@ group :development do
   gem "rb-fchange", require: false
   gem "rb-fsevent", require: false
   gem "rb-inotify", require: false
+  gem "sass-rails"
   gem "spring"
+  gem "uglifier"
 end
 
 group :development, :test do
