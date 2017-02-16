@@ -23,6 +23,7 @@ export class Index extends React.Component {
     getApplicationInstances: React.PropTypes.func.isRequired,
     createApplicationInstance: React.PropTypes.func,
     deleteApplicationInstance: React.PropTypes.func,
+    saveApplicationInstance: React.PropTypes.func,
     sites: React.PropTypes.shape({}).isRequired,
     applications: React.PropTypes.shape({}).isRequired,
     params: React.PropTypes.shape({
@@ -41,6 +42,7 @@ export class Index extends React.Component {
   }
 
   render() {
+    const application = this.props.applications[this.props.params.applicationId];
     return (
       <div>
         <Heading
@@ -49,20 +51,22 @@ export class Index extends React.Component {
         <div className="o-contain o-contain--full">
           <Modal
             isOpen={this.state.modalOpen}
-            applicationInstances={this.props.applicationInstances}
             closeModal={() => this.setState({ modalOpen: false })}
             sites={this.props.sites}
-            createApplicationInstance={this.props.createApplicationInstance}
-            application={this.props.applications[this.props.params.applicationId]}
+            save={this.props.createApplicationInstance}
+            application={application}
           />
           <Header
             openSettings={() => {}}
             newApplicationInstance={() => this.setState({ modalOpen: true })}
-            application={this.props.applications[this.props.params.applicationId]}
+            application={application}
           />
           <List
             applicationInstances={this.props.applicationInstances}
             settings={this.props.settings}
+            sites={this.props.sites}
+            application={application}
+            saveApplicationInstance={this.props.saveApplicationInstance}
             deleteApplicationInstance={this.props.deleteApplicationInstance}
           />
         </div>

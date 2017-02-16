@@ -61,6 +61,19 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
       end
     end
 
+    describe "PUT update" do
+      it "Updates the application instance" do
+        put :update,
+            application_id: @application.id,
+            id: @application_instance.id,
+            application_instance: {
+              lti_secret: "12345",
+            },
+            format: :json
+        expect(response).to have_http_status(204)
+      end
+    end
+
     describe "DEL destroy" do
       it "Deletes the application instance" do
         delete :destroy, { application_id: @application.id, id: @application_instance.id, format: :json }

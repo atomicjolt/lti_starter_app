@@ -10,6 +10,8 @@ describe('application instances list', () => {
     applicationInstances: [],
     settings: {},
     deleteApplicationInstance: () => {},
+    saveApplicationInstance: () => {},
+    sites: { 1: { id: 1, url: 'http://www.example.com' } },
   };
 
   beforeEach(() => {

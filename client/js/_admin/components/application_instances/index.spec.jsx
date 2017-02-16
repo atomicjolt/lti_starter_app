@@ -13,6 +13,7 @@ describe('application instances index', () => {
     applicationInstances: [],
     getApplicationInstances: () => { applicationInstances = true; },
     createApplicationInstance: () => {},
+    saveApplicationInstance: () => {},
     deleteApplicationInstance: () => {},
     sites: {},
     applications: {},

@@ -1,11 +1,13 @@
 import React          from 'react';
 import { Link }       from 'react-router';
 import _              from 'lodash';
+import Modal          from './modal';
 import SettingsInputs from '../common/settings_inputs';
 
 export default class ListRow extends React.Component {
   static propTypes = {
     delete: React.PropTypes.func.isRequired,
+    save: React.PropTypes.func.isRequired,
     lti_key: React.PropTypes.string,
     domain: React.PropTypes.string,
     id: React.PropTypes.number.isRequired,
@@ -13,11 +15,31 @@ export default class ListRow extends React.Component {
     site: React.PropTypes.shape({
       url: React.PropTypes.string
     }).isRequired,
+    sites: React.PropTypes.shape({}).isRequired,
+    application: React.PropTypes.shape({}),
+    applicationInstance: React.PropTypes.shape({}).isRequired,
     settings: React.PropTypes.shape({
       lti_key: React.PropTypes.string,
       user_canvas_domains: React.PropTypes.arrayOf(React.PropTypes.string),
     }).isRequired
   };
+
+  static getStyles() {
+    return {
+      buttonIcon: {
+        border: 'none',
+        backgroundColor: 'transparent',
+        color: 'grey',
+        fontSize: '1.5em',
+        cursor: 'pointer',
+      }
+    };
+  }
+
+  constructor() {
+    super();
+    this.state = { modalOpen: false };
+  }
 
   checkAuthentication(e) {
     if (!_.find(this.props.settings.user_canvas_domains, canvasUrl =>
@@ -30,6 +52,7 @@ export default class ListRow extends React.Component {
   }
 
   render() {
+    const styles = ListRow.getStyles();
     const path = `applications/${this.props.application_id}/application_instances/${this.props.id}/installs`;
     return (
       <tr>
@@ -60,6 +83,22 @@ export default class ListRow extends React.Component {
         </td>
         <td><span>{this.props.lti_key}</span></td>
         <td><span>{this.props.domain}</span></td>
+        <td>
+          <button
+            style={styles.buttonIcon}
+            onClick={() => this.setState({ modalOpen: true })}
+          >
+            <i className="i-settings" />
+          </button>
+          <Modal
+            isOpen={this.state.modalOpen}
+            closeModal={() => this.setState({ modalOpen: false })}
+            sites={this.props.sites}
+            save={this.props.save}
+            application={this.props.application}
+            applicationInstance={this.props.applicationInstance}
+          />
+        </td>
         <td>
           <button
             className="c-delete"

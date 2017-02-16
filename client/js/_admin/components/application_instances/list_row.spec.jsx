@@ -12,11 +12,14 @@ describe('application instances list row', () => {
 
   const props = {
     delete: () => { deleted = true; },
+    save: () => {},
     lti_key: 'lti-key',
     domain: 'www.example.com',
     id: 2,
     application_id: 23,
     site: { url: 'http://www.example.com' },
+    sites: { 1: { id: 1, url: 'http://www.example.com' } },
+    applicationInstance: {},
     settings: {
       lti_key: 'lti-key',
       user_canvas_domains: [''],

@@ -14,7 +14,7 @@ describe('application instance modal', () => {
     isOpen: true,
     closeModal: () => {},
     sites: {},
-    createApplicationInstance: () => {},
+    save: () => {},
     application: {
       id: 1,
       name
