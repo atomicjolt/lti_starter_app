@@ -12,10 +12,10 @@ describe('applications form', () => {
   beforeEach(() => {
     action = false;
     props = {
-      onChange: () => {},
-      closeModal: () => { action = true; },
-      save: () => { action = true; },
-      description: "SPEC_DESCRIPTION"
+      onChange    : () => {},
+      closeModal  : () => { action = true; },
+      save        : () => { action = true; },
+      description : "SPEC_DESCRIPTION"
     };
 
     result = TestUtils.renderIntoDocument(
@@ -26,22 +26,22 @@ describe('applications form', () => {
   });
 
   it('renders a form', () => {
-    let button = TestUtils.findRenderedDOMComponentWithClass(result, 'c-btn c-btn--yellow');
+    const button = TestUtils.findRenderedDOMComponentWithClass(result, 'c-btn c-btn--yellow');
     TestUtils.Simulate.click(button);
     expect(action).toBeTruthy();
   });
 
   it('close modal', () => {
-    let button = TestUtils.findRenderedDOMComponentWithClass(result, 'c-btn c-btn--gray--large u-m-right');
+    const button = TestUtils.findRenderedDOMComponentWithClass(result, 'c-btn c-btn--gray--large u-m-right');
     TestUtils.Simulate.click(button);
     expect(action).toBeTruthy();
   });
 
   it('renders description', () => {
-    let element = TestUtils.findRenderedDOMComponentWithClass(result, 'o-grid o-grid__modal-top');
+    const element = TestUtils.findRenderedDOMComponentWithClass(result, 'o-grid o-grid__modal-top');
     expect(element).toBeDefined();
-    let childDivs = element.childNodes;
-    let inputTag = childDivs[0].firstChild.childNodes[1];
+    const childDivs = element.childNodes;
+    const inputTag = childDivs[0].firstChild.childNodes[1];
     expect(inputTag.value).toContain('SPEC_DESCRIPTION');
   })
 });

@@ -5,7 +5,6 @@ import Helper       from '../../../../specs_support/helper';
 import { Index }    from './index';
 
 describe('applications index', () => {
-
   let result;
   let props;
 
@@ -27,13 +26,13 @@ describe('applications index', () => {
     );
   });
 
-  fit('render the application rows', () => {
-    let element = TestUtils.findRenderedDOMComponentWithClass(result, 'o-contain o-contain--full');
+  it('render the application rows', () => {
+    const element = TestUtils.findRenderedDOMComponentWithClass(result, 'o-contain o-contain--full');
     expect(element).toBeDefined();
   });
 
-  fit('render application', () => {
-    let element = TestUtils.findRenderedDOMComponentWithTag(result, 'tbody');
+  it('render application', () => {
+    const element = TestUtils.findRenderedDOMComponentWithTag(result, 'tbody');
     expect(element.childNodes.length).toBeGreaterThan(0);
   });
 

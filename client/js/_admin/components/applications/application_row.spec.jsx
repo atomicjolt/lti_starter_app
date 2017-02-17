@@ -4,13 +4,11 @@ import { Provider }  from 'react-redux';
 import Helper        from '../../../../specs_support/helper';
 import ApplicationRow from './application_row';
 
-
 describe('applications application row', () => {
   let result;
   let props;
 
   beforeEach(() => {
-
     props = {
       application: {
         id                          : 314159,
