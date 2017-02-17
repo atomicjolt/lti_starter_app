@@ -12,7 +12,8 @@
       settings[:canvas_url]                             = @canvas_url
       settings[:oauth_consumer_key]                     = params[:oauth_consumer_key]
       settings[:lms_course_id]                          = params[:custom_canvas_course_id]
-      settings[:lms_user_id]                            = current_user.lti_user_id
+      settings[:lti_user_id]                            = current_user.lti_user_id
+      settings[:lms_user_id]                            = current_user.lms_user_id
       settings[:lti_provider]                           = lti_provider
       settings[:lms_course_name]                        = params[:context_title]
       settings[:canvas_oauth_path]                      = @canvas_oauth_path
