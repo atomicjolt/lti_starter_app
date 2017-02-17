@@ -27,7 +27,7 @@ module Concerns
 
     def canvas_auth(current_application_instance)
       current_user.authentications.find_by(
-        provider_url: current_application_instance.site.url,
+        provider_url: UrlHelper.scheme_host_port(current_application_instance.site.url),
       )
     end
 
