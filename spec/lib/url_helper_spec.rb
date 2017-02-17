@@ -17,6 +17,7 @@ describe UrlHelper do
       expect(UrlHelper.host("http://www.example.com/some/path")).to eq("www.example.com")
       expect(UrlHelper.host("http://www.example.com?some=thing")).to eq("www.example.com")
       expect(UrlHelper.host("www.example.com")).to eq("www.example.com")
+      expect(UrlHelper.host("www.example.com/")).to eq("www.example.com")
       expect(UrlHelper.host("www.example.com/some/path")).to eq("www.example.com")
       expect(UrlHelper.host("www.example.com?some=thing")).to eq("www.example.com")
     end
@@ -25,6 +26,7 @@ describe UrlHelper do
       expect(UrlHelper.host("http://foo.example.com/some/path")).to eq("foo.example.com")
       expect(UrlHelper.host("http://foo.example.com?some=thing")).to eq("foo.example.com")
       expect(UrlHelper.host("foo.example.com")).to eq("foo.example.com")
+      expect(UrlHelper.host("foo.example.com/")).to eq("foo.example.com")
       expect(UrlHelper.host("foo.example.com/some/path")).to eq("foo.example.com")
       expect(UrlHelper.host("foo.example.com?some=thing")).to eq("foo.example.com")
     end
@@ -39,6 +41,7 @@ describe UrlHelper do
       expect(UrlHelper.scheme_host("http://www.example.com/some/path")).to eq("http://www.example.com")
       expect(UrlHelper.scheme_host("http://www.example.com?some=thing")).to eq("http://www.example.com")
       expect(UrlHelper.scheme_host("www.example.com")).to eq("http://www.example.com")
+      expect(UrlHelper.scheme_host("www.example.com/")).to eq("http://www.example.com")
       expect(UrlHelper.scheme_host("www.example.com/some/path")).to eq("http://www.example.com")
       expect(UrlHelper.scheme_host("www.example.com?some=thing")).to eq("http://www.example.com")
     end
@@ -47,6 +50,7 @@ describe UrlHelper do
       expect(UrlHelper.scheme_host("https://foo.example.com/some/path")).to eq("https://foo.example.com")
       expect(UrlHelper.scheme_host("https://foo.example.com?some=thing")).to eq("https://foo.example.com")
       expect(UrlHelper.scheme_host("http://foo.example.com")).to eq("http://foo.example.com")
+      expect(UrlHelper.scheme_host("http://foo.example.com/")).to eq("http://foo.example.com")
       expect(UrlHelper.scheme_host("http://foo.example.com/some/path")).to eq("http://foo.example.com")
       expect(UrlHelper.scheme_host("http://foo.example.com?some=thing")).to eq("http://foo.example.com")
       expect(UrlHelper.scheme_host("foo.example.com")).to eq("http://foo.example.com")
