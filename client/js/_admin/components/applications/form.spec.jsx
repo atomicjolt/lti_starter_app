@@ -15,7 +15,7 @@ describe('applications form', () => {
       onChange    : () => {},
       closeModal  : () => { action = true; },
       save        : () => { action = true; },
-      description : "SPEC_DESCRIPTION"
+      description : 'SPEC_DESCRIPTION'
     };
 
     result = TestUtils.renderIntoDocument(
@@ -43,5 +43,5 @@ describe('applications form', () => {
     const childDivs = element.childNodes;
     const inputTag = childDivs[0].firstChild.childNodes[1];
     expect(inputTag.value).toContain('SPEC_DESCRIPTION');
-  })
+  });
 });

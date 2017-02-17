@@ -13,8 +13,8 @@ describe('applications index', () => {
       saveApplication: () => {},
       applications: {
         Spiderman: {
-          Power1: "Wall Crawling",
-          Power2: "Spidey Sense"
+          Power1: 'Wall Crawling',
+          Power2: 'Spidey Sense'
         }
       }
     };

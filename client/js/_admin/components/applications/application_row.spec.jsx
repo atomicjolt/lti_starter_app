@@ -12,7 +12,7 @@ describe('applications application row', () => {
     props = {
       application: {
         id                          : 314159,
-        name                        : "SPECNAME",
+        name                        : 'SPECNAME',
         application_instances_count : 123
       },
       saveApplication: () => {}
