@@ -3,7 +3,7 @@ import { connect }                  from 'react-redux';
 import _                            from 'lodash';
 import ReactModal                   from 'react-modal';
 import appHistory                   from '../../history';
-import { getApplicationInstance }   from '../../actions/application_instances';
+import * as ApplicationInstanceActions from '../../actions/application_instances';
 import * as AccountActions          from '../../actions/accounts';
 import Heading                      from '../common/heading';
 import Sidebar                      from './sidebar';
@@ -29,6 +29,7 @@ function select(state, props) {
     courses             : _.sortBy(state.courses, course => course.name),
     userName            : state.settings.display_name,
     loadingCourses      : state.loadingCourses,
+    sites: state.sites,
   };
 }
 
@@ -60,10 +61,12 @@ export class Index extends React.Component {
     getCanvasAccounts      : React.PropTypes.func.isRequired,
     getApplicationInstance : React.PropTypes.func.isRequired,
     canvasRequest          : React.PropTypes.func.isRequired,
+    saveApplicationInstance: React.PropTypes.func.isRequired,
     params                 : React.PropTypes.shape({
       applicationId         : React.PropTypes.string,
       applicationInstanceId : React.PropTypes.string,
     }).isRequired,
+    sites: React.PropTypes.shape({}).isRequired,
   };
 
   constructor() {
@@ -149,7 +152,7 @@ export class Index extends React.Component {
   }
 
   render() {
-    const applicationInstanceId = parseInt(this.props.params.applicationInstanceId, 10);
+    const applicationId = parseInt(this.props.params.applicationId, 10);
     let accountCourses = this.props.courses;
     const lastActiveAccount = _.last(this.state.activeAccounts);
 
@@ -168,10 +171,13 @@ export class Index extends React.Component {
         <div className="o-contain">
           <Sidebar
             accounts={this.props.accounts}
-            application={this.props.applications[applicationInstanceId]}
+            application={this.props.applications[applicationId]}
+            applicationInstance={this.props.applicationInstance}
             canvasRequest={this.props.canvasRequest}
             setAccountActive={(account, depth) => this.setAccountActive(account, depth)}
             activeAccounts={this.state.activeAccounts}
+            saveApplicationInstance={this.props.saveApplicationInstance}
+            sites={this.props.sites}
           />
           <InstallPane
             canvasRequest={this.props.canvasRequest}
@@ -198,5 +204,5 @@ export class Index extends React.Component {
 
 export default connect(
   select,
-  { canvasRequest, getApplicationInstance, ...AccountActions }
+  { canvasRequest, ...ApplicationInstanceActions, ...AccountActions }
 )(Index);
