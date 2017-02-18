@@ -12,8 +12,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def canvas
     canvas_url = env["canvas.url"] || params["canvas_url"] || session[:canvas_url]
-
-    canvas_url.strip!
+    canvas_url = UrlHelper.scheme_host_port(canvas_url.strip)
 
     if @user.lti_provider.blank?
       auth = @user.authentications.find_by(provider_url: canvas_url, provider: "canvas")

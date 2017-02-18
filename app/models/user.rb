@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
       uid: auth["uid"].to_s,
       username: auth["info"]["nickname"],
       provider: auth["provider"],
-      provider_url: UrlHelper.scheme_host(auth["info"]["url"]),
+      provider_url: UrlHelper.scheme_host_port(auth["info"]["url"]),
       json_response: auth.to_json,
     }
     if credentials = auth["credentials"]
@@ -67,8 +67,9 @@ class User < ActiveRecord::Base
       # Google sends a refresh token
       attributes[:refresh_token] = credentials["refresh_token"] if credentials["refresh_token"]
     end
+    provider_url = UrlHelper.scheme_host_port(auth["info"]["url"])
     if persisted? &&
-        authentication = authentications.where({ provider: auth["provider"], provider_url: auth["info"]["url"] }).first
+        authentication = authentications.where({ provider: auth["provider"], provider_url: provider_url }).first
       authentication.update_attributes!(attributes)
     else
       authentications.build(attributes)
