@@ -17,7 +17,7 @@ describe('lti installs sub accounts', () => {
             sub_accounts: []
           }
         ],
-        setAccountActive: () => { activeAccounts = true; },
+        setAccountActive: () => {},
         activeAccounts: []
       };
       result = TestUtils.renderIntoDocument(

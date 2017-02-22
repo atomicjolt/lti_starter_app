@@ -20,7 +20,7 @@ describe('lti installs course install row', () => {
       id: 12
     },
     courseName: 'courseName',
-    canvasRequest: () => { canvasRequest = true; },
+    canvasRequest: () => {},
     courseId,
   };
 

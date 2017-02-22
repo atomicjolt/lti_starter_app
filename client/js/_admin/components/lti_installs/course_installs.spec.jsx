@@ -9,14 +9,14 @@ describe('lti installs course install', () => {
   let result;
   let courseId = 123;
 
-  var props = {
+  const props = {
     applicationInstance: {
       name: 'application_name',
       lti_key: 'lti_key',
       lti_secret: 'lti_secret',
       lti_config_xml: 'lti_config_xml',
     },
-    canvasRequest: () => { canvasRequest = true; },
+    canvasRequest: () => {},
     loadingCourses: {
       courseName: 'name',
       courseId: 'id',
@@ -47,7 +47,7 @@ describe('lti installs course install', () => {
 
   it('renders buttons', () => {
     const courseName = TestUtils.findRenderedDOMComponentWithTag(result, 'span');
-    expect(courseName.textContent).toBe('Course Name')
+    expect(courseName.textContent).toBe('Course Name');
   });
 
 });

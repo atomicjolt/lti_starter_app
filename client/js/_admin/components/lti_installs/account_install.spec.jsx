@@ -7,7 +7,6 @@ import AccountInstall   from './account_install';
 describe('lti installs account install', () => {
 
   let result;
-  let canvasRequest = false;
   let accountInstalls = 123;
   let account = {
     id: 12,
@@ -21,7 +20,7 @@ describe('lti installs account install', () => {
     applicationInstance: {
       lti_key: 'lti_key'
     },
-    canvasRequest:     () => { canvasRequest = true; },
+    canvasRequest:     () => {},
     accountInstalls,
     account,
   };
@@ -57,7 +56,7 @@ describe('lti installs account install', () => {
       applicationInstance: {
         lti_key: 'lti_key'
       },
-      canvasRequest:     () => { canvasRequest = true; },
+      canvasRequest:     () => {},
       accountInstalls,
     };
 

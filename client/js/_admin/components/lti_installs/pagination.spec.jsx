@@ -6,14 +6,13 @@ import Pagination   from './pagination';
 describe('lti installs pagination', () => {
 
   let result;
-  let settingPage = false;
 
   describe('should render pagination', () => {
     beforeEach(() => {
       const props = {
-        courses: [{name: 'name', id: 1}, {name: 'name', id: 2}],
+        courses: [ {name: 'name', id: 1}, {name: 'name', id: 2} ],
         pageSize: 1,
-        setPage: () => { settingPage = true; },
+        setPage: () => {},
         pageCount: 21,
         currentPage: 2
       };

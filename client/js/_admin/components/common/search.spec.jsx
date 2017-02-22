@@ -6,7 +6,7 @@ import Search       from './search';
 describe('common search', () => {
 
   let result;
-  let search = "";
+  let search = '';
 
   const props = {
     search: (value) => { search = value; },

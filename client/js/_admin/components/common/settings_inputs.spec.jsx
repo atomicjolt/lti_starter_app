@@ -5,12 +5,13 @@ import SettingsInputs   from './settings_inputs';
 
 describe('common search inputs', () => {
   let result;
-  let lti_key = 'lti_key';
+  let ltiKey = 'lti_key';
+  let ltiName = 'ltiName';
 
   const props = {
     settings: {
-      lti_key,
-      name: 'lti_name',
+      lti_key: ltiKey,
+      name: ltiName,
     },
   };
 
@@ -35,7 +36,7 @@ describe('common search inputs', () => {
     const input = _.find(inputs, { name: 'oauth_consumer_key' });
     expect(input).toBeDefined();
     expect(input.type).toBe('hidden');
-    expect(input.value).toBe(lti_key);
+    expect(input.value).toBe(ltiKey);
   });
 
   it('search input changes', () => {
@@ -43,7 +44,7 @@ describe('common search inputs', () => {
     const input = _.find(inputs, { name: 'lti_key' });
     expect(input).toBeDefined();
     expect(input.type).toBe('hidden');
-    expect(input.value).toBe(lti_key);
+    expect(input.value).toBe(ltiKey);
   });
 
   it('search input changes', () => {
@@ -51,7 +52,7 @@ describe('common search inputs', () => {
     const input = _.find(inputs, { name: 'name' });
     expect(input).toBeDefined();
     expect(input.type).toBe('hidden');
-    expect(input.value).toBe('lti_name');
+    expect(input.value).toBe(ltiName);
   });
 
 });

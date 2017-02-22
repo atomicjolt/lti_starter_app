@@ -6,10 +6,8 @@ import Sidebar      from './sidebar';
 describe('lti installs sidebar', () => {
 
   let result;
-  let canvasRequest = false;
-  let activeAccounts = false;
-  let saveApplicationInstance = false;
-  let application_name = 'application_name';
+  let applicationName = 'applicationName';
+  let accountName = 'accountName2';
 
   describe('should render sidebar', () => {
     beforeEach(() => {
@@ -17,16 +15,16 @@ describe('lti installs sidebar', () => {
         accounts: {
           0: {
             id: 1,
-            name: 'account_name',
+            name: 'accountName',
             sub_accounts: []
           }
         },
         application: {
-          name: application_name
+          name: applicationName
         },
-        saveApplicationInstance: () => { saveApplicationInstance = true; },
-        canvasRequest: () => { canvasRequest = true; },
-        setAccountActive: () => { activeAccounts = true; },
+        saveApplicationInstance: () => {},
+        canvasRequest: () => {},
+        setAccountActive: () => {},
         activeAccounts: [],
         sites: {},
       };
@@ -47,7 +45,7 @@ describe('lti installs sidebar', () => {
 
     it('return the title name', () => {
       const title = TestUtils.findRenderedDOMComponentWithClass(result, 'c-tool__title');
-      expect(title.textContent).toBe(application_name);
+      expect(title.textContent).toBe(applicationName);
     });
 
     it('return the title name', () => {
@@ -72,31 +70,31 @@ describe('lti installs sidebar', () => {
       const props = {
         accounts: {
           0: {
-            name: 'account_name',
+            name: 'accountName',
             sub_accounts: []
           },
           1: {
-            name: 'account_name2',
+            name: accountName,
             sub_accounts: [
               {
                 id: 1,
-                name: 'sub_account1',
+                name: 'subAccount1',
                 sub_account: []
               },
               {
                 id: 2,
-                name: 'sub_account2',
+                name: 'subAccount2',
                 sub_account: []
               }
             ]
           }
         },
         application: {
-          name: application_name
+          name: applicationName
         },
-        saveApplicationInstance: () => { saveApplicationInstance = true; },
-        canvasRequest: () => { canvasRequest = true; },
-        setAccountActive: () => { activeAccounts = true; },
+        saveApplicationInstance: () => {},
+        canvasRequest: () => {},
+        setAccountActive: () => {},
         activeAccounts: [],
         sites: {},
       };
@@ -109,12 +107,12 @@ describe('lti installs sidebar', () => {
 
     it('return the title name', () => {
       const title = TestUtils.findRenderedDOMComponentWithClass(result, 'c-tool__instance');
-      expect(title.textContent).toBe('account_name2');
+      expect(title.textContent).toBe(accountName);
     });
 
     it('return the button', () => {
       const buttons = TestUtils.scryRenderedDOMComponentsWithTag(result, 'button');
-      expect(buttons[0].textContent).toBe('account_name2');
+      expect(buttons[0].textContent).toBe(accountName);
     });
 
     it('return the button', () => {
