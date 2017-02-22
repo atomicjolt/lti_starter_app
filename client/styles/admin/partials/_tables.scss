@@ -30,7 +30,6 @@
       &:nth-of-type(1){
 
         div{
-          @include regular;
           font-size: 1.2rem;
           color: $gray;
         }
@@ -38,7 +37,6 @@
       &:nth-of-type(2){
 
         span{
-          @include regular;
           font-size: 1.2rem;
           color: $gray;
         }
@@ -46,7 +44,6 @@
       &:nth-of-type(3){
 
         span{
-          @include regular;
           font-size: 1.2rem;
           color: $gray;
         }
@@ -87,7 +84,6 @@
       &:nth-of-type(2){
 
         span{
-          @include regular;
           font-size: 1.2rem;
           color: $gray;
         }
