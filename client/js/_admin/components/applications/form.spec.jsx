@@ -7,14 +7,16 @@ describe('applications form', () => {
 
   let result;
   let props;
-  let action;
+  let didSave;
+  let didClose;
 
   beforeEach(() => {
-    action = false;
+    didClose = false;
+    didSave = false;
     props = {
       onChange    : () => {},
-      closeModal  : () => { action = true; },
-      save        : () => { action = true; },
+      closeModal  : () => { didClose = true; },
+      save        : () => { didSave = true; },
       description : 'SPEC_DESCRIPTION'
     };
 
@@ -25,16 +27,16 @@ describe('applications form', () => {
     );
   });
 
-  it('renders a form', () => {
+  it('did save', () => {
     const button = TestUtils.findRenderedDOMComponentWithClass(result, 'c-btn c-btn--yellow');
     TestUtils.Simulate.click(button);
-    expect(action).toBeTruthy();
+    expect(didSave).toBeTruthy();
   });
 
   it('close modal', () => {
     const button = TestUtils.findRenderedDOMComponentWithClass(result, 'c-btn c-btn--gray--large u-m-right');
     TestUtils.Simulate.click(button);
-    expect(action).toBeTruthy();
+    expect(didClose).toBeTruthy();
   });
 
   it('renders description', () => {

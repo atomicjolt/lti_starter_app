@@ -28,10 +28,11 @@ describe('applications application row', () => {
 
   });
 
-  it('button is clicked', () => {
+  fit('button is clicked', () => {
     const button = TestUtils.findRenderedDOMComponentWithClass(result, 'i-settings');
+    debugger;
     TestUtils.Simulate.click(button);
-    expect(button);
+    expect(button).toBeDefined();
   });
 
   it('renders application instances count', () => {
@@ -39,9 +40,9 @@ describe('applications application row', () => {
     expect(span.textContent).toContain('123');
   });
 
-  it('renders application link', () => {
-    const link = TestUtils.findRenderedDOMComponentWithClass(result, 'test-link');
-    expect(link.innerText).toContain('SPECNAME');
+  fit('renders application link', () => {
+    const linkTag = TestUtils.findRenderedDOMComponentWithTag(result, 'a');
+    expect(linkTag.innerText).toContain('SPECNAME');
   });
 
 });
