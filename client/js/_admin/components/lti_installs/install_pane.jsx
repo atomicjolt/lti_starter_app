@@ -5,7 +5,6 @@ import CourseInstalls from './course_installs';
 import Pagination     from './pagination';
 
 const PAGE_SIZE = 10;
-const ACCOUNT_TYPES = ['basic', 'account_navigation'];
 const COURSE_TYPES = ['basic', 'course_navigation'];
 
 export default class InstallPane extends React.Component {
@@ -77,23 +76,21 @@ export default class InstallPane extends React.Component {
   render() {
     const searchedCourses = this.searchedCourses();
     const pageCount = _.ceil(searchedCourses.length / PAGE_SIZE);
-    let accountInstall = 'Account install not available for this tool';
-    let courseInstalls = 'Course install not available for this tool';
+    let accountInstall = null;
+    let courseInstalls = <p className="c-alert c-alert--info">Course install not available for this tool</p>;
     const {
       applicationInstance,
     } = this.props;
 
     if (applicationInstance) {
-      if (_.includes(ACCOUNT_TYPES, applicationInstance.lti_type)) {
-        accountInstall = (
-          <AccountInstall
-            account={this.props.account}
-            accountInstalls={this.props.account ? this.props.account.installCount : null}
-            applicationInstance={applicationInstance}
-            canvasRequest={this.props.canvasRequest}
-          />
-        );
-      }
+      accountInstall = (
+        <AccountInstall
+          account={this.props.account}
+          accountInstalls={this.props.account ? this.props.account.installCount : null}
+          applicationInstance={applicationInstance}
+          canvasRequest={this.props.canvasRequest}
+        />
+      );
       if (_.includes(COURSE_TYPES, applicationInstance.lti_type)) {
         courseInstalls = (
           <span>

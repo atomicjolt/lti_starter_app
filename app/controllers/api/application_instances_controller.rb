@@ -29,7 +29,7 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
 
   def update
     @application_instance.update(application_instance_params)
-    respond_with(@application_instance)
+    render json: @application_instance.as_json(include: :site)
   end
 
   def destroy

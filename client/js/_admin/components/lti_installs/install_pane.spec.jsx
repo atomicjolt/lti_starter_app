@@ -75,9 +75,9 @@ describe('install pane', () => {
       expect(input.placeholder).toContain('Search...');
     });
 
-    it('renders the install pane without account installs for course_navigation', () => {
+    it('renders the install pane with account installs for course_navigation', () => {
       const button = TestUtils.scryRenderedDOMComponentsWithTag(result, 'button');
-      expect(button.length).toBe(0);
+      expect(button.length).toBe(1);
     });
   });
 });

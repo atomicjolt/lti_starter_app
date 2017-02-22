@@ -36,7 +36,7 @@ export default function AccountInstall(props) {
     tool.consumer_key === props.applicationInstance.lti_key
   ));
   const accountName = props.account ? props.account.name : 'Root';
-  const buttonText = installedTool ? 'Uninstall' : 'Install';
+  const buttonText = `${installedTool ? 'Uninstall from' : 'Install into'} ${props.account ? props.account.name : 'Account'}`;
 
   return (
     <div className="c-info">
@@ -47,7 +47,7 @@ export default function AccountInstall(props) {
       <button
         className="c-btn c-btn--yellow"
         onClick={() => install(props.applicationInstance, installedTool)}
-      >{buttonText} at Account Level</button>
+      >{buttonText}</button>
     </div>
   );
 }

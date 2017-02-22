@@ -58,7 +58,7 @@ export default class Modal extends React.Component {
     });
   }
 
-  createInstance() {
+  save() {
     this.props.save(
       this.props.application.id,
       this.state.newApplicationInstance
@@ -92,7 +92,7 @@ export default class Modal extends React.Component {
         <ApplicationInstanceForm
           {...this.state.newApplicationInstance}
           onChange={(e) => { this.newApplicationInstanceChange(e); }}
-          createInstance={() => this.createInstance()}
+          save={() => this.save()}
           sites={this.props.sites}
           site_id={`${siteId}`}
           closeModal={() => this.closeModal()}

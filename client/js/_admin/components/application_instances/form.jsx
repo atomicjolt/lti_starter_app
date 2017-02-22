@@ -18,13 +18,13 @@ export const TYPE_RADIOS = {
 export default class Form extends React.Component {
 
   static propTypes = {
-    onChange:       React.PropTypes.func.isRequired,
-    closeModal:     React.PropTypes.func.isRequired,
-    createInstance: React.PropTypes.func.isRequired,
-    newSite:        React.PropTypes.func.isRequired,
-    site_id:        React.PropTypes.string,
-    sites:          React.PropTypes.shape({}),
-    isUpdate:       React.PropTypes.bool,
+    onChange:   React.PropTypes.func.isRequired,
+    closeModal: React.PropTypes.func.isRequired,
+    save:       React.PropTypes.func.isRequired,
+    newSite:    React.PropTypes.func.isRequired,
+    site_id:    React.PropTypes.string,
+    sites:      React.PropTypes.shape({}),
+    isUpdate:   React.PropTypes.bool,
   };
 
   selectSite(option) {
@@ -115,7 +115,7 @@ export default class Form extends React.Component {
         </div>
         <button
           type="button"
-          onClick={() => this.props.createInstance()}
+          onClick={() => this.props.save()}
           className="c-btn c-btn--yellow"
         >
           Save
