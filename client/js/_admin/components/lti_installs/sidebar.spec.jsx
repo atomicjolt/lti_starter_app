@@ -11,7 +11,7 @@ describe('lti installs sidebar', () => {
   let saveApplicationInstance = false;
   let application_name = 'application_name';
 
-  describe('should render sidebar', function () {
+  describe('should render sidebar', () => {
     beforeEach(() => {
       const props = {
         accounts: {
@@ -45,29 +45,29 @@ describe('lti installs sidebar', () => {
       expect(result).not.toBeNull();
     });
 
-    it('return the title name', function () {
+    it('return the title name', () => {
       const title = TestUtils.findRenderedDOMComponentWithClass(result, 'c-tool__title');
       expect(title.textContent).toBe(application_name);
     });
 
-    it('return the title name', function () {
+    it('return the title name', () => {
       const title = TestUtils.findRenderedDOMComponentWithClass(result, 'c-tool__instance');
       expect(title.textContent).toBe('Loading...');
     });
 
-    it('return the button', function () {
+    it('return the button', () => {
       const button = TestUtils.findRenderedDOMComponentWithTag(result, 'button');
       expect(button.textContent).toBe('Loading...');
     });
 
-    it('return the button', function () {
+    it('return the button', () => {
       const dropdown = TestUtils.findRenderedDOMComponentWithClass(result, 'c-filter__dropdown');
       expect(dropdown).not.toBeNull();
       expect(dropdown.children.length).toBe(0);
     });
   });
 
-  describe('should render sidebar not loading', function () {
+  describe('should render sidebar not loading', () => {
     beforeEach(() => {
       const props = {
         accounts: {
@@ -107,17 +107,17 @@ describe('lti installs sidebar', () => {
       );
     });
 
-    it('return the title name', function () {
+    it('return the title name', () => {
       const title = TestUtils.findRenderedDOMComponentWithClass(result, 'c-tool__instance');
       expect(title.textContent).toBe('account_name2');
     });
 
-    it('return the button', function () {
+    it('return the button', () => {
       const buttons = TestUtils.scryRenderedDOMComponentsWithTag(result, 'button');
       expect(buttons[0].textContent).toBe('account_name2');
     });
 
-    it('return the button', function () {
+    it('return the button', () => {
       const dropdown = TestUtils.findRenderedDOMComponentWithClass(result, 'c-filter__dropdown');
       expect(dropdown).not.toBeNull();
       expect(dropdown.children.length).toBe(2);
