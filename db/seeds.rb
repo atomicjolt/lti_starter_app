@@ -35,7 +35,7 @@ applications = [
       lti_key: "lti-admin",
       site_url: Rails.application.secrets.canvas_url,
       domain: "admin.#{Rails.application.secrets.domain_name}",
-      lti_type: "account_navigation",
+      lti_type: ApplicationInstance.lti_types[:account_navigation],
     }],
   },
   {
