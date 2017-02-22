@@ -5,9 +5,13 @@
 }
 
 .c-alert--success{
-  color: #00FF00;
+  color: $green;
+}
+
+.c-alert--info{
+  color: $yellow;
 }
 
 .c-alert--danger{
-  color: #FF0000;
+  color: $red;
 }

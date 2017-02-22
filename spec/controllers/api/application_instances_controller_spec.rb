@@ -70,7 +70,7 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
               lti_secret: "12345",
             },
             format: :json
-        expect(response).to have_http_status(204)
+        expect(response).to have_http_status(200)
       end
     end
 

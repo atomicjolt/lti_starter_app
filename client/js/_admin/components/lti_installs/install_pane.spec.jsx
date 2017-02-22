@@ -6,6 +6,7 @@ import InstallPane from './install_pane';
 describe('install pane', () => {
   let result;
 
+  const name = 'the account name';
   const props = {
     canvasRequest: () => {},
     loadingCourses: {},
@@ -13,6 +14,7 @@ describe('install pane', () => {
     courses: [],
     account: {
       installCount: 0,
+      name,
     },
     loadExternalTools: () => {},
   };
@@ -29,7 +31,7 @@ describe('install pane', () => {
 
     it('renders the install pane with account installs for basic', () => {
       const button = TestUtils.findRenderedDOMComponentWithTag(result, 'button');
-      expect(button.textContent).toContain('at Account Level');
+      expect(button.textContent).toContain(name);
     });
 
     it('renders the install pane with course installs for basic', () => {
@@ -50,7 +52,7 @@ describe('install pane', () => {
 
     it('renders the install pane with account installs for basic', () => {
       const button = TestUtils.findRenderedDOMComponentWithTag(result, 'button');
-      expect(button.textContent).toContain('at Account Level');
+      expect(button.textContent).toContain(name);
     });
 
     it('renders the install pane without course installs for account_navigation', () => {
@@ -75,9 +77,9 @@ describe('install pane', () => {
       expect(input.placeholder).toContain('Search...');
     });
 
-    it('renders the install pane without account installs for course_navigation', () => {
+    it('renders the install pane with account installs for course_navigation', () => {
       const button = TestUtils.scryRenderedDOMComponentsWithTag(result, 'button');
-      expect(button.length).toBe(0);
+      expect(button.length).toBe(1);
     });
   });
 });
