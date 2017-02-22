@@ -10,7 +10,7 @@ describe('lti installs course install row', () => {
   const courseId = 123;
   const courseName = 'courseName';
 
-  var props = {
+  const props = {
     applicationInstance: {
       name: 'application_name',
       lti_key: 'lti_key',
@@ -44,8 +44,8 @@ describe('lti installs course install row', () => {
   });
 
   it('renders row', () => {
-    const courseName = TestUtils.findRenderedDOMComponentWithClass(result, 'c-table--inactive');
-    expect(courseName.textContent).toBe(courseName);
+    const courseTitle = TestUtils.findRenderedDOMComponentWithClass(result, 'c-table--inactive');
+    expect(courseTitle.textContent).toBe(courseName);
   });
 
   it('renders buttons', () => {

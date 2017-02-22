@@ -1,8 +1,8 @@
 import React            from 'react';
 import TestUtils        from 'react-addons-test-utils';
+import _                from 'lodash';
 import Stub             from '../../../../specs_support/stub';
 import SettingsInputs   from './settings_inputs';
-import _                from 'lodash';
 
 describe('common search inputs', () => {
   let result;

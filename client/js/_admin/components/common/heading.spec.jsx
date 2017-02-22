@@ -1,6 +1,7 @@
 import React        from 'react';
 import TestUtils    from 'react-addons-test-utils';
 import { Provider } from 'react-redux';
+import _            from 'lodash';
 import Helper       from '../../../../specs_support/helper';
 import Heading      from './heading';
 
@@ -9,7 +10,7 @@ describe('common heading', () => {
   let back = false;
 
   const props = {
-    back:         () => { back = true },
+    back:         () => { back = true; },
   };
 
   beforeEach(() => {
@@ -41,8 +42,8 @@ describe('common heading', () => {
   describe('dropdown button', () => {
     it('has a presence', () => {
       const button = TestUtils.findRenderedDOMComponentWithClass(result, 'c-username');
-      expect(button.children[0].textContent).toBe("");
-      expect(button.children[1].className).toBe("i-dropdown");
+      expect(button.children[0].textContent).toBe('');
+      expect(button.children[1].className).toBe('i-dropdown');
     });
   });
 
