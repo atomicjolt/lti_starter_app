@@ -6,9 +6,7 @@ import Heading      from './heading';
 
 describe('common heading', () => {
   let result;
-  let signedOut = false;
   let back = false;
-  let userName = 'username';
 
   const props = {
     back:         () => { back = true },

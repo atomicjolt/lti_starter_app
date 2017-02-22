@@ -7,7 +7,7 @@ import CourseInstalls     from './course_installs';
 describe('lti installs course install', () => {
 
   let result;
-  let courseId = 123;
+  const courseId = 123;
 
   const props = {
     applicationInstance: {

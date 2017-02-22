@@ -7,7 +7,8 @@ import CourseInstallRow   from './course_install_row';
 describe('lti installs course install row', () => {
 
   let result;
-  let courseId = 123;
+  const courseId = 123;
+  const courseName = 'courseName';
 
   var props = {
     applicationInstance: {
@@ -19,8 +20,8 @@ describe('lti installs course install row', () => {
     installedTool: {
       id: 12
     },
-    courseName: 'courseName',
     canvasRequest: () => {},
+    courseName,
     courseId,
   };
 
@@ -44,12 +45,12 @@ describe('lti installs course install row', () => {
 
   it('renders row', () => {
     const courseName = TestUtils.findRenderedDOMComponentWithClass(result, 'c-table--inactive');
-    expect(courseName.textContent).toBe('courseName')
+    expect(courseName.textContent).toBe(courseName);
   });
 
   it('renders buttons', () => {
     const installButton = TestUtils.findRenderedDOMComponentWithTag(result, 'button');
-    expect(installButton.textContent).toBe('Uninstall')
+    expect(installButton.textContent).toBe('Uninstall');
   });
 
 });

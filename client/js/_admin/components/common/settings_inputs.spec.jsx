@@ -2,11 +2,12 @@ import React            from 'react';
 import TestUtils        from 'react-addons-test-utils';
 import Stub             from '../../../../specs_support/stub';
 import SettingsInputs   from './settings_inputs';
+import _                from 'lodash';
 
 describe('common search inputs', () => {
   let result;
-  let ltiKey = 'lti_key';
-  let ltiName = 'ltiName';
+  const ltiKey = 'lti_key';
+  const ltiName = 'ltiName';
 
   const props = {
     settings: {

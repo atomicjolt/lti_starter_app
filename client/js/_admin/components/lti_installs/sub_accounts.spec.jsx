@@ -73,7 +73,7 @@ describe('lti installs sub accounts', () => {
             ]
           }
         ],
-        setAccountActive: () => { activeAccounts = true; },
+        setAccountActive: () => {},
         activeAccounts: [
           {
             id: 1

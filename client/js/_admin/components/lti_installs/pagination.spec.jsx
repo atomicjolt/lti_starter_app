@@ -10,7 +10,7 @@ describe('lti installs pagination', () => {
   describe('should render pagination', () => {
     beforeEach(() => {
       const props = {
-        courses: [ {name: 'name', id: 1}, {name: 'name', id: 2} ],
+        courses: [{ name: 'name', id: 1}, {name: 'name', id: 2 }],
         pageSize: 1,
         setPage: () => {},
         pageCount: 21,
@@ -37,7 +37,7 @@ describe('lti installs pagination', () => {
       const props = {
         courses: [],
         pageSize: 3,
-        setPage: () => { settingPage = true; },
+        setPage: () => {},
         pageCount: 21,
         currentPage: 2
       };

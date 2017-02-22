@@ -6,8 +6,8 @@ import Sidebar      from './sidebar';
 describe('lti installs sidebar', () => {
 
   let result;
-  let applicationName = 'applicationName';
-  let accountName = 'accountName2';
+  const applicationName = 'applicationName';
+  const accountName = 'accountName2';
 
   describe('should render sidebar', () => {
     beforeEach(() => {

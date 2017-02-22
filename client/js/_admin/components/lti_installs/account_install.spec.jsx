@@ -7,8 +7,8 @@ import AccountInstall   from './account_install';
 describe('lti installs account install', () => {
 
   let result;
-  let accountInstalls = 123;
-  let account = {
+  const accountInstalls = 123;
+  const account = {
     id: 12,
     name: 'account_name',
     external_tools: {
@@ -16,7 +16,7 @@ describe('lti installs account install', () => {
     }
   };
 
-  var props = {
+  const props = {
     applicationInstance: {
       lti_key: 'lti_key'
     },
@@ -71,7 +71,7 @@ describe('lti installs account install', () => {
 
   it('renders buttons', () => {
     const accountButton = TestUtils.findRenderedDOMComponentWithTag(result, 'button');
-    expect(accountButton.textContent).toBe('Install into Root')
+    expect(accountButton.textContent).toBe('Install into Root');
   });
 
 });
