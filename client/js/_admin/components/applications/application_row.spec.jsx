@@ -28,9 +28,8 @@ describe('applications application row', () => {
 
   });
 
-  fit('button is clicked', () => {
+  it('button is clicked', () => {
     const button = TestUtils.findRenderedDOMComponentWithClass(result, 'i-settings');
-    debugger;
     TestUtils.Simulate.click(button);
     expect(button).toBeDefined();
   });
@@ -40,7 +39,7 @@ describe('applications application row', () => {
     expect(span.textContent).toContain('123');
   });
 
-  fit('renders application link', () => {
+  it('renders application link', () => {
     const linkTag = TestUtils.findRenderedDOMComponentWithTag(result, 'a');
     expect(linkTag.innerText).toContain('SPECNAME');
   });
