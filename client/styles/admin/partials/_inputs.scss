@@ -16,7 +16,6 @@
     height: 3.5rem;
     border: 0.1rem solid $gray;
     padding: 0 1.5rem;
-    @include regular;
     font-size: 1.4rem;
     width: 100%;
   }
@@ -27,7 +26,6 @@
     border: 0.1rem solid $light-gray;
     outline: none;
     padding: 0.7rem 1rem;
-    @include regular;
     font-size: 1.4rem;
     color: $text-color;
   }
@@ -41,14 +39,12 @@
     border: none;
     background: $lightest-gray;
     padding: 0 1.5rem;
-    @include regular;
     font-size: 1.4rem;
     width: 100%;
   }
 }
 
 .c-checkbox{
-  @include regular;
   font-size: 1.4rem;
   color: $text-color;
   margin-bottom: 2rem;
@@ -94,7 +90,6 @@
     background: none;
     outline: none;
     font-size: 1.4rem;
-    @include regular;
     padding: 0 1.5rem;
     color: $text-color;
     position: relative;
@@ -122,7 +117,6 @@
 
     .Select-option{
       font-size: 1.4rem;
-      @include regular;
       color: $text-color;
       padding: 0 1.5rem;
       line-height: 3.5rem;
