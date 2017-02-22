@@ -14,7 +14,7 @@ describe('application instance form', () => {
     props = {
       onChange:       () => {},
       closeModal:     () => { modalClosed = true; },
-      createInstance: () => {},
+      save:           () => {},
       newSite:        () => {},
       site_id:        'foo',
       sites:          {},
