@@ -11,7 +11,7 @@ export default class ApplicationRow extends React.Component {
       application_instances_count : React.PropTypes.number,
     }).isRequired,
     saveApplication: React.PropTypes.func.isRequired,
-  }
+  };
 
   static getStyles() {
     return {
