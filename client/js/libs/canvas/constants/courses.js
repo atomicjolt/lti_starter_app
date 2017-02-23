@@ -261,6 +261,8 @@ export const getCourseSettings = { type: 'GET_COURSE_SETTINGS', method: 'get', k
 //   lock_all_announcements
 //   restrict_student_past_view
 //   restrict_student_future_view
+//   show_announcements_on_home_page
+//   home_page_announcement_limit
 // }
 // return canvasRequest(update_course_settings, {course_id}, query);
 export const updateCourseSettings = { type: 'UPDATE_COURSE_SETTINGS', method: 'put', key: 'update_course_settingsupdate_course_settings_course_id', required: ['course_id'] };
@@ -379,6 +381,40 @@ export const updateCourses = { type: 'UPDATE_COURSES', method: 'put', key: 'upda
 // Example:
 // return canvasRequest(reset_course, {course_id});
 export const resetCourse = { type: 'RESET_COURSE', method: 'post', key: 'reset_coursereset_course_course_id', required: ['course_id'] };
+
+// Get effective due dates
+// For each assignment in the course, returns each assigned student's ID
+// and their corresponding due date along with some Multiple Grading Periods
+// data. Returns a collection with keys representing assignment IDs and values
+// as a collection containing keys representing student IDs and values representing
+// the student's effective due_at, the grading_period_id of which the due_at falls
+// in, and whether or not the grading period is closed (in_closed_grading_period)
+// 
+// The list of assignment IDs for which effective student due dates are
+// requested. If not provided, all assignments in the course will be used.
+//
+// API Docs: https://canvas.instructure.com/doc/api/courses.html
+// API Url: courses/{course_id}/effective_due_dates
+//
+// Example:
+// const query = {
+//   assignment_ids
+// }
+// return canvasRequest(get_effective_due_dates, {course_id}, query);
+export const getEffectiveDueDates = { type: 'GET_EFFECTIVE_DUE_DATES', method: 'get', key: 'get_effective_due_datesget_effective_due_dates_course_id', required: ['course_id'] };
+
+// Permissions
+// Returns permission information for provided course & current_user
+//
+// API Docs: https://canvas.instructure.com/doc/api/courses.html
+// API Url: courses/{course_id}/permissions
+//
+// Example:
+// const query = {
+//   permissions
+// }
+// return canvasRequest(permissions, {course_id}, query);
+export const permissions = { type: 'PERMISSIONS', method: 'get', key: 'permissionspermissions_course_id', required: ['course_id'] };
 
 // Get course copy status
 // DEPRECATED: Please use the {api:ContentMigrationsController#create Content Migrations API}

@@ -12,6 +12,7 @@
 // const query = {
 //   search_term
 //   selectable
+//   include_parents
 // }
 // return canvasRequest(list_external_tools_courses, {course_id}, query);
 export const listExternalToolsCourses = { type: 'LIST_EXTERNAL_TOOLS_COURSES', method: 'get', key: 'list_external_tools_courseslist_external_tools_courses_course_id', required: ['course_id'] };
@@ -27,6 +28,7 @@ export const listExternalToolsCourses = { type: 'LIST_EXTERNAL_TOOLS_COURSES', m
 // const query = {
 //   search_term
 //   selectable
+//   include_parents
 // }
 // return canvasRequest(list_external_tools_accounts, {account_id}, query);
 export const listExternalToolsAccounts = { type: 'LIST_EXTERNAL_TOOLS_ACCOUNTS', method: 'get', key: 'list_external_tools_accountslist_external_tools_accounts_account_id', required: ['account_id'] };
@@ -42,6 +44,7 @@ export const listExternalToolsAccounts = { type: 'LIST_EXTERNAL_TOOLS_ACCOUNTS',
 // const query = {
 //   search_term
 //   selectable
+//   include_parents
 // }
 // return canvasRequest(list_external_tools_groups, {group_id}, query);
 export const listExternalToolsGroups = { type: 'LIST_EXTERNAL_TOOLS_GROUPS', method: 'get', key: 'list_external_tools_groupslist_external_tools_groups_group_id', required: ['group_id'] };
@@ -169,6 +172,7 @@ export const getSingleExternalToolAccounts = { type: 'GET_SINGLE_EXTERNAL_TOOL_A
 //   config_xml
 //   config_url
 //   not_selectable
+//   oauth_compliant
 // }
 // return canvasRequest(create_external_tool_courses, {course_id}, query);
 export const createExternalToolCourses = { type: 'CREATE_EXTERNAL_TOOL_COURSES', method: 'post', key: 'create_external_tool_coursescreate_external_tool_courses_course_id', required: ['course_id'] };
@@ -238,6 +242,7 @@ export const createExternalToolCourses = { type: 'CREATE_EXTERNAL_TOOL_COURSES',
 //   config_xml
 //   config_url
 //   not_selectable
+//   oauth_compliant
 // }
 // return canvasRequest(create_external_tool_accounts, {account_id}, query);
 export const createExternalToolAccounts = { type: 'CREATE_EXTERNAL_TOOL_ACCOUNTS', method: 'post', key: 'create_external_tool_accountscreate_external_tool_accounts_account_id', required: ['account_id'] };
