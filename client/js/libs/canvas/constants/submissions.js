@@ -243,6 +243,22 @@ export const gradeOrCommentOnSubmissionSections = { type: 'GRADE_OR_COMMENT_ON_S
 // return canvasRequest(list_gradeable_students, {course_id, assignment_id});
 export const listGradeableStudents = { type: 'LIST_GRADEABLE_STUDENTS', method: 'get', key: 'list_gradeable_studentslist_gradeable_students_{course_id}_{assignment_id}', required: ['course_id', 'assignment_id'] };
 
+// List multiple assignments gradeable students
+// List students eligible to submit a list of assignments. The caller must have
+// permission to view grades for the requested course.
+// 
+// Section-limited instructors will only see students in their own sections.
+//
+// API Docs: https://canvas.instructure.com/doc/api/submissions.html
+// API Url: courses/{course_id}/assignments/gradeable_students
+//
+// Example:
+// const query = {
+//   assignment_ids
+// }
+// return canvasRequest(list_multiple_assignments_gradeable_students, {course_id}, query);
+export const listMultipleAssignmentsGradeableStudents = { type: 'LIST_MULTIPLE_ASSIGNMENTS_GRADEABLE_STUDENTS', method: 'get', key: 'list_multiple_assignments_gradeable_studentslist_multiple_assignments_gradeable_students_course_id', required: ['course_id'] };
+
 // Grade or comment on multiple submissions
 // Update the grading and comments on multiple student's assignment
 // submissions in an asynchronous job.

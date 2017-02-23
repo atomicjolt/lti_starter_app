@@ -14,6 +14,7 @@
 //   context_codes (required)
 //   start_date
 //   end_date
+//   active_only
 // }
 // return canvasRequest(list_announcements, {}, query);
 export const listAnnouncements = { type: 'LIST_ANNOUNCEMENTS', method: 'get', key: 'list_announcements', required: [] };
