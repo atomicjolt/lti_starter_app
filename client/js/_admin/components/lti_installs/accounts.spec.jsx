@@ -1,9 +1,9 @@
 import React        from 'react';
 import TestUtils    from 'react-addons-test-utils';
 import Stub         from '../../../../specs_support/stub';
-import SubAccounts  from './sub_accounts';
+import Accounts     from './accounts';
 
-describe('lti installs sub accounts', () => {
+describe('lti installs accounts', () => {
 
   let result;
 
@@ -22,7 +22,7 @@ describe('lti installs sub accounts', () => {
       };
       result = TestUtils.renderIntoDocument(
         <Stub>
-          <SubAccounts {...props} />
+          <Accounts {...props} />
         </Stub>
       );
     });
@@ -52,7 +52,7 @@ describe('lti installs sub accounts', () => {
     });
   });
 
-  describe('should render nested subaccounts and active', () => {
+  describe('should render nested accounts and active', () => {
     beforeEach(() => {
       const props = {
         accounts: [
@@ -82,7 +82,7 @@ describe('lti installs sub accounts', () => {
       };
       result = TestUtils.renderIntoDocument(
         <Stub>
-          <SubAccounts {...props} />
+          <Accounts {...props} />
         </Stub>
       );
     });

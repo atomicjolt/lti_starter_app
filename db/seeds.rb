@@ -20,6 +20,7 @@ admin_api_permissions = %w(
   CREATE_EXTERNAL_TOOL_ACCOUNTS
   DELETE_EXTERNAL_TOOL_ACCOUNTS
   GET_SUB_ACCOUNTS_OF_ACCOUNT
+  HELPER_ALL_ACCOUNTS
 ).join(",")
 
 # Add an LTI Application

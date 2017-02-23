@@ -127,7 +127,7 @@ GEM
     kgio (2.11.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    lms-api (1.2.4)
+    lms-api (1.2.7)
       activesupport (>= 3.0)
       httparty
     loofah (2.0.3)
@@ -351,7 +351,7 @@ DEPENDENCIES
   ims-lti (~> 1.1.13)
   jwt (~> 1.5.0)
   launchy
-  lms-api (~> 1.2.4)
+  lms-api (~> 1.2.7)
   mail_view
   mailcatcher
   non-stupid-digest-assets
