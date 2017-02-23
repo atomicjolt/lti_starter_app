@@ -7,4 +7,4 @@
 //
 // Example:
 // return canvasRequest(helperListAccounts);
-export const helperListAccounts = { type: 'LIST_ACCOUNTS', method: 'get', key: 'list_accounts', required: [] };
+export const helperListAccounts = { type: 'HELPER_ALL_ACCOUNTS', method: 'get', key: 'list_accounts', required: [] };
