@@ -92,15 +92,15 @@
           background: $dark-gray;
           border-right-color: $dark-gray;
         }
+
+        i.is-open{
+          @include transform(rotate(0));
+        }
       }
 
       &.is-active > button{
         background: $gray2;
         border-right-color: $yellow;
-
-        i{
-          @include transform(rotate(0));
-        }
       }
     }
 

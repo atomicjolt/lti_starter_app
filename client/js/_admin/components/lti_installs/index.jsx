@@ -62,7 +62,6 @@ export class Index extends React.Component {
   constructor() {
     super();
     this.state = {
-      activeAccounts: [],
       currentAccount: null,
     };
   }
@@ -109,11 +108,8 @@ export class Index extends React.Component {
       );
     }
 
-    const activeAccounts = _(this.state.activeAccounts).concat(account).uniq().value();
-
     this.setState({
       currentAccount: account,
-      activeAccounts,
     });
   }
 
@@ -142,12 +138,12 @@ export class Index extends React.Component {
         <Heading back={() => appHistory.goBack()} />
         <div className="o-contain">
           <Sidebar
+            currentAccount={this.state.currentAccount}
             accounts={this.props.accounts}
             application={this.props.applications[applicationId]}
             applicationInstance={this.props.applicationInstance}
             canvasRequest={this.props.canvasRequest}
-            setAccountActive={(account, depth) => this.setAccountActive(account, depth)}
-            activeAccounts={this.state.activeAccounts}
+            setAccountActive={account => this.setAccountActive(account)}
             saveApplicationInstance={this.props.saveApplicationInstance}
             sites={this.props.sites}
           />

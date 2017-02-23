@@ -14,9 +14,9 @@ export default class Sidebar extends React.Component {
       })
     }),
     accounts: React.PropTypes.shape({}),
+    currentAccount: React.PropTypes.shape({}),
     setAccountActive: React.PropTypes.func.isRequired,
     saveApplicationInstance: React.PropTypes.func.isRequired,
-    activeAccounts: React.PropTypes.arrayOf(React.PropTypes.shape({})),
     sites: React.PropTypes.shape({}).isRequired,
   }
 
@@ -64,9 +64,9 @@ export default class Sidebar extends React.Component {
         <div className="c-filters">
           <h4 className="c-accounts">Accounts</h4>
           <Accounts
+            currentAccount={this.props.currentAccount}
             accounts={this.props.accounts}
             setAccountActive={this.props.setAccountActive}
-            activeAccounts={this.props.activeAccounts}
           />
         </div>
       </div>

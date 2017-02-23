@@ -1,6 +1,5 @@
 import React        from 'react';
 import TestUtils    from 'react-addons-test-utils';
-import Stub         from '../../../../specs_support/stub';
 import Accounts     from './accounts';
 
 describe('lti installs accounts', () => {
@@ -10,20 +9,18 @@ describe('lti installs accounts', () => {
   describe('should render basic inactive subaccount', () => {
     beforeEach(() => {
       const props = {
-        accounts: [
-          {
+        accounts: {
+          1: {
             id: 1,
             name: 'account_name',
-            sub_accounts: []
+            parent_account_id: null
           }
-        ],
+        },
         setAccountActive: () => {},
-        activeAccounts: []
+        currentAccount: null,
       };
       result = TestUtils.renderIntoDocument(
-        <Stub>
-          <Accounts {...props} />
-        </Stub>
+        <Accounts {...props} />
       );
     });
 
@@ -36,7 +33,7 @@ describe('lti installs accounts', () => {
     });
 
     it('return the list', () => {
-      const dropdowns = TestUtils.scryRenderedDOMComponentsWithClass(result, 'c-filter__dropdown');
+      const dropdowns = TestUtils.scryRenderedDOMComponentsWithClass(result, 'c-filter__item');
       expect(dropdowns.length).toBe(1);
       expect(dropdowns[0].children.length).toBe(1);
     });
@@ -52,60 +49,5 @@ describe('lti installs accounts', () => {
     });
   });
 
-  describe('should render nested accounts and active', () => {
-    beforeEach(() => {
-      const props = {
-        accounts: [
-          {
-            id: 1,
-            name: 'account_name',
-            sub_accounts: [
-              {
-                id: 1,
-                name: 'sub_account1',
-                sub_account: []
-              },
-              {
-                id: 2,
-                name: 'sub_account2',
-                sub_account: []
-              }
-            ]
-          }
-        ],
-        setAccountActive: () => {},
-        activeAccounts: [
-          {
-            id: 1
-          }
-        ]
-      };
-      result = TestUtils.renderIntoDocument(
-        <Stub>
-          <Accounts {...props} />
-        </Stub>
-      );
-    });
 
-    it('return correct amount of buttons', () => {
-      const buttons = TestUtils.scryRenderedDOMComponentsWithTag(result, 'button');
-      expect(buttons.length).toBe(3);
-    });
-
-    it('return render the dropdown', () => {
-      const buttons = TestUtils.scryRenderedDOMComponentsWithTag(result, 'button');
-      expect(buttons[0].textContent).toBe('account_name');
-    });
-
-    it('should not return the dropdown', () => {
-      const dropdown = TestUtils.scryRenderedDOMComponentsWithClass(result, 'i-dropdown');
-      expect(dropdown.length).toBe(1);
-    });
-
-    it('return the correct amount of lists', () => {
-      const lists = TestUtils.scryRenderedDOMComponentsWithClass(result, 'c-filter__dropdown');
-      expect(lists.length).toBe(3);
-    });
-
-  });
 });
