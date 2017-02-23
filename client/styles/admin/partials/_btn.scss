@@ -27,6 +27,18 @@
   }
 }
 
+.c-btn--red{
+  background: $red;
+  color: $text-color;
+
+  &:hover{
+    @include transform(scale(1.02));
+  }
+  &:active{
+    @include transform(scale(0.98));
+  }
+}
+
 .c-btn--gray{
   background: $lightest-gray;
   color: $gray;

@@ -1,13 +1,16 @@
 import React from 'react';
-import _     from 'lodash';
+import _ from 'lodash';
 
-const FIELDS = {
-  oauth_key    : 'Canvas Developer ID',
-  oauth_secret : 'Canvas Developer Key',
-  url          : 'Canvas Domain',
+export const FIELDS = {
+  oauth_key: 'Canvas Developer ID',
+  oauth_secret: 'Canvas Developer Key',
+  url: 'Canvas Domain',
 };
 
-export default function NewSiteForm(props) {
+const SiteForm = (props) => {
+  const isUpdate = props.isUpdate;
+  const buttonVerb = isUpdate ? 'Update' : 'Create';
+
   return (
     <form>
       <div className="o-grid o-grid__modal-top">
@@ -34,7 +37,7 @@ export default function NewSiteForm(props) {
         className="c-btn c-btn--yellow"
         onClick={() => props.setupSite()}
       >
-        Create Domain
+        {buttonVerb} Domain
       </button>
       <button
         type="button"
@@ -45,9 +48,12 @@ export default function NewSiteForm(props) {
       </button>
     </form>
   );
-}
-
-NewSiteForm.propTypes = {
-  // setupSite  : React.PropTypes.func.isRequired,
-  closeModal : React.PropTypes.func.isRequired,
 };
+
+SiteForm.propTypes = {
+  setupSite: React.PropTypes.func.isRequired,
+  closeModal: React.PropTypes.func.isRequired,
+  isUpdate: React.PropTypes.bool.isRequired,
+};
+
+export default SiteForm;

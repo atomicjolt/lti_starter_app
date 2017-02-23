@@ -1,6 +1,6 @@
 import React                   from 'react';
 import ReactModal              from 'react-modal';
-import NewSiteModal            from '../sites/modal';
+import SiteModal               from '../sites/modal';
 import ApplicationInstanceForm from './form';
 
 export default class Modal extends React.Component {
@@ -23,29 +23,28 @@ export default class Modal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      newSiteModalOpen: false,
-      selectedSite: '',
+      siteModalOpen: false,
       newApplicationInstance: props.applicationInstance || {}
     };
   }
 
   newSite() {
-    this.setState({ newSiteModalOpen: true });
+    this.setState({ siteModalOpen: true });
   }
 
-  closeNewSiteModal() {
-    this.setState({ newSiteModalOpen: false, selectedSite: '' });
+  closeSiteModal() {
+    this.setState({ siteModalOpen: false });
   }
 
   showInstanceModal() {
-    if (this.props.isOpen && !this.state.newSiteModalOpen) {
+    if (this.props.isOpen && !this.state.siteModalOpen) {
       return 'is-open';
     }
     return '';
   }
 
   closeModal() {
-    this.closeNewSiteModal();
+    this.closeSiteModal();
     this.props.closeModal();
   }
 
@@ -99,9 +98,9 @@ export default class Modal extends React.Component {
           newSite={() => this.newSite()}
           isUpdate={isUpdate}
         />
-        <NewSiteModal
-          isOpen={this.state.newSiteModalOpen}
-          closeModal={() => this.closeNewSiteModal()}
+        <SiteModal
+          isOpen={this.state.siteModalOpen}
+          closeModal={() => this.closeSiteModal()}
         />
       </ReactModal>
     );
