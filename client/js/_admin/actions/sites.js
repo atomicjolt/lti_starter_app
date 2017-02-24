@@ -8,6 +8,8 @@ const actions = [];
 const requests = [
   'GET_SITES',
   'CREATE_SITE',
+  'UPDATE_SITE',
+  'DELETE_SITE',
 ];
 
 export const Constants = wrapper(actions, requests);
@@ -28,5 +30,25 @@ export function createSite(site) {
     body   : {
       site,
     },
+  };
+}
+
+export function updateSite(site) {
+  return {
+    type: Constants.UPDATE_SITE,
+    method: Network.PUT,
+    url: `api/sites/${site.id}`,
+    body: {
+      site,
+    },
+  };
+}
+
+export function deleteSite(siteId) {
+  return {
+    type: Constants.DELETE_SITE,
+    method: Network.DEL,
+    url: `api/sites/${siteId}`,
+    siteId
   };
 }

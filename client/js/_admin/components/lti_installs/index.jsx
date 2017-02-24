@@ -192,7 +192,7 @@ export class Index extends React.Component {
           isOpen={this.props.loadingAccounts}
           contentLabel="Modal"
           overlayClassName="c-modal__background"
-          className="c-modal c-modal--newsite is-open c-modal--error loading"
+          className="c-modal c-modal--site is-open c-modal--error loading"
         >
           <div className="c-loading-icon" />
           &nbsp;&nbsp;&nbsp;Loading...
