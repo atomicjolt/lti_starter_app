@@ -36,7 +36,7 @@ export default function AccountInstall(props) {
     tool.consumer_key === props.applicationInstance.lti_key
   ));
   const accountName = props.account ? props.account.name : 'Root';
-  const buttonText = `${installedTool ? 'Uninstall from' : 'Install into'} ${accountName}`;
+  const buttonText = installedTool ? 'Uninstall From Account' : 'Install Into Account';
 
   return (
     <div className="c-info">
