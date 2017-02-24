@@ -35,6 +35,29 @@ RSpec.describe Api::SitesController, type: :controller do
         expect(response).to have_http_status(401)
       end
     end
+
+    describe "POST create" do
+      it "returns unauthorized" do
+        post :create, site: FactoryGirl.attributes_for(:site), format: :json
+        expect(response).to have_http_status(401)
+      end
+    end
+
+    describe "PUT update" do
+      it "returns unauthorized" do
+        site = FactoryGirl.create(:site)
+        put :update, id: site.id, site: site, format: :json
+        expect(response).to have_http_status(401)
+      end
+    end
+
+    describe "DELETE destroy" do
+      it "returns unauthorized" do
+        site = FactoryGirl.create(:site)
+        delete :destroy, id: site.id, site: site, format: :json
+        expect(response).to have_http_status(401)
+      end
+    end
   end
 
   context "as admin" do
@@ -51,6 +74,31 @@ RSpec.describe Api::SitesController, type: :controller do
           expect(sites.count).to be > 0
           expect(sites[0]["url"]).to eq @application_instance.site.url
         end
+      end
+    end
+
+    describe "POST create" do
+      it "creates a new site" do
+        post :create, site: FactoryGirl.attributes_for(:site), format: :json
+        expect(response).to be_success
+      end
+    end
+
+    describe "PUT update" do
+      it "updates the site" do
+        site = FactoryGirl.create(:site)
+        put :update, id: site.id, site: { oauth_key: "12345" }, format: :json
+        expect(response).to be_success
+        updated = JSON.parse(response.body)
+        expect(updated["oauth_key"]).to eq("12345")
+      end
+    end
+
+    describe "DELETE destroy" do
+      it "returns unauthorized" do
+        site = FactoryGirl.create(:site)
+        delete :destroy, id: site.id, format: :json
+        expect(response).to be_success
       end
     end
   end
