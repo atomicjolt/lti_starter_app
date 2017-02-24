@@ -2,7 +2,6 @@ import React                        from 'react';
 import { connect }                  from 'react-redux';
 import _                            from 'lodash';
 import ReactModal                   from 'react-modal';
-import appHistory                   from '../../history';
 import * as ApplicationInstanceActions from '../../actions/application_instances';
 import Heading                      from '../common/heading';
 import Sidebar                      from './sidebar';
@@ -130,6 +129,7 @@ export class Index extends React.Component {
 
   render() {
     const applicationId = parseInt(this.props.params.applicationId, 10);
+    const backTo = `/applications/${this.props.params.applicationId}/application_instances`;
     let accountCourses = this.props.courses;
 
     if (this.state.currentAccount) {
@@ -141,7 +141,7 @@ export class Index extends React.Component {
 
     return (
       <div style={{ height: '100%' }}>
-        <Heading back={() => appHistory.goBack()} />
+        <Heading backTo={backTo} />
         <div className="o-contain">
           <Sidebar
             currentAccount={this.state.currentAccount}
