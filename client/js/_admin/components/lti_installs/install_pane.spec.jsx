@@ -6,7 +6,6 @@ import InstallPane from './install_pane';
 describe('install pane', () => {
   let result;
 
-  const name = 'the account name';
   const props = {
     canvasRequest: () => {},
     loadingCourses: {},
@@ -14,7 +13,6 @@ describe('install pane', () => {
     courses: [],
     account: {
       installCount: 0,
-      name,
     },
     loadExternalTools: () => {},
   };
@@ -31,7 +29,7 @@ describe('install pane', () => {
 
     it('renders the install pane with account installs for basic', () => {
       const button = TestUtils.findRenderedDOMComponentWithTag(result, 'button');
-      expect(button.textContent).toContain(name);
+      expect(button.textContent).toContain('Install Into Account');
     });
 
     it('renders the install pane with course installs for basic', () => {
