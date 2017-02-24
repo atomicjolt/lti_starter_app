@@ -79,6 +79,12 @@ export class Index extends React.Component {
     );
   }
 
+  componentWillReceiveProps() {
+    if (_.isNull(this.state.currentAccount) && !_.isUndefined(this.props.rootAccount)) {
+      this.setAccountActive(this.props.rootAccount);
+    }
+  }
+
   componentDidUpdate(prevProps) {
     // TODO: this is making a mess
     if (_.isEmpty(prevProps.accounts) && !_.isEmpty(this.props.accounts)) {

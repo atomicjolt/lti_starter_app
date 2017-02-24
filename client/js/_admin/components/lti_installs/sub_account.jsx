@@ -12,13 +12,20 @@ export default class SubAccount extends React.Component {
     currentAccount: React.PropTypes.shape({
       id: React.PropTypes.number,
     }),
-    setAccountActive: React.PropTypes.func.isRequired
+    setAccountActive: React.PropTypes.func.isRequired,
   }
+
   constructor() {
     super();
     this.state = {
       open: false,
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.currentAccount === nextProps.account) {
+      this.setState({ open: true });
+    }
   }
 
   getChildrenAccounts() {
