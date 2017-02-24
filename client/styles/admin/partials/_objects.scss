@@ -17,21 +17,23 @@
   max-width: 50rem;
 }
 
-  .o-left{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 34rem;
-    height: 100%;
-    background: $darker-gray;
-    padding-top: 6rem;
-  }
+.o-left{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 34rem;
+  height: 100%;
+  background: $darker-gray;
+  padding-top: 6rem;
+  overflow: auto;
+}
 
-  .o-right{
-    position: relative;
-    padding: 0 2rem;
-    height: 100%;
-  }
+.o-right{
+  position: relative;
+  padding: 0 2rem;
+  height: 100%;
+  overflow: auto;
+}
 
 .o-grid{
   margin-left: -2rem;
