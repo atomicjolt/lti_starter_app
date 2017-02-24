@@ -4,19 +4,23 @@ import _                            from 'lodash';
 import ReactModal                   from 'react-modal';
 import appHistory                   from '../../history';
 import * as ApplicationInstanceActions from '../../actions/application_instances';
-import * as AccountActions          from '../../actions/accounts';
 import Heading                      from '../common/heading';
 import Sidebar                      from './sidebar';
 import InstallPane                  from './install_pane';
 import canvasRequest                from '../../../libs/canvas/action';
+
 import {
-  listActiveCoursesInAccount,
-  getSubAccountsOfAccount
+  listActiveCoursesInAccount
 } from '../../../libs/canvas/constants/accounts';
+
 import {
   listExternalToolsCourses,
   listExternalToolsAccounts,
 } from '../../../libs/canvas/constants/external_tools';
+
+import {
+  helperListAccounts,
+} from '../../../libs/canvas/helper_constants';
 
 function select(state, props) {
   const instanceId = props.params.applicationInstanceId;
@@ -25,46 +29,32 @@ function select(state, props) {
     applicationInstance : state.applicationInstances[instanceId],
     applications        : state.applications,
     accounts            : state.accounts.accounts,
+    rootAccount         : _.find(state.accounts.accounts, { parent_account_id: null }),
     loadingAccounts     : state.accounts.loading,
     courses             : _.sortBy(state.courses, course => course.name),
     userName            : state.settings.display_name,
     loadingCourses      : state.loadingCourses,
-    sites: state.sites,
+    sites               : state.sites,
   };
-}
-
-function recursiveGetAccounts(account, canvasReq) {
-  if (account.sub_accounts && account.sub_accounts.length === 0) return;
-
-  if (account.sub_accounts === undefined) {
-    canvasReq(
-      getSubAccountsOfAccount,
-      { account_id: account.id },
-      null,
-      account
-    );
-  } else {
-    _.each(account.sub_accounts, (subAccount) => {
-      recursiveGetAccounts(subAccount, canvasReq);
-    });
-  }
 }
 
 export class Index extends React.Component {
   static propTypes = {
-    accounts               : React.PropTypes.shape({}).isRequired,
-    applications           : React.PropTypes.shape({}).isRequired,
-    courses                : React.PropTypes.arrayOf(React.PropTypes.shape({})),
-    applicationInstance    : React.PropTypes.shape({}),
-    loadingCourses         : React.PropTypes.shape({}),
-    loadingAccounts        : React.PropTypes.bool,
-    getCanvasAccounts      : React.PropTypes.func.isRequired,
-    getApplicationInstance : React.PropTypes.func.isRequired,
-    canvasRequest          : React.PropTypes.func.isRequired,
-    saveApplicationInstance: React.PropTypes.func.isRequired,
-    params                 : React.PropTypes.shape({
-      applicationId         : React.PropTypes.string,
-      applicationInstanceId : React.PropTypes.string,
+    accounts                : React.PropTypes.shape({}).isRequired,
+    rootAccount             : React.PropTypes.shape({
+      id                      : React.PropTypes.number
+    }),
+    applications            : React.PropTypes.shape({}).isRequired,
+    courses                 : React.PropTypes.arrayOf(React.PropTypes.shape({})),
+    applicationInstance     : React.PropTypes.shape({}),
+    loadingCourses          : React.PropTypes.shape({}),
+    loadingAccounts         : React.PropTypes.bool,
+    getApplicationInstance  : React.PropTypes.func.isRequired,
+    canvasRequest           : React.PropTypes.func.isRequired,
+    saveApplicationInstance : React.PropTypes.func.isRequired,
+    params                  : React.PropTypes.shape({
+      applicationId           : React.PropTypes.string,
+      applicationInstanceId   : React.PropTypes.string,
     }).isRequired,
     sites: React.PropTypes.shape({}).isRequired,
   };
@@ -72,17 +62,27 @@ export class Index extends React.Component {
   constructor() {
     super();
     this.state = {
-      activeAccounts: [],
+      currentAccount: null,
     };
   }
 
   componentDidMount() {
-    // listExternalToolsCourses
-    this.props.getCanvasAccounts();
+    this.props.canvasRequest(
+      helperListAccounts,
+      {},
+      null,
+      null,
+    );
     this.props.getApplicationInstance(
       this.props.params.applicationId,
       this.props.params.applicationInstanceId
     );
+  }
+
+  componentWillReceiveProps() {
+    if (_.isNull(this.state.currentAccount) && !_.isUndefined(this.props.rootAccount)) {
+      this.setAccountActive(this.props.rootAccount);
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -90,41 +90,21 @@ export class Index extends React.Component {
     if (_.isEmpty(prevProps.accounts) && !_.isEmpty(this.props.accounts)) {
       this.props.canvasRequest(
         listExternalToolsAccounts,
-        { account_id: 1 },
+        { account_id: this.props.rootAccount.id },
         null,
-        this.props.accounts[1]
-      );
-    }
-    if (!_.isEqual(prevProps.accounts, this.props.accounts)) {
-      _.each(
-        this.props.accounts,
-        account => recursiveGetAccounts(account, this.props.canvasRequest)
+        this.props.rootAccount
       );
     }
 
     if (_.isEmpty(this.props.courses) && !_.isEmpty(this.props.accounts)) {
-      const accountId = this.props.accounts[1].id;
       this.props.canvasRequest(
         listActiveCoursesInAccount,
-        { account_id: accountId, per_page: 100 }
+        { account_id: this.props.rootAccount.id, per_page: 100 }
       );
     }
   }
 
-  getSubAccountIds(account) {
-    let ids = [account.id];
-    ids = ids.concat(_.map(account.sub_accounts, subAccount => (
-      _.concat(this.getSubAccountIds(subAccount), subAccount.id)
-    )));
-    return _.flatten(ids);
-  }
-
-  setAccountActive(account, depth) {
-    const selectedAccount = _.find(
-      this.state.activeAccounts,
-      activeAccount => (activeAccount.id === account.id)
-    );
-
+  setAccountActive(account) {
     if (account.external_tools === undefined) {
       this.props.canvasRequest(
         listExternalToolsAccounts,
@@ -134,12 +114,9 @@ export class Index extends React.Component {
       );
     }
 
-    const activeAccounts = _.slice(this.state.activeAccounts, 0, depth);
-    if (selectedAccount) {
-      this.setState({ activeAccounts });
-    } else {
-      this.setState({ activeAccounts: activeAccounts.concat(account) });
-    }
+    this.setState({
+      currentAccount: account,
+    });
   }
 
   loadExternalTools(courseId) {
@@ -154,14 +131,11 @@ export class Index extends React.Component {
   render() {
     const applicationId = parseInt(this.props.params.applicationId, 10);
     let accountCourses = this.props.courses;
-    const lastActiveAccount = _.last(this.state.activeAccounts);
 
-    if (lastActiveAccount) {
-      const filterAccountIds = this.getSubAccountIds(lastActiveAccount);
-
+    if (this.state.currentAccount) {
       accountCourses = _.filter(
         this.props.courses,
-        course => _.includes(filterAccountIds, course.account_id)
+        course => this.state.currentAccount.id === course.account_id
       );
     }
 
@@ -170,12 +144,12 @@ export class Index extends React.Component {
         <Heading back={() => appHistory.goBack()} />
         <div className="o-contain">
           <Sidebar
+            currentAccount={this.state.currentAccount}
             accounts={this.props.accounts}
             application={this.props.applications[applicationId]}
             applicationInstance={this.props.applicationInstance}
             canvasRequest={this.props.canvasRequest}
-            setAccountActive={(account, depth) => this.setAccountActive(account, depth)}
-            activeAccounts={this.state.activeAccounts}
+            setAccountActive={account => this.setAccountActive(account)}
             saveApplicationInstance={this.props.saveApplicationInstance}
             sites={this.props.sites}
           />
@@ -184,7 +158,7 @@ export class Index extends React.Component {
             loadingCourses={this.props.loadingCourses}
             applicationInstance={this.props.applicationInstance}
             courses={accountCourses}
-            account={_.last(this.state.activeAccounts) || this.props.accounts[1]}
+            account={this.state.currentAccount}
             loadExternalTools={courseId => this.loadExternalTools(courseId)}
           />
         </div>
@@ -204,5 +178,5 @@ export class Index extends React.Component {
 
 export default connect(
   select,
-  { canvasRequest, ...ApplicationInstanceActions, ...AccountActions }
+  { canvasRequest, ...ApplicationInstanceActions }
 )(Index);

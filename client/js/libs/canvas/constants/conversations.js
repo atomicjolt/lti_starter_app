@@ -85,7 +85,6 @@ export const getSingleConversation = { type: 'GET_SINGLE_CONVERSATION', method: 
 //
 // Example:
 // const query = {
-//   conversation[subject]
 //   conversation[workflow_state]
 //   conversation[subscribed]
 //   conversation[starred]

@@ -45,6 +45,8 @@ export const getAssignmentGroup = { type: 'GET_ASSIGNMENT_GROUP', method: 'get',
 //   name
 //   position
 //   group_weight
+//   sis_source_id
+//   integration_data
 //   rules
 // }
 // return canvasRequest(create_assignment_group, {course_id}, query);

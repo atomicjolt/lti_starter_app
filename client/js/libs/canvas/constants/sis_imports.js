@@ -57,3 +57,23 @@ export const importSisData = { type: 'IMPORT_SIS_DATA', method: 'post', key: 'im
 // Example:
 // return canvasRequest(get_sis_import_status, {account_id, id});
 export const getSisImportStatus = { type: 'GET_SIS_IMPORT_STATUS', method: 'get', key: 'get_sis_import_statusget_sis_import_status_{account_id}_{id}', required: ['account_id', 'id'] };
+
+// Abort SIS import
+// Abort an already created but not processed or processing SIS import.
+//
+// API Docs: https://canvas.instructure.com/doc/api/sis_imports.html
+// API Url: accounts/{account_id}/sis_imports/{id}/abort
+//
+// Example:
+// return canvasRequest(abort_sis_import, {account_id, id});
+export const abortSisImport = { type: 'ABORT_SIS_IMPORT', method: 'put', key: 'abort_sis_importabort_sis_import_{account_id}_{id}', required: ['account_id', 'id'] };
+
+// Abort all pending SIS imports
+// Abort already created but not processed or processing SIS imports.
+//
+// API Docs: https://canvas.instructure.com/doc/api/sis_imports.html
+// API Url: accounts/{account_id}/sis_imports/abort_all_pending
+//
+// Example:
+// return canvasRequest(abort_all_pending_sis_imports, {account_id});
+export const abortAllPendingSisImports = { type: 'ABORT_ALL_PENDING_SIS_IMPORTS', method: 'put', key: 'abort_all_pending_sis_importsabort_all_pending_sis_imports_account_id', required: ['account_id'] };

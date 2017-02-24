@@ -462,6 +462,31 @@ export const getCustomColor = { type: 'GET_CUSTOM_COLOR', method: 'get', key: 'g
 // return canvasRequest(update_custom_color, {id, asset_string}, query);
 export const updateCustomColor = { type: 'UPDATE_CUSTOM_COLOR', method: 'put', key: 'update_custom_colorupdate_custom_color_{id}_{asset_string}', required: ['id', 'asset_string'] };
 
+// Get dashboard postions
+// Returns all dashboard positions that have been saved for a user.
+//
+// API Docs: https://canvas.instructure.com/doc/api/users.html
+// API Url: users/{id}/dashboard_positions
+//
+// Example:
+// return canvasRequest(get_dashboard_postions, {id});
+export const getDashboardPostions = { type: 'GET_DASHBOARD_POSTIONS', method: 'get', key: 'get_dashboard_postionsget_dashboard_postions_id', required: ['id'] };
+
+// Update dashboard positions
+// Updates the dashboard positions for a user for a given context.  This allows
+// positions for the dashboard cards and elsewhere to be customized on a per
+// user basis.
+// 
+// The asset string parameter should be in the format 'context_id', for example
+// 'course_42'
+//
+// API Docs: https://canvas.instructure.com/doc/api/users.html
+// API Url: users/{id}/dashboard_positions
+//
+// Example:
+// return canvasRequest(update_dashboard_positions, {id});
+export const updateDashboardPositions = { type: 'UPDATE_DASHBOARD_POSITIONS', method: 'put', key: 'update_dashboard_positionsupdate_dashboard_positions_id', required: ['id'] };
+
 // Edit a user
 // Modify an existing user. To modify a user's login, see the documentation for logins.
 //
@@ -543,7 +568,7 @@ export const splitMergedUsersIntoSeparateUsers = { type: 'SPLIT_MERGED_USERS_INT
 // Returns user profile data, including user id, name, and profile pic.
 // 
 // When requesting the profile for the user accessing the API, the user's
-// calendar feed URL will be returned as well.
+// calendar feed URL and LTI user id will be returned as well.
 //
 // API Docs: https://canvas.instructure.com/doc/api/users.html
 // API Url: users/{user_id}/profile

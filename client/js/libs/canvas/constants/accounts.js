@@ -92,8 +92,11 @@ export const listActiveCoursesInAccount = { type: 'LIST_ACTIVE_COURSES_IN_ACCOUN
 //   account[settings][restrict_student_past_view][locked]
 //   account[settings][restrict_student_future_view][value]
 //   account[settings][restrict_student_future_view][locked]
+//   account[settings][lock_all_announcements][value]
+//   account[settings][lock_all_announcements][locked]
 //   account[settings][restrict_student_future_listing][value]
 //   account[settings][restrict_student_future_listing][locked]
+//   account[services]
 // }
 // return canvasRequest(update_account, {id}, query);
 export const updateAccount = { type: 'UPDATE_ACCOUNT', method: 'put', key: 'update_accountupdate_account_id', required: ['id'] };

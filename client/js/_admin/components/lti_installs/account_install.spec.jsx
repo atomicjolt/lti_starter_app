@@ -56,7 +56,7 @@ describe('lti installs account install', () => {
 
     it('renders buttons', () => {
       const accountButton = TestUtils.findRenderedDOMComponentWithTag(result, 'button');
-      expect(accountButton.textContent).toBe(`Install into ${accountName}`);
+      expect(accountButton.textContent).toBe('Install Into Account');
     });
   });
 
@@ -84,7 +84,7 @@ describe('lti installs account install', () => {
 
     it('renders buttons', () => {
       const accountButton = TestUtils.findRenderedDOMComponentWithTag(result, 'button');
-      expect(accountButton.textContent).toBe('Install into Root');
+      expect(accountButton.textContent).toBe('Install Into Account');
     });
   });
 });
