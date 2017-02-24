@@ -7,10 +7,9 @@ import Heading      from './heading';
 
 describe('common heading', () => {
   let result;
-  let back = false;
 
   const props = {
-    back:         () => { back = true; },
+    backTo: '/',
   };
 
   beforeEach(() => {
@@ -30,12 +29,21 @@ describe('common heading', () => {
   });
 
   describe('back button', () => {
-    it('closes', () => {
+    it('renders back button', () => {
       const buttons = TestUtils.scryRenderedDOMComponentsWithTag(result, 'button');
       const backButton = _.find(buttons, { textContent: 'Back' });
       expect(backButton).toBeDefined();
-      TestUtils.Simulate.click(backButton);
-      expect(back).toBe(true);
+    });
+
+    it('renders no back button', () => {
+      result = TestUtils.renderIntoDocument(
+        <Provider store={Helper.makeStore()}>
+          <Heading />
+        </Provider>
+      );
+      const buttons = TestUtils.scryRenderedDOMComponentsWithTag(result, 'button');
+      const backButton = _.find(buttons, { textContent: 'Back' });
+      expect(backButton).not.toBeDefined();
     });
   });
 

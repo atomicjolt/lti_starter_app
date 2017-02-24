@@ -1,7 +1,6 @@
 import React                           from 'react';
 import { connect }                     from 'react-redux';
 import _                               from 'lodash';
-import history                         from '../../history';
 import Header                          from './header';
 import List                            from './list';
 import Modal                           from './modal';
@@ -45,9 +44,7 @@ export class Index extends React.Component {
     const application = this.props.applications[this.props.params.applicationId];
     return (
       <div>
-        <Heading
-          back={() => history.goBack()}
-        />
+        <Heading backTo="/applications" />
         <div className="o-contain o-contain--full">
           <Modal
             isOpen={this.state.modalOpen}

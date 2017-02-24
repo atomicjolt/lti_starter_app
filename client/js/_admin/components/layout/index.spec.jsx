@@ -20,6 +20,9 @@ describe('layout index', () => {
       children,
       getApplications: () => { getApplications = true; },
       getSites: () => { getSites = true; },
+      location: {
+        pathname: '/'
+      },
     };
 
     result = TestUtils.renderIntoDocument(
