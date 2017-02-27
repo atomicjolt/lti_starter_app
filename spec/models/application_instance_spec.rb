@@ -67,15 +67,6 @@ RSpec.describe ApplicationInstance, type: :model do
       end
     end
 
-    it "deletes a schema upon deletion" do
-      TestAfterCommit.with_commits(true) do
-        expect(Apartment::Tenant).to receive(:create)
-        expect(Apartment::Tenant).to receive(:drop)
-        application_instance = create :application_instance
-        application_instance.destroy
-      end
-    end
-
     it "does not allow the name to be changed after creation" do
       @application_instance = FactoryGirl.create(:application_instance)
       @application_instance.lti_key = "new-lti-key"

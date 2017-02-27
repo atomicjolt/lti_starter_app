@@ -47,7 +47,7 @@ Apartment.configure do |config|
   #   end
   # end
   #
-  config.tenant_names = lambda { ApplicationInstance.pluck(:lti_key) }
+  config.tenant_names = lambda { ApplicationInstance.distinct.pluck(:tenant) }
 
   #
   # ==> PostgreSQL only options
