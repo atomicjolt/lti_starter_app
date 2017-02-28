@@ -28,11 +28,11 @@ function proxyCanvas(store, action, params) {
     {
       ...action.params,
       ...params,
-      type               : action.canvas.type,
-      oauth_consumer_key : state.settings.oauth_consumer_key
+      type: action.canvas.type,
+      oauth_consumer_key: state.settings.oauth_consumer_key
     },
     action.body
-  ).then((response, error) => {
+  ).then((response) => {
     let lastPage = false;
 
     if (action.canvas.method === 'get' && response.header) {
@@ -48,13 +48,18 @@ function proxyCanvas(store, action, params) {
     }
 
     store.dispatch({
-      type     : action.canvas.type + DONE,
-      payload  : response.body,
-      original : action,
+      type: action.canvas.type + DONE,
+      payload: response.body,
+      original: action,
       lastPage,
       response,
-      error
     }); // Dispatch the new data
+  }).catch((error) => {
+    store.dispatch({
+      type: action.canvas.type + DONE,
+      original: action,
+      error,
+    });
   });
 }
 
