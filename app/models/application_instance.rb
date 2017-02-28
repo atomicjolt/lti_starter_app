@@ -16,8 +16,7 @@ class ApplicationInstance < ActiveRecord::Base
 
   attr_encrypted :canvas_token, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
 
-  after_create :create_schema
-  after_commit :destroy_schema, on: :destroy
+  after_commit :create_schema, on: :create
 
   def lti_config_xml
     Lti::Utils.lti_config_xml(self)
@@ -27,17 +26,22 @@ class ApplicationInstance < ActiveRecord::Base
 
   def set_lti
     self.lti_type ||= ApplicationInstance.lti_types[:basic]
-    self.lti_key = (lti_key || application.name).try(:parameterize).try(:dasherize)
-    self.lti_secret = ::SecureRandom::hex(64) unless lti_secret.present?
+    self.lti_key = (lti_key || application.name)&.parameterize&.dasherize
+    self.lti_secret = ::SecureRandom::hex(64) if lti_secret.blank?
     self.tenant ||= lti_key
   end
 
   def create_schema
-    Apartment::Tenant.create lti_key
+    Apartment::Tenant.create tenant
+  rescue Apartment::TenantExists
+    # If the tenant already exists, then ignore the exception.
+    # Just rescue and do nothing.
   end
 
+  # Danger! Whole databases will be lost with this method!
   def destroy_schema
-    Apartment::Tenant.drop lti_key
+    Apartment::Tenant.drop tenant
   end
+  private :destroy_schema
 
 end
