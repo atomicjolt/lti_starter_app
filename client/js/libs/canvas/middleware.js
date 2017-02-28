@@ -32,7 +32,7 @@ function proxyCanvas(store, action, params) {
       oauth_consumer_key : state.settings.oauth_consumer_key
     },
     action.body
-  ).then((response, error) => {
+  ).then((response) => {
     let lastPage = false;
 
     if (action.canvas.method === 'get' && response.header) {
@@ -53,8 +53,13 @@ function proxyCanvas(store, action, params) {
       original : action,
       lastPage,
       response,
-      error
     }); // Dispatch the new data
+  }).catch((error) => {
+    store.dispatch({
+      type     : action.canvas.type + DONE,
+      original : action,
+      error,
+    });
   });
 }
 
