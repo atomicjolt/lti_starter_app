@@ -28,8 +28,8 @@ function proxyCanvas(store, action, params) {
     {
       ...action.params,
       ...params,
-      type               : action.canvas.type,
-      oauth_consumer_key : state.settings.oauth_consumer_key
+      type: action.canvas.type,
+      oauth_consumer_key: state.settings.oauth_consumer_key
     },
     action.body
   ).then((response) => {
@@ -48,16 +48,16 @@ function proxyCanvas(store, action, params) {
     }
 
     store.dispatch({
-      type     : action.canvas.type + DONE,
-      payload  : response.body,
-      original : action,
+      type: action.canvas.type + DONE,
+      payload: response.body,
+      original: action,
       lastPage,
       response,
     }); // Dispatch the new data
   }).catch((error) => {
     store.dispatch({
-      type     : action.canvas.type + DONE,
-      original : action,
+      type: action.canvas.type + DONE,
+      original: action,
       error,
     });
   });
