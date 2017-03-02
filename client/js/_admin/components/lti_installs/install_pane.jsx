@@ -37,7 +37,7 @@ export default class InstallPane extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if ((prevState.currentPage !== this.state.currentPage) ||
-       (_.isEmpty(prevProps.courses) && !_.isEmpty(this.props.courses)) ||
+       (prevProps.courses.length !== this.props.courses.length) ||
        (prevState.searchPrefix !== this.state.searchPrefix)
     ) {
       this.loadExternalTools();
