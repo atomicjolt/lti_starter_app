@@ -15,6 +15,7 @@ describe('install pane', () => {
       installCount: 0,
     },
     loadExternalTools: () => {},
+    onlyShowInstalled: false,
   };
 
   describe('basic instances', () => {
