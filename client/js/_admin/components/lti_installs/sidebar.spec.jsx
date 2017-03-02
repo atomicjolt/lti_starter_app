@@ -29,6 +29,7 @@ describe('lti installs sidebar', () => {
         canvasRequest: () => {},
         setAccountActive: () => {},
         sites: {},
+        onlyShowInstalledChanged: () => {},
       };
       result = TestUtils.renderIntoDocument(
         <Sidebar {...props} />

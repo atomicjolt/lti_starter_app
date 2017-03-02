@@ -62,6 +62,7 @@ export class Index extends React.Component {
     super();
     this.state = {
       currentAccount: null,
+      onlyShowInstalled: false,
     };
   }
 
@@ -101,6 +102,12 @@ export class Index extends React.Component {
         { account_id: this.props.rootAccount.id, per_page: 100 }
       );
     }
+  }
+
+  onlyShowInstalledChanged(e) {
+    this.setState({
+      onlyShowInstalled: e.target.checked,
+    });
   }
 
   setAccountActive(account) {
@@ -152,6 +159,7 @@ export class Index extends React.Component {
             setAccountActive={account => this.setAccountActive(account)}
             saveApplicationInstance={this.props.saveApplicationInstance}
             sites={this.props.sites}
+            onlyShowInstalledChanged={e => this.onlyShowInstalledChanged(e)}
           />
           <InstallPane
             canvasRequest={this.props.canvasRequest}
@@ -160,6 +168,7 @@ export class Index extends React.Component {
             courses={accountCourses}
             account={this.state.currentAccount}
             loadExternalTools={courseId => this.loadExternalTools(courseId)}
+            onlyShowInstalled={this.state.onlyShowInstalled}
           />
         </div>
         <ReactModal

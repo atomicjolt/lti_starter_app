@@ -55,6 +55,52 @@
   }
 }
 
+.c-checkbox--yellow{
+  padding: 0.5rem 0;
+
+  label{
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    @include semi-bold;
+    font-size: 1.6rem;
+    color: $white;
+    padding-left: 2.7rem;
+    height: 2rem;
+    line-height: 2rem;
+    min-width: 3rem;
+  }
+
+  input[type="checkbox"] + label:before{
+    content: "\e25d";
+    color: $white;
+    font-size: 2rem;
+    font-family: 'lti-admin';
+    font-weight: normal;
+    position: absolute;
+    line-height: 1;
+    top: -0.1rem;
+    left: 0;
+  }
+
+  input[type="checkbox"]:checked + label:before{
+    content: "\e25c";
+    color: $yellow;
+  }
+
+  input:focus + label{
+    outline: thin dotted;
+  }
+
+  input{
+    opacity: 0;
+    margin: 0;
+    height: 0.01rem;
+    width: 0.01rem;
+    position: absolute;
+  }
+}
+
 .Select{
   width: 100%;
   border: 0.1rem solid $gray;

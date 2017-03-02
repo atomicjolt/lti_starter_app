@@ -50,6 +50,7 @@
       color: $dark-gray;
 
       &:focus{
+        border-color: $gray;
         outline: none;
       }
     }
