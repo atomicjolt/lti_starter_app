@@ -84,6 +84,7 @@ export class SiteModal extends React.Component {
       site,
     } = this.state;
     const isUpdate = !!(site && site.id);
+    const verb = isUpdate ? 'Update' : 'New';
 
     return (
       <ReactModal
@@ -94,7 +95,7 @@ export class SiteModal extends React.Component {
         className="c-modal c-modal--site is-open"
       >
         {this.getCanvasAuthForm()}
-        <h2 className="c-modal__title">New Domain</h2>
+        <h2 className="c-modal__title">{verb} Domain</h2>
         <SiteForm
           isUpdate={isUpdate}
           onChange={e => this.siteChange(e)}
