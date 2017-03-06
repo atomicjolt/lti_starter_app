@@ -21,7 +21,8 @@ export class SiteModal extends React.Component {
     isOpen: React.PropTypes.bool.isRequired,
     closeModal: React.PropTypes.func.isRequired,
     settings: React.PropTypes.shape({
-      lti_key: React.PropTypes.string
+      lti_key: React.PropTypes.string,
+      canvas_callback_url: React.PropTypes.string,
     }).isRequired,
     siteToOauth: React.PropTypes.string,
   };
@@ -101,6 +102,7 @@ export class SiteModal extends React.Component {
           onChange={e => this.siteChange(e)}
           setupSite={() => this.setupSite()}
           closeModal={() => this.props.closeModal()}
+          callbackUrl={this.props.settings.canvas_callback_url}
           {...this.state.site}
         />
       </ReactModal>

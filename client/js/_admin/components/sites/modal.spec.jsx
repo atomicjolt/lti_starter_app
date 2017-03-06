@@ -20,6 +20,7 @@ describe('site modal', () => {
     updateSite: () => {},
     settings: {
       lti_key: '',
+      canvas_callback_url: '',
     },
   };
 
