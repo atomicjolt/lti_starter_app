@@ -16,21 +16,8 @@ const SiteForm = (props) => {
     onChange,
     setupSite,
     closeModal,
-    callbackUrl,
   } = props;
   const buttonVerb = isUpdate ? 'Update' : 'Create';
-
-  const canvasDevKeysUrl = `${url}/accounts/site_admin/developer_keys`;
-  let canvasSettingsLink = null;
-  if (url) {
-    canvasSettingsLink = (
-      <div>
-        <a href={canvasDevKeysUrl} target="_blank" rel="noopener noreferrer" >
-          Canvas Developer Keys
-        </a>
-      </div>
-    );
-  }
 
   const inputTemplate = (fieldLabel, field, value) => {
     const inputProps = {
@@ -41,7 +28,7 @@ const SiteForm = (props) => {
       onChange,
     };
     return (
-      <div key={field} className="o-grid__item u-half">
+      <div key={field} className="o-grid__item u-full">
         <Input
           className="c-input"
           labelText={fieldLabel}
@@ -54,12 +41,11 @@ const SiteForm = (props) => {
   return (
     <form>
       <div className="o-grid o-grid__modal-top">
+        {inputTemplate(FIELDS.url, 'url', url)}
         {inputTemplate(FIELDS.oauth_key, 'oauth_key', oauth_key)}
         {inputTemplate(FIELDS.oauth_secret, 'oauth_secret', oauth_secret)}
-        {inputTemplate(FIELDS.url, 'url', url)}
       </div>
-      {canvasSettingsLink}
-      Redirect URIs: {callbackUrl}
+
 
       <button
         type="button"
@@ -87,7 +73,6 @@ SiteForm.propTypes = {
   oauth_key: React.PropTypes.string,
   oauth_secret: React.PropTypes.string,
   url: React.PropTypes.string,
-  callbackUrl: React.PropTypes.string,
 };
 
 export default SiteForm;
