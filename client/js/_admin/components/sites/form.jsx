@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+import Input from '../common/input';
 
 export const FIELDS = {
   oauth_key: 'Canvas Developer ID',
@@ -8,41 +8,56 @@ export const FIELDS = {
 };
 
 const SiteForm = (props) => {
-  const isUpdate = props.isUpdate;
+  const {
+    isUpdate,
+    oauth_key,
+    oauth_secret,
+    url,
+    onChange,
+    setupSite,
+    closeModal,
+  } = props;
   const buttonVerb = isUpdate ? 'Update' : 'Create';
+
+  const inputTemplate = (fieldLabel, field, value) => {
+    const inputProps = {
+      id: `site_${field}`,
+      name: field,
+      type: 'text',
+      value: value || '',
+      onChange,
+    };
+    return (
+      <div key={field} className="o-grid__item u-full">
+        <Input
+          className="c-input"
+          labelText={fieldLabel}
+          inputProps={inputProps}
+        />
+      </div>
+    );
+  };
 
   return (
     <form>
       <div className="o-grid o-grid__modal-top">
-        {
-          _.map(FIELDS, (fieldLabel, field) => (
-            <div key={field} className="o-grid__item u-half">
-              <label htmlFor={`new_site_${field}`} className="c-input">
-                <span>{fieldLabel}</span>
-                <input
-                  value={props[field]}
-                  id={`new_site_${field}`}
-                  name={field}
-                  type="text"
-                  onChange={e => props.onChange(e)}
-                />
-              </label>
-            </div>
-          ))
-        }
+        {inputTemplate(FIELDS.url, 'url', url)}
+        {inputTemplate(FIELDS.oauth_key, 'oauth_key', oauth_key)}
+        {inputTemplate(FIELDS.oauth_secret, 'oauth_secret', oauth_secret)}
       </div>
+
 
       <button
         type="button"
         className="c-btn c-btn--yellow"
-        onClick={() => props.setupSite()}
+        onClick={setupSite}
       >
         {buttonVerb} Domain
       </button>
       <button
         type="button"
         className="c-btn c-btn--gray--large u-m-right"
-        onClick={() => props.closeModal()}
+        onClick={closeModal}
       >
         Cancel
       </button>
@@ -53,7 +68,11 @@ const SiteForm = (props) => {
 SiteForm.propTypes = {
   setupSite: React.PropTypes.func.isRequired,
   closeModal: React.PropTypes.func.isRequired,
+  onChange: React.PropTypes.func.isRequired,
   isUpdate: React.PropTypes.bool.isRequired,
+  oauth_key: React.PropTypes.string,
+  oauth_secret: React.PropTypes.string,
+  url: React.PropTypes.string,
 };
 
 export default SiteForm;

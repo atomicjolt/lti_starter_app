@@ -21,7 +21,8 @@ export class SiteModal extends React.Component {
     isOpen: React.PropTypes.bool.isRequired,
     closeModal: React.PropTypes.func.isRequired,
     settings: React.PropTypes.shape({
-      lti_key: React.PropTypes.string
+      lti_key: React.PropTypes.string,
+      canvas_callback_url: React.PropTypes.string,
     }).isRequired,
     siteToOauth: React.PropTypes.string,
   };
@@ -84,6 +85,25 @@ export class SiteModal extends React.Component {
       site,
     } = this.state;
     const isUpdate = !!(site && site.id);
+    const verb = isUpdate ? 'Update' : 'New';
+
+    const callbackUrl = this.props.settings.canvas_callback_url;
+    let canvasDevInstructions = 'Add a canvas domain first.';
+    if (site && site.url) {
+      const canvasDevKeysUrl = `${site.url}/accounts/site_admin/developer_keys`;
+      canvasDevInstructions = (
+        <div>
+          <div>
+            You will need a redirect URI: {callbackUrl}
+          </div>
+          <div>
+            <a href={canvasDevKeysUrl} className="c-modal__subtext-link" target="_blank" rel="noopener noreferrer" >
+              Get Canvas Developer Keys Here
+            </a>
+          </div>
+        </div>
+      );
+    }
 
     return (
       <ReactModal
@@ -94,7 +114,8 @@ export class SiteModal extends React.Component {
         className="c-modal c-modal--site is-open"
       >
         {this.getCanvasAuthForm()}
-        <h2 className="c-modal__title">New Domain</h2>
+        <h2 className="c-modal__title">{verb} Domain</h2>
+        <h3 className="c-modal__subtext">{canvasDevInstructions}</h3>
         <SiteForm
           isUpdate={isUpdate}
           onChange={e => this.siteChange(e)}

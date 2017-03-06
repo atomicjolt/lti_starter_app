@@ -13,6 +13,7 @@ describe('site form', () => {
     props = {
       setupSite: () => {},
       closeModal: () => { modalClosed = true; },
+      onChange: () => {},
       isUpdate: false,
     };
     result = TestUtils.renderIntoDocument(
@@ -30,7 +31,7 @@ describe('site form', () => {
     _.each(FIELDS, (fieldLabel, field) => {
       it('renders the field', () => {
         const inputs = TestUtils.scryRenderedDOMComponentsWithTag(result, 'input');
-        const input = _.find(inputs, { id: `new_site_${field}` });
+        const input = _.find(inputs, { id: `site_${field}` });
         expect(input).toBeDefined();
         expect(input.name).toBe(field);
         expect(input.type).toBe('text');

@@ -110,6 +110,20 @@
     margin: 0 0 3rem;
   }
 
+  .c-modal__subtext{
+    @include semi-bold;
+    font-size: 1.8rem;
+    color: $red;
+    margin: 0 0 3rem;
+  }
+
+  a.c-modal__subtext-link{
+    color: $yellow;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
   .c-modal__text{
     font-size: 1.8rem;
     color: $gray2;
