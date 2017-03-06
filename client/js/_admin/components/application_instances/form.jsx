@@ -1,7 +1,7 @@
 import React       from 'react';
 import _           from 'lodash';
 import ReactSelect from 'react-select';
-import Input       from './input';
+import Input       from '../common/input';
 
 export const TEXT_FIELDS = {
   lti_key      : 'LTI Key',
