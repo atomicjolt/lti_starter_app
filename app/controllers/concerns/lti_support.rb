@@ -40,8 +40,9 @@ module Concerns
       user = User.find_by(lti_provider: lti_provider, lti_user_id: lti_user_id)
 
       if user.blank?
+        domain = params["custom_canvas_api_domain"] || Rails.application.secrets.application_url
         user = _generate_new_lti_user(params)
-        _attempt_uniq_email(user)
+        _attempt_uniq_email(user, domain)
       end
 
       user
@@ -67,7 +68,7 @@ module Concerns
       end
     end
 
-    def _attempt_uniq_email(user)
+    def _attempt_uniq_email(user, domain)
       count = 0 # don't go infinite
       while !safe_save_email(user) && count < 10
         user.email = generate_email(domain)

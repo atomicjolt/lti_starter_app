@@ -26,6 +26,10 @@ describe ApplicationController, type: :controller do
 
     context "valid LTI request" do
       it "sets up the user, logs them in and renders the lti launch page" do
+        # Create a user with the same email as for this spec thus forcing
+        # a generated email to happen for the new lti user.
+        FactoryGirl.create(:user, email: "steve@apple.com")
+
         params = lti_params(@app.lti_key, @app.lti_secret, { "launch_url" => @launch_url, "roles" => "Learner" })
         post :index, params
         expect(response).to have_http_status(200)
