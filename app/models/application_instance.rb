@@ -14,7 +14,10 @@ class ApplicationInstance < ActiveRecord::Base
   end
 
   # example store_accessor for config
-  store_accessor :config, :foo
+  # This allows access to instance.config[:foo] like instance.foo
+  # Or instance.bar
+  # If foo is not set in the config json, it will return nil
+  # store_accessor :config, :foo, :bar
 
   enum lti_type: [:basic, :course_navigation, :account_navigation]
 
