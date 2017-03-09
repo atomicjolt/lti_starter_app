@@ -50,11 +50,21 @@ export default class Modal extends React.Component {
   }
 
   newApplicationInstanceChange(e) {
+    let configParseError = null;
+    if (e.target.name === 'config') {
+      try {
+        JSON.parse(e.target.value || '{}');
+      } catch (err) {
+        configParseError = err.toString();
+      }
+    }
+
     this.setState({
       newApplicationInstance: {
         ...this.state.newApplicationInstance,
         [e.target.name]: e.target.value
-      }
+      },
+      configParseError,
     });
   }
 
@@ -91,6 +101,7 @@ export default class Modal extends React.Component {
         </h2>
         <ApplicationInstanceForm
           {...this.state.newApplicationInstance}
+          configParseError={this.state.configParseError}
           onChange={(e) => { this.newApplicationInstanceChange(e); }}
           save={() => this.save()}
           sites={this.props.sites}

@@ -1,27 +1,40 @@
-import React       from 'react';
+import React from 'react';
 
-export default function Input(props) {
+export default function Textarea(props) {
   return (
-    <label htmlFor={props.inputProps.id} className={props.className}>
+    <label htmlFor={props.textareaProps.id} className={props.className}>
       <span>{props.labelText}</span>
-      <textarea {...props.inputProps} />
+      <textarea
+        id={props.textareaProps.id}
+        value={props.textareaProps.value}
+        disabled={props.textareaProps.disabled}
+        name={props.textareaProps.name}
+        placeholder={props.textareaProps.placeholder}
+        maxLength={props.textareaProps.maxLength}
+        minLength={props.textareaProps.minLength}
+        cols={props.textareaProps.cols}
+        rows={props.textareaProps.rows}
+        onChange={props.textareaProps.onChange}
+      />
+      {props.warning}
     </label>
   );
 }
 
-Input.propTypes = {
+Textarea.propTypes = {
   labelText: React.PropTypes.string,
-  inputProps: React.PropTypes.shape({
+  textareaProps: React.PropTypes.shape({
     id: React.PropTypes.string,
     value: React.PropTypes.string,
     disabled: React.PropTypes.bool,
     name: React.PropTypes.string,
     placeholder: React.PropTypes.string,
-    maxlength: React.PropTypes.number,
-    minlength: React.PropTypes.number,
+    maxLength: React.PropTypes.number,
+    minLength: React.PropTypes.number,
     cols: React.PropTypes.number,
     rows: React.PropTypes.number,
     onChange: React.PropTypes.func,
   }),
+  warning: React.PropTypes.shape({}),
   className: React.PropTypes.string,
 };

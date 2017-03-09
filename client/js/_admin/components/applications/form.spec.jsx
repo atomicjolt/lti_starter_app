@@ -19,7 +19,7 @@ describe('applications form', () => {
       closeModal  : () => { didClose = true; },
       save        : () => { didSave = true; },
       description : 'SPEC_DESCRIPTION',
-      default_config: '{ "foo": "bar" }',
+      defaultConfig: '{ "foo": "bar" }',
     };
 
     result = TestUtils.renderIntoDocument(

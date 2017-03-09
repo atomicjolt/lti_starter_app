@@ -7,7 +7,7 @@ describe('textarea', () => {
 
   let result;
   const props = {
-    inputProps: {
+    textareaProps: {
       id: 'IM AN ID',
       value: 'IM A VALUE',
       name: 'the name',
@@ -17,25 +17,22 @@ describe('textarea', () => {
     labelText: 'IMA LABEL',
   };
 
-  describe('textarea', () => {
-
-    beforeEach(() => {
-      result = TestUtils.renderIntoDocument(
-        <Stub>
-          <Textarea {...props} />
-        </Stub>
-      );
-    });
-
-    it('renders the textarea with the correct attributes', () => {
-      const textarea = TestUtils.findRenderedDOMComponentWithTag(result, 'textarea');
-      expect(textarea.getAttribute('id')).toBe('IM AN ID');
-    });
-
-    it('renders text before the text textarea', () => {
-      const label = TestUtils.findRenderedDOMComponentWithTag(result, 'label');
-      expect(label.children[0].textContent).toBe('IMA LABEL');
-    });
-
+  beforeEach(() => {
+    result = TestUtils.renderIntoDocument(
+      <Stub>
+        <Textarea {...props} />
+      </Stub>
+    );
   });
+
+  it('renders the textarea with the correct attributes', () => {
+    const textarea = TestUtils.findRenderedDOMComponentWithTag(result, 'textarea');
+    expect(textarea.getAttribute('id')).toBe('IM AN ID');
+  });
+
+  it('renders text before the text textarea', () => {
+    const label = TestUtils.findRenderedDOMComponentWithTag(result, 'label');
+    expect(label.children[0].textContent).toBe('IMA LABEL');
+  });
+
 });

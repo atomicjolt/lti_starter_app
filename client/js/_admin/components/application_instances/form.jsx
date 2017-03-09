@@ -3,6 +3,7 @@ import _           from 'lodash';
 import ReactSelect from 'react-select';
 import Input       from '../common/input';
 import Textarea from '../common/textarea';
+import Warning from '../common/warning';
 
 export const TEXT_FIELDS = {
   lti_key      : 'LTI Key',
@@ -27,6 +28,7 @@ export default class Form extends React.Component {
     sites:      React.PropTypes.shape({}),
     isUpdate:   React.PropTypes.bool,
     config: React.PropTypes.string,
+    configParseError: React.PropTypes.string,
   };
 
   selectSite(option) {
@@ -83,6 +85,13 @@ export default class Form extends React.Component {
       onSelect: () => this.props.newSite()
     });
 
+    let erroneousConfigWarning = null;
+    if (this.props.configParseError) {
+      erroneousConfigWarning = (
+        <Warning text={this.props.configParseError} />
+      );
+    }
+
     return (
       <form>
         <div className="o-grid o-grid__modal-top">
@@ -110,7 +119,7 @@ export default class Form extends React.Component {
             <Textarea
               className="c-input"
               labelText="Config"
-              inputProps={{
+              textareaProps={{
                 id: 'application_instance_config',
                 name: 'config',
                 placeholder: 'ex: { "foo": "bar" }',
@@ -118,6 +127,7 @@ export default class Form extends React.Component {
                 value: this.props.config || '',
                 onChange: this.props.onChange,
               }}
+              warning={erroneousConfigWarning}
             />
           </div>
         </div>
