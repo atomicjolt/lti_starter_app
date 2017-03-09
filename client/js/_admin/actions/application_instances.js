@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import wrapper from '../../constants/wrapper';
 import Network from '../../constants/network';
 
@@ -32,23 +33,27 @@ export function getApplicationInstance(applicationId, applicationInstanceId) {
 }
 
 export function createApplicationInstance(applicationId, applicationInstance) {
+  const appInstanceClone = _.cloneDeep(applicationInstance);
+  appInstanceClone.config = JSON.parse(applicationInstance.config || '{}');
   return {
     type   : Constants.CREATE_APPLICATION_INSTANCE,
     method : Network.POST,
     url    : `/api/applications/${applicationId}/application_instances`,
     body   : {
-      application_instance: applicationInstance,
+      application_instance: appInstanceClone,
     }
   };
 }
 
 export function saveApplicationInstance(applicationId, applicationInstance) {
+  const appInstanceClone = _.cloneDeep(applicationInstance);
+  appInstanceClone.config = JSON.parse(applicationInstance.config || '{}');
   return {
     type: Constants.SAVE_APPLICATION_INSTANCE,
     method: Network.PUT,
     url: `/api/applications/${applicationId}/application_instances/${applicationInstance.id}`,
     body: {
-      application_instance: applicationInstance,
+      application_instance: appInstanceClone,
     }
   };
 }

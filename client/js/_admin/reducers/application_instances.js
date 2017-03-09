@@ -9,21 +9,20 @@ export default function instances(state = initialState, action) {
     case ApplicationInstancesConstants.GET_APPLICATION_INSTANCES_DONE: {
       const newState = _.cloneDeep(state);
       _.forEach(action.payload, (instance) => {
-        newState[instance.id] = instance;
+        const instanceClone = _.cloneDeep(instance);
+        instanceClone.config = JSON.stringify(instance.config);
+        newState[instance.id] = instanceClone;
       });
       return newState;
     }
 
-    case ApplicationInstancesConstants.GET_APPLICATION_INSTANCE_DONE: {
-      const newState = _.cloneDeep(state);
-      newState[action.payload.id] = action.payload;
-      return newState;
-    }
-
+    case ApplicationInstancesConstants.GET_APPLICATION_INSTANCE_DONE:
     case ApplicationInstancesConstants.SAVE_APPLICATION_INSTANCE_DONE:
     case ApplicationInstancesConstants.CREATE_APPLICATION_INSTANCE_DONE: {
       const newState = _.cloneDeep(state);
-      newState[action.payload.id] = action.payload;
+      const instanceClone = _.cloneDeep(action.payload);
+      instanceClone.config = JSON.stringify(action.payload.config);
+      newState[action.payload.id] = instanceClone;
       return newState;
     }
 

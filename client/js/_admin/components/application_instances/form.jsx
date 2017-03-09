@@ -2,6 +2,7 @@ import React       from 'react';
 import _           from 'lodash';
 import ReactSelect from 'react-select';
 import Input       from '../common/input';
+import Textarea from '../common/textarea';
 
 export const TEXT_FIELDS = {
   lti_key      : 'LTI Key',
@@ -25,6 +26,7 @@ export default class Form extends React.Component {
     site_id:    React.PropTypes.string,
     sites:      React.PropTypes.shape({}),
     isUpdate:   React.PropTypes.bool,
+    config: React.PropTypes.string,
   };
 
   selectSite(option) {
@@ -104,6 +106,20 @@ export default class Form extends React.Component {
               this.renderInput('o-grid__item u-half', 'c-input', 'text', undefined, this.props.isUpdate, ...args)
             )
           }
+          <div className="o-grid__item u-full">
+            <Textarea
+              className="c-input"
+              labelText="Config"
+              inputProps={{
+                id: 'application_instance_config',
+                name: 'config',
+                placeholder: 'ex: { "foo": "bar" }',
+                rows: 3,
+                value: this.props.config || '',
+                onChange: this.props.onChange,
+              }}
+            />
+          </div>
         </div>
         <h3 className="c-modal__subtitle">Install Settings</h3>
         <div className="o-grid o-grid__bottom">

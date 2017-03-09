@@ -22,12 +22,14 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   def create
     @application_instance.domain =
       "#{@application_instance.lti_key}.#{ENV['APP_URL']}"
+    @application_instance.config = params[:application_instance][:config]
 
     @application_instance.save!
     render json: @application_instance.as_json(include: :site)
   end
 
   def update
+    @application_instance.config = params[:application_instance][:config]
     @application_instance.update(application_instance_params)
     render json: @application_instance.as_json(include: :site)
   end
