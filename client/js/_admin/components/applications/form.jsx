@@ -1,6 +1,14 @@
-import React       from 'react';
+import React from 'react';
+import Textarea from '../common/textarea';
+import Warning from '../common/warning';
 
 export default function Form(props) {
+  let erroneousConfigWarning = null;
+  if (props.configParseError) {
+    erroneousConfigWarning = (
+      <Warning text={props.configParseError} />
+    );
+  }
 
   return (
     <form>
@@ -21,6 +29,21 @@ export default function Form(props) {
           <label htmlFor="permissions" className="c-input">
             <span>Canvas API Permissions</span>
           </label>
+        </div>
+        <div className="o-grid__item u-full">
+          <Textarea
+            className="c-input"
+            labelText="Default Config"
+            textareaProps={{
+              id: 'application_default_config',
+              name: 'default_config',
+              placeholder: 'ex: { "foo": "bar" }',
+              rows: 3,
+              value: props.defaultConfig || '',
+              onChange: props.onChange,
+            }}
+            warning={erroneousConfigWarning}
+          />
         </div>
       </div>
       <button
@@ -43,7 +66,9 @@ export default function Form(props) {
 }
 
 Form.propTypes = {
-  onChange       : React.PropTypes.func.isRequired,
-  closeModal     : React.PropTypes.func.isRequired,
-  description    : React.PropTypes.string
+  onChange: React.PropTypes.func.isRequired,
+  closeModal: React.PropTypes.func.isRequired,
+  description: React.PropTypes.string,
+  defaultConfig: React.PropTypes.string,
+  configParseError: React.PropTypes.string,
 };

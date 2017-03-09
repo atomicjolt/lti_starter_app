@@ -23,11 +23,20 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
     @application_instance.domain =
       "#{@application_instance.lti_key}.#{ENV['APP_URL']}"
 
+    # Strong params doesn't allow arbitrary json to be permitted
+    # So we have to explicitly set the config
+    # This will be allowed in rails 5.1
+    @application_instance.config = params[:application_instance][:config]
+
     @application_instance.save!
     render json: @application_instance.as_json(include: :site)
   end
 
   def update
+    # Strong params doesn't allow arbitrary json to be permitted
+    # So we have to explicitly set the config
+    # This will be allowed in rails 5.1
+    @application_instance.config = params[:application_instance][:config]
     @application_instance.update(application_instance_params)
     render json: @application_instance.as_json(include: :site)
   end
