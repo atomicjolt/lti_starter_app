@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170206172615) do
+ActiveRecord::Schema.define(version: 20170309132554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,11 +24,12 @@ ActiveRecord::Schema.define(version: 20170206172615) do
     t.string   "encrypted_canvas_token"
     t.string   "encrypted_canvas_token_salt"
     t.string   "encrypted_canvas_token_iv"
-    t.datetime "created_at",                                           null: false
-    t.datetime "updated_at",                                           null: false
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
     t.string   "domain",                      limit: 2048
     t.integer  "site_id"
     t.string   "tenant"
+    t.jsonb    "config",                                   default: {}
   end
 
   add_index "application_instances", ["application_id"], name: "index_application_instances_on_application_id", using: :btree
@@ -38,11 +39,12 @@ ActiveRecord::Schema.define(version: 20170206172615) do
     t.string   "name"
     t.string   "description"
     t.string   "client_application_name"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.text     "canvas_api_permissions"
     t.integer  "kind",                        default: 0
     t.integer  "application_instances_count"
+    t.jsonb    "default_config",              default: {}
   end
 
   create_table "authentications", force: :cascade do |t|
