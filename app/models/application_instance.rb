@@ -1,4 +1,5 @@
 class ApplicationInstance < ActiveRecord::Base
+  serialize :config, HashSerializer
 
   belongs_to :application, counter_cache: true
   belongs_to :site
@@ -12,11 +13,15 @@ class ApplicationInstance < ActiveRecord::Base
     errors.add(:lti_key, "cannot be changed after creation") if lti_key_changed?
   end
 
+  # example store_accessor for config
+  store_accessor :config, :foo
+
   enum lti_type: [:basic, :course_navigation, :account_navigation]
 
   attr_encrypted :canvas_token, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
 
   after_commit :create_schema, on: :create
+  before_create :create_config
 
   def lti_config_xml
     Lti::Utils.lti_config_xml(self)
@@ -36,6 +41,10 @@ class ApplicationInstance < ActiveRecord::Base
   rescue Apartment::TenantExists
     # If the tenant already exists, then ignore the exception.
     # Just rescue and do nothing.
+  end
+
+  def create_config
+    self.config = application.default_config if config.blank?
   end
 
   # Danger! Whole databases will be lost with this method!

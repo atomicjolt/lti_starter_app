@@ -31,6 +31,7 @@ applications = [
     client_application_name: "admin_app",
     canvas_api_permissions: admin_api_permissions,
     kind: Application.kinds[:admin],
+    default_config: { foo: "bar" },
     application_instances: [{
       tenant: "lti-admin",
       lti_key: "lti-admin",
@@ -45,6 +46,7 @@ applications = [
     client_application_name: "app",
     # List Canvas API methods the app is allowed to use. A full list of constants can be found in canvas_urls
     canvas_api_permissions: "LIST_ACCOUNTS",
+    default_config: { foo: "bar" },
     application_instances: [{
       tenant: Rails.application.secrets.default_lti_key,
       lti_key: Rails.application.secrets.default_lti_key,
