@@ -18,6 +18,7 @@ describe('application instance form', () => {
       newSite:        () => {},
       site_id:        'foo',
       sites:          {},
+      config: '{ "foo": "bar" }',
     };
     result = TestUtils.renderIntoDocument(
       <Form {...props} />
@@ -60,6 +61,13 @@ describe('application instance form', () => {
       TestUtils.Simulate.click(modalButton);
       expect(modalClosed).toBe(true);
     });
+  });
+
+  it('renders config', () => {
+    const inputs = TestUtils.scryRenderedDOMComponentsWithTag(result, 'textarea');
+    const input = _.find(inputs, { id: 'application_instance_config' });
+    expect(input).toBeDefined();
+    expect(input.value).toBe('{ "foo": "bar" }');
   });
 
 });

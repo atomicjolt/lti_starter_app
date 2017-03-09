@@ -1,5 +1,6 @@
 import React        from 'react';
 import TestUtils    from 'react-addons-test-utils';
+import _ from 'lodash';
 import Stub         from '../../../../specs_support/stub';
 import Form         from './form';
 
@@ -17,7 +18,8 @@ describe('applications form', () => {
       onChange    : () => {},
       closeModal  : () => { didClose = true; },
       save        : () => { didSave = true; },
-      description : 'SPEC_DESCRIPTION'
+      description : 'SPEC_DESCRIPTION',
+      default_config: '{ "foo": "bar" }',
     };
 
     result = TestUtils.renderIntoDocument(
@@ -45,5 +47,12 @@ describe('applications form', () => {
     const childDivs = element.childNodes;
     const inputTag = childDivs[0].firstChild.childNodes[1];
     expect(inputTag.value).toContain('SPEC_DESCRIPTION');
+  });
+
+  it('renders default config', () => {
+    const inputs = TestUtils.scryRenderedDOMComponentsWithTag(result, 'textarea');
+    const input = _.find(inputs, { id: 'application_default_config' });
+    expect(input).toBeDefined();
+    expect(input.value).toBe('{ "foo": "bar" }');
   });
 });
