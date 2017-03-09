@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import wrapper from '../../constants/wrapper';
 import Network from '../../constants/network';
 
@@ -21,12 +22,14 @@ export function getApplications() {
 }
 
 export function saveApplication(application) {
+  const applicationClone = _.cloneDeep(application);
+  applicationClone.default_config = JSON.parse(application.default_config || '{}');
   return {
     type   : Constants.SAVE_APPLICATION,
     method : Network.PUT,
     url    : `api/applications/${application.id}`,
     body   : {
-      application
+      application: applicationClone
     }
   };
 }

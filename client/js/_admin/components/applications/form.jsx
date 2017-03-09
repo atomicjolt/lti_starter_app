@@ -1,4 +1,5 @@
 import React       from 'react';
+import Textarea from '../common/textarea';
 
 export default function Form(props) {
 
@@ -22,6 +23,20 @@ export default function Form(props) {
             <span>Canvas API Permissions</span>
           </label>
         </div>
+        <div className="o-grid__item u-full">
+          <Textarea
+            className="c-input"
+            labelText="Default Config"
+            inputProps={{
+              id: 'application_default_config',
+              name: 'default_config',
+              placeholder: 'ex: { "foo": "bar" }',
+              rows: 3,
+              value: props.default_config || '',
+              onChange: props.onChange,
+            }}
+          />
+        </div>
       </div>
       <button
         type="button"
@@ -43,7 +58,8 @@ export default function Form(props) {
 }
 
 Form.propTypes = {
-  onChange       : React.PropTypes.func.isRequired,
-  closeModal     : React.PropTypes.func.isRequired,
-  description    : React.PropTypes.string
+  onChange: React.PropTypes.func.isRequired,
+  closeModal: React.PropTypes.func.isRequired,
+  description: React.PropTypes.string,
+  default_config: React.PropTypes.string,
 };

@@ -7,6 +7,7 @@ class Api::ApplicationsController < Api::ApiApplicationController
   end
 
   def update
+    @application.default_config = params[:application][:default_config]
     @application.update(application_params)
     respond_with(@application)
   end

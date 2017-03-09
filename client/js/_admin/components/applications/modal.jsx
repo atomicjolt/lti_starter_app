@@ -8,6 +8,7 @@ export default class Modal extends React.Component {
     application: React.PropTypes.shape({
       name: React.PropTypes.string,
       description: React.PropTypes.string,
+      default_config: React.PropTypes.string,
     }),
     isOpen: React.PropTypes.bool.isRequired,
     closeModal: React.PropTypes.func.isRequired,
@@ -47,6 +48,7 @@ export default class Modal extends React.Component {
         <h2 className="c-modal__title">{this.state.application.name} Settings</h2>
         <Form
           description={this.state.application.description}
+          default_config={this.state.application.default_config}
           onChange={(e) => { this.applicationChange(e); }}
           closeModal={() => this.props.closeModal()}
           save={() => this.saveApplication()}
