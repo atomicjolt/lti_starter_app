@@ -22,6 +22,7 @@
 //   course_id
 //   starts_before
 //   ends_after
+//   include
 // }
 // return canvasRequest(retrieve_assignments_enabled_for_grade_export_to_sis_accounts, {account_id}, query);
 export const retrieveAssignmentsEnabledForGradeExportToSisAccounts = { type: 'RETRIEVE_ASSIGNMENTS_ENABLED_FOR_GRADE_EXPORT_TO_SIS_ACCOUNTS', method: 'get', key: 'retrieve_assignments_enabled_for_grade_export_to_sis_accountsretrieve_assignments_enabled_for_grade_export_to_sis_accounts_account_id', required: ['account_id'] };
@@ -47,6 +48,7 @@ export const retrieveAssignmentsEnabledForGradeExportToSisAccounts = { type: 'RE
 //   account_id
 //   starts_before
 //   ends_after
+//   include
 // }
 // return canvasRequest(retrieve_assignments_enabled_for_grade_export_to_sis_courses, {course_id}, query);
 export const retrieveAssignmentsEnabledForGradeExportToSisCourses = { type: 'RETRIEVE_ASSIGNMENTS_ENABLED_FOR_GRADE_EXPORT_TO_SIS_COURSES', method: 'get', key: 'retrieve_assignments_enabled_for_grade_export_to_sis_coursesretrieve_assignments_enabled_for_grade_export_to_sis_courses_course_id', required: ['course_id'] };
