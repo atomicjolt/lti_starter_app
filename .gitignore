@@ -18,6 +18,7 @@ secrets.js
 
 config/secrets.js
 s3_website.yml
+.coveralls.yml
 
 ## Environment normalisation:
 /.bundle
