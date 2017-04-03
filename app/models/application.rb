@@ -9,6 +9,7 @@ class Application < ActiveRecord::Base
   # Or instance.bar
   # If foo is not set in the default_config json, it will return nil
   # store_accessor :default_config, :foo, :bar
+  store_accessor :default_config, :visibility
 
   enum kind: [:lti, :admin]
 end

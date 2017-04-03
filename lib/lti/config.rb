@@ -8,20 +8,20 @@ module Lti
       config(args).to_xml(indent: 2)
     end
 
-    def self.course_navigation(config, visibility = "admins")
+    def self.course_navigation(config)
       config[:course_navigation] = {
         text: config[:title],
+        visibility: config[:visibility] || "public",
         default: "enabled",
         enabled: true,
       }
-      config[:course_navigation][:visibility] = visibility if visibility
       config
     end
 
-    def self.account_navigation(config, visibility = "admins")
+    def self.account_navigation(config)
       config[:account_navigation] = {
         text: config[:title],
-        visibility: visibility,
+        visibility: config[:visibility] || "admins",
         default: "enabled",
         enabled: true,
       }

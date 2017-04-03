@@ -36,6 +36,7 @@ module Lti
         domain: domain,
         icon: "https://#{domain}/images/oauth_icon.png",
         description: app.application.description,
+        visibility: app.visibility,
       }
 
       return Lti::Config.xml(config) if app.basic?
@@ -51,11 +52,12 @@ module Lti
     end
 
     def self.course_nav_out(config)
-      course_navigation_config = Lti::Config.course_navigation(config, "public")
       puts ""
       puts "-------------------------------------------------------------------------------------"
       puts "Course Navigation LTI Config"
       puts "-------------------------------------------------------------------------------------"
+      config[:visibility] = "public" if config[:visibility].nil?
+      course_navigation_config = Lti::Config.course_navigation(config)
       puts Lti::Config.xml(course_navigation_config)
       course_navigation_config
     end
@@ -65,6 +67,7 @@ module Lti
       puts "-------------------------------------------------------------------------------------"
       puts "Account Navigation LTI Config"
       puts "-------------------------------------------------------------------------------------"
+      config[:visibility] = "admins" if config[:visibility].nil?
       account_navigation_config = Lti::Config.account_navigation(config)
       puts Lti::Config.xml(account_navigation_config)
       account_navigation_config

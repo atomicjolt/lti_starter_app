@@ -18,6 +18,7 @@ class ApplicationInstance < ActiveRecord::Base
   # Or instance.bar
   # If foo is not set in the config json, it will return nil
   # store_accessor :config, :foo, :bar
+  store_accessor :config, :visibility
 
   enum lti_type: [:basic, :course_navigation, :account_navigation]
 

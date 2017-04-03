@@ -129,6 +129,16 @@ Once you press Save Key, a Developer ID and Key will be generated and displayed 
 The LTI Starter app makes working with the Canvas API simple. See [Canvas](Canvas.md) for more information. Note that working with the Canvas API will require a server side proxy that is not part of this project.
 
 
+## Admin Page
+
+There is an admin page where one can setup the tools located at `/admin`.
+In the settings for an Application Instance, JSON can be added to configure the visibility of a tool.
+For example:
+```json
+{"visibility":"admins"}
+```
+to allow only admins to see the tool that is installed.
+
 ## Development Details
 
 #### Webpack
