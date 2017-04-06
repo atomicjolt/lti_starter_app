@@ -17,6 +17,12 @@ export const TYPE_RADIOS = {
   course_navigation  : 'Course Navigation',
 };
 
+export const VISIBILITY_RADIOS = {
+  everyone: 'Everyone',
+  admins: 'Admins',
+  members: 'Members',
+};
+
 export default class Form extends React.Component {
 
   static propTypes = {
@@ -130,6 +136,14 @@ export default class Form extends React.Component {
               warning={erroneousConfigWarning}
             />
           </div>
+        </div>
+        <h3 className="c-modal__subtitle">Visibility Settings</h3>
+        <div className="o-grid">
+          {
+            _.map(VISIBILITY_RADIOS, (...args) =>
+              this.renderInput('o-grid__item u-third', 'c-checkbox', 'radio', 'visibility', this.props.isUpdate, ...args)
+            )
+          }
         </div>
         <h3 className="c-modal__subtitle">Install Settings</h3>
         <div className="o-grid o-grid__bottom">

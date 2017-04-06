@@ -56,7 +56,7 @@ module Lti
       puts "-------------------------------------------------------------------------------------"
       puts "Course Navigation LTI Config"
       puts "-------------------------------------------------------------------------------------"
-      config[:visibility] = "public" if config[:visibility].nil?
+      config[:visibility] = "public" if config[:visibility] == "everyone"
       course_navigation_config = Lti::Config.course_navigation(config)
       puts Lti::Config.xml(course_navigation_config)
       course_navigation_config
@@ -67,7 +67,7 @@ module Lti
       puts "-------------------------------------------------------------------------------------"
       puts "Account Navigation LTI Config"
       puts "-------------------------------------------------------------------------------------"
-      config[:visibility] = "admins" if config[:visibility].nil?
+      config[:visibility] = "public" if config[:visibility] == "everyone"
       account_navigation_config = Lti::Config.account_navigation(config)
       puts Lti::Config.xml(account_navigation_config)
       account_navigation_config

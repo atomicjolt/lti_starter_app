@@ -18,9 +18,9 @@ class ApplicationInstance < ActiveRecord::Base
   # Or instance.bar
   # If foo is not set in the config json, it will return nil
   # store_accessor :config, :foo, :bar
-  store_accessor :config, :visibility
 
   enum lti_type: [:basic, :course_navigation, :account_navigation]
+  enum visibility: [:everyone, :admins, :members]
 
   attr_encrypted :canvas_token, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
 

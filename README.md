@@ -132,12 +132,7 @@ The LTI Starter app makes working with the Canvas API simple. See [Canvas](Canva
 ## Admin Page
 
 There is an admin page where one can setup the tools located at `/admin`.
-In the settings for an Application Instance, JSON can be added to configure the visibility of a tool.
-For example:
-```json
-{"visibility":"admins"}
-```
-to allow only admins to see the tool that is installed.
+In the settings for an Application Instance, Visibility can be configured to affect who can see the tool when it gets installed.
 
 ## Development Details
 
