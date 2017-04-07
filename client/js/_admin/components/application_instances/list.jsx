@@ -11,6 +11,7 @@ export default function List(props) {
           <th><span>LTI KEY</span></th>
           <th><span>DOMAIN</span></th>
           <th><span>SETTINGS</span></th>
+          <th><span>CONFIG XML</span></th>
           <th />
         </tr>
       </thead>
