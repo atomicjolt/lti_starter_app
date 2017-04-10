@@ -1,15 +1,24 @@
 require "rails_helper"
 
 RSpec.describe Application, type: :model do
-  describe "create application" do
-    before do
-      @consumer_uri = "example.com"
+  describe "valid?" do
+    it "is true when name is unique" do
+      name = "asdf1234"
+      application = create(:application, name: name)
+      expect(application.valid?).to be true
     end
 
-    it "requires a name" do
-      expect do
-        described_class.create!(description: "a test")
-      end.to raise_exception(ActiveRecord::RecordInvalid)
+    it "is false for duplicate name" do
+      name = "asdf1234"
+      create(:application, name: name)
+      application = build(:application, name: name)
+      expect(application.valid?(name)).to be false
+    end
+
+    it "is false when name is missing" do
+      name = nil
+      application = build(:application, name: name)
+      expect(application.valid?).to be false
     end
   end
 end
