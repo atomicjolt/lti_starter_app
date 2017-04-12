@@ -55,6 +55,7 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
       :canvas_token,
       :lti_key,
       :lti_type,
+      :visibility,
     )
   end
 

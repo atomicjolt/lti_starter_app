@@ -20,6 +20,7 @@ class ApplicationInstance < ActiveRecord::Base
   # store_accessor :config, :foo, :bar
 
   enum lti_type: [:basic, :course_navigation, :account_navigation]
+  enum visibility: [:everyone, :admins, :members]
 
   attr_encrypted :canvas_token, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
 

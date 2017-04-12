@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170309132554) do
+ActiveRecord::Schema.define(version: 20170406181303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170309132554) do
     t.integer  "site_id"
     t.string   "tenant"
     t.jsonb    "config",                                   default: {}
+    t.integer  "visibility",                               default: 0
   end
 
   add_index "application_instances", ["application_id"], name: "index_application_instances_on_application_id", using: :btree
