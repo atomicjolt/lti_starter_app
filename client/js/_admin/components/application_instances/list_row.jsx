@@ -3,6 +3,7 @@ import { Link }       from 'react-router';
 import _              from 'lodash';
 import Modal          from './modal';
 import SettingsInputs from '../common/settings_inputs';
+import ConfigXmlModal from './config_xml_modal';
 
 export default class ListRow extends React.Component {
   static propTypes = {
@@ -38,7 +39,10 @@ export default class ListRow extends React.Component {
 
   constructor() {
     super();
-    this.state = { modalOpen: false };
+    this.state = {
+      modalOpen: false,
+      modalConfigXmlOpen: false,
+    };
   }
 
   checkAuthentication(e) {
@@ -95,6 +99,20 @@ export default class ListRow extends React.Component {
             closeModal={() => this.setState({ modalOpen: false })}
             sites={this.props.sites}
             save={this.props.save}
+            application={this.props.application}
+            applicationInstance={this.props.applicationInstance}
+          />
+        </td>
+        <td>
+          <button
+            style={styles.buttonIcon}
+            onClick={() => this.setState({ modalConfigXmlOpen: true })}
+          >
+            <i className="i-settings" />
+          </button>
+          <ConfigXmlModal
+            isOpen={this.state.modalConfigXmlOpen}
+            closeModal={() => this.setState({ modalConfigXmlOpen: false })}
             application={this.props.application}
             applicationInstance={this.props.applicationInstance}
           />
