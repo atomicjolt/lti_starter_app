@@ -94,6 +94,7 @@ export const getSingleAssignment = { type: 'GET_SINGLE_ASSIGNMENT', method: 'get
 //   assignment[published]
 //   assignment[grading_standard_id]
 //   assignment[omit_from_final_grade]
+//   assignment[quiz_lti]
 // }
 // return canvasRequest(create_assignment, {course_id}, query);
 export const createAssignment = { type: 'CREATE_ASSIGNMENT', method: 'post', key: 'create_assignmentcreate_assignment_course_id', required: ['course_id'] };
