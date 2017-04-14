@@ -52,7 +52,7 @@ function launch(app) {
   runServer(app.port, app.outputPath);
 }
 
-const options = { stage: 'hot', onlyPack: false, port: settings.hotPort };
+const options = { hotPack, stage: 'hot', onlyPack: false, port: settings.hotPort };
 if (appName) {
   const result = clientApps.buildApp(appName, options);
   launch(result.app);
@@ -60,10 +60,7 @@ if (appName) {
   options.onlyPack = true;
   const results = clientApps.buildApps(options);
   _.each(results, (result) => {
-    setupMiddleware(_.merge({},
-      result.app,
-      { publicPath: `/${result.app.name}` }
-    ));
+    setupMiddleware(result.app);
   });
   runServer(settings.hotPort, settings.paths.devOutput);
 } else {
