@@ -1,7 +1,7 @@
 import accounts from './accounts';
 import {
   helperListAccounts,
-} from '../../libs/canvas/helper_constants';
+} from '../../../libs/canvas/helper_constants';
 
 describe('accounts reducer', () => {
   describe('initial state', () => {
