@@ -5,7 +5,7 @@ class Api::CanvasProxyController < Api::ApiApplicationController
   before_action :protect_canvas_api
 
   def proxy
-    result = canvas_api.proxy(canvas_proxy_params[:type], canvas_proxy_params, request.body.read)
+    result = canvas_api.proxy(params[:type], params.to_unsafe_h, request.body.read)
     response.status = result.code
 
     allowed_headers = %w{
@@ -20,10 +20,6 @@ class Api::CanvasProxyController < Api::ApiApplicationController
     end
 
     render plain: result.body
-  end
-
-  def canvas_proxy_params
-    params.permit(:account_id, :lti_key, :type, :id, :format, :controller, :action)
   end
 
 end
