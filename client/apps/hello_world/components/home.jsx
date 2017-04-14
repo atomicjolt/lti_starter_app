@@ -1,5 +1,5 @@
 import React from 'react';
-import assets from '../assets';
+import assets from '../libs/assets';
 import Auth from '../../../libs/canvas/components/canvas_authentication';
 
 const Home = function() {
