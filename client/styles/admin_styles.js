@@ -1,1 +1,0 @@
-require('./admin/styles.scss');

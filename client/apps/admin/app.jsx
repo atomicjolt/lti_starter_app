@@ -9,6 +9,8 @@ import configureStore         from './store/configure_store';
 import jwt                    from '../../libs/loaders/jwt';
 import { getInitialSettings } from '../../libs/reducers/settings';
 
+import './styles/styles.scss';
+
 // Polyfill es6 promises for IE
 es6Promise.polyfill();
 
