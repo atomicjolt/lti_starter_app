@@ -1,7 +1,7 @@
 import { combineReducers }    from 'redux';
 import settings               from '../../../libs/reducers/settings';
-import application            from '../../../libs/reducers/application';
 import jwt                    from '../../../libs/reducers/jwt';
+import application            from './application';
 import applications           from './applications';
 import applicationInstances   from './application_instances';
 import sites                  from './sites';
