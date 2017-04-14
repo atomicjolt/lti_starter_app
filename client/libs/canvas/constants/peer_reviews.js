@@ -79,7 +79,7 @@ export const peerReviewsCreatePeerReviewCourses = { type: 'PEER_REVIEWS_CREATE_P
 // return canvasRequest(peer_reviews_create_peer_review_sections, {section_id, assignment_id, submission_id}, query);
 export const peerReviewsCreatePeerReviewSections = { type: 'PEER_REVIEWS_CREATE_PEER_REVIEW_SECTIONS', method: 'post', key: 'peer_reviews_create_peer_review_sectionspeer_reviews_create_peer_review_sections_{section_id}_{assignment_id}_{submission_id}', required: ['section_id', 'assignment_id', 'submission_id'] };
 
-// Create Peer Review
+// Delete Peer Review
 // Delete a peer review for the assignment
 //
 // API Docs: https://canvas.instructure.com/doc/api/peer_reviews.html
@@ -89,10 +89,10 @@ export const peerReviewsCreatePeerReviewSections = { type: 'PEER_REVIEWS_CREATE_
 // const query = {
 //   user_id (required)
 // }
-// return canvasRequest(peer_reviews_create_peer_review_courses, {course_id, assignment_id, submission_id}, query);
-export const peerReviewsCreatePeerReviewCourses = { type: 'PEER_REVIEWS_CREATE_PEER_REVIEW_COURSES', method: 'delete', key: 'peer_reviews_create_peer_review_coursespeer_reviews_create_peer_review_courses_{course_id}_{assignment_id}_{submission_id}', required: ['course_id', 'assignment_id', 'submission_id'] };
+// return canvasRequest(delete_peer_review_courses, {course_id, assignment_id, submission_id}, query);
+export const deletePeerReviewCourses = { type: 'DELETE_PEER_REVIEW_COURSES', method: 'delete', key: 'delete_peer_review_coursesdelete_peer_review_courses_{course_id}_{assignment_id}_{submission_id}', required: ['course_id', 'assignment_id', 'submission_id'] };
 
-// Create Peer Review
+// Delete Peer Review
 // Delete a peer review for the assignment
 //
 // API Docs: https://canvas.instructure.com/doc/api/peer_reviews.html
@@ -102,5 +102,5 @@ export const peerReviewsCreatePeerReviewCourses = { type: 'PEER_REVIEWS_CREATE_P
 // const query = {
 //   user_id (required)
 // }
-// return canvasRequest(peer_reviews_create_peer_review_sections, {section_id, assignment_id, submission_id}, query);
-export const peerReviewsCreatePeerReviewSections = { type: 'PEER_REVIEWS_CREATE_PEER_REVIEW_SECTIONS', method: 'delete', key: 'peer_reviews_create_peer_review_sectionspeer_reviews_create_peer_review_sections_{section_id}_{assignment_id}_{submission_id}', required: ['section_id', 'assignment_id', 'submission_id'] };
+// return canvasRequest(delete_peer_review_sections, {section_id, assignment_id, submission_id}, query);
+export const deletePeerReviewSections = { type: 'DELETE_PEER_REVIEW_SECTIONS', method: 'delete', key: 'delete_peer_review_sectionsdelete_peer_review_sections_{section_id}_{assignment_id}_{submission_id}', required: ['section_id', 'assignment_id', 'submission_id'] };
