@@ -1,6 +1,6 @@
 class HashSerializer
   def self.dump(hash)
-    hash.to_json
+    hash
   end
 
   def self.load(hash)
