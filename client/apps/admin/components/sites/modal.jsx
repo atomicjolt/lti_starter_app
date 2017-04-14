@@ -2,7 +2,7 @@ import React                from 'react';
 import { connect }          from 'react-redux';
 import ReactModal           from 'react-modal';
 
-import CanvasAuthentication from '../../../components/common/canvas_authentication';
+import CanvasAuthentication from '../../../../libs/canvas/components/canvas_authentication';
 import SiteForm             from './form';
 import * as SiteActions from '../../actions/sites';
 

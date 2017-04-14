@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 import Stub from '../../../../specs_support/stub';
 import ConfigXmlModal from './config_xml_modal';
 
