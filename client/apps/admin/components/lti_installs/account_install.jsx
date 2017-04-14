@@ -3,7 +3,7 @@ import _                              from 'lodash';
 import {
   createExternalToolAccounts,
   deleteExternalToolAccounts,
- } from '../../../libs/canvas/constants/external_tools';
+} from '../../../../libs/canvas/constants/external_tools';
 
 export default function AccountInstall(props) {
   function install(applicationInstance, installedTool) {

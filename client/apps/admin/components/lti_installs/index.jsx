@@ -6,20 +6,20 @@ import * as ApplicationInstanceActions from '../../actions/application_instances
 import Heading                      from '../common/heading';
 import Sidebar                      from './sidebar';
 import InstallPane                  from './install_pane';
-import canvasRequest                from '../../../libs/canvas/action';
+import canvasRequest                from '../../../../libs/canvas/action';
 
 import {
   listActiveCoursesInAccount
-} from '../../../libs/canvas/constants/accounts';
+} from '../../../../libs/canvas/constants/accounts';
 
 import {
   listExternalToolsCourses,
   listExternalToolsAccounts,
-} from '../../../libs/canvas/constants/external_tools';
+} from '../../../../libs/canvas/constants/external_tools';
 
 import {
   helperListAccounts,
-} from '../../../libs/canvas/helper_constants';
+} from '../../../../libs/canvas/helper_constants';
 
 function select(state, props) {
   const instanceId = props.params.applicationInstanceId;

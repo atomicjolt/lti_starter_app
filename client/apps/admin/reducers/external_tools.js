@@ -1,12 +1,12 @@
 import _             from 'lodash';
 
-import { DONE }      from '../../constants/wrapper';
+import { DONE }      from '../../../libs/constants/wrapper';
 
 import {
   listExternalToolsAccounts,
   createExternalToolAccounts,
   deleteExternalToolAccounts,
-} from '../../libs/canvas/constants/external_tools';
+} from '../../../libs/canvas/constants/external_tools';
 
 const initialState = {};
 

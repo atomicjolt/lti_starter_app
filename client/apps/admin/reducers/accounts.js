@@ -1,10 +1,10 @@
 import _             from 'lodash';
 
-import { DONE }      from '../../constants/wrapper';
+import { DONE }      from '../../../libs/constants/wrapper';
 
 import {
   helperListAccounts,
-} from '../../libs/canvas/helper_constants';
+} from '../../../libs/canvas/helper_constants';
 
 const initialState = {
   accounts : {},

@@ -2,7 +2,7 @@ import React                               from 'react';
 import { connect }                         from 'react-redux';
 import { Wrapper, Button, Menu, MenuItem } from 'react-aria-menubutton';
 import { Link }                            from 'react-router';
-import assets                              from '../../../libs/assets';
+import assets                              from '../../../../libs/assets';
 import SubNav                              from '../common/sub_nav';
 
 const select = state => ({

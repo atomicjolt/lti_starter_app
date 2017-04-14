@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import settings            from '../../../libs/reducers/settings';
-import jwt                 from './jwt';
-import application         from './application';
+import jwt                 from '../../../libs/reducers/jwt';
+import application         from '../../../libs/reducers/application';
 
 const rootReducer = combineReducers({
   settings,

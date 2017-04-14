@@ -2,7 +2,7 @@ import React from 'react';
 import {
   createExternalToolCourses,
   deleteExternalToolCourses,
-} from '../../../libs/canvas/constants/external_tools';
+} from '../../../../libs/canvas/constants/external_tools';
 
 export default function CourseInstallRow(props) {
   const {
