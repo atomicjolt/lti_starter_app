@@ -13,7 +13,7 @@ describe ApplicationController, type: :controller do
     before_action :protect_canvas_api
 
     def index
-      result = canvas_api.proxy(params[:type], params, request.body.read)
+      result = canvas_api.proxy(params[:type], params.to_unsafe_h, request.body.read)
       response.status = result.code
 
       render plain: result.body
