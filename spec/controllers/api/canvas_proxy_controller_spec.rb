@@ -15,7 +15,7 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
   describe "proxy without authorization" do
     describe "GET" do
       it "should return an unauthorized" do
-        get :proxy, type: "foo", format: :json
+        get :proxy, params: { type: "foo" }, format: :json
         expect(response).to have_http_status(:unauthorized)
       end
     end
@@ -32,22 +32,24 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
     describe "GET" do
       it "should successfully call the canvas api" do
         type = "LIST_ACCOUNTS"
-        get :proxy, type: type, lti_key: @application_instance.lti_key, format: :json
+        get :proxy, params: { type: type, lti_key: @application_instance.lti_key }, format: :json
         expect(response).to have_http_status(:success)
       end
       it "should successfully call the canvas api to generate a url to get courses" do
         type = "LIST_YOUR_COURSES"
-        get :proxy, type: type, lti_key: @application_instance.lti_key, account_id: 1, format: :json
+        get :proxy, params: { type: type, lti_key: @application_instance.lti_key, account_id: 1 }, format: :json
         expect(response).to have_http_status(:success)
       end
       it "should successfully call the canvas api to generate a url to get courses with extra params" do
         type = "LIST_YOUR_COURSES"
         get :proxy,
-            type: type,
-            lti_key: @application_instance.lti_key,
-            account_id: 1,
-            include: [1, 2],
-            per_page: 100,
+            params: {
+              type: type,
+              lti_key: @application_instance.lti_key,
+              account_id: 1,
+              include: [1, 2],
+              per_page: 100,
+            },
             format: :json
         expect(response).to have_http_status(:success)
       end
@@ -59,7 +61,14 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
         payload = {
           account: { name: "Canvas Demo Courses" },
         }.to_json
-        post :proxy, payload, type: type, lti_key: @application_instance.lti_key, account_id: 1, format: :json
+        post :proxy,
+             body: payload,
+             params: {
+               type: type,
+               lti_key: @application_instance.lti_key,
+               account_id: 1,
+             },
+             format: :json
         expect(JSON.parse(response.body)["name"]).to eq("Canvas Demo Courses")
       end
     end
@@ -71,10 +80,12 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
           name: "Canvas Demo Courses",
         }.to_json
         put :proxy,
-            payload,
-            type: type,
-            lti_key: @application_instance.lti_key,
-            id: 1,
+            body: payload,
+            params: {
+              type: type,
+              lti_key: @application_instance.lti_key,
+              id: 1,
+            },
             format: :json
         expect(JSON.parse(response.body)["name"]).to eq("Canvas Demo Courses")
       end

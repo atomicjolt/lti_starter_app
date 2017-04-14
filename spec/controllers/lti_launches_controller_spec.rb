@@ -13,7 +13,7 @@ RSpec.describe LtiLaunchesController, type: :controller do
 
     it "sets up the user, logs them in and redirects" do
       params = lti_params(@app.lti_key, @app.lti_secret, { "launch_url" => lti_launches_url, "roles" => "Learner" })
-      post :index, params
+      post :index, params: params
       expect(response).to have_http_status(200)
     end
   end

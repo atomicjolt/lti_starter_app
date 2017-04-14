@@ -57,9 +57,11 @@ RSpec.describe Api::ApplicationsController, type: :controller do
     describe "PUT update" do
       it "Updates the application instance" do
         put :update,
-            id: @application.id,
-            application: {
-              name: "bfcoder",
+            params: {
+              id: @application.id,
+              application: {
+                name: "bfcoder",
+              },
             },
             format: :json
         expect(response).to have_http_status(204)

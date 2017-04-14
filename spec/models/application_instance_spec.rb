@@ -75,10 +75,8 @@ RSpec.describe ApplicationInstance, type: :model do
     end
 
     it "creates a schema upon creation" do
-      TestAfterCommit.with_commits(true) do
-        expect(Apartment::Tenant).to receive(:create)
-        @application_instance = create :application_instance
-      end
+      expect(Apartment::Tenant).to receive(:create)
+      @application_instance = create :application_instance
     end
 
     it "does not allow the name to be changed after creation" do

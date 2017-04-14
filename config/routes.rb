@@ -43,4 +43,9 @@ Rails.application.routes.draw do
     resources :canvas_accounts, only: [:index]
     resources :sites
   end
+
+  get "api/canvas" => "api/canvas_proxy#proxy"
+  post "api/canvas" => "api/canvas_proxy#proxy"
+  put "api/canvas" => "api/canvas_proxy#proxy"
+  delete "api/canvas" => "api/canvas_proxy#proxy"
 end
