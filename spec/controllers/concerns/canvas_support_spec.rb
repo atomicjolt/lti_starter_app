@@ -16,17 +16,17 @@ describe ApplicationController, type: :controller do
       result = canvas_api.proxy(params[:type], params, request.body.read)
       response.status = result.code
 
-      render text: result.body
+      render plain: result.body
     end
   end
 
   it "provides access to the canvas api" do
-    get :index, lti_key: @app.lti_key, format: :json, type: "LIST_ACCOUNTS"
+    get :index, params: { lti_key: @app.lti_key, type: "LIST_ACCOUNTS" }, format: :json
     expect(response).to have_http_status(:success)
   end
 
   it "doesn't allow access to unauthorized API endpoints" do
-    get :index, lti_key: @app.lti_key, format: :json, type: "LIST_ACCOUNTS_FOR_COURSE_ADMINS"
+    get :index, params: { lti_key: @app.lti_key, type: "LIST_ACCOUNTS_FOR_COURSE_ADMINS" }, format: :json
     expect(response).to have_http_status(:unauthorized)
   end
 end

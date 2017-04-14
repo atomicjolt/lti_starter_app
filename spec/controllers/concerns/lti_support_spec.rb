@@ -15,7 +15,7 @@ describe ApplicationController, type: :controller do
     before_action :do_lti
 
     def index
-      render text: "User: #{current_user.display_name}"
+      render plain: "User: #{current_user.display_name}"
     end
   end
 
@@ -31,7 +31,7 @@ describe ApplicationController, type: :controller do
         FactoryGirl.create(:user, email: "steve@apple.com")
 
         params = lti_params(@app.lti_key, @app.lti_secret, { "launch_url" => @launch_url, "roles" => "Learner" })
-        post :index, params
+        post :index, params: params
         expect(response).to have_http_status(200)
         expect(response.body).to include("User:")
       end
@@ -41,7 +41,7 @@ describe ApplicationController, type: :controller do
       it "should return unauthorized status" do
         params = lti_params(@app.lti_key, @app.lti_secret, { "launch_url" => @launch_url })
         params[:context_title] = "invalid"
-        post :index, params
+        post :index, params: params
         expect(response).to have_http_status(401)
       end
     end

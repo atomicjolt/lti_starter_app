@@ -21,7 +21,7 @@ describe ApplicationController, type: :controller do
       before_action :check_for_iframes_problem
 
       def index
-        render text: ""
+        render plain: ""
       end
     end
     before do
@@ -44,7 +44,7 @@ describe ApplicationController, type: :controller do
       before_action :check_for_user_auth
 
       def index
-        render text: ""
+        render plain: ""
       end
     end
     before do
@@ -55,7 +55,7 @@ describe ApplicationController, type: :controller do
         @app.lti_key, @app.lti_secret,
         { "launch_url" => @launch_url, "roles" => "Instructor" }
       )
-      post :index, params
+      post :index, params: params
       expect(response).to have_http_status(302)
       expect(response).to redirect_to(
         user_canvas_omniauth_authorize_path(canvas_url: @app.site.url),
