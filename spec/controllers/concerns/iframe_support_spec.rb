@@ -39,7 +39,7 @@ describe ApplicationController, type: :controller do
       include Concerns::LtiSupport
       include Concerns::IframeSupport
 
-      skip_before_filter :verify_authenticity_token
+      skip_before_action :verify_authenticity_token
       before_action :do_lti
       before_action :check_for_user_auth
 

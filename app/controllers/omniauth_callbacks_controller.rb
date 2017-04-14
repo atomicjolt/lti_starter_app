@@ -1,10 +1,10 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   include Concerns::LtiSupport
 
-  before_filter :verify_oauth_response, except: [:passthru]
-  before_filter :associated_using_oauth, except: [:passthru]
-  before_filter :find_using_oauth, except: [:passthru]
-  before_filter :create_using_oauth, except: [:passthru]
+  before_action :verify_oauth_response, except: [:passthru]
+  before_action :associated_using_oauth, except: [:passthru]
+  before_action :find_using_oauth, except: [:passthru]
+  before_action :create_using_oauth, except: [:passthru]
 
   def passthru
     render file: "#{Rails.root}/public/404.html", status: 404, layout: false
