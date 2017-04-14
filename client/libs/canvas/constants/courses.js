@@ -384,9 +384,9 @@ export const resetCourse = { type: 'RESET_COURSE', method: 'post', key: 'reset_c
 
 // Get effective due dates
 // For each assignment in the course, returns each assigned student's ID
-// and their corresponding due date along with some Multiple Grading Periods
-// data. Returns a collection with keys representing assignment IDs and values
-// as a collection containing keys representing student IDs and values representing
+// and their corresponding due date along with some grading period data.
+// Returns a collection with keys representing assignment IDs and values as a
+// collection containing keys representing student IDs and values representing
 // the student's effective due_at, the grading_period_id of which the due_at falls
 // in, and whether or not the grading period is closed (in_closed_grading_period)
 // 
