@@ -1,6 +1,6 @@
 import _                           from 'lodash';
-import api                         from '../api';
-import { DONE }                    from '../../constants/wrapper';
+import api                         from '../api/api';
+import { DONE }                    from '../constants/wrapper';
 import { getNextUrl, parseParams } from '../urls';
 
 const canvasProxyUrl = 'api/canvas';

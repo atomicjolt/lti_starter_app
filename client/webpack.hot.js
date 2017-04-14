@@ -65,7 +65,7 @@ if (appName) {
       { publicPath: `/${appName}` }
     ));
   });
-  runServer(settings.hotPort, settings.path.devOutput);
+  runServer(settings.hotPort, settings.paths.devOutput);
 } else {
   _.each(clientApps.buildApps(options), (result) => {
     launch(result.app);
