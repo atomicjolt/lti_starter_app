@@ -1,4 +1,5 @@
 require_relative 'boot'
+require_relative "../lib/middleware/oauth_state_middleware"
 
 require 'rails/all'
 
@@ -34,7 +35,7 @@ module ReactRailsStarterApp
     end
 
     # Middleware that can restore state after an OAuth request
-    config.middleware.insert_before 0, "OauthStateMiddleware"
+    config.middleware.insert_before 0, OauthStateMiddleware
 
     config.webpack = {
       use_manifest: false,
