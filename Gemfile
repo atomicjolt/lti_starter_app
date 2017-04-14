@@ -5,12 +5,23 @@
 
 source "https://rubygems.org"
 
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "4.2.7"
+gem "rails", "5.0.2"
 
 # Database
 gem "apartment"
 gem "pg"
+
+# UI
+gem "autoprefixer-rails"
+gem "non-stupid-digest-assets" # also compile assets without digest (fixes font problem)
+gem "sass-rails"
+gem "uglifier"
 
 # authentication, authorization, integrations
 gem "attr_encrypted"
@@ -30,9 +41,8 @@ gem "sendgrid"
 # JSON parser
 gem "yajl-ruby", require: "yajl"
 
-# deployment
-gem "unicorn"
-gem "unicorn-rails"
+# server
+gem "puma"
 
 # Used for deploying to Heroku. Can be removed if not deploying to Heroku.
 gem "heroku_secrets", git: "https://github.com/alexpeattie/heroku_secrets.git"
@@ -44,30 +54,27 @@ gem "rack-cors", require: "rack/cors"
 # Paging
 gem "will_paginate"
 
-# Also compile assets without digest (fixes font problem)
-gem "non-stupid-digest-assets"
-
 group :development do
-  gem "autoprefixer-rails"
   gem "better_errors"
   gem "binding_of_caller", platforms: [:mri_21]
   gem "hub", require: nil
-  gem "mailcatcher"
   gem "mail_view"
-  gem "quiet_assets"
   gem "rails_apps_pages"
   gem "rails_apps_testing"
   gem "rails_layout"
   gem "rb-fchange", require: false
   gem "rb-fsevent", require: false
   gem "rb-inotify", require: false
-  gem "sass-rails"
+  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem "listen"
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
-  gem "uglifier"
+  gem "spring-watcher-listen"
+  gem "web-console"
 end
 
 group :development, :test do
-  gem "byebug"
+  gem "byebug", platform: :mri
   gem "coveralls", require: false
   gem "dotenv-rails"
   gem "factory_girl_rails"
@@ -89,3 +96,6 @@ end
 group :production do
   gem "rails_12factor"
 end
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

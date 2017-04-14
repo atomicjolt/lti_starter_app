@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -31,10 +30,9 @@ ActiveRecord::Schema.define(version: 20170406181303) do
     t.string   "tenant"
     t.jsonb    "config",                                   default: {}
     t.integer  "visibility",                               default: 0
+    t.index ["application_id"], name: "index_application_instances_on_application_id", using: :btree
+    t.index ["site_id"], name: "index_application_instances_on_site_id", using: :btree
   end
-
-  add_index "application_instances", ["application_id"], name: "index_application_instances_on_application_id", using: :btree
-  add_index "application_instances", ["site_id"], name: "index_application_instances_on_site_id", using: :btree
 
   create_table "applications", force: :cascade do |t|
     t.string   "name"
@@ -67,36 +65,32 @@ ActiveRecord::Schema.define(version: 20170406181303) do
     t.string   "encrypted_refresh_token"
     t.string   "encrypted_refresh_token_salt"
     t.string   "encrypted_refresh_token_iv"
+    t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
+    t.index ["user_id"], name: "index_authentications_on_user_id", using: :btree
   end
-
-  add_index "authentications", ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
-  add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
 
   create_table "nonces", force: :cascade do |t|
     t.string   "nonce"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["nonce"], name: "index_nonces_on_nonce", unique: true, using: :btree
   end
-
-  add_index "nonces", ["nonce"], name: "index_nonces_on_nonce", unique: true, using: :btree
 
   create_table "oauth_states", force: :cascade do |t|
     t.string   "state"
     t.text     "payload"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["state"], name: "index_oauth_states_on_state", using: :btree
   end
-
-  add_index "oauth_states", ["state"], name: "index_oauth_states_on_state", using: :btree
 
   create_table "permissions", force: :cascade do |t|
     t.integer  "role_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["role_id", "user_id"], name: "index_permissions_on_role_id_and_user_id", using: :btree
   end
-
-  add_index "permissions", ["role_id", "user_id"], name: "index_permissions_on_role_id_and_user_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -110,9 +104,8 @@ ActiveRecord::Schema.define(version: 20170406181303) do
     t.string   "oauth_secret"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.index ["url"], name: "index_sites_on_url", using: :btree
   end
-
-  add_index "sites", ["url"], name: "index_sites_on_url", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -137,9 +130,8 @@ ActiveRecord::Schema.define(version: 20170406181303) do
     t.string   "lti_user_id"
     t.string   "lti_provider"
     t.string   "lms_user_id"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

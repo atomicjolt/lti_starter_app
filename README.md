@@ -1,6 +1,10 @@
 # LTI Starter App [![Build Status](https://travis-ci.org/atomicjolt/lti_starter_app.svg?branch=master)](https://travis-ci.org/atomicjolt/lti_starter_app) [![Coverage Status](https://coveralls.io/repos/github/atomicjolt/lti_starter_app/badge.svg?branch=master)](https://coveralls.io/github/atomicjolt/lti_starter_app?branch=master)
+-----------------------
+There are many starter kits that will help you get started with React and Redux.
+This is the one created by, maintained by and used by [Atomic Jolt](http://www.atomicjolt.com).
+Atomic Jolt uses this as application as a starting place for Ruby on Rails applications that
+utilize React.
 
-There are many starter kits that will help you get started with React and Redux. This is the one created by, maintained by and used by [Atomic Jolt](http://www.atomicjolt.com). Atomic Jolt uses this as application as a starting place for Ruby on Rails applications that utilize React.
 
 
 ## Getting Started
@@ -180,6 +184,52 @@ yarn upgrade-interactive
 ```
 
 
+
+## Scripts:
+-----------------------
+The following scripts are available for testing, building and deploying applications
+
+Run all tests:
+  `yarn test`
+
+Generate coverage report:
+  `yarn coverage`
+
+Run webpack hot reload server:
+  `yarn hot`
+
+Run reload server for a specific application:
+  `yarn hot [app name]`
+
+Serve production assets. Must run `yarn build` first:
+  `yarn live`
+
+Build development version including html pages:
+  `yarn build_dev`
+
+Only run the webpack build without generating html pages or subdirectories. This will output all results
+directly into the build/dev directory
+  `yarn build_dev_pack`
+
+Build for production:
+  `yarn build`
+
+Only run the webpack build without generating html pages or subdirectories. This will output all results
+directly into the build/prod directory
+  `yarn build_pack`
+
+After setting up .s3-website.json this will create a S3 bucket and set it as a website:
+  `yarn create`
+
+Release a production build to the S3 website bucket created by `yarn create`
+  `yarn release`
+
+Run a linter over the project:
+  `yarn lint`
+
+
+#Deploy to S3:
+-----------------------
 ## Deployment
 
 ### Heroku

@@ -1,19 +1,12 @@
-require File.expand_path("../boot", __FILE__)
+require_relative 'boot'
 
-# Pick the frameworks you want:
-require "active_model/railtie"
-require "active_record/railtie"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "action_view/railtie"
-require "sprockets/railtie"
-# require "rails/test_unit/railtie"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module LtiStarterApp
+module ReactRailsStarterApp
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -33,7 +26,7 @@ module LtiStarterApp
       "X-Frame-Options" => "ALLOWALL",
     }
 
-    config.middleware.insert_before 0, "Rack::Cors" do
+    config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins "*"
         resource "*", headers: :any, methods: [:get, :post, :options]
