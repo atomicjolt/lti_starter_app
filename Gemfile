@@ -89,7 +89,6 @@ group :test do
   gem "launchy"
   gem "selenium-webdriver"
   gem "shoulda-matchers"
-  gem "test_after_commit"
   gem "webmock"
 end
 
