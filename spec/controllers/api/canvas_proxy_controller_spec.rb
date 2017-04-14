@@ -61,7 +61,14 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
         payload = {
           account: { name: "Canvas Demo Courses" },
         }.to_json
-        post :proxy, payload, type: type, lti_key: @application_instance.lti_key, account_id: 1, format: :json
+        post :proxy,
+             body: payload,
+             params: {
+               type: type,
+               lti_key: @application_instance.lti_key,
+               account_id: 1,
+             },
+             format: :json
         expect(JSON.parse(response.body)["name"]).to eq("Canvas Demo Courses")
       end
     end
@@ -73,10 +80,12 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
           name: "Canvas Demo Courses",
         }.to_json
         put :proxy,
-            payload,
-            type: type,
-            lti_key: @application_instance.lti_key,
-            id: 1,
+            body: payload,
+            params: {
+              type: type,
+              lti_key: @application_instance.lti_key,
+              id: 1,
+            },
             format: :json
         expect(JSON.parse(response.body)["name"]).to eq("Canvas Demo Courses")
       end
