@@ -40,7 +40,7 @@ module Concerns
       user = User.find_by(lti_provider: lti_provider, lti_user_id: lti_user_id)
 
       if user.blank?
-        domain = params["custom_canvas_api_domain"] || Rails.application.secrets.application_url
+        domain = params["custom_canvas_api_domain"] || Rails.application.secrets.application_main_domain
         user = _generate_new_lti_user(params)
         _attempt_uniq_email(user, domain)
       end
@@ -101,7 +101,7 @@ module Concerns
 
     def _assemble_email
       # If there isn't an email then we have to make one up. We use the user_id and instance guid
-      domain = params["custom_canvas_api_domain"] || Rails.application.secrets.application_url
+      domain = params["custom_canvas_api_domain"] || Rails.application.secrets.application_main_domain
       email = params[:lis_person_contact_email_primary]
       email = "user-#{params[:user_id]}@#{domain}" if email.blank? && params[:user_id].present?
       # If there isn't an email then we have to make one up. We use the user_id and instance guid

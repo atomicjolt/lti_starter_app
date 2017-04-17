@@ -92,7 +92,7 @@ If you have setup .env and the secrets.yml file then the seeds file shouldn't ne
 
 - **code:** Uniquely identifies the account. This is used for the subdomain when running
 applications on a single domain. By default this will be set to APP_SUBDOMAIN from the .env file.
-- **domain:** Custom domain name. By default this is set to application_url from the secrets.yml file.
+- **domain:** Custom domain name. By default this is set to application_main_domain from the secrets.yml file.
 - **name:** Name the account anything you'd like. By default this is set to application_name from the secrets.yml file.
 - **lti_key:** A unique key for the LTI application you are building. This will be provided to Canvas. By default this will be set to APP_SUBDOMAIN from the .env file.
 - **lti_secret:** The shared secret for your LTI application. This will be provided to Canvas and will be used to sign the LTI request. Generate this value using `rake secret`. Alternatively if you leave this field empty an LTI secret will be automatically generated for the account.

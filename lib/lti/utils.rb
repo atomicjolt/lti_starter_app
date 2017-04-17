@@ -4,7 +4,7 @@ module Lti
 
     def self.lti_configs
       ApplicationInstance.find_each.map do |app|
-        domain = app.domain || Rails.application.secrets.application_url
+        domain = app.domain || Rails.application.secrets.application_main_domain
         config = {
           title: app.application.name,
           launch_url: "https://#{domain}/lti_launches",
@@ -29,7 +29,7 @@ module Lti
     end
 
     def self.lti_config_xml(app)
-      domain = app.domain || Rails.application.secrets.application_url
+      domain = app.domain || Rails.application.secrets.application_main_domain
       config = {
         title: app.application.name,
         launch_url: "https://#{domain}/lti_launches",

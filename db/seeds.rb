@@ -36,7 +36,7 @@ applications = [
       tenant: "lti-admin",
       lti_key: "lti-admin",
       site_url: Rails.application.secrets.canvas_url,
-      domain: "admin.#{Rails.application.secrets.domain_name}",
+      domain: "admin.#{Rails.application.secrets.application_root_domain}",
       lti_type: ApplicationInstance.lti_types[:account_navigation],
     }],
   },
@@ -60,7 +60,7 @@ applications = [
       # need a different domain for that tool since Canvas uses the domain to find the LTI tool among
       # all installed LTI tools. If two tools share the same domain then the tool discovered by Canvas
       # to do the LTI launch will be indeterminate
-      domain: "#{Rails.application.secrets.default_lti_key}.#{Rails.application.secrets.domain_name}",
+      domain: "#{Rails.application.secrets.default_lti_key}.#{Rails.application.secrets.application_root_domain}",
     }],
   },
 ]
