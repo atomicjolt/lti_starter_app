@@ -97,7 +97,7 @@ end
 create_file ".env" do
   <<-EOF
 APP_SUBDOMAIN=#{url_safe_name}
-APP_URL=atomicjolt.xyz
+APP_ROOT_DOMAIN=atomicjolt.xyz
 APP_PORT=#{rails_port}
 ASSETS_SUBDOMAIN=#{url_safe_name}assets
 ASSETS_PORT=#{assets_port}
@@ -171,7 +171,7 @@ end
 #
 # npm install
 #
-run "cd client && npm install"
+run "yarn"
 
 ###########################################################
 #
