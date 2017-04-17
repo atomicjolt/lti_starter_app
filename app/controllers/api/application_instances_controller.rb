@@ -21,7 +21,7 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
 
   def create
     @application_instance.domain =
-      "#{@application_instance.lti_key}.#{ENV['APP_URL']}"
+      "#{@application_instance.lti_key}.#{ENV['APP_ROOT_DOMAIN']}"
 
     # Strong params doesn't allow arbitrary json to be permitted
     # So we have to explicitly set the config
