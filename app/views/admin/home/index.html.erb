@@ -5,6 +5,6 @@
 <%= render 'shared/default_admin_client_settings' %>
 <%= webpack_manifest_script "admin" %>
 <div id="main-app"></div>
-<%= webpack_bundle_tag "admin",  "manifest"%>
-<%= webpack_bundle_tag "admin",  "vendor"%>
+<%= webpack_bundle_tag "admin",  "admin_manifest"%>
+<%= webpack_bundle_tag "admin",  "admin_vendor"%>
 <%= webpack_bundle_tag "admin",  "admin"%>

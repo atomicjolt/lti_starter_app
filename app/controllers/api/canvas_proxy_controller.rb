@@ -19,7 +19,7 @@ class Api::CanvasProxyController < Api::ApiApplicationController
       response.headers[name] = val if allowed_headers.include?(name)
     end
 
-    render plain: result.body
+    render json: result.body
   end
 
 end
