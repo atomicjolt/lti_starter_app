@@ -40,6 +40,9 @@ module.exports = function webpackConfig(app) {
   const babelLoader = `babel-loader?${babelPlugins}&${presets}`;
 
   const jsLoaders = [babelLoader];
+  if (app.shouldLint) {
+    jsLoaders.push('atomic-lint-loader');
+  }
 
   const cssLoaders = ['css-loader?importLoaders=1', 'postcss-loader'];
 
@@ -54,11 +57,11 @@ module.exports = function webpackConfig(app) {
   let plugins = [
     // Use to extract common code from multiple entry points into a single init.js
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
+      name: `${app.name}_vendor`,
       minChunks: module => module.context && module.context.indexOf('node_modules') !== -1
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
+      name: `${app.name}_manifest`,
       minChunks: Infinity
     })
   ];
