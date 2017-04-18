@@ -119,6 +119,7 @@ modify_files = Dir.glob("#{@working_dir}/**/*").reject { |f| File.directory?(f) 
 modify_files << ".env"
 modify_files << "Gemfile"
 modify_files << ".ruby-gemset"
+modify_files << "./bin/bootstrap"
 
 modify_files.each do |f|
   gsub_file(f, "lti_starter_app") do |_match|
