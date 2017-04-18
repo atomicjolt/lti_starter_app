@@ -34,5 +34,7 @@
   "dependencies": {
     "del": "^2.2.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "bithound": "^1.7.0"
+  }
 }

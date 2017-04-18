@@ -7,7 +7,8 @@ const Home = function() {
   return (
     <div>
       <Auth />
-      <img src={img} alt="Atomic Jolt Logo" />
+      <img src={img}
+      alt="Atomic Jolt Logo" />
     </div>
   );
 };
