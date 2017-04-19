@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function Textarea(props) {
   return (
@@ -22,19 +23,19 @@ export default function Textarea(props) {
 }
 
 Textarea.propTypes = {
-  labelText: React.PropTypes.string,
-  textareaProps: React.PropTypes.shape({
-    id: React.PropTypes.string,
-    value: React.PropTypes.string,
-    disabled: React.PropTypes.bool,
-    name: React.PropTypes.string,
-    placeholder: React.PropTypes.string,
-    maxLength: React.PropTypes.number,
-    minLength: React.PropTypes.number,
-    cols: React.PropTypes.number,
-    rows: React.PropTypes.number,
-    onChange: React.PropTypes.func,
+  labelText: PropTypes.string,
+  textareaProps: PropTypes.shape({
+    id: PropTypes.string,
+    value: PropTypes.string,
+    disabled: PropTypes.bool,
+    name: PropTypes.string,
+    placeholder: PropTypes.string,
+    maxLength: PropTypes.number,
+    minLength: PropTypes.number,
+    cols: PropTypes.number,
+    rows: PropTypes.number,
+    onChange: PropTypes.func,
   }),
-  warning: React.PropTypes.shape({}),
-  className: React.PropTypes.string,
+  warning: PropTypes.shape({}),
+  className: PropTypes.string,
 };

@@ -1,7 +1,8 @@
-import React       from 'react';
-import _           from 'lodash';
+import React from 'react';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
 import ReactSelect from 'react-select';
-import Input       from '../common/input';
+import Input from '../common/input';
 import Textarea from '../common/textarea';
 import Warning from '../common/warning';
 
@@ -26,15 +27,15 @@ export const VISIBILITY_RADIOS = {
 export default class Form extends React.Component {
 
   static propTypes = {
-    onChange:   React.PropTypes.func.isRequired,
-    closeModal: React.PropTypes.func.isRequired,
-    save:       React.PropTypes.func.isRequired,
-    newSite:    React.PropTypes.func.isRequired,
-    site_id:    React.PropTypes.string,
-    sites:      React.PropTypes.shape({}),
-    isUpdate:   React.PropTypes.bool,
-    config: React.PropTypes.string,
-    configParseError: React.PropTypes.string,
+    onChange:   PropTypes.func.isRequired,
+    closeModal: PropTypes.func.isRequired,
+    save:       PropTypes.func.isRequired,
+    newSite:    PropTypes.func.isRequired,
+    site_id:    PropTypes.string,
+    sites:      PropTypes.shape({}),
+    isUpdate:   PropTypes.bool,
+    config: PropTypes.string,
+    configParseError: PropTypes.string,
   };
 
   selectSite(option) {

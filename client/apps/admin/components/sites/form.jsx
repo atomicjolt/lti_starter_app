@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Input from '../common/input';
 
 export const FIELDS = {
@@ -66,13 +67,13 @@ const SiteForm = (props) => {
 };
 
 SiteForm.propTypes = {
-  setupSite: React.PropTypes.func.isRequired,
-  closeModal: React.PropTypes.func.isRequired,
-  onChange: React.PropTypes.func.isRequired,
-  isUpdate: React.PropTypes.bool.isRequired,
-  oauth_key: React.PropTypes.string,
-  oauth_secret: React.PropTypes.string,
-  url: React.PropTypes.string,
+  setupSite: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  isUpdate: PropTypes.bool.isRequired,
+  oauth_key: PropTypes.string,
+  oauth_secret: PropTypes.string,
+  url: PropTypes.string,
 };
 
 export default SiteForm;

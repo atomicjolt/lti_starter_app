@@ -1,5 +1,6 @@
-import React                          from 'react';
-import _                              from 'lodash';
+import React from 'react';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
 import {
   createExternalToolAccounts,
   deleteExternalToolAccounts,
@@ -53,10 +54,10 @@ export default function AccountInstall(props) {
 }
 
 AccountInstall.propTypes = {
-  accountInstalls     : React.PropTypes.number,
-  applicationInstance : React.PropTypes.shape({}),
-  account             : React.PropTypes.shape({
-    name           : React.PropTypes.string,
-    external_tools : React.PropTypes.shape({}),
+  accountInstalls     : PropTypes.number,
+  applicationInstance : PropTypes.shape({}),
+  account             : PropTypes.shape({
+    name           : PropTypes.string,
+    external_tools : PropTypes.shape({}),
   }),
 };

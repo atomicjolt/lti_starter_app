@@ -1,5 +1,6 @@
-import React            from 'react';
-import _                from 'lodash';
+import React from 'react';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
 import CourseInstallRow from './course_install_row';
 
 export default function CourseInstalls(props) {
@@ -37,8 +38,8 @@ export default function CourseInstalls(props) {
 }
 
 CourseInstalls.propTypes = {
-  courses             : React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
-  loadingCourses      : React.PropTypes.shape({}),
-  // canvasRequest       : React.PropTypes.func,
-  applicationInstance : React.PropTypes.shape({}),
+  courses             : PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  loadingCourses      : PropTypes.shape({}),
+  // canvasRequest       : PropTypes.func,
+  applicationInstance : PropTypes.shape({}),
 };

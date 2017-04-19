@@ -1,5 +1,6 @@
 import React from 'react';
-import _     from 'lodash';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
 
 export default function SettingsInputs(props) {
   return (
@@ -19,7 +20,7 @@ export default function SettingsInputs(props) {
 }
 
 SettingsInputs.propTypes = {
-  settings: React.PropTypes.shape({
-    lti_key: React.PropTypes.string
+  settings: PropTypes.shape({
+    lti_key: PropTypes.string
   }).isRequired
 };

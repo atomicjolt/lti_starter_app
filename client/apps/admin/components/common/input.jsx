@@ -1,5 +1,6 @@
-import React       from 'react';
-import _           from 'lodash';
+import React from 'react';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
 
 export default function Input(props) {
 
@@ -22,15 +23,15 @@ export default function Input(props) {
 }
 
 Input.propTypes = {
-  labelText: React.PropTypes.string,
-  inputProps: React.PropTypes.shape({
-    id: React.PropTypes.string,
-    value: React.PropTypes.string,
-    checked: React.PropTypes.bool,
-    disabled: React.PropTypes.bool,
-    name: React.PropTypes.string,
-    type: React.PropTypes.string.isRequired,
-    onChange: React.PropTypes.func,
+  labelText: PropTypes.string,
+  inputProps: PropTypes.shape({
+    id: PropTypes.string,
+    value: PropTypes.string,
+    checked: PropTypes.bool,
+    disabled: PropTypes.bool,
+    name: PropTypes.string,
+    type: PropTypes.string.isRequired,
+    onChange: PropTypes.func,
   }),
-  className: React.PropTypes.string,
+  className: PropTypes.string,
 };

@@ -1,23 +1,24 @@
-import React                   from 'react';
-import ReactModal              from 'react-modal';
-import SiteModal               from '../sites/modal';
+import React from 'react';
+import PropTypes from 'prop-types';
+import ReactModal from 'react-modal';
+import SiteModal from '../sites/modal';
 import ApplicationInstanceForm from './form';
 
 export default class Modal extends React.Component {
   static propTypes = {
-    isOpen: React.PropTypes.bool.isRequired,
-    closeModal: React.PropTypes.func.isRequired,
-    sites: React.PropTypes.shape({}),
-    save: React.PropTypes.func.isRequired,
-    applicationInstance: React.PropTypes.shape({
-      id: React.PropTypes.number,
-      config: React.PropTypes.string,
-      site: React.PropTypes.shape({
-        id: React.PropTypes.number,
+    isOpen: PropTypes.bool.isRequired,
+    closeModal: PropTypes.func.isRequired,
+    sites: PropTypes.shape({}),
+    save: PropTypes.func.isRequired,
+    applicationInstance: PropTypes.shape({
+      id: PropTypes.number,
+      config: PropTypes.string,
+      site: PropTypes.shape({
+        id: PropTypes.number,
       })
     }),
-    application: React.PropTypes.shape({
-      id: React.PropTypes.number,
+    application: PropTypes.shape({
+      id: PropTypes.number,
     })
   };
 

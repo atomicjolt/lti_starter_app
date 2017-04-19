@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Heading from '../common/heading';
 import Header from './header';
@@ -13,7 +14,7 @@ function select(state) {
 
 export class Index extends React.Component {
   static propTypes = {
-    sites: React.PropTypes.shape({}).isRequired,
+    sites: PropTypes.shape({}).isRequired,
   }
 
   constructor() {

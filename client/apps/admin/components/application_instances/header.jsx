@@ -1,4 +1,5 @@
-import React           from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function Header(props) {
   const { application, newApplicationInstance } = props;
@@ -15,8 +16,8 @@ export default function Header(props) {
 }
 
 Header.propTypes = {
-  newApplicationInstance: React.PropTypes.func.isRequired,
-  application: React.PropTypes.shape({
-    name: React.PropTypes.string,
+  newApplicationInstance: PropTypes.func.isRequired,
+  application: PropTypes.shape({
+    name: PropTypes.string,
   }),
 };

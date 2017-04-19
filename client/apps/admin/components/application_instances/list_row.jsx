@@ -1,27 +1,28 @@
-import React          from 'react';
-import { Link }       from 'react-router';
-import _              from 'lodash';
-import Modal          from './modal';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router';
+import _ from 'lodash';
+import Modal from './modal';
 import SettingsInputs from '../common/settings_inputs';
 import ConfigXmlModal from './config_xml_modal';
 
 export default class ListRow extends React.Component {
   static propTypes = {
-    delete: React.PropTypes.func.isRequired,
-    save: React.PropTypes.func.isRequired,
-    lti_key: React.PropTypes.string,
-    domain: React.PropTypes.string,
-    id: React.PropTypes.number.isRequired,
-    application_id: React.PropTypes.number.isRequired,
-    site: React.PropTypes.shape({
-      url: React.PropTypes.string
+    delete: PropTypes.func.isRequired,
+    save: PropTypes.func.isRequired,
+    lti_key: PropTypes.string,
+    domain: PropTypes.string,
+    id: PropTypes.number.isRequired,
+    application_id: PropTypes.number.isRequired,
+    site: PropTypes.shape({
+      url: PropTypes.string
     }).isRequired,
-    sites: React.PropTypes.shape({}).isRequired,
-    application: React.PropTypes.shape({}),
-    applicationInstance: React.PropTypes.shape({}).isRequired,
-    settings: React.PropTypes.shape({
-      lti_key: React.PropTypes.string,
-      user_canvas_domains: React.PropTypes.arrayOf(React.PropTypes.string),
+    sites: PropTypes.shape({}).isRequired,
+    application: PropTypes.shape({}),
+    applicationInstance: PropTypes.shape({}).isRequired,
+    settings: PropTypes.shape({
+      lti_key: PropTypes.string,
+      user_canvas_domains: PropTypes.arrayOf(PropTypes.string),
     }).isRequired
   };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
 
@@ -9,12 +10,12 @@ const select = () => ({});
 
 export class SiteModal extends React.Component {
   static propTypes = {
-    site: React.PropTypes.shape({
-      id: React.PropTypes.number,
+    site: PropTypes.shape({
+      id: PropTypes.number,
     }).isRequired,
-    deleteSite: React.PropTypes.func.isRequired,
-    isOpen: React.PropTypes.bool.isRequired,
-    closeModal: React.PropTypes.func.isRequired,
+    deleteSite: PropTypes.func.isRequired,
+    isOpen: PropTypes.bool.isRequired,
+    closeModal: PropTypes.func.isRequired,
   };
 
   constructor(props) {

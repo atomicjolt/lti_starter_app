@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function Warning(props) {
   const styles = {
@@ -15,5 +16,5 @@ export default function Warning(props) {
 }
 
 Warning.propTypes = {
-  text: React.PropTypes.string,
+  text: PropTypes.string,
 };

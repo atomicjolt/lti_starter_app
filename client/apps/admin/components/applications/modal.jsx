@@ -1,18 +1,19 @@
-import React        from 'react';
-import ReactModal   from 'react-modal';
-import Form         from './form';
+import React from 'react';
+import PropTypes from 'prop-types';
+import ReactModal from 'react-modal';
+import Form from './form';
 
 export default class Modal extends React.Component {
 
   static propTypes = {
-    application: React.PropTypes.shape({
-      name: React.PropTypes.string,
-      description: React.PropTypes.string,
-      default_config: React.PropTypes.string,
+    application: PropTypes.shape({
+      name: PropTypes.string,
+      description: PropTypes.string,
+      default_config: PropTypes.string,
     }),
-    isOpen: React.PropTypes.bool.isRequired,
-    closeModal: React.PropTypes.func.isRequired,
-    save: React.PropTypes.func,
+    isOpen: PropTypes.bool.isRequired,
+    closeModal: PropTypes.func.isRequired,
+    save: PropTypes.func,
   };
 
   constructor(props) {

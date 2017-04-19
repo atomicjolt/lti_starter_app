@@ -1,5 +1,6 @@
-import React    from 'react';
-import _        from 'lodash';
+import React from 'react';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
 import ListRow from './list_row';
 
 export default function List(props) {
@@ -36,10 +37,10 @@ export default function List(props) {
 }
 
 List.propTypes = {
-  applicationInstances: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
-  settings: React.PropTypes.shape({}).isRequired,
-  sites: React.PropTypes.shape({}).isRequired,
-  application: React.PropTypes.shape({}),
-  saveApplicationInstance: React.PropTypes.func.isRequired,
-  deleteApplicationInstance: React.PropTypes.func.isRequired,
+  applicationInstances: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  settings: PropTypes.shape({}).isRequired,
+  sites: PropTypes.shape({}).isRequired,
+  application: PropTypes.shape({}),
+  saveApplicationInstance: PropTypes.func.isRequired,
+  deleteApplicationInstance: PropTypes.func.isRequired,
 };

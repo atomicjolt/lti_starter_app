@@ -1,24 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Accounts from './accounts';
 import Modal from '../application_instances/modal';
 
 export default class Sidebar extends React.Component {
   static propTypes = {
-    application: React.PropTypes.shape({
-      name: React.PropTypes.string.isRequired,
+    application: PropTypes.shape({
+      name: PropTypes.string.isRequired,
     }),
-    applicationInstance: React.PropTypes.shape({
-      name: React.PropTypes.string,
-      site: React.PropTypes.shape({
-        url: React.PropTypes.string
+    applicationInstance: PropTypes.shape({
+      name: PropTypes.string,
+      site: PropTypes.shape({
+        url: PropTypes.string
       })
     }),
-    accounts: React.PropTypes.shape({}),
-    currentAccount: React.PropTypes.shape({}),
-    setAccountActive: React.PropTypes.func.isRequired,
-    saveApplicationInstance: React.PropTypes.func.isRequired,
-    sites: React.PropTypes.shape({}).isRequired,
-    onlyShowInstalledChanged: React.PropTypes.func.isRequired,
+    accounts: PropTypes.shape({}),
+    currentAccount: PropTypes.shape({}),
+    setAccountActive: PropTypes.func.isRequired,
+    saveApplicationInstance: PropTypes.func.isRequired,
+    sites: PropTypes.shape({}).isRequired,
+    onlyShowInstalledChanged: PropTypes.func.isRequired,
   }
 
   constructor() {

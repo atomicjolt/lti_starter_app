@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Textarea from '../common/textarea';
 import Warning from '../common/warning';
 
@@ -66,9 +67,9 @@ export default function Form(props) {
 }
 
 Form.propTypes = {
-  onChange: React.PropTypes.func.isRequired,
-  closeModal: React.PropTypes.func.isRequired,
-  description: React.PropTypes.string,
-  defaultConfig: React.PropTypes.string,
-  configParseError: React.PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  description: PropTypes.string,
+  defaultConfig: PropTypes.string,
+  configParseError: PropTypes.string,
 };

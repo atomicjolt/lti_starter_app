@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   createExternalToolCourses,
   deleteExternalToolCourses,
@@ -76,14 +77,14 @@ export default function CourseInstallRow(props) {
 }
 
 CourseInstallRow.propTypes = {
-  courseName: React.PropTypes.string.isRequired,
-  canvasRequest: React.PropTypes.func.isRequired,
-  courseId: React.PropTypes.number.isRequired,
-  installedTool: React.PropTypes.shape({}),
-  applicationInstance: React.PropTypes.shape({
-    name: React.PropTypes.string,
-    lti_key: React.PropTypes.string,
-    lti_secret: React.PropTypes.string,
-    lti_config_xml: React.PropTypes.string,
+  courseName: PropTypes.string.isRequired,
+  canvasRequest: PropTypes.func.isRequired,
+  courseId: PropTypes.number.isRequired,
+  installedTool: PropTypes.shape({}),
+  applicationInstance: PropTypes.shape({
+    name: PropTypes.string,
+    lti_key: PropTypes.string,
+    lti_secret: PropTypes.string,
+    lti_config_xml: PropTypes.string,
   }),
 };

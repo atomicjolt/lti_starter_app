@@ -1,12 +1,13 @@
-import React                        from 'react';
-import { connect }                  from 'react-redux';
-import _                            from 'lodash';
-import ReactModal                   from 'react-modal';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import _ from 'lodash';
+import ReactModal from 'react-modal';
 import * as ApplicationInstanceActions from '../../actions/application_instances';
-import Heading                      from '../common/heading';
-import Sidebar                      from './sidebar';
-import InstallPane                  from './install_pane';
-import canvasRequest                from '../../../../libs/canvas/action';
+import Heading from '../common/heading';
+import Sidebar from './sidebar';
+import InstallPane from './install_pane';
+import canvasRequest from '../../../../libs/canvas/action';
 
 import {
   listActiveCoursesInAccount
@@ -39,23 +40,23 @@ function select(state, props) {
 
 export class Index extends React.Component {
   static propTypes = {
-    accounts                : React.PropTypes.shape({}).isRequired,
-    rootAccount             : React.PropTypes.shape({
-      id                      : React.PropTypes.number
+    accounts                : PropTypes.shape({}).isRequired,
+    rootAccount             : PropTypes.shape({
+      id                      : PropTypes.number
     }),
-    applications            : React.PropTypes.shape({}).isRequired,
-    courses                 : React.PropTypes.arrayOf(React.PropTypes.shape({})),
-    applicationInstance     : React.PropTypes.shape({}),
-    loadingCourses          : React.PropTypes.shape({}),
-    loadingAccounts         : React.PropTypes.bool,
-    getApplicationInstance  : React.PropTypes.func.isRequired,
-    canvasRequest           : React.PropTypes.func.isRequired,
-    saveApplicationInstance : React.PropTypes.func.isRequired,
-    params                  : React.PropTypes.shape({
-      applicationId           : React.PropTypes.string,
-      applicationInstanceId   : React.PropTypes.string,
+    applications            : PropTypes.shape({}).isRequired,
+    courses                 : PropTypes.arrayOf(PropTypes.shape({})),
+    applicationInstance     : PropTypes.shape({}),
+    loadingCourses          : PropTypes.shape({}),
+    loadingAccounts         : PropTypes.bool,
+    getApplicationInstance  : PropTypes.func.isRequired,
+    canvasRequest           : PropTypes.func.isRequired,
+    saveApplicationInstance : PropTypes.func.isRequired,
+    params                  : PropTypes.shape({
+      applicationId           : PropTypes.string,
+      applicationInstanceId   : PropTypes.string,
     }).isRequired,
-    sites: React.PropTypes.shape({}).isRequired,
+    sites: PropTypes.shape({}).isRequired,
   };
 
   constructor() {

@@ -1,4 +1,5 @@
-import React         from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
 
 export default function Pagination(props) {
@@ -18,9 +19,9 @@ export default function Pagination(props) {
 }
 
 Pagination.propTypes = {
-  setPage: React.PropTypes.func.isRequired,
-  pageCount: React.PropTypes.number.isRequired,
-  courses: React.PropTypes.arrayOf(React.PropTypes.shape({})),
-  pageSize: React.PropTypes.number,
-  currentPage: React.PropTypes.number
+  setPage: PropTypes.func.isRequired,
+  pageCount: PropTypes.number.isRequired,
+  courses: PropTypes.arrayOf(PropTypes.shape({})),
+  pageSize: PropTypes.number,
+  currentPage: PropTypes.number
 };

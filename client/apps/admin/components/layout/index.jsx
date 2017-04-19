@@ -1,17 +1,18 @@
-import React               from 'react';
-import { connect }         from 'react-redux';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { getApplications } from '../../actions/applications';
-import { getSites }        from '../../actions/sites';
-import appHistory          from '../../history';
+import { getSites } from '../../actions/sites';
+import appHistory from '../../history';
 
 export class Index extends React.Component {
 
   static propTypes = {
-    children: React.PropTypes.node,
-    getSites: React.PropTypes.func.isRequired,
-    getApplications: React.PropTypes.func.isRequired,
-    location: React.PropTypes.shape({
-      pathname: React.PropTypes.string,
+    children: PropTypes.node,
+    getSites: PropTypes.func.isRequired,
+    getApplications: PropTypes.func.isRequired,
+    location: PropTypes.shape({
+      pathname: PropTypes.string,
     }),
   };
 

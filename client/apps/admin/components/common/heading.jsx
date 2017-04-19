@@ -1,9 +1,10 @@
-import React                               from 'react';
-import { connect }                         from 'react-redux';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Wrapper, Button, Menu, MenuItem } from 'react-aria-menubutton';
-import { Link }                            from 'react-router';
-import assets                              from '../../libs/assets';
-import SubNav                              from '../common/sub_nav';
+import { Link } from 'react-router';
+import assets from '../../libs/assets';
+import SubNav from '../common/sub_nav';
 
 const select = state => ({
   userName: state.settings.display_name,
@@ -76,9 +77,9 @@ export function Heading(props) {
 }
 
 Heading.propTypes = {
-  backTo: React.PropTypes.string,
-  userName: React.PropTypes.string,
-  signOutUrl: React.PropTypes.string.isRequired,
+  backTo: PropTypes.string,
+  userName: PropTypes.string,
+  signOutUrl: PropTypes.string.isRequired,
 };
 
 

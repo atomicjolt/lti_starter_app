@@ -1,6 +1,7 @@
-import React               from 'react';
-import _                   from 'lodash';
-import SubAccount          from './sub_account';
+import React from 'react';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
+import SubAccount from './sub_account';
 
 export default class Accounts extends React.Component {
 
@@ -31,9 +32,9 @@ export default class Accounts extends React.Component {
 }
 
 Accounts.propTypes = {
-  accounts         : React.PropTypes.shape({}).isRequired,
-  setAccountActive : React.PropTypes.func.isRequired,
-  currentAccount   : React.PropTypes.shape({
-    id: React.PropTypes.number
+  accounts         : PropTypes.shape({}).isRequired,
+  setAccountActive : PropTypes.func.isRequired,
+  currentAccount   : PropTypes.shape({
+    id: PropTypes.number
   }),
 };

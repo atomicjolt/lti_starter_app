@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SiteForm = props => (
   <form>
@@ -20,8 +21,8 @@ const SiteForm = props => (
 );
 
 SiteForm.propTypes = {
-  deleteSite: React.PropTypes.func.isRequired,
-  closeModal: React.PropTypes.func.isRequired,
+  deleteSite: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };
 
 export default SiteForm;

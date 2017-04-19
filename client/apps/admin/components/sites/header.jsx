@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Header = (props) => {
   const {
@@ -18,7 +19,7 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  newSite: React.PropTypes.func.isRequired,
+  newSite: PropTypes.func.isRequired,
 };
 
 export default Header;

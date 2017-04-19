@@ -44,14 +44,14 @@ applications = [
   {
     name: "LTI Starter App",
     description: "LTI Starter App by Atomic Jolt",
-    client_application_name: "app",
+    client_application_name: "hello_world",
     # List Canvas API methods the app is allowed to use. A full list of constants can be found in canvas_urls
     canvas_api_permissions: "LIST_ACCOUNTS",
     default_config: { foo: "bar" },
     application_instances: [{
-      tenant: Rails.application.secrets.default_lti_key,
-      lti_key: Rails.application.secrets.default_lti_key,
-      lti_secret: Rails.application.secrets.default_lti_secret,
+      tenant: Rails.application.secrets.hello_world_lti_key,
+      lti_key: Rails.application.secrets.hello_world_lti_key,
+      lti_secret: Rails.application.secrets.hello_world_lti_secret,
       site_url: Rails.application.secrets.canvas_url,
       # This is only required if the app needs API access and doesn't want each user to do the oauth dance
       canvas_token: Rails.application.secrets.canvas_token,
@@ -61,7 +61,7 @@ applications = [
       # need a different domain for that tool since Canvas uses the domain to find the LTI tool among
       # all installed LTI tools. If two tools share the same domain then the tool discovered by Canvas
       # to do the LTI launch will be indeterminate
-      domain: "#{Rails.application.secrets.default_lti_key}.#{Rails.application.secrets.application_root_domain}",
+      domain: "#{Rails.application.secrets.hello_world_lti_key}.#{Rails.application.secrets.application_root_domain}",
     }],
   },
 ]

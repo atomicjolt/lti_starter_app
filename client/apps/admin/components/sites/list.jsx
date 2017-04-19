@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import SiteRow from './site_row';
 
@@ -27,7 +28,7 @@ const List = (props) => {
 };
 
 List.propTypes = {
-  sites: React.PropTypes.shape({}).isRequired,
+  sites: PropTypes.shape({}).isRequired,
 };
 
 export default List;

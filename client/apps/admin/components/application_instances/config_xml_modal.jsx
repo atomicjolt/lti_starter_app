@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 import Textarea from '../common/textarea';
 import Input from '../common/input';
@@ -62,17 +63,17 @@ const ConfigXmlModal = (props) => {
 };
 
 ConfigXmlModal.propTypes = {
-  isOpen: React.PropTypes.bool.isRequired,
-  closeModal: React.PropTypes.func.isRequired,
-  application: React.PropTypes.shape({
-    id: React.PropTypes.number,
-    name: React.PropTypes.string,
+  isOpen: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  application: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
   }),
-  applicationInstance: React.PropTypes.shape({
-    id: React.PropTypes.number,
-    lti_config_xml: React.PropTypes.string,
-    lti_key: React.PropTypes.string,
-    lti_secret: React.PropTypes.string,
+  applicationInstance: PropTypes.shape({
+    id: PropTypes.number,
+    lti_config_xml: PropTypes.string,
+    lti_key: PropTypes.string,
+    lti_secret: PropTypes.string,
   }),
 };
 

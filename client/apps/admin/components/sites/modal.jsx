@@ -1,9 +1,10 @@
-import React                from 'react';
-import { connect }          from 'react-redux';
-import ReactModal           from 'react-modal';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import ReactModal from 'react-modal';
 
 import CanvasAuthentication from '../../../../libs/canvas/components/canvas_authentication';
-import SiteForm             from './form';
+import SiteForm from './form';
 import * as SiteActions from '../../actions/sites';
 
 const select = state => ({
@@ -13,18 +14,18 @@ const select = state => ({
 
 export class SiteModal extends React.Component {
   static propTypes = {
-    site: React.PropTypes.shape({
-      id: React.PropTypes.number,
+    site: PropTypes.shape({
+      id: PropTypes.number,
     }),
-    createSite: React.PropTypes.func.isRequired,
-    updateSite: React.PropTypes.func.isRequired,
-    isOpen: React.PropTypes.bool.isRequired,
-    closeModal: React.PropTypes.func.isRequired,
-    settings: React.PropTypes.shape({
-      lti_key: React.PropTypes.string,
-      canvas_callback_url: React.PropTypes.string,
+    createSite: PropTypes.func.isRequired,
+    updateSite: PropTypes.func.isRequired,
+    isOpen: PropTypes.bool.isRequired,
+    closeModal: PropTypes.func.isRequired,
+    settings: PropTypes.shape({
+      lti_key: PropTypes.string,
+      canvas_callback_url: PropTypes.string,
     }).isRequired,
-    siteToOauth: React.PropTypes.string,
+    siteToOauth: PropTypes.string,
   };
 
   constructor(props) {

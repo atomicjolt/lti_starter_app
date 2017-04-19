@@ -1,9 +1,10 @@
-import React               from 'react';
-import { connect }         from 'react-redux';
-import _                   from 'lodash';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import _ from 'lodash';
 import { saveApplication } from '../../actions/applications';
-import Heading             from '../common/heading';
-import ApplicationRow      from './application_row';
+import Heading from '../common/heading';
+import ApplicationRow from './application_row';
 
 function select(state) {
   return {
@@ -49,8 +50,8 @@ export function Index(props) {
 }
 
 Index.propTypes = {
-  saveApplication: React.PropTypes.func.isRequired,
-  applications: React.PropTypes.shape({}).isRequired,
+  saveApplication: PropTypes.func.isRequired,
+  applications: PropTypes.shape({}).isRequired,
 };
 
 export default connect(select, { saveApplication })(Index);

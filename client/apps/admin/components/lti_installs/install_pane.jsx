@@ -1,25 +1,26 @@
-import React          from 'react';
-import _              from 'lodash';
+import React from 'react';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
 import AccountInstall from './account_install';
 import CourseInstalls from './course_installs';
-import Pagination     from './pagination';
+import Pagination from './pagination';
 
 const PAGE_SIZE = 10;
 const COURSE_TYPES = ['basic', 'course_navigation'];
 
 export default class InstallPane extends React.Component {
   static propTypes = {
-    courses             : React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
-    loadExternalTools   : React.PropTypes.func,
-    applicationInstance : React.PropTypes.shape({
-      lti_type: React.PropTypes.string.isRequired,
+    courses             : PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    loadExternalTools   : PropTypes.func,
+    applicationInstance : PropTypes.shape({
+      lti_type: PropTypes.string.isRequired,
     }),
-    canvasRequest       : React.PropTypes.func,
-    loadingCourses      : React.PropTypes.shape({}),
-    account             : React.PropTypes.shape({
-      installCount : React.PropTypes.number
+    canvasRequest       : PropTypes.func,
+    loadingCourses      : PropTypes.shape({}),
+    account             : PropTypes.shape({
+      installCount : PropTypes.number
     }),
-    onlyShowInstalled: React.PropTypes.bool.isRequired,
+    onlyShowInstalled: PropTypes.bool.isRequired,
   };
 
   constructor() {

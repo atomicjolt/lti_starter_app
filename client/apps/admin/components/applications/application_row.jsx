@@ -1,16 +1,17 @@
-import React               from 'react';
-import { Link }            from 'react-router';
-import Modal               from './modal';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router';
+import Modal from './modal';
 
 export default class ApplicationRow extends React.Component {
 
   static propTypes = {
-    application: React.PropTypes.shape({
-      id                          : React.PropTypes.number,
-      name                        : React.PropTypes.string,
-      application_instances_count : React.PropTypes.number,
+    application: PropTypes.shape({
+      id                          : PropTypes.number,
+      name                        : PropTypes.string,
+      application_instances_count : PropTypes.number,
     }).isRequired,
-    saveApplication: React.PropTypes.func.isRequired,
+    saveApplication: PropTypes.func.isRequired,
   };
 
   static getStyles() {

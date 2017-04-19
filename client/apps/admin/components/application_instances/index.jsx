@@ -1,10 +1,11 @@
-import React                           from 'react';
-import { connect }                     from 'react-redux';
-import _                               from 'lodash';
-import Header                          from './header';
-import List                            from './list';
-import Modal                           from './modal';
-import Heading                         from '../common/heading';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import _ from 'lodash';
+import Header from './header';
+import List from './list';
+import Modal from './modal';
+import Heading from '../common/heading';
 import * as ApplicationInstanceActions from '../../actions/application_instances';
 
 const select = (state, props) => ({
@@ -18,17 +19,17 @@ const select = (state, props) => ({
 
 export class Index extends React.Component {
   static propTypes = {
-    applicationInstances: React.PropTypes.arrayOf(React.PropTypes.shape({})),
-    getApplicationInstances: React.PropTypes.func.isRequired,
-    createApplicationInstance: React.PropTypes.func,
-    deleteApplicationInstance: React.PropTypes.func,
-    saveApplicationInstance: React.PropTypes.func,
-    sites: React.PropTypes.shape({}).isRequired,
-    applications: React.PropTypes.shape({}).isRequired,
-    params: React.PropTypes.shape({
-      applicationId: React.PropTypes.string.isRequired,
+    applicationInstances: PropTypes.arrayOf(PropTypes.shape({})),
+    getApplicationInstances: PropTypes.func.isRequired,
+    createApplicationInstance: PropTypes.func,
+    deleteApplicationInstance: PropTypes.func,
+    saveApplicationInstance: PropTypes.func,
+    sites: PropTypes.shape({}).isRequired,
+    applications: PropTypes.shape({}).isRequired,
+    params: PropTypes.shape({
+      applicationId: PropTypes.string.isRequired,
     }).isRequired,
-    settings: React.PropTypes.shape({}).isRequired,
+    settings: PropTypes.shape({}).isRequired,
   };
 
   constructor() {

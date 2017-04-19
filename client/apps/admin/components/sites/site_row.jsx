@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SiteModal from './modal';
 import DeleteSiteModal from './delete_modal';
 
 export default class SiteRow extends React.Component {
 
   static propTypes = {
-    site: React.PropTypes.shape({
-      url: React.PropTypes.string,
+    site: PropTypes.shape({
+      url: PropTypes.string,
     }).isRequired,
   };
 
