@@ -58,6 +58,13 @@ const ConfigXmlModal = (props) => {
           }}
         />
       </div>
+      <button
+        type="button"
+        className="c-btn c-btn--gray--large u-m-right"
+        onClick={() => props.closeModal()}
+      >
+        Close
+      </button>
     </ReactModal>
   );
 };
