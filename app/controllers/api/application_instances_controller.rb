@@ -29,7 +29,10 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
     @application_instance.config = params[:application_instance][:config]
 
     @application_instance.save!
-    render json: @application_instance.as_json(include: :site)
+
+    application_instance = @application_instance.as_json(include: :site)
+    application_instance["lti_config_xml"] = @application_instance.lti_config_xml
+    render json: application_instance
   end
 
   def update
@@ -38,7 +41,10 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
     # This will be allowed in rails 5.1
     @application_instance.config = params[:application_instance][:config]
     @application_instance.update(application_instance_params)
-    render json: @application_instance.as_json(include: :site)
+
+    application_instance = @application_instance.as_json(include: :site)
+    application_instance["lti_config_xml"] = @application_instance.lti_config_xml
+    render json: application_instance
   end
 
   def destroy
