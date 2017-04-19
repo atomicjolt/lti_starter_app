@@ -74,6 +74,18 @@ RSpec.describe ApplicationInstance, type: :model do
       expect(@application_instance.basic?).to be true
     end
 
+    it "sets the lti_type to the application's lti_type if no value is set" do
+      lti_type = Application.lti_types[:wysiwyg_button]
+      application = create(:application, lti_type: lti_type)
+      @application_instance = create(:application_instance, lti_key: "test", site: @site, application: application)
+      expect(@application_instance.wysiwyg_button?).to be true
+    end
+
+    it "sets a default visibility" do
+      @application_instance = create(:application_instance, visibility: ApplicationInstance.visibilities[:everyone], site: @site)
+      expect(@application_instance.basic?).to be true
+    end
+
     it "creates a schema upon creation" do
       expect(Apartment::Tenant).to receive(:create)
       @application_instance = create :application_instance

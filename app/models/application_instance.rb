@@ -1,4 +1,6 @@
 class ApplicationInstance < ActiveRecord::Base
+  include LtiModelSupport
+
   serialize :config, HashSerializer
 
   belongs_to :application, counter_cache: true
@@ -19,13 +21,11 @@ class ApplicationInstance < ActiveRecord::Base
   # If foo is not set in the config json, it will return nil
   # store_accessor :config, :foo, :bar
 
-  enum lti_type: [:basic, :course_navigation, :account_navigation]
-  enum visibility: [:everyone, :admins, :members]
-
   attr_encrypted :canvas_token, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
 
   after_commit :create_schema, on: :create
   before_create :create_config
+  before_create :set_lti_config
 
   def lti_config_xml
     Lti::Utils.lti_config_xml(self)
@@ -33,8 +33,12 @@ class ApplicationInstance < ActiveRecord::Base
 
   private
 
+  def set_lti_config
+    self.visibility = application.visibility
+    self.lti_type = application.lti_type
+  end
+
   def set_lti
-    self.lti_type ||= ApplicationInstance.lti_types[:basic]
     self.lti_key = (lti_key || application.name)&.parameterize&.dasherize
     self.lti_secret = ::SecureRandom::hex(64) if lti_secret.blank?
     self.tenant ||= lti_key
