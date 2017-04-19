@@ -6,7 +6,7 @@ import CourseInstalls from './course_installs';
 import Pagination from './pagination';
 
 const PAGE_SIZE = 10;
-const COURSE_TYPES = ['basic', 'course_navigation'];
+const COURSE_TYPES = ['basic', 'course_navigation', 'wysiwyg_button'];
 
 export default class InstallPane extends React.Component {
   static propTypes = {

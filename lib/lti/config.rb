@@ -28,6 +28,12 @@ module Lti
       config
     end
 
+    def self.wysiwyg(config)
+      config[:button_url] = "http://www.example.com/example.png"
+      config[:button_text] = "A button"
+      config
+    end
+
     def self.config(args = {})
       title = args[:title]
 
@@ -36,8 +42,8 @@ module Lti
       config = default_config(args)
       config = resource_selection_from_args(config, title, args)
       config = course_navigation_from_args(config, args)
-      config = account_navigation_from_agrs(config, args)
-      config = editor_button_from_agrs(config, title, args)
+      config = account_navigation_from_args(config, args)
+      config = editor_button_from_args(config, title, args)
 
       tc.set_ext_params("canvas.instructure.com", config)
       tc
@@ -86,7 +92,7 @@ module Lti
       config
     end
 
-    def self.account_navigation_from_agrs(config = {}, args = {})
+    def self.account_navigation_from_args(config = {}, args = {})
       if args[:account_navigation].present?
         config["account_navigation"] = {
           "url" => args[:launch_url],
@@ -99,7 +105,7 @@ module Lti
       config
     end
 
-    def self.editor_button_from_agrs(config = {}, title = "", args = {})
+    def self.editor_button_from_args(config = {}, title = "", args = {})
       if args[:button_url].present?
         config["editor_button"] = {
           "url" => args[:launch_url],

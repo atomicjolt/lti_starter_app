@@ -7,15 +7,16 @@ import Textarea from '../common/textarea';
 import Warning from '../common/warning';
 
 export const TEXT_FIELDS = {
-  lti_key      : 'LTI Key',
-  lti_secret   : 'LTI Secret',
-  canvas_token : 'Canvas Token',
+  lti_key: 'LTI Key',
+  lti_secret: 'LTI Secret',
+  canvas_token: 'Canvas Token',
 };
 
 export const TYPE_RADIOS = {
-  basic              : 'General',
-  account_navigation : 'Account Navigation',
-  course_navigation  : 'Course Navigation',
+  basic: 'General',
+  account_navigation: 'Account Navigation',
+  course_navigation: 'Course Navigation',
+  wysiwyg_button: 'WYSIWYG Button',
 };
 
 export const VISIBILITY_RADIOS = {

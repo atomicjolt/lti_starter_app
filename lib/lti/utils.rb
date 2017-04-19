@@ -42,6 +42,7 @@ module Lti
       return Lti::Config.xml(config) if app.basic?
       return Lti::Config.xml(course_nav_out(config)) if app.course_navigation?
       return Lti::Config.xml(account_nav_out(config)) if app.account_navigation?
+      return Lti::Config.xml(wysiwyg_button_out(config)) if app.wysiwyg_button?
     end
 
     def self.basic_out(config)
@@ -72,6 +73,18 @@ module Lti
       puts Lti::Config.xml(account_navigation_config)
       account_navigation_config
     end
+
+    def self.wysiwyg_button_out(config)
+      puts ""
+      puts "-------------------------------------------------------------------------------------"
+      puts "WYSIWYG Button LTI Config"
+      puts "-------------------------------------------------------------------------------------"
+      config[:visibility] = "public" if config[:visibility] == "everyone"
+      wysiwyg_config = Lti::Config.wysiwyg(config)
+      puts Lti::Config.xml(wysiwyg_config)
+      wysiwyg_config
+    end
+
   end
 
   def self.list_all

@@ -81,4 +81,25 @@ describe('install pane', () => {
       expect(button.length).toBe(1);
     });
   });
+
+  describe('wysiwyg_button instances', () => {
+    beforeEach(() => {
+      props.applicationInstance.lti_type = 'wysiwyg_button';
+      result = TestUtils.renderIntoDocument(
+        <Stub>
+          <InstallPane {...props} />
+        </Stub>
+      );
+    });
+
+    it('renders the install pane with account installs for wysiwyg_button', () => {
+      const button = TestUtils.findRenderedDOMComponentWithTag(result, 'button');
+      expect(button.textContent).toContain('Install Into Account');
+    });
+
+    it('renders the install pane with course installs for wysiwyg_button', () => {
+      const input = TestUtils.findRenderedDOMComponentWithTag(result, 'input');
+      expect(input.placeholder).toContain('Search...');
+    });
+  });
 });
