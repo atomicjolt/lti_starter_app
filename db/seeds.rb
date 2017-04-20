@@ -32,13 +32,13 @@ applications = [
     canvas_api_permissions: admin_api_permissions,
     kind: Application.kinds[:admin],
     default_config: { foo: "bar" },
+    lti_type: ApplicationInstance.lti_types[:account_navigation],
     application_instances: [{
       tenant: Rails.application.secrets.admin_lti_key,
       lti_key: Rails.application.secrets.admin_lti_key,
       lti_secret: Rails.application.secrets.admin_lti_secret,
       site_url: Rails.application.secrets.canvas_url,
       domain: "#{Rails.application.secrets.admin_subdomain}.#{Rails.application.secrets.application_root_domain}",
-      lti_type: ApplicationInstance.lti_types[:account_navigation],
     }],
   },
   {
@@ -48,6 +48,7 @@ applications = [
     # List Canvas API methods the app is allowed to use. A full list of constants can be found in canvas_urls
     canvas_api_permissions: "LIST_ACCOUNTS",
     default_config: { foo: "bar" },
+    lti_type: ApplicationInstance.lti_types[:course_navigation],
     application_instances: [{
       tenant: Rails.application.secrets.hello_world_lti_key,
       lti_key: Rails.application.secrets.hello_world_lti_key,

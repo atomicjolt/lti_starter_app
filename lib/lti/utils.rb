@@ -3,28 +3,17 @@ module Lti
   class Utils
 
     def self.lti_configs
-      ApplicationInstance.find_each.map do |app|
-        domain = app.domain || Rails.application.secrets.application_main_domain
-        config = {
-          title: app.application.name,
-          launch_url: "https://#{domain}/lti_launches",
-          domain: domain,
-          icon: "https://#{domain}/images/oauth_icon.png",
-          description: app.application.description,
-        }
-        puts "*************************************************************************************"
-        puts "LTI configuration for #{app.application.name}"
-        puts ""
-        basic_out(config)
-        course_navigation_config = course_nav_out(config)
-        account_nav_out(config)
-        puts ""
+      ApplicationInstance.find_each.map do |app_inst|
+        xml_config = lti_config_xml(app_inst)
         puts "-------------------------------------------------------------------------------------"
-        puts "Account Information"
-        puts "-------------------------------------------------------------------------------------"
-        puts "Key : #{app.lti_key}"
-        puts "Secret : #{app.lti_secret}"
-        { app: app, config: Lti::Config.xml(course_navigation_config) }
+        puts "LTI configuration for #{app_inst.application.name}"
+        puts "Key : #{app_inst.lti_key}"
+        puts "Secret : #{app_inst.lti_secret}"
+        puts ""
+        puts xml_config
+        puts ""
+        puts ""
+        { app: app_inst, config: xml_config }
       end
     end
 
@@ -40,51 +29,16 @@ module Lti
       }
       config[:visibility] = "public" if config[:visibility] == "everyone"
 
-      return Lti::Config.xml(config) if app_inst.basic?
-      return Lti::Config.xml(course_nav_out(config)) if app_inst.course_navigation?
-      return Lti::Config.xml(account_nav_out(config)) if app_inst.account_navigation?
+      config = Lti::Config.config(config) if app_inst.basic?
+      config = Lti::Config.course_navigation(config) if app_inst.course_navigation?
+      config = Lti::Config.account_navigation(config) if app_inst.account_navigation?
       if app_inst.wysiwyg_button?
         config[:button_url] = app_inst.application.button_url
         config[:button_text] = app_inst.application.button_text
-        return Lti::Config.xml(wysiwyg_button_out(config))
+        config = Lti::Config.wysiwyg(config)
       end
-    end
 
-    def self.basic_out(config)
-      puts "-------------------------------------------------------------------------------------"
-      puts "Basic LTI Config"
-      puts "-------------------------------------------------------------------------------------"
-      puts Lti::Config.xml(config)
-    end
-
-    def self.course_nav_out(config)
-      puts ""
-      puts "-------------------------------------------------------------------------------------"
-      puts "Course Navigation LTI Config"
-      puts "-------------------------------------------------------------------------------------"
-      course_navigation_config = Lti::Config.course_navigation(config)
-      puts Lti::Config.xml(course_navigation_config)
-      course_navigation_config
-    end
-
-    def self.account_nav_out(config)
-      puts ""
-      puts "-------------------------------------------------------------------------------------"
-      puts "Account Navigation LTI Config"
-      puts "-------------------------------------------------------------------------------------"
-      account_navigation_config = Lti::Config.account_navigation(config)
-      puts Lti::Config.xml(account_navigation_config)
-      account_navigation_config
-    end
-
-    def self.wysiwyg_button_out(config)
-      puts ""
-      puts "-------------------------------------------------------------------------------------"
-      puts "WYSIWYG Button LTI Config"
-      puts "-------------------------------------------------------------------------------------"
-      wysiwyg_config = Lti::Config.wysiwyg(config)
-      puts Lti::Config.xml(wysiwyg_config)
-      wysiwyg_config
+      Lti::Config.xml(config)
     end
 
   end

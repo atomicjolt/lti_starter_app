@@ -71,7 +71,7 @@ module Lti
     end
 
     def self.resource_selection_from_args(config = {}, title = "", args = {})
-      if args[:course_navigation].blank? && args[:account_navigation].blank?
+      if args[:resource_selection].present?
         config["resource_selection"] = {
           "url" => args[:launch_url],
           "text" => title,
@@ -113,9 +113,11 @@ module Lti
     def self.editor_button_from_args(config = {}, title = "", args = {})
       if args[:button_url].present?
         config["editor_button"] = {
-          "url" => args[:launch_url],
+          "canvas_icon_class" => "icon-lti",
           "icon_url" => args[:button_url],
+          "message_type" => "ContentItemSelectionRequest",
           "text" => args[:button_text] || title,
+          "url" => args[:launch_url],
           "selection_width" => "892",
           "selection_height" => "800",
         }
