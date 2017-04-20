@@ -28,21 +28,26 @@ module Lti
       end
     end
 
-    def self.lti_config_xml(app)
-      domain = app.domain || Rails.application.secrets.application_main_domain
+    def self.lti_config_xml(app_inst)
+      domain = app_inst.domain || Rails.application.secrets.application_main_domain
       config = {
-        title: app.application.name,
+        title: app_inst.application.name,
         launch_url: "https://#{domain}/lti_launches",
         domain: domain,
         icon: "https://#{domain}/images/oauth_icon.png",
-        description: app.application.description,
-        visibility: app.visibility,
+        description: app_inst.application.description,
+        visibility: app_inst.visibility,
       }
+      config[:visibility] = "public" if config[:visibility] == "everyone"
 
-      return Lti::Config.xml(config) if app.basic?
-      return Lti::Config.xml(course_nav_out(config)) if app.course_navigation?
-      return Lti::Config.xml(account_nav_out(config)) if app.account_navigation?
-      return Lti::Config.xml(wysiwyg_button_out(config)) if app.wysiwyg_button?
+      return Lti::Config.xml(config) if app_inst.basic?
+      return Lti::Config.xml(course_nav_out(config)) if app_inst.course_navigation?
+      return Lti::Config.xml(account_nav_out(config)) if app_inst.account_navigation?
+      if app_inst.wysiwyg_button?
+        config[:button_url] = app_inst.application.button_url
+        config[:button_text] = app_inst.application.button_text
+        return Lti::Config.xml(wysiwyg_button_out(config))
+      end
     end
 
     def self.basic_out(config)
@@ -57,7 +62,6 @@ module Lti
       puts "-------------------------------------------------------------------------------------"
       puts "Course Navigation LTI Config"
       puts "-------------------------------------------------------------------------------------"
-      config[:visibility] = "public" if config[:visibility] == "everyone"
       course_navigation_config = Lti::Config.course_navigation(config)
       puts Lti::Config.xml(course_navigation_config)
       course_navigation_config
@@ -68,7 +72,6 @@ module Lti
       puts "-------------------------------------------------------------------------------------"
       puts "Account Navigation LTI Config"
       puts "-------------------------------------------------------------------------------------"
-      config[:visibility] = "public" if config[:visibility] == "everyone"
       account_navigation_config = Lti::Config.account_navigation(config)
       puts Lti::Config.xml(account_navigation_config)
       account_navigation_config
@@ -79,7 +82,6 @@ module Lti
       puts "-------------------------------------------------------------------------------------"
       puts "WYSIWYG Button LTI Config"
       puts "-------------------------------------------------------------------------------------"
-      config[:visibility] = "public" if config[:visibility] == "everyone"
       wysiwyg_config = Lti::Config.wysiwyg(config)
       puts Lti::Config.xml(wysiwyg_config)
       wysiwyg_config

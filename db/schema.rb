@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419195150) do
+ActiveRecord::Schema.define(version: 20170420011243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 20170419195150) do
     t.jsonb    "default_config",              default: {}
     t.integer  "lti_type",                    default: 0
     t.integer  "visibility",                  default: 0
+    t.string   "button_url"
+    t.string   "button_text"
   end
 
   create_table "authentications", force: :cascade do |t|

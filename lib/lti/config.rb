@@ -29,8 +29,13 @@ module Lti
     end
 
     def self.wysiwyg(config)
-      config[:button_url] = "http://www.example.com/example.png"
-      config[:button_text] = "A button"
+      config[:editor_button] = {
+        button_url: config[:button_url],
+        button_text: config[:button_text],
+        visibility: config[:visibility] || "admins",
+        default: "enabled",
+        enabled: true,
+      }
       config
     end
 
