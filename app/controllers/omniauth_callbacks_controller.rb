@@ -23,8 +23,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     @user.save!
 
-    @lti_launch = true
-    @canvas_url = current_application_instance.site.url
+    set_lti_launch_values
     @canvas_auth_required = false
 
     if params["admin_url"].present?

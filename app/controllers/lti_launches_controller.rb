@@ -10,8 +10,6 @@ class LtiLaunchesController < ApplicationController
   def index
     @canvas_api = canvas_api
     @canvas_auth_required = @canvas_api.blank?
-    @lti_launch = true
-    @canvas_url = current_application_instance.site.url
-    @app_name = current_application_instance.application.client_application_name
+    set_lti_launch_values
   end
 end
