@@ -29,7 +29,6 @@ module Lti
       }
       config[:visibility] = "public" if config[:visibility] == "everyone"
 
-      config = Lti::Config.config(config) if app_inst.basic?
       config = Lti::Config.course_navigation(config) if app_inst.course_navigation?
       config = Lti::Config.account_navigation(config) if app_inst.account_navigation?
       if app_inst.wysiwyg_button?
