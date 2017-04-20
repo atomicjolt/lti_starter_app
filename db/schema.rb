@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420011243) do
+ActiveRecord::Schema.define(version: 20170420164409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20170420011243) do
     t.integer  "application_id"
     t.string   "lti_key"
     t.string   "lti_secret"
-    t.integer  "lti_type",                                 default: 0
     t.string   "encrypted_canvas_token"
     t.string   "encrypted_canvas_token_salt"
     t.string   "encrypted_canvas_token_iv"
@@ -29,7 +28,6 @@ ActiveRecord::Schema.define(version: 20170420011243) do
     t.integer  "site_id"
     t.string   "tenant"
     t.jsonb    "config",                                   default: {}
-    t.integer  "visibility",                               default: 0
     t.index ["application_id"], name: "index_application_instances_on_application_id", using: :btree
     t.index ["site_id"], name: "index_application_instances_on_site_id", using: :btree
   end
@@ -44,10 +42,7 @@ ActiveRecord::Schema.define(version: 20170420011243) do
     t.integer  "kind",                        default: 0
     t.integer  "application_instances_count"
     t.jsonb    "default_config",              default: {}
-    t.integer  "lti_type",                    default: 0
-    t.integer  "visibility",                  default: 0
-    t.string   "button_url"
-    t.string   "button_text"
+    t.text     "lti_config"
   end
 
   create_table "authentications", force: :cascade do |t|

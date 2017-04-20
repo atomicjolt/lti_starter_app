@@ -13,18 +13,6 @@ RSpec.describe Lti::Config do
     }
   end
 
-  describe "course_navigation" do
-    it "generates xml to install the lti tool as course navigation" do
-      described_class.course_navigation(@basic_config)
-    end
-  end
-
-  describe "account_navigation" do
-    it "generates xml to install the lti tool as account navigation" do
-      described_class.account_navigation(@basic_config)
-    end
-  end
-
   describe "xml" do
     it "generates basic configuration xml for an LTI tool" do
       args = {
