@@ -1,0 +1,84 @@
+.o-contain{
+  margin: -11rem 0 0;
+  padding: 11rem 0 0 34rem;
+  height: 100%;
+  position: relative;
+}
+
+.o-contain--full{
+  margin: -11rem auto 0;
+  padding: 11rem 2rem 0;
+  max-width: 100rem;
+}
+
+.o-contain--small {
+  margin: -11rem auto 0;
+  padding: 11rem 2rem 0;
+  max-width: 50rem;
+}
+
+.o-left{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 34rem;
+  height: 100%;
+  background: $darker-gray;
+  padding-top: 11rem;
+  overflow: auto;
+}
+
+.o-right{
+  position: relative;
+  padding: 0 2rem;
+  height: 100%;
+  overflow: auto;
+}
+
+.o-grid{
+  margin-left: -2rem;
+  margin-right: -2rem;
+  @include clearfix;
+}
+
+.o-grid__modal-top{
+  border-bottom: 0.2rem solid $lighter-gray;
+  padding-bottom: 2rem;
+  margin-bottom: 4rem;
+}
+
+.o-grid__bottom{
+  margin-bottom: 2rem;
+}
+
+  .o-grid__item{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    float: left;
+  }
+
+  .u-full{
+    width: 100% !important;
+  }
+
+  .u-half{
+    width: 50% !important;
+  }
+
+  .u-third{
+    width: 33.333% !important;
+  }
+
+.c-modal{
+  .c-btn{
+    float: right;
+  }
+}
+
+.u-m-right{
+  margin-right: 1rem !important;
+}
+
+.u-m-bottom{
+  margin-bottom: 2rem !important;
+}

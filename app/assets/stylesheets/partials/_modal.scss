@@ -1,0 +1,154 @@
+.c-modal__background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 900;
+}
+
+.c-modal{
+  position: absolute;
+  top: -90rem;
+  @include center(horizontal);
+  background: $white;
+  box-shadow: 0 0 1rem rgba(0,0,0,0.5);
+  @include transition(all 0.3s ease);
+  outline: none;
+
+  &.is-open{
+    top: 5rem;
+  }
+}
+
+.c-modal--settings{
+  width: 80rem;
+  padding: 3rem 4rem;
+}
+
+.c-modal--site {
+  width: 80rem;
+  padding: 3rem 4rem;
+  z-index: 1000
+}
+
+.c-modal--error{
+  position: absolute;
+  width: 50rem;
+  padding: 4rem;
+
+  .c-btn{
+    position: relative;
+    left: 50%;
+    @include transform(translateX(-50%));
+
+    &:hover{
+      @include transform(translateX(-50%) scale(1.05));
+    }
+    &:active{
+      @include transform(translateX(-50%) scale(0.95));
+    }
+  }
+
+  &.loading{
+    width: 20rem;
+    padding: 5rem;
+    @include center(both);
+    text-align: center;
+    @include semi-bold;
+    color: $text-color;
+    font-size: 1.8rem;
+
+    .c-loading-icon{
+      margin: 0 auto 2rem;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      border: 0.4rem solid $text-color;
+      position: relative;
+      @include animation(spinner 1.5s linear infinite);
+
+      &:before{
+        content: '';
+        width: 0.1rem;
+        height: 0.1rem;
+        border-top: 2rem solid $white;
+        border-right: 2rem solid transparent;
+        border-bottom: none;
+        border-left: none;
+        position: absolute;
+        top: -0.4rem;
+        left: 50%;
+      }
+    }
+    @keyframes spinner{
+      0%{
+        @include transform(rotate(0));
+      }
+      100%{
+        @include transform(rotate(360deg));
+      }
+    }
+  }
+}
+
+  .c-modal__title{
+    @include bold;
+    letter-spacing: 0.1rem;
+    font-size: 2.4rem;
+    color: $dark-gray;
+    margin: 0;
+  }
+
+  .c-modal__instance{
+    @include semi-bold;
+    font-size: 1.8rem;
+    color: $subtext-color;
+    margin: 0 0 3rem;
+  }
+
+  .c-modal__subtext{
+    @include semi-bold;
+    font-size: 1.8rem;
+    color: $red;
+    margin: 0 0 3rem;
+  }
+
+  a.c-modal__subtext-link{
+    color: $yellow;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
+  .c-modal__text{
+    font-size: 1.8rem;
+    color: $gray2;
+    text-align: center;
+
+    strong{
+      @include semi-bold;
+    }
+  }
+
+  .c-modal__subtitle{
+    font-size: 1.8rem;
+    @include semi-bold;
+    color: $subtext-color;
+    margin: 0 0 2rem;
+  }
+
+  a.c-modal__link{
+    font-size: 1.8rem;
+    color: $blue;
+    margin: 2rem 0 3rem;
+    text-align: center;
+    display: block;
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }

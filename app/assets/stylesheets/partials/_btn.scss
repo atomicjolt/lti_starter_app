@@ -1,0 +1,102 @@
+.c-btn{
+  height: 3.5rem;
+  border-radius: 1.8rem;
+  padding: 0 3rem;
+  @include semi-bold;
+  font-size: 1.4rem;
+  line-height: 3.5rem;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  @include transition(all 0.1s ease);
+
+  &:focus{
+    outline: none;
+  }
+}
+
+.c-btn--yellow{
+  background: $yellow;
+  color: $text-color;
+
+  &:hover{
+    @include transform(scale(1.02));
+  }
+  &:active{
+    @include transform(scale(0.98));
+  }
+}
+
+.c-btn--red{
+  background: $red;
+  color: $text-color;
+
+  &:hover{
+    @include transform(scale(1.02));
+  }
+  &:active{
+    @include transform(scale(0.98));
+  }
+}
+
+.c-btn--gray{
+  background: $lightest-gray;
+  color: $gray;
+  padding: 0 2rem;
+  font-size: 1.2rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  line-height: 3rem;
+  float: right;
+
+  &:hover{
+    background: $yellow;
+    color: $dark-gray;
+    @include transform(scale(1.05));
+  }
+  &:active{
+    @include transform(scale(0.95));
+  }
+}
+
+.c-btn--gray--large{
+  background: $lightest-gray;
+  color: $gray;
+  padding: 0 2rem;
+  float: right;
+  height: 3.5rem;
+  border-radius: 1.8rem;
+  line-height: 3.5rem;
+  font-size: 1.4rem;
+
+  &:hover{
+    background: $lighter-gray;
+    color: $text-color;
+    @include transform(scale(1.02));
+  }
+  &:active{
+    @include transform(scale(0.98));
+  }
+}
+
+.c-btn--back{
+  padding: 0 0 0 3rem;
+  color: $light-gray;
+  background: none;
+  border-radius: none;
+  position: relative;
+
+  i{
+    position: absolute;
+    top: 0.4rem;
+    left: 0;
+    font-size: 2.5rem;
+  }
+
+  &:hover{
+    color: $white;
+  }
+  &:active{
+    @include transform(scale(0.95));
+  }
+}

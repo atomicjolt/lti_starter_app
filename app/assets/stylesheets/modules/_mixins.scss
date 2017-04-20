@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+
+@mixin display-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+@mixin justify-content($flex) {
+  -webkit-justify-content: $flex;
+  justify-content: $flex;
+}
+@mixin align-items($flex) {
+  -webkit-align-items: $flex;
+  align-items: $flex;
+}
+@mixin flex($flex...) {
+  -webkit-flex: $flex;
+  flex: $flex;
+}
+
+@mixin no-select{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+@mixin center($position) {
+
+  @if $position == 'vertical' {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  @else if $position == 'horizontal' {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translate(-50%);
+  }
+  @else if $position == 'both' {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin semi-bold{
+  font-weight: 500;
+}
+@mixin regular{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+@mixin bold{
+  font-weight: 700;
+}
+
+
+// Transition mixin
+// Add CSS transition to any element
+@mixin transform($transform...) {
+    -webkit-transform: $transform;
+    -moz-transform: $transform;
+    -o-transform: $transform;
+    -ms-transform: $transform;
+    transform: $transform;
+}
+
+// Transition mixin
+// Add CSS transition to any element
+@mixin transition($transition...) {
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -o-transition: $transition;
+    -ms-transition: $transition;
+    transition: $transition;
+}
+
+// Animation mixin
+// Animate an element
+@mixin animation($animation...) {
+	-webkit-animation: $animation;
+	-moz-animation: $animation;
+	-o-animation: $animation;
+	animation: $animation;
+}
+
+// Clearfix hack mixin
+// Add clearfix hack - to contain floats within containers
+@mixin clearfix {
+    &:before,
+    &:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+}
+
+// Display flex mixin
+// Add flex display property to any element
+@mixin displayFlex {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+// Box sizing mixin
+// Set box sizing for an element
+@mixin boxSizing($sizing) {
+	-webkit-box-sizing: $sizing;
+	-moz-box-sizing: $sizing;
+	box-sizing: $sizing;
+}
+
+// Truncate mixin
+// Truncate single line text
+@mixin truncate {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+@font-face {
+  font-family: 'lti-admin';
+  src:
+    url('fonts/lti-admin.ttf') format('truetype'),
+    url('fonts/lti-admin.woff') format('woff'),
+    url('fonts/lti-admin.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="i-"], [class*=" i-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'lti-admin' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.i-dropdown:before {
+  content: "\e10f";
+}
+.i-back:before {
+  content: "\e19a";
+}
+.i-check-box:before {
+  content: "\e25c";
+}
+.i-check-box-outline_blank:before {
+  content: "\e25d";
+}
+.i-delete:before {
+  content: "\e287";
+}
+.i-help:before {
+  content: "\e29b";
+}
+.i-search:before {
+  content: "\e2ca";
+}
+.i-settings:before {
+  content: "\e2cb";
+}

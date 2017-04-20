@@ -1,0 +1,137 @@
+.c-head{
+  height: 6rem;
+  padding: 0 0 0 2rem;
+  background: $dark-gray;
+  @include display-flex;
+  @include align-items(center);
+  @include justify-content(space-between);
+  position: relative;
+  z-index: 800;
+}
+
+.c-back{
+  width: 15rem;
+}
+
+.c-logo{
+  position: absolute;
+  @include center(both);
+  height: 3.5rem;
+  z-index: 10;
+}
+
+.c-user{
+  margin-left: auto;
+  height: 100%;
+}
+
+  .c-username{
+    @include semi-bold;
+    @include display-flex;
+    color: $light-gray;
+    font-size: 1.4rem;
+    position: relative;
+    padding: 0rem 2rem;
+    height: 100%;
+    align-items: center;
+
+    i{
+      font-size: 2.5rem;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: $darker-gray;
+    }
+
+    &:hover {
+      background-color: $darker-gray;
+      cursor: pointer;
+    }
+  }
+
+  .c-dropdown {
+    position: absolute;
+    display: block;
+    top: 100%;
+    right: 0;
+    background: $darker-gray;
+    color: $light-gray;
+
+    .c-menu-item {
+      @include semi-bold;
+      font-size: 1.4rem;
+
+      a {
+        padding: 1rem;
+        display: block;
+      }
+
+      &:hover {
+        background-color: $dark-gray;
+      }
+
+      &:focus {
+        background-color: $dark-gray;
+        outline: none;
+      }
+    }
+  }
+
+.c-subnav{
+  height: 5rem;
+  background: $gray2;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 799;
+
+  ul{
+    li{
+      display: inline-block;
+      padding-right: 1rem;
+      margin-top: 0.7rem;
+
+      &:nth-of-type(1){
+        padding-left: 0;
+      }
+      &:nth-of-type(2){
+        padding-left: 1rem;
+        border-left: 0.1rem solid $gray;
+      }
+      &:nth-of-type(3){
+        padding-left: 1rem;
+        border-left: 0.1rem solid $gray;
+      }
+
+      a{
+        @include semi-bold;
+        color: $white;
+        height: 3.5rem;
+        background: $gray2;
+        border-radius: 1.8rem;
+        padding: 0 2rem;
+        line-height: 3.5rem;
+        text-transform: uppercase;
+        font-size: 1.6rem;
+        display: inline-block;
+        cursor: pointer;
+        @include transition(transform 0.1s ease);
+
+        &.is-active{
+          background: $yellow;
+          color: $dark-gray;
+
+          &:hover{
+            background: $yellow;
+          }
+        }
+        &:hover{
+          background: $dark-gray;
+        }
+        &:active{
+          @include transform(scale(0.98));
+        }
+      }
+    }
+  }
+}
