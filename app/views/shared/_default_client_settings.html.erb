@@ -54,6 +54,15 @@
       settings[:tool_consumer_instance_guid]            = params["tool_consumer_instance_guid"]
       settings[:tool_consumer_instance_name]            = params["tool_consumer_instance_name"]
       settings[:user_image]                             = params["user_image"]
+
+      # Content Item LTI parameters
+      if params["content_item_return_url"].present?
+        settings[:accept_media_types] = params["accept_media_types"]
+        settings[:accept_multiple] = params["accept_multiple"]
+        settings[:accept_presentation_document_targets] = params["accept_presentation_document_targets"]
+        settings[:accept_unsigned] = params["accept_unsigned"]
+        settings[:content_item_return_url] = params["content_item_return_url"]
+      end
     end
   end
 %>
