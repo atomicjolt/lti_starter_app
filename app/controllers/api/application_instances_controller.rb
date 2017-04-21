@@ -27,6 +27,7 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
     # So we have to explicitly set the config
     # This will be allowed in rails 5.1
     @application_instance.config = params[:application_instance][:config]
+    @application_instance.lti_config = params[:application_instance][:lti_config]
 
     @application_instance.save!
 
@@ -40,6 +41,8 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
     # So we have to explicitly set the config
     # This will be allowed in rails 5.1
     @application_instance.config = params[:application_instance][:config]
+    @application_instance.lti_config = params[:application_instance][:lti_config]
+
     @application_instance.update(application_instance_params)
 
     application_instance = @application_instance.as_json(include: :site)

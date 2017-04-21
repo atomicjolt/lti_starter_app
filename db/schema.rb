@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420164409) do
+ActiveRecord::Schema.define(version: 20170421220319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170420164409) do
     t.integer  "site_id"
     t.string   "tenant"
     t.jsonb    "config",                                   default: {}
+    t.jsonb    "lti_config"
     t.index ["application_id"], name: "index_application_instances_on_application_id", using: :btree
     t.index ["site_id"], name: "index_application_instances_on_site_id", using: :btree
   end
@@ -42,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170420164409) do
     t.integer  "kind",                        default: 0
     t.integer  "application_instances_count"
     t.jsonb    "default_config",              default: {}
-    t.text     "lti_config"
+    t.jsonb    "lti_config"
   end
 
   create_table "authentications", force: :cascade do |t|

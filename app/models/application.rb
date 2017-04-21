@@ -1,7 +1,7 @@
 class Application < ActiveRecord::Base
 
   serialize :default_config, HashSerializer
-  serialize :lti_config, Hash
+  serialize :lti_config, HashSerializer
 
   has_many :application_instances
   validates :name, presence: true, uniqueness: true

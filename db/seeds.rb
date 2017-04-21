@@ -49,7 +49,7 @@ applications = [
     default_config: { foo: "bar" },
     lti_config: {
       title: "LTI Starter App",
-      visibility: "public",
+      privacy_level: "public",
       icon: "oauth_icon.png",
       course_navigation: {
         text: "LTI Starter App",

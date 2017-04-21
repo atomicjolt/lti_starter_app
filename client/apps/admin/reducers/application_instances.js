@@ -11,6 +11,7 @@ export default function instances(state = initialState, action) {
       _.forEach(action.payload, (instance) => {
         const instanceClone = _.cloneDeep(instance);
         instanceClone.config = JSON.stringify(instance.config);
+        instanceClone.lti_config = JSON.stringify(instance.lti_config);
         newState[instance.id] = instanceClone;
       });
       return newState;
@@ -22,6 +23,7 @@ export default function instances(state = initialState, action) {
       const newState = _.cloneDeep(state);
       const instanceClone = _.cloneDeep(action.payload);
       instanceClone.config = JSON.stringify(action.payload.config);
+      instanceClone.lti_config = JSON.stringify(action.payload.lti_config);
       newState[action.payload.id] = instanceClone;
       return newState;
     }
