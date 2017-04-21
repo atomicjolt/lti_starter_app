@@ -12,15 +12,8 @@ export const TEXT_FIELDS = {
   canvas_token: 'Canvas Token',
 };
 
-export const TYPE_RADIOS = {
-  basic: 'General',
-  account_navigation: 'Account Navigation',
-  course_navigation: 'Course Navigation',
-  wysiwyg_button: 'WYSIWYG Button',
-};
-
 export const VISIBILITY_RADIOS = {
-  everyone: 'Everyone',
+  public: 'Public',
   admins: 'Admins',
   members: 'Members',
 };
@@ -144,14 +137,6 @@ export default class Form extends React.Component {
           {
             _.map(VISIBILITY_RADIOS, (...args) =>
               this.renderInput('o-grid__item u-third', 'c-checkbox', 'radio', 'visibility', this.props.isUpdate, ...args)
-            )
-          }
-        </div>
-        <h3 className="c-modal__subtitle">Install Settings</h3>
-        <div className="o-grid o-grid__bottom">
-          {
-            _.map(TYPE_RADIOS, (...args) =>
-              this.renderInput('o-grid__item u-third', 'c-checkbox', 'radio', 'lti_type', this.props.isUpdate, ...args)
             )
           }
         </div>

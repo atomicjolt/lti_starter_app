@@ -1,12 +1,10 @@
 class Application < ActiveRecord::Base
-  include LtiModelSupport
 
   serialize :default_config, HashSerializer
+  serialize :lti_config, Hash
 
   has_many :application_instances
   validates :name, presence: true, uniqueness: true
-
-  before_validation :set_lti
 
   has_many :application_bundles
   has_many :bundles, through: :application_bundles
@@ -18,12 +16,5 @@ class Application < ActiveRecord::Base
   # store_accessor :default_config, :foo, :bar
 
   enum kind: [:lti, :admin]
-
-  private
-
-  def set_lti
-    self.visibility ||= Application.visibility[:everyone]
-    self.lti_type ||= Application.lti_types[:basic]
-  end
 
 end

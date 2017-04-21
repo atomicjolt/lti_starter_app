@@ -12,9 +12,7 @@ export default class InstallPane extends React.Component {
   static propTypes = {
     courses             : PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     loadExternalTools   : PropTypes.func,
-    applicationInstance : PropTypes.shape({
-      lti_type: PropTypes.string.isRequired,
-    }),
+    applicationInstance : PropTypes.shape({}),
     canvasRequest       : PropTypes.func,
     loadingCourses      : PropTypes.shape({}),
     account             : PropTypes.shape({
@@ -97,7 +95,7 @@ export default class InstallPane extends React.Component {
     const searchedCourses = this.searchedCourses();
     const pageCount = _.ceil(searchedCourses.length / PAGE_SIZE);
     let accountInstall = null;
-    let courseInstalls = <p className="c-alert c-alert--info">Course install not available for this tool</p>;
+    let courseInstalls = null;
     const {
       applicationInstance,
     } = this.props;
@@ -111,40 +109,38 @@ export default class InstallPane extends React.Component {
           canvasRequest={this.props.canvasRequest}
         />
       );
-      if (_.includes(COURSE_TYPES, applicationInstance.lti_type)) {
-        courseInstalls = (
-          <div>
-            <div className="c-search c-search--small">
-              <input
-                type="text"
-                placeholder="Search..."
-                onChange={e => this.updateSearchPrefix(e.target.value)}
-              />
-              <i className="i-search" />
-            </div>
-            {
-              !_.isEmpty(this.props.loadingCourses) ?
-                <div className="c-modal--error loading">
-                  <div className="c-loading-icon" />
-                </div> : null
-            }
-            <CourseInstalls
-              applicationInstance={applicationInstance}
-              courses={this.pageCourses(searchedCourses)}
-              loadingCourses={this.props.loadingCourses}
-              canvasRequest={this.props.canvasRequest}
+      courseInstalls = (
+        <div>
+          <div className="c-search c-search--small">
+            <input
+              type="text"
+              placeholder="Search..."
+              onChange={e => this.updateSearchPrefix(e.target.value)}
             />
-            <Pagination
-              setPage={change => this.setState({ currentPage: change.selected })}
-              pageCount={pageCount}
-              courses={this.props.courses}
-              pageSize={PAGE_SIZE}
-              loadingCourses={this.props.loadingCourses}
-              currentPage={this.state.currentPage}
-            />
+            <i className="i-search" />
           </div>
-        );
-      }
+          {
+            !_.isEmpty(this.props.loadingCourses) ?
+              <div className="c-modal--error loading">
+                <div className="c-loading-icon" />
+              </div> : null
+          }
+          <CourseInstalls
+            applicationInstance={applicationInstance}
+            courses={this.pageCourses(searchedCourses)}
+            loadingCourses={this.props.loadingCourses}
+            canvasRequest={this.props.canvasRequest}
+          />
+          <Pagination
+            setPage={change => this.setState({ currentPage: change.selected })}
+            pageCount={pageCount}
+            courses={this.props.courses}
+            pageSize={PAGE_SIZE}
+            loadingCourses={this.props.loadingCourses}
+            currentPage={this.state.currentPage}
+          />
+        </div>
+      );
     }
     return (
       <div className="o-right">

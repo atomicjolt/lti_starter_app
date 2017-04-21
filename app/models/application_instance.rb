@@ -1,5 +1,4 @@
 class ApplicationInstance < ActiveRecord::Base
-  include LtiModelSupport
 
   serialize :config, HashSerializer
 
@@ -25,18 +24,19 @@ class ApplicationInstance < ActiveRecord::Base
 
   after_commit :create_schema, on: :create
   before_create :create_config
-  before_create :set_lti_config
 
   def lti_config_xml
-    Lti::Utils.lti_config_xml(self)
+    domain = domain || Rails.application.secrets.application_main_domain
+    config = application.lti_config
+    if config.present?
+      config[:launch_url] = "https://#{domain}/lti_launches"
+      config[:domain] = domain
+      config[:icon] = "https://#{domain}/#{config[:icon]}"
+      Lti::Config.xml(config)
+    end
   end
 
   private
-
-  def set_lti_config
-    self.visibility = application.visibility
-    self.lti_type = application.lti_type
-  end
 
   def set_lti
     self.lti_key = (lti_key || application.name)&.parameterize&.dasherize
