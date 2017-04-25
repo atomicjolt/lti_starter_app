@@ -1,7 +1,7 @@
 class ApplicationInstance < ActiveRecord::Base
-  include LtiModelSupport
 
   serialize :config, HashSerializer
+  serialize :lti_config, HashSerializer
 
   belongs_to :application, counter_cache: true
   belongs_to :site
@@ -25,18 +25,19 @@ class ApplicationInstance < ActiveRecord::Base
 
   after_commit :create_schema, on: :create
   before_create :create_config
-  before_create :set_lti_config
 
   def lti_config_xml
-    Lti::Utils.lti_config_xml(self)
+    domain = domain || Rails.application.secrets.application_main_domain
+    config = lti_config.dup
+    if config.present?
+      config[:launch_url] = "https://#{domain}/lti_launches"
+      config[:domain] = domain
+      config[:icon] = "https://#{domain}/#{config[:icon]}"
+      Lti::Config.xml(config)
+    end
   end
 
   private
-
-  def set_lti_config
-    self.visibility = application.visibility
-    self.lti_type = application.lti_type
-  end
 
   def set_lti
     self.lti_key = (lti_key || application.name)&.parameterize&.dasherize
@@ -53,6 +54,7 @@ class ApplicationInstance < ActiveRecord::Base
 
   def create_config
     self.config = application.default_config if config.blank?
+    self.lti_config = application.lti_config if lti_config.blank?
   end
 
   # Danger! Whole databases will be lost with this method!

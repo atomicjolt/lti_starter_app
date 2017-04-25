@@ -37,7 +37,6 @@ export default function CourseInstallRow(props) {
           name: applicationInstance.name,
           consumer_key: applicationInstance.lti_key,
           shared_secret: applicationInstance.lti_secret,
-          privacy_level: 'public',
           config_type: 'by_xml',
           config_xml: applicationInstance.lti_config_xml
         },

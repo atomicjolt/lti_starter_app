@@ -60,12 +60,22 @@ export default class Modal extends React.Component {
       }
     }
 
+    let ltiConfigParseError = null;
+    if (e.target.name === 'lti_config') {
+      try {
+        JSON.parse(e.target.value || '{}');
+      } catch (err) {
+        ltiConfigParseError = err.toString();
+      }
+    }
+
     this.setState({
       newApplicationInstance: {
         ...this.state.newApplicationInstance,
         [e.target.name]: e.target.value
       },
       configParseError,
+      ltiConfigParseError,
     });
   }
 

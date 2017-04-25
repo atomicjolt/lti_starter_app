@@ -8,55 +8,22 @@ module Lti
       config(args).to_xml(indent: 2)
     end
 
-    def self.course_navigation(config)
-      config[:course_navigation] = {
-        text: config[:title],
-        visibility: config[:visibility] || "public",
-        default: "enabled",
-        enabled: true,
-      }
-      config
-    end
-
-    def self.account_navigation(config)
-      config[:account_navigation] = {
-        text: config[:title],
-        visibility: config[:visibility] || "admins",
-        default: "enabled",
-        enabled: true,
-      }
-      config
-    end
-
-    def self.wysiwyg(config)
-      config[:editor_button] = {
-        button_url: config[:button_url],
-        button_text: config[:button_text],
-        visibility: config[:visibility] || "admins",
-        default: "enabled",
-        enabled: true,
-      }
-      config
-    end
-
     def self.config(args = {})
-      title = args[:title]
+      tc = tool_config(args)
 
-      tc = tool_config(title, args)
+      canvas_ext_config = default_config(args)
+      canvas_ext_config = resource_selection_from_args(canvas_ext_config, args)
+      canvas_ext_config = course_navigation_from_args(canvas_ext_config, args)
+      canvas_ext_config = account_navigation_from_args(canvas_ext_config, args)
+      canvas_ext_config = editor_button_from_args(canvas_ext_config, args)
 
-      config = default_config(args)
-      config = resource_selection_from_args(config, title, args)
-      config = course_navigation_from_args(config, args)
-      config = account_navigation_from_args(config, args)
-      config = editor_button_from_args(config, title, args)
-
-      tc.set_ext_params("canvas.instructure.com", config)
+      tc.set_ext_params("canvas.instructure.com", canvas_ext_config.stringify_keys)
       tc
     end
 
-    def self.tool_config(title = "", args = {})
+    def self.tool_config(args = {})
       IMS::LTI::ToolConfig.new(
-        title: title,
+        title: args[:title],
         launch_url: args[:launch_url],
         description: args[:description],
         icon: args[:icon],
@@ -65,64 +32,55 @@ module Lti
 
     def self.default_config(args = {})
       {
-        "privacy_level" => "public",
+        "privacy_level" => args[:privacy_level] || "public",
         "domain" => args[:domain],
       }
     end
 
-    def self.resource_selection_from_args(config = {}, title = "", args = {})
+    def self.resource_selection_from_args(config = {}, args = {})
       if args[:resource_selection].present?
-        config["resource_selection"] = {
-          "url" => args[:launch_url],
-          "text" => title,
-          "selection_width" => "892",
-          "selection_height" => "800",
-        }
+        config["resource_selection"] = args[:resource_selection].stringify_keys
+        default_configs_from_args!(args, config, :resource_selection)
+        default_dimensions!(config, "resource_selection")
       end
       config
     end
 
     def self.course_navigation_from_args(config = {}, args = {})
       if args[:course_navigation].present?
-        config["course_navigation"] = {
-          "url" => args[:launch_url],
-          "default" => args[:course_navigation][:default] || "enabled",
-          "text" => args[:course_navigation][:text],
-          "enabled" => args[:course_navigation][:enabled],
-        }
-        if args[:course_navigation][:visibility]
-          config["course_navigation"]["visibility"] = args[:course_navigation][:visibility]
-        end
+        default_configs_from_args!(args, config, :course_navigation)
       end
       config
     end
 
     def self.account_navigation_from_args(config = {}, args = {})
       if args[:account_navigation].present?
-        config["account_navigation"] = {
-          "url" => args[:launch_url],
-          "default" => args[:account_navigation][:default] || "enabled",
-          "visibility" => args[:account_navigation][:visibility] || "public",
-          "text" => args[:account_navigation][:text],
-          "enabled" => args[:account_navigation][:enabled],
-        }
+        default_configs_from_args!(args, config, :account_navigation)
       end
       config
     end
 
-    def self.editor_button_from_args(config = {}, title = "", args = {})
-      if args[:button_url].present?
-        config["editor_button"] = {
-          "canvas_icon_class" => "icon-lti",
-          "icon_url" => args[:button_url],
-          "message_type" => "ContentItemSelectionRequest",
-          "text" => args[:button_text] || title,
-          "url" => args[:launch_url],
-          "selection_width" => "892",
-          "selection_height" => "800",
-        }
+    def self.editor_button_from_args(config = {}, args = {})
+      if args[:editor_button].present?
+        config["editor_button"] = args[:editor_button].stringify_keys
+        config["editor_button"]["canvas_icon_class"] ||= "icon-lti"
+        config["editor_button"]["message_type"] ||= "ContentItemSelectionRequest"
+        config["editor_button"]["url"] ||= args[:launch_url]
+        default_dimensions!(config, "editor_button")
       end
       config
+    end
+
+    def self.default_dimensions!(config, key)
+      config[key]["selection_width"] ||= "892"
+      config[key]["selection_height"] ||= "800"
+    end
+
+    def self.default_configs_from_args!(args, config, key)
+      config[key] = args[key].stringify_keys
+      config[key]["url"] ||= args[:launch_url]
+      config[key]["default"] ||= "enabled"
+      config[key]["visibility"] ||= "admins"
     end
 
   end

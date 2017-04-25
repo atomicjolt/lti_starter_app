@@ -32,7 +32,6 @@ applications = [
     canvas_api_permissions: admin_api_permissions,
     kind: Application.kinds[:admin],
     default_config: { foo: "bar" },
-    lti_type: Application.lti_types[:account_navigation],
     application_instances: [{
       tenant: Rails.application.secrets.admin_lti_key,
       lti_key: Rails.application.secrets.admin_lti_key,
@@ -48,7 +47,15 @@ applications = [
     # List Canvas API methods the app is allowed to use. A full list of constants can be found in canvas_urls
     canvas_api_permissions: "LIST_ACCOUNTS",
     default_config: { foo: "bar" },
-    lti_type: Application.lti_types[:course_navigation],
+    lti_config: {
+      title: "LTI Starter App",
+      privacy_level: "public",
+      icon: "oauth_icon.png",
+      course_navigation: {
+        text: "LTI Starter App",
+        visibility: "public",
+      },
+    },
     application_instances: [{
       tenant: Rails.application.secrets.hello_world_lti_key,
       lti_key: Rails.application.secrets.hello_world_lti_key,
@@ -70,15 +77,15 @@ applications = [
 def setup_application_instances(application, application_instances)
   application_instances.each do |attrs|
     site = Site.find_by(url: attrs.delete(:site_url))
-    attrs = attrs.merge(application_id: application.id, site_id: site.id)
+    attrs = attrs.merge(site_id: site.id)
 
-    if application_instance = ApplicationInstance.find_by(lti_key: attrs[:lti_key])
+    if application_instance = application.application_instances.find_by(lti_key: attrs[:lti_key])
       # Don't change production lti keys or set keys to nil
       attrs.delete(:lti_secret) if attrs[:lti_secret].blank? || Rails.env.production?
 
       application_instance.update_attributes!(attrs)
     else
-      ApplicationInstance.create!(attrs)
+      application.application_instances.create!(attrs)
     end
   end
 end
@@ -100,5 +107,3 @@ applications.each do |attrs|
   end
   setup_application_instances(application, application_instances)
 end
-
-Lti::Utils.lti_configs

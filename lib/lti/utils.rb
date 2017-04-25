@@ -4,40 +4,18 @@ module Lti
 
     def self.lti_configs
       ApplicationInstance.find_each.map do |app_inst|
-        xml_config = lti_config_xml(app_inst)
-        puts "-------------------------------------------------------------------------------------"
-        puts "LTI configuration for #{app_inst.application.name}"
-        puts "Key : #{app_inst.lti_key}"
-        puts "Secret : #{app_inst.lti_secret}"
-        puts ""
-        puts xml_config
-        puts ""
-        puts ""
+        if xml_config = app_inst.lti_config_xml
+          puts "-------------------------------------------------------------------------------------"
+          puts "LTI configuration for #{app_inst.application.name}"
+          puts "Key : #{app_inst.lti_key}"
+          puts "Secret : #{app_inst.lti_secret}"
+          puts ""
+          puts xml_config
+          puts ""
+          puts ""
+        end
         { app: app_inst, config: xml_config }
       end
-    end
-
-    def self.lti_config_xml(app_inst)
-      domain = app_inst.domain || Rails.application.secrets.application_main_domain
-      config = {
-        title: app_inst.application.name,
-        launch_url: "https://#{domain}/lti_launches",
-        domain: domain,
-        icon: "https://#{domain}/images/oauth_icon.png",
-        description: app_inst.application.description,
-        visibility: app_inst.visibility,
-      }
-      config[:visibility] = "public" if config[:visibility] == "everyone"
-
-      config = Lti::Config.course_navigation(config) if app_inst.course_navigation?
-      config = Lti::Config.account_navigation(config) if app_inst.account_navigation?
-      if app_inst.wysiwyg_button?
-        config[:button_url] = app_inst.application.button_url
-        config[:button_text] = app_inst.application.button_text
-        config = Lti::Config.wysiwyg(config)
-      end
-
-      Lti::Config.xml(config)
     end
 
   end

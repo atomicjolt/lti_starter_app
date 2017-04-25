@@ -63,27 +63,22 @@ RSpec.describe ApplicationInstance, type: :model do
       expect(app_instance.config).to eq("foo" => "baz")
     end
 
+    it "sets the lti_config to the application lti_config if blank" do
+      app = create(:application, lti_config: { foo: :bar })
+      app_instance = create(:application_instance, application: app)
+      expect(app_instance.lti_config).to eq app.lti_config
+    end
+
+    it "keeps the lti_config to as entered" do
+      app = create(:application, lti_config: { foo: :bar })
+      app_instance = create(:application_instance, application: app, lti_config: { foo: :baz })
+      expect(app_instance.lti_config).to eq("foo" => "baz")
+    end
+
     it "requires a site" do
       expect do
         create(:application_instance, site: nil, lti_key: "test")
       end.to raise_exception(ActiveRecord::RecordInvalid)
-    end
-
-    it "sets the lti_type to basic if no value is set" do
-      @application_instance = create(:application_instance, lti_key: "test", site: @site)
-      expect(@application_instance.basic?).to be true
-    end
-
-    it "sets the lti_type to the application's lti_type if no value is set" do
-      lti_type = Application.lti_types[:wysiwyg_button]
-      application = create(:application, lti_type: lti_type)
-      @application_instance = create(:application_instance, lti_key: "test", site: @site, application: application)
-      expect(@application_instance.wysiwyg_button?).to be true
-    end
-
-    it "sets a default visibility" do
-      @application_instance = create(:application_instance, visibility: ApplicationInstance.visibilities[:everyone], site: @site)
-      expect(@application_instance.basic?).to be true
     end
 
     it "creates a schema upon creation" do

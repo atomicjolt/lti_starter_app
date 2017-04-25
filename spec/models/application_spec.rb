@@ -21,18 +21,4 @@ RSpec.describe Application, type: :model do
       expect(application.valid?).to be false
     end
   end
-
-  describe "defaults" do
-    it "sets default lti_type to basic" do
-      name = "asdf1234"
-      application = build(:application, name: name)
-      expect(application.basic?).to be true
-    end
-
-    it "sets default visibility to everyone" do
-      name = "asdf1234"
-      application = build(:application, name: name)
-      expect(application.everyone?).to be true
-    end
-  end
 end

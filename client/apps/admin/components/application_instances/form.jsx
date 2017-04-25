@@ -12,31 +12,20 @@ export const TEXT_FIELDS = {
   canvas_token: 'Canvas Token',
 };
 
-export const TYPE_RADIOS = {
-  basic: 'General',
-  account_navigation: 'Account Navigation',
-  course_navigation: 'Course Navigation',
-  wysiwyg_button: 'WYSIWYG Button',
-};
-
-export const VISIBILITY_RADIOS = {
-  everyone: 'Everyone',
-  admins: 'Admins',
-  members: 'Members',
-};
-
 export default class Form extends React.Component {
 
   static propTypes = {
-    onChange:   PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
     closeModal: PropTypes.func.isRequired,
-    save:       PropTypes.func.isRequired,
-    newSite:    PropTypes.func.isRequired,
-    site_id:    PropTypes.string,
-    sites:      PropTypes.shape({}),
-    isUpdate:   PropTypes.bool,
+    save: PropTypes.func.isRequired,
+    newSite: PropTypes.func.isRequired,
+    site_id: PropTypes.string,
+    sites: PropTypes.shape({}),
+    isUpdate: PropTypes.bool,
     config: PropTypes.string,
     configParseError: PropTypes.string,
+    lti_config: PropTypes.string,
+    ltiConfigParseError: PropTypes.string,
   };
 
   selectSite(option) {
@@ -100,6 +89,13 @@ export default class Form extends React.Component {
       );
     }
 
+    let erroneousLtiConfigWarning = null;
+    if (this.props.ltiConfigParseError) {
+      erroneousLtiConfigWarning = (
+        <Warning text={this.props.ltiConfigParseError} />
+      );
+    }
+
     return (
       <form>
         <div className="o-grid o-grid__modal-top">
@@ -138,22 +134,21 @@ export default class Form extends React.Component {
               warning={erroneousConfigWarning}
             />
           </div>
-        </div>
-        <h3 className="c-modal__subtitle">Visibility Settings</h3>
-        <div className="o-grid">
-          {
-            _.map(VISIBILITY_RADIOS, (...args) =>
-              this.renderInput('o-grid__item u-third', 'c-checkbox', 'radio', 'visibility', this.props.isUpdate, ...args)
-            )
-          }
-        </div>
-        <h3 className="c-modal__subtitle">Install Settings</h3>
-        <div className="o-grid o-grid__bottom">
-          {
-            _.map(TYPE_RADIOS, (...args) =>
-              this.renderInput('o-grid__item u-third', 'c-checkbox', 'radio', 'lti_type', this.props.isUpdate, ...args)
-            )
-          }
+          <div className="o-grid__item u-full">
+            <h3 className="c-modal__subtitle">LTI Configuration</h3>
+            <Textarea
+              className="c-input"
+              labelText="Config"
+              textareaProps={{
+                id: 'application_instance_lti_config',
+                name: 'lti_config',
+                rows: 3,
+                value: this.props.lti_config || '',
+                onChange: this.props.onChange,
+              }}
+              warning={erroneousLtiConfigWarning}
+            />
+          </div>
         </div>
         <button
           type="button"
