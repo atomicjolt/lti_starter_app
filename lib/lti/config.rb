@@ -32,7 +32,7 @@ module Lti
 
     def self.default_config(args = {})
       {
-        "privacy_level" => "public",
+        "privacy_level" => args[:privacy_level] || "public",
         "domain" => args[:domain],
       }
     end
@@ -42,8 +42,8 @@ module Lti
         config["resource_selection"] = {
           "url" => args[:launch_url],
           "text" => args[:title],
-          "selection_width" => "892",
-          "selection_height" => "800",
+          "selection_width" => args[selection_width] || "892",
+          "selection_height" => args[selection_height] || "800",
         }
       end
       config
@@ -73,8 +73,8 @@ module Lti
           "canvas_icon_class" => "icon-lti",
           "message_type" => "ContentItemSelectionRequest",
           "url" => args[:launch_url],
-          "selection_width" => "892",
-          "selection_height" => "800",
+          "selection_width" => args[selection_width] || "892",
+          "selection_height" => args[selection_height] || "800",
         }
         config["editor_button"] = args[:editor_button].merge(settings).stringify_keys
       end
