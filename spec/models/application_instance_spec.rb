@@ -63,6 +63,18 @@ RSpec.describe ApplicationInstance, type: :model do
       expect(app_instance.config).to eq("foo" => "baz")
     end
 
+    it "sets the lti_config to the application lti_config if blank" do
+      app = create(:application, lti_config: { foo: :bar })
+      app_instance = create(:application_instance, application: app)
+      expect(app_instance.lti_config).to eq app.lti_config
+    end
+
+    it "keeps the lti_config to as entered" do
+      app = create(:application, lti_config: { foo: :bar })
+      app_instance = create(:application_instance, application: app, lti_config: { foo: :baz })
+      expect(app_instance.lti_config).to eq("foo" => "baz")
+    end
+
     it "requires a site" do
       expect do
         create(:application_instance, site: nil, lti_key: "test")

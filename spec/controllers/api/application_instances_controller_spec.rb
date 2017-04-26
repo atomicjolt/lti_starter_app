@@ -79,6 +79,30 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
             format: :json
         expect(response).to have_http_status(200)
       end
+      it "Updates the application instance config_xml" do
+        put :update,
+            params: {
+              application_id: @application.id,
+              id: @application_instance.id,
+              application_instance: {
+                lti_secret: "12345",
+                lti_config: {
+                  title: "LTI Starter App",
+                  privacy_level: "anonymous",
+                  icon: "oauth_icon.png",
+                  course_navigation: {
+                    text: "LTI Starter App",
+                    visibility: "public",
+                  },
+                },
+              },
+            },
+            format: :json
+        expect(response).to have_http_status(200)
+        result = JSON.parse(response.body)
+        xml = result["lti_config_xml"]
+        expect(xml).to include('<lticm:property name="privacy_level">anonymous</lticm:property>')
+      end
     end
 
     describe "DEL destroy" do

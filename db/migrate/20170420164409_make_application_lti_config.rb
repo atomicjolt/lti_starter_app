@@ -1,6 +1,6 @@
 class MakeApplicationLtiConfig < ActiveRecord::Migration[5.0]
   def change
-    add_column :applications, :lti_config, :text
+    add_column :applications, :lti_config, :jsonb
 
     remove_column :applications, :visibility, :integer
     remove_column :applications, :lti_type, :integer

@@ -1,6 +1,7 @@
 class ApplicationInstance < ActiveRecord::Base
 
   serialize :config, HashSerializer
+  serialize :lti_config, HashSerializer
 
   belongs_to :application, counter_cache: true
   belongs_to :site
@@ -27,7 +28,7 @@ class ApplicationInstance < ActiveRecord::Base
 
   def lti_config_xml
     domain = domain || Rails.application.secrets.application_main_domain
-    config = application.lti_config
+    config = lti_config.dup
     if config.present?
       config[:launch_url] = "https://#{domain}/lti_launches"
       config[:domain] = domain
@@ -53,6 +54,7 @@ class ApplicationInstance < ActiveRecord::Base
 
   def create_config
     self.config = application.default_config if config.blank?
+    self.lti_config = application.lti_config if lti_config.blank?
   end
 
   # Danger! Whole databases will be lost with this method!
