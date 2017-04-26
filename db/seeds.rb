@@ -55,6 +55,15 @@ applications = [
         text: "LTI Starter App",
         visibility: "public",
       },
+      editor_button: {
+        text: "LTI Content Item Select",
+        label: "LTI Content Item Select",
+        visibility: "admins",
+        canvas_icon_class: "icon-lti",
+        icon_url: "https://#{Rails.application.secrets.hello_world_subdomain}.#{Rails.application.secrets.application_root_domain}/atomicjolt.png",
+        message_type: "ContentItemSelectionRequest",
+        url: "https://#{Rails.application.secrets.hello_world_subdomain}.#{Rails.application.secrets.application_root_domain}/lti_launches",
+      },
     },
     application_instances: [{
       tenant: Rails.application.secrets.hello_world_lti_key,

@@ -15,6 +15,14 @@ ActiveRecord::Schema.define(version: 20170421220319) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "application_bundles", force: :cascade do |t|
+    t.integer  "application_id"
+    t.integer  "bundle_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["application_id", "bundle_id"], name: "index_application_bundles_on_application_id_and_bundle_id", using: :btree
+  end
+
   create_table "application_instances", force: :cascade do |t|
     t.integer  "application_id"
     t.string   "lti_key"
@@ -67,6 +75,12 @@ ActiveRecord::Schema.define(version: 20170421220319) do
     t.string   "encrypted_refresh_token_iv"
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
     t.index ["user_id"], name: "index_authentications_on_user_id", using: :btree
+  end
+
+  create_table "bundles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "nonces", force: :cascade do |t|

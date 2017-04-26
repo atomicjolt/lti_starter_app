@@ -22,6 +22,8 @@ module Concerns
           auth,
           options,
         )
+      else
+        raise CanvasApiTokenRequired, "Could not find a global or user canvas api token."
       end
     end
 
@@ -37,5 +39,9 @@ module Concerns
         split(",")
       user_not_authorized unless canvas_api_permissions.include?(params[:type])
     end
+
+    class CanvasApiTokenRequired < LMS::Canvas::CanvasException
+    end
+
   end
 end

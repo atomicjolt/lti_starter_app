@@ -6,6 +6,9 @@ class Application < ActiveRecord::Base
   has_many :application_instances
   validates :name, presence: true, uniqueness: true
 
+  has_many :application_bundles
+  has_many :bundles, through: :application_bundles
+
   # example store_accessor for default_config
   # This allows access to instance.default_config[:foo] like instance.foo
   # Or instance.bar
