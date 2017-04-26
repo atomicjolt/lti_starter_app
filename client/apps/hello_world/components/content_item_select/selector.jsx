@@ -25,7 +25,7 @@ export class Selector extends React.Component {
   };
 
   selectItem() {
-    if (false && _.includes(this.props.acceptMediaTypes, 'text/html')) {
+    if (_.includes(this.props.acceptMediaTypes, 'text/html')) {
       this.props.getContentItemSelection(
         this.props.contentItemReturnURL,
         'html',
