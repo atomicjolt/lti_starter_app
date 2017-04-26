@@ -42,6 +42,7 @@ Rails.application.routes.draw do
 
     resources :canvas_accounts, only: [:index]
     resources :sites
+    resources :lti_content_item_selection, only: [:index]
   end
 
   get "api/canvas" => "api/canvas_proxy#proxy"
