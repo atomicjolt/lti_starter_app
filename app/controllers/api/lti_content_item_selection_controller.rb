@@ -103,7 +103,7 @@ class Api::LtiContentItemSelectionController < Api::ApiApplicationController
         "placementAdvice" => {
           "presentationDocumentTarget" => "embed",
         },
-      }
+      },
     ]
   end
 
