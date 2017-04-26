@@ -62,7 +62,7 @@ export class Selector extends React.Component {
         <h2>Select An Item:</h2>
         <ul>
           <li>
-            <button onClick={e => this.selectItem()}>
+            <button onClick={() => this.selectItem()}>
               <img src={img} alt="Atomic Jolt Logo" />
             </button>
           </li>
