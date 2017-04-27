@@ -2,12 +2,14 @@ admin = CreateAdminService.new.call
 puts "CREATED ADMIN USER: " << admin.email
 admin.save!
 
+secrets = Rails.application.secrets
+
 # Add sites
 sites = [
   {
-    url: Rails.application.secrets.canvas_url,
-    oauth_key: Rails.application.secrets.canvas_developer_id,
-    oauth_secret: Rails.application.secrets.canvas_developer_key,
+    url: secrets.canvas_url,
+    oauth_key: secrets.canvas_developer_id,
+    oauth_secret: secrets.canvas_developer_key,
   },
 ]
 
@@ -33,11 +35,11 @@ applications = [
     kind: Application.kinds[:admin],
     default_config: { foo: "bar" },
     application_instances: [{
-      tenant: Rails.application.secrets.admin_lti_key,
-      lti_key: Rails.application.secrets.admin_lti_key,
-      lti_secret: Rails.application.secrets.admin_lti_secret,
-      site_url: Rails.application.secrets.canvas_url,
-      domain: "#{Rails.application.secrets.admin_subdomain}.#{Rails.application.secrets.application_root_domain}",
+      tenant: secrets.admin_lti_key,
+      lti_key: secrets.admin_lti_key,
+      lti_secret: secrets.admin_lti_secret,
+      site_url: secrets.canvas_url,
+      domain: "#{secrets.admin_subdomain}.#{secrets.application_root_domain}",
     }],
   },
   {
@@ -60,25 +62,25 @@ applications = [
         label: "LTI Content Item Select",
         visibility: "admins",
         canvas_icon_class: "icon-lti",
-        icon_url: "https://#{Rails.application.secrets.hello_world_subdomain}.#{Rails.application.secrets.application_root_domain}/atomicjolt.png",
+        icon_url: "https://#{secrets.hello_world_subdomain}.#{secrets.application_root_domain}/atomicjolt.png",
         message_type: "ContentItemSelectionRequest",
-        url: "https://#{Rails.application.secrets.hello_world_subdomain}.#{Rails.application.secrets.application_root_domain}/lti_launches",
+        url: "https://#{secrets.hello_world_subdomain}.#{secrets.application_root_domain}/lti_launches",
       },
     },
     application_instances: [{
-      tenant: Rails.application.secrets.hello_world_lti_key,
-      lti_key: Rails.application.secrets.hello_world_lti_key,
-      lti_secret: Rails.application.secrets.hello_world_lti_secret,
-      site_url: Rails.application.secrets.canvas_url,
+      tenant: secrets.hello_world_lti_key,
+      lti_key: secrets.hello_world_lti_key,
+      lti_secret: secrets.hello_world_lti_secret,
+      site_url: secrets.canvas_url,
       # This is only required if the app needs API access and doesn't want each user to do the oauth dance
-      canvas_token: Rails.application.secrets.canvas_token,
+      canvas_token: secrets.canvas_token,
       # Each application instance can have it's own custom domain. Typically, this is not needed
       # as the application will use the oauth_consumer_key from the LTI launch to partition different
       # application instances. However, if Canvas is launching the LTI tool based on url then you will
       # need a different domain for that tool since Canvas uses the domain to find the LTI tool among
       # all installed LTI tools. If two tools share the same domain then the tool discovered by Canvas
       # to do the LTI launch will be indeterminate
-      domain: "#{Rails.application.secrets.hello_world_lti_key}.#{Rails.application.secrets.application_root_domain}",
+      domain: "#{secrets.hello_world_lti_key}.#{secrets.application_root_domain}",
     }],
   },
 ]
