@@ -11,23 +11,14 @@ const requests = [
 
 export const Constants = wrapper(actions, requests);
 
-export function getContentItemSelection(
-  contentItemReturnURL,
-  contentItemType,
-  contentItemURL,
-  contentItemHTML,
-  contentItemName
-) {
+export function getContentItemSelection(contentItemReturnURL, contentItem) {
   return {
     type: Constants.GET_CONTENT_ITEM_SELECTION,
     method: Network.GET,
     url: 'api/lti_content_item_selection',
     params: {
       content_item_return_url: contentItemReturnURL,
-      content_item_type: contentItemType,
-      content_item_url: contentItemURL,
-      content_item_html: contentItemHTML,
-      content_item_name: contentItemName
+      content_item: JSON.stringify(contentItem)
     }
   };
 }
