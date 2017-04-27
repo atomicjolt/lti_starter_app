@@ -1,5 +1,5 @@
 require_relative 'boot'
-require_relative "../lib/middleware/oauth_state_middleware"
+require_relative "../app/lib/middleware/oauth_state_middleware"
 
 require 'rails/all'
 
