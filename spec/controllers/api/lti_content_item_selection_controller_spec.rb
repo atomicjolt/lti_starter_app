@@ -15,21 +15,69 @@ RSpec.describe Api::LtiContentItemSelectionController, type: :controller do
     @content_item_return_url = "http://www.example.com/return_to_me"
     @content_item_url = "http://www.example.com/lti_launch"
 
+    @html = "<div>hi</div>"
     @html_params = {
-      content_item_type: "html",
-      content_item_html: "<div>hi</div>",
       content_item_return_url: @content_item_return_url,
+      content_item: {
+        "@context" => "http://purl.imsglobal.org/ctx/lti/v1/ContentItem",
+        "@graph" => [{
+          "@type" => "ContentItem",
+          "mediaType" => "text/html",
+          "text" => @html,
+          "placementAdvice" => {
+            "presentationDocumentTarget" => "embed",
+          },
+        }],
+      }.to_json,
     }
+
     @iframe_params = {
-      content_item_type: "iframe",
-      content_item_url: @content_item_url,
       content_item_return_url: @content_item_return_url,
+      content_item: {
+        "@context" => "http://purl.imsglobal.org/ctx/lti/v1/ContentItem",
+        "@graph" => [{
+          "@type" => "ContentItem",
+          "mediaType" => "text/html",
+          "text" => "<iframe style=\"width: 100%; height: 500px;\" src=\"#{@content_item_url}\"></iframe>",
+          "placementAdvice" => {
+            "presentationDocumentTarget" => "embed",
+          },
+        }],
+      }.to_json,
     }
+
+    @name = "Example"
     @lti_link_params = {
-      content_item_type: "lti_link",
-      content_item_url: @content_item_url,
-      content_item_name: "Example",
       content_item_return_url: @content_item_return_url,
+      content_item: {
+        "@context" => "http://purl.imsglobal.org/ctx/lti/v1/ContentItem",
+        "@graph" => [
+          {
+            "@type": "LtiLinkItem",
+            mediaType: "application/vnd.ims.lti.v1.ltilink",
+            url: @content_item_url,
+            title: @name,
+          },
+          {
+            "@type": "LtiLinkItem",
+            mediaType: "application/vnd.ims.lti.v1.ltilink",
+            url: @content_item_url,
+            title: @name,
+            text: @name,
+            lineItem: {
+              "@type": "LineItem",
+              label: @name,
+              reportingMethod: "res:totalScore",
+              maximumScore: 10,
+              scoreConstraints: {
+                "@type": "NumericLimits",
+                normalMaximum: 10,
+                totalMaximum: 10,
+              },
+            },
+          },
+        ],
+      }.to_json,
     }
   end
 
@@ -56,7 +104,7 @@ RSpec.describe Api::LtiContentItemSelectionController, type: :controller do
         get :index, params: @iframe_params, format: :json
         expect(response).to have_http_status(:success)
         result = JSON.parse(response.body)
-        expect(result["content_items"]).to eq("{\"@context\":\"http://purl.imsglobal.org/ctx/lti/v1/ContentItem\",\"@graph\":[{\"@type\":\"ContentItem\",\"mediaType\":\"text/html\",\"text\":\"      \\u003ciframe style=\\\"width: 100%; height: 500px;\\\" src=\\\"http://www.example.com/lti_launch\\\"\\u003e\\n      \\u003c/iframe\\u003e\\n\",\"placementAdvice\":{\"presentationDocumentTarget\":\"embed\"}}]}")
+        expect(result["content_items"]).to eq("{\"@context\":\"http://purl.imsglobal.org/ctx/lti/v1/ContentItem\",\"@graph\":[{\"@type\":\"ContentItem\",\"mediaType\":\"text/html\",\"text\":\"\\u003ciframe style=\\\"width: 100%; height: 500px;\\\" src=\\\"http://www.example.com/lti_launch\\\"\\u003e\\u003c/iframe\\u003e\",\"placementAdvice\":{\"presentationDocumentTarget\":\"embed\"}}]}")
         expect(result["lti_message_type"]).to eq("ContentItemSelection")
         expect(result["oauth_consumer_key"]).to eq(@application_instance.lti_key)
       end
