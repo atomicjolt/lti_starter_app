@@ -16,6 +16,8 @@ module Lti
       canvas_ext_config = course_navigation_from_args(canvas_ext_config, args)
       canvas_ext_config = account_navigation_from_args(canvas_ext_config, args)
       canvas_ext_config = editor_button_from_args(canvas_ext_config, args)
+      canvas_ext_config = assignment_selection_from_args(canvas_ext_config, args)
+      canvas_ext_config = link_selection_from_args(canvas_ext_config, args)
 
       tc.set_ext_params("canvas.instructure.com", canvas_ext_config.stringify_keys)
       tc
@@ -67,6 +69,26 @@ module Lti
         config["editor_button"]["message_type"] ||= "ContentItemSelectionRequest"
         config["editor_button"]["url"] ||= args[:launch_url]
         default_dimensions!(config, "editor_button")
+      end
+      config
+    end
+
+    def self.assignment_selection_from_args(config = {}, args = {})
+      if args[:assignment_selection].present?
+        config["assignment_selection"] = args[:assignment_selection].stringify_keys
+        config["assignment_selection"]["message_type"] ||= "ContentItemSelectionRequest"
+        config["assignment_selection"]["url"] ||= args[:launch_url]
+        default_dimensions!(config, "assignment_selection")
+      end
+      config
+    end
+
+    def self.link_selection_from_args(config = {}, args = {})
+      if args[:link_selection].present?
+        config["link_selection"] = args[:link_selection].stringify_keys
+        config["link_selection"]["message_type"] ||= "ContentItemSelectionRequest"
+        config["link_selection"]["url"] ||= args[:launch_url]
+        default_dimensions!(config, "link_selection")
       end
       config
     end

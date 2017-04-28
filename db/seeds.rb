@@ -33,7 +33,7 @@ applications = [
     client_application_name: "admin_app",
     canvas_api_permissions: admin_api_permissions,
     kind: Application.kinds[:admin],
-    default_config: { foo: "bar" },
+    default_config: {},
     application_instances: [{
       tenant: secrets.admin_lti_key,
       lti_key: secrets.admin_lti_key,
@@ -48,9 +48,11 @@ applications = [
     client_application_name: "hello_world",
     # List Canvas API methods the app is allowed to use. A full list of constants can be found in canvas_urls
     canvas_api_permissions: "LIST_ACCOUNTS",
-    default_config: { foo: "bar" },
+    default_config: {},
     lti_config: {
       title: "LTI Starter App",
+      launch_url: "https://#{secrets.hello_world_subdomain}.#{secrets.application_root_domain}/lti_launches",
+      description: "The Atomic Jolt LTI Starter app",
       privacy_level: "public",
       icon: "oauth_icon.png",
       course_navigation: {
@@ -58,11 +60,23 @@ applications = [
         visibility: "public",
       },
       editor_button: {
-        text: "LTI Content Item Select",
-        label: "LTI Content Item Select",
+        text: "LTI Starter App - Content Item Select",
+        label: "LTI Starter App - Content Item Select",
         visibility: "admins",
         canvas_icon_class: "icon-lti",
         icon_url: "https://#{secrets.hello_world_subdomain}.#{secrets.application_root_domain}/atomicjolt.png",
+        message_type: "ContentItemSelectionRequest",
+        url: "https://#{secrets.hello_world_subdomain}.#{secrets.application_root_domain}/lti_launches",
+      },
+      assignment_selection: {
+        text: "LTI Starter App - Content Item Select",
+        canvas_icon_class: "icon-lti",
+        message_type: "ContentItemSelectionRequest",
+        url: "https://#{secrets.hello_world_subdomain}.#{secrets.application_root_domain}/lti_launches",
+      },
+      link_selection: {
+        text: "LTI Starter App - Content Item Select",
+        canvas_icon_class: "icon-lti",
         message_type: "ContentItemSelectionRequest",
         url: "https://#{secrets.hello_world_subdomain}.#{secrets.application_root_domain}/lti_launches",
       },
