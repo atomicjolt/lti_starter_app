@@ -1,0 +1,2 @@
+class LtiLaunch < ApplicationRecord
+end

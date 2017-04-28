@@ -11,5 +11,7 @@ class LtiLaunchesController < ApplicationController
     @canvas_api = canvas_api
     @canvas_auth_required = @canvas_api.blank?
     set_lti_launch_values
+    @lti_launch = ClientSetting.find(params[:id]) if params[:id].present?
   end
+
 end

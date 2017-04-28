@@ -9,6 +9,9 @@
     settings[:display_name] = current_user.display_name
 
     if @lti_launch
+      settings[:lti_launch_config] = @lti_launch.config
+    end
+
     if @is_lti_launch
       settings[:canvas_url]                             = @canvas_url
       settings[:oauth_consumer_key]                     = params[:oauth_consumer_key]
