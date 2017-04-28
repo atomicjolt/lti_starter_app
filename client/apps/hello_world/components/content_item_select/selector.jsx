@@ -10,10 +10,12 @@ import PropTypes from 'prop-types';
 import ContentItemSelectionForm from '../../../../libs/lti/components/content_item_selection_form';
 import { getContentItemSelection } from '../../actions/content_items';
 import {
-  contentItems,
   embedHtml,
+  embedMultipleHtml,
   ltiLaunch,
   embedIframe,
+  embedLtiIframe,
+  embedLtiIframeWriteBack,
 } from '../../../../libs/lti/content_item_selection';
 
 const select = state => ({
@@ -33,78 +35,20 @@ export class Selector extends React.Component {
     contentItemSelection: PropTypes.shape({}),
   };
 
-  selectItem(type) {
-
-    let contentItem = {};
-
-    switch (type) {
-      case 'html':
-        contentItem = embedHtml('<h1>Atomic Jolt</h1>');
-        break;
-      case 'iframe':
-        contentItem = embedIframe(`${this.props.apiUrl}lti_launches`);
-        break;
-      case 'link':
-        contentItem = ltiLaunch('Atomic Jolt LTI Launch', `${this.props.apiUrl}lti_launches`);
-        break;
-      case 'image':
-        contentItem = embedHtml(`${this.props.apiUrl}atomicjolt.png`);
-        break;
-      default:
-        throw new Error(`Invalid type: ${type}`);
-    }
+  selectItem(contentItem) {
 
     this.props.getContentItemSelection(
       this.props.contentItemReturnURL,
-      contentItems(contentItem)
+      contentItem
     );
   }
 
-  renderHtmlSelect() {
-    if (_.includes(this.props.acceptMediaTypes, 'text/html')) {
+  renderButton(text, acceptedType, contentItem) {
+    if (_.includes(this.props.acceptMediaTypes, acceptedType)) {
       return (
         <li>
-          <button onClick={() => this.selectItem('html')}>
-            Add Html
-          </button>
-        </li>
-      );
-    }
-    return null;
-  }
-
-  renderIframeSelect() {
-    if (_.includes(this.props.acceptMediaTypes, 'text/html')) {
-      return (
-        <li>
-          <button onClick={() => this.selectItem('iframe')}>
-            Add iFrame
-          </button>
-        </li>
-      );
-    }
-    return null;
-  }
-
-  renderLtiLinkSelect() {
-    if (_.includes(this.props.acceptMediaTypes, 'application/vnd.ims.lti.v1.ltilink')) {
-      return (
-        <li>
-          <button onClick={() => this.selectItem('lti_link')}>
-            Add Link
-          </button>
-        </li>
-      );
-    }
-    return null;
-  }
-
-  renderImageSelect() {
-    if (_.includes(this.props.acceptMediaTypes, 'image/*')) {
-      return (
-        <li>
-          <button onClick={() => this.selectItem('image')}>
-            Add Image
+          <button cssClass="btn" onClick={() => this.selectItem(contentItem)}>
+            {text}
           </button>
         </li>
       );
@@ -131,10 +75,34 @@ export class Selector extends React.Component {
       <div>
         <h2>Select An Item:</h2>
         <ul>
-          { this.renderHtmlSelect() }
-          { this.renderIframeSelect() }
-          { this.renderLtiLinkSelect() }
-          { this.renderImageSelect() }
+          { this.renderButton(
+              'Add Html',
+              'text/html',
+              embedHtml('<h1>Atomic Jolt</h1>')) }
+          { this.renderButton(
+              'Add Multiple Html',
+              'text/html',
+              embedMultipleHtml('<h1>Atomic Jolt</h1>', '<h2>This is from the LTI starter app.</h2>')) }
+          { this.renderButton(
+              'Add iFrame',
+              'text/html',
+              embedIframe(`${this.props.apiUrl}lti_launches`)) }
+          { this.renderButton(
+              'Add LTI Link',
+              'application/vnd.ims.lti.v1.ltilink',
+              ltiLaunch('Atomic Jolt LTI Launch', `${this.props.apiUrl}lti_launches`)) }
+          { this.renderButton(
+              'Add LTI Enabled iframe',
+              'application/vnd.ims.lti.v1.ltilink',
+              embedLtiIframe(`${this.props.apiUrl}lti_launches`)) }
+          { this.renderButton(
+              'Add Outcome Enabled Assignment',
+              'application/vnd.ims.lti.v1.ltilink',
+              embedLtiIframeWriteBack('Atomic Outcome Assignment', `${this.props.apiUrl}lti_launches`)) }
+          { this.renderButton(
+              'Add Image',
+              'image/*',
+              embedHtml(`${this.props.apiUrl}atomicjolt.png`)) }
         </ul>
       </div>
     );
