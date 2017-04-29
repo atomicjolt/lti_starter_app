@@ -6,17 +6,17 @@ const actions = [];
 
 // Actions that make an api request
 const requests = [
-  'GET_CONTENT_ITEM_SELECTION',
+  'CREATE_CONTENT_ITEM_SELECTION',
 ];
 
 export const Constants = wrapper(actions, requests);
 
 export function getContentItemSelection(contentItemReturnURL, contentItem) {
   return {
-    type: Constants.GET_CONTENT_ITEM_SELECTION,
-    method: Network.GET,
+    type: Constants.CREATE_CONTENT_ITEM_SELECTION,
+    method: Network.POST,
     url: 'api/lti_content_item_selection',
-    params: {
+    body: {
       content_item_return_url: contentItemReturnURL,
       content_item: JSON.stringify(contentItem)
     }

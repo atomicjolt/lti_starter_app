@@ -43,11 +43,11 @@ export class Selector extends React.Component {
     );
   }
 
-  renderButton(text, acceptedType, contentItem) {
+  renderButton(text, acceptedType, contentItemFunc) {
     if (_.includes(this.props.acceptMediaTypes, acceptedType)) {
       return (
         <li>
-          <button cssClass="btn" onClick={() => this.selectItem(contentItem)}>
+          <button onClick={() => this.selectItem(contentItemFunc())}>
             {text}
           </button>
         </li>
@@ -78,31 +78,38 @@ export class Selector extends React.Component {
           { this.renderButton(
               'Add Html',
               'text/html',
-              embedHtml('<h1>Atomic Jolt</h1>')) }
+              () => embedHtml('<h1>Atomic Jolt</h1>')
+          ) }
           { this.renderButton(
               'Add Multiple Html',
               'text/html',
-              embedMultipleHtml('<h1>Atomic Jolt</h1>', '<h2>This is from the LTI starter app.</h2>')) }
+              () => embedMultipleHtml('<h1>Atomic Jolt</h1>', '<h2>This is from the LTI starter app.</h2>')
+          ) }
           { this.renderButton(
               'Add iFrame',
               'text/html',
-              embedIframe(`${this.props.apiUrl}lti_launches`)) }
+              () => embedIframe(`${this.props.apiUrl}lti_launches`)
+          ) }
           { this.renderButton(
               'Add LTI Link',
               'application/vnd.ims.lti.v1.ltilink',
-              ltiLaunch('Atomic Jolt LTI Launch', `${this.props.apiUrl}lti_launches`)) }
+              () => ltiLaunch('Atomic Jolt LTI Launch', `${this.props.apiUrl}lti_launches`)
+          ) }
           { this.renderButton(
               'Add LTI Enabled iframe',
               'application/vnd.ims.lti.v1.ltilink',
-              embedLtiIframe(`${this.props.apiUrl}lti_launches`)) }
+              () => embedLtiIframe(`${this.props.apiUrl}lti_launches`)
+          ) }
           { this.renderButton(
               'Add Outcome Enabled Assignment',
               'application/vnd.ims.lti.v1.ltilink',
-              embedLtiIframeWriteBack('Atomic Outcome Assignment', `${this.props.apiUrl}lti_launches`)) }
+              () => embedLtiIframeWriteBack('Atomic Outcome Assignment', `${this.props.apiUrl}lti_launches`)
+          ) }
           { this.renderButton(
               'Add Image',
               'image/*',
-              embedHtml(`${this.props.apiUrl}atomicjolt.png`)) }
+              () => embedHtml(`${this.props.apiUrl}atomicjolt.png`)
+          ) }
         </ul>
       </div>
     );

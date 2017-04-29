@@ -173,10 +173,6 @@ export function embedLtiIframeWriteBack(label, url) {
           '@type': 'LineItem',
           label,
           reportingMethod: 'res:totalScore',
-          assignedActivity: {
-            '@id': 'http://toolprovider.example.com/assessment/66400',
-            activityId: 'a-9334df-33'
-          },
           scoreConstraints: {
             '@type': 'NumericLimits',
             normalMaximum: 10,

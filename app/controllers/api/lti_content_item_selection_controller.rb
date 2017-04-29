@@ -2,7 +2,7 @@ class Api::LtiContentItemSelectionController < Api::ApiApplicationController
 
   # ###########################################################
   # Used to generate a content item selection response
-  def index
+  def create
     @consumer = IMS::LTI::ToolConsumer.new(
       current_application_instance.lti_key,
       current_application_instance.lti_secret,
