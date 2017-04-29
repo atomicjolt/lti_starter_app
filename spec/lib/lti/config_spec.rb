@@ -8,9 +8,10 @@ RSpec.describe Lti::Config do
       launch_url: @launch_url,
       title: "Atomic LTI test",
       description: "This is the test application for the Atomic LTI engine",
-      icon: "#{@domain}/images/oauth_icon.png",
+      icon: "oauth_icon.png",
       domain: @domain,
     }
+    @icon_url = "https://#{@basic_config[:domain]}/#{@basic_config[:icon]}"
   end
 
   describe "xml" do
@@ -23,7 +24,7 @@ RSpec.describe Lti::Config do
           <blti:title>#{@basic_config[:title]}</blti:title>
           <blti:description>#{@basic_config[:description]}</blti:description>
           <blti:launch_url>#{@launch_url}</blti:launch_url>
-          <blti:icon>#{@basic_config[:icon]}</blti:icon>
+          <blti:icon>#{@icon_url}</blti:icon>
           <blti:extensions platform="canvas.instructure.com">
             <lticm:property name="domain">#{@domain}</lticm:property>
             <lticm:property name="privacy_level">public</lticm:property>
@@ -50,7 +51,7 @@ RSpec.describe Lti::Config do
           <blti:title>#{@basic_config[:title]}</blti:title>
           <blti:description>#{@basic_config[:description]}</blti:description>
           <blti:launch_url>#{@launch_url}</blti:launch_url>
-          <blti:icon>#{@basic_config[:icon]}</blti:icon>
+          <blti:icon>#{@icon_url}</blti:icon>
           <blti:extensions platform="canvas.instructure.com">
             <lticm:options name="assignment_selection">
               <lticm:property name="canvas_icon_class">icon-lti</lticm:property>
@@ -84,7 +85,7 @@ RSpec.describe Lti::Config do
           <blti:title>#{@basic_config[:title]}</blti:title>
           <blti:description>#{@basic_config[:description]}</blti:description>
           <blti:launch_url>#{@launch_url}</blti:launch_url>
-          <blti:icon>#{@basic_config[:icon]}</blti:icon>
+          <blti:icon>#{@icon_url}</blti:icon>
           <blti:extensions platform="canvas.instructure.com">
             <lticm:property name="domain">#{@domain}</lticm:property>
             <lticm:options name="link_selection">
@@ -102,11 +103,10 @@ RSpec.describe Lti::Config do
     end
 
     it "generates extended configuration xml for an LTI tool with an editor button" do
-      button_url = "http://www.example.com/button_image.png"
       button_text = "Custom Button"
       editor_button = {
         canvas_icon_class: "icon-lti",
-        icon_url: button_url,
+        icon: "button_image.png",
         message_type: "ContentItemSelectionRequest",
         text: button_text,
         url: @launch_url,
@@ -123,12 +123,12 @@ RSpec.describe Lti::Config do
           <blti:title>#{@basic_config[:title]}</blti:title>
           <blti:description>#{@basic_config[:description]}</blti:description>
           <blti:launch_url>#{@launch_url}</blti:launch_url>
-          <blti:icon>#{@basic_config[:icon]}</blti:icon>
+          <blti:icon>#{@icon_url}</blti:icon>
           <blti:extensions platform="canvas.instructure.com">
             <lticm:property name="domain">#{@domain}</lticm:property>
             <lticm:options name="editor_button">
               <lticm:property name="canvas_icon_class">icon-lti</lticm:property>
-              <lticm:property name="icon_url">#{button_url}</lticm:property>
+              <lticm:property name="icon_url">#{"https://#{args[:domain]}/#{editor_button[:icon]}"}</lticm:property>
               <lticm:property name="label">#{button_text}</lticm:property>
               <lticm:property name="message_type">ContentItemSelectionRequest</lticm:property>
               <lticm:property name="selection_height">50</lticm:property>
@@ -164,7 +164,7 @@ RSpec.describe Lti::Config do
           <blti:title>#{@basic_config[:title]}</blti:title>
           <blti:description>#{@basic_config[:description]}</blti:description>
           <blti:launch_url>#{@launch_url}</blti:launch_url>
-          <blti:icon>#{@basic_config[:icon]}</blti:icon>
+          <blti:icon>#{@icon_url}</blti:icon>
           <blti:extensions platform="canvas.instructure.com">
             <lticm:options name="course_navigation">
               <lticm:property name="canvas_icon_class">icon-lti</lticm:property>
@@ -205,7 +205,7 @@ RSpec.describe Lti::Config do
           <blti:title>#{@basic_config[:title]}</blti:title>
           <blti:description>#{@basic_config[:description]}</blti:description>
           <blti:launch_url>#{@launch_url}</blti:launch_url>
-          <blti:icon>#{@basic_config[:icon]}</blti:icon>
+          <blti:icon>#{@icon_url}</blti:icon>
           <blti:extensions platform="canvas.instructure.com">
             <lticm:options name="account_navigation">
               <lticm:property name="canvas_icon_class">icon-lti</lticm:property>

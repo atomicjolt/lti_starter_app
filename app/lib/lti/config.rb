@@ -28,7 +28,7 @@ module Lti
         title: args[:title],
         launch_url: args[:launch_url],
         description: args[:description],
-        icon: "https://#{args['domain']}/#{args['icon']}",
+        icon: "https://#{args[:domain]}/#{args[:icon]}",
       )
     end
 
@@ -65,7 +65,8 @@ module Lti
     def self.editor_button_from_args(config = {}, args = {})
       if args[:editor_button].present?
         config["editor_button"] = args[:editor_button].stringify_keys
-        config["editor_button"]["icon_url"] = "https://#{args['domain']}/#{config['editor_button']['icon_url']}"
+        config["editor_button"]["icon_url"] = "https://#{args[:domain]}/#{args[:editor_button][:icon]}"
+        config["editor_button"].delete("icon")
         selection_config_from_args!(args, config, "editor_button")
         default_dimensions!(config, "editor_button")
       end

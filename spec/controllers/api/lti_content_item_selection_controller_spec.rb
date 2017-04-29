@@ -83,7 +83,7 @@ RSpec.describe Api::LtiContentItemSelectionController, type: :controller do
 
   context "without jwt token" do
     it "should not be authorized" do
-      get :index, params: @html_params, format: :json
+      post :create, params: @html_params, format: :json
       expect(response).to have_http_status(:unauthorized)
     end
   end
@@ -92,7 +92,7 @@ RSpec.describe Api::LtiContentItemSelectionController, type: :controller do
     describe "GET index" do
       it "gets html launch params" do
         request.headers["Authorization"] = @user_token
-        get :index, params: @html_params, format: :json
+        post :create, params: @html_params, format: :json
         expect(response).to have_http_status(:success)
         result = JSON.parse(response.body)
         expect(result["content_items"]).to eq("{\"@context\":\"http://purl.imsglobal.org/ctx/lti/v1/ContentItem\",\"@graph\":[{\"@type\":\"ContentItem\",\"mediaType\":\"text/html\",\"text\":\"\\u003cdiv\\u003ehi\\u003c/div\\u003e\",\"placementAdvice\":{\"presentationDocumentTarget\":\"embed\"}}]}")
@@ -101,7 +101,7 @@ RSpec.describe Api::LtiContentItemSelectionController, type: :controller do
       end
       it "gets iframe launch params" do
         request.headers["Authorization"] = @user_token
-        get :index, params: @iframe_params, format: :json
+        post :create, params: @iframe_params, format: :json
         expect(response).to have_http_status(:success)
         result = JSON.parse(response.body)
         expect(result["content_items"]).to eq("{\"@context\":\"http://purl.imsglobal.org/ctx/lti/v1/ContentItem\",\"@graph\":[{\"@type\":\"ContentItem\",\"mediaType\":\"text/html\",\"text\":\"\\u003ciframe style=\\\"width: 100%; height: 500px;\\\" src=\\\"http://www.example.com/lti_launch\\\"\\u003e\\u003c/iframe\\u003e\",\"placementAdvice\":{\"presentationDocumentTarget\":\"embed\"}}]}")
@@ -110,7 +110,7 @@ RSpec.describe Api::LtiContentItemSelectionController, type: :controller do
       end
       it "gets lti_link launch params" do
         request.headers["Authorization"] = @user_token
-        get :index, params: @lti_link_params, format: :json
+        post :create, params: @lti_link_params, format: :json
         expect(response).to have_http_status(:success)
         result = JSON.parse(response.body)
         expect(result["content_items"]).to eq("{\"@context\":\"http://purl.imsglobal.org/ctx/lti/v1/ContentItem\",\"@graph\":[{\"@type\":\"LtiLinkItem\",\"mediaType\":\"application/vnd.ims.lti.v1.ltilink\",\"url\":\"http://www.example.com/lti_launch\",\"title\":\"Example\"},{\"@type\":\"LtiLinkItem\",\"mediaType\":\"application/vnd.ims.lti.v1.ltilink\",\"url\":\"http://www.example.com/lti_launch\",\"title\":\"Example\",\"text\":\"Example\",\"lineItem\":{\"@type\":\"LineItem\",\"label\":\"Example\",\"reportingMethod\":\"res:totalScore\",\"maximumScore\":10,\"scoreConstraints\":{\"@type\":\"NumericLimits\",\"normalMaximum\":10,\"totalMaximum\":10}}}]}")
