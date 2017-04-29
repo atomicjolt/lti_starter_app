@@ -51,7 +51,6 @@ applications = [
     default_config: {},
     lti_config: {
       title: "LTI Starter App",
-      launch_url: "https://#{secrets.hello_world_subdomain}.#{secrets.application_root_domain}/lti_launches",
       description: "The Atomic Jolt LTI Starter app",
       privacy_level: "public",
       icon: "oauth_icon.png",
@@ -61,24 +60,14 @@ applications = [
       },
       editor_button: {
         text: "LTI Starter App - Content Item Select",
-        label: "LTI Starter App - Content Item Select",
         visibility: "admins",
-        canvas_icon_class: "icon-lti",
-        icon_url: "https://#{secrets.hello_world_subdomain}.#{secrets.application_root_domain}/atomicjolt.png",
-        message_type: "ContentItemSelectionRequest",
-        url: "https://#{secrets.hello_world_subdomain}.#{secrets.application_root_domain}/lti_launches",
+        icon_url: "atomicjolt.png",
       },
       assignment_selection: {
         text: "LTI Starter App - Content Item Select",
-        canvas_icon_class: "icon-lti",
-        message_type: "ContentItemSelectionRequest",
-        url: "https://#{secrets.hello_world_subdomain}.#{secrets.application_root_domain}/lti_launches",
       },
       link_selection: {
         text: "LTI Starter App - Content Item Select",
-        canvas_icon_class: "icon-lti",
-        message_type: "ContentItemSelectionRequest",
-        url: "https://#{secrets.hello_world_subdomain}.#{secrets.application_root_domain}/lti_launches",
       },
     },
     application_instances: [{
@@ -94,7 +83,7 @@ applications = [
       # need a different domain for that tool since Canvas uses the domain to find the LTI tool among
       # all installed LTI tools. If two tools share the same domain then the tool discovered by Canvas
       # to do the LTI launch will be indeterminate
-      domain: "#{secrets.hello_world_lti_key}.#{secrets.application_root_domain}",
+      domain: "#{secrets.hello_world_subdomain}.#{secrets.application_root_domain}",
     }],
   },
 ]

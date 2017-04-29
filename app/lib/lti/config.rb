@@ -28,7 +28,7 @@ module Lti
         title: args[:title],
         launch_url: args[:launch_url],
         description: args[:description],
-        icon: args[:icon],
+        icon: "https://#{args['domain']}/#{args['icon']}",
       )
     end
 
@@ -65,9 +65,8 @@ module Lti
     def self.editor_button_from_args(config = {}, args = {})
       if args[:editor_button].present?
         config["editor_button"] = args[:editor_button].stringify_keys
-        config["editor_button"]["canvas_icon_class"] ||= "icon-lti"
-        config["editor_button"]["message_type"] ||= "ContentItemSelectionRequest"
-        config["editor_button"]["url"] ||= args[:launch_url]
+        config["editor_button"]["icon_url"] = "https://#{args['domain']}/#{config['editor_button']['icon_url']}"
+        selection_config_from_args!(args, config, "editor_button")
         default_dimensions!(config, "editor_button")
       end
       config
@@ -76,8 +75,7 @@ module Lti
     def self.assignment_selection_from_args(config = {}, args = {})
       if args[:assignment_selection].present?
         config["assignment_selection"] = args[:assignment_selection].stringify_keys
-        config["assignment_selection"]["message_type"] ||= "ContentItemSelectionRequest"
-        config["assignment_selection"]["url"] ||= args[:launch_url]
+        selection_config_from_args!(args, config, "assignment_selection")
         default_dimensions!(config, "assignment_selection")
       end
       config
@@ -86,8 +84,7 @@ module Lti
     def self.link_selection_from_args(config = {}, args = {})
       if args[:link_selection].present?
         config["link_selection"] = args[:link_selection].stringify_keys
-        config["link_selection"]["message_type"] ||= "ContentItemSelectionRequest"
-        config["link_selection"]["url"] ||= args[:launch_url]
+        selection_config_from_args!(args, config, "link_selection")
         default_dimensions!(config, "link_selection")
       end
       config
@@ -96,6 +93,13 @@ module Lti
     def self.default_dimensions!(config, key)
       config[key]["selection_width"] ||= "892"
       config[key]["selection_height"] ||= "800"
+    end
+
+    def self.selection_config_from_args!(args, config, key)
+      config[key]["canvas_icon_class"] ||= "icon-lti"
+      config[key]["message_type"] ||= "ContentItemSelectionRequest"
+      config[key]["url"] ||= args[:launch_url]
+      config
     end
 
     def self.default_configs_from_args!(args, config, key)
