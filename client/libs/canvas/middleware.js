@@ -22,20 +22,20 @@ export function proxyCanvas(store, action, params) {
   const promise = api.execRequest(
     action.canvas.method,
     canvasProxyUrl,
-    state.settings.apiUrl,
+    state.settings.apiURL,
     state.jwt,
     state.settings.csrfToken,
     {
       ...action.params,
       ...params,
       type: action.canvas.type,
-      oauth_consumer_key: state.settings.oauthConsumerKey
+      oauth_consumer_key: state.settings.oauth_consumer_key
     },
     action.body
   );
 
   if (promise) {
-    promise.then((response, error) => {
+    promise.then((response) => {
       let lastPage = false;
 
       if (action.canvas.method === 'get' && response.header) {
@@ -56,12 +56,20 @@ export function proxyCanvas(store, action, params) {
         original: action,
         lastPage,
         response,
-        error
       }); // Dispatch the new data
+
+    }).catch((error) => {
+      store.dispatch({
+        type: action.canvas.type + DONE,
+        original: action,
+        error,
+      });
     });
+
   }
 
   return promise;
+
 }
 
 const CanvasApi = store => next => (action) => {
