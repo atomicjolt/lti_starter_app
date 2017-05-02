@@ -11,9 +11,9 @@ export function apiRequest(store, action) {
   const promise = api.execRequest(
     action.method,
     action.url,
-    state.settings.apiUrl,
+    state.settings.api_url,
     state.jwt,
-    state.settings.csrfToken,
+    state.settings.csrf_token,
     updatedParams,
     action.body,
     action.headers,
