@@ -35,7 +35,7 @@ export function proxyCanvas(store, action, params) {
   );
 
   if (promise) {
-    promise.then((response, error) => {
+    promise.then((response) => {
       let lastPage = false;
 
       if (action.canvas.method === 'get' && response.header) {
@@ -50,20 +50,26 @@ export function proxyCanvas(store, action, params) {
         }
       }
 
-    store.dispatch({
-      type: action.canvas.type + DONE,
-      payload: response.body,
-      original: action,
-      lastPage,
-      response,
-    }); // Dispatch the new data
-  }).catch((error) => {
-    store.dispatch({
-      type: action.canvas.type + DONE,
-      original: action,
-      error,
+      store.dispatch({
+        type: action.canvas.type + DONE,
+        payload: response.body,
+        original: action,
+        lastPage,
+        response,
+      }); // Dispatch the new data
+
+    }).catch((error) => {
+      store.dispatch({
+        type: action.canvas.type + DONE,
+        original: action,
+        error,
+      });
     });
-  });
+
+  }
+
+  return promise;
+
 }
 
 const CanvasApi = store => next => (action) => {
