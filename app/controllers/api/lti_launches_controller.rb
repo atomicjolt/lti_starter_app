@@ -1,23 +1,23 @@
 class Api::LtiLaunchesController < Api::ApiApplicationController
 
+  include Concerns::ContentItemSupport
+
   def create
-    @lti_launch = LtiLaunch.create!(lti_launch_params)
+    lti_launch = LtiLaunch.create!(lti_launch_params)
 
-    @consumer = IMS::LTI::ToolConsumer.new(
-      current_application_instance.lti_key,
-      current_application_instance.lti_secret,
+    # Modify the launch_url in params[:content_item] to include the lti_launch id
+    content_item = params[:content_item].gsub("/lti_launches", "/lti_launches/#{lti_launch.id}")
+
+    content_item_data = generate_content_item_data(
+      lti_launch.id,
+      params[:content_item_return_url],
+      content_item,
     )
-    tc = IMS::LTI::ToolConfig.new(launch_url: params[:content_item_return_url])
-    @consumer.set_config(tc)
-    # TODO maybe generate an lti launch object that can contain a json
-    # object with details about how to do the lti launch
-    @consumer.resource_link_id = "f_id"
-    @consumer.lti_message_type = "ContentItemSelection"
-    @consumer.set_non_spec_param("content_items", params[:content_item])
 
-    render json: @consumer.generate_launch_data
-
-    render json: @lti_launch
+    render json: {
+      lti_launch: lti_launch,
+      content_item_data: content_item_data,
+    }
   end
 
   protected

@@ -8,6 +8,9 @@ export default (state = initialState, action) => {
     case Constants.CREATE_CONTENT_ITEM_SELECTION_DONE:
       return action.payload;
 
+    case Constants.CREATE_LTI_LAUNCH_DONE:
+      return action.payload.content_item_data;
+
     default:
       return state;
   }

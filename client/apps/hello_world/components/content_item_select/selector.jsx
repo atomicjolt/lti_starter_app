@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 
 import ContentItemSelectionForm from '../../../../libs/lti/components/content_item_selection_form';
 import { getContentItemSelection } from '../../actions/content_items';
+import { createLtiLaunch } from '../../actions/lti_launches';
 import {
   embedHtml,
   embedMultipleHtml,
@@ -29,6 +30,7 @@ export class Selector extends React.Component {
 
   static propTypes = {
     getContentItemSelection: PropTypes.func,
+    createLtiLaunch: PropTypes.func,
     acceptMediaTypes: PropTypes.string,
     contentItemReturnURL: PropTypes.string,
     apiUrl: PropTypes.string,
@@ -36,8 +38,17 @@ export class Selector extends React.Component {
   };
 
   selectItem(contentItem) {
-
     this.props.getContentItemSelection(
+      this.props.contentItemReturnURL,
+      contentItem
+    );
+  }
+
+  generateLtiLaunch() {
+    const config = {};
+    const contentItem = embedLtiIframe(`${this.props.apiUrl}lti_launches`);
+    this.props.createLtiLaunch(
+      config,
       this.props.contentItemReturnURL,
       contentItem
     );
@@ -54,6 +65,16 @@ export class Selector extends React.Component {
       );
     }
     return null;
+  }
+
+  renderLtiLaunchBuilder() {
+    return (
+      <li>
+        <button onClick={() => this.generateLtiLaunch()}>
+          LTI Launch with custom config
+        </button>
+      </li>
+    );
   }
 
   render() {
@@ -75,6 +96,7 @@ export class Selector extends React.Component {
       <div>
         <h2>Select An Item:</h2>
         <ul>
+          { this.renderLtiLaunchBuilder() }
           { this.renderButton(
               'Add Html',
               'text/html',
@@ -117,4 +139,4 @@ export class Selector extends React.Component {
 
 }
 
-export default connect(select, { getContentItemSelection })(Selector);
+export default connect(select, { getContentItemSelection, createLtiLaunch })(Selector);
