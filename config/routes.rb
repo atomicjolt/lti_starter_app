@@ -4,8 +4,16 @@ Rails.application.routes.draw do
   get "iframe_cookies_fix_redirect" => "lti_launches#iframe_cookies_fix_redirect"
   get "relaunch_lti_tool" => "lti_launches#relaunch_lti_tool"
 
-  post "lti_launches" => "lti_launches#index"
-  post "lti_launches/:id" => "lti_launches#index"
+  resources :lti_launches do
+    collection do
+      post :index
+      get :index
+    end
+    member do
+      post :show
+      get :show
+    end
+  end
 
   devise_for :users, controllers: {
     sessions: "sessions",
@@ -39,6 +47,7 @@ Rails.application.routes.draw do
     resources :canvas_accounts, only: [:index]
     resources :sites
     resources :lti_content_item_selection, only: [:create]
+    resources :lti_launches
   end
 
   get "api/canvas" => "api/canvas_proxy#proxy"

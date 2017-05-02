@@ -8,6 +8,18 @@ class LtiLaunchesController < ApplicationController
   before_action :do_lti
 
   def index
+    lti_response
+  end
+
+  def show
+    @lti_launch = LtiLaunch.find(params[:id]) if params[:id].present?
+    lti_response
+    render :index
+  end
+
+  private
+
+  def lti_response
     begin
       @canvas_api = canvas_api
       @canvas_auth_required = @canvas_api.blank?
@@ -15,7 +27,6 @@ class LtiLaunchesController < ApplicationController
       @canvas_auth_required = true
     end
     set_lti_launch_values
-    @lti_launch = ClientSetting.find(params[:id]) if params[:id].present?
   end
 
 end
