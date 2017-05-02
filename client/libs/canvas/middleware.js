@@ -14,12 +14,12 @@ function checkRequired(action) {
   }
 }
 
-function proxyCanvas(store, action, params) {
+export function proxyCanvas(store, action, params) {
   const state = store.getState();
 
   checkRequired(action);
 
-  api.execRequest(
+  return api.execRequest(
     action.canvas.method,
     canvasProxyUrl,
     state.settings.apiUrl,
