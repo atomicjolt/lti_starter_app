@@ -10,6 +10,7 @@ export default class Modal extends React.Component {
       name: PropTypes.string,
       description: PropTypes.string,
       default_config: PropTypes.string,
+      canvas_api_permissions: PropTypes.string,
     }),
     isOpen: PropTypes.bool.isRequired,
     closeModal: PropTypes.func.isRequired,
@@ -59,6 +60,7 @@ export default class Modal extends React.Component {
         <h2 className="c-modal__title">{this.state.application.name} Settings</h2>
         <Form
           description={this.state.application.description}
+          canvasApiPermissions={this.props.application.canvas_api_permissions}
           defaultConfig={this.state.application.default_config}
           configParseError={this.state.configParseError}
           onChange={(e) => { this.applicationChange(e); }}
