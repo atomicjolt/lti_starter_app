@@ -8,6 +8,20 @@ RSpec.describe Api::LtiLaunchesController, type: :controller do
 
     @application = FactoryGirl.create(:application)
     @application_instance = FactoryGirl.create(:application_instance, application: @application)
+
+    allow(controller).to receive(:current_application_instance).and_return(@application_instance)
+
+    @content_item = {
+      "@context" => "http://purl.imsglobal.org/ctx/lti/v1/ContentItem",
+      "@graph" => [{
+        "@type" => "ContentItem",
+        "mediaType" => "text/html",
+        "text" => "<div>test</div>",
+        "placementAdvice" => {
+          "presentationDocumentTarget" => "embed",
+        },
+      }],
+    }.to_json
   end
 
   context "no jwt" do
@@ -26,14 +40,22 @@ RSpec.describe Api::LtiLaunchesController, type: :controller do
 
     describe "POST create" do
       it "creates a new lti launch and return the result" do
-        post :create, params: { lti_launch: FactoryGirl.attributes_for(:lti_launch) }, format: :json
+        post :create, params: {
+          lti_launch: FactoryGirl.attributes_for(:lti_launch),
+          content_item: @content_item,
+          content_item_return_url: "http://www.example.com/return",
+        }, format: :json
         expect(response).to be_success
       end
 
       it "sets the lti launch with the correct config" do
-        post :create, params: { lti_launch: { config: { test: "value" }.to_json } }, format: :json
+        post :create, params: {
+          lti_launch: { config: { test: "value" }.to_json },
+          content_item: @content_item,
+          content_item_return_url: "http://www.example.com/return",
+        }, format: :json
         json = JSON.parse(response.body)
-        config = JSON.parse(json["config"])
+        config = JSON.parse(json["lti_launch"]["config"])
         expect(config["test"]).to eq("value")
       end
     end

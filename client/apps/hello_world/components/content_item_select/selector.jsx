@@ -45,7 +45,7 @@ export class Selector extends React.Component {
   }
 
   generateLtiLaunch() {
-    const config = {};
+    const config = { customName: 'Atomic Jolt' };
     const contentItem = embedLtiIframe(`${this.props.apiUrl}lti_launches`);
     this.props.createLtiLaunch(
       config,

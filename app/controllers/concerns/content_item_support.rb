@@ -11,8 +11,6 @@ module Concerns
       )
       tc = IMS::LTI::ToolConfig.new(launch_url: launch_url)
       @consumer.set_config(tc)
-      # TODO maybe generate an lti launch object that can contain a json
-      # object with details about how to do the lti launch
       @consumer.resource_link_id = id
       @consumer.lti_message_type = "ContentItemSelection"
       @consumer.set_non_spec_param("content_items", content_item)

@@ -7,11 +7,9 @@ Rails.application.routes.draw do
   resources :lti_launches do
     collection do
       post :index
-      get :index
     end
     member do
       post :show
-      get :show
     end
   end
 

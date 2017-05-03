@@ -8,18 +8,18 @@ class LtiLaunchesController < ApplicationController
   before_action :do_lti
 
   def index
-    lti_response
+    setup_lti_response
   end
 
   def show
-    @lti_launch = LtiLaunch.find(params[:id]) if params[:id].present?
-    lti_response
+    @lti_launch = LtiLaunch.find_by(token: params[:id]) if params[:id].present?
+    setup_lti_response
     render :index
   end
 
   private
 
-  def lti_response
+  def setup_lti_response
     begin
       @canvas_api = canvas_api
       @canvas_auth_required = @canvas_api.blank?
