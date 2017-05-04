@@ -11,6 +11,10 @@ const List = (props) => {
     />
   ));
 
+  if (_.isEmpty(props.sites)) {
+    return <p className="c-alert c-alert--danger">No sites are currently configured. Please add a site.</p>;
+  }
+
   return (
     <table className="c-table c-table--lti">
       <thead>

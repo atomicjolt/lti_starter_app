@@ -29,7 +29,9 @@ export class Index extends React.Component {
     params: PropTypes.shape({
       applicationId: PropTypes.string.isRequired,
     }).isRequired,
-    settings: PropTypes.shape({}).isRequired,
+    settings: PropTypes.shape({
+      canvas_callback_url: PropTypes.string.isRequired,
+    }).isRequired,
   };
 
   constructor() {
@@ -43,6 +45,7 @@ export class Index extends React.Component {
 
   render() {
     const application = this.props.applications[this.props.params.applicationId];
+
     return (
       <div>
         <Heading backTo="/applications" />

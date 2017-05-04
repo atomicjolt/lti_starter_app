@@ -3,11 +3,12 @@ import TestUtils from 'react-dom/test-utils';
 import { Provider } from 'react-redux';
 import Helper from '../../../../specs_support/helper';
 import { Index } from './index';
+import sites from '../../reducers/sites';
 
 describe('sites index', () => {
   let result;
 
-  const sites = {
+  const sitesData = {
     1: {
       id: 1,
       url: 'bfcoder.com'
@@ -19,12 +20,12 @@ describe('sites index', () => {
     }
   };
   const props = {
-    sites,
+    sites: sitesData,
   };
 
   beforeEach(() => {
     result = TestUtils.renderIntoDocument(
-      <Provider store={Helper.makeStore()}>
+      <Provider store={Helper.makeStore({}, { sites: sitesData }, { sites })}>
         <Index {...props} />
       </Provider>
     );

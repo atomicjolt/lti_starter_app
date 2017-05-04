@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import SiteModal from './modal';
@@ -8,6 +9,8 @@ export default class SiteRow extends React.Component {
   static propTypes = {
     site: PropTypes.shape({
       url: PropTypes.string,
+      oauth_key: PropTypes.string,
+      oauth_secret: PropTypes.string,
     }).isRequired,
   };
 
@@ -19,6 +22,9 @@ export default class SiteRow extends React.Component {
         color: 'grey',
         fontSize: '1.5em',
         cursor: 'pointer',
+      },
+      alertStyle: {
+        fontSize: '10px'
       }
     };
   }
@@ -45,10 +51,19 @@ export default class SiteRow extends React.Component {
 
   render() {
     const styles = SiteRow.getStyles();
+    let warning = null;
+    if (_.isEmpty(this.props.site.oauth_key) || _.isEmpty(this.props.site.oauth_secret)) {
+      warning = (
+        <span className="c-alert c-alert--danger" style={styles.alertStyle}>
+          OAuth key and/or secret not configured
+        </span>
+      );
+    }
     return (
       <tr>
         <td>
           {this.props.site.url}
+          {warning}
         </td>
         <td>
           <button

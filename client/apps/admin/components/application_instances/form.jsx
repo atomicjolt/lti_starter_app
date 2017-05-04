@@ -5,6 +5,9 @@ import ReactSelect from 'react-select';
 import Input from '../common/input';
 import Textarea from '../common/textarea';
 import Warning from '../common/warning';
+import {
+  canvasDevKeysUrl,
+  oauthCallbackUrl } from '../../libs/sites';
 
 export const TEXT_FIELDS = {
   lti_key: 'LTI Key',
@@ -26,6 +29,7 @@ export default class Form extends React.Component {
     configParseError: PropTypes.string,
     lti_config: PropTypes.string,
     ltiConfigParseError: PropTypes.string,
+    domain: PropTypes.string,
   };
 
   selectSite(option) {
@@ -68,6 +72,43 @@ export default class Form extends React.Component {
           labelText={fieldLabel}
           inputProps={inputProps}
         />
+      </div>
+    );
+  }
+
+  renderOauthConfiguration() {
+
+    const siteId = parseInt(this.props.site_id, 10);
+    const site = _.find(this.props.sites, s => s.id === siteId);
+
+    if (_.isEmpty(site)) { return null; }
+
+    const OAuthKey = site.oauth_key;
+
+    return (
+      <div className="o-grid__item u-full">
+        <h3 className="c-modal__subtitle">OAuth Configuration</h3>
+        <p className="c-modal__info">
+          Per user OAuth can be configured by adding the callback url below to
+          the existing developer id/key with the id of {OAuthKey}.
+        </p>
+        <p className="c-modal__info">Follow these steps:</p>
+        <ol className="c-modal__info">
+          <li>
+            Copy this url: <span className="c-modal__important">{oauthCallbackUrl(this.props.domain)}</span>
+          </li>
+          <li>
+            <a href={canvasDevKeysUrl(site)} className="c-modal__subtext-link" target="_blank" rel="noopener noreferrer" >
+              Click here to visit the Canvas devloper keys page.
+            </a>
+          </li>
+          <li>
+            Find the developer id {OAuthKey}
+          </li>
+          <li>
+            Paste in the url copied above and save the form.
+          </li>
+        </ol>
       </div>
     );
   }
@@ -149,6 +190,7 @@ export default class Form extends React.Component {
               warning={erroneousLtiConfigWarning}
             />
           </div>
+          {this.renderOauthConfiguration()}
         </div>
         <button
           type="button"

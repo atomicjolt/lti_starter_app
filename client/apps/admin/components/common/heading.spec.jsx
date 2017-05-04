@@ -1,12 +1,14 @@
-import React        from 'react';
-import TestUtils    from 'react-dom/test-utils';
+import React from 'react';
+import TestUtils from 'react-dom/test-utils';
 import { Provider } from 'react-redux';
-import _            from 'lodash';
-import Helper       from '../../../../specs_support/helper';
-import Heading      from './heading';
+import _ from 'lodash';
+import Helper from '../../../../specs_support/helper';
+import Heading from './heading';
+import sites from '../../reducers/sites';
 
 describe('common heading', () => {
   let result;
+  const sitesData = { 1: { id: 1, oauth_key: 'akey', oauth_secret: 'secret' } };
 
   const props = {
     backTo: '/',
@@ -14,7 +16,7 @@ describe('common heading', () => {
 
   beforeEach(() => {
     result = TestUtils.renderIntoDocument(
-      <Provider store={Helper.makeStore()}>
+      <Provider store={Helper.makeStore({}, { sites: sitesData }, { sites })}>
         <Heading {...props} />
       </Provider>
     );
@@ -37,7 +39,7 @@ describe('common heading', () => {
 
     it('renders no back button', () => {
       result = TestUtils.renderIntoDocument(
-        <Provider store={Helper.makeStore()}>
+        <Provider store={Helper.makeStore({}, { sites: sitesData }, { sites })}>
           <Heading />
         </Provider>
       );

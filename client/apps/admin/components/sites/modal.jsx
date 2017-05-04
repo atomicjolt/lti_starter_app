@@ -6,6 +6,7 @@ import ReactModal from 'react-modal';
 import CanvasAuthentication from '../../../../libs/canvas/components/canvas_authentication';
 import SiteForm from './form';
 import * as SiteActions from '../../actions/sites';
+import { canvasDevKeysUrl } from '../../libs/sites';
 
 const select = state => ({
   settings: state.settings,
@@ -91,14 +92,13 @@ export class SiteModal extends React.Component {
     const callbackUrl = this.props.settings.canvas_callback_url;
     let canvasDevInstructions = 'Add a canvas domain first.';
     if (site && site.url) {
-      const canvasDevKeysUrl = `${site.url}/accounts/site_admin/developer_keys`;
       canvasDevInstructions = (
         <div>
           <div>
             You will need a redirect URI: {callbackUrl}
           </div>
           <div>
-            <a href={canvasDevKeysUrl} className="c-modal__subtext-link" target="_blank" rel="noopener noreferrer" >
+            <a href={canvasDevKeysUrl(site)} className="c-modal__subtext-link" target="_blank" rel="noopener noreferrer" >
               Get Canvas Developer Keys Here
             </a>
           </div>
