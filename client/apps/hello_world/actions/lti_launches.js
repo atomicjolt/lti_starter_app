@@ -18,8 +18,8 @@ export function createLtiLaunch(config, contentItemReturnURL, contentItem) {
     url: 'api/lti_launches',
     body: {
       content_item_return_url: contentItemReturnURL,
-      config: JSON.stringify(config),
-      content_item: JSON.stringify(contentItem),
+      config,
+      content_item: contentItem,
     }
   };
 }

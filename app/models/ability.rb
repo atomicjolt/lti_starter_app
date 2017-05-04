@@ -37,6 +37,7 @@ class Ability
 
   def basic(user)
     can :manage, User, id: user.id
+    can :manage, LtiLaunch
   end
 
   def admin(_user)
