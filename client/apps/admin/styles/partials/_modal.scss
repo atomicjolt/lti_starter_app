@@ -95,71 +95,71 @@
   }
 }
 
-  .c-modal__title{
-    @include bold;
-    letter-spacing: 0.1rem;
-    font-size: 2.4rem;
-    color: $dark-gray;
-    margin: 0;
-  }
+.c-modal__title{
+  @include bold;
+  letter-spacing: 0.1rem;
+  font-size: 2.4rem;
+  color: $dark-gray;
+  margin: 0;
+}
 
-  .c-modal__instance{
+.c-modal__instance{
+  @include semi-bold;
+  font-size: 1.8rem;
+  color: $subtext-color;
+  margin: 0 0 3rem;
+}
+
+.c-modal__subtext{
+  @include semi-bold;
+  font-size: 1.8rem;
+  color: $red;
+  margin: 0 0 3rem;
+}
+
+a.c-modal__subtext-link{
+  color: $yellow;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.c-modal__text{
+  font-size: 1.8rem;
+  color: $gray2;
+  text-align: center;
+
+  strong{
     @include semi-bold;
-    font-size: 1.8rem;
-    color: $subtext-color;
-    margin: 0 0 3rem;
   }
+}
 
-  .c-modal__subtext{
-    @include semi-bold;
-    font-size: 1.8rem;
-    color: $red;
-    margin: 0 0 3rem;
+.c-modal__subtitle{
+  font-size: 1.8rem;
+  @include semi-bold;
+  color: $subtext-color;
+  margin: 0 0 2rem;
+}
+
+a.c-modal__link{
+  font-size: 1.8rem;
+  color: $blue;
+  margin: 2rem 0 3rem;
+  text-align: center;
+  display: block;
+
+  &:hover{
+    text-decoration: underline;
   }
+}
 
-  a.c-modal__subtext-link{
-    color: $yellow;
-    &:hover{
-      text-decoration: underline;
-    }
-  }
+.c-modal__info{
+  font-size: 1.4rem;
+  color: $gray2;
+}
 
-  .c-modal__text{
-    font-size: 1.8rem;
-    color: $gray2;
-    text-align: center;
-
-    strong{
-      @include semi-bold;
-    }
-  }
-
-  .c-modal__subtitle{
-    font-size: 1.8rem;
-    @include semi-bold;
-    color: $subtext-color;
-    margin: 0 0 2rem;
-  }
-
-  a.c-modal__link{
-    font-size: 1.8rem;
-    color: $blue;
-    margin: 2rem 0 3rem;
-    text-align: center;
-    display: block;
-
-    &:hover{
-      text-decoration: underline;
-    }
-  }
-
-  .c-modal__info{
-    font-size: 1.4rem;
-    color: $gray2;
-  }
-
-  .c-modal__important{
-    @include bold;
-    color: $dark-gray;
-    margin: 0;
-  }
+.c-modal__important{
+  @include bold;
+  color: $dark-gray;
+  margin: 0;
+}
