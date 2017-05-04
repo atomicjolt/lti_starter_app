@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 
 const SubNav = (props) => {
-  let warning = '';
+  let warning = null;
   if (_.isEmpty(props.sites) ||
     _.find(props.sites, site => (_.isEmpty(site.oauth_key) || _.isEmpty(site.oauth_secret)))) {
     warning = <span className="c-alert c-alert--danger"> ! Setup Required</span>;
