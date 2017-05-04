@@ -1,12 +1,15 @@
-import React        from 'react';
-import TestUtils    from 'react-dom/test-utils';
+import React from 'react';
+import TestUtils from 'react-dom/test-utils';
 import { Provider } from 'react-redux';
-import Helper       from '../../../../specs_support/helper';
-import { Index }    from './index';
+import Helper from '../../../../specs_support/helper';
+import { Index } from './index';
+import sites from '../../reducers/sites';
 
 describe('applications index', () => {
+
   let result;
   let props;
+  const sitesData = { 1: { id: 1, oauth_key: 'akey', oauth_secret: 'secret' } };
 
   beforeEach(() => {
     props = {
@@ -20,7 +23,7 @@ describe('applications index', () => {
     };
 
     result = TestUtils.renderIntoDocument(
-      <Provider store={Helper.makeStore()}>
+      <Provider store={Helper.makeStore({}, { sites: sitesData }, { sites })}>
         <Index {...props} />
       </Provider>
     );

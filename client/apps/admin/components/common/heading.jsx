@@ -9,6 +9,7 @@ import SubNav from '../common/sub_nav';
 const select = state => ({
   userName: state.settings.display_name,
   signOutUrl: state.settings.sign_out_url,
+  sites: state.sites,
 });
 
 function handleSelection(value) {
@@ -71,7 +72,7 @@ export function Heading(props) {
           </Menu>
         </Wrapper>
       </header>
-      <SubNav />
+      <SubNav sites={props.sites} />
     </div>
   );
 }
@@ -80,6 +81,7 @@ Heading.propTypes = {
   backTo: PropTypes.string,
   userName: PropTypes.string,
   signOutUrl: PropTypes.string.isRequired,
+  sites: PropTypes.shape({}).isRequired,
 };
 
 

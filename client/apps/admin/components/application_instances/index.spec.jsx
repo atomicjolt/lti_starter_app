@@ -1,13 +1,15 @@
-import React        from 'react';
-import TestUtils    from 'react-dom/test-utils';
+import React from 'react';
+import TestUtils from 'react-dom/test-utils';
 import { Provider } from 'react-redux';
-import Helper       from '../../../../specs_support/helper';
-import { Index }    from './index';
+import Helper from '../../../../specs_support/helper';
+import { Index } from './index';
+import sites from '../../reducers/sites';
 
 describe('application instances index', () => {
 
   let result;
   let applicationInstances = false;
+  const sitesData = { 1: { id: 1, oauth_key: 'akey', oauth_secret: 'secret' } };
 
   const props = {
     applicationInstances: [],
@@ -15,17 +17,19 @@ describe('application instances index', () => {
     createApplicationInstance: () => {},
     saveApplicationInstance: () => {},
     deleteApplicationInstance: () => {},
-    sites: {},
+    sites: sitesData,
     applications: {},
     params: {
       applicationId: 'id',
     },
-    settings: {},
+    settings: {
+      canvas_callback_url: 'https://www.example.com'
+    },
   };
 
   beforeEach(() => {
     result = TestUtils.renderIntoDocument(
-      <Provider store={Helper.makeStore()}>
+      <Provider store={Helper.makeStore({}, { sites: sitesData }, { sites })}>
         <Index {...props} />
       </Provider>
     );

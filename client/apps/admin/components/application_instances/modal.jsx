@@ -19,7 +19,7 @@ export default class Modal extends React.Component {
     }),
     application: PropTypes.shape({
       id: PropTypes.number,
-    })
+    }),
   };
 
   constructor(props) {

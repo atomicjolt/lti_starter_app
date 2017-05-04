@@ -152,3 +152,14 @@
       text-decoration: underline;
     }
   }
+
+  .c-modal__info{
+    font-size: 1.4rem;
+    color: $gray2;
+  }
+
+  .c-modal__important{
+    @include bold;
+    color: $dark-gray;
+    margin: 0;
+  }
