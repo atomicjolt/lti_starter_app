@@ -21,7 +21,7 @@ RSpec.describe Api::LtiLaunchesController, type: :controller do
           "presentationDocumentTarget" => "embed",
         },
       }],
-    }.to_json
+    }
   end
 
   context "no jwt" do
@@ -50,12 +50,12 @@ RSpec.describe Api::LtiLaunchesController, type: :controller do
 
       it "sets the lti launch with the correct config" do
         post :create, params: {
-          lti_launch: { config: { test: "value" }.to_json },
+          lti_launch: { config: { test: "value" } },
           content_item: @content_item,
           content_item_return_url: "http://www.example.com/return",
         }, format: :json
         json = JSON.parse(response.body)
-        config = JSON.parse(json["lti_launch"]["config"])
+        config = json["lti_launch"]["config"]
         expect(config["test"]).to eq("value")
       end
     end
