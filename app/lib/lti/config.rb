@@ -12,6 +12,7 @@ module Lti
       tc = tool_config(args)
 
       canvas_ext_config = default_config(args)
+      canvas_ext_config = custom_fields_from_args(canvas_ext_config, args)
       canvas_ext_config = resource_selection_from_args(canvas_ext_config, args)
       canvas_ext_config = course_navigation_from_args(canvas_ext_config, args)
       canvas_ext_config = account_navigation_from_args(canvas_ext_config, args)
@@ -37,6 +38,13 @@ module Lti
         "privacy_level" => args[:privacy_level] || "public",
         "domain" => args[:domain],
       }
+    end
+
+    def self.custom_fields_from_args(config = {}, args = {})
+      if args[:custom_fields].present?
+        config["custom_fields"] = args[:custom_fields]
+      end
+      config
     end
 
     def self.resource_selection_from_args(config = {}, args = {})
