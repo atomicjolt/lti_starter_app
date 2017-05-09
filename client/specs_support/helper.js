@@ -17,15 +17,18 @@ export default class Helper {
   }
 
   // Create a real store that can be used for testing
-  static makeStore(initial) {
-    const initialState = {
-      settings: _.assign({
+  // For any additional state provided you must also provide the corresponding
+  // reducers.
+  static makeStore(initialSettings, additionalState, additionalReducers) {
+    const initialState = _.merge({
+      settings: _.merge({
         csrf: 'csrf_token',
         apiUrl: 'http://www.example.com'
-      }, initial)
-    };
+      }, initialSettings)
+    }, additionalState);
     const rootReducer = combineReducers({
       settings,
+      ...additionalReducers
     });
     const middleware = [API];
     return configureStore(initialState, rootReducer, middleware);
