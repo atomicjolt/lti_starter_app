@@ -41,7 +41,7 @@ describe('applications application row', () => {
 
   it('renders application link', () => {
     const linkTag = TestUtils.findRenderedDOMComponentWithTag(result, 'a');
-    expect(linkTag.innerText).toContain('SPECNAME');
+    expect(linkTag.innerHTML).toContain('SPECNAME');
   });
 
 });
