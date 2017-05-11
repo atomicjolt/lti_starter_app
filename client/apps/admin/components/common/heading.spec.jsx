@@ -6,6 +6,7 @@ import Helper from '../../../../specs_support/helper';
 import Heading from './heading';
 import sites from '../../reducers/sites';
 
+jest.mock('../../libs/assets');
 describe('common heading', () => {
   let result;
   const sitesData = { 1: { id: 1, oauth_key: 'akey', oauth_secret: 'secret' } };

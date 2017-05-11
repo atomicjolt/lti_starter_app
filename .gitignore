@@ -65,3 +65,5 @@ rerun.txt
 
 # Because ben is weird
 /.idea/
+
+.vscode/
