@@ -5,6 +5,7 @@ import Helper from '../../../../specs_support/helper';
 import { Index } from './index';
 import sites from '../../reducers/sites';
 
+jest.mock('../../libs/assets');
 describe('sites index', () => {
   let result;
 
