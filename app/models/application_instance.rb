@@ -27,7 +27,7 @@ class ApplicationInstance < ActiveRecord::Base
   before_create :create_config
 
   def lti_config_xml
-    domain = domain || Rails.application.secrets.application_main_domain
+    domain = self.domain || Rails.application.secrets.application_main_domain
     config = lti_config.dup
     if config.present?
       config[:launch_url] ||= "https://#{domain}/lti_launches"
