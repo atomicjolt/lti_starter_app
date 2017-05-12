@@ -54,6 +54,9 @@ applications = [
       description: "The Atomic Jolt LTI Starter app",
       privacy_level: "public",
       icon: "oauth_icon.png",
+      custom_fields: {
+        canvas_course_id: "$Canvas.course.id",
+      },
       course_navigation: {
         text: "LTI Starter App",
         visibility: "public",
