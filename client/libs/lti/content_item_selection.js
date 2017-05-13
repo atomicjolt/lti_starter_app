@@ -138,13 +138,15 @@ export function embedIframe(iframeURL) {
 }
 
 // Adds an iframe with an LTI launch
-export function embedLtiIframe(url) {
+export function embedLtiIframe(url, displayWidth, displayHeight) {
   return contentItems([
     {
       '@type': 'LtiLinkItem',
       mediaType: 'application/vnd.ims.lti.v1.ltilink',
       url,
       placementAdvice: {
+        displayWidth,
+        displayHeight,
         presentationDocumentTarget: 'iframe',
       },
     },
