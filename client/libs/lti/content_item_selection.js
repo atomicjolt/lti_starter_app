@@ -138,7 +138,7 @@ export function embedIframe(iframeURL) {
 }
 
 // Adds an iframe with an LTI launch
-export function embedLtiIframe(url, displayWidth, displayHeight) {
+export function embedLtiIframe(url, displayWidth = '100%', displayHeight = '500px') {
   return contentItems([
     {
       '@type': 'LtiLinkItem',
@@ -156,7 +156,7 @@ export function embedLtiIframe(url, displayWidth, displayHeight) {
 // Adds an iframe with an LTI launch and grade write back
 // LineItem specification:
 // https://www.imsglobal.org/lti/model/uml/purl.imsglobal.org/vocab/lis/v2/outcomes/index.html#LineItem
-export function embedLtiIframeWriteBack(label, url) {
+export function embedLtiIframeWriteBack(label, url, displayWidth = '100%', displayHeight = '500px') {
   return {
     '@context': [
       'http://purl.imsglobal.org/ctx/lti/v1/ContentItem',
@@ -183,6 +183,8 @@ export function embedLtiIframeWriteBack(label, url) {
           },
         },
         placementAdvice: {
+          displayWidth,
+          displayHeight,
           presentationDocumentTarget: 'iframe',
         },
       },
