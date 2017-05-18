@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def canvas_url
-    session[:canvas_url] || current_application_instance.site.url
+    @canvas_url ||= session[:canvas_url] || current_application_instance.site.url
   end
 
   def application_base_url
@@ -10,10 +10,12 @@ module ApplicationHelper
 
   def jwt_token
     return unless signed_in?
-    AuthToken.issue_token({
-                            user_id: current_user.id,
-                            lti_roles: params["roles"],
-                          })
+    AuthToken.issue_token(
+      {
+        user_id: current_user.id,
+        lti_roles: params["roles"],
+      },
+    )
   end
 
 end
