@@ -96,6 +96,16 @@ module Concerns
       user.lti_provider          = lti_provider
       user.lms_user_id           = params[:custom_canvas_user_id] || params[:user_id]
       user.skip_confirmation!
+
+      # store lti roles for the user
+      roles = (params["ext_roles"] || params["roles"]).split(",")
+      roles.each do |role|
+        # This is hackish but we want to ensure the roles are prefixed with
+        # urn:lti: to distinguis them from internal roles
+        role = "urn:lti:role:ims/lis/#{role}" unless role.start_with?("urn:")
+        user.add_to_role(role)
+      end
+
       user
     end
 
