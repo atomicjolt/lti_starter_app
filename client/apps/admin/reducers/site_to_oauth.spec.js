@@ -17,7 +17,7 @@ describe('siteToOauth reducer', () => {
         type: 'UPDATE_SITE_DONE',
         payload: { url }
       });
-      expect(result).toEqual(url);
+      expect(result.url).toEqual(url);
     });
   });
 
@@ -29,7 +29,7 @@ describe('siteToOauth reducer', () => {
         type: 'CREATE_SITE_DONE',
         payload: { url }
       });
-      expect(result).toEqual(url);
+      expect(result.url).toEqual(url);
     });
   });
 });
