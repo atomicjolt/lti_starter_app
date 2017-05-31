@@ -96,6 +96,14 @@ module Concerns
       user.lti_provider          = lti_provider
       user.lms_user_id           = params[:custom_canvas_user_id] || params[:user_id]
       user.skip_confirmation!
+
+      # store lti roles for the user
+      roles = (params["ext_roles"] || params["roles"]).split(",")
+      roles.each do |role|
+        # Only store roles that start with urn:lti:role to prevent using local roles
+        user.add_to_role(role) if role.start_with?("urn:lti:role")
+      end
+
       user
     end
 

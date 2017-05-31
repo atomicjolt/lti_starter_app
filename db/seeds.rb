@@ -13,17 +13,37 @@ sites = [
   },
 ]
 
-admin_api_permissions = %w(
-  LIST_ACTIVE_COURSES_IN_ACCOUNT
-  LIST_EXTERNAL_TOOLS_COURSES
-  CREATE_EXTERNAL_TOOL_COURSES
-  DELETE_EXTERNAL_TOOL_COURSES
-  LIST_EXTERNAL_TOOLS_ACCOUNTS
-  CREATE_EXTERNAL_TOOL_ACCOUNTS
-  DELETE_EXTERNAL_TOOL_ACCOUNTS
-  GET_SUB_ACCOUNTS_OF_ACCOUNT
-  HELPER_ALL_ACCOUNTS
-).join(",")
+# Each API endpoint must include a list of LTI and internal roles that are allowed to call the endpoint.
+# A list of possible roles is available in the IMS LTI specification:
+# https://www.imsglobal.org/specs/ltiv1p1p1/implementation-guide#toc-41
+# If an endpoint does not list a role then the roles listed under "default" will be used.
+# Roles included in "common" will be merged into each API endpoint's roles.
+#
+# Examples roles from Canvas LTI launch
+# urn:lti:instrole:ims/lis/Administrator, Institution Role
+# urn:lti:instrole:ims/lis/Instructor,    Institution Role
+# urn:lti:instrole:ims/lis/Student,       Institution Role
+# urn:lti:role:ims/lis/Instructor,        Context Role
+# urn:lti:role:ims/lis/Learner,           Context Role
+# urn:lti:sysrole:ims/lis/User            System Role
+
+admin_api_permissions = {
+  default: [
+    "administrator", # Internal (non-LTI) role
+    "urn:lti:sysrole:ims/lis/SysAdmin",
+    "urn:lti:sysrole:ims/lis/Administrator",
+  ],
+  common: [],
+  LIST_ACTIVE_COURSES_IN_ACCOUNT: [],
+  LIST_EXTERNAL_TOOLS_COURSES: [],
+  CREATE_EXTERNAL_TOOL_COURSES: [],
+  DELETE_EXTERNAL_TOOL_COURSES: [],
+  LIST_EXTERNAL_TOOLS_ACCOUNTS: [],
+  CREATE_EXTERNAL_TOOL_ACCOUNTS: [],
+  DELETE_EXTERNAL_TOOL_ACCOUNTS: [],
+  GET_SUB_ACCOUNTS_OF_ACCOUNT: [],
+  HELPER_ALL_ACCOUNTS: [],
+}
 
 # Add an LTI Application
 applications = [
@@ -47,7 +67,17 @@ applications = [
     description: "LTI Starter App by Atomic Jolt",
     client_application_name: "hello_world",
     # List Canvas API methods the app is allowed to use. A full list of constants can be found in canvas_urls
-    canvas_api_permissions: "LIST_ACCOUNTS",
+    canvas_api_permissions: {
+      default: [],
+      common: [],
+      LIST_ACCOUNTS: [
+        "urn:lti:sysrole:ims/lis/SysAdmin",
+        "urn:lti:sysrole:ims/lis/Administrator",
+        "urn:lti:instrole:ims/lis/Administrator",
+        "urn:lti:instrole:ims/lis/Instructor",
+        "urn:lti:role:ims/lis/Instructor",
+      ],
+    },
     default_config: {},
     lti_config: {
       title: "LTI Starter App",

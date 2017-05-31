@@ -3,7 +3,17 @@ require "rails_helper"
 describe ApplicationController, type: :controller do
   describe "valid application instance api token" do
     before do
-      @application_instance = FactoryGirl.create(:application_instance)
+      admin_api_permissions = {
+        default: [
+          "administrator", # Internal (non-LTI) role
+          "urn:lti:sysrole:ims/lis/SysAdmin",
+          "urn:lti:sysrole:ims/lis/Administrator",
+        ],
+        common: [],
+        LIST_ACCOUNTS: [],
+      }
+      @application = FactoryGirl.create(:application, canvas_api_permissions: admin_api_permissions)
+      @application_instance = FactoryGirl.create(:application_instance, application: @application)
       allow(controller).to receive(:current_application_instance).and_return(@application_instance)
     end
 
@@ -20,9 +30,20 @@ describe ApplicationController, type: :controller do
       end
     end
 
-    it "provides access to the canvas api" do
+    it "provides access to the canvas api for an administrator" do
+      admin = FactoryGirl.create(:user)
+      admin.add_to_role("administrator")
+      admin.save!
+      allow(controller).to receive(:current_user).and_return(admin)
       get :index, params: { lti_key: @application_instance.lti_key, type: "LIST_ACCOUNTS" }, format: :json
       expect(response).to have_http_status(:success)
+    end
+
+    it "prohibits a user from accessing the canvas api" do
+      user = FactoryGirl.create(:user)
+      allow(controller).to receive(:current_user).and_return(user)
+      get :index, params: { lti_key: @application_instance.lti_key, type: "LIST_ACCOUNTS" }, format: :json
+      expect(response).to have_http_status(:unauthorized)
     end
 
     it "doesn't allow access to unauthorized API endpoints" do
@@ -39,7 +60,19 @@ describe ApplicationController, type: :controller do
       @user = FactoryGirl.create(:user)
       allow(controller).to receive(:current_user).and_return(@user)
 
-      @application_instance = FactoryGirl.create(:application_instance, canvas_token: nil)
+      canvas_api_permissions = {
+        default: [
+          "administrator", # Internal (non-LTI) role
+          "urn:lti:sysrole:ims/lis/SysAdmin",
+          "urn:lti:sysrole:ims/lis/Administrator",
+          "urn:lti:role:ims/lis/Learner",
+        ],
+        common: [],
+        LIST_ACCOUNTS: [],
+      }
+      @application = FactoryGirl.create(:application, canvas_api_permissions: canvas_api_permissions)
+
+      @application_instance = FactoryGirl.create(:application_instance, canvas_token: nil, application: @application)
       allow(controller).to receive(:current_application_instance).and_return(@application_instance)
 
       @authentication = FactoryGirl.create(
@@ -48,8 +81,10 @@ describe ApplicationController, type: :controller do
         refresh_token: "asdf",
       )
       @user.authentications << @authentication
-    end
 
+      @user.add_to_role("urn:lti:role:ims/lis/Learner")
+      @user.save!
+    end
     controller do
       include Concerns::CanvasSupport
 
@@ -74,7 +109,21 @@ describe ApplicationController, type: :controller do
       @user = FactoryGirl.create(:user)
       allow(controller).to receive(:current_user).and_return(@user)
 
-      @application_instance = FactoryGirl.create(:application_instance, canvas_token: nil)
+      @user.add_to_role("urn:lti:role:ims/lis/Learner")
+      @user.save!
+
+      canvas_api_permissions = {
+        default: [
+          "administrator", # Internal (non-LTI) role
+          "urn:lti:sysrole:ims/lis/SysAdmin",
+          "urn:lti:sysrole:ims/lis/Administrator",
+          "urn:lti:role:ims/lis/Learner",
+        ],
+        common: [],
+        LIST_ACCOUNTS: [],
+      }
+      @application = FactoryGirl.create(:application, canvas_api_permissions: canvas_api_permissions)
+      @application_instance = FactoryGirl.create(:application_instance, canvas_token: nil, application: @application)
       allow(controller).to receive(:current_application_instance).and_return(@application_instance)
     end
 
