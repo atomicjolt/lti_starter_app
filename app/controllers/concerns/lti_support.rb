@@ -100,10 +100,8 @@ module Concerns
       # store lti roles for the user
       roles = (params["ext_roles"] || params["roles"]).split(",")
       roles.each do |role|
-        # This is hackish but we want to ensure the roles are prefixed with
-        # urn:lti: to distinguis them from internal roles
-        role = "urn:lti:role:ims/lis/#{role}" unless role.start_with?("urn:")
-        user.add_to_role(role)
+        # Only store roles that start with urn:lti:role to prevent using local roles
+        user.add_to_role(role) if role.start_with?("urn:lti:role")
       end
 
       user

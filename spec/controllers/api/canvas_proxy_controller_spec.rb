@@ -2,13 +2,28 @@ require "rails_helper"
 
 RSpec.describe Api::CanvasProxyController, type: :controller do
   before do
+    canvas_api_permissions = {
+      default: [
+        "administrator", # Internal (non-LTI) role
+        "urn:lti:sysrole:ims/lis/SysAdmin",
+        "urn:lti:sysrole:ims/lis/Administrator",
+        "urn:lti:role:ims/lis/Learner",
+      ],
+      common: [],
+      LIST_ACCOUNTS: [],
+      LIST_YOUR_COURSES: [],
+      CREATE_NEW_SUB_ACCOUNT: [],
+      UPDATE_ACCOUNT: [],
+    }
     @application = FactoryGirl.create(
       :application,
-      canvas_api_permissions: "LIST_ACCOUNTS,LIST_YOUR_COURSES,CREATE_NEW_SUB_ACCOUNT,UPDATE_ACCOUNT",
+      canvas_api_permissions: canvas_api_permissions,
     )
     @application_instance = FactoryGirl.create(:application_instance, application: @application)
     @user = FactoryGirl.create(:user)
     @user.confirm
+    @user.add_to_role("urn:lti:role:ims/lis/Learner")
+    @user.save!
     @user_token = AuthToken.issue_token({ user_id: @user.id })
   end
 

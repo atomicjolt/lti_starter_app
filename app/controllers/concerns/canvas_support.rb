@@ -34,14 +34,22 @@ module Concerns
     end
 
     def protect_canvas_api
-      canvas_api_permissions = current_application_instance.
-        application.canvas_api_permissions.
-        split(",")
-
-      if permission = canvas_api_permissions[params[:type]]
+      if canvas_api_permissions.has_key?(params[:type]) &&
+          allowed_roles.present? &&
+          (allowed_roles & current_user.roles.map(&:name)).present?
         return
       end
       user_not_authorized
+    end
+
+    def allowed_roles
+      roles = canvas_api_permissions[params[:type]] + canvas_api_permissions[:common]
+      roles = canvas_api_permissions[:default] if roles.empty?
+      roles
+    end
+
+    def canvas_api_permissions
+      @canvas_api_permissions ||= current_application_instance.application.canvas_api_permissions
     end
 
     class CanvasApiTokenRequired < LMS::Canvas::CanvasException
