@@ -10,14 +10,12 @@ const settings = require('./config/settings');
 const webpackConfigBuilder = require('./config/webpack.config');
 const clientApps = require('./libs/build/apps');
 
-const serverApp = express();
-
 const localIp = '0.0.0.0';
 const appName = _.trim(argv._[0]);
 const hotPack = argv.hotPack;
 const shouldLint = argv.lint;
 
-function setupMiddleware(apps) {
+function setupMiddleware(serverApp, apps) {
 
   const webpackConfigs = _.map(apps, app => webpackConfigBuilder(app));
 
@@ -38,7 +36,7 @@ function setupMiddleware(apps) {
 
 }
 
-function runServer(port, servePath) {
+function runServer(serverApp, port, servePath) {
   serverApp.use(express.static(servePath));
   serverApp.get('*', (req, res) => {
     res.sendFile(path.join(servePath, req.url));
@@ -54,8 +52,9 @@ function runServer(port, servePath) {
 }
 
 function launch(app) {
-  setupMiddleware([app]);
-  runServer(app.port, app.outputPath);
+  const serverApp = express();
+  setupMiddleware(serverApp, [app]);
+  runServer(serverApp, app.port, app.outputPath);
 }
 
 const options = { hotPack, shouldLint, stage: 'hot', onlyPack: false, port: settings.hotPort, appPerPort: true };
@@ -69,9 +68,10 @@ if (appName) {
   const results = clientApps.buildApps(options);
   const apps = _.map(results, result => result.app);
   const promises = _.map(results, result => result.buildPromise);
+  const serverApp = express();
   Promise.all(promises).then(() => {
-    setupMiddleware(apps);
-    runServer(settings.hotPort, settings.paths.devOutput);
+    setupMiddleware(serverApp, apps);
+    runServer(serverApp, settings.hotPort, settings.paths.devOutput);
   });
 } else {
   _.each(clientApps.buildApps(options), (result) => {
