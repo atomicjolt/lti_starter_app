@@ -52,7 +52,7 @@ describe('api middleware', () => {
 describe('apiRequest', () => {
   it('returns a promise', () => {
     class Store {
-      this.getState() {
+      getState() {
         return (
         {
           settings: {
@@ -61,7 +61,7 @@ describe('apiRequest', () => {
         }
         );
       }
-      this.dispatch() {}
+      dispatch() {}
     }
     const store = new Store();
     const action = {
