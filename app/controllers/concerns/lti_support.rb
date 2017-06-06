@@ -101,7 +101,7 @@ module Concerns
       roles = (params["ext_roles"] || params["roles"]).split(",")
       roles.each do |role|
         # Only store roles that start with urn:lti:role to prevent using local roles
-        user.add_to_role(role) if role.start_with?("urn:lti:role")
+        user.add_to_role(role) if role.start_with?("urn:lti:")
       end
 
       user
