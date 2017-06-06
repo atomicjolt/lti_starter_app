@@ -43,8 +43,8 @@ module Concerns
     end
 
     def allowed_roles
-      roles = canvas_api_permissions[params[:type]] + canvas_api_permissions[:common]
-      roles = canvas_api_permissions[:default] if roles.empty?
+      roles = (canvas_api_permissions[params[:type]] || []) + (canvas_api_permissions[:common] || [])
+      roles = canvas_api_permissions[:default] || [] if roles.empty?
       roles
     end
 

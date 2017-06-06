@@ -35,6 +35,14 @@ describe ApplicationController, type: :controller do
         expect(response).to have_http_status(200)
         expect(response.body).to include("User:")
       end
+      it "adds lti roles for the user" do
+        role = "urn:lti:role:ims/lis/Instructor"
+        params = lti_params(@app.lti_key, @app.lti_secret, { "launch_url" => @launch_url, "roles" => role })
+        post :index, params: params
+        expect(response).to have_http_status(200)
+        user = User.find_by(email: "steve@apple.com")
+        expect(user.role?(role, params["context_id"])).to be_true
+      end
     end
 
     context "invalid LTI request" do

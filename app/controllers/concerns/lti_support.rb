@@ -100,8 +100,10 @@ module Concerns
       # store lti roles for the user
       roles = (params["ext_roles"] || params["roles"]).split(",")
       roles.each do |role|
+        # Only create a context role if the context is meaningful to the role i.e. urn:lti:role:ims
+        context_id = role.start_with?("urn:lti:role:ims") ? params["context_id"] : nil
         # Only store roles that start with urn:lti:role to prevent using local roles
-        user.add_to_role(role) if role.start_with?("urn:lti:")
+        user.add_to_role(role, context_id) if role.start_with?("urn:lti:")
       end
 
       user
