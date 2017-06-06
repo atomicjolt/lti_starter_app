@@ -38,6 +38,8 @@
     "del": "^2.2.2"
   },
   "devDependencies": {
+    "enzyme": "^2.8.2",
+    "nock": "^9.0.13",
     "sinon": "^2.3.2"
   }
 }

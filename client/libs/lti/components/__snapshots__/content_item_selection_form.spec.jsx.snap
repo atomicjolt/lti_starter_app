@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content Item Selection Form matches the snapshot 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <form
+    action="http://www.example.com"
+    encType="application/x-www-form-urlencoded"
+    method="post"
+    style={
+        Object {
+            "display": "none",
+          }
+    }
+>
+    <button
+        type="submit"
+    >
+        Finish
+    </button>
+</form>,
+  "nodes": Array [
+    <form
+      action="http://www.example.com"
+      encType="application/x-www-form-urlencoded"
+      method="post"
+      style={
+            Object {
+                  "display": "none",
+                }
+      }
+>
+      <button
+            type="submit"
+      >
+            Finish
+      </button>
+</form>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <ContentItemSelectionForm
+        contentItemReturnURL="http://www.example.com"
+        launchData={Object {}}
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": ContentItemSelectionForm {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "contentItemReturnURL": "http://www.example.com",
+          "launchData": Object {},
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <form
+          action="http://www.example.com"
+          encType="application/x-www-form-urlencoded"
+          method="post"
+          style={
+                    Object {
+                              "display": "none",
+                            }
+          }
+>
+          <button
+                    type="submit"
+          >
+                    Finish
+          </button>
+</form>,
+        "_debugID": 2,
+        "_renderedOutput": <form
+          action="http://www.example.com"
+          encType="application/x-www-form-urlencoded"
+          method="post"
+          style={
+                    Object {
+                              "display": "none",
+                            }
+          }
+>
+          <button
+                    type="submit"
+          >
+                    Finish
+          </button>
+</form>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <ContentItemSelectionForm
+    contentItemReturnURL="http://www.example.com"
+    launchData={Object {}}
+/>,
+}
+`;
