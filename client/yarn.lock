@@ -5747,6 +5747,12 @@ path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
 
+path-to-regexp@^1.1.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-1.7.0.tgz#59fde0f435badacba103a84e9d3bc64e96b9937d"
+  dependencies:
+    isarray "0.0.1"
+
 path-type@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-1.1.0.tgz#59c44f7ee491da704da415da5a4070ba4f8fe441"
@@ -7463,6 +7469,16 @@ sum-up@^1.0.1:
   resolved "https://registry.yarnpkg.com/sum-up/-/sum-up-1.0.3.tgz#1c661f667057f63bcb7875aa1438bc162525156e"
   dependencies:
     chalk "^1.0.0"
+
+superagent-mock@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/superagent-mock/-/superagent-mock-3.4.0.tgz#8c872abb2604531ffdf33cc3da7b83b736a5c490"
+
+superagent-mocker@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/superagent-mocker/-/superagent-mocker-0.5.2.tgz#61da816874ff6cb264b14da28953a8a2aab45ab8"
+  dependencies:
+    path-to-regexp "^1.1.0"
 
 superagent@^3.5.0:
   version "3.5.2"
