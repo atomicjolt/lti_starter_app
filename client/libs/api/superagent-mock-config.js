@@ -14,7 +14,7 @@ module.exports = [
      * @param headers object set by 'set' function
      * @param context object the context of running the fixtures function
      */
-    fixtures: function(match, params, headers, context) {
+    fixtures(match, params, headers, context) {
       /**
        * Returning error codes example:
        *   request.get('https://domain.example/404').end(function(err, res){
@@ -133,7 +133,7 @@ module.exports = [
      * @param match array Result of the resolution of the regular expression
      * @param data  mixed Data returns by `fixtures` attribute
      */
-    get: function(match, data) {
+    get(match, data) {
       return {
         body: data
       };
@@ -145,21 +145,21 @@ module.exports = [
      * @param match array Result of the resolution of the regular expression
      * @param data  mixed Data returns by `fixtures` attribute
      */
-    post: function(match, data) {
+    post(match, data) {
       return {
         code: 201,
         body: data
       };
     },
 
-    put: function(match, data) {
+    put(match, data) {
       return {
         code: 202,
         body: data
       };
     },
 
-    delete: function(match, data) {
+    delete(match, data) {
       return {
         code: 204,
         body: data
