@@ -15,9 +15,13 @@ describe('siteToOauth reducer', () => {
       const url = 'www.example.com';
       const result = siteToOauth(state, {
         type: 'UPDATE_SITE_DONE',
-        payload: { url }
+        payload: {
+          url,
+          oauth_key: '12341432142431',
+          oauth_secret: '135iajfp95j143pj'
+        }
       });
-      expect(result).toEqual(url);
+      expect(result.url).toEqual(url);
     });
   });
 
@@ -27,7 +31,11 @@ describe('siteToOauth reducer', () => {
       const url = 'www.example.com';
       const result = siteToOauth(state, {
         type: 'CREATE_SITE_DONE',
-        payload: { url }
+        payload: {
+          url,
+          oauth_key: '12341432142431',
+          oauth_secret: '135iajfp95j143pj'
+        }
       });
       expect(result.url).toEqual(url);
     });
