@@ -14,7 +14,7 @@ module.exports = [
      * @param headers object set by 'set' function
      * @param context object the context of running the fixtures function
      */
-    fixtures: function (match, params, headers, context) {
+    fixtures: function(match, params, headers, context) {
       /**
        * Returning error codes example:
        *   request.get('https://domain.example/404').end(function(err, res){
