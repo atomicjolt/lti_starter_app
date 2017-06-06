@@ -17,7 +17,7 @@ describe('siteToOauth reducer', () => {
         type: 'UPDATE_SITE_DONE',
         payload: { url }
       });
-      expect(result.url).toEqual(url);
+      expect(result).toEqual(url);
     });
   });
 
