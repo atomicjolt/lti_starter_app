@@ -1,6 +1,7 @@
+import superAgentMock from 'superagent-mock';
+import Request from 'superagent';
 import api     from './api';
 import Network from '../constants/network';
-import Request from 'superagent';
 import config from './superagent-mock-config';
 import Helper from '../../specs_support/helper';
 
@@ -15,8 +16,8 @@ describe('api', () => {
   const headers = {};
 
   beforeEach(() => {
-    superagentMock = require('superagent-mock')(Request, config);
-  }); 
+    superagentMock = superAgentMock(Request, config);
+  });
 
   afterEach(() => {
     superagentMock.unset();
@@ -31,10 +32,10 @@ describe('api', () => {
       csrf,
       params,
       headers
-    ).then(data => {
-      expect(data.body.status).toBe(200)
-      expect(data.body.contentType).toContain('application/json')
-      expect(data.body.responseText).toContain('Starter App')
+    ).then((data) => {
+      expect(data.body.status).toBe(200);
+      expect(data.body.contentType).toContain('application/json');
+      expect(data.body.responseText).toContain('Starter App');
     });
   });
 
@@ -57,13 +58,13 @@ describe('api', () => {
       null,
       params,
       headers
-    ).then(result => 
+    ).then(result =>
       expect(result.body.status).toBe(401));
   });
 
   it('calls Get with a full url', () => {
     const url = 'http://www.example.com/api/test/full';
-    api.get(url, apiUrl, jwt, csrf, params, headers).then(data => 
+    api.get(url, apiUrl, jwt, csrf, params, headers).then(data =>
       expect(data.body.status).toBe(200));
   });
 

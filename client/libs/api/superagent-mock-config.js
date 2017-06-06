@@ -60,11 +60,11 @@ module.exports = [
             }])
           };
         }
-          
+
         return {
           status: 401,
           statusText: 'Unauthorized',
-        }
+        };
       }
 
       /**
