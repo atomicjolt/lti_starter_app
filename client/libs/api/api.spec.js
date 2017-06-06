@@ -6,8 +6,7 @@ import Helper from '../../specs_support/helper';
 
 describe('api', () => {
   let superagentMock;
-  let url;
-  url = '/api/test/12';
+  const url = '/api/test/12';
   const jwt = 'jwt_token';
   const apiUrl = 'http://www.example.com';
   const csrf = 'csrf_value';
