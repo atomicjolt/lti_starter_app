@@ -34,11 +34,10 @@ module.exports = [
        */
 
       if (match[1] === '/hero') {
-        if(params['superhero']) {
+        if (params['superhero']) {
           return 'Your hero:' + params['superhero'];
-        } else {
-          return 'You didnt choose a hero';
         }
+        return 'You didnt choose a hero';
       }
 
 
@@ -50,7 +49,7 @@ module.exports = [
        */
 
       if (match[1] === '/api/test/12') {
-        if(headers['Authorization'] && headers['X-CSRF-Token']) {
+        if (headers.Authorization && headers['X-CSRF-Token']) {
           return {
             status: 200,
             contentType: 'application/json',
@@ -60,11 +59,11 @@ module.exports = [
               name: 'Starter App'
             }])
           };
-        } else {
-          return {
-            status: 401,
-            statusText: 'Unauthorized',
-          };
+        }
+          
+        return {
+          status: 401,
+          statusText: 'Unauthorized',
         }
       }
 
