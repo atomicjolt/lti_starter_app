@@ -11,7 +11,7 @@ describe('configure store', () => {
       settings,
     };
     const rootReducer = state => (state);
-    const middleware = []
+    const middleware = [];
     const store = configureStore(initialState, rootReducer, middleware);
     expect(store.getState().settings).toBe(settings);
     expect(store.getState().jwt).toBe('jwt_token');

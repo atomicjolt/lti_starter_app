@@ -52,16 +52,16 @@ describe('api middleware', () => {
 describe('apiRequest', () => {
   it('returns a promise', () => {
     class Store {
-      getState() {
-        return(
+      this.getState() {
+        return (
         {
           settings: {
             api_url: 'http://www.something.com/asdfaoer'
           }
         }
-        )
+        );
       }
-      dispatch() {}
+      this.dispatch() {}
     }
     const store = new Store();
     const action = {
