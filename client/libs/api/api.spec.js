@@ -71,7 +71,7 @@ describe('api', () => {
   it('calls Post', () => {
     const url = '/api/test';
     api.post(url, apiUrl, jwt, csrf, params, body, headers).then((result) => {
-      expect(result['code']).toBe(201);
+      expect(result.code).toBe(201);
     });
   });
 
