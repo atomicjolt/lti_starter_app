@@ -89,7 +89,7 @@ module.exports = [
       /**
        * Delaying the response with a specific number of milliseconds:
        *   request.get('https://domain.example/delay_test').end(function(err, res){
-       *     console.log(res.body); // This log will be written after the delay time has passed 
+       *     console.log(res.body); // This log will be written after the delay time has passed
        *   })
        */
 
@@ -113,7 +113,7 @@ module.exports = [
                                   // linear progress
                                   //   (Meaning, loaded will be [total/parts])
           delay: 1000,            // [optional] The delay of emitting each of the progress events
-                                  // by ms 
+                                  // by ms
                                   //   (default is 0 unless context.delay specified, then it's
                                   // [delay/parts])
           total: 100,             // [optional] The total as it will appear in the progress
@@ -147,19 +147,22 @@ module.exports = [
      */
     post: function(match, data) {
       return {
-        code: 201
+        code: 201,
+        body: data
       };
     },
 
     put: function(match, data) {
       return {
-        code: 202
+        code: 202,
+        body: data
       };
     },
 
     delete: function(match, data) {
       return {
-        code: 204
+        code: 204,
+        body: data
       };
     },
   },
