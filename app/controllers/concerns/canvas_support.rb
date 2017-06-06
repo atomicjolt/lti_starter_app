@@ -12,8 +12,8 @@ module Concerns
         )
       elsif auth = canvas_auth(current_application_instance)
         options = {
-          client_id: Rails.application.secrets.canvas_developer_id,
-          client_secret: Rails.application.secrets.canvas_developer_key,
+          client_id: current_application_instance.site.oauth_key,
+          client_secret: current_application_instance.site.oauth_secret,
           redirect_uri: "https://#{request.host}/auth/canvas/callback",
           refresh_token: auth.refresh_token,
         }
