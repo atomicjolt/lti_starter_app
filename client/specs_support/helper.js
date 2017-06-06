@@ -78,7 +78,6 @@ export default class Helper {
     });
   }
 
-
   static mockClock() {
     beforeEach(() => {
       jasmine.clock().install(); // Mock out the built in timers
