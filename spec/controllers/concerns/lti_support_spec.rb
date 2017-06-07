@@ -41,7 +41,7 @@ describe ApplicationController, type: :controller do
         post :index, params: params
         expect(response).to have_http_status(200)
         user = User.find_by(email: "steve@apple.com")
-        expect(user.role?(role, params["context_id"])).to be_true
+        expect(user.role?(role, params["context_id"])).to be true
       end
     end
 

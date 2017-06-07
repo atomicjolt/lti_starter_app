@@ -104,6 +104,55 @@ describe ApplicationController, type: :controller do
     end
   end
 
+  # describe "check context" do
+  #   before do
+  #     @user = FactoryGirl.create(:user)
+  #     allow(controller).to receive(:current_user).and_return(@user)
+
+  #     canvas_api_permissions = {
+  #       default: [
+  #         "administrator", # Internal (non-LTI) role
+  #         "urn:lti:sysrole:ims/lis/SysAdmin",
+  #         "urn:lti:sysrole:ims/lis/Administrator",
+  #         "urn:lti:role:ims/lis/Learner",
+  #       ],
+  #       common: [],
+  #       LIST_ACCOUNTS: [],
+  #     }
+  #     @application = FactoryGirl.create(:application, canvas_api_permissions: canvas_api_permissions)
+
+  #     @application_instance = FactoryGirl.create(:application_instance, canvas_token: nil, application: @application)
+  #     allow(controller).to receive(:current_application_instance).and_return(@application_instance)
+
+  #     @authentication = FactoryGirl.create(
+  #       :authentication,
+  #       provider_url: UrlHelper.scheme_host_port(@application_instance.site.url),
+  #       refresh_token: "asdf",
+  #     )
+  #     @user.authentications << @authentication
+
+  #     @user.add_to_role("urn:lti:role:ims/lis/Learner")
+  #     @user.save!
+  #   end
+  #   controller do
+  #     include Concerns::CanvasSupport
+
+  #     before_action :protect_canvas_api
+
+  #     def index
+  #       result = canvas_api.proxy(params[:type], params.to_unsafe_h, request.body.read)
+  #       response.status = result.code
+
+  #       render plain: result.body
+  #     end
+  #   end
+
+  #   it "provides access to the canvas api" do
+  #     get :index, params: { lti_key: @application_instance.lti_key, type: "LIST_ACCOUNTS" }, format: :json
+  #     expect(response).to have_http_status(:success)
+  #   end
+  # end
+
   describe "no api token for application instance or user" do
     before do
       @user = FactoryGirl.create(:user)

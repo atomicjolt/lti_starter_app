@@ -99,13 +99,13 @@ class User < ApplicationRecord
   end
 
   def role?(name, context_id = nil)
-    any_role?(name, context_id)
+    has_role?(context_id, name)
   end
 
   def has_role?(context_id, *test_names)
     test_names = [test_names] unless test_names.is_a?(Array)
-    test_names.flatten!
-    @role_names = roles.where(context_id: context_id).map(&:name) if @role_names.blank?
+    test_names = test_names.map(&:downcase).flatten
+    @role_names = roles.by_nil_or_context(context_id).map(&:name).map(&:downcase) if @role_names.blank?
     return false if @role_names.blank?
     !(@role_names & test_names).empty?
   end

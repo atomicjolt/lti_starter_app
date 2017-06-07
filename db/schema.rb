@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20170606203121) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "context_id"
+    t.string   "context_id"
   end
 
   create_table "sites", force: :cascade do |t|
