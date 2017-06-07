@@ -4,8 +4,10 @@ import { DONE } from '../constants/wrapper';
 export function apiRequest(store, action) {
   const state = store.getState();
   const updatedParams = {
-    // Add consumer key to requests to indicate which lti app requests are originating from
+    // Add consumer key to requests to indicate which lti app requests are originating from.
+    // Add the context id from the lti launch
     oauth_consumer_key: state.settings.oauth_consumer_key,
+    context_id: state.settings.context_id,
     ...action.params
   };
   const promise = api.execRequest(
