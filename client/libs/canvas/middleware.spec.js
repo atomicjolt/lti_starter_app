@@ -2,11 +2,11 @@ import canvasRequest          from './action';
 import { listAccounts }       from './constants/accounts';
 import { listCoursesForUser } from './constants/courses';
 import CanvasMiddlware        from './middleware';
-import Helper                 from '../../../specs_support/helper';
+import Helper                 from '../../specs_support/helper';
 
 describe('Canvas Middleware', () => {
 
-  Helper.stubAjax();
+  Helper.mockAllAjax();
 
   it('implements Redux middleware interface', () => {
     const store = { getState: () => {} };

@@ -43,34 +43,6 @@ export default class Helper {
     }]);
   }
 
-  static stubAjax() {
-    beforeEach(() => {
-      jasmine.Ajax.install();
-
-      jasmine.Ajax.stubRequest(
-          RegExp('.*/api/test')
-        ).andReturn({
-          status: 200,
-          contentType: 'application/json',
-          statusText: 'OK',
-          responseText: Helper.testPayload()
-        });
-
-      jasmine.Ajax.stubRequest(
-          RegExp('.*/api/test/.+')
-        ).andReturn({
-          status: 200,
-          contentType: 'application/json',
-          statusText: 'OK',
-          responseText: Helper.testPayload()
-        });
-    });
-
-    afterEach(() => {
-      jasmine.Ajax.uninstall();
-    });
-  }
-
   static mockRequest(method, apiUrl, url, expectedHeaders) {
     return nock(apiUrl, expectedHeaders)
     .intercept(url, method)
