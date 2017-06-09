@@ -45,6 +45,8 @@ module Concerns
         _attempt_uniq_email(user, domain)
       end
 
+      _add_roles(user, params)
+
       user
     end
 
@@ -98,15 +100,18 @@ module Concerns
       user.skip_confirmation!
 
       # store lti roles for the user
-      roles = (params["ext_roles"] || params["roles"]).split(",")
-      roles.each do |role|
-        # Only create a context role if the context is meaningful to the role i.e. urn:lti:role:ims
-        context_id = role.start_with?("urn:lti:role:ims") ? params["context_id"] : nil
-        # Only store roles that start with urn:lti:role to prevent using local roles
-        user.add_to_role(role, context_id) if role.start_with?("urn:lti:")
-      end
+      _add_roles(user, params)
 
       user
+    end
+
+    def _add_roles(user, params)
+      all_roles = (params["ext_roles"] || params["roles"]).split(",")
+      # Only store roles that start with urn:lti:role to prevent using local roles
+      roles = all_roles.select { |role| role.start_with?("urn:lti:") }
+      roles.each do |role|
+        user.add_to_role(role, params["context_id"])
+      end
     end
 
     def _assemble_email
