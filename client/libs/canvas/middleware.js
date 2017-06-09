@@ -29,6 +29,8 @@ export function proxyCanvas(store, action, params) {
       ...action.params,
       ...params,
       type: action.canvas.type,
+      // Add the context id from the lti launch
+      context_id: state.settings.context_id,
       oauth_consumer_key: state.settings.oauth_consumer_key
     },
     action.body
