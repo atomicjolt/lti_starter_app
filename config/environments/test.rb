@@ -44,6 +44,4 @@ Rails.application.configure do
   # Custom configuration
   #
   config.action_mailer.default_url_options = { host: "localhost" }
-
-  config.active_record.raise_in_transactional_callbacks = true
 end
