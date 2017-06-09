@@ -25,11 +25,11 @@ class User < ApplicationRecord
   end
 
   def context_roles(context_id = nil)
-    roles.where(permissions: { context_id: context_id })
+    roles.where(permissions: { context_id: context_id }).distinct
   end
 
   def nil_or_context_roles(context_id = nil)
-    roles.where(permissions: { context_id: [context_id, nil] })
+    roles.where(permissions: { context_id: [context_id, nil] }).distinct
   end
 
   def apply_oauth(auth)
@@ -113,7 +113,7 @@ class User < ApplicationRecord
   def has_role?(context_id, *test_names)
     test_names = [test_names] unless test_names.is_a?(Array)
     test_names = test_names.map(&:downcase).flatten
-    @role_names = nil_or_context_roles(context_id).distinct.map(&:name).map(&:downcase) if @role_names.blank?
+    @role_names = nil_or_context_roles(context_id).map(&:name).map(&:downcase) if @role_names.blank?
     return false if @role_names.blank?
     !(@role_names & test_names).empty?
   end
