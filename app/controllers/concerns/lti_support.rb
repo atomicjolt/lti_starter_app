@@ -110,7 +110,9 @@ module Concerns
       # Only store roles that start with urn:lti:role to prevent using local roles
       roles = all_roles.select { |role| role.start_with?("urn:lti:") }
       roles.each do |role|
-        user.add_to_role(role, params["context_id"])
+        # Only create a context role if the context is meaningful to the role i.e. urn:lti:role:ims
+        context_id = role.start_with?("urn:lti:role:ims") ? params["context_id"] : nil
+        user.add_to_role(role, context_id)
       end
     end
 
