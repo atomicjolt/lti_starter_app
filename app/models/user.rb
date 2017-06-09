@@ -126,7 +126,7 @@ class User < ApplicationRecord
   def add_to_role(name, context_id = nil)
     role = Role.where(name: name).first_or_create
     # Make sure that the user can only be put into a role once
-    if !context_roles(context_id).include?(role)
+    if context_roles(context_id).exclude?(role)
       Permission.create(user: self, role: role, context_id: context_id)
     end
   end
