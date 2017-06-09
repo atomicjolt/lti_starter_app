@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606203121) do
+ActiveRecord::Schema.define(version: 20170608220937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,6 +111,9 @@ ActiveRecord::Schema.define(version: 20170606203121) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "context_id"
+    t.index ["context_id"], name: "index_permissions_on_context_id", using: :btree
+    t.index ["role_id", "user_id", "context_id"], name: "index_permissions_on_role_id_and_user_id_and_context_id", using: :btree
     t.index ["role_id", "user_id"], name: "index_permissions_on_role_id_and_user_id", using: :btree
   end
 
@@ -118,7 +121,6 @@ ActiveRecord::Schema.define(version: 20170606203121) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "context_id"
   end
 
   create_table "sites", force: :cascade do |t|

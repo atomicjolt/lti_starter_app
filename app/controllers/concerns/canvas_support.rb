@@ -36,7 +36,7 @@ module Concerns
     def protect_canvas_api
       if canvas_api_permissions.has_key?(params[:type]) &&
           allowed_roles.present? &&
-          (allowed_roles & current_user.roles.by_nil_or_context(params[:context_id]).map(&:name)).present?
+          (allowed_roles & current_user.nil_or_context_roles(params[:context_id]).map(&:name)).present?
         return
       end
       user_not_authorized

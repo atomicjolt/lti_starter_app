@@ -24,6 +24,14 @@ class User < ApplicationRecord
     authentication&.user
   end
 
+  def context_roles(context_id = nil)
+    roles.where(permissions: { context_id: context_id })
+  end
+
+  def nil_or_context_roles(context_id = nil)
+    roles.where(permissions: { context_id: [context_id, nil] })
+  end
+
   def apply_oauth(auth)
     self.attributes = User.params_for_create(auth)
     setup_authentication(auth)
@@ -105,7 +113,7 @@ class User < ApplicationRecord
   def has_role?(context_id, *test_names)
     test_names = [test_names] unless test_names.is_a?(Array)
     test_names = test_names.map(&:downcase).flatten
-    @role_names = roles.by_nil_or_context(context_id).map(&:name).map(&:downcase) if @role_names.blank?
+    @role_names = nil_or_context_roles(context_id).distinct.map(&:name).map(&:downcase) if @role_names.blank?
     return false if @role_names.blank?
     !(@role_names & test_names).empty?
   end
@@ -116,9 +124,11 @@ class User < ApplicationRecord
 
   # Add the user to a new role
   def add_to_role(name, context_id = nil)
-    @role_names = nil
-    role = Role.find_or_create_by(name: name, context_id: context_id)
-    roles << role if !roles.include?(role) # Make sure that the user can only be put into a role once
+    role = Role.where(name: name).first_or_create
+    # Make sure that the user can only be put into a role once
+    if !context_roles(context_id).include?(role)
+      Permission.create(user: self, role: role, context_id: context_id)
+    end
   end
 
   def admin?
