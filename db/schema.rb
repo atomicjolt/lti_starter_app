@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170503011153) do
+ActiveRecord::Schema.define(version: 20170523025529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,11 +47,11 @@ ActiveRecord::Schema.define(version: 20170503011153) do
     t.string   "client_application_name"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
-    t.text     "canvas_api_permissions"
     t.integer  "kind",                        default: 0
     t.integer  "application_instances_count"
     t.jsonb    "default_config",              default: {}
     t.jsonb    "lti_config"
+    t.jsonb    "canvas_api_permissions",      default: {}
   end
 
   create_table "authentications", force: :cascade do |t|

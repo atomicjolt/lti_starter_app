@@ -2,6 +2,7 @@ class Application < ActiveRecord::Base
 
   serialize :default_config, HashSerializer
   serialize :lti_config, HashSerializer
+  serialize :canvas_api_permissions, HashSerializer
 
   has_many :application_instances
   validates :name, presence: true, uniqueness: true

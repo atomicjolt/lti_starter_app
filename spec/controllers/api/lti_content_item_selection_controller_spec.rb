@@ -4,7 +4,18 @@ RSpec.describe Api::LtiContentItemSelectionController, type: :controller do
   before do
     @application = FactoryGirl.create(
       :application,
-      canvas_api_permissions: "LIST_ACCOUNTS,LIST_YOUR_COURSES,CREATE_NEW_SUB_ACCOUNT,UPDATE_ACCOUNT",
+      canvas_api_permissions: {
+        default: [
+          "administrator", # Internal (non-LTI) role
+          "urn:lti:sysrole:ims/lis/SysAdmin",
+          "urn:lti:sysrole:ims/lis/Administrator",
+        ],
+        common: [],
+        LIST_ACCOUNTS: [],
+        LIST_YOUR_COURSES: [],
+        CREATE_NEW_SUB_ACCOUNT: [],
+        UPDATE_ACCOUNT: [],
+      },
     )
     @application_instance = FactoryGirl.create(:application_instance, application: @application)
     allow(controller).to receive(:current_application_instance).and_return(@application_instance)
