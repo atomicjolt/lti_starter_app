@@ -18,7 +18,6 @@ gem "apartment"
 gem "pg"
 
 # UI
-gem "autoprefixer-rails"
 gem "non-stupid-digest-assets" # also compile assets without digest (fixes font problem)
 gem "sass-rails"
 gem "uglifier"
@@ -55,6 +54,9 @@ gem "rack-cors", require: "rack/cors"
 gem "will_paginate"
 
 group :development do
+  # UI
+  gem "autoprefixer-rails"
+
   gem "better_errors"
   gem "binding_of_caller", platforms: [:mri_21]
   gem "hub", require: nil
