@@ -24,14 +24,6 @@ class User < ApplicationRecord
     authentication&.user
   end
 
-  def context_roles(context_id = nil)
-    roles.where(permissions: { context_id: context_id }).distinct
-  end
-
-  def nil_or_context_roles(context_id = nil)
-    roles.where(permissions: { context_id: [context_id, nil] }).distinct
-  end
-
   def apply_oauth(auth)
     self.attributes = User.params_for_create(auth)
     setup_authentication(auth)
