@@ -106,6 +106,14 @@ class User < ApplicationRecord
     self.role ||= :user
   end
 
+  def context_roles(context_id = nil)
+    roles.where(permissions: { context_id: context_id }).distinct
+  end
+
+  def nil_or_context_roles(context_id = nil)
+    roles.where(permissions: { context_id: [context_id, nil] }).distinct
+  end
+
   def role?(name, context_id = nil)
     has_role?(context_id, name)
   end
