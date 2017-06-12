@@ -4,7 +4,7 @@ import { DONE } from '../constants/wrapper';
 export function apiRequest(store, action) {
   const state = store.getState();
   const updatedParams = {
-    // Add consumer key to requests to indicate which lti app requests are originating from
+    // Add consumer key to requests to indicate which lti app requests are originating from.
     oauth_consumer_key: state.settings.oauth_consumer_key,
     ...action.params
   };
