@@ -43,9 +43,9 @@ module Concerns
         domain = params["custom_canvas_api_domain"] || Rails.application.secrets.application_main_domain
         user = _generate_new_lti_user(params)
         _attempt_uniq_email(user, domain)
+      else
+        _update_roles(user, params)
       end
-
-      _add_roles(user, params)
 
       user
     end
@@ -111,6 +111,24 @@ module Concerns
       roles = all_roles.select { |role| role.start_with?("urn:lti:") }
       roles.each do |role|
         user.add_to_role(role, params["context_id"])
+      end
+      roles
+    end
+
+    def _update_roles(user, params)
+      roles = _add_roles(user, params)
+
+      permissions = user.
+        permissions.
+        where(context_id: params[:context_id])
+
+      roles_names = permissions.includes(:role).map { |per| per.role.name }
+      diff = roles_names - roles
+      # If the user has context roles that no longer are sent from canvas,
+      # then delete them.
+      if diff.present?
+        to_delete = permissions.joins(:role).where(roles: { name: diff })
+        to_delete.destroy_all
       end
     end
 
