@@ -59,6 +59,12 @@
       settings[:tool_consumer_instance_name]            = params["tool_consumer_instance_name"]
       settings[:user_image]                             = params["user_image"]
 
+      # Outcome LTI parameters
+      if params["lis_outcome_service_url"].present?
+        settings[:lis_result_sourcedid]    = lis_result_sourcedid
+        settings[:lis_outcome_service_url] = lis_outcome_service_url
+      end
+
       # Content Item LTI parameters
       if params["content_item_return_url"].present?
         settings[:accept_media_types] = params["accept_media_types"]
