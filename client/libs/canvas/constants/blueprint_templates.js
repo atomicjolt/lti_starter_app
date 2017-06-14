@@ -46,7 +46,10 @@ export const updateAssociatedCourses = { type: 'UPDATE_ASSOCIATED_COURSES', meth
 // API Url: courses/{course_id}/blueprint_templates/{template_id}/migrations
 //
 // Example:
-// return canvasRequest(begin_migration_to_push_to_associated_courses, {course_id, template_id});
+// const query = {
+//   comment
+// }
+// return canvasRequest(begin_migration_to_push_to_associated_courses, {course_id, template_id}, query);
 export const beginMigrationToPushToAssociatedCourses = { type: 'BEGIN_MIGRATION_TO_PUSH_TO_ASSOCIATED_COURSES', method: 'post', key: 'begin_migration_to_push_to_associated_coursesbegin_migration_to_push_to_associated_courses_{course_id}_{template_id}', required: ['course_id', 'template_id'] };
 
 // List blueprint migrations
@@ -68,3 +71,41 @@ export const listBlueprintMigrations = { type: 'LIST_BLUEPRINT_MIGRATIONS', meth
 // Example:
 // return canvasRequest(show_blueprint_migration, {course_id, template_id, id});
 export const showBlueprintMigration = { type: 'SHOW_BLUEPRINT_MIGRATION', method: 'get', key: 'show_blueprint_migrationshow_blueprint_migration_{course_id}_{template_id}_{id}', required: ['course_id', 'template_id', 'id'] };
+
+// Set or remove restrictions on a blueprint course object
+// If a blueprint course object is restricted, editing will be limited for copies in associated courses.
+//
+// API Docs: https://canvas.instructure.com/doc/api/blueprint_templates.html
+// API Url: courses/{course_id}/blueprint_templates/{template_id}/restrict_item
+//
+// Example:
+// const query = {
+//   content_type
+//   content_id
+//   restricted
+//   restrictions
+// }
+// return canvasRequest(set_or_remove_restrictions_on_blueprint_course_object, {course_id, template_id}, query);
+export const setOrRemoveRestrictionsOnBlueprintCourseObject = { type: 'SET_OR_REMOVE_RESTRICTIONS_ON_BLUEPRINT_COURSE_OBJECT', method: 'put', key: 'set_or_remove_restrictions_on_blueprint_course_objectset_or_remove_restrictions_on_blueprint_course_object_{course_id}_{template_id}', required: ['course_id', 'template_id'] };
+
+// Get migration details
+// Show the changes that were propagated in a blueprint migration. This endpoint can be called on a
+// blueprint course or an associated course; when called on an associated course, the exceptions
+// field will only include records for that course (and not other courses associated with the blueprint).
+//
+// API Docs: https://canvas.instructure.com/doc/api/blueprint_templates.html
+// API Url: courses/{course_id}/blueprint_templates/{template_id}/migrations/{id}/details
+//
+// Example:
+// return canvasRequest(get_migration_details, {course_id, template_id, id});
+export const getMigrationDetails = { type: 'GET_MIGRATION_DETAILS', method: 'get', key: 'get_migration_detailsget_migration_details_{course_id}_{template_id}_{id}', required: ['course_id', 'template_id', 'id'] };
+
+// Get unsynced changes
+// Retrieve a list of learning objects that have changed since the last blueprint sync operation.
+//
+// API Docs: https://canvas.instructure.com/doc/api/blueprint_templates.html
+// API Url: courses/{course_id}/blueprint_templates/{template_id}/unsynced_changes
+//
+// Example:
+// return canvasRequest(get_unsynced_changes, {course_id, template_id});
+export const getUnsyncedChanges = { type: 'GET_UNSYNCED_CHANGES', method: 'get', key: 'get_unsynced_changesget_unsynced_changes_{course_id}_{template_id}', required: ['course_id', 'template_id'] };

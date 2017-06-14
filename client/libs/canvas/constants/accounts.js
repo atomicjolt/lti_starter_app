@@ -86,6 +86,7 @@ export const listActiveCoursesInAccount = { type: 'LIST_ACTIVE_COURSES_IN_ACCOUN
 // Example:
 // const query = {
 //   account[name]
+//   account[sis_account_id]
 //   account[default_time_zone]
 //   account[default_storage_quota_mb]
 //   account[default_user_storage_quota_mb]
