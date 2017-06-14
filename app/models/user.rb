@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 
-  enum create_method: %i{sign_up oauth}
+  enum create_method: %i{sign_up oauth lti}
 
   def display_name
     name || email
