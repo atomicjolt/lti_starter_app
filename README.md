@@ -127,6 +127,15 @@ https://ltistarterapp.herokuapp.com/images/icon.png
 
 Once you press Save Key, a Developer ID and Key will be generated and displayed in the Details column of the Developer Keys table when you mouse over the row. Add these credentials to your .env file or `config/secrets.yml` file under CANVAS_DEVELOPER_ID and CANVAS_DEVELOPER_KEY (in .env) or `canvas_developer_id` and `canvas_developer_key` (in secrets.yml).
 
+## Development
+
+### Versions
+We follow some conservative rules:
+
+  1. Use what’s packaged by Debian/Ubuntu, whenever possible, except for Gems and NPM packages.
+  2. For software not packaged by Debian/Ubuntu, use the oldest version that still receives security updates.
+  3. Gems and NPM packages may use the newest version, as long as doing so does
+  not conflict with other software adhering to the previous two rules.
 
 ## Canvas API
 

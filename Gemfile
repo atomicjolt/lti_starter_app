@@ -17,11 +17,6 @@ gem "rails", "5.0.2"
 gem "apartment"
 gem "pg"
 
-# UI
-gem "non-stupid-digest-assets" # also compile assets without digest (fixes font problem)
-gem "sass-rails"
-gem "uglifier"
-
 # authentication, authorization, integrations
 gem "attr_encrypted"
 gem "cancancan"
@@ -56,6 +51,9 @@ gem "will_paginate"
 group :development do
   # UI
   gem "autoprefixer-rails"
+  gem "non-stupid-digest-assets" # also compile assets without digest (fixes font problem)
+  gem "sass-rails"
+  gem "uglifier"
 
   gem "better_errors"
   gem "binding_of_caller", platforms: [:mri_21]
