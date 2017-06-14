@@ -13,6 +13,7 @@
 //   enrollment_role
 //   enrollment_role_id
 //   enrollment_state
+//   exclude_blueprint_courses
 //   include
 //   state
 // }
@@ -342,6 +343,10 @@ export const getSingleCourseAccounts = { type: 'GET_SINGLE_COURSE_ACCOUNTS', met
 //   course[image_id]
 //   course[image_url]
 //   course[remove_image]
+//   course[blueprint]
+//   course[blueprint_restrictions]
+//   course[use_blueprint_restrictions_by_object_type]
+//   course[blueprint_restrictions_by_object_type]
 // }
 // return canvasRequest(update_course, {id}, query);
 export const updateCourse = { type: 'UPDATE_COURSE', method: 'put', key: 'update_courseupdate_course_id', required: ['id'] };
