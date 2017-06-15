@@ -34,9 +34,6 @@ class OauthStateMiddleware
     return_url = state_params["app_callback_url"]
     query = query_string(request, DateTime.now.to_i)
     return_url << signed_query_string(query, application_instance.site.oauth_secret)
-    puts "*************************************************************************************"
-    puts "redirecting to #{return_url}"
-    puts "*************************************************************************************"
     response.redirect return_url
     response.finish
   end
@@ -48,9 +45,6 @@ class OauthStateMiddleware
     state_params.each do |key, value|
       request.update_param(key, value)
     end
-    puts "*************************************************************************************"
-    puts "restored params #{oauth_state.payload}"
-    puts "*************************************************************************************"
     oauth_state.destroy
     env["canvas.url"] = application_instance.site.url
   end
