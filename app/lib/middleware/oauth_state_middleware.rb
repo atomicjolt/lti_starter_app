@@ -35,14 +35,14 @@ class OauthStateMiddleware
     return_url = state_params["app_callback_url"]
     query = query_string(request, SecureRandom.hex(64))
     return_url << "?"
-    return_url << signed_query_string(query, application_instance.site.oauth_secret)
+    return_url << signed_query_string(query, application_instance.lti_secret)
     response.redirect return_url
     response.finish
   end
 
   # Adds all parameters back into the request
   def restore_state(request, state_params, application_instance, oauth_state, env)
-    verify!(request, application_instance.site.oauth_secret)
+    verify!(request, application_instance.lti_secret)
     # Restore the param from before the OAuth dance
     state_params.each do |key, value|
       request.update_param(key, value)
