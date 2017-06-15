@@ -34,6 +34,7 @@ class OauthStateMiddleware
     response = Rack::Response.new
     return_url = state_params["app_callback_url"]
     query = query_string(request, SecureRandom.hex(64))
+    return_url << "?"
     return_url << signed_query_string(query, application_instance.site.oauth_secret)
     response.redirect return_url
     response.finish
