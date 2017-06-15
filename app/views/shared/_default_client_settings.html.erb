@@ -20,8 +20,11 @@
       settings[:lms_user_id]                            = current_user.lms_user_id
       settings[:lti_provider]                           = lti_provider
       settings[:lms_course_name]                        = params[:context_title]
-      settings[:canvas_oauth_url]                       = user_canvas_omniauth_authorize_url
-      settings[:canvas_callback_url]                    = user_canvas_omniauth_callback_url
+
+      # OAuth related params
+      settings[:app_callback_url]                       = user_canvas_omniauth_callback_url
+      settings[:canvas_oauth_url]                       = user_canvas_omniauth_authorize_url(subdomain: Rails.application.secrets.oauth_subdomain)
+      settings[:canvas_callback_url]                    = user_canvas_omniauth_callback_url(subdomain: Rails.application.secrets.oauth_subdomain)
       settings[:canvas_auth_required]                   = @canvas_auth_required
 
       # LTI parameters
