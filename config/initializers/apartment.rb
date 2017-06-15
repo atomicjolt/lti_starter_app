@@ -90,10 +90,6 @@ end
 Rails.application.config.middleware.insert_before Warden::Manager, Apartment::Elevators::Generic, lambda { |request|
   key = request.params["oauth_consumer_key"]
   host = request.host_with_port
-  puts "*************************************************************************************"
-  puts "key #{key}"
-  puts "host #{host}"
-  puts "*************************************************************************************"
   if application_instance = ApplicationInstance.find_by(lti_key: key) || ApplicationInstance.find_by(domain: host)
     application_instance.tenant
   else
