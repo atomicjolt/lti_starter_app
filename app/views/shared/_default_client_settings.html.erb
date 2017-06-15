@@ -60,7 +60,7 @@
       settings[:user_image]                             = params["user_image"]
 
       # Outcome LTI parameters
-      if params[:lis_outcome_service_url:].present?
+      if params["lis_outcome_service_url"].present?
         settings[:lis_result_sourcedid]    = params["lis_result_sourcedid"]
         settings[:lis_outcome_service_url] = params["lis_outcome_service_url"]
       end
