@@ -4,14 +4,15 @@ class OauthStateMiddleware
   end
 
   def query_string(request, nonce)
-    query = "?code=#{request.params['code']}"
-    query << "&state=#{request.params['state']}"
-    query << "&nonce=#{nonce}"
-    query
+    {
+      code: request.params["code"],
+      state: request.params["state"],
+      nonce: nonce,
+    }.to_query
   end
 
-  def signed_query_string(query_string, secret)
-    "#{query_string}&signature=#{sign(query_string, secret)}"
+  def signed_query_string(query, secret)
+    "#{query}&signature=#{sign(query, secret)}"
   end
 
   # Generates a signature given data and a secret
@@ -32,7 +33,7 @@ class OauthStateMiddleware
   def redirect_original(request, state_params, application_instance)
     response = Rack::Response.new
     return_url = state_params["app_callback_url"]
-    query = query_string(request, DateTime.now.to_i)
+    query = query_string(request, SecureRandom.hex(64))
     return_url << signed_query_string(query, application_instance.site.oauth_secret)
     response.redirect return_url
     response.finish
