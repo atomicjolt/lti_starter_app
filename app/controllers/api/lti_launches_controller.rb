@@ -11,7 +11,9 @@ class Api::LtiLaunchesController < Api::ApiApplicationController
     result = {
       lti_launch: @lti_launch,
     }
-    if content_item = params[:content_item].to_json
+    if params[:content_item].present?
+
+      content_item = params[:content_item].to_json
 
       # HACK. We are replacing path directly in the json
       content_item.gsub!("/lti_launches", "/lti_launches/#{@lti_launch.token}")
