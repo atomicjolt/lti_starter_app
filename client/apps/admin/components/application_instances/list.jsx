@@ -28,6 +28,7 @@ export default function List(props) {
               sites={props.sites}
               save={props.saveApplicationInstance}
               delete={props.deleteApplicationInstance}
+              canvasOauthURL={props.canvasOauthURL}
             />
           ))
         }
@@ -43,4 +44,5 @@ List.propTypes = {
   application: PropTypes.shape({}),
   saveApplicationInstance: PropTypes.func.isRequired,
   deleteApplicationInstance: PropTypes.func.isRequired,
+  canvasOauthURL: PropTypes.string.isRequired,
 };

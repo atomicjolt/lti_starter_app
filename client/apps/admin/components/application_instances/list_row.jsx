@@ -23,7 +23,8 @@ export default class ListRow extends React.Component {
     settings: PropTypes.shape({
       lti_key: PropTypes.string,
       user_canvas_domains: PropTypes.arrayOf(PropTypes.string),
-    }).isRequired
+    }).isRequired,
+    canvasOauthURL: PropTypes.string.isRequired,
   };
 
   static getStyles() {
@@ -64,7 +65,7 @@ export default class ListRow extends React.Component {
         <td>
           <form
             ref={(ref) => { this.settingsForm = ref; }}
-            action="/users/auth/canvas"
+            action={this.props.canvasOauthURL}
           >
             <SettingsInputs settings={this.props.settings} />
             <input
