@@ -14,7 +14,10 @@ module Concerns
         options = {
           client_id: current_application_instance.site.oauth_key,
           client_secret: current_application_instance.site.oauth_secret,
-          redirect_uri: "https://#{request.host}/auth/canvas/callback",
+          redirect_uri: user_canvas_omniauth_callback_url(
+            subdomain: Rails.application.secrets.oauth_subdomain,
+            protocol: "https",
+          ),
           refresh_token: auth.refresh_token,
         }
         LMS::Canvas.new(
