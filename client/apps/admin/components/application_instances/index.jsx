@@ -33,6 +33,7 @@ export class Index extends React.Component {
     settings: PropTypes.shape({
       canvas_callback_url: PropTypes.string.isRequired,
     }).isRequired,
+    canvasOauthURL: PropTypes.string.isRequired,
   };
 
   constructor() {
