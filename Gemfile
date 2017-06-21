@@ -23,7 +23,7 @@ gem "cancancan"
 gem "devise"
 gem "ims-lti", "~> 2.1.2" # IMS LTI tool consumers and providers
 gem "jwt", "~> 1.5.0" # json web token
-gem "lms-api", "~> 1.3.3"
+gem "lms-api", "~> 1.3.4"
 gem "omniauth"
 gem "omniauth-canvas", "~>1.0.1"
 gem "rolify"

@@ -39,17 +39,17 @@ describe ApplicationController, type: :controller do
     it "Returns a content item response" do
       post :create, params: @html_params, format: :json
       expect(response).to have_http_status(200)
-      #expect(response.body).to include("User:")
-      # {"oauth_consumer_key"=>"lti-key-1",
-      #  "oauth_signature_method"=>"HMAC-SHA1",
-      #  "oauth_timestamp"=>"1498016059",
-      #  "oauth_nonce"=>"6H2Zecde2NP05Mq6hoFL71KHPkrBwF5hIXaLcC0Gh0",
-      #  "oauth_version"=>"1.0",
-      #  "content_items"=>"{\"@context\":\"http://purl.imsglobal.org/ctx/lti/v1/ContentItem\",\"@graph\":[{\"@type\":\"ContentItem\",\"mediaType\":\"text/html\",\"text\":\"\\u003cdiv\\u003ehi\\u003c/div\\u003e\",\"placementAdvice\":{\"presentationDocumentTarget\":\"embed\"}}]}",
-      #  "lti_message_type"=>"ContentItemSelection",
-      #  "lti_version"=>"LTI-1p0",
-      #  "resource_link_id"=>"fake_id",
-      #  "oauth_signature"=>"L1vjCDNAj94sSRkO0hClpQjPE8w="}
+      json = JSON.parse(response.body)
+      expect(json["oauth_consumer_key"]).to be_present
+      expect(json["oauth_signature_method"]).to eq("HMAC-SHA1")
+      expect(json["oauth_timestamp"]).to be_present
+      expect(json["oauth_nonce"]).to be_present
+      expect(json["oauth_version"]).to eq("1.0")
+      expect(json["content_items"]).to eq("{\"@context\":\"http://purl.imsglobal.org/ctx/lti/v1/ContentItem\",\"@graph\":[{\"@type\":\"ContentItem\",\"mediaType\":\"text/html\",\"text\":\"\\u003cdiv\\u003ehi\\u003c/div\\u003e\",\"placementAdvice\":{\"presentationDocumentTarget\":\"embed\"}}]}")
+      expect(json["lti_message_type"]).to eq("ContentItemSelection")
+      expect(json["lti_version"]).to eq("LTI-1p0")
+      expect(json["resource_link_id"]).to eq("fake_id")
+      expect(json["oauth_signature"]).to be_present
     end
   end
 end
