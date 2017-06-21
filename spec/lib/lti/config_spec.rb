@@ -5,6 +5,7 @@ RSpec.describe Lti::Config do
     @domain = "www.example.com"
     @launch_url = "https://#{@domain}/lti_launches"
     @basic_config = {
+      secure_launch_url: @launch_url,
       launch_url: @launch_url,
       title: "Atomic LTI test",
       description: "This is the test application for the Atomic LTI engine",
@@ -24,6 +25,7 @@ RSpec.describe Lti::Config do
           <blti:title>#{@basic_config[:title]}</blti:title>
           <blti:description>#{@basic_config[:description]}</blti:description>
           <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
           <blti:icon>#{@icon_url}</blti:icon>
           <blti:extensions platform="canvas.instructure.com">
             <lticm:property name="domain">#{@domain}</lticm:property>
@@ -48,6 +50,7 @@ RSpec.describe Lti::Config do
           <blti:title>#{@basic_config[:title]}</blti:title>
           <blti:description>#{@basic_config[:description]}</blti:description>
           <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
           <blti:icon>#{@icon_url}</blti:icon>
           <blti:extensions platform="canvas.instructure.com">
             <lticm:options name="custom_fields">
@@ -79,6 +82,7 @@ RSpec.describe Lti::Config do
           <blti:title>#{@basic_config[:title]}</blti:title>
           <blti:description>#{@basic_config[:description]}</blti:description>
           <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
           <blti:icon>#{@icon_url}</blti:icon>
           <blti:extensions platform="canvas.instructure.com">
             <lticm:options name="assignment_selection">
@@ -113,6 +117,7 @@ RSpec.describe Lti::Config do
           <blti:title>#{@basic_config[:title]}</blti:title>
           <blti:description>#{@basic_config[:description]}</blti:description>
           <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
           <blti:icon>#{@icon_url}</blti:icon>
           <blti:extensions platform="canvas.instructure.com">
             <lticm:property name="domain">#{@domain}</lticm:property>
@@ -151,6 +156,7 @@ RSpec.describe Lti::Config do
           <blti:title>#{@basic_config[:title]}</blti:title>
           <blti:description>#{@basic_config[:description]}</blti:description>
           <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
           <blti:icon>#{@icon_url}</blti:icon>
           <blti:extensions platform="canvas.instructure.com">
             <lticm:property name="domain">#{@domain}</lticm:property>
@@ -192,6 +198,7 @@ RSpec.describe Lti::Config do
           <blti:title>#{@basic_config[:title]}</blti:title>
           <blti:description>#{@basic_config[:description]}</blti:description>
           <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
           <blti:icon>#{@icon_url}</blti:icon>
           <blti:extensions platform="canvas.instructure.com">
             <lticm:options name="course_navigation">
@@ -233,6 +240,7 @@ RSpec.describe Lti::Config do
           <blti:title>#{@basic_config[:title]}</blti:title>
           <blti:description>#{@basic_config[:description]}</blti:description>
           <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
           <blti:icon>#{@icon_url}</blti:icon>
           <blti:extensions platform="canvas.instructure.com">
             <lticm:options name="account_navigation">

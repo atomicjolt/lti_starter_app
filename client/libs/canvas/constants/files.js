@@ -190,7 +190,7 @@ export const updateFile = { type: 'UPDATE_FILE', method: 'put', key: 'update_fil
 // Delete file
 // Remove the specified file
 // 
-//   curl -XDELETE 'https://<canvas>/api/v1/files/<file_id>' \
+//   curl -X DELETE 'https://<canvas>/api/v1/files/<file_id>' \
 //        -H 'Authorization: Bearer <token>'
 //
 // API Docs: https://canvas.instructure.com/doc/api/files.html

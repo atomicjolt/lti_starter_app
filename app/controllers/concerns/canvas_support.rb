@@ -14,7 +14,10 @@ module Concerns
         options = {
           client_id: current_application_instance.site.oauth_key,
           client_secret: current_application_instance.site.oauth_secret,
-          redirect_uri: "https://#{request.host}/auth/canvas/callback",
+          redirect_uri: user_canvas_omniauth_callback_url(
+            subdomain: Rails.application.secrets.oauth_subdomain,
+            protocol: "https",
+          ),
           refresh_token: auth.refresh_token,
         }
         LMS::Canvas.new(
@@ -33,18 +36,20 @@ module Concerns
       )
     end
 
-    def protect_canvas_api
-      if canvas_api_permissions.has_key?(params[:type]) &&
-          allowed_roles.present? &&
-          (allowed_roles & current_user.roles.map(&:name)).present?
-        return
-      end
+    def protect_canvas_api(type: params[:type], context_id: params[:context_id])
+      return if canvas_api_authorized(type: type, context_id: context_id)
       user_not_authorized
     end
 
-    def allowed_roles
-      roles = canvas_api_permissions[params[:type]] + canvas_api_permissions[:common]
-      roles = canvas_api_permissions[:default] if roles.empty?
+    def canvas_api_authorized(type: params[:type], context_id: params[:context_id])
+      canvas_api_permissions.has_key?(type) &&
+        allowed_roles(type: type).present? &&
+        (allowed_roles(type: type) & current_user.nil_or_context_roles(context_id).map(&:name)).present?
+    end
+
+    def allowed_roles(type: params[:type])
+      roles = (canvas_api_permissions[type] || []) + (canvas_api_permissions[:common] || [])
+      roles = canvas_api_permissions[:default] || [] if roles.empty?
       roles
     end
 

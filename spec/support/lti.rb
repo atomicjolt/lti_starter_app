@@ -25,6 +25,9 @@ def lti_params(oauth_consumer_key = "aconsumerkey", oauth_consumer_secret = "sec
     "ext_submit" =>                          "Press to Launch",
   }.merge(options)
 
-  tc = IMS::LTI::ToolConsumer.new(oauth_consumer_key, oauth_consumer_secret, params)
-  tc.generate_launch_data
+  launch_request = IMS::LTI::Models::Messages::BasicLTILaunchRequest.new(params)
+  launch_request.post_params
+
+  # tc = IMS::LTI::ToolConsumer.new(oauth_consumer_key, oauth_consumer_secret, params)
+  # tc.generate_launch_data
 end

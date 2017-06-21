@@ -11,7 +11,10 @@
 // API Url: users/self/favorites/courses
 //
 // Example:
-// return canvasRequest(list_favorite_courses, {});
+// const query = {
+//   exclude_blueprint_courses
+// }
+// return canvasRequest(list_favorite_courses, {}, query);
 export const listFavoriteCourses = { type: 'LIST_FAVORITE_COURSES', method: 'get', key: 'list_favorite_courses', required: [] };
 
 // List favorite groups

@@ -43,6 +43,8 @@ module Concerns
         domain = params["custom_canvas_api_domain"] || Rails.application.secrets.application_main_domain
         user = _generate_new_lti_user(params)
         _attempt_uniq_email(user, domain)
+      else
+        _update_roles(user, params)
       end
 
       user
@@ -95,21 +97,45 @@ module Concerns
       email = _assemble_email
 
       user = User.new(email: email, name: name)
-      user.password              = ::SecureRandom::hex(15)
+      user.password = ::SecureRandom::hex(15)
       user.password_confirmation = user.password
-      user.lti_user_id           = lti_user_id
-      user.lti_provider          = lti_provider
-      user.lms_user_id           = params[:custom_canvas_user_id] || params[:user_id]
+      user.lti_user_id = lti_user_id
+      user.lti_provider = lti_provider
+      user.lms_user_id = params[:custom_canvas_user_id] || params[:user_id]
+      user.create_method = User.create_methods[:oauth]
       user.skip_confirmation!
 
       # store lti roles for the user
-      roles = (params["ext_roles"] || params["roles"]).split(",")
-      roles.each do |role|
-        # Only store roles that start with urn:lti:role to prevent using local roles
-        user.add_to_role(role) if role.start_with?("urn:lti:")
-      end
+      _add_roles(user, params)
 
       user
+    end
+
+    def _add_roles(user, params)
+      all_roles = (params["ext_roles"] || params["roles"]).split(",")
+      # Only store roles that start with urn:lti:role to prevent using local roles
+      roles = all_roles.select { |role| role.start_with?("urn:lti:") }
+      roles.each do |role|
+        user.add_to_role(role, params["context_id"])
+      end
+      roles
+    end
+
+    def _update_roles(user, params)
+      roles = _add_roles(user, params)
+
+      permissions = user.
+        permissions.
+        where(context_id: params[:context_id])
+
+      roles_names = permissions.includes(:role).map { |per| per.role.name }
+      diff = roles_names - roles
+      # If the user has context roles that no longer are sent from canvas,
+      # then delete them.
+      if diff.present?
+        to_delete = permissions.joins(:role).where(roles: { name: diff })
+        to_delete.destroy_all
+      end
     end
 
     def _assemble_email

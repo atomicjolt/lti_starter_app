@@ -9,9 +9,13 @@
     settings[:display_name]        = current_user.display_name
     settings[:lti_key]             = current_application_instance.lti_key
     settings[:user_canvas_domains] = current_user.authentications.pluck(:provider_url)
-    settings[:canvas_oauth_url]    = user_canvas_omniauth_authorize_url
-    settings[:canvas_callback_url] = user_canvas_omniauth_callback_url
     settings[:sign_out_url]        = destroy_user_session_url
+
+    # OAuth related params
+    settings[:app_callback_url]     = user_canvas_omniauth_callback_url
+    settings[:canvas_oauth_url]     = user_canvas_omniauth_authorize_url(subdomain: Rails.application.secrets.oauth_subdomain)
+    settings[:canvas_callback_url]  = user_canvas_omniauth_callback_url(subdomain: Rails.application.secrets.oauth_subdomain)
+    settings[:canvas_auth_required] = @canvas_auth_required
   end
 %>
 <script type="text/javascript">

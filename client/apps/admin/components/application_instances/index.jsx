@@ -15,6 +15,7 @@ const select = (state, props) => ({
   userName: state.settings.display_name,
   settings: state.settings,
   sites: state.sites,
+  canvasOauthURL: state.settings.canvas_oauth_url,
 });
 
 export class Index extends React.Component {
@@ -69,6 +70,7 @@ export class Index extends React.Component {
             application={application}
             saveApplicationInstance={this.props.saveApplicationInstance}
             deleteApplicationInstance={this.props.deleteApplicationInstance}
+            canvasOauthURL={this.props.canvasOauthURL}
           />
         </div>
       </div>

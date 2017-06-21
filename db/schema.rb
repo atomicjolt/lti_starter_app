@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523025529) do
+ActiveRecord::Schema.define(version: 20170613231518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,6 +111,9 @@ ActiveRecord::Schema.define(version: 20170523025529) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "context_id"
+    t.index ["context_id"], name: "index_permissions_on_context_id", using: :btree
+    t.index ["role_id", "user_id", "context_id"], name: "index_permissions_on_role_id_and_user_id_and_context_id", using: :btree
     t.index ["role_id", "user_id"], name: "index_permissions_on_role_id_and_user_id", using: :btree
   end
 
@@ -152,6 +155,7 @@ ActiveRecord::Schema.define(version: 20170523025529) do
     t.string   "lti_user_id"
     t.string   "lti_provider"
     t.string   "lms_user_id"
+    t.integer  "create_method",          default: 0
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

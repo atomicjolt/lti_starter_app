@@ -87,7 +87,7 @@ export class SiteModal extends React.Component {
       canvasDevInstructions = (
         <div>
           <div>
-            You will need a redirect URI: {callbackUrl}
+            Use the redirect URI: {callbackUrl}
           </div>
           <div>
             <a href={canvasDevKeysUrl(site)} className="c-modal__subtext-link" target="_blank" rel="noopener noreferrer" >

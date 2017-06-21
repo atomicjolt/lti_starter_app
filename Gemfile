@@ -17,19 +17,13 @@ gem "rails", "5.0.2"
 gem "apartment"
 gem "pg"
 
-# UI
-gem "autoprefixer-rails"
-gem "non-stupid-digest-assets" # also compile assets without digest (fixes font problem)
-gem "sass-rails"
-gem "uglifier"
-
 # authentication, authorization, integrations
 gem "attr_encrypted"
 gem "cancancan"
 gem "devise"
 gem "ims-lti", "~> 2.1.2" # IMS LTI tool consumers and providers
 gem "jwt", "~> 1.5.0" # json web token
-gem "lms-api", "~> 1.3.0"
+gem "lms-api", "~> 1.3.3"
 gem "omniauth"
 gem "omniauth-canvas", "~>1.0.1"
 gem "rolify"
@@ -54,6 +48,12 @@ gem "rack-cors", require: "rack/cors"
 gem "will_paginate"
 
 group :development do
+  # UI
+  gem "autoprefixer-rails"
+  gem "non-stupid-digest-assets" # also compile assets without digest (fixes font problem)
+  gem "sass-rails"
+  gem "uglifier"
+
   gem "better_errors"
   gem "binding_of_caller", platforms: [:mri_21]
   gem "hub", require: nil

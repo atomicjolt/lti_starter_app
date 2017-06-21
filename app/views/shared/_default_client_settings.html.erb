@@ -4,25 +4,30 @@
     csrf_token: form_authenticity_token
   }
   if signed_in?
-    settings[:user_id] = current_user.id
-    settings[:email] = current_user.email
+    settings[:user_id]      = current_user.id
+    settings[:email]        = current_user.email
     settings[:display_name] = current_user.display_name
+
+    # LMS related params
+    settings[:canvas_url]  = @canvas_url
+    settings[:lti_user_id] = current_user.lti_user_id
+    settings[:lms_user_id] = current_user.lms_user_id
+
+    # OAuth related params
+    settings[:app_callback_url]     = user_canvas_omniauth_callback_url
+    settings[:canvas_oauth_url]     = user_canvas_omniauth_authorize_url(subdomain: Rails.application.secrets.oauth_subdomain)
+    settings[:canvas_callback_url]  = user_canvas_omniauth_callback_url(subdomain: Rails.application.secrets.oauth_subdomain)
+    settings[:canvas_auth_required] = @canvas_auth_required
 
     if @lti_launch
       settings[:lti_launch_config] = @lti_launch.config
     end
 
     if @is_lti_launch
-      settings[:canvas_url]                             = @canvas_url
       settings[:oauth_consumer_key]                     = params[:oauth_consumer_key]
       settings[:lms_course_id]                          = params[:custom_canvas_course_id]
-      settings[:lti_user_id]                            = current_user.lti_user_id
-      settings[:lms_user_id]                            = current_user.lms_user_id
       settings[:lti_provider]                           = lti_provider
       settings[:lms_course_name]                        = params[:context_title]
-      settings[:canvas_oauth_url]                       = user_canvas_omniauth_authorize_url
-      settings[:canvas_callback_url]                    = user_canvas_omniauth_callback_url
-      settings[:canvas_auth_required]                   = @canvas_auth_required
 
       # LTI parameters
       settings[:context_id]                             = params["context_id"]
@@ -58,6 +63,12 @@
       settings[:tool_consumer_instance_guid]            = params["tool_consumer_instance_guid"]
       settings[:tool_consumer_instance_name]            = params["tool_consumer_instance_name"]
       settings[:user_image]                             = params["user_image"]
+
+      # Outcome LTI parameters
+      if params["lis_outcome_service_url"].present?
+        settings[:lis_result_sourcedid]    = params["lis_result_sourcedid"]
+        settings[:lis_outcome_service_url] = params["lis_outcome_service_url"]
+      end
 
       # Content Item LTI parameters
       if params["content_item_return_url"].present?
