@@ -45,10 +45,9 @@ describe ApplicationController, type: :controller do
       expect(json["oauth_timestamp"]).to be_present
       expect(json["oauth_nonce"]).to be_present
       expect(json["oauth_version"]).to eq("1.0")
-      expect(json["content_items"]).to eq("{\"@context\":\"http://purl.imsglobal.org/ctx/lti/v1/ContentItem\",\"@graph\":[{\"@type\":\"ContentItem\",\"mediaType\":\"text/html\",\"text\":\"\\u003cdiv\\u003ehi\\u003c/div\\u003e\",\"placementAdvice\":{\"presentationDocumentTarget\":\"embed\"}}]}")
+      expect(json["content_items"]).to eq("{\"@graph\":[{\"text\":\"\\u003cdiv\\u003ehi\\u003c/div\\u003e\",\"placementAdvice\":{\"presentationDocumentTarget\":\"embed\"},\"mediaType\":\"text/html\",\"@type\":\"ContentItem\"}],\"@context\":\"http://purl.imsglobal.org/ctx/lti/v1/ContentItem\"}")
       expect(json["lti_message_type"]).to eq("ContentItemSelection")
       expect(json["lti_version"]).to eq("LTI-1p0")
-      expect(json["resource_link_id"]).to eq("fake_id")
       expect(json["oauth_signature"]).to be_present
     end
   end
