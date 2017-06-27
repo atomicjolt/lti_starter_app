@@ -131,7 +131,7 @@ export default class ListRow extends React.Component {
             className="c-disable"
           >
             {
-              applicationInstance.disabled_at ? <EnabledButton /> : <DisabledButton />
+              applicationInstance.disabled_at ? <DisabledButton /> : <EnabledButton />
             }
           </button>
         </td>
