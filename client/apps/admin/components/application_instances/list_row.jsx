@@ -61,6 +61,7 @@ export default class ListRow extends React.Component {
   render() {
     const styles = ListRow.getStyles();
     const path = `applications/${this.props.application_id}/application_instances/${this.props.id}/installs`;
+    // TODO show disabled state
     return (
       <tr>
         <td>

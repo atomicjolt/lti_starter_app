@@ -39,7 +39,12 @@ export default function List(props) {
               save={saveApplicationInstance}
               delete={deleteApplicationInstance}
               canvasOauthURL={canvasOauthURL}
-              disable={() => disableApplicationInstance(instance.application_id, instance.id)}
+              disable={
+                () => {
+                  const disabledAt = instance.disabled_at ? null : new Date(Date.now());
+                  disableApplicationInstance(instance.application_id, instance.id, disabledAt);
+                }
+              }
             />
           ))
         }

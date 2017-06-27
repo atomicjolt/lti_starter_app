@@ -70,13 +70,13 @@ export function deleteApplicationInstance(applicationId, applicationInstanceId) 
   };
 }
 
-export function disableApplicationInstance(applicationId, applicationInstanceId) {
+export function disableApplicationInstance(applicationId, applicationInstanceId, disabledAt) {
   return {
     type   : Constants.DISABLE_APPLICATION_INSTANCE,
     method : Network.PUT,
     url    : `/api/applications/${applicationId}/application_instances/${applicationInstanceId}`,
     body   : {
-      disabled_at: null,
+      disabled_at: disabledAt,
     },
     applicationInstanceId,
   };
