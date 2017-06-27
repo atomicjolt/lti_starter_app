@@ -8,6 +8,9 @@ class LtiLaunchesController < ApplicationController
   before_action :do_lti
 
   def index
+    if current_application_instance.disabled_at
+      render file: File.join(Rails.root, "public", "disabled.html")
+    end
     setup_lti_response
   end
 
