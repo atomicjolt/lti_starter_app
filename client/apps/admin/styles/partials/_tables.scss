@@ -153,6 +153,7 @@
     &:hover i{
       color: $gray;
     }
+
     &:active{
       @include transform(scale(0.9));
     }
@@ -178,6 +179,7 @@
     &:hover i {
       color: $gray;
     }
+    
     &:active {
       @include transform(scale(0.9));
     }
