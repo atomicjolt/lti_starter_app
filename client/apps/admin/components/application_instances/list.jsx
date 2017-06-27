@@ -4,6 +4,16 @@ import _ from 'lodash';
 import ListRow from './list_row';
 
 export default function List(props) {
+  const {
+    application,
+    settings,
+    sites,
+    saveApplicationInstance,
+    deleteApplicationInstance,
+    canvasOauthURL,
+    disableApplicationInstance
+  } = props;
+
   return (
     <table className="c-table c-table--instances">
       <thead>
@@ -22,13 +32,14 @@ export default function List(props) {
             <ListRow
               key={`instance_${key}`}
               {...instance}
-              application={props.application}
+              application={application}
               applicationInstance={instance}
-              settings={props.settings}
-              sites={props.sites}
-              save={props.saveApplicationInstance}
-              delete={props.deleteApplicationInstance}
-              canvasOauthURL={props.canvasOauthURL}
+              settings={settings}
+              sites={sites}
+              save={saveApplicationInstance}
+              delete={deleteApplicationInstance}
+              canvasOauthURL={canvasOauthURL}
+              disable={() => disableApplicationInstance(instance.application_id, instance.id)}
             />
           ))
         }
@@ -45,4 +56,5 @@ List.propTypes = {
   saveApplicationInstance: PropTypes.func.isRequired,
   deleteApplicationInstance: PropTypes.func.isRequired,
   canvasOauthURL: PropTypes.string.isRequired,
+  disableApplicationInstance: PropTypes.func.isRequired,
 };

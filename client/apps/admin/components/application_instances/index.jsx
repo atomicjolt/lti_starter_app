@@ -34,6 +34,7 @@ export class Index extends React.Component {
       canvas_callback_url: PropTypes.string.isRequired,
     }).isRequired,
     canvasOauthURL: PropTypes.string.isRequired,
+    disableApplicationInstance: PropTypes.func.isRequired,
   };
 
   constructor() {
@@ -71,6 +72,7 @@ export class Index extends React.Component {
             application={application}
             saveApplicationInstance={this.props.saveApplicationInstance}
             deleteApplicationInstance={this.props.deleteApplicationInstance}
+            disableApplicationInstance={this.props.disableApplicationInstance}
             canvasOauthURL={this.props.canvasOauthURL}
           />
         </div>

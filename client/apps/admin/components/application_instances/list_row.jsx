@@ -25,6 +25,7 @@ export default class ListRow extends React.Component {
       user_canvas_domains: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
     canvasOauthURL: PropTypes.string.isRequired,
+    disable: PropTypes.func.isRequired,
   };
 
   static getStyles() {
@@ -118,6 +119,11 @@ export default class ListRow extends React.Component {
             application={this.props.application}
             applicationInstance={this.props.applicationInstance}
           />
+        </td>
+        <td>
+          <button onClick={this.props.disable}>
+            Disable
+          </button>
         </td>
         <td>
           <button

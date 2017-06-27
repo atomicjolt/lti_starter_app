@@ -11,6 +11,7 @@ const requests = [
   'GET_APPLICATION_INSTANCE',
   'CREATE_APPLICATION_INSTANCE',
   'DELETE_APPLICATION_INSTANCE',
+  'DISABLE_APPLICATION_INSTANCE',
   'SAVE_APPLICATION_INSTANCE',
 ];
 
@@ -65,6 +66,18 @@ export function deleteApplicationInstance(applicationId, applicationInstanceId) 
     type   : Constants.DELETE_APPLICATION_INSTANCE,
     method : Network.DEL,
     url    : `/api/applications/${applicationId}/application_instances/${applicationInstanceId}`,
+    applicationInstanceId,
+  };
+}
+
+export function disableApplicationInstance(applicationId, applicationInstanceId) {
+  return {
+    type   : Constants.DISABLE_APPLICATION_INSTANCE,
+    method : Network.PUT,
+    url    : `/api/applications/${applicationId}/application_instances/${applicationInstanceId}`,
+    body   : {
+      disabled_at: null,
+    },
     applicationInstanceId,
   };
 }
