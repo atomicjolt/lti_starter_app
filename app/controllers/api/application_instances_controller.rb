@@ -58,6 +58,7 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
       :lti_secret,
       :canvas_token,
       :lti_key,
+      :disabled_at,
     )
   end
 

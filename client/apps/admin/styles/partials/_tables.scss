@@ -153,10 +153,45 @@
     &:hover i{
       color: $gray;
     }
+
     &:active{
       @include transform(scale(0.9));
     }
   }
+
+.c-disable {
+  @include transition(all 0.1s ease);
+  width: 3rem;
+  height: 3rem;
+  border-radius: $radius;
+  background: $lightest-gray;
+  display: block;
+  border: 0;
+  cursor: pointer;
+
+  i {
+    @include transition(all 0.1s ease);
+    font-size: 2rem;
+    color: $light-gray;
+    position: relative;
+  }
+
+  &:hover i {
+    color: $gray;
+  }
+
+  &:active {
+    @include transform(scale(0.9));
+  }
+
+  &:hover .enabled {
+    color: $green;
+  }
+
+  .enabled {
+    color: $green;
+  }
+}
 
   .pagination{
     position: relative;

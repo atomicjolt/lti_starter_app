@@ -4,6 +4,16 @@ import _ from 'lodash';
 import ListRow from './list_row';
 
 export default function List(props) {
+  const {
+    application,
+    settings,
+    sites,
+    saveApplicationInstance,
+    deleteApplicationInstance,
+    canvasOauthURL,
+    disableApplicationInstance
+  } = props;
+
   return (
     <table className="c-table c-table--instances">
       <thead>
@@ -13,6 +23,7 @@ export default function List(props) {
           <th><span>DOMAIN</span></th>
           <th><span>SETTINGS</span></th>
           <th><span>CONFIG XML</span></th>
+          <th><span>ENABLED</span></th>
           <th />
         </tr>
       </thead>
@@ -22,13 +33,19 @@ export default function List(props) {
             <ListRow
               key={`instance_${key}`}
               {...instance}
-              application={props.application}
+              application={application}
               applicationInstance={instance}
-              settings={props.settings}
-              sites={props.sites}
-              save={props.saveApplicationInstance}
-              delete={props.deleteApplicationInstance}
-              canvasOauthURL={props.canvasOauthURL}
+              settings={settings}
+              sites={sites}
+              save={saveApplicationInstance}
+              delete={deleteApplicationInstance}
+              canvasOauthURL={canvasOauthURL}
+              disable={
+                () => {
+                  const disabledAt = instance.disabled_at ? null : new Date(Date.now());
+                  disableApplicationInstance(instance.application_id, instance.id, disabledAt);
+                }
+              }
             />
           ))
         }
@@ -45,4 +62,5 @@ List.propTypes = {
   saveApplicationInstance: PropTypes.func.isRequired,
   deleteApplicationInstance: PropTypes.func.isRequired,
   canvasOauthURL: PropTypes.string.isRequired,
+  disableApplicationInstance: PropTypes.func.isRequired,
 };
