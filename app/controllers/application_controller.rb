@@ -41,7 +41,11 @@ class ApplicationController < ActionController::Base
   def set_lti_launch_values
     @is_lti_launch = true
     @canvas_url = current_application_instance.site.url
-    @app_name = current_application_instance.application.client_application_name
+    @app_name = if current_application_instance.disabled_at
+                  "disabled"
+                else
+                  current_application_instance.application.client_application_name
+                end
   end
 
 end
