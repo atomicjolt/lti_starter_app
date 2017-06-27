@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import assets from '../libs/assets';
-import Auth from '../../../libs/canvas/components/canvas_authentication';
 import Selector from './content_item_select/selector';
 
 const select = state => ({
@@ -29,7 +28,6 @@ const Home = (props) => {
 };
 
 Home.propTypes = {
-  canvasAuthRequired: PropTypes.bool,
   ltiMessageType: PropTypes.string,
 };
 

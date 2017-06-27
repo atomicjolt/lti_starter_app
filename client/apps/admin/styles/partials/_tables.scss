@@ -158,7 +158,8 @@
     }
   }
 
-  .c-disable{
+  .c-disable {
+    @include transition(all 0.1s ease);
     width: 3rem;
     height: 3rem;
     border-radius: $radius;
@@ -166,28 +167,27 @@
     display: block;
     border: none;
     cursor: pointer;
-    @include transition(all 0.1s ease);
 
-    i{
+    i {
+      @include transition(all 0.1s ease);
       font-size: 2rem;
       color: $light-gray;
       position: relative;
-      @include transition(all 0.1s ease);
     }
 
-    &:hover i{
+    &:hover i {
       color: $gray;
     }
-    &:active{
+    &:active {
       @include transform(scale(0.9));
     }
 
     &:hover .enabled {
-      color: $green
+      color: $green;
     }
 
     .enabled {
-      color: $green
+      color: $green;
     }
   }
 
