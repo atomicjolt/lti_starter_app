@@ -158,6 +158,39 @@
     }
   }
 
+  .c-disable{
+    width: 3rem;
+    height: 3rem;
+    border-radius: $radius;
+    background: $lightest-gray;
+    display: block;
+    border: none;
+    cursor: pointer;
+    @include transition(all 0.1s ease);
+
+    i{
+      font-size: 2rem;
+      color: $light-gray;
+      position: relative;
+      @include transition(all 0.1s ease);
+    }
+
+    &:hover i{
+      color: $gray;
+    }
+    &:active{
+      @include transform(scale(0.9));
+    }
+
+    &:hover .enabled {
+      color: $green
+    }
+
+    .enabled {
+      color: $green
+    }
+  }
+
   .pagination{
     position: relative;
     @include center(horizontal);

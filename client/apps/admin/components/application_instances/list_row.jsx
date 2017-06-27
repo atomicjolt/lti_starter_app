@@ -5,6 +5,8 @@ import _ from 'lodash';
 import Modal from './modal';
 import SettingsInputs from '../common/settings_inputs';
 import ConfigXmlModal from './config_xml_modal';
+import EnabledButton from '../common/enabled';
+import DisabledButton from '../common/disabled';
 
 export default class ListRow extends React.Component {
   static propTypes = {
@@ -36,7 +38,8 @@ export default class ListRow extends React.Component {
         color: 'grey',
         fontSize: '1.5em',
         cursor: 'pointer',
-      }
+      },
+
     };
   }
 
@@ -123,11 +126,12 @@ export default class ListRow extends React.Component {
           />
         </td>
         <td>
-          <button onClick={this.props.disable}>
+          <button
+            onClick={this.props.disable}
+            className="c-disable"
+          >
             {
-              applicationInstance.disabled_at
-              ? <i className="material-icons">check_circle</i>
-              : <i className="material-icons">not_interested</i>
+              applicationInstance.disabled_at ? <EnabledButton /> : <DisabledButton />
             }
           </button>
         </td>
