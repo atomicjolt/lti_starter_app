@@ -22,7 +22,7 @@ const Home = (props) => {
   return (
     <div>
       <img src={img} alt="Atomic Jolt Logo" />
-      <h1>This account has been disabled</h1>
+      <h1 className="disabled-message">This account has been disabled</h1>
     </div>
   );
 
