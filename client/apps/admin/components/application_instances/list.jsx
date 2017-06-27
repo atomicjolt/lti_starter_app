@@ -23,6 +23,7 @@ export default function List(props) {
           <th><span>DOMAIN</span></th>
           <th><span>SETTINGS</span></th>
           <th><span>CONFIG XML</span></th>
+          <th><span>ENABLED</span></th>
           <th />
         </tr>
       </thead>
