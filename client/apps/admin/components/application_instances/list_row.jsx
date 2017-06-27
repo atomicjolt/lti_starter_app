@@ -61,7 +61,8 @@ export default class ListRow extends React.Component {
   render() {
     const styles = ListRow.getStyles();
     const path = `applications/${this.props.application_id}/application_instances/${this.props.id}/installs`;
-    // TODO show disabled state
+    const { applicationInstance } = this.props;
+
     return (
       <tr>
         <td>
@@ -123,7 +124,11 @@ export default class ListRow extends React.Component {
         </td>
         <td>
           <button onClick={this.props.disable}>
-            Disable
+            {
+              applicationInstance.disabled_at
+              ? <i className="material-icons">check_circle</i>
+              : <i className="material-icons">not_interested</i>
+            }
           </button>
         </td>
         <td>
