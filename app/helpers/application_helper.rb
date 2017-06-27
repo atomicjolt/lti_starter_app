@@ -13,9 +13,13 @@ module ApplicationHelper
     AuthToken.issue_token(
       {
         user_id: current_user.id,
-        lti_roles: params["roles"],
+        lti_roles: lti_roles,
       },
     )
+  end
+
+  def lti_roles
+    params["ext_roles"] || params["roles"]
   end
 
 end
