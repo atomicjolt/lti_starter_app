@@ -112,7 +112,7 @@ module Concerns
     end
 
     def _add_roles(user, params)
-      all_roles = (params["ext_roles"] || params["roles"]).split(",")
+      all_roles = lti_roles.split(",")
       # Only store roles that start with urn:lti:role to prevent using local roles
       roles = all_roles.select { |role| role.start_with?("urn:lti:") }
       roles.each do |role|
@@ -146,6 +146,10 @@ module Concerns
       # If there isn't an email then we have to make one up. We use the user_id and instance guid
       email = generate_email(domain) if email.blank?
       email
+    end
+
+    def lti_roles
+      params["ext_roles"] || params["roles"]
     end
 
   end
