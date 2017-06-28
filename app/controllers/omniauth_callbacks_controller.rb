@@ -26,8 +26,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     set_lti_launch_values
     @canvas_auth_required = false
 
-    if params["admin_url"].present?
-      redirect_to params["admin_url"]
+    if params["oauth_complete_url"].present?
+      redirect_to params["oauth_complete_url"]
     else
       render "lti_launches/index", layout: "client"
     end
