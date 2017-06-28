@@ -7,7 +7,7 @@
 //               but will not be passed to the server.
 export default function(canvas, params, body, localData = {}) {
   return {
-    type: canvas.type,
+    lms_proxy_call_type: canvas.type,
     canvas,
     params,
     body,
