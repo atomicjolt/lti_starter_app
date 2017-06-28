@@ -200,6 +200,8 @@ export const uploadFileSections = { type: 'UPLOAD_FILE_SECTIONS', method: 'post'
 //   include[visibility]
 //   submission[posted_grade]
 //   submission[excuse]
+//   submission[late_policy_status]
+//   submission[accepted_at]
 //   rubric_assessment
 // }
 // return canvasRequest(grade_or_comment_on_submission_courses, {course_id, assignment_id, user_id}, query);
@@ -224,6 +226,8 @@ export const gradeOrCommentOnSubmissionCourses = { type: 'GRADE_OR_COMMENT_ON_SU
 //   include[visibility]
 //   submission[posted_grade]
 //   submission[excuse]
+//   submission[late_policy_status]
+//   submission[accepted_at]
 //   rubric_assessment
 // }
 // return canvasRequest(grade_or_comment_on_submission_sections, {section_id, assignment_id, user_id}, query);
@@ -279,6 +283,7 @@ export const listMultipleAssignmentsGradeableStudents = { type: 'LIST_MULTIPLE_A
 //   grade_data[<student_id>][media_comment_id]
 //   grade_data[<student_id>][media_comment_type]
 //   grade_data[<student_id>][file_ids]
+//   grade_data[<student_id>][assignment_id]
 // }
 // return canvasRequest(grade_or_comment_on_multiple_submissions_courses_submissions, {course_id}, query);
 export const gradeOrCommentOnMultipleSubmissionsCoursesSubmissions = { type: 'GRADE_OR_COMMENT_ON_MULTIPLE_SUBMISSIONS_COURSES_SUBMISSIONS', method: 'post', key: 'grade_or_comment_on_multiple_submissions_courses_submissionsgrade_or_comment_on_multiple_submissions_courses_submissions_course_id', required: ['course_id'] };
@@ -303,6 +308,7 @@ export const gradeOrCommentOnMultipleSubmissionsCoursesSubmissions = { type: 'GR
 //   grade_data[<student_id>][media_comment_id]
 //   grade_data[<student_id>][media_comment_type]
 //   grade_data[<student_id>][file_ids]
+//   grade_data[<student_id>][assignment_id]
 // }
 // return canvasRequest(grade_or_comment_on_multiple_submissions_courses_assignments, {course_id, assignment_id}, query);
 export const gradeOrCommentOnMultipleSubmissionsCoursesAssignments = { type: 'GRADE_OR_COMMENT_ON_MULTIPLE_SUBMISSIONS_COURSES_ASSIGNMENTS', method: 'post', key: 'grade_or_comment_on_multiple_submissions_courses_assignmentsgrade_or_comment_on_multiple_submissions_courses_assignments_{course_id}_{assignment_id}', required: ['course_id', 'assignment_id'] };
@@ -327,6 +333,7 @@ export const gradeOrCommentOnMultipleSubmissionsCoursesAssignments = { type: 'GR
 //   grade_data[<student_id>][media_comment_id]
 //   grade_data[<student_id>][media_comment_type]
 //   grade_data[<student_id>][file_ids]
+//   grade_data[<student_id>][assignment_id]
 // }
 // return canvasRequest(grade_or_comment_on_multiple_submissions_sections_submissions, {section_id}, query);
 export const gradeOrCommentOnMultipleSubmissionsSectionsSubmissions = { type: 'GRADE_OR_COMMENT_ON_MULTIPLE_SUBMISSIONS_SECTIONS_SUBMISSIONS', method: 'post', key: 'grade_or_comment_on_multiple_submissions_sections_submissionsgrade_or_comment_on_multiple_submissions_sections_submissions_section_id', required: ['section_id'] };
@@ -351,6 +358,7 @@ export const gradeOrCommentOnMultipleSubmissionsSectionsSubmissions = { type: 'G
 //   grade_data[<student_id>][media_comment_id]
 //   grade_data[<student_id>][media_comment_type]
 //   grade_data[<student_id>][file_ids]
+//   grade_data[<student_id>][assignment_id]
 // }
 // return canvasRequest(grade_or_comment_on_multiple_submissions_sections_assignments, {section_id, assignment_id}, query);
 export const gradeOrCommentOnMultipleSubmissionsSectionsAssignments = { type: 'GRADE_OR_COMMENT_ON_MULTIPLE_SUBMISSIONS_SECTIONS_ASSIGNMENTS', method: 'post', key: 'grade_or_comment_on_multiple_submissions_sections_assignmentsgrade_or_comment_on_multiple_submissions_sections_assignments_{section_id}_{assignment_id}', required: ['section_id', 'assignment_id'] };
@@ -402,3 +410,25 @@ export const markSubmissionAsUnreadCourses = { type: 'MARK_SUBMISSION_AS_UNREAD_
 // Example:
 // return canvasRequest(mark_submission_as_unread_sections, {section_id, assignment_id, user_id});
 export const markSubmissionAsUnreadSections = { type: 'MARK_SUBMISSION_AS_UNREAD_SECTIONS', method: 'delete', key: 'mark_submission_as_unread_sectionsmark_submission_as_unread_sections_{section_id}_{assignment_id}_{user_id}', required: ['section_id', 'assignment_id', 'user_id'] };
+
+// Submission Summary
+// Returns the number of submissions for the given assignment based on gradeable students
+// that fall into three categories: graded, ungraded, not submitted.
+//
+// API Docs: https://canvas.instructure.com/doc/api/submissions.html
+// API Url: courses/{course_id}/assignments/{assignment_id}/submission_summary
+//
+// Example:
+// return canvasRequest(submission_summary_courses, {course_id, assignment_id});
+export const submissionSummaryCourses = { type: 'SUBMISSION_SUMMARY_COURSES', method: 'get', key: 'submission_summary_coursessubmission_summary_courses_{course_id}_{assignment_id}', required: ['course_id', 'assignment_id'] };
+
+// Submission Summary
+// Returns the number of submissions for the given assignment based on gradeable students
+// that fall into three categories: graded, ungraded, not submitted.
+//
+// API Docs: https://canvas.instructure.com/doc/api/submissions.html
+// API Url: sections/{section_id}/assignments/{assignment_id}/submission_summary
+//
+// Example:
+// return canvasRequest(submission_summary_sections, {section_id, assignment_id});
+export const submissionSummarySections = { type: 'SUBMISSION_SUMMARY_SECTIONS', method: 'get', key: 'submission_summary_sectionssubmission_summary_sections_{section_id}_{assignment_id}', required: ['section_id', 'assignment_id'] };
