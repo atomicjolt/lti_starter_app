@@ -9,6 +9,7 @@ class ApplicationInstance < ActiveRecord::Base
   validates :lti_key, presence: true, uniqueness: true
   validates :lti_secret, presence: true
   validates :site_id, presence: true
+  validates :application_id, presence: true
 
   before_validation :set_lti
   before_validation on: [:update] do
