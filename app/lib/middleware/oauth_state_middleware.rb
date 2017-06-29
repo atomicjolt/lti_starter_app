@@ -30,25 +30,25 @@ class OauthStateMiddleware
 
   # Since we channel all OAuth request through a single domain we have to have a way
   # to send the user back to their original subdomain.
-  def redirect_original(request, state_params, application_instance)
+  def redirect_original(request, state_params, site)
     response = Rack::Response.new
     return_url = state_params["app_callback_url"]
     query = query_string(request, SecureRandom.hex(64))
     return_url << "?"
-    return_url << signed_query_string(query, application_instance.lti_secret)
+    return_url << signed_query_string(query, site.secret)
     response.redirect return_url
     response.finish
   end
 
   # Adds all parameters back into the request
-  def restore_state(request, state_params, application_instance, oauth_state, env)
-    verify!(request, application_instance.lti_secret)
+  def restore_state(request, state_params, site, oauth_state, env)
+    verify!(request, site.secret)
     # Restore the param from before the OAuth dance
     state_params.each do |key, value|
       request.update_param(key, value)
     end
     oauth_state.destroy
-    env["canvas.url"] = application_instance.site.url
+    env["canvas.url"] = site.url
   end
 
   # Retrieves all original app parameters (settings) from the database during
@@ -63,15 +63,30 @@ class OauthStateMiddleware
     end
   end
 
+  # Finds a site by looking for the site_id in the params or by finding an application instance by it's LTI key
+  def get_site(state_params)
+    # site id will typically be provided by apps that know the site that contains the Canvas url they want to OAuth
+    # with but they may or may not have an associated application instance.
+    if state_params["site_id"].present?
+      site = Site.find(state_params["site_id"])
+    end
+    # LTI apps will typically have the oauth_consumer_key available
+    if site.blank?
+      application_instance = ApplicationInstance.find_by(lti_key: state_params["oauth_consumer_key"])
+      site = application_instance.site
+    end
+    site
+  end
+
   def call(env)
     request = Rack::Request.new(env)
     oauth_state, state_params = get_state(request)
     if oauth_state.present?
-      application_instance = ApplicationInstance.find_by(lti_key: state_params["oauth_consumer_key"])
+      site = get_site(state_params)
       if request.params["signature"].present?
-        restore_state(request, state_params, application_instance, oauth_state, env)
+        restore_state(request, state_params, site, oauth_state, env)
       else
-        return redirect_original(request, state_params, application_instance)
+        return redirect_original(request, state_params, site)
       end
     end
     @app.call(env)
