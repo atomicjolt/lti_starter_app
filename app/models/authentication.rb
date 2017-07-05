@@ -1,5 +1,7 @@
 class Authentication < ApplicationRecord
 
+  has_secure_token :id_token
+
   attr_encrypted :token, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
   attr_encrypted :secret, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
   attr_encrypted :refresh_token, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
