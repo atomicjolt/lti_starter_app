@@ -5,7 +5,7 @@ RSpec.describe ApplicationInstance, type: :model do
     before :each do
       @site = create(:site)
       @name = "test"
-      @application = create(:application, name: @name)
+      @application = create(:application, name: @name, key: @name)
     end
 
     it "sets a default lti key" do
@@ -34,11 +34,11 @@ RSpec.describe ApplicationInstance, type: :model do
       expect(@application_instance.tenant).to eq("bfcoder")
     end
 
-    it "sets a valid lti_key using the name" do
-      name = "A Test"
-      application = create(:application, name: name)
+    it "sets a valid lti_key using the key" do
+      key = "a-test"
+      application = create(:application, key: key)
       @application_instance = create(:application_instance, lti_key: nil, site: @site, application: application)
-      expect(@application_instance.lti_key).to eq("a-test")
+      expect(@application_instance.lti_key).to eq(key)
     end
 
     it "doesn't set lti_key if the lti_key is already set" do
