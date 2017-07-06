@@ -22,5 +22,4 @@ class Application < ActiveRecord::Base
   # admin: The admin tool
   # app: Stand alone applications that don't require an lti launch
   enum kind: %i{lti admin app}
-
 end

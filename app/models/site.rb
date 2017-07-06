@@ -4,4 +4,9 @@ class Site < ActiveRecord::Base
   validates :url, presence: true, uniqueness: true
 
   has_secure_token :secret
+
+  def subdomain
+    URI.parse(url).hostname.split(".")[0]
+  end
+
 end

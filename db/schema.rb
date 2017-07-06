@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170705132718) do
+ActiveRecord::Schema.define(version: 20170706192404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20170705132718) do
     t.jsonb    "default_config",              default: {}
     t.jsonb    "lti_config"
     t.jsonb    "canvas_api_permissions",      default: {}
+    t.string   "key"
+    t.index ["key"], name: "index_applications_on_key", using: :btree
   end
 
   create_table "authentications", force: :cascade do |t|
