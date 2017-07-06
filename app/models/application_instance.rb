@@ -41,7 +41,7 @@ class ApplicationInstance < ActiveRecord::Base
   private
 
   def set_lti
-    self.lti_key = (lti_key || application.name)&.parameterize&.dasherize
+    self.lti_key = (lti_key || "#{site.subdomain}-#{application.key}")&.parameterize&.dasherize
     self.lti_secret = ::SecureRandom::hex(64) if lti_secret.blank?
     self.tenant ||= lti_key
   end
