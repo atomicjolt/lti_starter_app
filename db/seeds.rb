@@ -45,8 +45,6 @@ admin_api_permissions = {
   HELPER_ALL_ACCOUNTS: [],
 }
 
- client = "atomicjolt"
-
 # Add an LTI Application
 applications = [
   {
@@ -58,8 +56,6 @@ applications = [
     kind: Application.kinds[:admin],
     default_config: {},
     application_instances: [{
-      tenant: Application::ADMIN,
-      lti_key: Application::ADMIN,
       lti_secret: secrets.admin_lti_secret,
       site_url: secrets.canvas_url,
       domain: "#{Application::ADMIN}.#{secrets.application_root_domain}",
@@ -108,8 +104,6 @@ applications = [
       },
     },
     application_instances: [{
-      tenant: "#{client}-#{Application::HELLO_WORLD}",
-      lti_key: "#{client}-#{Application::HELLO_WORLD}",
       lti_secret: secrets.hello_world_lti_secret,
       site_url: secrets.canvas_url,
       # This is only required if the app needs API access and doesn't want each user to do the oauth dance
@@ -120,7 +114,6 @@ applications = [
       # need a different domain for that tool since Canvas uses the domain to find the LTI tool among
       # all installed LTI tools. If two tools share the same domain then the tool discovered by Canvas
       # to do the LTI launch will be indeterminate
-      domain: "#{client}-#{Application::HELLO_WORLD}.#{secrets.application_root_domain}",
     }],
   },
 ]
@@ -130,7 +123,9 @@ def setup_application_instances(application, application_instances)
     site = Site.find_by(url: attrs.delete(:site_url))
     attrs = attrs.merge(site_id: site.id)
 
-    if application_instance = application.application_instances.find_by(lti_key: attrs[:lti_key])
+    if application_instance = application.
+        application_instances.
+        find_by(site_id: attrs[:site_id], application_id: application.id)
       # Don't change production lti keys or set keys to nil
       attrs.delete(:lti_secret) if attrs[:lti_secret].blank? || Rails.env.production?
 
