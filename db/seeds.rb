@@ -148,7 +148,7 @@ end
 
 applications.each do |attrs|
   application_instances = attrs.delete(:application_instances)
-  if application = Application.find_by(name: attrs[:name])
+  if application = Application.find_by(key: attrs[:key])
     application.update_attributes!(attrs)
   else
     application = Application.create!(attrs)
