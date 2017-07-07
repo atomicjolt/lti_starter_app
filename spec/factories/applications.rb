@@ -1,8 +1,7 @@
 FactoryGirl.define do
-  name = FactoryGirl.generate(:name)
   factory :application do
-    name { name }
-    key { name }
+    name { FactoryGirl.generate(:name) }
+    key { FactoryGirl.generate(:name) }
     canvas_api_permissions do
       {
         default: [
