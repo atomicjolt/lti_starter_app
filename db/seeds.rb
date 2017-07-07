@@ -129,7 +129,9 @@ def setup_application_instances(application, application_instances)
     end
 
     # Check to see if the application instance needs to share a tenant with another
-    # application instance
+    # application instance. To use this include a value on the application instance
+    # called "share_instance" and set it to the application key related to the
+    # application instance it should share tenants with.
     if share_instance
       application_instance.tenant = application_instance.key(share_instance)
     end

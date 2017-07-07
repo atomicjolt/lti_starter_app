@@ -192,6 +192,14 @@ Inside the client directory run:
 yarn upgrade-interactive
 ```
 
+#### Usage Guide
+
+#### Tenants
+Each application instance maintains it's own database schema. The LTI starter app uses the Apartment gem and these
+are called "tenants". In some instances multiple application instances need to share the same tenant. It is possible
+to do this in the seeds when creating application instances. To use this include a value on the application instance
+being created in the seeds.rb file called "share_instance" and set it to the application key related to the
+application instance it should share tenants with.
 
 
 ## Scripts:
