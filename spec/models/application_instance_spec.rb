@@ -4,8 +4,9 @@ RSpec.describe ApplicationInstance, type: :model do
   describe "create application" do
     before :each do
       @site = create(:site)
-      @name = "test"
-      @application = create(:application, name: @name, key: @name)
+      @name = "An Example application"
+      @key = "example"
+      @application = create(:application, name: @name, key: @key)
     end
 
     it "sets a default lti key" do
@@ -15,7 +16,7 @@ RSpec.describe ApplicationInstance, type: :model do
 
     it "generates a key based on the site and application" do
       @application_instance = create(:application_instance, lti_key: nil, site: @site, application: @application)
-      expect(@application_instance.key).to eq("#{@site.subdomain}-#{@application.key}")
+      expect(@application_instance.key).to eq("#{@site.subdomain}-#{@application.key}"&.parameterize&.dasherize)
     end
 
     it "sets a default domain" do
