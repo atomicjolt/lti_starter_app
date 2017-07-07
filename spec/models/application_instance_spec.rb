@@ -10,7 +10,7 @@ RSpec.describe ApplicationInstance, type: :model do
 
     it "sets a default lti key" do
       @application_instance = create(:application_instance, lti_key: nil, site: @site, application: @application)
-      expect(@application_instance.lti_key).to eq(@name)
+      expect(@application_instance.lti_key).to eq(@application_instance.key)
     end
 
     it "generates a key based on the site and application" do
@@ -55,7 +55,7 @@ RSpec.describe ApplicationInstance, type: :model do
       key = "a-test"
       application = create(:application, key: key)
       @application_instance = create(:application_instance, lti_key: nil, site: @site, application: application)
-      expect(@application_instance.lti_key).to eq(key)
+      expect(@application_instance.lti_key).to eq("#{@site.subdomain}-#{key}")
     end
 
     it "doesn't set lti_key if the lti_key is already set" do

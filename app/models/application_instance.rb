@@ -40,15 +40,15 @@ class ApplicationInstance < ActiveRecord::Base
     end
   end
 
-  def key
+  def key(application_key_override = nil)
     return "" if site.blank? || application.blank?
-    "#{site.subdomain}-#{application.key}"
+    "#{site.subdomain}-#{application_key_override || application.key}"&.parameterize&.dasherize
   end
 
   private
 
   def set_lti
-    self.lti_key = lti_key || key&.parameterize&.dasherize
+    self.lti_key = lti_key || key
     self.lti_secret = ::SecureRandom::hex(64) if lti_secret.blank?
     self.tenant ||= lti_key
   end
