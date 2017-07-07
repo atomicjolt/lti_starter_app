@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.0.2
+Adds the concept of a key for both an application and application instance. This means applications can be
+uniquely identified and application instances are able to automatically generate a domain based on their
+relationship with a site and application.
+
 ## 1.0.1
 Adds ability to do OAuth with a site id as well as a oauth_consumer_key
 

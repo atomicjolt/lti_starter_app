@@ -58,7 +58,6 @@ applications = [
     application_instances: [{
       lti_secret: secrets.admin_lti_secret,
       site_url: secrets.canvas_url,
-      domain: "#{Application::ADMIN}.#{secrets.application_root_domain}",
     }],
   },
   {
@@ -108,13 +107,6 @@ applications = [
       site_url: secrets.canvas_url,
       # This is only required if the app needs API access and doesn't want each user to do the oauth dance
       canvas_token: secrets.canvas_token,
-      # Each application instance can have it's own custom domain. Typically, this is not needed
-      # as the application will use the oauth_consumer_key from the LTI launch to partition different
-      # application instances. However, if Canvas is launching the LTI tool based on url then you will
-      # need a different domain for that tool since Canvas uses the domain to find the LTI tool among
-      # all installed LTI tools. If two tools share the same domain then the tool discovered by Canvas
-      # to do the LTI launch will be indeterminate
-      domain: "#{client}-#{Application::HELLO_WORLD}.#{secrets.application_root_domain}",
     }],
   },
 ]

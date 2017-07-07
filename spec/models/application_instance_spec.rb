@@ -13,6 +13,23 @@ RSpec.describe ApplicationInstance, type: :model do
       expect(@application_instance.lti_key).to eq(@name)
     end
 
+    it "generates a key based on the site and application" do
+      @application_instance = create(:application_instance, lti_key: nil, site: @site, application: @application)
+      expect(@application_instance.key).to eq("#{@site.subdomain}-#{@application.key}")
+    end
+
+    it "sets a default domain" do
+      @application_instance = create(
+        :application_instance,
+        lti_key: nil,
+        domain: nil,
+        site: @site,
+        application: @application,
+      )
+      application_instance_domain = "#{@application_instance.key}.#{Rails.application.secrets.application_root_domain}"
+      expect(@application_instance.domain).to eq(application_instance_domain)
+    end
+
     it "sets a default secret" do
       @application_instance = create(:application_instance, site: @site, application: @application)
       expect(@application_instance.lti_secret).to be_present
