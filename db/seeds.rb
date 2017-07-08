@@ -115,7 +115,7 @@ def setup_application_instances(application, application_instances)
   application_instances.each do |attrs|
     site = Site.find_by(url: attrs.delete(:site_url))
     attrs = attrs.merge(site_id: site.id)
-    share_instance = attrs.delete("share_instance")
+    share_instance = attrs.delete(:share_instance)
 
     if application_instance = application.
         application_instances.
@@ -125,7 +125,7 @@ def setup_application_instances(application, application_instances)
 
       application_instance.update_attributes!(attrs)
     else
-      application.application_instances.create!(attrs)
+      application_instance = application.application_instances.create!(attrs)
     end
 
     # Check to see if the application instance needs to share a tenant with another
