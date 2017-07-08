@@ -134,6 +134,7 @@ def setup_application_instances(application, application_instances)
     # application instance it should share tenants with.
     if share_instance
       application_instance.tenant = application_instance.key(share_instance)
+      application_instance.save!
     end
   end
 end
