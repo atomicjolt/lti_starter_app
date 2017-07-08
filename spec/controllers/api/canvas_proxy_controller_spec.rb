@@ -30,7 +30,7 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
   describe "proxy without authorization" do
     describe "GET" do
       it "should return an unauthorized" do
-        get :proxy, params: { type: "foo" }, format: :json
+        get :proxy, params: { lms_proxy_call_type: "foo" }, format: :json
         expect(response).to have_http_status(:unauthorized)
       end
     end
@@ -47,19 +47,19 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
     describe "GET" do
       it "should successfully call the canvas api" do
         type = "LIST_ACCOUNTS"
-        get :proxy, params: { type: type, lti_key: @application_instance.lti_key }, format: :json
+        get :proxy, params: { lms_proxy_call_type: type, lti_key: @application_instance.lti_key }, format: :json
         expect(response).to have_http_status(:success)
       end
       it "should successfully call the canvas api to generate a url to get courses" do
         type = "LIST_YOUR_COURSES"
-        get :proxy, params: { type: type, lti_key: @application_instance.lti_key, account_id: 1 }, format: :json
+        get :proxy, params: { lms_proxy_call_type: type, lti_key: @application_instance.lti_key, account_id: 1 }, format: :json
         expect(response).to have_http_status(:success)
       end
       it "should successfully call the canvas api to generate a url to get courses with extra params" do
         type = "LIST_YOUR_COURSES"
         get :proxy,
             params: {
-              type: type,
+              lms_proxy_call_type: type,
               lti_key: @application_instance.lti_key,
               account_id: 1,
               include: [1, 2],
@@ -79,7 +79,7 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
         post :proxy,
              body: payload,
              params: {
-               type: type,
+               lms_proxy_call_type: type,
                lti_key: @application_instance.lti_key,
                account_id: 1,
              },
@@ -97,7 +97,7 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
         put :proxy,
             body: payload,
             params: {
-              type: type,
+              lms_proxy_call_type: type,
               lti_key: @application_instance.lti_key,
               id: 1,
             },

@@ -5,7 +5,7 @@ class Api::CanvasProxyController < Api::ApiApplicationController
   before_action :protect_canvas_api
 
   def proxy
-    result = canvas_api.proxy(params[:type], params.to_unsafe_h, request.body.read)
+    result = canvas_api.proxy(params[:lms_proxy_call_type], params.to_unsafe_h, request.body.read)
     response.status = result.code
 
     allowed_headers = %w{

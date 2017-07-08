@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170613231518) do
+ActiveRecord::Schema.define(version: 20170706192404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170613231518) do
     t.string   "tenant"
     t.jsonb    "config",                                   default: {}
     t.jsonb    "lti_config"
+    t.datetime "disabled_at"
     t.index ["application_id"], name: "index_application_instances_on_application_id", using: :btree
     t.index ["site_id"], name: "index_application_instances_on_site_id", using: :btree
   end
@@ -52,6 +53,8 @@ ActiveRecord::Schema.define(version: 20170613231518) do
     t.jsonb    "default_config",              default: {}
     t.jsonb    "lti_config"
     t.jsonb    "canvas_api_permissions",      default: {}
+    t.string   "key"
+    t.index ["key"], name: "index_applications_on_key", using: :btree
   end
 
   create_table "authentications", force: :cascade do |t|
@@ -73,6 +76,7 @@ ActiveRecord::Schema.define(version: 20170613231518) do
     t.string   "encrypted_refresh_token"
     t.string   "encrypted_refresh_token_salt"
     t.string   "encrypted_refresh_token_iv"
+    t.string   "id_token"
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
     t.index ["user_id"], name: "index_authentications_on_user_id", using: :btree
   end
@@ -129,6 +133,7 @@ ActiveRecord::Schema.define(version: 20170613231518) do
     t.string   "oauth_secret"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.string   "secret"
     t.index ["url"], name: "index_sites_on_url", using: :btree
   end
 

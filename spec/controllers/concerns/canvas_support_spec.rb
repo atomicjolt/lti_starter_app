@@ -23,7 +23,7 @@ describe ApplicationController, type: :controller do
       before_action :protect_canvas_api
 
       def index
-        result = canvas_api.proxy(params[:type], params.to_unsafe_h, request.body.read)
+        result = canvas_api.proxy(params[:lms_proxy_call_type], params.to_unsafe_h, request.body.read)
         response.status = result.code
 
         render plain: result.body
@@ -35,21 +35,21 @@ describe ApplicationController, type: :controller do
       admin.add_to_role("administrator")
       admin.save!
       allow(controller).to receive(:current_user).and_return(admin)
-      get :index, params: { lti_key: @application_instance.lti_key, type: "LIST_ACCOUNTS" }, format: :json
+      get :index, params: { lti_key: @application_instance.lti_key, lms_proxy_call_type: "LIST_ACCOUNTS" }, format: :json
       expect(response).to have_http_status(:success)
     end
 
     it "prohibits a user from accessing the canvas api" do
       user = FactoryGirl.create(:user)
       allow(controller).to receive(:current_user).and_return(user)
-      get :index, params: { lti_key: @application_instance.lti_key, type: "LIST_ACCOUNTS" }, format: :json
+      get :index, params: { lti_key: @application_instance.lti_key, lms_proxy_call_type: "LIST_ACCOUNTS" }, format: :json
       expect(response).to have_http_status(:unauthorized)
     end
 
     it "doesn't allow access to unauthorized API endpoints" do
       get :index, params: {
         lti_key: @application_instance.lti_key,
-        type: "LIST_ACCOUNTS_FOR_COURSE_ADMINS",
+        lms_proxy_call_type: "LIST_ACCOUNTS_FOR_COURSE_ADMINS",
       }, format: :json
       expect(response).to have_http_status(:unauthorized)
     end
@@ -91,7 +91,7 @@ describe ApplicationController, type: :controller do
       before_action :protect_canvas_api
 
       def index
-        result = canvas_api.proxy(params[:type], params.to_unsafe_h, request.body.read)
+        result = canvas_api.proxy(params[:lms_proxy_call_type], params.to_unsafe_h, request.body.read)
         response.status = result.code
 
         render plain: result.body
@@ -99,7 +99,7 @@ describe ApplicationController, type: :controller do
     end
 
     it "provides access to the canvas api" do
-      get :index, params: { lti_key: @application_instance.lti_key, type: "LIST_ACCOUNTS" }, format: :json
+      get :index, params: { lti_key: @application_instance.lti_key, lms_proxy_call_type: "LIST_ACCOUNTS" }, format: :json
       expect(response).to have_http_status(:success)
     end
   end
@@ -138,7 +138,7 @@ describe ApplicationController, type: :controller do
       before_action :protect_canvas_api
 
       def index
-        result = canvas_api.proxy(params[:type], params.to_unsafe_h, request.body.read)
+        result = canvas_api.proxy(params[:lms_proxy_call_type], params.to_unsafe_h, request.body.read)
         response.status = result.code
 
         render plain: result.body
@@ -148,7 +148,7 @@ describe ApplicationController, type: :controller do
     it "provides access to the canvas api" do
       get :index, params: {
         lti_key: @application_instance.lti_key,
-        type: "LIST_ACCOUNTS",
+        lms_proxy_call_type: "LIST_ACCOUNTS",
         context_id: @context_id,
       }, format: :json
       expect(response).to have_http_status(:success)
@@ -184,7 +184,7 @@ describe ApplicationController, type: :controller do
       before_action :protect_canvas_api
 
       def index
-        result = canvas_api.proxy(params[:type], params.to_unsafe_h, request.body.read)
+        result = canvas_api.proxy(params[:lms_proxy_call_type], params.to_unsafe_h, request.body.read)
         response.status = result.code
 
         render plain: result.body
@@ -193,7 +193,7 @@ describe ApplicationController, type: :controller do
 
     it "throws an exception if it can't find a canvas api token" do
       expect do
-        get :index, params: { lti_key: @application_instance.lti_key, type: "LIST_ACCOUNTS" }, format: :json
+        get :index, params: { lti_key: @application_instance.lti_key, lms_proxy_call_type: "LIST_ACCOUNTS" }, format: :json
       end.to raise_error(Concerns::CanvasSupport::CanvasApiTokenRequired)
     end
   end

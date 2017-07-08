@@ -17,6 +17,7 @@ export default function instances(state = initialState, action) {
       return newState;
     }
 
+    case ApplicationInstancesConstants.DISABLE_APPLICATION_INSTANCE_DONE:
     case ApplicationInstancesConstants.GET_APPLICATION_INSTANCE_DONE:
     case ApplicationInstancesConstants.SAVE_APPLICATION_INSTANCE_DONE:
     case ApplicationInstancesConstants.CREATE_APPLICATION_INSTANCE_DONE: {

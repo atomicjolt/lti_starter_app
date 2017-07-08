@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :site do
-    url { FactoryGirl.generate(:domain) }
+    url { FactoryGirl.generate(:url) }
   end
 end

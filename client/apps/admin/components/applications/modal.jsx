@@ -10,7 +10,7 @@ export default class Modal extends React.Component {
       name: PropTypes.string,
       description: PropTypes.string,
       default_config: PropTypes.string,
-      canvas_api_permissions: PropTypes.string,
+      canvas_api_permissions: PropTypes.object,
     }),
     isOpen: PropTypes.bool.isRequired,
     closeModal: PropTypes.func.isRequired,

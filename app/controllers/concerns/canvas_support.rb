@@ -36,18 +36,18 @@ module Concerns
       )
     end
 
-    def protect_canvas_api(type: params[:type], context_id: params[:context_id])
+    def protect_canvas_api(type: params[:lms_proxy_call_type], context_id: params[:context_id])
       return if canvas_api_authorized(type: type, context_id: context_id)
       user_not_authorized
     end
 
-    def canvas_api_authorized(type: params[:type], context_id: params[:context_id])
+    def canvas_api_authorized(type: params[:lms_proxy_call_type], context_id: params[:context_id])
       canvas_api_permissions.has_key?(type) &&
         allowed_roles(type: type).present? &&
         (allowed_roles(type: type) & current_user.nil_or_context_roles(context_id).map(&:name)).present?
     end
 
-    def allowed_roles(type: params[:type])
+    def allowed_roles(type: params[:lms_proxy_call_type])
       roles = (canvas_api_permissions[type] || []) + (canvas_api_permissions[:common] || [])
       roles = canvas_api_permissions[:default] || [] if roles.empty?
       roles

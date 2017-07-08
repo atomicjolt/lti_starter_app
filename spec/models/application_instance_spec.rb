@@ -4,13 +4,31 @@ RSpec.describe ApplicationInstance, type: :model do
   describe "create application" do
     before :each do
       @site = create(:site)
-      @name = "test"
-      @application = create(:application, name: @name)
+      @name = "An Example application"
+      @key = "example"
+      @application = create(:application, name: @name, key: @key)
     end
 
     it "sets a default lti key" do
       @application_instance = create(:application_instance, lti_key: nil, site: @site, application: @application)
-      expect(@application_instance.lti_key).to eq(@name)
+      expect(@application_instance.lti_key).to eq(@application_instance.key)
+    end
+
+    it "generates a key based on the site and application" do
+      @application_instance = create(:application_instance, lti_key: nil, site: @site, application: @application)
+      expect(@application_instance.key).to eq("#{@site.subdomain}-#{@application.key}"&.parameterize&.dasherize)
+    end
+
+    it "sets a default domain" do
+      @application_instance = create(
+        :application_instance,
+        lti_key: nil,
+        domain: nil,
+        site: @site,
+        application: @application,
+      )
+      application_instance_domain = "#{@application_instance.key}.#{Rails.application.secrets.application_root_domain}"
+      expect(@application_instance.domain).to eq(application_instance_domain)
     end
 
     it "sets a default secret" do
@@ -34,11 +52,11 @@ RSpec.describe ApplicationInstance, type: :model do
       expect(@application_instance.tenant).to eq("bfcoder")
     end
 
-    it "sets a valid lti_key using the name" do
-      name = "A Test"
-      application = create(:application, name: name)
+    it "sets a valid lti_key using the key" do
+      key = "a-test"
+      application = create(:application, key: key)
       @application_instance = create(:application_instance, lti_key: nil, site: @site, application: application)
-      expect(@application_instance.lti_key).to eq("a-test")
+      expect(@application_instance.lti_key).to eq("#{@site.subdomain}-#{key}")
     end
 
     it "doesn't set lti_key if the lti_key is already set" do

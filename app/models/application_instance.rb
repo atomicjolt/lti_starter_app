@@ -9,8 +9,11 @@ class ApplicationInstance < ActiveRecord::Base
   validates :lti_key, presence: true, uniqueness: true
   validates :lti_secret, presence: true
   validates :site_id, presence: true
+  validates :application_id, presence: true
 
   before_validation :set_lti
+  before_validation :set_domain
+
   before_validation on: [:update] do
     errors.add(:lti_key, "cannot be changed after creation") if lti_key_changed?
   end
@@ -38,12 +41,21 @@ class ApplicationInstance < ActiveRecord::Base
     end
   end
 
+  def key(application_key_override = nil)
+    return "" if site.blank? || application.blank?
+    "#{site.subdomain}-#{application_key_override || application.key}"&.parameterize&.dasherize
+  end
+
   private
 
   def set_lti
-    self.lti_key = (lti_key || application.name)&.parameterize&.dasherize
+    self.lti_key = lti_key || key
     self.lti_secret = ::SecureRandom::hex(64) if lti_secret.blank?
     self.tenant ||= lti_key
+  end
+
+  def set_domain
+    self.domain = domain || "#{key}.#{Rails.application.secrets.application_root_domain}"
   end
 
   def create_schema

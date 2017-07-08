@@ -48,6 +48,7 @@ admin_api_permissions = {
 # Add an LTI Application
 applications = [
   {
+    key: "admin",
     name: "LTI Admin",
     description: "LTI tool administration",
     client_application_name: "admin_app",
@@ -55,14 +56,12 @@ applications = [
     kind: Application.kinds[:admin],
     default_config: {},
     application_instances: [{
-      tenant: secrets.admin_lti_key,
-      lti_key: secrets.admin_lti_key,
       lti_secret: secrets.admin_lti_secret,
       site_url: secrets.canvas_url,
-      domain: "#{secrets.admin_subdomain}.#{secrets.application_root_domain}",
     }],
   },
   {
+    key: "hello-world",
     name: "LTI Starter App",
     description: "LTI Starter App by Atomic Jolt",
     client_application_name: "hello_world",
@@ -104,19 +103,10 @@ applications = [
       },
     },
     application_instances: [{
-      tenant: secrets.hello_world_lti_key,
-      lti_key: secrets.hello_world_lti_key,
       lti_secret: secrets.hello_world_lti_secret,
       site_url: secrets.canvas_url,
       # This is only required if the app needs API access and doesn't want each user to do the oauth dance
       canvas_token: secrets.canvas_token,
-      # Each application instance can have it's own custom domain. Typically, this is not needed
-      # as the application will use the oauth_consumer_key from the LTI launch to partition different
-      # application instances. However, if Canvas is launching the LTI tool based on url then you will
-      # need a different domain for that tool since Canvas uses the domain to find the LTI tool among
-      # all installed LTI tools. If two tools share the same domain then the tool discovered by Canvas
-      # to do the LTI launch will be indeterminate
-      domain: "#{secrets.hello_world_subdomain}.#{secrets.application_root_domain}",
     }],
   },
 ]
@@ -125,14 +115,26 @@ def setup_application_instances(application, application_instances)
   application_instances.each do |attrs|
     site = Site.find_by(url: attrs.delete(:site_url))
     attrs = attrs.merge(site_id: site.id)
+    share_instance = attrs.delete(:share_instance)
 
-    if application_instance = application.application_instances.find_by(lti_key: attrs[:lti_key])
+    if application_instance = application.
+        application_instances.
+        find_by(site_id: attrs[:site_id], application_id: application.id)
       # Don't change production lti keys or set keys to nil
       attrs.delete(:lti_secret) if attrs[:lti_secret].blank? || Rails.env.production?
 
       application_instance.update_attributes!(attrs)
     else
-      application.application_instances.create!(attrs)
+      application_instance = application.application_instances.create!(attrs)
+    end
+
+    # Check to see if the application instance needs to share a tenant with another
+    # application instance. To use this include a value on the application instance
+    # called "share_instance" and set it to the application key related to the
+    # application instance it should share tenants with.
+    if share_instance
+      application_instance.tenant = application_instance.key(share_instance)
+      application_instance.save!
     end
   end
 end
@@ -147,7 +149,7 @@ end
 
 applications.each do |attrs|
   application_instances = attrs.delete(:application_instances)
-  if application = Application.find_by(name: attrs[:name])
+  if application = Application.find_by(key: attrs[:key])
     application.update_attributes!(attrs)
   else
     application = Application.create!(attrs)

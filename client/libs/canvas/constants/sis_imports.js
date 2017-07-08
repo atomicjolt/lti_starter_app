@@ -59,7 +59,7 @@ export const importSisData = { type: 'IMPORT_SIS_DATA', method: 'post', key: 'im
 export const getSisImportStatus = { type: 'GET_SIS_IMPORT_STATUS', method: 'get', key: 'get_sis_import_statusget_sis_import_status_{account_id}_{id}', required: ['account_id', 'id'] };
 
 // Abort SIS import
-// Abort an already created but not processed or processing SIS import.
+// Abort a SIS import that has not completed.
 //
 // API Docs: https://canvas.instructure.com/doc/api/sis_imports.html
 // API Url: accounts/{account_id}/sis_imports/{id}/abort

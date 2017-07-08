@@ -16,6 +16,10 @@ class Application < ActiveRecord::Base
   # If foo is not set in the default_config json, it will return nil
   # store_accessor :default_config, :foo, :bar
 
-  enum kind: [:lti, :admin]
-
+  # Kinds of Applications
+  # lti: LTI tools. It's possible that these are also stand alone apps that
+  #                 can be used outside of an LTI launch
+  # admin: The admin tool
+  # app: Stand alone applications that don't require an lti launch
+  enum kind: %i{lti admin app}
 end

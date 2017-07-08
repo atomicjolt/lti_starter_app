@@ -5,6 +5,8 @@ import _ from 'lodash';
 import Modal from './modal';
 import SettingsInputs from '../common/settings_inputs';
 import ConfigXmlModal from './config_xml_modal';
+import EnabledButton from '../common/enabled';
+import DisabledButton from '../common/disabled';
 
 export default class ListRow extends React.Component {
   static propTypes = {
@@ -25,6 +27,7 @@ export default class ListRow extends React.Component {
       user_canvas_domains: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
     canvasOauthURL: PropTypes.string.isRequired,
+    disable: PropTypes.func.isRequired,
   };
 
   static getStyles() {
@@ -35,7 +38,8 @@ export default class ListRow extends React.Component {
         color: 'grey',
         fontSize: '1.5em',
         cursor: 'pointer',
-      }
+      },
+
     };
   }
 
@@ -60,6 +64,8 @@ export default class ListRow extends React.Component {
   render() {
     const styles = ListRow.getStyles();
     const path = `applications/${this.props.application_id}/application_instances/${this.props.id}/installs`;
+    const { applicationInstance } = this.props;
+
     return (
       <tr>
         <td>
@@ -75,7 +81,7 @@ export default class ListRow extends React.Component {
             />
             <input
               type="hidden"
-              name="admin_url"
+              name="oauth_complete_url"
               value={`${window.location.protocol}//${window.location.host}${window.location.pathname}#${path}`}
             />
           </form>
@@ -118,6 +124,16 @@ export default class ListRow extends React.Component {
             application={this.props.application}
             applicationInstance={this.props.applicationInstance}
           />
+        </td>
+        <td>
+          <button
+            onClick={this.props.disable}
+            className="c-disable"
+          >
+            {
+              applicationInstance.disabled_at ? <DisabledButton /> : <EnabledButton />
+            }
+          </button>
         </td>
         <td>
           <button

@@ -29,7 +29,7 @@ export default function Form(props) {
         <div className="o-grid__item u-half">
           <label htmlFor="permissions" className="c-input">
             <span>Canvas API Permissions</span>
-            {props.canvasApiPermissions}
+            {JSON.stringify(props.canvasApiPermissions, null, 2)}
           </label>
         </div>
         <div className="o-grid__item u-full">
@@ -73,5 +73,5 @@ Form.propTypes = {
   description: PropTypes.string,
   defaultConfig: PropTypes.string,
   configParseError: PropTypes.string,
-  canvasApiPermissions: PropTypes.string,
+  canvasApiPermissions: PropTypes.object,
 };
