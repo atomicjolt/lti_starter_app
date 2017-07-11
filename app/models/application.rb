@@ -24,5 +24,6 @@ class Application < ActiveRecord::Base
   enum kind: %i{lti admin app}
 
   ADMIN = "admin".freeze
+  AUTH = "auth".freeze
   HELLOWORLD = "helloworld".freeze
 end
