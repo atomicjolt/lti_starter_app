@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706192404) do
+ActiveRecord::Schema.define(version: 20170711215536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20170706192404) do
     t.jsonb    "lti_config"
     t.datetime "disabled_at"
     t.index ["application_id"], name: "index_application_instances_on_application_id", using: :btree
+    t.index ["lti_key"], name: "index_application_instances_on_lti_key", using: :btree
     t.index ["site_id"], name: "index_application_instances_on_site_id", using: :btree
   end
 
