@@ -57,7 +57,7 @@ applications = [
     default_config: {},
     application_instances: [{
       lti_key: Application::ADMIN,
-      lti_secret: secrets.admin_lti_secret,
+      lti_secret: Rails.env.production? ? nil : secrets.admin_lti_secret,
       site_url: secrets.canvas_url,
       domain: "#{Application::ADMIN}.#{Rails.application.secrets.application_root_domain}",
     }],
@@ -105,7 +105,7 @@ applications = [
       },
     },
     application_instances: [{
-      lti_secret: secrets.hello_world_lti_secret,
+      lti_secret: Rails.env.production? ? nil : secrets.hello_world_lti_secret,
       site_url: secrets.canvas_url,
       # This is only required if the app needs API access and doesn't want each user to do the oauth dance
       canvas_token: secrets.canvas_token,
