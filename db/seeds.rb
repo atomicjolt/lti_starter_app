@@ -48,7 +48,7 @@ admin_api_permissions = {
 # Add an LTI Application
 applications = [
   {
-    key: "admin",
+    key: Application::ADMIN,
     name: "LTI Admin",
     description: "LTI tool administration",
     client_application_name: "admin_app",
@@ -56,12 +56,14 @@ applications = [
     kind: Application.kinds[:admin],
     default_config: {},
     application_instances: [{
+      lti_key: Application::ADMIN,
       lti_secret: secrets.admin_lti_secret,
       site_url: secrets.canvas_url,
+      domain: "#{Application::ADMIN}.#{Rails.application.secrets.application_root_domain}",
     }],
   },
   {
-    key: "hello-world",
+    key: Application::HELLOWORLD,
     name: "LTI Starter App",
     description: "LTI Starter App by Atomic Jolt",
     client_application_name: "hello_world",
