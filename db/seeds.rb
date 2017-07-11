@@ -117,9 +117,8 @@ def setup_application_instances(application, application_instances)
     attrs = attrs.merge(site_id: site.id)
     share_instance = attrs.delete(:share_instance)
 
-    if application_instance = application.
-        application_instances.
-        find_by(site_id: attrs[:site_id], application_id: application.id)
+    app_inst = application.application_instances.new(attrs)
+    if application_instance = application.application_instances.find_by(lti_key: app_inst.key)
       # Don't change production lti keys or set keys to nil
       attrs.delete(:lti_secret) if attrs[:lti_secret].blank? || Rails.env.production?
 
