@@ -9,6 +9,14 @@ RSpec.describe ApplicationInstance, type: :model do
       @application = create(:application, name: @name, key: @key)
     end
 
+    it "uses the provided lti key" do
+      lti_key = "atomic-key"
+      @application_instance = create(:application_instance, lti_key: lti_key, site: @site, application: @application)
+      expect(@application_instance.key).to eq(lti_key)
+      expect(@application_instance.lti_key).to eq(lti_key)
+      expect(@application_instance.domain).to eq("#{lti_key}.#{Rails.application.secrets.application_root_domain}")
+    end
+
     it "sets a default lti key" do
       @application_instance = create(:application_instance, lti_key: nil, site: @site, application: @application)
       expect(@application_instance.lti_key).to eq(@application_instance.key)
