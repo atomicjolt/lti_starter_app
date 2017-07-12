@@ -31,6 +31,7 @@ module Concerns
     end
 
     def canvas_auth(current_application_instance)
+      return nil unless current_user.present?
       current_user.authentications.find_by(
         provider_url: UrlHelper.scheme_host_port(current_application_instance.site.url),
       )
