@@ -95,7 +95,7 @@ applications = [
       editor_button: {
         text: "LTI Starter App - Content Item Select",
         visibility: "admins",
-        icon: "atomicjolt.png",
+        icon_url: "atomicjolt.png",
       },
       assignment_selection: {
         text: "LTI Starter App - Content Item Select",
