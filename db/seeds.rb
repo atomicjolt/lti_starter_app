@@ -157,3 +157,9 @@ applications.each do |attrs|
   end
   setup_application_instances(application, application_instances)
 end
+
+begin
+  Apartment::Tenant.create Application::AUTH
+rescue Apartment::TenantExists
+  # Do nothing if the tenant already exists
+end

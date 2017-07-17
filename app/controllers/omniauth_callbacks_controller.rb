@@ -40,11 +40,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if request.env["omniauth.auth"].blank?
       error = oauth_error_message
       flash[:error] = format_oauth_error_message(error)
-      if request.env["omniauth.origin"].present?
-        redirect_to request.env["omniauth.origin"]
-      else
-        redirect_to new_user_registration_url
-      end
+      render "shared/_omniauth_error"
     end
   end
 
