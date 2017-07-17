@@ -240,7 +240,7 @@ Devise.setup do |config|
 
     site = Site.find_by(url: url)
     next unless site
-    
+
     env["omniauth.strategy"].options[:client_id] = site.oauth_key
     env["omniauth.strategy"].options[:client_secret] = site.oauth_secret
     env["omniauth.strategy"].options[:client_options].site = site.url
