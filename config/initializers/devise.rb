@@ -239,6 +239,7 @@ Devise.setup do |config|
       "https://canvas.instructure.com"
 
     site = Site.find_by(url: url)
+    next unless site
 
     env["omniauth.strategy"].options[:client_id] = site.oauth_key
     env["omniauth.strategy"].options[:client_secret] = site.oauth_secret
