@@ -13,10 +13,6 @@ class Site < ActiveRecord::Base
   end
 
   def fix_url
-    parsed = URI.parse(url)
-    host = parsed.host
-    scheme = parsed.scheme
-    self.url = host ? "#{scheme}://#{host}" : nil
+    self.url = UrlHelper.scheme_host(url)
   end
-
 end

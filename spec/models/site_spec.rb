@@ -28,11 +28,5 @@ RSpec.describe Site, type: :model do
       site = build(:site, url: url)
       expect(site.valid?).to be false
     end
-
-    it "is false when url is bad" do
-      url = "https/meh"
-      site = create(:site, url: url)
-      expect(site.valid?).to be false
-    end
   end
 end
