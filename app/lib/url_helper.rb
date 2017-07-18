@@ -6,7 +6,7 @@ class UrlHelper
 
   def self.ensure_scheme(url)
     return nil unless url.present?
-    url = "https://#{url}" unless url.include?("https") || url.include?("http")
+    url = "https://#{url}" unless url.start_with?("http")
     url
   end
 
