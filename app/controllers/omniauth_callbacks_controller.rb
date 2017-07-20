@@ -35,9 +35,19 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   protected
 
+  def redirect_params
+    params.permit(:error)
+  end
+
   def verify_oauth_response
     # Check for OAuth errors
-    if request.env["omniauth.auth"].blank?
+    return if request.env["omniauth.auth"].present?
+
+    origin_url = request.env["omniauth.origin"]
+    if origin_url.present?
+      query_params = redirect_params.to_h.to_query
+      redirect_to query_params.empty? ? origin_url : "#{origin_url}?#{query_params}"
+    else
       error = oauth_error_message
       flash[:error] = format_oauth_error_message(error)
       render "shared/_omniauth_error"
