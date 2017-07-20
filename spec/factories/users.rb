@@ -19,5 +19,12 @@ FactoryGirl.define do
     factory :user_with_avatar do
       avatar { File.open File.join(Rails.root, "spec", "fixtures", "avatar.jpg") }
     end
+
+    factory :user_canvas do
+      lti_provider "canvas"
+      after(:create) do |user|
+        user.authentications << FactoryGirl.create(:authentication_canvas)
+      end
+    end
   end
 end
