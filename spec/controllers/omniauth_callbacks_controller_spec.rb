@@ -16,10 +16,9 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
     allow(controller).to receive(:current_application_instance).and_return(@app)
   end
 
-  describe "verify_oauth_response" do
+  describe "GET canvas" do
     it "should pass through with valid auth" do
-      @user = FactoryGirl.create :user_canvas
-
+      FactoryGirl.create :user_canvas
       request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:canvas]
       oauth_complete_url = "http://example.com"
       response = get :canvas, params: {
@@ -37,11 +36,22 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
       response = get :canvas
       expect(response).to redirect_to origin_url
     end
-    #
-    # it "should redirect with error params" do
-    # end
-    #
-    # it "should redirect to oautherror page when no origin is available" do
-    # end
+
+    it "should redirect with error params" do
+      origin_url = "http://example.com"
+      request.env["omniauth.origin"] = origin_url
+      error_params = { error: "failure" }
+      response = get :canvas, params: {
+        canvas_url: "https://example.instructure.com",
+      }.merge(error_params)
+
+      expect(response).to redirect_to "#{origin_url}?#{error_params.to_query}"
+    end
+
+    it "should render oauth error page when no origin is available" do
+      response = get :canvas
+
+      expect(response).to have_http_status 403
+    end
   end
 end
