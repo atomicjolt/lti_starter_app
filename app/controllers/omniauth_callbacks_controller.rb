@@ -50,7 +50,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       error = oauth_error_message
       flash[:error] = format_oauth_error_message(error)
-      render "shared/_omniauth_error"
+      render "shared/_omniauth_error", status: 403
     end
   end
 

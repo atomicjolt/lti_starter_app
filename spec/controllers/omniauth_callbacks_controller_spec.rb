@@ -11,16 +11,26 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
 
   before do
     request.env["devise.mapping"] = Devise.mappings[:user] # If using Devise
-    request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:canvas]
     request.env["omniauth.strategy"] = MockStrategy.new
+    @app = FactoryGirl.create(:application_instance)
+    allow(controller).to receive(:current_application_instance).and_return(@app)
   end
 
   describe "verify_oauth_response" do
-    # it "should pass through with valid auth" do
-    #
-    # end
+    it "should pass through with valid auth" do
+      @user = FactoryGirl.create :user_canvas
 
-    it "should redirect to origin" do
+      request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:canvas]
+      oauth_complete_url = "http://example.com"
+      response = get :canvas, params: {
+        oauth_complete_url: oauth_complete_url,
+        canvas_url: "https://example.instructure.com",
+      }
+
+      expect(response).to redirect_to oauth_complete_url
+    end
+
+    it "should redirect to origin without auth" do
       origin_url = "http://example.com"
       request.env["omniauth.origin"] = origin_url
 
