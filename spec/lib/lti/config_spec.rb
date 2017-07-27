@@ -162,7 +162,7 @@ RSpec.describe Lti::Config do
             <lticm:property name="domain">#{@domain}</lticm:property>
             <lticm:options name="editor_button">
               <lticm:property name="canvas_icon_class">icon-lti</lticm:property>
-              <lticm:property name="icon_url">#{"https://#{args[:domain]}/#{editor_button[:icon]}"}</lticm:property>
+              <lticm:property name="icon_url">#{"https://#{args[:domain]}/#{editor_button[:icon_url]}"}</lticm:property>
               <lticm:property name="label">#{button_text}</lticm:property>
               <lticm:property name="message_type">ContentItemSelectionRequest</lticm:property>
               <lticm:property name="selection_height">50</lticm:property>

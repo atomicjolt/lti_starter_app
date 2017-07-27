@@ -53,6 +53,17 @@ describe ApplicationController, type: :controller do
       }, format: :json
       expect(response).to have_http_status(:unauthorized)
     end
+
+    it "doesn't allow access to unauthorized API endpoints when application instances doesn't have an API token" do
+      application_instance = FactoryGirl.create(:application_instance, application: @application, canvas_token: nil)
+      allow(controller).to receive(:current_application_instance).and_return(application_instance)
+      get :index, params: {
+        lti_key: @application_instance.lti_key,
+        lms_proxy_call_type: "LIST_ACCOUNTS_FOR_COURSE_ADMINS",
+      }, format: :json
+      expect(response).to have_http_status(:unauthorized)
+    end
+
   end
 
   describe "valid user api token" do

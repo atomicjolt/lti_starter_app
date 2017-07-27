@@ -10,3 +10,13 @@ OmniAuth.config.before_request_phase do |env|
   # allowed cookie size
   env["rack.session"].delete("omniauth.params")
 end
+
+OmniAuth.config.mock_auth[:canvas] = OmniAuth::AuthHash.new(
+  {
+    provider: "canvas",
+    uid: "12345",
+    info: {
+      url: "http://example.instructure.com",
+    },
+  },
+)

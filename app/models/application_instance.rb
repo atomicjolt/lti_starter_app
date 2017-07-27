@@ -42,6 +42,7 @@ class ApplicationInstance < ActiveRecord::Base
   end
 
   def key(application_key_override = nil)
+    return lti_key if lti_key.present?
     return "" if site.blank? || application.blank?
     "#{site.subdomain}-#{application_key_override || application.key}"&.parameterize&.dasherize
   end

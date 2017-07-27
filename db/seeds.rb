@@ -95,7 +95,7 @@ applications = [
       editor_button: {
         text: "LTI Starter App - Content Item Select",
         visibility: "admins",
-        icon: "atomicjolt.png",
+        icon_url: "atomicjolt.png",
       },
       assignment_selection: {
         text: "LTI Starter App - Content Item Select",
@@ -156,4 +156,10 @@ applications.each do |attrs|
     application = Application.create!(attrs)
   end
   setup_application_instances(application, application_instances)
+end
+
+begin
+  Apartment::Tenant.create Application::AUTH
+rescue Apartment::TenantExists
+  # Do nothing if the tenant already exists
 end

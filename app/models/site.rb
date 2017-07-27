@@ -3,6 +3,8 @@ class Site < ActiveRecord::Base
 
   validates :url, presence: true, uniqueness: true
 
+  before_save :fix_url
+
   has_secure_token :secret
 
   def subdomain
@@ -10,4 +12,7 @@ class Site < ActiveRecord::Base
     host ? host.split(".").first : nil
   end
 
+  def fix_url
+    self.url = UrlHelper.scheme_host(url)
+  end
 end
