@@ -175,7 +175,6 @@ bundles.each do |attrs|
   end
 end
 
-
 begin
   Apartment::Tenant.create Application::AUTH
 rescue Apartment::TenantExists
