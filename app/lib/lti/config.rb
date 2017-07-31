@@ -105,7 +105,6 @@ module Lti
     end
 
     def self.selection_config_from_args!(args, config, key)
-      config[key]["canvas_icon_class"] ||= "icon-lti"
       config[key]["message_type"] ||= "ContentItemSelectionRequest"
       config[key]["url"] ||= args[:launch_url]
       config
