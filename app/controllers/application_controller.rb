@@ -22,9 +22,18 @@ class ApplicationController < ActionController::Base
   end
 
   def current_application_instance
+    @current_application_instance ||= ApplicationInstance.find_by(id: params[:application_instance_id])
     @current_application_instance ||=
       ApplicationInstance.find_by(lti_key: params[:oauth_consumer_key]) ||
       ApplicationInstance.find_by(domain: request.host_with_port)
+  end
+
+  def current_application
+    Application.find_by(key: request.subdomains.first)
+  end
+
+  def current_bundle_instance
+    @current_bundle ||= BundleInstance.find(params[:bundle_instance_id])
   end
 
   def current_ability
