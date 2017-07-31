@@ -53,7 +53,6 @@ bundles = [
   },
 ]
 
-
 # Add an LTI Application
 applications = [
   {
