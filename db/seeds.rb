@@ -45,6 +45,15 @@ admin_api_permissions = {
   HELPER_ALL_ACCOUNTS: [],
 }
 
+bundles = [
+  {
+    name: "Hello World",
+    key: Application::HELLOWORLD,
+    applications: [Application::HELLOWORLD],
+  },
+]
+
+
 # Add an LTI Application
 applications = [
   {
@@ -157,6 +166,16 @@ applications.each do |attrs|
   end
   setup_application_instances(application, application_instances)
 end
+
+bundles.each do |attrs|
+  current_bundle = Bundle.find_or_create_by(name: attrs[:name], key: attrs[:key])
+  attrs[:applications].reduce(current_bundle) do |bundle, key|
+    app = Application.find_by!(key: key)
+    bundle.application_bundles.find_or_create_by(bundle_id: bundle.id, application_id: app.id)
+    bundle
+  end
+end
+
 
 begin
   Apartment::Tenant.create Application::AUTH
