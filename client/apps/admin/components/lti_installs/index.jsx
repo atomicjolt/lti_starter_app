@@ -24,7 +24,6 @@ import {
 
 function select(state, props) {
   const instanceId = props.params.applicationInstanceId;
-
   return {
     applicationInstance : state.applicationInstances[instanceId],
     applications        : state.applications,
@@ -35,6 +34,7 @@ function select(state, props) {
     userName            : state.settings.display_name,
     loadingCourses      : state.loadingCourses,
     sites               : state.sites,
+    baseAccount         : _(state.accounts.accounts).values().minBy(account => account.id)
   };
 }
 
@@ -43,6 +43,9 @@ export class Index extends React.Component {
     accounts                : PropTypes.shape({}).isRequired,
     rootAccount             : PropTypes.shape({
       id                      : PropTypes.number
+    }),
+    baseAccount             : PropTypes.shape({
+      id                      : PropTypes.number,
     }),
     applications            : PropTypes.shape({}).isRequired,
     courses                 : PropTypes.arrayOf(PropTypes.shape({})),
@@ -98,9 +101,10 @@ export class Index extends React.Component {
     }
 
     if (_.isEmpty(this.props.courses) && !_.isEmpty(this.props.accounts)) {
+      const account = this.props.rootAccount || this.props.baseAccount;
       this.props.canvasRequest(
         listActiveCoursesInAccount,
-        { account_id: this.props.rootAccount.id, per_page: 100 }
+        { account_id: account.id, per_page: 100 }
       );
     }
   }
