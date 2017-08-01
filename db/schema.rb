@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711215536) do
+ActiveRecord::Schema.define(version: 20170731160737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170711215536) do
     t.jsonb    "config",                                   default: {}
     t.jsonb    "lti_config"
     t.datetime "disabled_at"
+    t.integer  "bundle_instance_id"
     t.index ["application_id"], name: "index_application_instances_on_application_id", using: :btree
     t.index ["lti_key"], name: "index_application_instances_on_lti_key", using: :btree
     t.index ["site_id"], name: "index_application_instances_on_site_id", using: :btree
@@ -82,10 +83,19 @@ ActiveRecord::Schema.define(version: 20170711215536) do
     t.index ["user_id"], name: "index_authentications_on_user_id", using: :btree
   end
 
+  create_table "bundle_instances", force: :cascade do |t|
+    t.integer  "site_id"
+    t.integer  "bundle_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "bundles", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "key"
+    t.index ["key"], name: "index_bundles_on_key", using: :btree
   end
 
   create_table "lti_launches", force: :cascade do |t|
