@@ -22,10 +22,10 @@ class ApplicationController < ActionController::Base
   end
 
   def current_application_instance
-    @current_application_instance ||= ApplicationInstance.find_by(id: params[:application_instance_id])
     @current_application_instance ||=
       ApplicationInstance.find_by(lti_key: params[:oauth_consumer_key]) ||
-      ApplicationInstance.find_by(domain: request.host_with_port)
+      ApplicationInstance.find_by(domain: request.host_with_port) ||
+      ApplicationInstance.find_by(id: params[:application_instance_id])
   end
 
   def current_application
