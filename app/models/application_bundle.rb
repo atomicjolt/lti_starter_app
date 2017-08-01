@@ -1,3 +1,4 @@
 class ApplicationBundle < ApplicationRecord
-  has_many :applications
+  belongs_to :application
+  belongs_to :bundle
 end
