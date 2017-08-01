@@ -5,6 +5,7 @@ class ApplicationInstance < ActiveRecord::Base
 
   belongs_to :application, counter_cache: true
   belongs_to :site
+  belongs_to :bundle_instance
 
   validates :lti_key, presence: true, uniqueness: true
   validates :lti_secret, presence: true

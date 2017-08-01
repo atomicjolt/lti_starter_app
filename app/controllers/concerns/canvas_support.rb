@@ -4,16 +4,16 @@ module Concerns
 
     protected
 
-    def canvas_api
-      if current_application_instance.canvas_token.present?
+    def canvas_api(application_instance: current_application_instance)
+      if application_instance.canvas_token.present?
         LMS::Canvas.new(
-          UrlHelper.scheme_host_port(current_application_instance.site.url),
-          current_application_instance.canvas_token,
+          UrlHelper.scheme_host_port(application_instance.site.url),
+          application_instance.canvas_token,
         )
-      elsif auth = canvas_auth(current_application_instance)
+      elsif auth = canvas_auth(application_instance)
         options = {
-          client_id: current_application_instance.site.oauth_key,
-          client_secret: current_application_instance.site.oauth_secret,
+          client_id: application_instance.site.oauth_key,
+          client_secret: application_instance.site.oauth_secret,
           redirect_uri: user_canvas_omniauth_callback_url(
             subdomain: Application::AUTH,
             protocol: "https",
@@ -21,7 +21,7 @@ module Concerns
           refresh_token: auth.refresh_token,
         }
         LMS::Canvas.new(
-          UrlHelper.scheme_host_port(current_application_instance.site.url),
+          UrlHelper.scheme_host_port(application_instance.site.url),
           auth,
           options,
         )
@@ -30,15 +30,17 @@ module Concerns
       end
     end
 
-    def canvas_auth(current_application_instance)
+    def canvas_auth(application_instance)
       return nil unless current_user.present?
       current_user.authentications.find_by(
-        provider_url: UrlHelper.scheme_host_port(current_application_instance.site.url),
+        provider_url: UrlHelper.scheme_host_port(application_instance.site.url),
       )
     end
 
     def protect_canvas_api(type: params[:lms_proxy_call_type], context_id: params[:context_id])
       return if canvas_api_authorized(type: type, context_id: context_id)
+      # this is not permanent, we will remove this when we go away from using the new application instance to install
+      return if canvas_auth(current_application_instance).present?
       user_not_authorized
     end
 
