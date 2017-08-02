@@ -1,5 +1,3 @@
-# All options must be string keys. Symbols won't work. launch_url is required and should
-# look like lti_params({"launch_url" => lti_launches_url})
 def lti_params(oauth_consumer_key = "aconsumerkey", oauth_consumer_secret = "secret", options = {})
   raise "launch_url is a required parameter" unless options["launch_url"]
   # keys in params must be strings
@@ -25,6 +23,7 @@ def lti_params(oauth_consumer_key = "aconsumerkey", oauth_consumer_secret = "sec
     "ext_submit" =>                          "Press to Launch",
   }.merge(options)
 
-  tc = IMS::LTI::ToolConsumer.new(oauth_consumer_key, oauth_consumer_secret, params)
-  tc.generate_launch_data
+  launch_request = IMS::LTI::Models::Messages::BasicLTILaunchRequest.new(params)
+  launch_request.oauth_consumer_key = oauth_consumer_key
+  launch_request.signed_post_params(oauth_consumer_secret)
 end

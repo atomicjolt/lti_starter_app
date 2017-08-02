@@ -35,6 +35,7 @@ class ApplicationInstance < ActiveRecord::Base
     config = lti_config.dup
     if config.present?
       config[:launch_url] ||= "https://#{domain}/lti_launches"
+      config[:secure_launch_url] ||= "https://#{domain}/lti_launches"
       config[:domain] ||= domain
       config[:icon] ||= "https://#{domain}/#{config[:icon]}"
       Lti::Config.xml(config)
