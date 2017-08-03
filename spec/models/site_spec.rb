@@ -32,12 +32,12 @@ RSpec.describe Site, type: :model do
     describe "key" do
       it "handles vanity subdomains" do
         site = build(:site, url: "https://my.cool.canvas.domain.com")
-        expect(site.key).to equal("my_cool_canvas_domain_com")
+        expect(site.key).to eq("my_cool_canvas_domain_com")
       end
 
       it "handles .instructure.com domains" do
-        site = build(:site, url: "https://my.cool.school.instructurex.com")
-        expect(site.key).to equal("my_cool_school")
+        site = build(:site, url: "https://my.cool.school.instructure.com")
+        expect(site.key).to eq("my_cool_school")
       end
     end
   end
