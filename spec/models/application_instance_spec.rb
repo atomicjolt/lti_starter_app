@@ -24,7 +24,7 @@ RSpec.describe ApplicationInstance, type: :model do
 
     it "generates a key based on the site and application" do
       @application_instance = create(:application_instance, lti_key: nil, site: @site, application: @application)
-      expect(@application_instance.key).to eq("#{@site.subdomain}-#{@application.key}"&.parameterize&.dasherize)
+      expect(@application_instance.key).to eq("#{@site.key}-#{@application.key}
     end
 
     it "sets a default domain" do
@@ -64,7 +64,7 @@ RSpec.describe ApplicationInstance, type: :model do
       key = "a-test"
       application = create(:application, key: key)
       @application_instance = create(:application_instance, lti_key: nil, site: @site, application: application)
-      expect(@application_instance.lti_key).to eq("#{@site.subdomain}-#{key}")
+      expect(@application_instance.lti_key).to eq("#{@site.key}-#{key}")
     end
 
     it "doesn't set lti_key if the lti_key is already set" do
