@@ -21,6 +21,7 @@ describe Integrations::CanvasCoursesLti do
     it "should create a new LTI tool in the specified course" do
       lti_options = {
         launch_url: @lti_launch_url,
+        secure_launch_url: @lti_launch_url,
         button_url: @lti_rich_editor_button_image_url,
         env: @env,
       }

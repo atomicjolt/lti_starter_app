@@ -106,7 +106,7 @@ RSpec.describe Api::LtiContentItemSelectionController, type: :controller do
         post :create, params: @html_params, format: :json
         expect(response).to have_http_status(:success)
         result = JSON.parse(response.body)
-        expect(result["content_items"]).to eq("{\"@context\":\"http://purl.imsglobal.org/ctx/lti/v1/ContentItem\",\"@graph\":[{\"@type\":\"ContentItem\",\"mediaType\":\"text/html\",\"text\":\"\\u003cdiv\\u003ehi\\u003c/div\\u003e\",\"placementAdvice\":{\"presentationDocumentTarget\":\"embed\"}}]}")
+        expect(result["content_items"]).to eq("{\"@graph\":[{\"text\":\"\\u003cdiv\\u003ehi\\u003c/div\\u003e\",\"placementAdvice\":{\"presentationDocumentTarget\":\"embed\"},\"mediaType\":\"text/html\",\"@type\":\"ContentItem\"}],\"@context\":\"http://purl.imsglobal.org/ctx/lti/v1/ContentItem\"}")
         expect(result["lti_message_type"]).to eq("ContentItemSelection")
         expect(result["oauth_consumer_key"]).to eq(@application_instance.lti_key)
       end
@@ -115,7 +115,7 @@ RSpec.describe Api::LtiContentItemSelectionController, type: :controller do
         post :create, params: @iframe_params, format: :json
         expect(response).to have_http_status(:success)
         result = JSON.parse(response.body)
-        expect(result["content_items"]).to eq("{\"@context\":\"http://purl.imsglobal.org/ctx/lti/v1/ContentItem\",\"@graph\":[{\"@type\":\"ContentItem\",\"mediaType\":\"text/html\",\"text\":\"\\u003ciframe style=\\\"width: 100%; height: 500px;\\\" src=\\\"http://www.example.com/lti_launch\\\"\\u003e\\u003c/iframe\\u003e\",\"placementAdvice\":{\"presentationDocumentTarget\":\"embed\"}}]}")
+        expect(result["content_items"]).to eq("{\"@graph\":[{\"text\":\"\\u003ciframe style=\\\"width: 100%; height: 500px;\\\" src=\\\"http://www.example.com/lti_launch\\\"\\u003e\\u003c/iframe\\u003e\",\"placementAdvice\":{\"presentationDocumentTarget\":\"embed\"},\"mediaType\":\"text/html\",\"@type\":\"ContentItem\"}],\"@context\":\"http://purl.imsglobal.org/ctx/lti/v1/ContentItem\"}")
         expect(result["lti_message_type"]).to eq("ContentItemSelection")
         expect(result["oauth_consumer_key"]).to eq(@application_instance.lti_key)
       end
@@ -124,7 +124,7 @@ RSpec.describe Api::LtiContentItemSelectionController, type: :controller do
         post :create, params: @lti_link_params, format: :json
         expect(response).to have_http_status(:success)
         result = JSON.parse(response.body)
-        expect(result["content_items"]).to eq("{\"@context\":\"http://purl.imsglobal.org/ctx/lti/v1/ContentItem\",\"@graph\":[{\"@type\":\"LtiLinkItem\",\"mediaType\":\"application/vnd.ims.lti.v1.ltilink\",\"url\":\"http://www.example.com/lti_launch\",\"title\":\"Example\"},{\"@type\":\"LtiLinkItem\",\"mediaType\":\"application/vnd.ims.lti.v1.ltilink\",\"url\":\"http://www.example.com/lti_launch\",\"title\":\"Example\",\"text\":\"Example\",\"lineItem\":{\"@type\":\"LineItem\",\"label\":\"Example\",\"reportingMethod\":\"res:totalScore\",\"maximumScore\":10,\"scoreConstraints\":{\"@type\":\"NumericLimits\",\"normalMaximum\":10,\"totalMaximum\":10}}}]}")
+        expect(result["content_items"]).to eq("{\"@graph\":[{\"title\":\"Example\",\"url\":\"http://www.example.com/lti_launch\",\"mediaType\":\"application/vnd.ims.lti.v1.ltilink\",\"@type\":\"LtiLinkItem\"},{\"lineItem\":{\"@type\":\"LineItem\",\"label\":\"Example\",\"reportingMethod\":\"res:totalScore\",\"maximumScore\":10,\"scoreConstraints\":{\"@type\":\"NumericLimits\",\"normalMaximum\":10,\"totalMaximum\":10}},\"text\":\"Example\",\"title\":\"Example\",\"url\":\"http://www.example.com/lti_launch\",\"mediaType\":\"application/vnd.ims.lti.v1.ltilink\",\"@type\":\"LtiLinkItem\"}],\"@context\":\"http://purl.imsglobal.org/ctx/lti/v1/ContentItem\"}")
         expect(result["lti_message_type"]).to eq("ContentItemSelection")
         expect(result["oauth_consumer_key"]).to eq(@application_instance.lti_key)
       end
