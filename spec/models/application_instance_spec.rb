@@ -24,7 +24,7 @@ RSpec.describe ApplicationInstance, type: :model do
 
     it "generates a key based on the site and application" do
       @application_instance = create(:application_instance, lti_key: nil, site: @site, application: @application)
-      expect(@application_instance.key).to eq("#{@site.key}-#{@application.key}
+      expect(@application_instance.key).to eq("#{@site.key}-#{@application.key}")
     end
 
     it "sets a default domain" do
