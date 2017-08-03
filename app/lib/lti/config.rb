@@ -25,9 +25,10 @@ module Lti
     end
 
     def self.tool_config(args = {})
-      IMS::LTI::ToolConfig.new(
+      IMS::LTI::Services::ToolConfig.new(
         title: args[:title],
         launch_url: args[:launch_url],
+        secure_launch_url: args[:secure_launch_url],
         description: args[:description],
         icon: "https://#{args[:domain]}/#{args[:icon]}",
       )

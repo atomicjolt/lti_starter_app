@@ -6,6 +6,8 @@
 # before_action :check_for_iframes_problem
 # before_action :check_for_user_auth
 
+require "ims/lis"
+
 module Concerns
 
   module IframeSupport
@@ -42,8 +44,20 @@ module Concerns
     # This should be based on roles. Default is instructor.
     # This depends on the lti_support concern
     def check_for_user_auth
-      # if you need to check for different roles, see: https://github.com/instructure/ims-lti/blob/master/lib/ims/lti/role_checks.rb
-      if !@tool_provider.context_student?
+      lti_roles = (params["ext_roles"] || params["roles"]).split(",")
+      auth_not_needed_roles = [
+        IMS::LIS::Roles::Context::URNs::Learner,
+        IMS::LIS::Roles::Context::URNs::Learner,
+        IMS::LIS::Roles::Context::URNs::Learner_Learner,
+        IMS::LIS::Roles::Context::URNs::Learner_NonCreditLearner,
+        IMS::LIS::Roles::Context::URNs::Learner_GuestLearner,
+        IMS::LIS::Roles::Context::URNs::Learner_ExternalLearner,
+        IMS::LIS::Roles::Context::URNs::Learner_Instructor,
+        IMS::LIS::Roles::Context::URNs::Member,
+        IMS::LIS::Roles::Context::URNs::Member_Member,
+      ]
+
+      if (auth_not_needed_roles & lti_roles).blank?
         unless current_user.authentications.find_by(provider_url: current_application_instance.site.url)
 
           # store the lti launch url in the session, so we can relaunch the tool after the oauth

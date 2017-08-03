@@ -20,6 +20,7 @@ describe Integrations::CanvasAccountsLti do
     it "should create a new LTI tool in the specified account" do
       lti_options = {
         launch_url: @lti_launch_url,
+        secure_launch_url: @lti_launch_url,
         env: @env,
       }
       result = Integrations::CanvasAccountsLti.setup(

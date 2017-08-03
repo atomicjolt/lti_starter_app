@@ -9,7 +9,7 @@ module Concerns
     protected
 
     def do_lti
-      if valid_lti_request?(current_application_instance.lti_key, current_application_instance.lti_secret)
+      if valid_lti_request?(current_application_instance.lti_secret)
         if user = user_from_lti
           sign_in(user, event: :authentication)
           return
@@ -18,11 +18,11 @@ module Concerns
       user_not_authorized
     end
 
-    def valid_lti_request?(lti_key, lti_secret)
-      @tool_provider = IMS::LTI::ToolProvider.new(lti_key, lti_secret, params)
-      @tool_provider.valid_request?(request) &&
-        Nonce.valid?(@tool_provider.oauth_nonce) &&
-        valid_timestamp?(@tool_provider.oauth_timestamp)
+    def valid_lti_request?(lti_secret)
+      authenticator = IMS::LTI::Services::MessageAuthenticator.new(request.url, request.request_parameters, lti_secret)
+      authenticator.valid_signature? &&
+        Nonce.valid?(request.request_parameters["oauth_nonce"]) &&
+        valid_timestamp?
     end
 
     def lti_provider
@@ -52,8 +52,13 @@ module Concerns
 
     private
 
-    def valid_timestamp?(timestamp)
-      Time.at(timestamp.to_i) >= (Time.now - 1.hour)
+    def valid_timestamp?
+      # If timestamp is older than 5 minutes it's invalid
+      if DateTime.strptime(request.request_parameters["oauth_timestamp"], "%s") < 5.minutes.ago
+        false
+      else
+        true
+      end
     end
 
     def generate_email(domain)
