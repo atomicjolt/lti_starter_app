@@ -175,6 +175,13 @@ bundles.each do |attrs|
   end
 end
 
+BundleInstance.all.each do |bundle_instance|
+  bundle_instance.applications.each do |app|
+    instance = ApplicationInstance.find_by(site: bundle_instance.site, application: app)
+    instance.update(bundle_instance: bundle_instance) if instance.bundle_instance_id.nil?
+  end
+end
+
 begin
   Apartment::Tenant.create Application::AUTH
 rescue Apartment::TenantExists
