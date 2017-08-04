@@ -28,9 +28,8 @@ class Application < ActiveRecord::Base
   HELLOWORLD = "helloworld".freeze
 
   def create_instance(site: nil, bundle_instance: nil)
-    ApplicationInstance.find_or_create_by(
+    application_instances.find_or_create_by(
       site: site,
-      application: self,
       bundle_instance: bundle_instance,
     )
   end
