@@ -212,5 +212,22 @@ RSpec.configure do |config|
           headers: canvas_headers,
         )
     end
+
+    #
+    # LTI2 endpoints
+    #
+    stub_request(:get, "http://canvas.docker/api/lti/courses/2/tool_consumer_profile").
+      to_return(
+        status: 200,
+        body: tool_consumer_profile,
+        headers: canvas_headers,
+      )
+
+    stub_request(:post, "http://canvas.docker/api/lti/courses/2/tool_proxy").
+      to_return(
+        status: 200,
+        body: "",
+        headers: canvas_headers,
+      )
   end
 end

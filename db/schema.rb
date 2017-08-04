@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731160737) do
+ActiveRecord::Schema.define(version: 20170801235958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -146,6 +146,19 @@ ActiveRecord::Schema.define(version: 20170731160737) do
     t.datetime "updated_at",                null: false
     t.string   "secret"
     t.index ["url"], name: "index_sites_on_url", using: :btree
+  end
+
+  create_table "tool_proxies", force: :cascade do |t|
+    t.string   "guid",                   null: false
+    t.string   "shared_secret",          null: false
+    t.string   "tcp_url",                null: false
+    t.string   "base_url",               null: false
+    t.string   "authorization_url"
+    t.string   "report_service_url"
+    t.string   "submission_service_url"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["guid"], name: "index_tool_proxies_on_guid", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

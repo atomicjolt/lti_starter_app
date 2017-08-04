@@ -34,6 +34,10 @@ Rails.application.routes.draw do
     root to: "home#index"
   end
 
+  namespace :lti2 do
+    resources :registrations
+  end
+
   namespace :api do
     resources :jwts
     resources :oauths
