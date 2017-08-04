@@ -12,6 +12,13 @@ class Site < ActiveRecord::Base
     host ? host.split(".").first : nil
   end
 
+  def key
+    host = URI.parse(url).hostname
+    host.
+      gsub(".instructure.com", "").
+      gsub(/[^\w]+/, "_") # Replace non alphanumeric characters with _
+  end
+
   def fix_url
     self.url = UrlHelper.scheme_host(url)
   end
