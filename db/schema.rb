@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170807165454) do
+ActiveRecord::Schema.define(version: 20170807171059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20170807165454) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "id_token"
+    t.string   "entity_key"
     t.index ["id_token"], name: "index_bundle_instances_on_id_token", using: :btree
   end
 
