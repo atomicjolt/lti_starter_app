@@ -216,10 +216,11 @@ RSpec.configure do |config|
     #
     # LTI2 endpoints
     #
+    tool_consumer_profile_json = '{"id": "profile_id"}'
     stub_request(:get, "http://canvas.docker/api/lti/courses/2/tool_consumer_profile").
       to_return(
         status: 200,
-        body: tool_consumer_profile,
+        body: tool_consumer_profile_json,
         headers: canvas_headers,
       )
 
