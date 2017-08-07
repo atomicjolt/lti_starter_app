@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 20170807171059) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "entity_key"
-    t.index ["id_token"], name: "index_bundle_instances_on_id_token", using: :btree
   end
 
   create_table "bundles", force: :cascade do |t|
