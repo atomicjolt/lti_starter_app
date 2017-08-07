@@ -88,7 +88,6 @@ ActiveRecord::Schema.define(version: 20170807171059) do
     t.integer  "bundle_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "id_token"
     t.string   "entity_key"
     t.index ["id_token"], name: "index_bundle_instances_on_id_token", using: :btree
   end
