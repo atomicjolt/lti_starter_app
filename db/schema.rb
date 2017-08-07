@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731160737) do
+ActiveRecord::Schema.define(version: 20170807165454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,8 @@ ActiveRecord::Schema.define(version: 20170731160737) do
     t.integer  "bundle_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "id_token"
+    t.index ["id_token"], name: "index_bundle_instances_on_id_token", using: :btree
   end
 
   create_table "bundles", force: :cascade do |t|
