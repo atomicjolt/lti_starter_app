@@ -43,7 +43,7 @@ function buildApp(appName, options) {
 // Build apps in order one at a time
 // -----------------------------------------------------------------------------
 function buildAppWait(app, options) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const buildPromise = buildAppParts(app, options.onlyPack);
     buildPromise.then(() => {
       resolve({
@@ -71,7 +71,10 @@ async function buildApps(options) {
     const results = [];
     for (let i = 0; i < options.order.length; i += 1) {
       const appName = options.order[i];
+      /* eslint-disable no-await-in-loop */
       results.push(await buildAppWait(apps[appName], options));
+      /* eslint-enable no-await-in-loop */
+
     }
     return results;
   }
