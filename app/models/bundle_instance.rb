@@ -3,6 +3,7 @@ class BundleInstance < ApplicationRecord
   belongs_to :site
   has_many :application_instances
   has_many :applications, through: :bundle
+  has_secure_token :id_token
 
   def self.entity_key_from_url(url)
     UrlHelper.host(url)
