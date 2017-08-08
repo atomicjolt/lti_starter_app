@@ -21,6 +21,16 @@ export const showFrontPageCourses = { type: 'SHOW_FRONT_PAGE_COURSES', method: '
 // return canvasRequest(show_front_page_groups, {group_id});
 export const showFrontPageGroups = { type: 'SHOW_FRONT_PAGE_GROUPS', method: 'get', key: 'show_front_page_groupsshow_front_page_groups_group_id', required: ['group_id'] };
 
+// Duplicate page
+// Duplicate a wiki page
+//
+// API Docs: https://canvas.instructure.com/doc/api/pages.html
+// API Url: courses/{course_id}/pages/{url}/duplicate
+//
+// Example:
+// return canvasRequest(duplicate_page, {course_id, url});
+export const duplicatePage = { type: 'DUPLICATE_PAGE', method: 'post', key: 'duplicate_pageduplicate_page_{course_id}_{url}', required: ['course_id', 'url'] };
+
 // Update/create front page
 // Update the title or contents of the front page
 //
