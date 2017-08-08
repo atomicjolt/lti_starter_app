@@ -37,6 +37,8 @@ RSpec.describe Lti2::RegistrationsController, type: :controller do
   let(:authentication_service) { double(additional_params: {}) }
 
   before do
+    @application_instance = FactoryGirl.create(:application_instance)
+    allow(controller).to receive(:current_application_instance).and_return(@application_instance)
     allow(registration_services_instance).to receive(:authentication_service=)
     allow(tool_proxy_registration_service).to receive(:register_tool_proxy) { ims_tool_proxy }
     allow(registration_services_instance).to receive(:authentication_service) { authentication_service }

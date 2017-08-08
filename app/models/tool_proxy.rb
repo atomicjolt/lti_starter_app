@@ -80,13 +80,13 @@ class ToolProxy < ApplicationRecord
   def security_contract
     IMS::LTI::Models::SecurityContract.new(
       tp_half_shared_secret: tp_half_shared_secret,
-      tool_service: [
-        IMS::LTI::Models::RestServiceProfile.new(
-          type: "RestServiceProfile",
-          service: "vnd.Canvas.webhooksSubscription",
-          action: %w(POST GET PUT DELETE),
-        ),
-      ],
+      # tool_service: [
+      #   IMS::LTI::Models::RestServiceProfile.new(
+      #     type: "RestServiceProfile",
+      #     service: "vnd.Canvas.webhooksSubscription",
+      #     action: %w(POST GET PUT DELETE),
+      #   ),
+      # ],
     )
   end
 
@@ -151,13 +151,7 @@ class ToolProxy < ApplicationRecord
   #
   # Returns a list of services offered by the tool provider.
   def service_offered
-    [
-      IMS::LTI::Models::RestService.new(
-        id: "#{base_url}/lti/v2/services#vnd.Canvas.SubmissionEvent",
-        action: %w(POST),
-        endpoint: "#{base_url}/event/submission",
-      ),
-    ]
+    []
   end
 
   # resource_handlers
@@ -166,21 +160,13 @@ class ToolProxy < ApplicationRecord
   def resource_handlers
     [
       IMS::LTI::Models::ResourceHandler.from_json(
-        resource_type: { code: "sumbissions" },
-        resource_name: { default_value: "Similarity Detection Tool", key: "" },
+        resource_type: { code: "hello_world_provider" },
+        resource_name: { default_value: "Hello World", key: "" },
         message: [basic_message(
-          path: "/submission/index",
-          capabilities: %w(Canvas.placements.accountNavigation Canvas.placements.courseNavigation),
-        )]
+          path: "/lti_launches",
+          capabilities: %w(Canvas.placements.courseNavigation),
+        )],
       ),
-      IMS::LTI::Models::ResourceHandler.from_json(
-        resource_type: { code: "placements" },
-        resource_name: { default_value: "Similarity Detection Tool", key: "" },
-        message: [basic_message(
-          path: "/assignments/configure",
-          capabilities: %w(Canvas.placements.similarityDetection),
-        )]
-      )
     ]
   end
 end

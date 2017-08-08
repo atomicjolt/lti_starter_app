@@ -216,7 +216,149 @@ RSpec.configure do |config|
     #
     # LTI2 endpoints
     #
-    tool_consumer_profile_json = '{"id": "profile_id"}'
+    tool_consumer_profile_json = %{
+    {
+      "lti_version":"LTI-2p0",
+      "guid":"ht74382y-oi76-hy43-ffff-yrh634edwc27",
+      "capability_offered":[
+        "basic-lti-launch-request",
+        "User.id"
+      ],
+      "security_profile":[
+        {
+           "security_profile_name":"lti_oauth_hash_message_security",
+           "digest_algorithm":"HMAC-SHA1"
+        },
+        {
+           "security_profile_name":"oauth2_access_token_ws_security",
+           "digest_algorithm":"HS256"
+        }
+      ],
+      "product_instance":{
+        "guid":"idu46237846eanghdsfg3264697rwmkfo25dh4jsdfg63.atomicjolt.com",
+        "product_info":{
+           "product_version":"none",
+           "product_family":{
+              "code":"canvas",
+              "vendor":{
+                 "code":"https:\/\/atomicjolt.com",
+                 "vendor_name":{
+                    "default_value":"Atomic Jolt",
+                    "key":"vendor.name"
+                 },
+                 "timestamp":"2008-03-27T06:00:00Z"
+              }
+           },
+           "product_name":{
+              "default_value":"Test by Atomic Jolt",
+              "key":"product.name"
+           }
+        },
+        "service_owner":{
+           "description":{
+              "default_value":"Atomic Jolt",
+              "key":"service_owner.description"
+           },
+           "service_owner_name":{
+              "default_value":"Atomic Jolt",
+              "key":"service_owner.name"
+           }
+        }
+      },
+      "service_offered":[
+        {
+           "endpoint":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_proxy",
+           "format":[
+              "application\/vnd.ims.lti.v2.toolproxy+json"
+           ],
+           "action":[
+              "POST"
+           ],
+           "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxy.collection",
+           "@type":"RestService"
+        },
+        {
+           "endpoint":"http:\/\/canvas.docker\/api\/lti\/tool_proxy\/{tool_proxy_guid}",
+           "format":[
+              "application\/vnd.ims.lti.v2.toolproxy+json"
+           ],
+           "action":[
+              "GET"
+           ],
+           "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxy.item",
+           "@type":"RestService"
+        },
+        {
+           "endpoint":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/authorize",
+           "format":[
+              "application\/json"
+           ],
+           "action":[
+              "POST"
+           ],
+           "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#vnd.Canvas.authorization",
+           "@type":"RestService"
+        },
+        {
+           "endpoint":"http:\/\/canvas.docker\/api\/lti\/tool_settings\/tool_proxy\/{tool_proxy_id}",
+           "format":[
+              "application\/vnd.ims.lti.v2.toolsettings+json",
+              "application\/vnd.ims.lti.v2.toolsettings.simple+json"
+           ],
+           "action":[
+              "GET",
+              "PUT"
+           ],
+           "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxySettings",
+           "@type":"RestService"
+        },
+        {
+           "endpoint":"http:\/\/canvas.docker\/api\/lti\/tool_settings\/bindings\/{binding_id}",
+           "format":[
+              "application\/vnd.ims.lti.v2.toolsettings+json",
+              "application\/vnd.ims.lti.v2.toolsettings.simple+json"
+           ],
+           "action":[
+              "GET",
+              "PUT"
+           ],
+           "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxyBindingSettings",
+           "@type":"RestService"
+        },
+        {
+           "endpoint":"http:\/\/canvas.docker\/api\/lti\/tool_settings\/links\/{tool_proxy_id}",
+           "format":[
+              "application\/vnd.ims.lti.v2.toolsettings+json",
+              "application\/vnd.ims.lti.v2.toolsettings.simple+json"
+           ],
+           "action":[
+              "GET",
+              "PUT"
+           ],
+           "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#LtiLinkSettings",
+           "@type":"RestService"
+        },
+        {
+           "endpoint":"http:\/\/canvas.docker\/api\/lti\/subscriptions",
+           "format":[
+              "application\/json"
+           ],
+           "action":[
+              "POST",
+              "GET",
+              "PUT",
+              "DELETE"
+           ],
+           "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#vnd.Canvas.webhooksSubscription",
+           "@type":"RestService"
+        }
+      ],
+      "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e",
+      "@type":"ToolConsumerProfile",
+      "@context":[
+        "http:\/\/purl.imsglobal.org\/ctx\/lti\/v2\/ToolConsumerProfile"
+      ]
+    }}
     stub_request(:get, "http://canvas.docker/api/lti/courses/2/tool_consumer_profile").
       to_return(
         status: 200,
@@ -224,10 +366,11 @@ RSpec.configure do |config|
         headers: canvas_headers,
       )
 
+    tool_proxy_json = "{\"@context\":\"http://purl.imsglobal.org/ctx/lti/v2/ToolProxyId\",\"@type\":\"ToolProxy\",\"@id\":null,\"tool_proxy_guid\":\"dadd4893-d97e-44ae-804f-464483a4dcd8\",\"tc_half_shared_secret\":\"962a63486faf2e3f781860469f90d95134789026f5a82a29d60ce79424dc6b41d854482c7e9121130a5e7d0893e6d5d5b3a7a87f776b87dd4516df8a7e2edf4c\"}"
     stub_request(:post, "http://canvas.docker/api/lti/courses/2/tool_proxy").
       to_return(
-        status: 200,
-        body: "",
+        status: 201,
+        body: tool_proxy_json,
         headers: canvas_headers,
       )
   end
