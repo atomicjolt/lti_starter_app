@@ -13,6 +13,6 @@ class BundleInstance < ApplicationRecord
   end
 
   def fix_entity_key
-    self.entity_key = UrlHelper.host(url)
+    self.entity_key = UrlHelper.host(entity_key)
   end
 end
