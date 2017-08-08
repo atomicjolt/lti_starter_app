@@ -7,13 +7,5 @@ RSpec.describe BundleInstance, type: :model do
       subject.save
       expect(subject.entity_key).to eq("example.com")
     end
-
-    describe "entity_key_from_url" do
-      it "should return key" do
-        url = "http://sub.domain.example.com"
-        result = BundleInstance.entity_key_from_url(url)
-        expect(result).to eq("sub.domain.example.com")
-      end
-    end
   end
 end
