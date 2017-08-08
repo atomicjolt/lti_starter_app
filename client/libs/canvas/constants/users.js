@@ -286,7 +286,10 @@ export const listUpcomingAssignmentsCalendarEvents = { type: 'LIST_UPCOMING_ASSI
 // API Url: users/{user_id}/missing_submissions
 //
 // Example:
-// return canvasRequest(list_missing_submissions, {user_id});
+// const query = {
+//   include
+// }
+// return canvasRequest(list_missing_submissions, {user_id}, query);
 export const listMissingSubmissions = { type: 'LIST_MISSING_SUBMISSIONS', method: 'get', key: 'list_missing_submissionslist_missing_submissions_user_id', required: ['user_id'] };
 
 // Hide a stream item

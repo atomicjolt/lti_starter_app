@@ -40,6 +40,7 @@ export const getSisImportList = { type: 'GET_SIS_IMPORT_LIST', method: 'get', ke
 //   clear_sis_stickiness
 //   diffing_data_set_identifier
 //   diffing_remaster_data_set
+//   change_threshold
 // }
 // return canvasRequest(import_sis_data, {account_id}, query);
 export const importSisData = { type: 'IMPORT_SIS_DATA', method: 'post', key: 'import_sis_dataimport_sis_data_account_id', required: ['account_id'] };
