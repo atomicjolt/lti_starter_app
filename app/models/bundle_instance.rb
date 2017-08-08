@@ -3,7 +3,6 @@ class BundleInstance < ApplicationRecord
   belongs_to :site
   has_many :application_instances
   has_many :applications, through: :bundle
-  validates :entity_key, uniqueness: true
 
   def self.entity_key_from_url(url)
     UrlHelper.host(url)
