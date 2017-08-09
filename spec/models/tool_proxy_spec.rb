@@ -29,10 +29,18 @@ RSpec.describe ToolProxy, type: :model do
   include_context "lti_spec_helper"
 
   describe "as_json" do
+    let(:application_instance) { FactoryGirl.create(:application_instance) }
     let(:guid) { "12abc-12abc-12abc-12abc-12abc" }
     let(:tcp_url) { "http://www.test.com/tcp" }
     let(:request) { double(base_url: "http://www.test.com") }
-    let(:tp_json) { ToolProxy.new(guid: guid, tcp_url: tcp_url, base_url: request.base_url).to_json }
+    let(:tp_json) do
+      ToolProxy.new(
+        application_instance: application_instance,
+        guid: guid,
+        tcp_url: tcp_url,
+        base_url: request.base_url,
+      ).to_json
+    end
 
     it "includes a valid '@context'" do
       expect(JSON.parse(tp_json)["@context"]).to eq ["http://purl.imsglobal.org/ctx/lti/v2/ToolProxy"]
