@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :current_application_instance
+  helper_method :current_application_instance, :current_bundle_instance
 
   protected
 
@@ -33,7 +33,10 @@ class ApplicationController < ActionController::Base
   end
 
   def current_bundle_instance
-    @current_bundle ||= BundleInstance.find(params[:bundle_instance_id])
+    @current_bundle ||= BundleInstance.
+      where(id_token: params[:bundle_instance_token]).
+      or(BundleInstance.where(id: params[:bundle_instance_id])).
+      first
   end
 
   def current_ability

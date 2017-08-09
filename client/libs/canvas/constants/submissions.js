@@ -201,7 +201,7 @@ export const uploadFileSections = { type: 'UPLOAD_FILE_SECTIONS', method: 'post'
 //   submission[posted_grade]
 //   submission[excuse]
 //   submission[late_policy_status]
-//   submission[accepted_at]
+//   submission[seconds_late_override]
 //   rubric_assessment
 // }
 // return canvasRequest(grade_or_comment_on_submission_courses, {course_id, assignment_id, user_id}, query);
@@ -227,7 +227,7 @@ export const gradeOrCommentOnSubmissionCourses = { type: 'GRADE_OR_COMMENT_ON_SU
 //   submission[posted_grade]
 //   submission[excuse]
 //   submission[late_policy_status]
-//   submission[accepted_at]
+//   submission[seconds_late_override]
 //   rubric_assessment
 // }
 // return canvasRequest(grade_or_comment_on_submission_sections, {section_id, assignment_id, user_id}, query);

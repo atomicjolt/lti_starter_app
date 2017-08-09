@@ -189,22 +189,15 @@ export const updateFile = { type: 'UPDATE_FILE', method: 'put', key: 'update_fil
 
 // Delete file
 // Remove the specified file
-// 
-//   curl -X DELETE 'https://<canvas>/api/v1/files/<file_id>' \
-//        -H 'Authorization: Bearer <token>'
-// 
-//  @argument replace [boolean]
-//    This action is irreversible.
-//    If replace is set to true the file contents will be replaced with a
-//    generic "file has been removed" file. This also destroys any previews
-//    that have been generated for the file.
-//    Must have manage files and become other users permissions
 //
 // API Docs: https://canvas.instructure.com/doc/api/files.html
 // API Url: files/{id}
 //
 // Example:
-// return canvasRequest(delete_file, {id});
+// const query = {
+//   replace
+// }
+// return canvasRequest(delete_file, {id}, query);
 export const deleteFile = { type: 'DELETE_FILE', method: 'delete', key: 'delete_filedelete_file_id', required: ['id'] };
 
 // List folders
