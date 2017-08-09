@@ -94,15 +94,6 @@ RSpec.describe ToolProxy, type: :model do
         expect(message_keys).to match_array(expected_keys)
       end
 
-      it "includes 'vnd.Canvas.SubmissionEvent' service" do
-        service = tool_profile["service_offered"].first
-        expect(service["@id"].split("#").last).to eq "vnd.Canvas.SubmissionEvent"
-      end
-
-      it "correctly sets the 'vnd.Canvas.SubmissionEvent' service endpoint" do
-        service = tool_profile["service_offered"].first
-        expect(service["endpoint"]).to eq "http://www.test.com/event/submission"
-      end
     end
 
     context "security_contract" do
@@ -112,12 +103,6 @@ RSpec.describe ToolProxy, type: :model do
         expect(security_contract["tp_half_shared_secret"].length).to eq 128
       end
 
-      it "includes 'vnd.Canvas.OriginalityReport' service" do
-        service = security_contract["tool_service"].detect do |s|
-          s["service"].include? "vnd.Canvas.OriginalityReport"
-        end
-        expect(service).not_to be_nil
-      end
     end
   end
 end
