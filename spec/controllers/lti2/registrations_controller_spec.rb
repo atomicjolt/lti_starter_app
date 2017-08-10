@@ -48,7 +48,7 @@ RSpec.describe Lti2::RegistrationsController, type: :controller do
   describe "POST #create" do
     it "registers a tool proxy" do
       post :create, params: registration_message
-      expect(response).to redirect_to "http://canvas.docker/courses/2/lti/registration_return?status=success&tool_proxy_guid=#{tool_proxy_guid}"
+      expect(response).to redirect_to "http://example.com/courses/2/lti/registration_return?status=success&tool_proxy_guid=#{tool_proxy_guid}"
     end
 
     it "persists a ToolProxy" do
@@ -59,7 +59,7 @@ RSpec.describe Lti2::RegistrationsController, type: :controller do
 
     it "saves the authorization url" do
       post :create, params: registration_message
-      expect(ToolProxy.last.authorization_url).to eq "http://canvas.docker/api/lti/courses/2/authorize"
+      expect(ToolProxy.last.authorization_url).to eq "http://example.com/api/lti/courses/2/authorize"
     end
 
     it "assembles both halves of the shared secret" do
@@ -72,14 +72,14 @@ RSpec.describe Lti2::RegistrationsController, type: :controller do
       prev_capabilities = ToolProxy::REQUIRED_CAPABILITIES
       ToolProxy::REQUIRED_CAPABILITIES = %w(Capaability.not.Offered).freeze
       post :create, params: registration_message
-      expect(response).to redirect_to "http://canvas.docker/courses/2/lti/registration_return?status=failure&lti_errormsg=Missing%20required%20capabilities"
+      expect(response).to redirect_to "http://example.com/courses/2/lti/registration_return?status=failure&lti_errormsg=Missing%20required%20capabilities"
       ToolProxy::REQUIRED_CAPABILITIES = prev_capabilities
     end
 
     it "redirects with status set to failure if status of tp create response is not success" do
       allow(tool_proxy_registration_service).to receive(:register_tool_proxy) { false }
       post :create, params: registration_message
-      expect(response).to redirect_to "http://canvas.docker/courses/2/lti/registration_return?status=failure&lti_errormsg=Error%20received%20from%20tool%20consumer"
+      expect(response).to redirect_to "http://example.com/courses/2/lti/registration_return?status=failure&lti_errormsg=Error%20received%20from%20tool%20consumer"
     end
   end
 end

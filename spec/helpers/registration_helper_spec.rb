@@ -34,12 +34,12 @@ RSpec.describe RegistrationHelper, type: :helper do
       "lti_version" => "LTI-2p0",
       "reg_key" => "026e4140-14a3-43f2-a37e-f79a93d41075",
       "reg_password" => "6969103a-b205-42a7-aa07-0304cc60c653",
-      "tc_profile_url" => "http://canvas.docker/api/lti/courses/2/tool_consumer_profile",
-      "launch_presentation_return_url" => "http://canvas.docker/courses/2/lti/registration_return",
+      "tc_profile_url" => "http://example.com/api/lti/courses/2/tool_consumer_profile",
+      "launch_presentation_return_url" => "http://example.com/courses/2/lti/registration_return",
       "launch_presentation_document_target" => "iframe",
-      "oauth2_access_token_url" => "http://canvas.docker/api/lti/courses/2/authorize",
-      "ext_tool_consumer_instance_guid" => "edea7cb339bf18da4132895e1a44e4b8ee7bd8d9.canvas.docker",
-      "ext_api_domain" => "canvas.docker",
+      "oauth2_access_token_url" => "http://example.com/api/lti/courses/2/authorize",
+      "ext_tool_consumer_instance_guid" => "edea7cb339bf18da4132895e1a44e4b8ee7bd8d9.example.com",
+      "ext_api_domain" => "example.com",
     }
   end
   let(:url) { "http://www.url.com" }

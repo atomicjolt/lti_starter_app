@@ -28,10 +28,10 @@ RSpec.shared_context "lti_spec_helper", shared_context: :metadata do
       lti_message_type: "ToolProxyRegistrationRequest",
       lti_version: "LTI-2p0",
       reg_password: "d731e340-0fed-497a-9f92-6e1f6cf4eb21",
-      tc_profile_url: "http://canvas.docker/api/lti/courses/2/tool_consumer_profile",
-      launch_presentation_return_url: "http://canvas.docker/courses/2/lti/registration_return",
+      tc_profile_url: "http://example.com/api/lti/courses/2/tool_consumer_profile",
+      launch_presentation_return_url: "http://example.com/courses/2/lti/registration_return",
       launch_presentation_document_target: "iframe",
-      oauth2_access_token_url: "http://canvas.docker/api/lti/courses/2/authorize"
+      oauth2_access_token_url: "http://example.com/api/lti/courses/2/authorize"
     }
   end
   let(:access_token) { "eya34a34.a4453ad.12323234a" }
@@ -66,7 +66,7 @@ RSpec.shared_context "lti_spec_helper", shared_context: :metadata do
           }
        ],
        "product_instance":{
-          "guid":"edea7cb339bf18da4132895e1a44e4b8ee7bd8d9.canvas.docker",
+          "guid":"edea7cb339bf18da4132895e1a44e4b8ee7bd8d9.example.com",
           "product_info":{
              "product_version":"none",
              "product_family":{
@@ -98,51 +98,51 @@ RSpec.shared_context "lti_spec_helper", shared_context: :metadata do
        },
        "service_offered":[
           {
-             "endpoint":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_proxy",
+             "endpoint":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_proxy",
              "format":[
                 "application\/vnd.ims.lti.v2.toolproxy+json"
              ],
              "action":[
                 "POST"
              ],
-             "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/cf9da3cf-7273-4e11-a423-0fbd0416057e#ToolProxy.collection",
+             "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/cf9da3cf-7273-4e11-a423-0fbd0416057e#ToolProxy.collection",
              "@type":"RestService"
           },
           {
-             "endpoint":"http:\/\/canvas.docker\/api\/lti\/tool_proxy\/{tool_proxy_guid}",
+             "endpoint":"http:\/\/example.com\/api\/lti\/tool_proxy\/{tool_proxy_guid}",
              "format":[
                 "application\/vnd.ims.lti.v2.toolproxy+json"
              ],
              "action":[
                 "GET"
              ],
-             "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/cf9da3cf-7273-4e11-a423-0fbd0416057e#ToolProxy.item",
+             "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/cf9da3cf-7273-4e11-a423-0fbd0416057e#ToolProxy.item",
              "@type":"RestService"
           },
           {
-             "endpoint":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/authorize",
+             "endpoint":"http:\/\/example.com\/api\/lti\/courses\/2\/authorize",
              "format":[
                 "application\/json"
              ],
              "action":[
                 "POST"
              ],
-             "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/cf9da3cf-7273-4e11-a423-0fbd0416057e#vnd.Canvas.authorization",
+             "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/cf9da3cf-7273-4e11-a423-0fbd0416057e#vnd.Canvas.authorization",
              "@type":"RestService"
           },
           {
-             "endpoint":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/originality-report",
+             "endpoint":"http:\/\/example.com\/api\/lti\/courses\/2\/originality-report",
              "format":[
                 "application\/json"
              ],
              "action":[
                 "POST", "PUT", "GET"
              ],
-             "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/cf9da3cf-7273-4e11-a423-0fbd0416057e#vnd.Canvas.OriginalityReport",
+             "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/cf9da3cf-7273-4e11-a423-0fbd0416057e#vnd.Canvas.OriginalityReport",
              "@type":"RestService"
           },
           {
-             "endpoint":"http:\/\/canvas.docker\/api\/lti\/tool_settings\/tool_proxy\/{tool_proxy_id}",
+             "endpoint":"http:\/\/example.com\/api\/lti\/tool_settings\/tool_proxy\/{tool_proxy_id}",
              "format":[
                 "application\/vnd.ims.lti.v2.toolsettings+json",
                 "application\/vnd.ims.lti.v2.toolsettings.simple+json"
@@ -151,11 +151,11 @@ RSpec.shared_context "lti_spec_helper", shared_context: :metadata do
                 "GET",
                 "PUT"
              ],
-             "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/cf9da3cf-7273-4e11-a423-0fbd0416057e#ToolProxySettings",
+             "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/cf9da3cf-7273-4e11-a423-0fbd0416057e#ToolProxySettings",
              "@type":"RestService"
           },
           {
-             "endpoint":"http:\/\/canvas.docker\/api\/lti\/tool_settings\/bindings\/{binding_id}",
+             "endpoint":"http:\/\/example.com\/api\/lti\/tool_settings\/bindings\/{binding_id}",
              "format":[
                 "application\/vnd.ims.lti.v2.toolsettings+json",
                 "application\/vnd.ims.lti.v2.toolsettings.simple+json"
@@ -164,11 +164,11 @@ RSpec.shared_context "lti_spec_helper", shared_context: :metadata do
                 "GET",
                 "PUT"
              ],
-             "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/cf9da3cf-7273-4e11-a423-0fbd0416057e#ToolProxyBindingSettings",
+             "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/cf9da3cf-7273-4e11-a423-0fbd0416057e#ToolProxyBindingSettings",
              "@type":"RestService"
           },
           {
-             "endpoint":"http:\/\/canvas.docker\/api\/lti\/tool_settings\/links\/{tool_proxy_id}",
+             "endpoint":"http:\/\/example.com\/api\/lti\/tool_settings\/links\/{tool_proxy_id}",
              "format":[
                 "application\/vnd.ims.lti.v2.toolsettings+json",
                 "application\/vnd.ims.lti.v2.toolsettings.simple+json"
@@ -177,11 +177,11 @@ RSpec.shared_context "lti_spec_helper", shared_context: :metadata do
                 "GET",
                 "PUT"
              ],
-             "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/cf9da3cf-7273-4e11-a423-0fbd0416057e#LtiLinkSettings",
+             "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/cf9da3cf-7273-4e11-a423-0fbd0416057e#LtiLinkSettings",
              "@type":"RestService"
           },
           {
-             "endpoint":"http:\/\/canvas.docker\/api\/lti\/subscriptions",
+             "endpoint":"http:\/\/example.com\/api\/lti\/subscriptions",
              "format":[
                 "application\/json"
              ],
@@ -191,11 +191,11 @@ RSpec.shared_context "lti_spec_helper", shared_context: :metadata do
                 "PUT",
                 "DELETE"
              ],
-             "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/cf9da3cf-7273-4e11-a423-0fbd0416057e#vnd.Canvas.webhooksSubscription",
+             "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/cf9da3cf-7273-4e11-a423-0fbd0416057e#vnd.Canvas.webhooksSubscription",
              "@type":"RestService"
           }
        ],
-       "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/cf9da3cf-7273-4e11-a423-0fbd0416057e",
+       "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/cf9da3cf-7273-4e11-a423-0fbd0416057e",
        "@type":"ToolConsumerProfile",
        "@context":[
           "http:\/\/purl.imsglobal.org\/ctx\/lti\/v2\/ToolConsumerProfile"

@@ -267,40 +267,40 @@ RSpec.configure do |config|
       },
       "service_offered":[
         {
-           "endpoint":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_proxy",
+           "endpoint":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_proxy",
            "format":[
               "application\/vnd.ims.lti.v2.toolproxy+json"
            ],
            "action":[
               "POST"
            ],
-           "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxy.collection",
+           "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxy.collection",
            "@type":"RestService"
         },
         {
-           "endpoint":"http:\/\/canvas.docker\/api\/lti\/tool_proxy\/{tool_proxy_guid}",
+           "endpoint":"http:\/\/example.com\/api\/lti\/tool_proxy\/{tool_proxy_guid}",
            "format":[
               "application\/vnd.ims.lti.v2.toolproxy+json"
            ],
            "action":[
               "GET"
            ],
-           "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxy.item",
+           "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxy.item",
            "@type":"RestService"
         },
         {
-           "endpoint":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/authorize",
+           "endpoint":"http:\/\/example.com\/api\/lti\/courses\/2\/authorize",
            "format":[
               "application\/json"
            ],
            "action":[
               "POST"
            ],
-           "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#vnd.Canvas.authorization",
+           "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#vnd.Canvas.authorization",
            "@type":"RestService"
         },
         {
-           "endpoint":"http:\/\/canvas.docker\/api\/lti\/tool_settings\/tool_proxy\/{tool_proxy_id}",
+           "endpoint":"http:\/\/example.com\/api\/lti\/tool_settings\/tool_proxy\/{tool_proxy_id}",
            "format":[
               "application\/vnd.ims.lti.v2.toolsettings+json",
               "application\/vnd.ims.lti.v2.toolsettings.simple+json"
@@ -309,11 +309,11 @@ RSpec.configure do |config|
               "GET",
               "PUT"
            ],
-           "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxySettings",
+           "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxySettings",
            "@type":"RestService"
         },
         {
-           "endpoint":"http:\/\/canvas.docker\/api\/lti\/tool_settings\/bindings\/{binding_id}",
+           "endpoint":"http:\/\/example.com\/api\/lti\/tool_settings\/bindings\/{binding_id}",
            "format":[
               "application\/vnd.ims.lti.v2.toolsettings+json",
               "application\/vnd.ims.lti.v2.toolsettings.simple+json"
@@ -322,11 +322,11 @@ RSpec.configure do |config|
               "GET",
               "PUT"
            ],
-           "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxyBindingSettings",
+           "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxyBindingSettings",
            "@type":"RestService"
         },
         {
-           "endpoint":"http:\/\/canvas.docker\/api\/lti\/tool_settings\/links\/{tool_proxy_id}",
+           "endpoint":"http:\/\/example.com\/api\/lti\/tool_settings\/links\/{tool_proxy_id}",
            "format":[
               "application\/vnd.ims.lti.v2.toolsettings+json",
               "application\/vnd.ims.lti.v2.toolsettings.simple+json"
@@ -335,11 +335,11 @@ RSpec.configure do |config|
               "GET",
               "PUT"
            ],
-           "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#LtiLinkSettings",
+           "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#LtiLinkSettings",
            "@type":"RestService"
         },
         {
-           "endpoint":"http:\/\/canvas.docker\/api\/lti\/subscriptions",
+           "endpoint":"http:\/\/example.com\/api\/lti\/subscriptions",
            "format":[
               "application\/json"
            ],
@@ -349,17 +349,17 @@ RSpec.configure do |config|
               "PUT",
               "DELETE"
            ],
-           "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#vnd.Canvas.webhooksSubscription",
+           "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#vnd.Canvas.webhooksSubscription",
            "@type":"RestService"
         }
       ],
-      "@id":"http:\/\/canvas.docker\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e",
+      "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e",
       "@type":"ToolConsumerProfile",
       "@context":[
         "http:\/\/purl.imsglobal.org\/ctx\/lti\/v2\/ToolConsumerProfile"
       ]
     }}
-    stub_request(:get, "http://canvas.docker/api/lti/courses/2/tool_consumer_profile").
+    stub_request(:get, "http://example.com/api/lti/courses/2/tool_consumer_profile").
       to_return(
         status: 200,
         body: tool_consumer_profile_json,
@@ -367,11 +367,18 @@ RSpec.configure do |config|
       )
 
     tool_proxy_json = "{\"@context\":\"http://purl.imsglobal.org/ctx/lti/v2/ToolProxyId\",\"@type\":\"ToolProxy\",\"@id\":null,\"tool_proxy_guid\":\"dadd4893-d97e-44ae-804f-464483a4dcd8\",\"tc_half_shared_secret\":\"962a63486faf2e3f781860469f90d95134789026f5a82a29d60ce79424dc6b41d854482c7e9121130a5e7d0893e6d5d5b3a7a87f776b87dd4516df8a7e2edf4c\"}"
-    stub_request(:post, "http://canvas.docker/api/lti/courses/2/tool_proxy").
+    stub_request(:post, %r|http[s]*://[a-zA-Z0-9]+\.[a-zA-Z0-9]+.*com/api/lti/courses/[0-9]+/tool_proxy|).
       to_return(
         status: 201,
         body: tool_proxy_json,
         headers: canvas_headers,
       )
+
+    stub_request(:get, %r|http[s]*://[a-zA-Z0-9]+\.[a-zA-Z0-9]+.*com/courses/[0-9]+/lti/registration_return?status=success.*|).
+      to_return(
+        status: 302,
+        headers: canvas_headers,
+      )
+
   end
 end
