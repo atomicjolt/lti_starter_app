@@ -6,6 +6,8 @@
    "corsConfiguration": [
       {
          "AllowedMethods": [
+            "GET",
+            "HEAD",
             "POST",
             "PUT",
             "DELETE"
@@ -19,7 +21,7 @@
          "MaxAgeSeconds": 0
       }
    ],
-   "enableCloudfront": true,
+   "enableCloudfront": false,
    "retries": 20,
    "domain": "atomicclient.com",
    "configFile": ".s3-website.json"
