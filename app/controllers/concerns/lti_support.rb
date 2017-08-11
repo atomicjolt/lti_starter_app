@@ -8,8 +8,18 @@ module Concerns
 
     protected
 
+    def lti_secret
+      if params["lti_version"] =~ /LTI-2p[0-9]+/
+        if tool_proxy = ToolProxy.find_by(guid: params["oauth_consumer_key"])
+          tool_proxy.shared_secret
+        end
+      else
+        current_application_instance.lti_secret
+      end
+    end
+
     def do_lti
-      if valid_lti_request?(current_application_instance.lti_secret)
+      if valid_lti_request?(lti_secret)
         if user = user_from_lti
           sign_in(user, event: :authentication)
           return
@@ -112,11 +122,13 @@ module Concerns
     end
 
     def _add_roles(user, params)
-      all_roles = lti_roles.split(",")
-      # Only store roles that start with urn:lti:role to prevent using local roles
-      roles = all_roles.select { |role| role.start_with?("urn:lti:") }
-      roles.each do |role|
-        user.add_to_role(role, params["context_id"])
+      roles = []
+      if all_roles = lti_roles&.split(",")
+        # Only store roles that start with urn:lti:role to prevent using local roles
+        roles = all_roles.select { |role| role.start_with?("urn:lti:") }
+        roles.each do |role|
+          user.add_to_role(role, params["context_id"])
+        end
       end
       roles
     end
