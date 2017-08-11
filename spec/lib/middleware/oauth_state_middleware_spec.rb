@@ -20,7 +20,7 @@ describe OauthStateMiddleware do
 
     context "Initial request after OAuth response" do
       before do
-        @env = Rack::MockRequest.env_for("http://example.com?state=#{@state}&code=#{@code}")
+        @env = Rack::MockRequest.env_for("http://www.example.com?state=#{@state}&code=#{@code}")
       end
 
       it "doesn't delete the oauth state" do
@@ -87,7 +87,7 @@ describe OauthStateMiddleware do
 
     context "Initial request after OAuth response" do
       before do
-        @env = Rack::MockRequest.env_for("http://example.com?state=#{@state}&code=#{@code}")
+        @env = Rack::MockRequest.env_for("http://www.example.com?state=#{@state}&code=#{@code}")
       end
 
       it "doesn't delete the oauth state" do

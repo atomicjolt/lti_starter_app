@@ -44,7 +44,8 @@ class Lti2::RegistrationsController < ApplicationController
 
     if ToolProxy::REQUIRED_CAPABILITIES.present?
       unless tcp.supports_capabilities?(*ToolProxy::REQUIRED_CAPABILITIES)
-        redirect_to registration_failure_url("Missing required capabilities") && return
+        redirect_to registration_failure_url("Missing required capabilities")
+        return
       end
     end
 
@@ -54,7 +55,10 @@ class Lti2::RegistrationsController < ApplicationController
       authorization_url: authorization_service.endpoint,
     )
 
-    redirect_to registration_success_url(tool_proxy.guid) && return if create_tool_proxy(tool_proxy)
-    redirect_to registration_failure_url("Error received from tool consumer") && return
+    if create_tool_proxy(tool_proxy)
+      redirect_to registration_success_url(tool_proxy.guid)
+    else
+      redirect_to registration_failure_url("Error received from tool consumer")
+    end
   end
 end

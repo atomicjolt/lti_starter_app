@@ -20,7 +20,7 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
     it "should pass through with valid auth" do
       FactoryGirl.create :user_canvas
       request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:canvas]
-      oauth_complete_url = "http://example.com"
+      oauth_complete_url = "http://www.example.com"
       response = get :canvas, params: {
         oauth_complete_url: oauth_complete_url,
         canvas_url: "https://example.instructure.com",
@@ -30,7 +30,7 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
     end
 
     it "should redirect to origin without auth" do
-      origin_url = "http://example.com"
+      origin_url = "http://www.example.com"
       request.env["omniauth.origin"] = origin_url
 
       response = get :canvas
@@ -38,7 +38,7 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
     end
 
     it "should redirect with error params" do
-      origin_url = "http://example.com"
+      origin_url = "http://www.example.com"
       request.env["omniauth.origin"] = origin_url
       error_params = { error: "failure" }
       response = get :canvas, params: {

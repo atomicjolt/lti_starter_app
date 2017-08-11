@@ -42,6 +42,14 @@ canvas_account = "{\"id\":43460000000000017,\"name\":\"Canvas Demo Courses\",\"p
 canvas_course = "{\"account_id\":43460000000000017,\"course_code\":\"Biology\",\"default_view\":\"wiki\",\"enrollment_term_id\":43460000000000001,\"id\":43460000000000228,\"is_public\":true,\"name\":\"Biology - ball\",\"start_at\":\"2015-03-11T02:11:57Z\",\"end_at\":\"2014-11-12T00:00:00Z\",\"public_syllabus\":false,\"storage_quota_mb\":500,\"is_public_to_auth_users\":false,\"apply_assignment_group_weights\":true,\"calendar\":{\"ics\":\"https://canvas.instructure.com/feeds/calendars/course_tXpIlgwxaowPljOdOY3i4336gZTzYdeqWJDDVyC5.ics\"},\"sis_course_id\":\"sdemo-biology-000_2015-03-10T20:12:09-06:00\",\"integration_id\":null,\"enrollments\":[{\"type\":\"teacher\",\"role\":\"TeacherEnrollment\",\"role_id\":822,\"enrollment_state\":\"active\"}],\"hide_final_grades\":false,\"workflow_state\":\"available\"}"
 canvas_sections = '[{"course_id":263,"end_at":null,"id":260,"name":"Kellogg Seating Chart Test","nonxlist_course_id":null,"start_at":null,"sis_section_id":null,"sis_course_id":null,"integration_id":null,"sis_import_id":null},{"course_id":263,"end_at":null,"id":261,"name":"Physicists","nonxlist_course_id":null,"start_at":null,"sis_section_id":null,"sis_course_id":null,"integration_id":null,"sis_import_id":null},{"course_id":263,"end_at":null,"id":262,"name":"Mathematicians","nonxlist_course_id":null,"start_at":null,"sis_section_id":null,"sis_course_id":null,"integration_id":null,"sis_import_id":null},{"course_id":263,"end_at":null,"id":263,"name":"Computer Scientists","nonxlist_course_id":null,"start_at":null,"sis_section_id":null,"sis_course_id":null,"integration_id":null,"sis_import_id":null}]'
 canvas_students = '[{"associated_user_id":null,"course_id":263,"course_section_id":260,"created_at":"2015-10-15T19:40:27Z","end_at":null,"id":1422,"limit_privileges_to_course_section":false,"root_account_id":1,"start_at":null,"type":"StudentEnrollment","updated_at":"2015-10-15T19:44:24Z","user_id":340,"enrollment_state":"active","role":"StudentEnrollment","role_id":3,"last_activity_at":"2015-10-15T19:44:27Z","total_activity_time":0,"sis_import_id":null,"grades":{"html_url":"https://atomicjolt.instructure.com/courses/263/grades/340","current_score":null,"final_score":null,"current_grade":null,"final_grade":null},"sis_source_id":null,"sis_course_id":null,"course_integration_id":null,"sis_section_id":null,"section_integration_id":null,"html_url":"https://atomicjolt.instructure.com/courses/263/users/340","user":{"id":340,"name":"Roger Ainsworth","sortable_name":"Ainsworth, Roger","short_name":"Roger Ainsworth","login_id":"joel.duffin+s1@gmail.com","avatar_url":"https://secure.gravatar.com/avatar/66681831dda497d4d73fa76b5b2e3f16?s=50\u0026d=https%3A%2F%2Fcanvas.instructure.com%2Fimages%2Fmessages%2Favatar-50.png"}},{"associated_user_id":null,"course_id":263,"course_section_id":260,"created_at":"2015-10-15T19:40:27Z","end_at":null,"id":1423,"limit_privileges_to_course_section":false,"root_account_id":1,"start_at":null,"type":"StudentEnrollment","updated_at":"2015-10-15T19:43:24Z","user_id":341,"enrollment_state":"active","role":"StudentEnrollment","role_id":3,"last_activity_at":"2015-10-15T19:43:28Z","total_activity_time":0,"sis_import_id":null,"grades":{"html_url":"https://atomicjolt.instructure.com/courses/263/grades/341","current_score":null,"final_score":null,"current_grade":null,"final_grade":null},"sis_source_id":null,"sis_course_id":null,"course_integration_id":null,"sis_section_id":null,"section_integration_id":null,"html_url":"https://atomicjolt.instructure.com/courses/263/users/341","user":{"id":341,"name":"Wes Cutler","sortable_name":"Cutler, Wes","short_name":"Wes Cutler","login_id":"joel.duffin+s2@gmail.com","avatar_url":"https://secure.gravatar.com/avatar/964094ff01e7d6edada9ab92925061b8?s=50\u0026d=https%3A%2F%2Fcanvas.instructure.com%2Fimages%2Fmessages%2Favatar-50.png"}},{"associated_user_id":null,"course_id":263,"course_section_id":260,"created_at":"2015-10-15T19:40:27Z","end_at":null,"id":1424,"limit_privileges_to_course_section":false,"root_account_id":1,"start_at":null,"type":"StudentEnrollment","updated_at":"2015-10-15T19:45:03Z","user_id":342,"enrollment_state":"active","role":"StudentEnrollment","role_id":3,"last_activity_at":"2015-10-15T19:45:05Z","total_activity_time":0,"sis_import_id":null,"grades":{"html_url":"https://atomicjolt.instructure.com/courses/263/grades/342","current_score":null,"final_score":null,"current_grade":null,"final_grade":null},"sis_source_id":null,"sis_course_id":null,"course_integration_id":null,"sis_section_id":null,"section_integration_id":null,"html_url":"https://atomicjolt.instructure.com/courses/263/users/342","user":{"id":342,"name":"Bob Zanzibar","sortable_name":"Zanzibar, Bob","short_name":"Bob Zanzibar","login_id":"joel.duffin+s3@gmail.com","avatar_url":"https://atomicjolt.instructure.com/images/thumbnails/11135/hsXtbIQRNerXehHP8FmbD7rUaxTCPIJh0JFQnW7L"}}]'
+
+# LTI 2 values
+def tc_half_shared_secret
+  "0e5de8345149b53c28e49f1da467f077b6ecf8fd1e29cff9d2bea693105ac353e4742b168ca594f2d0346ebc968454ce57f0a84017b6f4b2d279f08797d66928"
+end
+tool_proxy_json = "{\"@context\":\"http://purl.imsglobal.org/ctx/lti/v2/ToolProxyId\",\"@type\":\"ToolProxy\",\"@id\":null,\"tool_proxy_guid\":\"dadd4893-d97e-44ae-804f-464483a4dcd8\",\"tc_half_shared_secret\":\"#{tc_half_shared_secret}\"}"
+tool_consumer_profile_json = %{{"lti_version":"LTI-2p0","guid":"ht74382y-oi76-hy43-ffff-yrh634edwc27","capability_offered":["basic-lti-launch-request","User.id"],"security_profile":[{"security_profile_name":"lti_oauth_hash_message_security","digest_algorithm":"HMAC-SHA1"},{"security_profile_name":"oauth2_access_token_ws_security","digest_algorithm":"HS256"}],"product_instance":{"guid":"idu46237846eanghdsfg3264697rwmkfo25dh4jsdfg63.atomicjolt.com","product_info":{"product_version":"none","product_family":{"code":"canvas","vendor":{"code":"https:\/\/atomicjolt.com","vendor_name":{"default_value":"Atomic Jolt","key":"vendor.name"},"timestamp":"2008-03-27T06:00:00Z"}},"product_name":{"default_value":"Test by Atomic Jolt","key":"product.name"}},"service_owner":{"description":{"default_value":"Atomic Jolt","key":"service_owner.description"},"service_owner_name":{"default_value":"Atomic Jolt","key":"service_owner.name"}}},"service_offered":[{"endpoint":"http:\/\/www.example.com\/api\/lti\/courses\/2\/tool_proxy","format":["application\/vnd.ims.lti.v2.toolproxy+json"],"action":["POST"],"@id":"http:\/\/www.example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxy.collection","@type":"RestService"},{"endpoint":"http:\/\/www.example.com\/api\/lti\/tool_proxy\/{tool_proxy_guid}","format":["application\/vnd.ims.lti.v2.toolproxy+json"],"action":["GET"],"@id":"http:\/\/www.example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxy.item","@type":"RestService"},{"endpoint":"http:\/\/www.example.com\/api\/lti\/courses\/2\/authorize","format":["application\/json"],"action":["POST"],"@id":"http:\/\/www.example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#vnd.Canvas.authorization","@type":"RestService"},{"endpoint":"http:\/\/www.example.com\/api\/lti\/tool_settings\/tool_proxy\/{tool_proxy_id}","format":["application\/vnd.ims.lti.v2.toolsettings+json","application\/vnd.ims.lti.v2.toolsettings.simple+json"],"action":["GET","PUT"],"@id":"http:\/\/www.example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxySettings","@type":"RestService"},{"endpoint":"http:\/\/www.example.com\/api\/lti\/tool_settings\/bindings\/{binding_id}","format":["application\/vnd.ims.lti.v2.toolsettings+json","application\/vnd.ims.lti.v2.toolsettings.simple+json"],"action":["GET","PUT"],"@id":"http:\/\/www.example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxyBindingSettings","@type":"RestService"},{"endpoint":"http:\/\/www.example.com\/api\/lti\/tool_settings\/links\/{tool_proxy_id}","format":["application\/vnd.ims.lti.v2.toolsettings+json","application\/vnd.ims.lti.v2.toolsettings.simple+json"],"action":["GET","PUT"],"@id":"http:\/\/www.example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#LtiLinkSettings","@type":"RestService"},{"endpoint":"http:\/\/www.example.com\/api\/lti\/subscriptions","format":["application\/json"],"action":["POST","GET","PUT","DELETE"],"@id":"http:\/\/www.example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#vnd.Canvas.webhooksSubscription","@type":"RestService"}],"@id":"http:\/\/www.example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e","@type":"ToolConsumerProfile","@context":["http:\/\/purl.imsglobal.org\/ctx\/lti\/v2\/ToolConsumerProfile"]}}
+
 RSpec.configure do |config|
   config.before(:each) do
     # #######################################################################################
@@ -216,157 +224,20 @@ RSpec.configure do |config|
     #
     # LTI2 endpoints
     #
-    tool_consumer_profile_json = %{
-    {
-      "lti_version":"LTI-2p0",
-      "guid":"ht74382y-oi76-hy43-ffff-yrh634edwc27",
-      "capability_offered":[
-        "basic-lti-launch-request",
-        "User.id"
-      ],
-      "security_profile":[
-        {
-           "security_profile_name":"lti_oauth_hash_message_security",
-           "digest_algorithm":"HMAC-SHA1"
-        },
-        {
-           "security_profile_name":"oauth2_access_token_ws_security",
-           "digest_algorithm":"HS256"
-        }
-      ],
-      "product_instance":{
-        "guid":"idu46237846eanghdsfg3264697rwmkfo25dh4jsdfg63.atomicjolt.com",
-        "product_info":{
-           "product_version":"none",
-           "product_family":{
-              "code":"canvas",
-              "vendor":{
-                 "code":"https:\/\/atomicjolt.com",
-                 "vendor_name":{
-                    "default_value":"Atomic Jolt",
-                    "key":"vendor.name"
-                 },
-                 "timestamp":"2008-03-27T06:00:00Z"
-              }
-           },
-           "product_name":{
-              "default_value":"Test by Atomic Jolt",
-              "key":"product.name"
-           }
-        },
-        "service_owner":{
-           "description":{
-              "default_value":"Atomic Jolt",
-              "key":"service_owner.description"
-           },
-           "service_owner_name":{
-              "default_value":"Atomic Jolt",
-              "key":"service_owner.name"
-           }
-        }
-      },
-      "service_offered":[
-        {
-           "endpoint":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_proxy",
-           "format":[
-              "application\/vnd.ims.lti.v2.toolproxy+json"
-           ],
-           "action":[
-              "POST"
-           ],
-           "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxy.collection",
-           "@type":"RestService"
-        },
-        {
-           "endpoint":"http:\/\/example.com\/api\/lti\/tool_proxy\/{tool_proxy_guid}",
-           "format":[
-              "application\/vnd.ims.lti.v2.toolproxy+json"
-           ],
-           "action":[
-              "GET"
-           ],
-           "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxy.item",
-           "@type":"RestService"
-        },
-        {
-           "endpoint":"http:\/\/example.com\/api\/lti\/courses\/2\/authorize",
-           "format":[
-              "application\/json"
-           ],
-           "action":[
-              "POST"
-           ],
-           "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#vnd.Canvas.authorization",
-           "@type":"RestService"
-        },
-        {
-           "endpoint":"http:\/\/example.com\/api\/lti\/tool_settings\/tool_proxy\/{tool_proxy_id}",
-           "format":[
-              "application\/vnd.ims.lti.v2.toolsettings+json",
-              "application\/vnd.ims.lti.v2.toolsettings.simple+json"
-           ],
-           "action":[
-              "GET",
-              "PUT"
-           ],
-           "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxySettings",
-           "@type":"RestService"
-        },
-        {
-           "endpoint":"http:\/\/example.com\/api\/lti\/tool_settings\/bindings\/{binding_id}",
-           "format":[
-              "application\/vnd.ims.lti.v2.toolsettings+json",
-              "application\/vnd.ims.lti.v2.toolsettings.simple+json"
-           ],
-           "action":[
-              "GET",
-              "PUT"
-           ],
-           "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#ToolProxyBindingSettings",
-           "@type":"RestService"
-        },
-        {
-           "endpoint":"http:\/\/example.com\/api\/lti\/tool_settings\/links\/{tool_proxy_id}",
-           "format":[
-              "application\/vnd.ims.lti.v2.toolsettings+json",
-              "application\/vnd.ims.lti.v2.toolsettings.simple+json"
-           ],
-           "action":[
-              "GET",
-              "PUT"
-           ],
-           "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#LtiLinkSettings",
-           "@type":"RestService"
-        },
-        {
-           "endpoint":"http:\/\/example.com\/api\/lti\/subscriptions",
-           "format":[
-              "application\/json"
-           ],
-           "action":[
-              "POST",
-              "GET",
-              "PUT",
-              "DELETE"
-           ],
-           "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e#vnd.Canvas.webhooksSubscription",
-           "@type":"RestService"
-        }
-      ],
-      "@id":"http:\/\/example.com\/api\/lti\/courses\/2\/tool_consumer_profile\/ht74382y-oi76-hy43-ffff-0fbd0416057e",
-      "@type":"ToolConsumerProfile",
-      "@context":[
-        "http:\/\/purl.imsglobal.org\/ctx\/lti\/v2\/ToolConsumerProfile"
-      ]
-    }}
-    stub_request(:get, "http://example.com/api/lti/courses/2/tool_consumer_profile").
+    stub_request(:get, "http://www.example.com/api/lti/courses/2/tool_consumer_profile").
       to_return(
         status: 200,
         body: tool_consumer_profile_json,
         headers: canvas_headers,
       )
 
-    tool_proxy_json = "{\"@context\":\"http://purl.imsglobal.org/ctx/lti/v2/ToolProxyId\",\"@type\":\"ToolProxy\",\"@id\":null,\"tool_proxy_guid\":\"dadd4893-d97e-44ae-804f-464483a4dcd8\",\"tc_half_shared_secret\":\"962a63486faf2e3f781860469f90d95134789026f5a82a29d60ce79424dc6b41d854482c7e9121130a5e7d0893e6d5d5b3a7a87f776b87dd4516df8a7e2edf4c\"}"
+    stub_request(:get, "http://www.example.com/api/lti/courses/2/invalid_tool_consumer_profile").
+      to_return(
+        status: 200,
+        body: "{}",
+        headers: canvas_headers,
+      )
+
     stub_request(:post, %r|http[s]*://[a-zA-Z0-9]+\.[a-zA-Z0-9]+.*com/api/lti/courses/[0-9]+/tool_proxy|).
       to_return(
         status: 201,
@@ -379,6 +250,5 @@ RSpec.configure do |config|
         status: 302,
         headers: canvas_headers,
       )
-
   end
 end
