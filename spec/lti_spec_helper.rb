@@ -31,10 +31,17 @@ RSpec.shared_context "lti_spec_helper", shared_context: :metadata do
       tc_profile_url: "http://www.example.com/api/lti/courses/2/tool_consumer_profile",
       launch_presentation_return_url: "http://www.example.com/courses/2/lti/registration_return",
       launch_presentation_document_target: "iframe",
-      oauth2_access_token_url: "http://www.example.com/api/lti/courses/2/authorize"
+      oauth2_access_token_url: "http://www.example.com/api/lti/courses/2/authorize",
     }
   end
-  let(:tool_proxy) { ToolProxy.create!(guid: tool_proxy_guid, tcp_url: "test.com", base_url: "tc.com", shared_secret: "secret") }
+  let(:tool_proxy) {
+    ToolProxy.create!(
+      guid: tool_proxy_guid,
+      tcp_url: "test.com",
+      base_url: "tc.com",
+      shared_secret: "secret"
+    )
+  }
   let(:tool_consumer_profile) do
     '{
        "lti_version":"LTI-2p0",
