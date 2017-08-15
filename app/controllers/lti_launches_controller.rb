@@ -5,7 +5,7 @@ class LtiLaunchesController < ApplicationController
   layout "client"
 
   skip_before_action :verify_authenticity_token
-  before_action :do_lti, except: [:test]
+  before_action :do_lti, except: [:launch]
 
   def index
     if current_application_instance.disabled_at
@@ -20,8 +20,7 @@ class LtiLaunchesController < ApplicationController
     render :index
   end
 
-  def test
-    user_not_authorized unless Rails.env.development?
+  def launch
     @launch_params = Lti::Launch.params(
       current_application_instance.lti_key,
       current_application_instance.lti_secret,
