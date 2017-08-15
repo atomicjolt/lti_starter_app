@@ -34,7 +34,7 @@ describe ApplicationController, type: :controller do
           {
             "launch_url" => @launch_url,
             "roles" => "Learner",
-          }
+          },
         )
         FactoryGirl.create(:user, email: params["lis_person_contact_email_primary"])
         post :index, params: params
@@ -51,9 +51,10 @@ describe ApplicationController, type: :controller do
             "launch_url" => @launch_url,
             "roles" => role,
             "lis_person_contact_email_primary" => email,
-          }
+          },
         )
-        FactoryGirl.create(:user,
+        FactoryGirl.create(
+          :user,
           email: email,
           lti_provider: params["tool_consumer_instance_guid"],
           lti_user_id: params["user_id"],
@@ -72,7 +73,7 @@ describe ApplicationController, type: :controller do
           @application_instance.lti_secret,
           {
             "launch_url" => @launch_url,
-          }
+          },
         )
         params[:context_title] = "invalid"
         post :index, params: params
