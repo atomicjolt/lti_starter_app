@@ -48,7 +48,6 @@ module Concerns
     def user_from_lti
       lti_user_id = params[:user_id]
       user = User.find_by(lti_provider: lti_provider, lti_user_id: lti_user_id)
-
       if user.blank?
         domain = params["custom_canvas_api_domain"] || Rails.application.secrets.application_main_domain
         user = _generate_new_lti_user(params)
