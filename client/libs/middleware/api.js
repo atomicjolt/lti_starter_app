@@ -1,7 +1,7 @@
 import api from '../api/api';
 import { DONE } from '../constants/wrapper';
 
-export function apiRequest(store, action) {
+export function apiRequest(store, action, shouldDispatch = true) {
   const state = store.getState();
   const updatedParams = {
     // Add the context id from the lti launch
@@ -21,7 +21,7 @@ export function apiRequest(store, action) {
     action.headers,
     action.timeout);
 
-  if (promise) {
+  if (promise && shouldDispatch) {
     promise.then(
       (response) => {
         store.dispatch({
