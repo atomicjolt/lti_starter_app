@@ -21,7 +21,7 @@ gem "pg"
 gem "attr_encrypted"
 gem "cancancan"
 gem "devise"
-gem "ims-lti", "~> 2.1.6" # IMS LTI tool consumers and providers
+gem "ims-lti", "~> 2.2" # IMS LTI tool consumers and providers
 gem "jwt", "~> 1.5.0" # json web token
 gem "lms-api", "~> 1.3.5"
 gem "omniauth"

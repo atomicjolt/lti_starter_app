@@ -116,7 +116,7 @@ GEM
       multi_xml (>= 0.5.2)
     hub (1.12.4)
     i18n (0.8.1)
-    ims-lti (2.1.6)
+    ims-lti (2.2.1)
       addressable (~> 2.5, >= 2.5.1)
       builder (~> 3.2)
       faraday (~> 0.8)
@@ -336,7 +336,7 @@ DEPENDENCIES
   heroku_secrets!
   httparty
   hub
-  ims-lti (~> 2.1.6)
+  ims-lti (~> 2.2)
   jwt (~> 1.5.0)
   launchy
   listen
@@ -373,4 +373,4 @@ DEPENDENCIES
   yajl-ruby
 
 BUNDLED WITH
-   1.14.6
+   1.15.3
