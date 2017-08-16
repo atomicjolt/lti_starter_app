@@ -56,13 +56,13 @@ describe ApplicationController, type: :controller do
         FactoryGirl.create(
           :user,
           email: email,
-          lti_provider: params["tool_consumer_instance_guid"],
-          lti_user_id: params["user_id"],
+          lti_provider: params[:tool_consumer_instance_guid],
+          lti_user_id: params[:user_id],
         )
         post :index, params: params
         expect(response).to have_http_status(200)
         user = User.find_by(email: email)
-        expect(user.role?(role, params["context_id"])).to be true
+        expect(user.role?(role, params[:context_id])).to be true
       end
     end
 
