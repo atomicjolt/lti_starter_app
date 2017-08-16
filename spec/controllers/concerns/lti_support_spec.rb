@@ -36,7 +36,7 @@ describe ApplicationController, type: :controller do
             "roles" => "Learner",
           },
         )
-        FactoryGirl.create(:user, email: params["lis_person_contact_email_primary"])
+        FactoryGirl.create(:user, email: params[:lis_person_contact_email_primary])
         post :index, params: params
         expect(response).to have_http_status(200)
         expect(response.body).to include("User:")
