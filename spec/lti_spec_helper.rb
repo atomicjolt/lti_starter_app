@@ -34,14 +34,14 @@ RSpec.shared_context "lti_spec_helper", shared_context: :metadata do
       oauth2_access_token_url: "http://www.example.com/api/lti/courses/2/authorize",
     }
   end
-  let(:tool_proxy) {
+  let(:tool_proxy) do
     ToolProxy.create!(
       guid: tool_proxy_guid,
       tcp_url: "test.com",
       base_url: "tc.com",
       shared_secret: "secret"
     )
-  }
+  end
   let(:tool_consumer_profile) do
     '{
        "lti_version":"LTI-2p0",
