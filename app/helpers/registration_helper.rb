@@ -30,6 +30,15 @@ module RegistrationHelper
     @_tool_consumer_profile ||= tool_proxy_registration_service.tool_consumer_profile
   end
 
+  # tool_consumer_profile
+  #
+  # Returns the tool consumer profile service
+  def tool_consumer_profile_service
+    @_tool_consumer_profile_service ||= IMS::LTI::Services::ToolConsumerProfileService.new(
+      tool_proxy_registration_service.tool_consumer_profile,
+    )
+  end
+
   # registration_request
   #
   # Returns a model representing the incoming registration

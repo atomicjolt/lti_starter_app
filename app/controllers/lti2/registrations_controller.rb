@@ -38,12 +38,10 @@ class Lti2::RegistrationsController < ApplicationController
   # tool consumer, fetches a custom tool consumer profile
   # from Canvas, and registers a tool proxy
   def create
-    tcp = tool_proxy_registration_service.tool_consumer_profile
-
-    logger.debug(tcp.as_json)
-
     if ToolProxy::REQUIRED_CAPABILITIES.present?
-      unless tcp.supports_capabilities?(*ToolProxy::REQUIRED_CAPABILITIES)
+      tcps = tool_consumer_profile_service
+      # logger.debug(tcps.tcp.as_json)
+      unless tcps.supports_capabilities?(*ToolProxy::REQUIRED_CAPABILITIES)
         redirect_to registration_failure_url("Missing required capabilities")
         return
       end

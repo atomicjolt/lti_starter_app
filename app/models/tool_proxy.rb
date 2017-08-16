@@ -28,7 +28,7 @@ class ToolProxy < ApplicationRecord
 
   TOOL_PROXY_FORMAT = "application/vnd.ims.lti.v2.toolproxy+json".freeze
   ENABLED_CAPABILITY = %w(Security.splitSecret).freeze
-  REQUIRED_CAPABILITIES = %w().freeze
+  REQUIRED_CAPABILITIES = %w(basic-lti-launch-request Canvas.placements.courseNavigation).freeze
 
   # Returns a tool proxy as a hash
   def as_json(*)

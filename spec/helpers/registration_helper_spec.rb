@@ -42,9 +42,16 @@ RSpec.describe RegistrationHelper, type: :helper do
       "ext_api_domain" => "example.com",
     }
   end
-  let(:url) { "http://www.url.com" }
-  let(:domain) { "test.host" }
-  let(:request) { double(url: url, request_parameters: request_parameters, domain: domain) }
+
+  describe "#tool_consumer_profile_service" do
+    it "returns the tool consumer profile service" do
+      helper.request.request_parameters = request_parameters
+      expect(
+        helper.tool_consumer_profile_service.
+          is_a?(IMS::LTI::Services::ToolConsumerProfileService),
+      ).to be true
+    end
+  end
 
   describe "#registration_request" do
     it "sets the launch url to the request url" do
@@ -54,7 +61,10 @@ RSpec.describe RegistrationHelper, type: :helper do
 
   describe "#tool_proxy_registration_service" do
     it "returns the tool proxy registration service" do
-      expect(helper.tool_proxy_registration_service.is_a?(IMS::LTI::Services::ToolProxyRegistrationService)).to be true
+      expect(
+        helper.tool_proxy_registration_service.
+          is_a?(IMS::LTI::Services::ToolProxyRegistrationService),
+      ).to be true
     end
   end
 
