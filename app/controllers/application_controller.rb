@@ -5,7 +5,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :current_application_instance, :current_bundle_instance
+  helper_method :current_application_instance,
+                :current_bundle_instance,
+                :canvas_url
 
   protected
 
@@ -14,6 +16,12 @@ class ApplicationController < ActionController::Base
       format.html { redirect_to root_url, alert: exception.message }
       format.json { render json: { error: exception.message }, status: :unauthorized }
     end
+  end
+
+  def canvas_url
+    @canvas_url ||= session[:canvas_url] ||
+      current_application_instance&.site&.url ||
+      current_bundle_instance&.site&.url
   end
 
   def configure_permitted_parameters
