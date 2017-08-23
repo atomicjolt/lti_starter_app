@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_application_instance,
                 :current_bundle_instance,
-                :canvas_url
+                :canvas_url,
+                :targeted_app_instance
 
   protected
 
@@ -62,6 +63,15 @@ class ApplicationController < ActionController::Base
     @is_lti_launch = true
     @canvas_url = current_application_instance.site.url
     @app_name = current_application_instance.application.client_application_name
+  end
+
+  def targeted_app_instance
+    key = request.subdomains.first
+    application = Application.find_by(key: key)
+    return nil if current_bundle_instance.nil?
+    current_bundle_instance.
+      application_instances.
+      find_by(application_id: application.id)
   end
 
 end
