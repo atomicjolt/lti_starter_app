@@ -10,7 +10,7 @@
   settings[:canvas_oauth_url]     = user_canvas_omniauth_authorize_url(subdomain: Application::AUTH)
   settings[:canvas_callback_url]  = user_canvas_omniauth_callback_url(subdomain: Application::AUTH)
   settings[:canvas_auth_required] = @canvas_auth_required
-  settings[:canvas_url] = @canvas_url
+  settings[:canvas_url] = canvas_url
 
   if signed_in?
     settings[:user_id]      = current_user.id
