@@ -63,6 +63,8 @@ Rails.application.configure do
     g.fixture_replacement :factory_girl, dir: "spec/factories"
   end
 
+  routes.default_url_options = { host: Rails.application.secrets.application_root_domain }
+
   # Example action_mailer config
   # config.action_mailer.smtp_settings = {
   #   address: "smtp.gmail.com",

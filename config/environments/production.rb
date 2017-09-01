@@ -89,6 +89,8 @@ Rails.application.configure do
   #
   config.webpack[:use_manifest] = true
 
+  routes.default_url_options = { host: Rails.application.secrets.application_root_domain }
+
   # Email server config
   # config.action_mailer.smtp_settings = {
   #   address: "smtp.gmail.com",
