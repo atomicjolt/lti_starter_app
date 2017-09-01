@@ -43,5 +43,7 @@ Rails.application.configure do
   #
   # Custom configuration
   #
+
+  routes.default_url_options = { host: "localhost" }
   config.action_mailer.default_url_options = { host: "localhost" }
 end
