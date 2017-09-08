@@ -35,13 +35,13 @@
     "OAuth"
   ],
   "dependencies": {
-    "del": "^2.2.2"
+    "del": "^3.0.0"
   },
   "devDependencies": {
     "enzyme": "^2.8.2",
     "nock": "^9.0.13",
     "sinon": "^2.3.2",
     "jest": "^20.0.4",
-    "nock": "^9.0.13"
+    "nock": "^9.0.14"
   }
 }
