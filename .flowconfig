@@ -1,9 +1,9 @@
 [ignore]
 .*/node_modules/.*
-.*/apps/.*
 [include]
 
 [libs]
+flow-typed
 
 [lints]
 

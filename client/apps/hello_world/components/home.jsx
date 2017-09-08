@@ -1,6 +1,7 @@
 // @flow
 
 import * as React from 'react';
+import { connect } from 'react-redux';
 import assets from '../libs/assets';
 import Auth from '../../../libs/canvas/components/canvas_authentication';
 import Selector from './content_item_select/selector';
@@ -15,7 +16,7 @@ type Props = {
   ltiMessageType: string,
 };
 
-function Home(props) :React.Node {
+function Home(props :Props) :React.Node {
   const img = assets('./images/atomicjolt.jpg');
 
   if (props.ltiMessageType === 'ContentItemSelectionRequest') {
@@ -32,6 +33,6 @@ function Home(props) :React.Node {
     </div>
   );
 
-};
+}
 
 export default connect(select)(Home);
