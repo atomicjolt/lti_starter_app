@@ -31,7 +31,7 @@ module.exports = class FlowCompilerPlugin {
   flowCheckTypes() {
     return new Promise((resolve) => {
       execFile(
-        require('flow-bin'),
+        require('flow-bin'), // eslint-disable-line global-require
         [this.app.path, '--show-all-errors'],
         (error, out) => {
           resolve({
