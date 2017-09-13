@@ -3,6 +3,7 @@ AllCops:
   Exclude:
     - db/schema.rb
     - config/initializers/devise.rb
+    - config/initializers/nuclear_secrets.rb
     - bin/*
     - config.ru
     - config/unicorn/*
