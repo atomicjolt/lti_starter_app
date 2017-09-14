@@ -11,7 +11,7 @@ NuclearSecrets.configure do |config|
     email_provider_password: String,
     assets_url: String,
     canvas_url: String,
-    canvas_developer_id: Fixnum,
+    canvas_developer_id: Integer,
     canvas_developer_key: String,
     auth0_client_id: String,
     auth0_client_secret: String,
