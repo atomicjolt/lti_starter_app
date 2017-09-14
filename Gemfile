@@ -47,6 +47,9 @@ gem "rack-cors", require: "rack/cors"
 # Paging
 gem "will_paginate"
 
+# Application secrets checker
+gem "nuclear_secrets"
+
 group :development do
   # UI
   gem "autoprefixer-rails"
@@ -70,9 +73,6 @@ group :development do
   gem "spring"
   gem "spring-watcher-listen"
   gem "web-console"
-
-  # Application secrets checker
-  gem "nuclear_secrets"
 end
 
 group :development, :test do
