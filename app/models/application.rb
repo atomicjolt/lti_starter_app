@@ -25,12 +25,17 @@ class Application < ActiveRecord::Base
 
   ADMIN = "admin".freeze
   AUTH = "auth".freeze
+  WELCOME = "welcome".freeze
   HELLOWORLD = "helloworld".freeze
 
-  def create_instance(site: nil, bundle_instance: nil)
-    application_instances.find_or_create_by(
+  def create_instance(site: nil, bundle_instance: nil, tenant: nil)
+    app = application_instances.find_or_create_by(
       site: site,
       bundle_instance: bundle_instance,
     )
+    if tenant.present?
+      app.update!(tenant: tenant)
+    end
+    app
   end
 end
