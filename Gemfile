@@ -47,6 +47,9 @@ gem "rack-cors", require: "rack/cors"
 # Paging
 gem "will_paginate"
 
+# Application secrets checker
+gem "nuclear_secrets"
+
 group :development do
   # UI
   gem "autoprefixer-rails"
