@@ -50,6 +50,7 @@ bundles = [
     name: "Hello World",
     key: Application::HELLOWORLD,
     applications: [Application::HELLOWORLD],
+    shared_tenant: true,
   },
 ]
 
@@ -166,8 +167,18 @@ applications.each do |attrs|
   setup_application_instances(application, application_instances)
 end
 
+## One Off
+Bundle.find_each do |bundle|
+  bundle_hash = bundles.detect { |b| b[:key] == bundle.key }
+  shared_tenant = bundle_hash[:shared_tenant] || bundle.shared_tenant == true
+  bundle.update(shared_tenant: shared_tenant)
+end
+## End One Off
+
 bundles.each do |attrs|
-  current_bundle = Bundle.find_or_create_by(name: attrs[:name], key: attrs[:key])
+  current_bundle = Bundle.find_or_create_by(key: attrs[:key])
+  current_bundle.update!(name: attrs[:name], shared_tenant: attrs[:shared_tenant] == true)
+
   attrs[:applications].reduce(current_bundle) do |bundle, key|
     app = Application.find_by!(key: key)
     bundle.application_bundles.find_or_create_by(bundle_id: bundle.id, application_id: app.id)

@@ -12,11 +12,19 @@ class BundleInstance < ApplicationRecord
 
   def create_application_instances
     bundle&.applications&.map do |app|
-      app.create_instance(site: site, bundle_instance: self)
+      app.create_instance(
+        site: site,
+        bundle_instance: self,
+        tenant: bundle.shared_tenant ? tenant : nil,
+      )
     end
   end
 
   def fix_entity_key
     self.entity_key = BundleInstance.entity_key_from_url(entity_key)
+  end
+
+  def tenant
+    "#{site.key}-#{bundle.key}"
   end
 end
