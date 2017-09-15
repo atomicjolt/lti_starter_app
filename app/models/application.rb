@@ -25,7 +25,6 @@ class Application < ActiveRecord::Base
 
   ADMIN = "admin".freeze
   AUTH = "auth".freeze
-  WELCOME = "welcome".freeze
   HELLOWORLD = "helloworld".freeze
 
   def create_instance(site: nil, bundle_instance: nil, tenant: nil)

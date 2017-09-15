@@ -176,11 +176,8 @@ end
 ## End One Off
 
 bundles.each do |attrs|
-  current_bundle = Bundle.find_or_create_by(
-    name: attrs[:name],
-    key: attrs[:key],
-    shared_tenant: attrs[:shared_tenant] == true,
-  )
+  current_bundle = Bundle.find_or_create_by(key: attrs[:key])
+  current_bundle.update!(name: attrs[:name], shared_tenant: attrs[:shared_tenant] == true)
 
   attrs[:applications].reduce(current_bundle) do |bundle, key|
     app = Application.find_by!(key: key)
