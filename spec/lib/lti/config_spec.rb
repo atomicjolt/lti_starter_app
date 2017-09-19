@@ -261,6 +261,48 @@ RSpec.describe Lti::Config do
       expect(xml).to eq(account_navigation_xml)
     end
 
+    it "generates extended configuration xml for an LTI tool with a post grades placement" do
+      icon_url = "http://www.example.com/button_image.png"
+      post_grades = {
+        text: "post grades",
+        visibility: "admins",
+        default: "enabled",
+        enabled: true,
+        canvas_icon_class: "icon-lti",
+        icon_url: icon_url,
+        url: @launch_url,
+        label: "post grades",
+      }
+      args = @basic_config.merge({ post_grades: post_grades })
+      xml = described_class.xml(args)
+      expect(xml).to be_present
+      post_grades_xml = <<~XML
+        <?xml version="1.0" encoding="UTF-8"?>
+        <cartridge_basiclti_link xmlns="http://www.imsglobal.org/xsd/imslticc_v1p0" xmlns:blti="http://www.imsglobal.org/xsd/imsbasiclti_v1p0" xmlns:lticm="http://www.imsglobal.org/xsd/imslticm_v1p0" xmlns:lticp="http://www.imsglobal.org/xsd/imslticp_v1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imslticc_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticc_v1p0.xsd http://www.imsglobal.org/xsd/imsbasiclti_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0p1.xsd http://www.imsglobal.org/xsd/imslticm_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd http://www.imsglobal.org/xsd/imslticp_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd">
+          <blti:title>#{@basic_config[:title]}</blti:title>
+          <blti:description>#{@basic_config[:description]}</blti:description>
+          <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
+          <blti:icon>#{@icon_url}</blti:icon>
+          <blti:extensions platform="canvas.instructure.com">
+            <lticm:property name="domain">www.example.com</lticm:property>
+            <lticm:options name="post_grades">
+              <lticm:property name="canvas_icon_class">icon-lti</lticm:property>
+              <lticm:property name="default">enabled</lticm:property>
+              <lticm:property name="enabled">true</lticm:property>
+              <lticm:property name="icon_url">#{post_grades[:icon_url]}</lticm:property>
+              <lticm:property name="label">post grades</lticm:property>
+              <lticm:property name="text">#{post_grades[:text]}</lticm:property>
+              <lticm:property name="url">#{@launch_url}</lticm:property>
+              <lticm:property name="visibility">admins</lticm:property>
+            </lticm:options>
+            <lticm:property name="privacy_level">public</lticm:property>
+          </blti:extensions>
+        </cartridge_basiclti_link>
+      XML
+      expect(xml).to eq(post_grades_xml)
+    end
+
     it "generates xml with the given title" do
       title = "LTI Tool Title"
       args = {

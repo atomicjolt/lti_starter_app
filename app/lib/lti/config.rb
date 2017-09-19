@@ -19,6 +19,7 @@ module Lti
       canvas_ext_config = editor_button_from_args(canvas_ext_config, args)
       canvas_ext_config = assignment_selection_from_args(canvas_ext_config, args)
       canvas_ext_config = link_selection_from_args(canvas_ext_config, args)
+      canvas_ext_config = post_grades_from_args(canvas_ext_config, args)
 
       tc.set_ext_params("canvas.instructure.com", canvas_ext_config.stringify_keys)
       tc
@@ -67,6 +68,13 @@ module Lti
     def self.account_navigation_from_args(config = {}, args = {})
       if args[:account_navigation].present?
         default_configs_from_args!(args, config, :account_navigation)
+      end
+      config
+    end
+
+    def self.post_grades_from_args(config = {}, args = {})
+      if args[:post_grades].present?
+        default_configs_from_args!(args, config, :post_grades)
       end
       config
     end
