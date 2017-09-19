@@ -1,5 +1,33 @@
 # https://canvas.instructure.com/doc/api/tools_xml.html
 # LTI gem docs: https://github.com/instructure/ims-lti
+
+# These are the available LTI placements in Canvas.
+# Placements that are implemented:
+# account_navigation
+# course_navigation
+# editor_button
+# global_navigation
+# link_selection
+# post_grades
+# resource_selection
+# assignment_selection
+# user_navigation
+
+# Not yet implemented
+# assignment_configuration
+# assignment_menu
+# collaboration
+# course_home_sub_navigation
+# course_settings_sub_navigation
+# discussion_topic_menu
+# file_menu
+# homework_submission
+# migration_selection
+# module_menu
+# quiz_menu
+# tool_configuration
+# wiki_page_menu
+
 module Lti
 
   class Config
@@ -19,6 +47,8 @@ module Lti
       canvas_ext_config = editor_button_from_args(canvas_ext_config, args)
       canvas_ext_config = assignment_selection_from_args(canvas_ext_config, args)
       canvas_ext_config = link_selection_from_args(canvas_ext_config, args)
+      canvas_ext_config = user_navigation_from_args(canvas_ext_config, args)
+      canvas_ext_config = global_navigation_from_args(canvas_ext_config, args)
 
       tc.set_ext_params("canvas.instructure.com", canvas_ext_config.stringify_keys)
       tc
@@ -53,6 +83,20 @@ module Lti
         config["resource_selection"] = args[:resource_selection].stringify_keys
         default_configs_from_args!(args, config, :resource_selection)
         default_dimensions!(config, "resource_selection")
+      end
+      config
+    end
+
+    def self.global_navigation_from_args(config = {}, args = {})
+      if args[:global_navigation].present?
+        default_configs_from_args!(args, config, :global_navigation)
+      end
+      config
+    end
+
+    def self.user_navigation_from_args(config = {}, args = {})
+      if args[:user_navigation].present?
+        default_configs_from_args!(args, config, :user_navigation)
       end
       config
     end
