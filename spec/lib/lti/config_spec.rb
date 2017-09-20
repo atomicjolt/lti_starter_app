@@ -387,6 +387,552 @@ RSpec.describe Lti::Config do
       expect(xml).to eq(post_grades_xml)
     end
 
+    it "generates extended configuration xml for an LTI tool with a assignment_configuration placement" do
+      icon_url = "http://www.example.com/button_image.png"
+      assignment_configuration = {
+        text: "user level tool",
+        visibility: "members",
+        default: "enabled",
+        enabled: true,
+        canvas_icon_class: "icon-lti",
+        icon_url: icon_url,
+        url: @launch_url,
+        windowTarget: "_blank",
+      }
+      args = @basic_config.merge({ assignment_configuration: assignment_configuration })
+      xml = described_class.xml(args)
+      expect(xml).to be_present
+      assignment_configuration_xml = <<~XML
+        <?xml version="1.0" encoding="UTF-8"?>
+        <cartridge_basiclti_link xmlns="http://www.imsglobal.org/xsd/imslticc_v1p0" xmlns:blti="http://www.imsglobal.org/xsd/imsbasiclti_v1p0" xmlns:lticm="http://www.imsglobal.org/xsd/imslticm_v1p0" xmlns:lticp="http://www.imsglobal.org/xsd/imslticp_v1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imslticc_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticc_v1p0.xsd http://www.imsglobal.org/xsd/imsbasiclti_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0p1.xsd http://www.imsglobal.org/xsd/imslticm_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd http://www.imsglobal.org/xsd/imslticp_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd">
+          <blti:title>#{@basic_config[:title]}</blti:title>
+          <blti:description>#{@basic_config[:description]}</blti:description>
+          <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
+          <blti:icon>#{@icon_url}</blti:icon>
+          <blti:extensions platform="canvas.instructure.com">
+            <lticm:options name="assignment_configuration">
+              <lticm:property name="canvas_icon_class">icon-lti</lticm:property>
+              <lticm:property name="default">enabled</lticm:property>
+              <lticm:property name="enabled">true</lticm:property>
+              <lticm:property name="icon_url">#{assignment_configuration[:icon_url]}</lticm:property>
+              <lticm:property name="text">#{assignment_configuration[:text]}</lticm:property>
+              <lticm:property name="url">#{@launch_url}</lticm:property>
+              <lticm:property name="visibility">members</lticm:property>
+              <lticm:property name="windowTarget">_blank</lticm:property>
+            </lticm:options>
+            <lticm:property name="domain">www.example.com</lticm:property>
+            <lticm:property name="privacy_level">public</lticm:property>
+          </blti:extensions>
+        </cartridge_basiclti_link>
+      XML
+      expect(xml).to eq(assignment_configuration_xml)
+    end
+
+    it "generates extended configuration xml for an LTI tool with a assignment_menu placement" do
+      icon_url = "http://www.example.com/button_image.png"
+      assignment_menu = {
+        text: "user level tool",
+        visibility: "members",
+        default: "enabled",
+        enabled: true,
+        canvas_icon_class: "icon-lti",
+        icon_url: icon_url,
+        url: @launch_url,
+        windowTarget: "_blank",
+      }
+      args = @basic_config.merge({ assignment_menu: assignment_menu })
+      xml = described_class.xml(args)
+      expect(xml).to be_present
+      assignment_menu_xml = <<~XML
+        <?xml version="1.0" encoding="UTF-8"?>
+        <cartridge_basiclti_link xmlns="http://www.imsglobal.org/xsd/imslticc_v1p0" xmlns:blti="http://www.imsglobal.org/xsd/imsbasiclti_v1p0" xmlns:lticm="http://www.imsglobal.org/xsd/imslticm_v1p0" xmlns:lticp="http://www.imsglobal.org/xsd/imslticp_v1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imslticc_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticc_v1p0.xsd http://www.imsglobal.org/xsd/imsbasiclti_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0p1.xsd http://www.imsglobal.org/xsd/imslticm_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd http://www.imsglobal.org/xsd/imslticp_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd">
+          <blti:title>#{@basic_config[:title]}</blti:title>
+          <blti:description>#{@basic_config[:description]}</blti:description>
+          <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
+          <blti:icon>#{@icon_url}</blti:icon>
+          <blti:extensions platform="canvas.instructure.com">
+            <lticm:options name="assignment_menu">
+              <lticm:property name="canvas_icon_class">icon-lti</lticm:property>
+              <lticm:property name="default">enabled</lticm:property>
+              <lticm:property name="enabled">true</lticm:property>
+              <lticm:property name="icon_url">#{assignment_menu[:icon_url]}</lticm:property>
+              <lticm:property name="text">#{assignment_menu[:text]}</lticm:property>
+              <lticm:property name="url">#{@launch_url}</lticm:property>
+              <lticm:property name="visibility">members</lticm:property>
+              <lticm:property name="windowTarget">_blank</lticm:property>
+            </lticm:options>
+            <lticm:property name="domain">www.example.com</lticm:property>
+            <lticm:property name="privacy_level">public</lticm:property>
+          </blti:extensions>
+        </cartridge_basiclti_link>
+      XML
+      expect(xml).to eq(assignment_menu_xml)
+    end
+
+    it "generates extended configuration xml for an LTI tool with a collaboration placement" do
+      icon_url = "http://www.example.com/button_image.png"
+      collaboration = {
+        text: "user level tool",
+        visibility: "members",
+        default: "enabled",
+        enabled: true,
+        canvas_icon_class: "icon-lti",
+        icon_url: icon_url,
+        url: @launch_url,
+        windowTarget: "_blank",
+      }
+      args = @basic_config.merge({ collaboration: collaboration })
+      xml = described_class.xml(args)
+      expect(xml).to be_present
+      collaboration_xml = <<~XML
+        <?xml version="1.0" encoding="UTF-8"?>
+        <cartridge_basiclti_link xmlns="http://www.imsglobal.org/xsd/imslticc_v1p0" xmlns:blti="http://www.imsglobal.org/xsd/imsbasiclti_v1p0" xmlns:lticm="http://www.imsglobal.org/xsd/imslticm_v1p0" xmlns:lticp="http://www.imsglobal.org/xsd/imslticp_v1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imslticc_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticc_v1p0.xsd http://www.imsglobal.org/xsd/imsbasiclti_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0p1.xsd http://www.imsglobal.org/xsd/imslticm_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd http://www.imsglobal.org/xsd/imslticp_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd">
+          <blti:title>#{@basic_config[:title]}</blti:title>
+          <blti:description>#{@basic_config[:description]}</blti:description>
+          <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
+          <blti:icon>#{@icon_url}</blti:icon>
+          <blti:extensions platform="canvas.instructure.com">
+            <lticm:options name="collaboration">
+              <lticm:property name="canvas_icon_class">icon-lti</lticm:property>
+              <lticm:property name="default">enabled</lticm:property>
+              <lticm:property name="enabled">true</lticm:property>
+              <lticm:property name="icon_url">#{collaboration[:icon_url]}</lticm:property>
+              <lticm:property name="text">#{collaboration[:text]}</lticm:property>
+              <lticm:property name="url">#{@launch_url}</lticm:property>
+              <lticm:property name="visibility">members</lticm:property>
+              <lticm:property name="windowTarget">_blank</lticm:property>
+            </lticm:options>
+            <lticm:property name="domain">www.example.com</lticm:property>
+            <lticm:property name="privacy_level">public</lticm:property>
+          </blti:extensions>
+        </cartridge_basiclti_link>
+      XML
+      expect(xml).to eq(collaboration_xml)
+    end
+
+    it "generates extended configuration xml for an LTI tool with a course_home_sub_navigation placement" do
+      icon_url = "http://www.example.com/button_image.png"
+      course_home_sub_navigation = {
+        text: "user level tool",
+        visibility: "members",
+        default: "enabled",
+        enabled: true,
+        canvas_icon_class: "icon-lti",
+        icon_url: icon_url,
+        url: @launch_url,
+        windowTarget: "_blank",
+      }
+      args = @basic_config.merge({ course_home_sub_navigation: course_home_sub_navigation })
+      xml = described_class.xml(args)
+      expect(xml).to be_present
+      course_home_sub_navigation_xml = <<~XML
+        <?xml version="1.0" encoding="UTF-8"?>
+        <cartridge_basiclti_link xmlns="http://www.imsglobal.org/xsd/imslticc_v1p0" xmlns:blti="http://www.imsglobal.org/xsd/imsbasiclti_v1p0" xmlns:lticm="http://www.imsglobal.org/xsd/imslticm_v1p0" xmlns:lticp="http://www.imsglobal.org/xsd/imslticp_v1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imslticc_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticc_v1p0.xsd http://www.imsglobal.org/xsd/imsbasiclti_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0p1.xsd http://www.imsglobal.org/xsd/imslticm_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd http://www.imsglobal.org/xsd/imslticp_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd">
+          <blti:title>#{@basic_config[:title]}</blti:title>
+          <blti:description>#{@basic_config[:description]}</blti:description>
+          <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
+          <blti:icon>#{@icon_url}</blti:icon>
+          <blti:extensions platform="canvas.instructure.com">
+            <lticm:options name="course_home_sub_navigation">
+              <lticm:property name="canvas_icon_class">icon-lti</lticm:property>
+              <lticm:property name="default">enabled</lticm:property>
+              <lticm:property name="enabled">true</lticm:property>
+              <lticm:property name="icon_url">#{course_home_sub_navigation[:icon_url]}</lticm:property>
+              <lticm:property name="text">#{course_home_sub_navigation[:text]}</lticm:property>
+              <lticm:property name="url">#{@launch_url}</lticm:property>
+              <lticm:property name="visibility">members</lticm:property>
+              <lticm:property name="windowTarget">_blank</lticm:property>
+            </lticm:options>
+            <lticm:property name="domain">www.example.com</lticm:property>
+            <lticm:property name="privacy_level">public</lticm:property>
+          </blti:extensions>
+        </cartridge_basiclti_link>
+      XML
+      expect(xml).to eq(course_home_sub_navigation_xml)
+    end
+
+    it "generates extended configuration xml for an LTI tool with a course_settings_sub_navigation placement" do
+      icon_url = "http://www.example.com/button_image.png"
+      course_settings_sub_navigation = {
+        text: "user level tool",
+        visibility: "members",
+        default: "enabled",
+        enabled: true,
+        canvas_icon_class: "icon-lti",
+        icon_url: icon_url,
+        url: @launch_url,
+        windowTarget: "_blank",
+      }
+      args = @basic_config.merge({ course_settings_sub_navigation: course_settings_sub_navigation })
+      xml = described_class.xml(args)
+      expect(xml).to be_present
+      course_settings_sub_navigation_xml = <<~XML
+        <?xml version="1.0" encoding="UTF-8"?>
+        <cartridge_basiclti_link xmlns="http://www.imsglobal.org/xsd/imslticc_v1p0" xmlns:blti="http://www.imsglobal.org/xsd/imsbasiclti_v1p0" xmlns:lticm="http://www.imsglobal.org/xsd/imslticm_v1p0" xmlns:lticp="http://www.imsglobal.org/xsd/imslticp_v1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imslticc_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticc_v1p0.xsd http://www.imsglobal.org/xsd/imsbasiclti_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0p1.xsd http://www.imsglobal.org/xsd/imslticm_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd http://www.imsglobal.org/xsd/imslticp_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd">
+          <blti:title>#{@basic_config[:title]}</blti:title>
+          <blti:description>#{@basic_config[:description]}</blti:description>
+          <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
+          <blti:icon>#{@icon_url}</blti:icon>
+          <blti:extensions platform="canvas.instructure.com">
+            <lticm:options name="course_settings_sub_navigation">
+              <lticm:property name="canvas_icon_class">icon-lti</lticm:property>
+              <lticm:property name="default">enabled</lticm:property>
+              <lticm:property name="enabled">true</lticm:property>
+              <lticm:property name="icon_url">#{course_settings_sub_navigation[:icon_url]}</lticm:property>
+              <lticm:property name="text">#{course_settings_sub_navigation[:text]}</lticm:property>
+              <lticm:property name="url">#{@launch_url}</lticm:property>
+              <lticm:property name="visibility">members</lticm:property>
+              <lticm:property name="windowTarget">_blank</lticm:property>
+            </lticm:options>
+            <lticm:property name="domain">www.example.com</lticm:property>
+            <lticm:property name="privacy_level">public</lticm:property>
+          </blti:extensions>
+        </cartridge_basiclti_link>
+      XML
+      expect(xml).to eq(course_settings_sub_navigation_xml)
+    end
+
+    it "generates extended configuration xml for an LTI tool with a discussion_topic_menu placement" do
+      icon_url = "http://www.example.com/button_image.png"
+      discussion_topic_menu = {
+        text: "user level tool",
+        visibility: "members",
+        default: "enabled",
+        enabled: true,
+        canvas_icon_class: "icon-lti",
+        icon_url: icon_url,
+        url: @launch_url,
+        windowTarget: "_blank",
+      }
+      args = @basic_config.merge({ discussion_topic_menu: discussion_topic_menu })
+      xml = described_class.xml(args)
+      expect(xml).to be_present
+      discussion_topic_menu_xml = <<~XML
+        <?xml version="1.0" encoding="UTF-8"?>
+        <cartridge_basiclti_link xmlns="http://www.imsglobal.org/xsd/imslticc_v1p0" xmlns:blti="http://www.imsglobal.org/xsd/imsbasiclti_v1p0" xmlns:lticm="http://www.imsglobal.org/xsd/imslticm_v1p0" xmlns:lticp="http://www.imsglobal.org/xsd/imslticp_v1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imslticc_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticc_v1p0.xsd http://www.imsglobal.org/xsd/imsbasiclti_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0p1.xsd http://www.imsglobal.org/xsd/imslticm_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd http://www.imsglobal.org/xsd/imslticp_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd">
+          <blti:title>#{@basic_config[:title]}</blti:title>
+          <blti:description>#{@basic_config[:description]}</blti:description>
+          <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
+          <blti:icon>#{@icon_url}</blti:icon>
+          <blti:extensions platform="canvas.instructure.com">
+            <lticm:options name="discussion_topic_menu">
+              <lticm:property name="canvas_icon_class">icon-lti</lticm:property>
+              <lticm:property name="default">enabled</lticm:property>
+              <lticm:property name="enabled">true</lticm:property>
+              <lticm:property name="icon_url">#{discussion_topic_menu[:icon_url]}</lticm:property>
+              <lticm:property name="text">#{discussion_topic_menu[:text]}</lticm:property>
+              <lticm:property name="url">#{@launch_url}</lticm:property>
+              <lticm:property name="visibility">members</lticm:property>
+              <lticm:property name="windowTarget">_blank</lticm:property>
+            </lticm:options>
+            <lticm:property name="domain">www.example.com</lticm:property>
+            <lticm:property name="privacy_level">public</lticm:property>
+          </blti:extensions>
+        </cartridge_basiclti_link>
+      XML
+      expect(xml).to eq(discussion_topic_menu_xml)
+    end
+
+    it "generates extended configuration xml for an LTI tool with a file_menu placement" do
+      icon_url = "http://www.example.com/button_image.png"
+      file_menu = {
+        text: "user level tool",
+        visibility: "members",
+        default: "enabled",
+        enabled: true,
+        canvas_icon_class: "icon-lti",
+        icon_url: icon_url,
+        url: @launch_url,
+        windowTarget: "_blank",
+      }
+      args = @basic_config.merge({ file_menu: file_menu })
+      xml = described_class.xml(args)
+      expect(xml).to be_present
+      file_menu_xml = <<~XML
+        <?xml version="1.0" encoding="UTF-8"?>
+        <cartridge_basiclti_link xmlns="http://www.imsglobal.org/xsd/imslticc_v1p0" xmlns:blti="http://www.imsglobal.org/xsd/imsbasiclti_v1p0" xmlns:lticm="http://www.imsglobal.org/xsd/imslticm_v1p0" xmlns:lticp="http://www.imsglobal.org/xsd/imslticp_v1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imslticc_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticc_v1p0.xsd http://www.imsglobal.org/xsd/imsbasiclti_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0p1.xsd http://www.imsglobal.org/xsd/imslticm_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd http://www.imsglobal.org/xsd/imslticp_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd">
+          <blti:title>#{@basic_config[:title]}</blti:title>
+          <blti:description>#{@basic_config[:description]}</blti:description>
+          <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
+          <blti:icon>#{@icon_url}</blti:icon>
+          <blti:extensions platform="canvas.instructure.com">
+            <lticm:property name="domain">www.example.com</lticm:property>
+            <lticm:options name="file_menu">
+              <lticm:property name="canvas_icon_class">icon-lti</lticm:property>
+              <lticm:property name="default">enabled</lticm:property>
+              <lticm:property name="enabled">true</lticm:property>
+              <lticm:property name="icon_url">#{file_menu[:icon_url]}</lticm:property>
+              <lticm:property name="text">#{file_menu[:text]}</lticm:property>
+              <lticm:property name="url">#{@launch_url}</lticm:property>
+              <lticm:property name="visibility">members</lticm:property>
+              <lticm:property name="windowTarget">_blank</lticm:property>
+            </lticm:options>
+            <lticm:property name="privacy_level">public</lticm:property>
+          </blti:extensions>
+        </cartridge_basiclti_link>
+      XML
+      expect(xml).to eq(file_menu_xml)
+    end
+
+    it "generates extended configuration xml for an LTI tool with a homework_submission placement" do
+      icon_url = "http://www.example.com/button_image.png"
+      homework_submission = {
+        text: "user level tool",
+        visibility: "members",
+        default: "enabled",
+        enabled: true,
+        canvas_icon_class: "icon-lti",
+        icon_url: icon_url,
+        url: @launch_url,
+        windowTarget: "_blank",
+      }
+      args = @basic_config.merge({ homework_submission: homework_submission })
+      xml = described_class.xml(args)
+      expect(xml).to be_present
+      homework_submission_xml = <<~XML
+        <?xml version="1.0" encoding="UTF-8"?>
+        <cartridge_basiclti_link xmlns="http://www.imsglobal.org/xsd/imslticc_v1p0" xmlns:blti="http://www.imsglobal.org/xsd/imsbasiclti_v1p0" xmlns:lticm="http://www.imsglobal.org/xsd/imslticm_v1p0" xmlns:lticp="http://www.imsglobal.org/xsd/imslticp_v1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imslticc_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticc_v1p0.xsd http://www.imsglobal.org/xsd/imsbasiclti_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0p1.xsd http://www.imsglobal.org/xsd/imslticm_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd http://www.imsglobal.org/xsd/imslticp_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd">
+          <blti:title>#{@basic_config[:title]}</blti:title>
+          <blti:description>#{@basic_config[:description]}</blti:description>
+          <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
+          <blti:icon>#{@icon_url}</blti:icon>
+          <blti:extensions platform="canvas.instructure.com">
+            <lticm:property name="domain">www.example.com</lticm:property>
+            <lticm:options name="homework_submission">
+              <lticm:property name="canvas_icon_class">icon-lti</lticm:property>
+              <lticm:property name="default">enabled</lticm:property>
+              <lticm:property name="enabled">true</lticm:property>
+              <lticm:property name="icon_url">#{homework_submission[:icon_url]}</lticm:property>
+              <lticm:property name="text">#{homework_submission[:text]}</lticm:property>
+              <lticm:property name="url">#{@launch_url}</lticm:property>
+              <lticm:property name="visibility">members</lticm:property>
+              <lticm:property name="windowTarget">_blank</lticm:property>
+            </lticm:options>
+            <lticm:property name="privacy_level">public</lticm:property>
+          </blti:extensions>
+        </cartridge_basiclti_link>
+      XML
+      expect(xml).to eq(homework_submission_xml)
+    end
+
+    it "generates extended configuration xml for an LTI tool with a migration_selection placement" do
+      icon_url = "http://www.example.com/button_image.png"
+      migration_selection = {
+        text: "user level tool",
+        visibility: "members",
+        default: "enabled",
+        enabled: true,
+        canvas_icon_class: "icon-lti",
+        icon_url: icon_url,
+        url: @launch_url,
+        windowTarget: "_blank",
+      }
+      args = @basic_config.merge({ migration_selection: migration_selection })
+      xml = described_class.xml(args)
+      expect(xml).to be_present
+      migration_selection_xml = <<~XML
+        <?xml version="1.0" encoding="UTF-8"?>
+        <cartridge_basiclti_link xmlns="http://www.imsglobal.org/xsd/imslticc_v1p0" xmlns:blti="http://www.imsglobal.org/xsd/imsbasiclti_v1p0" xmlns:lticm="http://www.imsglobal.org/xsd/imslticm_v1p0" xmlns:lticp="http://www.imsglobal.org/xsd/imslticp_v1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imslticc_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticc_v1p0.xsd http://www.imsglobal.org/xsd/imsbasiclti_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0p1.xsd http://www.imsglobal.org/xsd/imslticm_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd http://www.imsglobal.org/xsd/imslticp_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd">
+          <blti:title>#{@basic_config[:title]}</blti:title>
+          <blti:description>#{@basic_config[:description]}</blti:description>
+          <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
+          <blti:icon>#{@icon_url}</blti:icon>
+          <blti:extensions platform="canvas.instructure.com">
+            <lticm:property name="domain">www.example.com</lticm:property>
+            <lticm:options name="migration_selection">
+              <lticm:property name="canvas_icon_class">icon-lti</lticm:property>
+              <lticm:property name="default">enabled</lticm:property>
+              <lticm:property name="enabled">true</lticm:property>
+              <lticm:property name="icon_url">#{migration_selection[:icon_url]}</lticm:property>
+              <lticm:property name="text">#{migration_selection[:text]}</lticm:property>
+              <lticm:property name="url">#{@launch_url}</lticm:property>
+              <lticm:property name="visibility">members</lticm:property>
+              <lticm:property name="windowTarget">_blank</lticm:property>
+            </lticm:options>
+            <lticm:property name="privacy_level">public</lticm:property>
+          </blti:extensions>
+        </cartridge_basiclti_link>
+      XML
+      expect(xml).to eq(migration_selection_xml)
+    end
+
+    it "generates extended configuration xml for an LTI tool with a module_menu placement" do
+      icon_url = "http://www.example.com/button_image.png"
+      module_menu = {
+        text: "user level tool",
+        visibility: "members",
+        default: "enabled",
+        enabled: true,
+        canvas_icon_class: "icon-lti",
+        icon_url: icon_url,
+        url: @launch_url,
+        windowTarget: "_blank",
+      }
+      args = @basic_config.merge({ module_menu: module_menu })
+      xml = described_class.xml(args)
+      expect(xml).to be_present
+      module_menu_xml = <<~XML
+        <?xml version="1.0" encoding="UTF-8"?>
+        <cartridge_basiclti_link xmlns="http://www.imsglobal.org/xsd/imslticc_v1p0" xmlns:blti="http://www.imsglobal.org/xsd/imsbasiclti_v1p0" xmlns:lticm="http://www.imsglobal.org/xsd/imslticm_v1p0" xmlns:lticp="http://www.imsglobal.org/xsd/imslticp_v1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imslticc_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticc_v1p0.xsd http://www.imsglobal.org/xsd/imsbasiclti_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0p1.xsd http://www.imsglobal.org/xsd/imslticm_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd http://www.imsglobal.org/xsd/imslticp_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd">
+          <blti:title>#{@basic_config[:title]}</blti:title>
+          <blti:description>#{@basic_config[:description]}</blti:description>
+          <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
+          <blti:icon>#{@icon_url}</blti:icon>
+          <blti:extensions platform="canvas.instructure.com">
+            <lticm:property name="domain">www.example.com</lticm:property>
+            <lticm:options name="module_menu">
+              <lticm:property name="canvas_icon_class">icon-lti</lticm:property>
+              <lticm:property name="default">enabled</lticm:property>
+              <lticm:property name="enabled">true</lticm:property>
+              <lticm:property name="icon_url">#{module_menu[:icon_url]}</lticm:property>
+              <lticm:property name="text">#{module_menu[:text]}</lticm:property>
+              <lticm:property name="url">#{@launch_url}</lticm:property>
+              <lticm:property name="visibility">members</lticm:property>
+              <lticm:property name="windowTarget">_blank</lticm:property>
+            </lticm:options>
+            <lticm:property name="privacy_level">public</lticm:property>
+          </blti:extensions>
+        </cartridge_basiclti_link>
+      XML
+      expect(xml).to eq(module_menu_xml)
+    end
+
+    it "generates extended configuration xml for an LTI tool with a quiz_menu placement" do
+      icon_url = "http://www.example.com/button_image.png"
+      quiz_menu = {
+        text: "user level tool",
+        visibility: "members",
+        default: "enabled",
+        enabled: true,
+        canvas_icon_class: "icon-lti",
+        icon_url: icon_url,
+        url: @launch_url,
+        windowTarget: "_blank",
+      }
+      args = @basic_config.merge({ quiz_menu: quiz_menu })
+      xml = described_class.xml(args)
+      expect(xml).to be_present
+      quiz_menu_xml = <<~XML
+        <?xml version="1.0" encoding="UTF-8"?>
+        <cartridge_basiclti_link xmlns="http://www.imsglobal.org/xsd/imslticc_v1p0" xmlns:blti="http://www.imsglobal.org/xsd/imsbasiclti_v1p0" xmlns:lticm="http://www.imsglobal.org/xsd/imslticm_v1p0" xmlns:lticp="http://www.imsglobal.org/xsd/imslticp_v1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imslticc_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticc_v1p0.xsd http://www.imsglobal.org/xsd/imsbasiclti_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0p1.xsd http://www.imsglobal.org/xsd/imslticm_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd http://www.imsglobal.org/xsd/imslticp_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd">
+          <blti:title>#{@basic_config[:title]}</blti:title>
+          <blti:description>#{@basic_config[:description]}</blti:description>
+          <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
+          <blti:icon>#{@icon_url}</blti:icon>
+          <blti:extensions platform="canvas.instructure.com">
+            <lticm:property name="domain">www.example.com</lticm:property>
+            <lticm:property name="privacy_level">public</lticm:property>
+            <lticm:options name="quiz_menu">
+              <lticm:property name="canvas_icon_class">icon-lti</lticm:property>
+              <lticm:property name="default">enabled</lticm:property>
+              <lticm:property name="enabled">true</lticm:property>
+              <lticm:property name="icon_url">#{quiz_menu[:icon_url]}</lticm:property>
+              <lticm:property name="text">#{quiz_menu[:text]}</lticm:property>
+              <lticm:property name="url">#{@launch_url}</lticm:property>
+              <lticm:property name="visibility">members</lticm:property>
+              <lticm:property name="windowTarget">_blank</lticm:property>
+            </lticm:options>
+          </blti:extensions>
+        </cartridge_basiclti_link>
+      XML
+      expect(xml).to eq(quiz_menu_xml)
+    end
+
+    it "generates extended configuration xml for an LTI tool with a tool_configuration placement" do
+      icon_url = "http://www.example.com/button_image.png"
+      tool_configuration = {
+        text: "user level tool",
+        visibility: "members",
+        default: "enabled",
+        enabled: true,
+        canvas_icon_class: "icon-lti",
+        icon_url: icon_url,
+        url: @launch_url,
+        windowTarget: "_blank",
+      }
+      args = @basic_config.merge({ tool_configuration: tool_configuration })
+      xml = described_class.xml(args)
+      expect(xml).to be_present
+      tool_configuration_xml = <<~XML
+        <?xml version="1.0" encoding="UTF-8"?>
+        <cartridge_basiclti_link xmlns="http://www.imsglobal.org/xsd/imslticc_v1p0" xmlns:blti="http://www.imsglobal.org/xsd/imsbasiclti_v1p0" xmlns:lticm="http://www.imsglobal.org/xsd/imslticm_v1p0" xmlns:lticp="http://www.imsglobal.org/xsd/imslticp_v1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imslticc_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticc_v1p0.xsd http://www.imsglobal.org/xsd/imsbasiclti_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0p1.xsd http://www.imsglobal.org/xsd/imslticm_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd http://www.imsglobal.org/xsd/imslticp_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd">
+          <blti:title>#{@basic_config[:title]}</blti:title>
+          <blti:description>#{@basic_config[:description]}</blti:description>
+          <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
+          <blti:icon>#{@icon_url}</blti:icon>
+          <blti:extensions platform="canvas.instructure.com">
+            <lticm:property name="domain">www.example.com</lticm:property>
+            <lticm:property name="privacy_level">public</lticm:property>
+            <lticm:options name="tool_configuration">
+              <lticm:property name="canvas_icon_class">icon-lti</lticm:property>
+              <lticm:property name="default">enabled</lticm:property>
+              <lticm:property name="enabled">true</lticm:property>
+              <lticm:property name="icon_url">#{tool_configuration[:icon_url]}</lticm:property>
+              <lticm:property name="text">#{tool_configuration[:text]}</lticm:property>
+              <lticm:property name="url">#{@launch_url}</lticm:property>
+              <lticm:property name="visibility">members</lticm:property>
+              <lticm:property name="windowTarget">_blank</lticm:property>
+            </lticm:options>
+          </blti:extensions>
+        </cartridge_basiclti_link>
+      XML
+      expect(xml).to eq(tool_configuration_xml)
+    end
+
+    it "generates extended configuration xml for an LTI tool with a wiki_page_menu placement" do
+      icon_url = "http://www.example.com/button_image.png"
+      wiki_page_menu = {
+        text: "user level tool",
+        visibility: "members",
+        default: "enabled",
+        enabled: true,
+        canvas_icon_class: "icon-lti",
+        icon_url: icon_url,
+        url: @launch_url,
+        windowTarget: "_blank",
+      }
+      args = @basic_config.merge({ wiki_page_menu: wiki_page_menu })
+      xml = described_class.xml(args)
+      expect(xml).to be_present
+      wiki_page_menu_xml = <<~XML
+        <?xml version="1.0" encoding="UTF-8"?>
+        <cartridge_basiclti_link xmlns="http://www.imsglobal.org/xsd/imslticc_v1p0" xmlns:blti="http://www.imsglobal.org/xsd/imsbasiclti_v1p0" xmlns:lticm="http://www.imsglobal.org/xsd/imslticm_v1p0" xmlns:lticp="http://www.imsglobal.org/xsd/imslticp_v1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imslticc_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticc_v1p0.xsd http://www.imsglobal.org/xsd/imsbasiclti_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0p1.xsd http://www.imsglobal.org/xsd/imslticm_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd http://www.imsglobal.org/xsd/imslticp_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd">
+          <blti:title>#{@basic_config[:title]}</blti:title>
+          <blti:description>#{@basic_config[:description]}</blti:description>
+          <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
+          <blti:icon>#{@icon_url}</blti:icon>
+          <blti:extensions platform="canvas.instructure.com">
+            <lticm:property name="domain">www.example.com</lticm:property>
+            <lticm:property name="privacy_level">public</lticm:property>
+            <lticm:options name="wiki_page_menu">
+              <lticm:property name="canvas_icon_class">icon-lti</lticm:property>
+              <lticm:property name="default">enabled</lticm:property>
+              <lticm:property name="enabled">true</lticm:property>
+              <lticm:property name="icon_url">#{wiki_page_menu[:icon_url]}</lticm:property>
+              <lticm:property name="text">#{wiki_page_menu[:text]}</lticm:property>
+              <lticm:property name="url">#{@launch_url}</lticm:property>
+              <lticm:property name="visibility">members</lticm:property>
+              <lticm:property name="windowTarget">_blank</lticm:property>
+            </lticm:options>
+          </blti:extensions>
+        </cartridge_basiclti_link>
+      XML
+      expect(xml).to eq(wiki_page_menu_xml)
+    end
+
     it "generates xml with the given title" do
       title = "LTI Tool Title"
       args = {
