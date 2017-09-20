@@ -12,8 +12,6 @@
 # resource_selection
 # assignment_selection
 # user_navigation
-
-# Not yet implemented
 # assignment_configuration
 # assignment_menu
 # collaboration
@@ -50,6 +48,19 @@ module Lti
       canvas_ext_config = user_navigation_from_args(canvas_ext_config, args)
       canvas_ext_config = global_navigation_from_args(canvas_ext_config, args)
       canvas_ext_config = post_grades_from_args(canvas_ext_config, args)
+      canvas_ext_config = assignment_configuration_from_args(canvas_ext_config, args)
+      canvas_ext_config = assignment_menu_from_args(canvas_ext_config, args)
+      canvas_ext_config = collaboration_from_args(canvas_ext_config, args)
+      canvas_ext_config = course_home_sub_navigation_from_args(canvas_ext_config, args)
+      canvas_ext_config = course_settings_sub_navigation_from_args(canvas_ext_config, args)
+      canvas_ext_config = discussion_topic_menu_from_args(canvas_ext_config, args)
+      canvas_ext_config = file_menu_from_args(canvas_ext_config, args)
+      canvas_ext_config = homework_submission_from_args(canvas_ext_config, args)
+      canvas_ext_config = migration_selection_from_args(canvas_ext_config, args)
+      canvas_ext_config = module_menu_from_args(canvas_ext_config, args)
+      canvas_ext_config = quiz_menu_from_args(canvas_ext_config, args)
+      canvas_ext_config = tool_configuration_from_args(canvas_ext_config, args)
+      canvas_ext_config = wiki_page_menu_from_args(canvas_ext_config, args)
 
       tc.set_ext_params("canvas.instructure.com", canvas_ext_config.stringify_keys)
       tc
@@ -148,6 +159,97 @@ module Lti
         config["link_selection"] = args[:link_selection].stringify_keys
         selection_config_from_args!(args, config, "link_selection")
         default_dimensions!(config, "link_selection")
+      end
+      config
+    end
+
+    def self.assignment_configuration_from_args(config = {}, args = {})
+      if args[:assignment_configuration].present?
+        default_configs_from_args!(args, config, :assignment_configuration)
+      end
+      config
+    end
+
+    def self.assignment_menu_from_args(config = {}, args = {})
+      if args[:assignment_menu].present?
+        default_configs_from_args!(args, config, :assignment_menu)
+      end
+      config
+    end
+
+    def self.collaboration_from_args(config = {}, args = {})
+      if args[:collaboration].present?
+        default_configs_from_args!(args, config, :collaboration)
+      end
+      config
+    end
+
+    def self.course_home_sub_navigation_from_args(config = {}, args = {})
+      if args[:course_home_sub_navigation].present?
+        default_configs_from_args!(args, config, :course_home_sub_navigation)
+      end
+      config
+    end
+
+    def self.course_settings_sub_navigation_from_args(config = {}, args = {})
+      if args[:course_settings_sub_navigation].present?
+        default_configs_from_args!(args, config, :course_settings_sub_navigation)
+      end
+      config
+    end
+
+    def self.discussion_topic_menu_from_args(config = {}, args = {})
+      if args[:discussion_topic_menu].present?
+        default_configs_from_args!(args, config, :discussion_topic_menu)
+      end
+      config
+    end
+
+    def self.file_menu_from_args(config = {}, args = {})
+      if args[:file_menu].present?
+        default_configs_from_args!(args, config, :file_menu)
+      end
+      config
+    end
+
+    def self.homework_submission_from_args(config = {}, args = {})
+      if args[:homework_submission].present?
+        default_configs_from_args!(args, config, :homework_submission)
+      end
+      config
+    end
+
+    def self.migration_selection_from_args(config = {}, args = {})
+      if args[:migration_selection].present?
+        default_configs_from_args!(args, config, :migration_selection)
+      end
+      config
+    end
+
+    def self.module_menu_from_args(config = {}, args = {})
+      if args[:module_menu].present?
+        default_configs_from_args!(args, config, :module_menu)
+      end
+      config
+    end
+
+    def self.quiz_menu_from_args(config = {}, args = {})
+      if args[:quiz_menu].present?
+        default_configs_from_args!(args, config, :quiz_menu)
+      end
+      config
+    end
+
+    def self.tool_configuration_from_args(config = {}, args = {})
+      if args[:tool_configuration].present?
+        default_configs_from_args!(args, config, :tool_configuration)
+      end
+      config
+    end
+
+    def self.wiki_page_menu_from_args(config = {}, args = {})
+      if args[:wiki_page_menu].present?
+        default_configs_from_args!(args, config, :wiki_page_menu)
       end
       config
     end
