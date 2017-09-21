@@ -43,7 +43,6 @@ class User < ApplicationRecord
       raw_info["login_id"]
   end
 
-# TODO not all oauth requests have an email which causes problems. Get an example oauth response that doesn't have an email from Megan and test it here
   def self.oauth_email(info, raw_info)
     email = raw_info["primary_email"] ||
       info["email"] ||

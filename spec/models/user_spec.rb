@@ -172,6 +172,7 @@ describe User, type: :model do
         expect(email).to eq("testguy@example.com")
       end
       it "should handle a request that doesn't include an email" do
+
       end
     end
     describe "oauth_timezone" do
@@ -191,20 +192,25 @@ describe User, type: :model do
         expect(attributes[:name]).to eq(auth["info"]["name"])
       end
     end
-    # describe "associate_account" do
-    #   before do
-    #     @uid = 'test'
-    #     @provider = 'facebook'
-    #     @new_email = 'newtest@example.com'
-    #   end
-    #   it "should add an authentication for an existing user account" do
-    #     user = FactoryGirl.create(:user, :email => 'test@example.com')
-    #     auth = get_omniauth('uuid' => @uid, 'provider' => @provider, 'facebook' => {'email' => @new_email})
-    #     user.associate_oauth_account(auth)
-    #     expect(user.authentications.length).to eq(1)
-    #     expect(user.authentications.first.uid).to eq(@uid)
-    #   end
-    # end
+    describe "associate_account" do
+      before do
+        @uid = "test"
+        @provider = "facebook"
+        @new_email = "newtest@example.com"
+      end
+      it "should add an authentication for an existing user account" do
+        user = FactoryGirl.create(:user, email: "test@example.com")
+        auth = get_omniauth(
+          "uuid" => @uid,
+          "provider" => @provider,
+          "facebook" => { "email" => @new_email },
+        )
+        count = user.authentications.length
+        user.associate_account(auth)
+        expect(user.authentications.length).to eq(count + 1)
+        expect(user.authentications.last.uid).to eq(@uid)
+      end
+    end
     describe "setup_authentication" do
       before do
         @uid = "anewuser"
