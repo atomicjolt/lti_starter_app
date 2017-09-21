@@ -127,7 +127,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def find_using_oauth
     return if @user # Previous filter was successful and we already have a user
-    if @user = User.find_for_oauth(request.env["omniauth.auth"])
+    if @user = User.for_auth(request.env["omniauth.auth"])
       @user.update_oauth(request.env["omniauth.auth"])
       @user.skip_confirmation!
       @user.save # do we want to log an error if save fails?
@@ -143,6 +143,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user.password = SecureRandom.hex(15)
     @user.password_confirmation = @user.password
     @user.create_method = User.create_methods[:oauth]
+    @user.lti_user_id = auth["extra"]["raw_info"]["lti_user_id"]
     @user.apply_oauth(auth)
     @user.skip_confirmation!
     @user.save!
