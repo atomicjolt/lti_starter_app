@@ -157,30 +157,26 @@ describe User, type: :model do
     describe "oauth_name" do
       it "should extract the correct name from the auth object" do
         auth = get_canvas_omniauth
-        info = auth["info"]
-        raw_info = auth["extra"]["raw_info"]
-        name = User.oauth_name(info, raw_info)
+        name = User.oauth_name(auth)
         expect(name).to eq("Test Guy")
       end
     end
     describe "oauth_email" do
       it "should extract the correct email from the auth object" do
         auth = get_canvas_omniauth
-        info = auth["info"]
-        raw_info = auth["extra"]["raw_info"]
-        email = User.oauth_email(info, raw_info)
+        email = User.oauth_email(auth)
         expect(email).to eq("testguy@example.com")
       end
       it "should handle a request that doesn't include an email" do
-
+        auth = get_canvas_omniauth_no_email
+        email = User.oauth_email(auth)
+        expect(email).to eq("1@atomicjolt.instructure.com")
       end
     end
     describe "oauth_timezone" do
       it "should extract the correct timezone from the auth object" do
         auth = get_canvas_omniauth
-        info = auth["info"]
-        raw_info = auth["extra"]["raw_info"]
-        timezone = User.oauth_timezone(info, raw_info)
+        timezone = User.oauth_timezone(auth)
         expect(timezone.name).to eq("America/Denver")
       end
     end

@@ -34,7 +34,10 @@ class User < ApplicationRecord
     setup_authentication(auth)
   end
 
-  def self.oauth_name(info, raw_info)
+  def self.oauth_name(auth)
+    info = auth["info"] || {}
+    raw_info = auth["extra"]["raw_info"] || {}
+
     info["name"] ||
       "#{info['first_name']} #{info['last_name']}" ||
       info["nickname"] ||
@@ -43,7 +46,10 @@ class User < ApplicationRecord
       raw_info["login_id"]
   end
 
-  def self.oauth_email(info, raw_info)
+  def self.oauth_email(auth)
+    info = auth["info"] || {}
+    raw_info = auth["extra"]["raw_info"] || {}
+
     email = raw_info["primary_email"] ||
       info["email"] ||
       raw_info["login_id"]
@@ -53,22 +59,26 @@ class User < ApplicationRecord
       email
     else
       # we have to make one up
+      domain = UrlHelper.safe_host(info["url"])
+      name = auth["uid"]
+      "#{name}@#{domain}"
     end
   end
 
-  def self.oauth_timezone(info, raw_info)
+  def self.oauth_timezone(auth)
+    info = auth["info"] || {}
+    raw_info = auth["extra"]["raw_info"] || {}
+
     timezone = ActiveSupport::TimeZone.new(raw_info["time_zone"]) unless raw_info["time_zone"].blank?
     timezone ||= ActiveSupport::TimeZone[info["timezone"].try(:to_i)].name unless info["timezone"].blank?
     timezone
   end
 
   def self.params_for_create(auth)
-    info = auth["info"] || {}
-    raw_info = auth["extra"]["raw_info"] || {}
     {
-      email: oauth_email(info, raw_info),
-      name: oauth_name(info, raw_info),
-      time_zone: oauth_timezone(info, raw_info),
+      email: oauth_email(auth),
+      name: oauth_name(auth),
+      time_zone: oauth_timezone(auth),
     }
   end
 
