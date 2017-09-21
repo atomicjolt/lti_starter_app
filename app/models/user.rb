@@ -45,15 +45,22 @@ class User < ApplicationRecord
 
 # TODO not all oauth requests have an email which causes problems. Get an example oauth response that doesn't have an email from Megan and test it here
   def self.oauth_email(info, raw_info)
-    raw_info["primary_email"] ||
+    email = raw_info["primary_email"] ||
       info["email"] ||
       raw_info["login_id"]
+
+    # Try a basic validation on the email
+    if email =~ /\A[^@]+@[^@]+\Z/
+      email
+    else
+      # we have to make one up
+    end
   end
 
-  def self.oauth_timezone(info)
-    ActiveSupport::TimeZone[info["timezone"].try(:to_i)].name unless info["timezone"].blank?
-  rescue
-    nil
+  def self.oauth_timezone(info, raw_info)
+    timezone = ActiveSupport::TimeZone.new(raw_info["time_zone"]) unless raw_info["time_zone"].blank?
+    timezone ||= ActiveSupport::TimeZone[info["timezone"].try(:to_i)].name unless info["timezone"].blank?
+    timezone
   end
 
   def self.params_for_create(auth)
@@ -62,7 +69,7 @@ class User < ApplicationRecord
     {
       email: oauth_email(info, raw_info),
       name: oauth_name(info, raw_info),
-      time_zone: oauth_timezone(info),
+      time_zone: oauth_timezone(info, raw_info),
     }
   end
 

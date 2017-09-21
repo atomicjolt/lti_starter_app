@@ -154,19 +154,43 @@ describe User, type: :model do
         expect(user.name).to eq("foo bar") # from default omniauth test data
       end
     end
-    # describe "update_oauth" do
-    #   it "should update the user using values from oauth" do
-    #     pending "Cam write these specs"
-    #   end
-    # end
-    describe "params_for_create" do
-      it "should get the create parameters for the user" do
+    describe "oauth_name" do
+      it "should extract the correct name from the auth object" do
+        auth = get_canvas_omniauth
+        info = auth["info"]
+        raw_info = auth["extra"]["raw_info"]
+        name = User.oauth_name(info, raw_info)
+        expect(name).to eq("Test Guy")
       end
     end
-    # describe "setup_authentication" do
-    #   it "should create an authentication for the user using the provider" do
-    #   end
-    # end
+    describe "oauth_email" do
+      it "should extract the correct email from the auth object" do
+        auth = get_canvas_omniauth
+        info = auth["info"]
+        raw_info = auth["extra"]["raw_info"]
+        email = User.oauth_email(info, raw_info)
+        expect(email).to eq("testguy@example.com")
+      end
+      it "should handle a request that doesn't include an email" do
+      end
+    end
+    describe "oauth_timezone" do
+      it "should extract the correct timezone from the auth object" do
+        auth = get_canvas_omniauth
+        info = auth["info"]
+        raw_info = auth["extra"]["raw_info"]
+        timezone = User.oauth_timezone(info, raw_info)
+        expect(timezone.name).to eq("America/Denver")
+      end
+    end
+    describe "params_for_create" do
+      it "should get the create parameters for the user" do
+        auth = get_canvas_omniauth
+        attributes = User.params_for_create(auth)
+        expect(attributes[:email]).to eq(auth["extra"]["raw_info"]["primary_email"])
+        expect(attributes[:name]).to eq(auth["info"]["name"])
+      end
+    end
     # describe "associate_account" do
     #   before do
     #     @uid = 'test'
