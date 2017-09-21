@@ -51,6 +51,38 @@ describe Authentication, type: :model do
       authentication = Authentication.for_auth(auth)
       expect(authentication.provider_url).to eq auth["info"]["url"]
     end
+    it "finds the correct authentication object when UIDs are duplicated" do
+      canvas1 = {
+        "uid" => "123",
+        "info" => {
+          "url" => "https://atomicjolt.instructure.com",
+        },
+      }
+      canvas2 = {
+        "uid" => "123",
+        "info" => {
+          "url" => "https://canvas.instructure.com",
+        },
+      }
+      auth1 = get_canvas_auth(canvas1)
+      auth2 = get_canvas_auth(canvas2)
+
+      attributes1 = Authentication.authentication_attrs_from_auth(auth1)
+      Authentication.create!(attributes1)
+
+      attributes2 = Authentication.authentication_attrs_from_auth(auth2)
+      Authentication.create!(attributes2)
+
+      authentication1 = Authentication.for_auth(auth1)
+      authentication2 = Authentication.for_auth(auth2)
+
+      expect(authentication1.id).to_not eq(authentication2.id)
+      expect(authentication1.uid).to eq(canvas1["uid"])
+      expect(authentication2.uid).to eq(canvas1["uid"])
+
+      expect(authentication1.provider_url).to eq(canvas1["info"]["url"])
+      expect(authentication2.provider_url).to eq(canvas2["info"]["url"])
+    end
   end
 
   describe "authentication_attrs_from_auth" do

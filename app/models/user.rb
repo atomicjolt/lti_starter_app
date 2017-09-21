@@ -50,8 +50,8 @@ class User < ApplicationRecord
     info = auth["info"] || {}
     raw_info = auth["extra"]["raw_info"] || {}
 
-    email = raw_info["primary_email"] ||
-      info["email"] ||
+    email = info["email"] ||
+      raw_info["primary_email"] ||
       raw_info["login_id"]
 
     # Try a basic validation on the email
