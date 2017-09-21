@@ -143,6 +143,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user.password = SecureRandom.hex(15)
     @user.password_confirmation = @user.password
     @user.create_method = User.create_methods[:oauth]
+    @user.lti_user_id = auth["extra"]["raw_info"]["lti_user_id"]
     @user.apply_oauth(auth)
     @user.skip_confirmation!
     @user.save!
