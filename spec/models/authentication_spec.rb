@@ -64,5 +64,4 @@ describe Authentication, type: :model do
       expect(attributes[:lti_user_id]).to eq auth["extra"]["raw_info"]["lti_user_id"]
     end
   end
-
 end
