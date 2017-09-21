@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170920214732) do
+ActiveRecord::Schema.define(version: 20170921202325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20170920214732) do
     t.string   "lti_user_id"
     t.index ["lti_user_id"], name: "index_authentications_on_lti_user_id", using: :btree
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
+    t.index ["uid", "provider", "provider_url"], name: "index_authentications_on_uid_and_provider_and_provider_url", using: :btree
     t.index ["user_id"], name: "index_authentications_on_user_id", using: :btree
   end
 
@@ -179,6 +180,7 @@ ActiveRecord::Schema.define(version: 20170920214732) do
     t.string   "lms_user_id"
     t.integer  "create_method",          default: 0
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["lti_user_id"], name: "index_users_on_lti_user_id", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
