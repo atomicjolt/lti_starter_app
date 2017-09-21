@@ -55,3 +55,52 @@ def get_invalid_omniauth(opts = {})
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[credentials["provider"]] = credentials["invalid"]
 end
+
+def get_canvas_omniauth(opts = {})
+  auth = get_canvas_auth(opts)
+  OmniAuth::AuthHash.new(auth)
+end
+
+def get_canvas_auth(opts = {})
+  {
+    "provider" => "canvas",
+    "uid" => 1,
+    "info" => {
+      "name" => "testguy@example.com",
+      "email" => "testguy@example.com",
+      "bio" => "",
+      "title" => "",
+      "nickname" => "testguy@example.com",
+      "active_avatar" => "https://secure.gravatar.com/avatar/someone.png",
+      "url" => "https://atomicjolt.instructure.com",
+    },
+    "credentials" => {
+      "token" => "abcdefg",
+      "refresh_token" => "abcdefg",
+      "expires_at" => 1505946533,
+      "expires" => true,
+    },
+    "extra" => {
+      "raw_info" => {
+        "id" => 1,
+        "name" => "testguy@example.com",
+        "short_name" => "testguy@example.com",
+        "sortable_name" => "testguy@example.com",
+        "sis_user_id" => "1234",
+        "sis_login_id" => "testguy@example.com",
+        "login_id" => "testguy@example.com",
+        "avatar_url" => "https://secure.gravatar.com/avatar/someone.png",
+        "integration_id" => nil,
+        "title" => "",
+        "bio" => "",
+        "primary_email" => "testguy@example.com",
+        "time_zone" => "America/Denver",
+        "locale" => nil,
+        "calendar" => {
+          "ics" => "https://atomicjolt.instructure.com/feeds/calendars/user_abc.ics",
+        },
+        "lti_user_id" => "atomicjoltrocks!",
+      },
+    },
+  }.merge(opts)
+end

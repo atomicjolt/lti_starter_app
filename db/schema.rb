@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170915142046) do
+ActiveRecord::Schema.define(version: 20170920214732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,8 @@ ActiveRecord::Schema.define(version: 20170915142046) do
     t.string   "encrypted_refresh_token_salt"
     t.string   "encrypted_refresh_token_iv"
     t.string   "id_token"
+    t.string   "lti_user_id"
+    t.index ["lti_user_id"], name: "index_authentications_on_lti_user_id", using: :btree
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
     t.index ["user_id"], name: "index_authentications_on_user_id", using: :btree
   end

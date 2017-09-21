@@ -111,16 +111,24 @@ describe User, type: :model do
       @provider = "facebook"
       @existing_email = "test@example.com"
       @new_email = "newtest@example.com"
+      @provider_url = "https://www.facebook.com"
     end
-    describe "find_for_oauth" do
+    describe "for_auth" do
       before do
         @user = FactoryGirl.create(:user, email: @existing_email)
-        @user.authentications.create!(uid: @uid, provider: @provider)
+        @user.authentications.create!(uid: @uid, provider: @provider, provider_url: @provider_url)
       end
       describe "user already exists" do
         it "should find the existing user" do
-          auth = get_omniauth("uuid" => @uid, "provider" => @provider, "facebook" => { "email" => @existing_email })
-          user = User.find_for_oauth(auth)
+          auth = get_omniauth(
+            "uuid" => @uid,
+            "provider" => @provider,
+            "facebook" => {
+              "email" => @existing_email,
+              "url" => @provider_url,
+            },
+          )
+          user = User.for_auth(auth)
           expect(user.id).to eq(@user.id)
           expect(user.email).to eq(@existing_email)
         end
@@ -132,7 +140,7 @@ describe User, type: :model do
             "provider" => @provider,
             "facebook" => { "email" => "other@example.com" },
           )
-          user = User.find_for_oauth(auth)
+          user = User.for_auth(auth)
           expect(user).to be_nil
         end
       end
@@ -151,10 +159,10 @@ describe User, type: :model do
     #     pending "Cam write these specs"
     #   end
     # end
-    # describe "params_for_create" do
-    #   it "should get the create parameters for the user" do
-    #   end
-    # end
+    describe "params_for_create" do
+      it "should get the create parameters for the user" do
+      end
+    end
     # describe "setup_authentication" do
     #   it "should create an authentication for the user using the provider" do
     #   end

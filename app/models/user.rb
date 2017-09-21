@@ -21,9 +21,8 @@ class User < ApplicationRecord
   #
   # Omniauth related methods
   #
-  def self.find_for_oauth(auth)
-    authentication = Authentication.where(uid: auth["uid"].to_s, provider: auth["provider"]).first
-    authentication&.user
+  def self.for_auth(auth)
+    Authentication.for_auth(auth)&.user
   end
 
   def apply_oauth(auth)
@@ -35,43 +34,44 @@ class User < ApplicationRecord
     setup_authentication(auth)
   end
 
+  def self.oauth_name(info, raw_info)
+    info["name"] ||
+      "#{info['first_name']} #{info['last_name']}" ||
+      info["nickname"] ||
+      raw_info["name"] ||
+      raw_info["short_name"] ||
+      raw_info["login_id"]
+  end
+
+  def self.oauth_email(info, raw_info)
+    raw_info["primary_email"] ||
+      info["email"] ||
+      raw_info["login_id"]
+  end
+
+  def self.oauth_timezone(info)
+    ActiveSupport::TimeZone[info["timezone"].try(:to_i)].name unless info["timezone"].blank?
+  rescue
+    nil
+  end
+
   def self.params_for_create(auth)
-    data = auth["info"] || {}
-    name = begin
-             data["name"]
-           rescue
-             nil
-           end
-    name ||= "#{data['first_name']} #{data['last_name']}"
-    time_zone = begin
-                  ActiveSupport::TimeZone[data["timezone"].try(:to_i)].name unless data["timezone"].blank?
-                rescue
-                  nil
-                end
+    info = auth["info"] || {}
+    raw_info = auth["extra"]["raw_info"] || {}
     {
-      email: data["email"],
-      name: name,
-      time_zone: time_zone,
+      email: oauth_email(info, raw_info),
+      name: oauth_name(info, raw_info),
+      time_zone: oauth_timezone(info),
     }
   end
 
   def setup_authentication(auth)
-    provider_url = UrlHelper.scheme_host_port(auth["info"]["url"])
-    attributes = {
-      uid: auth["uid"].to_s,
-      username: auth["info"]["nickname"],
-      provider: auth["provider"],
-      provider_url: provider_url,
-      json_response: auth.to_json,
-    }
-    if credentials = auth["credentials"]
-      attributes[:token] = credentials["token"]
-      attributes[:secret] = credentials["secret"]
-      # Google sends a refresh token
-      attributes[:refresh_token] = credentials["refresh_token"] if credentials["refresh_token"]
-    end
+    attributes = Authentication.authentication_attrs_from_auth(auth)
     if persisted? &&
-        authentication = authentications.where({ provider: auth["provider"], provider_url: provider_url }).first
+        authentication = authentications.find_by(
+          provider: attributes[:provider],
+          provider_url: attributes[:provider_url],
+        )
       authentication.update_attributes!(attributes)
     else
       authentications.build(attributes)
@@ -79,15 +79,10 @@ class User < ApplicationRecord
   end
 
   def associate_account(auth)
-    data = auth["info"] || {}
-    name = data["name"]
-    name ||= "#{data['first_name']} #{data['last_name']}"
-    self.name ||= name
-    self.time_zone ||= begin
-                         ActiveSupport::TimeZone[data["timezone"].try(:to_i)].name unless data["timezone"].blank?
-                       rescue
-                         nil
-                       end
+    info = auth["info"] || {}
+    raw_info = auth["extra"]["raw_info"] || {}
+    self.name ||= oauth_name(info, raw_info)
+    self.time_zone ||= oauth_timezone(info)
     save!
     setup_authentication(auth)
   end
