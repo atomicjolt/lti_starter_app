@@ -58,7 +58,7 @@ end
 
 def get_canvas_omniauth(opts = {})
   auth = get_canvas_auth(opts)
-  OmniAuth::AuthHash.new(auth)
+  OmniAuth.config.mock_auth[:canvas] = OmniAuth::AuthHash.new(auth)
 end
 
 def get_canvas_auth(opts = {})

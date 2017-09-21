@@ -18,8 +18,15 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
 
   describe "GET canvas" do
     it "should pass through with valid auth" do
-      FactoryGirl.create :user_canvas
-      request.env["omniauth.auth"] = get_canvas_omniauth
+      user = FactoryGirl.create :user_canvas
+      authentication = user.authentications.find_by(provider: "canvas")
+      canvas_opts = {
+        "uid" => authentication.uid,
+        "info" => {
+          "url" => authentication.provider_url,
+        },
+      }
+      request.env["omniauth.auth"] = get_canvas_omniauth(canvas_opts)
       oauth_complete_url = "http://example.com"
       response = get :canvas, params: {
         oauth_complete_url: oauth_complete_url,
