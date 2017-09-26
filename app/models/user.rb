@@ -17,6 +17,29 @@ class User < ApplicationRecord
     name || email
   end
 
+  def self.create_on_tenant(application_instance, user)
+    Apartment::Tenant.switch(application_instance.tenant) do
+      user_dup = User.find_or_initialize_by(
+        lti_user_id: user.lti_user_id,
+      )
+      user_dup.update_attributes(user.copy_attributes)
+      if user_dup.password.blank?
+        user_dup.password = SecureRandom.hex(15)
+        user_dup.password_confirmation = user_dup.password
+      end
+      user_dup.save
+      user_dup
+    end
+  end
+
+  def copy_attributes
+    attributes.except(
+      "id",
+      "created_at",
+      "updated_at",
+    )
+  end
+
   ####################################################
   #
   # Omniauth related methods

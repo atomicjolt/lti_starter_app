@@ -7,6 +7,8 @@ class ApplicationInstance < ActiveRecord::Base
   belongs_to :site
   belongs_to :bundle_instance
 
+  has_many :authentications, dependent: :destroy, inverse_of: :application_instance
+
   validates :lti_key, presence: true, uniqueness: true
   validates :lti_secret, presence: true
   validates :site_id, presence: true

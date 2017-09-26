@@ -7,8 +7,41 @@ class Authentication < ApplicationRecord
   attr_encrypted :refresh_token, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
 
   belongs_to :user, inverse_of: :authentications
+  belongs_to :application_instance, inverse_of: :authentications
+  belongs_to :canvas_course, inverse_of: :authentications
 
-  validates :provider, presence: true, uniqueness: { scope: [:uid, :user_id, :provider_url] }
+  validates :provider,
+            presence: true,
+            uniqueness: {
+              scope: %i[
+                uid
+                user_id
+                application_instance_id
+                canvas_course_id
+                provider_url
+              ],
+            }
+
+  def copy_to_tenant(application_instance, model = nil)
+    Apartment::Tenant.switch(application_instance.tenant) do
+      model = application_instance if model.nil?
+      auth_dup = model.authentications.find_or_initialize_by(
+        provider_url: UrlHelper.scheme_host_port(application_instance.site.url),
+      )
+      auth_dup.update(copy_attributes)
+    end
+  end
+
+  def copy_attributes
+    attributes.except(
+      "id",
+      "created_at",
+      "updated_at",
+      "user_id",
+      "application_instance_id",
+      "canvas_course_id",
+    )
+  end
 
   # Find an authentication using an auth object provided by omniauth
   def self.for_auth(auth)
