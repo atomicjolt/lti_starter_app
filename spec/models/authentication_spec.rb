@@ -1,6 +1,6 @@
-require "spec_helper"
+require "rails_helper"
 
-describe Authentication, type: :model do
+RSpec.describe Authentication, type: :model do
   it { should belong_to :user }
   it "Requires the provider" do
     authentication = FactoryGirl.build(:authentication, provider: nil)
@@ -94,6 +94,45 @@ describe Authentication, type: :model do
       expect(attributes[:provider]).to eq auth["provider"]
       expect(attributes[:provider_url]).to eq auth["info"]["url"]
       expect(attributes[:lti_user_id]).to eq auth["extra"]["raw_info"]["lti_user_id"]
+    end
+  end
+
+  describe "copy_to_tenant" do
+    context "copies the authentication to given tenant" do
+      before do
+        @site = create(:site)
+        @name = "An Example application"
+        @key = "example"
+        @application = create(:application, name: @name, key: @key)
+        lti_key = "atomic-key"
+        @application_instance = create(
+          :application_instance,
+          lti_key: lti_key,
+          site: @site,
+          application: @application,
+        )
+      end
+      it "for an ApplicationInstance" do
+        auth = create(:authentication)
+        auth.copy_to_tenant(@application_instance)
+        Apartment::Tenant.switch(@application_instance.tenant) do
+          expect(@application_instance.authentications.last.token).to eq(auth.token)
+        end
+      end
+
+      it "for a CanvasCourse" do
+        auth = create(:authentication)
+        canvas_course = create(:canvas_course)
+        @course = CanvasCourse.create_on_tenant(
+          @application_instance.tenant,
+          canvas_course.lms_course_id,
+        )
+        auth.copy_to_tenant(@application_instance, @course)
+        Apartment::Tenant.switch(@application_instance.tenant) do
+          cc = CanvasCourse.find_by lms_course_id: canvas_course.lms_course_id
+          expect(cc.authentications.last.token).to eq(auth.token)
+        end
+      end
     end
   end
 end
