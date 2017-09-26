@@ -50,4 +50,8 @@ FactoryGirl.define do
   sequence :address do |n|
     "#{n} West #{n} South"
   end
+
+  sequence :lms_course_id do |n|
+    n + 32
+  end
 end
