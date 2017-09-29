@@ -10,6 +10,7 @@ module ApplicationHelper
       {
         user_id: current_user.id,
         lti_roles: lti_roles,
+        lms_course_id: params[:custom_canvas_course_id],
       },
     )
   end
