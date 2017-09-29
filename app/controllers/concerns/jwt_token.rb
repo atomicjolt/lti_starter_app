@@ -40,8 +40,8 @@ module Concerns
 
     def can_admin_course?(lms_course_id)
       can_access_course?(lms_course_id) && (
-        @jwt_lti_roles.match(/urn:lti:instrole:ims\/lis\/Administrator/) ||
-          @jwt_lti_roles.match(/urn:lti:instrole:ims\/lis\/Instructor/)
+        @jwt_lti_roles.match(/urn:lti:role:ims\/lis\/Administrator/) ||
+          @jwt_lti_roles.match(/urn:lti:role:ims\/lis\/Instructor/)
       )
     end
 
