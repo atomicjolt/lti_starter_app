@@ -73,4 +73,5 @@ class Authentication < ApplicationRecord
     end
     attributes
   end
+
 end
