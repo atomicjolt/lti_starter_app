@@ -41,8 +41,7 @@ class Ability
     can :manage, LtiLaunch
   end
 
-  def canvas_oauth_user(_user)
-  end
+  def canvas_oauth_user(_user); end
 
   def admin(_user)
     can :manage, :all
