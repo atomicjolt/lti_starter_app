@@ -10,21 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171003155408) do
+ActiveRecord::Schema.define(version: 20171003181935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "application_bundles", force: :cascade do |t|
-    t.integer  "application_id"
-    t.integer  "bundle_id"
+  create_table "application_bundles", id: :bigserial, force: :cascade do |t|
+    t.bigint   "application_id"
+    t.bigint   "bundle_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["application_id", "bundle_id"], name: "index_application_bundles_on_application_id_and_bundle_id", using: :btree
   end
 
-  create_table "application_instances", force: :cascade do |t|
-    t.integer  "application_id"
+  create_table "application_instances", id: :bigserial, force: :cascade do |t|
+    t.bigint   "application_id"
     t.string   "lti_key"
     t.string   "lti_secret"
     t.string   "encrypted_canvas_token"
@@ -33,25 +33,25 @@ ActiveRecord::Schema.define(version: 20171003155408) do
     t.datetime "created_at",                                            null: false
     t.datetime "updated_at",                                            null: false
     t.string   "domain",                      limit: 2048
-    t.integer  "site_id"
+    t.bigint   "site_id"
     t.string   "tenant"
     t.jsonb    "config",                                   default: {}
     t.jsonb    "lti_config"
     t.datetime "disabled_at"
-    t.integer  "bundle_instance_id"
+    t.bigint   "bundle_instance_id"
     t.index ["application_id"], name: "index_application_instances_on_application_id", using: :btree
     t.index ["lti_key"], name: "index_application_instances_on_lti_key", using: :btree
     t.index ["site_id"], name: "index_application_instances_on_site_id", using: :btree
   end
 
-  create_table "applications", force: :cascade do |t|
+  create_table "applications", id: :bigserial, force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.string   "client_application_name"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
-    t.integer  "kind",                        default: 0
-    t.integer  "application_instances_count"
+    t.bigint   "kind",                        default: 0
+    t.bigint   "application_instances_count"
     t.jsonb    "default_config",              default: {}
     t.jsonb    "lti_config"
     t.jsonb    "canvas_api_permissions",      default: {}
@@ -80,17 +80,17 @@ ActiveRecord::Schema.define(version: 20171003155408) do
     t.string   "encrypted_refresh_token_iv"
     t.string   "id_token"
     t.string   "lti_user_id"
-    t.integer  "application_instance_id"
-    t.integer  "canvas_course_id"
+    t.bigint   "application_instance_id"
+    t.bigint   "canvas_course_id"
     t.index ["lti_user_id"], name: "index_authentications_on_lti_user_id", using: :btree
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
     t.index ["uid", "provider", "provider_url"], name: "index_authentications_on_uid_and_provider_and_provider_url", using: :btree
     t.index ["user_id"], name: "index_authentications_on_user_id", using: :btree
   end
 
-  create_table "bundle_instances", force: :cascade do |t|
-    t.integer  "site_id"
-    t.integer  "bundle_id"
+  create_table "bundle_instances", id: :bigserial, force: :cascade do |t|
+    t.bigint   "site_id"
+    t.bigint   "bundle_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "entity_key"
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 20171003155408) do
     t.index ["id_token"], name: "index_bundle_instances_on_id_token", using: :btree
   end
 
-  create_table "bundles", force: :cascade do |t|
+  create_table "bundles", id: :bigserial, force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
@@ -107,14 +107,14 @@ ActiveRecord::Schema.define(version: 20171003155408) do
     t.index ["key"], name: "index_bundles_on_key", using: :btree
   end
 
-  create_table "canvas_courses", force: :cascade do |t|
+  create_table "canvas_courses", id: :bigserial, force: :cascade do |t|
     t.bigint   "lms_course_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["lms_course_id"], name: "index_canvas_courses_on_lms_course_id", using: :btree
   end
 
-  create_table "lti_launches", force: :cascade do |t|
+  create_table "lti_launches", id: :bigserial, force: :cascade do |t|
     t.jsonb    "config"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -122,14 +122,14 @@ ActiveRecord::Schema.define(version: 20171003155408) do
     t.index ["token"], name: "index_lti_launches_on_token", unique: true, using: :btree
   end
 
-  create_table "nonces", force: :cascade do |t|
+  create_table "nonces", id: :bigserial, force: :cascade do |t|
     t.string   "nonce"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["nonce"], name: "index_nonces_on_nonce", unique: true, using: :btree
   end
 
-  create_table "oauth_states", force: :cascade do |t|
+  create_table "oauth_states", id: :bigserial, force: :cascade do |t|
     t.string   "state"
     t.text     "payload"
     t.datetime "created_at", null: false
@@ -154,7 +154,7 @@ ActiveRecord::Schema.define(version: 20171003155408) do
     t.datetime "updated_at"
   end
 
-  create_table "sites", force: :cascade do |t|
+  create_table "sites", id: :bigserial, force: :cascade do |t|
     t.string   "url",          limit: 2048
     t.string   "oauth_key"
     t.string   "oauth_secret"
