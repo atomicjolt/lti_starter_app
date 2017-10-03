@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170926200235) do
+ActiveRecord::Schema.define(version: 20171003155408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(version: 20170926200235) do
     t.index ["key"], name: "index_applications_on_key", using: :btree
   end
 
-  create_table "authentications", force: :cascade do |t|
-    t.integer  "user_id"
+  create_table "authentications", id: :bigserial, force: :cascade do |t|
+    t.bigint   "user_id"
     t.string   "provider"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
@@ -137,9 +137,9 @@ ActiveRecord::Schema.define(version: 20170926200235) do
     t.index ["state"], name: "index_oauth_states_on_state", using: :btree
   end
 
-  create_table "permissions", force: :cascade do |t|
-    t.integer  "role_id"
-    t.integer  "user_id"
+  create_table "permissions", id: :bigserial, force: :cascade do |t|
+    t.bigint   "role_id"
+    t.bigint   "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "context_id"
@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(version: 20170926200235) do
     t.index ["role_id", "user_id"], name: "index_permissions_on_role_id_and_user_id", using: :btree
   end
 
-  create_table "roles", force: :cascade do |t|
+  create_table "roles", id: :bigserial, force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -164,13 +164,13 @@ ActiveRecord::Schema.define(version: 20170926200235) do
     t.index ["url"], name: "index_sites_on_url", using: :btree
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :bigserial, force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.bigint   "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -187,7 +187,7 @@ ActiveRecord::Schema.define(version: 20170926200235) do
     t.string   "lti_user_id"
     t.string   "lti_provider"
     t.string   "lms_user_id"
-    t.integer  "create_method",          default: 0
+    t.bigint   "create_method",          default: 0
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["lti_user_id"], name: "index_users_on_lti_user_id", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
