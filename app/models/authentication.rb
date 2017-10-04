@@ -22,17 +22,19 @@ class Authentication < ApplicationRecord
               ],
             }
 
-  def copy_to_tenant(application_instance, model = nil)
+  def copy_to_tenant(application_instance, user)
     Apartment::Tenant.switch(application_instance.tenant) do
-      model = application_instance if model.nil?
-      auth_dup = model.authentications.find_or_initialize_by(
-        provider_url: UrlHelper.scheme_host_port(application_instance.site.url),
+      authentication = user.authentications.find_or_initialize_by(
+        uid: attributes["uid"],
+        provider: attributes["provider"],
+        provider_url: attributes["provider_url"],
       )
-      auth_dup.update(copy_attributes)
+      authentication.update(tenant_copy_attributes)
+      authentication
     end
   end
 
-  def copy_attributes
+  def tenant_copy_attributes
     attributes.except(
       "id",
       "created_at",

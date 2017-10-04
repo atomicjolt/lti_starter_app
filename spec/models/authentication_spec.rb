@@ -112,25 +112,15 @@ RSpec.describe Authentication, type: :model do
           application: @application,
         )
       end
-      it "for an ApplicationInstance" do
-        auth = create(:authentication)
-        auth.copy_to_tenant(@application_instance)
-        Apartment::Tenant.switch(@application_instance.tenant) do
-          expect(@application_instance.authentications.last.token).to eq(auth.token)
-        end
-      end
 
-      it "for a CanvasCourse" do
+      it "for a User" do
         auth = create(:authentication)
-        canvas_course = create(:canvas_course)
-        @course = CanvasCourse.create_on_tenant(
-          @application_instance.tenant,
-          canvas_course.lms_course_id,
-        )
-        auth.copy_to_tenant(@application_instance, @course)
+        user = create(:user)
+        tenant_user = User.create_on_tenant(@application_instance, user)
+        tenant_auth = auth.copy_to_tenant(@application_instance, tenant_user)
         Apartment::Tenant.switch(@application_instance.tenant) do
-          cc = CanvasCourse.find_by lms_course_id: canvas_course.lms_course_id
-          expect(cc.authentications.last.token).to eq(auth.token)
+          found_user = User.find_by(email: tenant_user.email)
+          expect(found_user.authentications.last.token).to eq(tenant_auth.token)
         end
       end
     end
