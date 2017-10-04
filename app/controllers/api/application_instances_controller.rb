@@ -20,8 +20,6 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   end
 
   def create
-    @application_instance.domain =
-      "#{@application_instance.lti_key}.#{Rails.application.secrets.application_root_domain}"
     @application_instance.save!
     respond_with_json
   end
