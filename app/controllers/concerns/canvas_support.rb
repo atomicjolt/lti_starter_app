@@ -1,5 +1,6 @@
 module Concerns
   module CanvasSupport
+    include ApplicationHelper
     extend ActiveSupport::Concern
 
     protected
@@ -35,7 +36,7 @@ module Concerns
         client_id: site.oauth_key,
         client_secret: site.oauth_secret,
         redirect_uri: Rails.application.routes.url_helpers.user_canvas_omniauth_callback_url(
-          subdomain: Application::AUTH,
+          host: oauth_host,
           protocol: "https",
         ),
         refresh_token: auth.refresh_token,
