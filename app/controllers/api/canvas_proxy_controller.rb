@@ -10,7 +10,12 @@ class Api::CanvasProxyController < Api::ApiApplicationController
           else
             canvas_api
           end
-    result = api.proxy(params[:lms_proxy_call_type], params.to_unsafe_h, request.body.read, params[:get_all])
+
+    # Always masquerade
+    unsafe_params = params.to_unsafe_h
+    unsafe_params[:as_user_id] = current_user.lms_user_id
+
+    result = api.proxy(params[:lms_proxy_call_type], unsafe_params, request.body.read, params[:get_all])
     allowed_headers = %w{
       content-type link p3p x-canvas-meta x-canvas-user-id
       x-rate-limit-remaining x-request-context-id x-request-cost
