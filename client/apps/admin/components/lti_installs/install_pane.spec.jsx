@@ -1,7 +1,7 @@
 import React from 'react';
 import TestUtils from 'react-dom/test-utils';
 import Stub from '../../../../specs_support/stub';
-import InstallPane from './install_pane';
+import { InstallPane } from './install_pane';
 
 describe('install pane', () => {
   let result;
