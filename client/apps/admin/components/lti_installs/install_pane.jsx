@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import _ from 'lodash';
 import AccountInstall from './account_install';
 import CourseInstalls from './course_installs';
@@ -8,7 +9,13 @@ import Pagination from './pagination';
 const PAGE_SIZE = 10;
 const COURSE_TYPES = ['basic', 'course_navigation', 'wysiwyg_button'];
 
-export default class InstallPane extends React.Component {
+function select(state) {
+  return {
+    allCourses: state.courses,
+  };
+}
+
+export class InstallPane extends React.Component {
   static propTypes = {
     courses             : PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     loadExternalTools   : PropTypes.func,
@@ -44,10 +51,13 @@ export default class InstallPane extends React.Component {
     }
   }
 
-  filteredCourses() {
+  isSearching() {
+    return !_.isEmpty(this.state.searchPrefix);
+  }
+
+  filteredCourses(courses) {
     const {
       applicationInstance,
-      courses,
       onlyShowInstalled,
     } = this.props;
 
@@ -63,7 +73,18 @@ export default class InstallPane extends React.Component {
   }
 
   searchedCourses() {
-    return _.filter(this.filteredCourses(), course => (
+    const { allCourses } = this.props;
+    return _.filter(this.filteredCourses(allCourses), course => (
+      _.includes(
+        _.lowerCase(course.name),
+        _.lowerCase(this.state.searchPrefix)
+      )
+    ));
+  }
+
+  courses() {
+    const { courses } = this.props;
+    return _.filter(this.filteredCourses(courses), course => (
       _.includes(
         _.lowerCase(course.name),
         _.lowerCase(this.state.searchPrefix)
@@ -92,7 +113,7 @@ export default class InstallPane extends React.Component {
   }, 150)
 
   render() {
-    const searchedCourses = this.searchedCourses();
+    const searchedCourses =  this.isSearching() ? this.searchedCourses() : this.courses();
     const pageCount = _.ceil(searchedCourses.length / PAGE_SIZE);
     let accountInstall = null;
     let courseInstalls = null;
@@ -150,3 +171,5 @@ export default class InstallPane extends React.Component {
     );
   }
 }
+
+export default connect(select, {})(InstallPane);
