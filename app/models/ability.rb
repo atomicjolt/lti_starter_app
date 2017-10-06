@@ -32,6 +32,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     basic(user)
+    canvas_oauth_user(user) if user.role?("canvas_oauth_user")
     admin(user) if user.admin?
   end
 
@@ -39,6 +40,8 @@ class Ability
     can :manage, User, id: user.id
     can :manage, LtiLaunch
   end
+
+  def canvas_oauth_user(_user); end
 
   def admin(_user)
     can :manage, :all

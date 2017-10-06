@@ -7,8 +7,8 @@
 
   # OAuth related params
   settings[:app_callback_url]     = user_canvas_omniauth_callback_url
-  settings[:canvas_oauth_url]     = user_canvas_omniauth_authorize_url(subdomain: Application::AUTH)
-  settings[:canvas_callback_url]  = user_canvas_omniauth_callback_url(subdomain: Application::AUTH)
+  settings[:canvas_oauth_url]     = user_canvas_omniauth_authorize_url(host: oauth_host)
+  settings[:canvas_callback_url]  = user_canvas_omniauth_callback_url(host: oauth_host)
   settings[:canvas_auth_required] = @canvas_auth_required
   settings[:canvas_url] = canvas_url
 
