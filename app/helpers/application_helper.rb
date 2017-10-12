@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include OauthHelper
 
   def application_base_url
     File.join(request.base_url, "/")
@@ -16,15 +17,6 @@ module ApplicationHelper
 
   def lti_roles
     params["ext_roles"] || params["roles"]
-  end
-
-  ##
-  # oauth_host
-  #
-  # Allows the use of multiple subdomains listed as the root domain
-  ##
-  def oauth_host
-    "#{Application::AUTH}.#{Rails.application.secrets.application_root_domain}"
   end
 
 end
