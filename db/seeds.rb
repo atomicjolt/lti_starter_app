@@ -1,6 +1,5 @@
 admin = CreateAdminService.new.call
 puts "CREATED ADMIN USER: " << admin.email
-admin.save!
 
 secrets = Rails.application.secrets
 
