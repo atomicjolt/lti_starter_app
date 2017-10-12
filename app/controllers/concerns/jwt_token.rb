@@ -4,11 +4,11 @@ module Concerns
 
     class InvalidTokenError < StandardError; end
 
-    def validate_token_with_secret(aud, secret)
-      authorization = request.headers["Authorization"]
+    def validate_token_with_secret(aud, secret, req = request)
+      authorization = req.headers["Authorization"] || req.headers[:authorization]
       raise InvalidTokenError if authorization.nil?
 
-      token = request.headers["Authorization"].split(" ").last
+      token = authorization.split(" ").last
       decoded_token = AuthToken.valid?(token, secret)
 
       raise InvalidTokenError if aud != decoded_token[0]["aud"]
