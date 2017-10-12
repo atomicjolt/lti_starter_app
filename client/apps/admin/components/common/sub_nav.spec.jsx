@@ -1,53 +1,77 @@
 import React from 'react';
-import TestUtils from 'react-dom/test-utils';
-import _ from 'lodash';
-import Stub from '../../../../specs_support/stub';
+import { shallow } from 'enzyme';
 import SubNav from './sub_nav';
 
 describe('sub nav', () => {
   let result;
+  let props;
 
-  describe('has sites', () => {
-    beforeEach(() => {
-      const sites = { 1: { id: 1, oauth_key: 'akey', oauth_secret: 'secret' } };
-      result = TestUtils.renderIntoDocument(
-        <Stub>
-          <SubNav sites={sites} />
-        </Stub>
-      );
-    });
-
-    it('renders', () => {
-      expect(result).toBeDefined();
-    });
-
-    it('renders LTI Tools', () => {
-      const links = TestUtils.scryRenderedDOMComponentsWithTag(result, 'a');
-      const link = _.find(links, { textContent: 'LTI Tools' });
-      expect(link).toBeDefined();
-    });
-
-    it('renders Sites', () => {
-      const links = TestUtils.scryRenderedDOMComponentsWithTag(result, 'a');
-      const link = _.find(links, { textContent: 'Sites' });
-      expect(link).toBeDefined();
-    });
+  beforeEach(() => {
+    props = {
+      sites: {
+        1: {
+          id: 1,
+          oauth_key: 'akey',
+          oauth_secret: 'secret',
+        },
+      },
+    };
+    result = shallow(<SubNav {...props} />);
   });
 
-  describe("doesn't have sites", () => {
-    beforeEach(() => {
-      const sites = {};
-      result = TestUtils.renderIntoDocument(
-        <Stub>
-          <SubNav sites={sites} />
-        </Stub>
-      );
-    });
+  it('renders', () => {
+    expect(result).toBeDefined();
+  });
 
-    it('renders Sites', () => {
-      const links = TestUtils.scryRenderedDOMComponentsWithTag(result, 'a');
-      const link = _.find(links, { textContent: 'Sites ! Setup Required' });
-      expect(link).toBeDefined();
-    });
+  it('matches the snapshot', () => {
+    expect(result).toMatchSnapshot();
+  });
+
+  it('renders a warning appropriately with empty sites', () => {
+    expect(result.find('Link').last().props().children[1]).toBe(null);
+    props.sites = {};
+    result = shallow(<SubNav {...props} />);
+    expect(result.find('Link').length).toEqual(2);
+    const link = result.find('Link').last();
+    expect(link.props().children[1]).not.toBe(null);
+    expect(link.props().children[1]).toEqual(
+      <span className="c-alert c-alert--danger"> ! Setup Required</span>
+    );
+  });
+
+  it('renders a warning appropriately with empty oauth key', () => {
+    expect(result.find('Link').last().props().children[1]).toBe(null);
+    props.sites = {
+      1: {
+        id: 1,
+        oauth_key: '',
+        oauth_secret: 'secret',
+      },
+    };
+    result = shallow(<SubNav {...props} />);
+    expect(result.find('Link').length).toEqual(2);
+    const link = result.find('Link').last();
+    expect(link.props().children[1]).not.toBe(null);
+    expect(link.props().children[1]).toEqual(
+      <span className="c-alert c-alert--danger"> ! Setup Required</span>
+    );
+  });
+
+  it('renders a warning appropriately with empty oauth secret', () => {
+    expect(result.find('Link').last().props().children[1]).toBe(null);
+    props.sites = {
+      1: {
+        id: 1,
+        oauth_key: 'akey',
+        oauth_secret: '',
+      },
+    };
+    result = shallow(<SubNav {...props} />);
+    expect(result.find('Link').length).toEqual(2);
+    const link = result.find('Link').last();
+    expect(link.props().children[1]).not.toBe(null);
+    expect(link.props().children[1]).toEqual(
+      <span className="c-alert c-alert--danger"> ! Setup Required</span>
+    );
   });
 });

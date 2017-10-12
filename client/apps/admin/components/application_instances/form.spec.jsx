@@ -1,72 +1,39 @@
-import _               from 'lodash';
 import React           from 'react';
-import TestUtils       from 'react-dom/test-utils';
-import Form,
-       { TEXT_FIELDS,
-         TYPE_RADIOS } from './form';
+import { shallow } from 'enzyme';
+import Form from './form';
 
 describe('application instance form', () => {
   let result;
   let props;
   let modalClosed = false;
+  let saved = false;
 
   beforeEach(() => {
     props = {
-      onChange:       () => {},
-      closeModal:     () => { modalClosed = true; },
-      save:           () => {},
-      newSite:        () => {},
-      site_id:        'foo',
-      sites:          {},
+      onChange: () => {},
+      closeModal: () => { modalClosed = true; },
+      save: () => { saved = true; },
+      newSite: () => {},
+      site_id: 'foo',
+      sites: {},
       config: '{ "foo": "bar" }',
     };
-    result = TestUtils.renderIntoDocument(
-      <Form {...props} />
-    );
+    result = shallow(<Form {...props} />);
   });
 
-  it('renders the form', () => {
-    expect(result).toBeDefined();
+  it('matches the snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
 
-  describe('text fields', () => {
-    _.each(TEXT_FIELDS, (fieldLabel, field) => {
-      it('renders the field', () => {
-        const inputs = TestUtils.scryRenderedDOMComponentsWithTag(result, 'input');
-        const input = _.find(inputs, { id: `instance_${field}` });
-        expect(input).toBeDefined();
-        expect(input.name).toBe(field);
-        expect(input.type).toBe('text');
-      });
-    });
+  it('handles the close modal event', () => {
+    expect(modalClosed).toBeFalsy();
+    result.find('.c-btn--gray--large').simulate('click');
+    expect(modalClosed).toBeTruthy();
   });
 
-  describe('radio fields', () => {
-    _.each(TYPE_RADIOS, (fieldLabel, field) => {
-      it('renders the field', () => {
-        const inputs = TestUtils.scryRenderedDOMComponentsWithTag(result, 'input');
-        const input = _.find(inputs, { id: `instance_${field}` });
-        expect(input).toBeDefined();
-        expect(input.value).toBe(field);
-        expect(input.type).toBe('radio');
-      });
-    });
+  it('handles the save event', () => {
+    expect(saved).toBeFalsy();
+    result.find('.c-btn--yellow').simulate('click');
+    expect(saved).toBeTruthy();
   });
-
-  describe('close modal', () => {
-    it('closes', () => {
-      const buttons = TestUtils.scryRenderedDOMComponentsWithTag(result, 'button');
-      const modalButton = _.find(buttons, { textContent: 'Cancel' });
-      TestUtils.Simulate.click(modalButton);
-      expect(modalClosed).toBe(true);
-    });
-  });
-
-  it('renders config', () => {
-    const inputs = TestUtils.scryRenderedDOMComponentsWithTag(result, 'textarea');
-    const input = _.find(inputs, { id: 'application_instance_config' });
-    expect(input).toBeDefined();
-    expect(input.value).toBe('{ "foo": "bar" }');
-  });
-
 });

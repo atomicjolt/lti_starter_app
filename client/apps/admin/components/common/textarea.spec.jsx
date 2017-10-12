@@ -1,38 +1,40 @@
 import React from 'react';
-import TestUtils from 'react-dom/test-utils';
-import Stub from '../../../../specs_support/stub';
+import { shallow } from 'enzyme';
 import Textarea from './textarea';
 
 describe('textarea', () => {
-
   let result;
-  const props = {
-    textareaProps: {
-      id: 'IM AN ID',
-      value: 'IM A VALUE',
-      name: 'the name',
-      onChange: () => {},
-    },
-    className: 'imaclass',
-    labelText: 'IMA LABEL',
-  };
+  let props;
+  let changed;
 
   beforeEach(() => {
-    result = TestUtils.renderIntoDocument(
-      <Stub>
-        <Textarea {...props} />
-      </Stub>
-    );
+    changed = false;
+    props = {
+      textareaProps: {
+        id: 'IM AN ID',
+        value: 'IM A VALUE',
+        disabled: false,
+        name: 'the name',
+        placeholder: 'IMA PLACEHOLDER',
+        maxLength: 1,
+        minLength: 1,
+        cols: 3,
+        rows: 2,
+        onChange: () => { changed = true; },
+      },
+      className: 'imaclass',
+      labelText: 'IMA LABEL',
+    };
+    result = shallow(<Textarea {...props} />);
   });
 
-  it('renders the textarea with the correct attributes', () => {
-    const textarea = TestUtils.findRenderedDOMComponentWithTag(result, 'textarea');
-    expect(textarea.getAttribute('id')).toBe('IM AN ID');
+  it('matches the snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
 
-  it('renders text before the text textarea', () => {
-    const label = TestUtils.findRenderedDOMComponentWithTag(result, 'label');
-    expect(label.children[0].textContent).toBe('IMA LABEL');
+  it('handles the onChange event', () => {
+    expect(changed).toBeFalsy();
+    result.find('textarea').simulate('change');
+    expect(changed).toBeTruthy();
   });
-
 });

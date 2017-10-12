@@ -1,31 +1,29 @@
-import React            from 'react';
-import TestUtils        from 'react-dom/test-utils';
-import _                from 'lodash';
-import Stub             from '../../../../specs_support/stub';
-import SettingsInputs   from './settings_inputs';
+import React from 'react';
+import { shallow } from 'enzyme';
+import SettingsInputs from './settings_inputs';
 
 describe('common search inputs', () => {
   let result;
+  let props;
   const ltiKey = 'lti_key';
   const ltiName = 'ltiName';
 
-  const props = {
-    settings: {
-      lti_key: ltiKey,
-      name: ltiName,
-    },
-  };
-
   beforeEach(() => {
-    result = TestUtils.renderIntoDocument(
-      <Stub>
-        <SettingsInputs {...props} />
-      </Stub>
-    );
+    props = {
+      settings: {
+        lti_key: ltiKey,
+        name: ltiName,
+      },
+    };
+    result = shallow(<SettingsInputs {...props} />);
   });
 
   it('renders', () => {
     expect(result).toBeDefined();
+  });
+
+  it('matches the snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
 
   it('renders the form not null', () => {
@@ -33,27 +31,23 @@ describe('common search inputs', () => {
   });
 
   it('has hidden input', () => {
-    const inputs = TestUtils.scryRenderedDOMComponentsWithTag(result, 'input');
-    const input = _.find(inputs, { name: 'oauth_consumer_key' });
+    const input = result.find('input').first();
     expect(input).toBeDefined();
-    expect(input.type).toBe('hidden');
-    expect(input.value).toBe(ltiKey);
+    expect(input.props().type).toBe('hidden');
+    expect(input.props().value).toBe(ltiKey);
   });
 
   it('search input changes', () => {
-    const inputs = TestUtils.scryRenderedDOMComponentsWithTag(result, 'input');
-    const input = _.find(inputs, { name: 'lti_key' });
+    const input = result.find('input').at(1);
     expect(input).toBeDefined();
-    expect(input.type).toBe('hidden');
-    expect(input.value).toBe(ltiKey);
+    expect(input.props().type).toBe('hidden');
+    expect(input.props().value).toBe(ltiKey);
   });
 
   it('search input changes', () => {
-    const inputs = TestUtils.scryRenderedDOMComponentsWithTag(result, 'input');
-    const input = _.find(inputs, { name: 'name' });
+    const input = result.find('input').last();
     expect(input).toBeDefined();
-    expect(input.type).toBe('hidden');
-    expect(input.value).toBe(ltiName);
+    expect(input.props().type).toBe('hidden');
+    expect(input.props().value).toBe(ltiName);
   });
-
 });

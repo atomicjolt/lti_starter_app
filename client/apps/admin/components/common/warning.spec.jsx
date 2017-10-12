@@ -1,25 +1,24 @@
 import React from 'react';
-import TestUtils from 'react-dom/test-utils';
-import Stub from '../../../../specs_support/stub';
+import { shallow } from 'enzyme';
 import Warning from './warning';
 
 describe('warning', () => {
-
   let result;
-  const props = {
-    text: 'bfcoder was here',
-  };
+  let props;
 
   beforeEach(() => {
-    result = TestUtils.renderIntoDocument(
-      <Stub>
-        <Warning {...props} />
-      </Stub>
-    );
+    props = {
+      text: 'bfcoder was here',
+    };
+    result = shallow(<Warning {...props} />);
+  });
+
+  it('matches the snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
 
   it('renders the warning', () => {
-    const warning = TestUtils.scryRenderedDOMComponentsWithTag(result, 'div');
-    expect(warning[0].textContent).toContain('bfcoder was here');
+    const warning = result.find('div');
+    expect(warning.props().children[1]).toContain(props.text);
   });
 });

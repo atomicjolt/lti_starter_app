@@ -1,61 +1,37 @@
 import React from 'react';
-import TestUtils from 'react-dom/test-utils';
-import { Provider } from 'react-redux';
-import _ from 'lodash';
-import Helper from '../../../../specs_support/helper';
-import Heading from './heading';
-import sites from '../../reducers/sites';
+import { shallow } from 'enzyme';
+import { Heading } from './heading';
 
 jest.mock('../../libs/assets');
 describe('common heading', () => {
   let result;
-  const sitesData = { 1: { id: 1, oauth_key: 'akey', oauth_secret: 'secret' } };
-
-  const props = {
-    backTo: '/',
-  };
+  let props;
+  const sites = { 1: { id: 1, oauth_key: 'akey', oauth_secret: 'secret' } };
 
   beforeEach(() => {
-    result = TestUtils.renderIntoDocument(
-      <Provider store={Helper.makeStore({}, { sites: sitesData }, { sites })}>
-        <Heading {...props} />
-      </Provider>
-    );
+    props = {
+      backTo: '/',
+      userName: 'username',
+      signOutUrl: 'https://www.example.com',
+      sites,
+    };
+    result = shallow(<Heading {...props} />);
   });
 
-  it('renders', () => {
-    expect(result).toBeDefined();
-  });
-
-  it('renders the form not null', () => {
-    expect(result).not.toBeNull();
+  it('matches the snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
 
   describe('back button', () => {
     it('renders back button', () => {
-      const buttons = TestUtils.scryRenderedDOMComponentsWithTag(result, 'button');
-      const backButton = _.find(buttons, { textContent: 'Back' });
-      expect(backButton).toBeDefined();
+      const button = result.find('button');
+      expect(button.length).toEqual(1);
     });
 
     it('renders no back button', () => {
-      result = TestUtils.renderIntoDocument(
-        <Provider store={Helper.makeStore({}, { sites: sitesData }, { sites })}>
-          <Heading />
-        </Provider>
-      );
-      const buttons = TestUtils.scryRenderedDOMComponentsWithTag(result, 'button');
-      const backButton = _.find(buttons, { textContent: 'Back' });
-      expect(backButton).not.toBeDefined();
+      props.backTo = '';
+      result = shallow(<Heading {...props} />);
+      expect(result.find('button').length).toEqual(0);
     });
   });
-
-  describe('dropdown button', () => {
-    it('has a presence', () => {
-      const button = TestUtils.findRenderedDOMComponentWithClass(result, 'c-username');
-      expect(button.children[0].textContent).toBe('');
-      expect(button.children[1].className).toBe('i-dropdown');
-    });
-  });
-
 });

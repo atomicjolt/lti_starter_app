@@ -1,7 +1,5 @@
-import React         from 'react';
-import TestUtils     from 'react-dom/test-utils';
-import { Provider }  from 'react-redux';
-import Helper        from '../../../../specs_support/helper';
+import React from 'react';
+import { shallow } from 'enzyme';
 import ApplicationRow from './application_row';
 
 describe('applications application row', () => {
@@ -18,30 +16,16 @@ describe('applications application row', () => {
       saveApplication: () => {}
     };
 
-    result = TestUtils.renderIntoDocument(
-      <Provider store={Helper.makeStore()}>
-        <table><tbody>
-          <ApplicationRow {...props} />
-        </tbody></table>
-      </Provider>
-    );
+    result = shallow(<ApplicationRow {...props} />);
+  });
 
+  it('matches the snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
 
   it('button is clicked', () => {
-    const button = TestUtils.findRenderedDOMComponentWithClass(result, 'i-settings');
-    TestUtils.Simulate.click(button);
-    expect(button).toBeDefined();
+    expect(result.instance().state.modalOpen).toBeFalsy();
+    result.find('button').simulate('click');
+    expect(result.instance().state.modalOpen).toBeTruthy();
   });
-
-  it('renders application instances count', () => {
-    const span = TestUtils.findRenderedDOMComponentWithTag(result, 'span');
-    expect(span.textContent).toContain('123');
-  });
-
-  it('renders application link', () => {
-    const linkTag = TestUtils.findRenderedDOMComponentWithTag(result, 'a');
-    expect(linkTag.innerHTML).toContain('SPECNAME');
-  });
-
 });

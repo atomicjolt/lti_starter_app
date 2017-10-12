@@ -1,17 +1,17 @@
 import React from 'react';
-import _ from 'lodash';
-import TestUtils from 'react-dom/test-utils';
-import Stub from '../../../../specs_support/stub';
+import { shallow } from 'enzyme';
 import ConfigXmlModal from './config_xml_modal';
 
 describe('config xml modal', () => {
   let result;
   let props;
+  let closed;
 
   beforeEach(() => {
+    closed = false;
     props = {
       isOpen: true,
-      closeModal: () => {},
+      closeModal: () => { closed = true; },
       application: {
         id: 1,
         name: 'bfcoder',
@@ -23,29 +23,17 @@ describe('config xml modal', () => {
         lti_config_xml: 'IMA XML',
       },
     };
-    result = TestUtils.renderIntoDocument(
-      <Stub>
-        <ConfigXmlModal {...props} />
-      </Stub>
-    );
+    result = shallow(<ConfigXmlModal {...props} />);
   });
 
   // TODO: find a way to reach into the ReactModal
-  xit('renders a the lti_key', () => {
-    const divs = TestUtils.scryRenderedDOMComponentsWithClass(result, 'o-grid__item');
-    const found = _.includes(divs, div => div.textContent === 'something-special');
-    expect(found).toBeTruthy();
+  it('matches the snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
 
-  xit('renders a the lti_secret', () => {
-    const divs = TestUtils.scryRenderedDOMComponentsWithClass(result, 'o-grid__item');
-    const found = _.includes(divs, div => div.textContent === '12345');
-    expect(found).toBeTruthy();
-  });
-
-  xit('renders a the lti_key', () => {
-    const divs = TestUtils.scryRenderedDOMComponentsWithClass(result, 'o-grid__item');
-    const found = _.includes(divs, div => div.textContent === 'IMA XML');
-    expect(found).toBeTruthy();
+  it('handles the closeModal function', () => {
+    expect(closed).toBeFalsy();
+    result.find('button').simulate('click');
+    expect(closed).toBeTruthy();
   });
 });
