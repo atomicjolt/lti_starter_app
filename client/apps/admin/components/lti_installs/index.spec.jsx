@@ -45,6 +45,6 @@ describe('the index component', () => {
 
   it('sets the active account', () => {
     result.instance().componentWillReceiveProps();
-    expect(result.instance().state.currentAccount.id).toBe(1234)
+    expect(result.instance().state.currentAccount.id).toBe(1234);
   });
 });

@@ -24,7 +24,7 @@ describe('sites list row', () => {
   });
 
   it('handles the second button onclick event', () => {
-    const button = result.find('button')
+    const button = result.find('button');
     expect(result.instance().state.confirmDeleteModalOpen).toBeFalsy();
     button.at(1).simulate('click');
     expect(result.instance().state.confirmDeleteModalOpen).toBeTruthy();

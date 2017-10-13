@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import { shallow } from 'enzyme';
 import { InstallPane } from './install_pane';
 

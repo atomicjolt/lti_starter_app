@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Form from './form';
 import Textarea from '../common/textarea';
-import Warning from '../common/warning';
 
 describe('applications form', () => {
   let result;

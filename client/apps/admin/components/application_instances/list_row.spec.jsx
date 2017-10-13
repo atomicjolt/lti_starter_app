@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React from 'react';
 import { shallow } from 'enzyme';
 import ListRow from './list_row';

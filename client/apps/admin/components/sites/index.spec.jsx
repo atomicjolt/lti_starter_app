@@ -19,7 +19,7 @@ describe('sites index', () => {
       url: 'atomicjolt.com'
     }
   };
-  
+
   beforeEach(() => {
     props = {
       sites: sitesData,
