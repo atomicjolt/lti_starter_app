@@ -1,12 +1,11 @@
 import React from 'react';
-import TestUtils from 'react-dom/test-utils';
-import { Provider } from 'react-redux';
-import Helper from '../../../../specs_support/helper';
-import Stub from '../../../../specs_support/stub';
+import { shallow } from 'enzyme';
 import List from './list';
 
 describe('sites list', () => {
   let result;
+  let props;
+
   const sites = {
     1: {
       id: 1,
@@ -18,30 +17,22 @@ describe('sites list', () => {
       url: 'atomicjolt.com'
     }
   };
-  const props = {
-    sites,
-  };
 
   beforeEach(() => {
-    result = TestUtils.renderIntoDocument(
-      <Provider store={Helper.makeStore()}>
-        <Stub>
-          <List {...props} />
-        </Stub>
-      </Provider>
-    );
+    props = {
+      sites,
+    };
+    result = shallow(<List {...props} />);
   });
 
   it('renders the list with header values', () => {
-    const thead = TestUtils.findRenderedDOMComponentWithTag(result, 'thead');
-    expect(thead.textContent).toContain('URL');
-    expect(thead.textContent).toContain('SETTINGS');
-    expect(thead.textContent).toContain('DELETE');
+    const thead = result.find('thead');
+    expect(thead.props().children).toEqual(
+      <tr><th><span>URL</span></th><th><span>SETTINGS</span></th><th><span>DELETE</span></th></tr>
+    );
   });
 
-  it('renders all sites', () => {
-    const trs = TestUtils.scryRenderedDOMComponentsWithTag(result, 'tr');
-    // 1 in thead, 2 in tbody, 3 total
-    expect(trs.length).toBe(3);
+  it('matches the snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
 });

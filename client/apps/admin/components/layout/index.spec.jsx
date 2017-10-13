@@ -1,8 +1,6 @@
-import React        from 'react';
-import TestUtils    from 'react-dom/test-utils';
-import { Provider } from 'react-redux';
-import Helper       from '../../../../specs_support/helper';
-import { Index }    from './index';
+import React from 'react';
+import { shallow } from 'enzyme';
+import { Index } from './index';
 
 describe('layout index', () => {
   let result;
@@ -24,28 +22,23 @@ describe('layout index', () => {
         pathname: '/'
       },
     };
-
-    result = TestUtils.renderIntoDocument(
-      <Provider store={Helper.makeStore()}>
-        <Index {...props} />
-      </Provider>);
+    result = shallow(<Index {...props} />);
   });
 
   it('renders the index', () => {
     expect(result).toBeDefined();
   });
 
-  it('renders the child component', () => {
-    const child = TestUtils.findRenderedDOMComponentWithTag(result, 'h1');
-    expect(child.textContent).toBe(text);
+  it('matches the snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
 
   it('Loads sites', () => {
+    result.instance().componentDidMount();
     expect(getSites).toBe(true);
   });
 
   it('Loads applications', () => {
     expect(getApplications).toBe(true);
   });
-
 });

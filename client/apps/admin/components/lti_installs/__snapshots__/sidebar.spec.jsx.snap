@@ -1,0 +1,538 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lti installs sidebar should render sidebar matches the snapshot 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="o-left"
+>
+    <div
+        className="c-tool"
+    >
+        <span>
+            <a
+                onClick={[Function]}
+            >
+                <i
+                    className="i-settings"
+                />
+            </a>
+            <Modal
+                application={
+                    Object {
+                        "name": "applicationName",
+                      }
+                }
+                applicationInstance={
+                    Object {
+                        "site": Object {
+                          "url": "www.atomicjolt.com",
+                        },
+                      }
+                }
+                closeModal={[Function]}
+                isOpen={false}
+                save={[Function]}
+                sites={Object {}}
+            />
+        </span>
+        <h4
+            className="c-tool__subtitle"
+        >
+            LTI Tool
+        </h4>
+        <h3
+            className="c-tool__title"
+        >
+            applicationName
+        </h3>
+    </div>
+    <div
+        className="c-tool"
+    >
+        <h4
+            className="c-tool__instance"
+        >
+            <a
+                href="www.atomicjolt.com"
+            >
+                www.atomicjolt.com
+            </a>
+        </h4>
+    </div>
+    <div
+        className="c-filters"
+    >
+        <h4
+            className="c-sidebar-subtitle"
+        >
+            Installed
+        </h4>
+        <div
+            className="c-checkbox--yellow u-m-bottom"
+        >
+            <input
+                id="onlyShowInstalled"
+                name="onlyShowInstalled"
+                onChange={[Function]}
+                type="checkbox"
+            />
+            <label
+                htmlFor="onlyShowInstalled"
+            >
+                Show only installed
+            </label>
+        </div>
+        <h4
+            className="c-sidebar-subtitle"
+        >
+            Accounts
+        </h4>
+        <Accounts
+            accounts={
+                Object {
+                    "1": Object {
+                      "id": 1,
+                      "name": "accountName",
+                      "sub_accounts": Array [],
+                    },
+                  }
+            }
+            currentAccount={undefined}
+            setAccountActive={[Function]}
+        />
+    </div>
+</div>,
+  "nodes": Array [
+    <div
+      className="o-left"
+>
+      <div
+            className="c-tool"
+      >
+            <span>
+                  <a
+                        onClick={[Function]}
+                  >
+                        <i
+                              className="i-settings"
+                        />
+                  </a>
+                  <Modal
+                        application={
+                              Object {
+                                    "name": "applicationName",
+                                  }
+                        }
+                        applicationInstance={
+                              Object {
+                                    "site": Object {
+                                      "url": "www.atomicjolt.com",
+                                    },
+                                  }
+                        }
+                        closeModal={[Function]}
+                        isOpen={false}
+                        save={[Function]}
+                        sites={Object {}}
+                  />
+            </span>
+            <h4
+                  className="c-tool__subtitle"
+            >
+                  LTI Tool
+            </h4>
+            <h3
+                  className="c-tool__title"
+            >
+                  applicationName
+            </h3>
+      </div>
+      <div
+            className="c-tool"
+      >
+            <h4
+                  className="c-tool__instance"
+            >
+                  <a
+                        href="www.atomicjolt.com"
+                  >
+                        www.atomicjolt.com
+                  </a>
+            </h4>
+      </div>
+      <div
+            className="c-filters"
+      >
+            <h4
+                  className="c-sidebar-subtitle"
+            >
+                  Installed
+            </h4>
+            <div
+                  className="c-checkbox--yellow u-m-bottom"
+            >
+                  <input
+                        id="onlyShowInstalled"
+                        name="onlyShowInstalled"
+                        onChange={[Function]}
+                        type="checkbox"
+                  />
+                  <label
+                        htmlFor="onlyShowInstalled"
+                  >
+                        Show only installed
+                  </label>
+            </div>
+            <h4
+                  className="c-sidebar-subtitle"
+            >
+                  Accounts
+            </h4>
+            <Accounts
+                  accounts={
+                        Object {
+                              "1": Object {
+                                "id": 1,
+                                "name": "accountName",
+                                "sub_accounts": Array [],
+                              },
+                            }
+                  }
+                  currentAccount={undefined}
+                  setAccountActive={[Function]}
+            />
+      </div>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <Sidebar
+        accounts={
+                Object {
+                        "1": Object {
+                          "id": 1,
+                          "name": "accountName",
+                          "sub_accounts": Array [],
+                        },
+                      }
+        }
+        application={
+                Object {
+                        "name": "applicationName",
+                      }
+        }
+        applicationInstance={
+                Object {
+                        "site": Object {
+                          "url": "www.atomicjolt.com",
+                        },
+                      }
+        }
+        canvasRequest={[Function]}
+        onlyShowInstalledChanged={[Function]}
+        saveApplicationInstance={[Function]}
+        setAccountActive={[Function]}
+        sites={Object {}}
+/>,
+      "_debugID": 5,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": Sidebar {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "accounts": Object {
+            "1": Object {
+              "id": 1,
+              "name": "accountName",
+              "sub_accounts": Array [],
+            },
+          },
+          "application": Object {
+            "name": "applicationName",
+          },
+          "applicationInstance": Object {
+            "site": Object {
+              "url": "www.atomicjolt.com",
+            },
+          },
+          "canvasRequest": [Function],
+          "onlyShowInstalledChanged": [Function],
+          "saveApplicationInstance": [Function],
+          "setAccountActive": [Function],
+          "sites": Object {},
+        },
+        "refs": Object {},
+        "state": Object {
+          "modalOpen": false,
+        },
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 3,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="o-left"
+>
+          <div
+                    className="c-tool"
+          >
+                    <span>
+                              <a
+                                        onClick={[Function]}
+                              >
+                                        <i
+                                                  className="i-settings"
+                                        />
+                              </a>
+                              <Modal
+                                        application={
+                                                  Object {
+                                                            "name": "applicationName",
+                                                          }
+                                        }
+                                        applicationInstance={
+                                                  Object {
+                                                            "site": Object {
+                                                              "url": "www.atomicjolt.com",
+                                                            },
+                                                          }
+                                        }
+                                        closeModal={[Function]}
+                                        isOpen={false}
+                                        save={[Function]}
+                                        sites={Object {}}
+                              />
+                    </span>
+                    <h4
+                              className="c-tool__subtitle"
+                    >
+                              LTI Tool
+                    </h4>
+                    <h3
+                              className="c-tool__title"
+                    >
+                              applicationName
+                    </h3>
+          </div>
+          <div
+                    className="c-tool"
+          >
+                    <h4
+                              className="c-tool__instance"
+                    >
+                              <a
+                                        href="www.atomicjolt.com"
+                              >
+                                        www.atomicjolt.com
+                              </a>
+                    </h4>
+          </div>
+          <div
+                    className="c-filters"
+          >
+                    <h4
+                              className="c-sidebar-subtitle"
+                    >
+                              Installed
+                    </h4>
+                    <div
+                              className="c-checkbox--yellow u-m-bottom"
+                    >
+                              <input
+                                        id="onlyShowInstalled"
+                                        name="onlyShowInstalled"
+                                        onChange={[Function]}
+                                        type="checkbox"
+                              />
+                              <label
+                                        htmlFor="onlyShowInstalled"
+                              >
+                                        Show only installed
+                              </label>
+                    </div>
+                    <h4
+                              className="c-sidebar-subtitle"
+                    >
+                              Accounts
+                    </h4>
+                    <Accounts
+                              accounts={
+                                        Object {
+                                                  "1": Object {
+                                                    "id": 1,
+                                                    "name": "accountName",
+                                                    "sub_accounts": Array [],
+                                                  },
+                                                }
+                              }
+                              currentAccount={undefined}
+                              setAccountActive={[Function]}
+                    />
+          </div>
+</div>,
+        "_debugID": 6,
+        "_renderedOutput": <div
+          className="o-left"
+>
+          <div
+                    className="c-tool"
+          >
+                    <span>
+                              <a
+                                        onClick={[Function]}
+                              >
+                                        <i
+                                                  className="i-settings"
+                                        />
+                              </a>
+                              <Modal
+                                        application={
+                                                  Object {
+                                                            "name": "applicationName",
+                                                          }
+                                        }
+                                        applicationInstance={
+                                                  Object {
+                                                            "site": Object {
+                                                              "url": "www.atomicjolt.com",
+                                                            },
+                                                          }
+                                        }
+                                        closeModal={[Function]}
+                                        isOpen={false}
+                                        save={[Function]}
+                                        sites={Object {}}
+                              />
+                    </span>
+                    <h4
+                              className="c-tool__subtitle"
+                    >
+                              LTI Tool
+                    </h4>
+                    <h3
+                              className="c-tool__title"
+                    >
+                              applicationName
+                    </h3>
+          </div>
+          <div
+                    className="c-tool"
+          >
+                    <h4
+                              className="c-tool__instance"
+                    >
+                              <a
+                                        href="www.atomicjolt.com"
+                              >
+                                        www.atomicjolt.com
+                              </a>
+                    </h4>
+          </div>
+          <div
+                    className="c-filters"
+          >
+                    <h4
+                              className="c-sidebar-subtitle"
+                    >
+                              Installed
+                    </h4>
+                    <div
+                              className="c-checkbox--yellow u-m-bottom"
+                    >
+                              <input
+                                        id="onlyShowInstalled"
+                                        name="onlyShowInstalled"
+                                        onChange={[Function]}
+                                        type="checkbox"
+                              />
+                              <label
+                                        htmlFor="onlyShowInstalled"
+                              >
+                                        Show only installed
+                              </label>
+                    </div>
+                    <h4
+                              className="c-sidebar-subtitle"
+                    >
+                              Accounts
+                    </h4>
+                    <Accounts
+                              accounts={
+                                        Object {
+                                                  "1": Object {
+                                                    "id": 1,
+                                                    "name": "accountName",
+                                                    "sub_accounts": Array [],
+                                                  },
+                                                }
+                              }
+                              currentAccount={undefined}
+                              setAccountActive={[Function]}
+                    />
+          </div>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Sidebar
+    accounts={
+        Object {
+            "1": Object {
+              "id": 1,
+              "name": "accountName",
+              "sub_accounts": Array [],
+            },
+          }
+    }
+    application={
+        Object {
+            "name": "applicationName",
+          }
+    }
+    applicationInstance={
+        Object {
+            "site": Object {
+              "url": "www.atomicjolt.com",
+            },
+          }
+    }
+    canvasRequest={[Function]}
+    onlyShowInstalledChanged={[Function]}
+    saveApplicationInstance={[Function]}
+    setAccountActive={[Function]}
+    sites={Object {}}
+/>,
+}
+`;

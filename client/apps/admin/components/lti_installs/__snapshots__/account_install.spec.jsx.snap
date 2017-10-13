@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lti installs account install with account present matches the snapshot 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="c-info"
+>
+    <div
+        className="c-title"
+    >
+        <h1>
+            123
+        </h1>
+        <h3>
+            accountName
+        </h3>
+    </div>
+    <button
+        className="c-btn c-btn--yellow"
+        onClick={[Function]}
+    >
+        Install Into Account
+    </button>
+</div>,
+  "nodes": Array [
+    <div
+      className="c-info"
+>
+      <div
+            className="c-title"
+      >
+            <h1>
+                  123
+            </h1>
+            <h3>
+                  accountName
+            </h3>
+      </div>
+      <button
+            className="c-btn c-btn--yellow"
+            onClick={[Function]}
+      >
+            Install Into Account
+      </button>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <AccountInstall
+        account={
+                Object {
+                        "external_tools": Object {
+                          "consumer_key": "consumer_key",
+                        },
+                        "id": 12,
+                        "name": "accountName",
+                      }
+        }
+        accountInstalls={123}
+        applicationInstance={
+                Object {
+                        "lti_key": "lti_key",
+                      }
+        }
+        canvasRequest={[Function]}
+/>,
+      "_debugID": 3,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "account": Object {
+            "external_tools": Object {
+              "consumer_key": "consumer_key",
+            },
+            "id": 12,
+            "name": "accountName",
+          },
+          "accountInstalls": 123,
+          "applicationInstance": Object {
+            "lti_key": "lti_key",
+          },
+          "canvasRequest": [Function],
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 2,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="c-info"
+>
+          <div
+                    className="c-title"
+          >
+                    <h1>
+                              123
+                    </h1>
+                    <h3>
+                              accountName
+                    </h3>
+          </div>
+          <button
+                    className="c-btn c-btn--yellow"
+                    onClick={[Function]}
+          >
+                    Install Into Account
+          </button>
+</div>,
+        "_debugID": 4,
+        "_renderedOutput": <div
+          className="c-info"
+>
+          <div
+                    className="c-title"
+          >
+                    <h1>
+                              123
+                    </h1>
+                    <h3>
+                              accountName
+                    </h3>
+          </div>
+          <button
+                    className="c-btn c-btn--yellow"
+                    onClick={[Function]}
+          >
+                    Install Into Account
+          </button>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <AccountInstall
+    account={
+        Object {
+            "external_tools": Object {
+              "consumer_key": "consumer_key",
+            },
+            "id": 12,
+            "name": "accountName",
+          }
+    }
+    accountInstalls={123}
+    applicationInstance={
+        Object {
+            "lti_key": "lti_key",
+          }
+    }
+    canvasRequest={[Function]}
+/>,
+}
+`;

@@ -1,16 +1,16 @@
-import React        from 'react';
-import TestUtils    from 'react-dom/test-utils';
-import { Provider }     from 'react-redux';
-import Helper           from '../../../../specs_support/helper';
-import AccountInstall   from './account_install';
+import React from 'react';
+import { shallow } from 'enzyme';
+import AccountInstall from './account_install';
 
 describe('lti installs account install', () => {
 
   let result;
   const accountInstalls = 123;
   const accountName = 'accountName';
+  let clicked;
 
   describe('with account present', () => {
+    clicked = false;
     beforeEach(() => {
       const account = {
         id: 12,
@@ -24,39 +24,26 @@ describe('lti installs account install', () => {
         applicationInstance: {
           lti_key: 'lti_key'
         },
-        canvasRequest:     () => {},
+        canvasRequest: () => { clicked = true; },
         accountInstalls,
         account,
       };
 
-      result = TestUtils.renderIntoDocument(
-        <Provider store={Helper.makeStore()}>
-          <AccountInstall {...props} />
-        </Provider>
-      );
+      result = shallow(<AccountInstall {...props} />);
     });
 
     it('renders', () => {
       expect(result).toBeDefined();
     });
 
-    it('renders the form not null', () => {
-      expect(result).not.toBeNull();
+    it('matches the snapshot', () => {
+      expect(result).toMatchSnapshot();
     });
 
-    it('renders a header', () => {
-      const h1 = TestUtils.findRenderedDOMComponentWithTag(result, 'h1');
-      expect(h1.textContent).toBe('123');
-    });
-
-    it('renders a header h3', () => {
-      const h3 = TestUtils.findRenderedDOMComponentWithTag(result, 'h3');
-      expect(h3.textContent).toBe(accountName);
-    });
-
-    it('renders buttons', () => {
-      const accountButton = TestUtils.findRenderedDOMComponentWithTag(result, 'button');
-      expect(accountButton.textContent).toBe('Install Into Account');
+    it('handles the button click', () => {
+      expect(clicked).toBeFalsy();
+      result.find('button').simulate('click');
+      expect(clicked).toBeTruthy();
     });
   });
 
@@ -70,21 +57,17 @@ describe('lti installs account install', () => {
         accountInstalls,
       };
 
-      result = TestUtils.renderIntoDocument(
-        <Provider store={Helper.makeStore()}>
-          <AccountInstall {...props} />
-        </Provider>
-      );
+      result = shallow(<AccountInstall {...props} />);
     });
 
     it('renders a header h3', () => {
-      const h3 = TestUtils.findRenderedDOMComponentWithTag(result, 'h3');
-      expect(h3.textContent).toBe('Root');
+      const h3 = result.find('h3');
+      expect(h3.props().children).toBe('Root');
     });
 
     it('renders buttons', () => {
-      const accountButton = TestUtils.findRenderedDOMComponentWithTag(result, 'button');
-      expect(accountButton.textContent).toBe('Install Into Account');
+      const accountButton = result.find('button');
+      expect(accountButton.props().children).toBe('Install Into Account');
     });
   });
 });

@@ -1,0 +1,209 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lti installs course install row matches the snapshot 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <tr>
+    <td>
+        <div
+            className="c-table--inactive"
+        >
+            <a
+                href="example.com/courses/123/external_tools/12"
+                rel="noopener noreferrer"
+                target="_blank"
+            >
+                courseName
+            </a>
+        </div>
+    </td>
+    <td>
+        <button
+            className="c-btn c-btn--gray"
+            onClick={[Function]}
+        >
+            Uninstall
+        </button>
+    </td>
+</tr>,
+  "nodes": Array [
+    <tr>
+      <td>
+            <div
+                  className="c-table--inactive"
+            >
+                  <a
+                        href="example.com/courses/123/external_tools/12"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                  >
+                        courseName
+                  </a>
+            </div>
+      </td>
+      <td>
+            <button
+                  className="c-btn c-btn--gray"
+                  onClick={[Function]}
+            >
+                  Uninstall
+            </button>
+      </td>
+</tr>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <CourseInstallRow
+        applicationInstance={
+                Object {
+                        "lti_config_xml": "lti_config_xml",
+                        "lti_key": "lti_key",
+                        "lti_secret": "lti_secret",
+                        "name": "application_name",
+                        "site": Object {
+                          "url": "example.com",
+                        },
+                      }
+        }
+        canvasRequest={[Function]}
+        courseId={123}
+        courseName="courseName"
+        installedTool={
+                Object {
+                        "id": 12,
+                      }
+        }
+/>,
+      "_debugID": 3,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "applicationInstance": Object {
+            "lti_config_xml": "lti_config_xml",
+            "lti_key": "lti_key",
+            "lti_secret": "lti_secret",
+            "name": "application_name",
+            "site": Object {
+              "url": "example.com",
+            },
+          },
+          "canvasRequest": [Function],
+          "courseId": 123,
+          "courseName": "courseName",
+          "installedTool": Object {
+            "id": 12,
+          },
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 2,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <tr>
+          <td>
+                    <div
+                              className="c-table--inactive"
+                    >
+                              <a
+                                        href="example.com/courses/123/external_tools/12"
+                                        rel="noopener noreferrer"
+                                        target="_blank"
+                              >
+                                        courseName
+                              </a>
+                    </div>
+          </td>
+          <td>
+                    <button
+                              className="c-btn c-btn--gray"
+                              onClick={[Function]}
+                    >
+                              Uninstall
+                    </button>
+          </td>
+</tr>,
+        "_debugID": 4,
+        "_renderedOutput": <tr>
+          <td>
+                    <div
+                              className="c-table--inactive"
+                    >
+                              <a
+                                        href="example.com/courses/123/external_tools/12"
+                                        rel="noopener noreferrer"
+                                        target="_blank"
+                              >
+                                        courseName
+                              </a>
+                    </div>
+          </td>
+          <td>
+                    <button
+                              className="c-btn c-btn--gray"
+                              onClick={[Function]}
+                    >
+                              Uninstall
+                    </button>
+          </td>
+</tr>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <CourseInstallRow
+    applicationInstance={
+        Object {
+            "lti_config_xml": "lti_config_xml",
+            "lti_key": "lti_key",
+            "lti_secret": "lti_secret",
+            "name": "application_name",
+            "site": Object {
+              "url": "example.com",
+            },
+          }
+    }
+    canvasRequest={[Function]}
+    courseId={123}
+    courseName="courseName"
+    installedTool={
+        Object {
+            "id": 12,
+          }
+    }
+/>,
+}
+`;
