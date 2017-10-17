@@ -7,7 +7,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <ApplicationRow
     application={
         Object {
-            "application_instances_count": 123,
+            "application_instances_count": 1234,
             "id": 314159,
             "name": "SPECNAME",
           }
@@ -38,7 +38,7 @@ ShallowWrapper {
 </td>,
         <td>
           <span>
-                    123
+                    1234
           </span>
 </td>,
         <td>
@@ -61,7 +61,7 @@ ShallowWrapper {
           <Modal
                     application={
                               Object {
-                                        "application_instances_count": 123,
+                                        "application_instances_count": 1234,
                                         "id": 314159,
                                         "name": "SPECNAME",
                                       }
@@ -111,7 +111,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": <span>
-            123
+            1234
 </span>,
         },
         "ref": null,
@@ -120,10 +120,10 @@ ShallowWrapper {
           "key": null,
           "nodeType": "host",
           "props": Object {
-            "children": 123,
+            "children": 1234,
           },
           "ref": null,
-          "rendered": 123,
+          "rendered": 1234,
           "type": "span",
         },
         "type": "td",
@@ -153,7 +153,7 @@ ShallowWrapper {
             <Modal
               application={
                             Object {
-                                          "application_instances_count": 123,
+                                          "application_instances_count": 1234,
                                           "id": 314159,
                                           "name": "SPECNAME",
                                         }
@@ -203,7 +203,7 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "application": Object {
-                "application_instances_count": 123,
+                "application_instances_count": 1234,
                 "id": 314159,
                 "name": "SPECNAME",
               },
@@ -239,7 +239,7 @@ ShallowWrapper {
 </td>,
           <td>
             <span>
-                        123
+                        1234
             </span>
 </td>,
           <td>
@@ -262,7 +262,7 @@ ShallowWrapper {
             <Modal
                         application={
                                     Object {
-                                                "application_instances_count": 123,
+                                                "application_instances_count": 1234,
                                                 "id": 314159,
                                                 "name": "SPECNAME",
                                               }
@@ -312,7 +312,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": <span>
-              123
+              1234
 </span>,
           },
           "ref": null,
@@ -321,10 +321,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "host",
             "props": Object {
-              "children": 123,
+              "children": 1234,
             },
             "ref": null,
-            "rendered": 123,
+            "rendered": 1234,
             "type": "span",
           },
           "type": "td",
@@ -354,7 +354,7 @@ ShallowWrapper {
               <Modal
                 application={
                                 Object {
-                                                "application_instances_count": 123,
+                                                "application_instances_count": 1234,
                                                 "id": 314159,
                                                 "name": "SPECNAME",
                                               }
@@ -404,7 +404,7 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "application": Object {
-                  "application_instances_count": 123,
+                  "application_instances_count": 1234,
                   "id": 314159,
                   "name": "SPECNAME",
                 },
