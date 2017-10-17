@@ -1,11 +1,9 @@
-import React        from 'react';
-import TestUtils    from 'react-dom/test-utils';
-import _ from 'lodash';
-import Stub         from '../../../../specs_support/stub';
-import Form         from './form';
+import React from 'react';
+import { shallow } from 'enzyme';
+import Form from './form';
+import Textarea from '../common/textarea';
 
 describe('applications form', () => {
-
   let result;
   let props;
   let didSave;
@@ -20,39 +18,39 @@ describe('applications form', () => {
       save        : () => { didSave = true; },
       description : 'SPEC_DESCRIPTION',
       defaultConfig: '{ "foo": "bar" }',
+      configParseError: '',
     };
 
-    result = TestUtils.renderIntoDocument(
-      <Stub>
-        <Form {...props} />
-      </Stub>
-    );
+    result = shallow(<Form {...props} />);
+  });
+
+  it('matches the snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
 
   it('did save', () => {
-    const button = TestUtils.findRenderedDOMComponentWithClass(result, 'c-btn c-btn--yellow');
-    TestUtils.Simulate.click(button);
+    expect(didSave).toBeFalsy();
+    result.find('.c-btn--yellow').simulate('click');
     expect(didSave).toBeTruthy();
   });
 
   it('close modal', () => {
-    const button = TestUtils.findRenderedDOMComponentWithClass(result, 'c-btn c-btn--gray--large u-m-right');
-    TestUtils.Simulate.click(button);
+    expect(didClose).toBeFalsy();
+    result.find('.c-btn--gray--large').simulate('click');
     expect(didClose).toBeTruthy();
   });
 
-  it('renders description', () => {
-    const element = TestUtils.findRenderedDOMComponentWithClass(result, 'o-grid o-grid__modal-top');
-    expect(element).toBeDefined();
-    const childDivs = element.childNodes;
-    const inputTag = childDivs[0].firstChild.childNodes[1];
-    expect(inputTag.value).toContain('SPEC_DESCRIPTION');
+  it('renders default config', () => {
+    const input = result.find('input');
+    expect(input).toBeDefined();
+    expect(input.props().value).toEqual('SPEC_DESCRIPTION');
   });
 
-  it('renders default config', () => {
-    const inputs = TestUtils.scryRenderedDOMComponentsWithTag(result, 'textarea');
-    const input = _.find(inputs, { id: 'application_default_config' });
-    expect(input).toBeDefined();
-    expect(input.value).toBe('{ "foo": "bar" }');
+  it('renders the warning', () => {
+    const textA = result.find(Textarea).first();
+    expect(textA.props().warning).toBe(null);
+    props.configParseError = 'This is a warning';
+    result = shallow(<Form {...props} />);
+    expect.stringContaining(props.configParseError);
   });
 });

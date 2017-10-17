@@ -1,31 +1,44 @@
 import React from 'react';
-import TestUtils from 'react-dom/test-utils';
-import Stub from '../../../../specs_support/stub';
+import { shallow } from 'enzyme';
 import DeleteForm from './delete_form';
 
 describe('sites delete form', () => {
   let result;
-  const props = {
-    deleteSite: () => {},
-    closeModal: () => {},
-  };
+  let clicked;
+  let props;
 
   beforeEach(() => {
-    result = TestUtils.renderIntoDocument(
-      <Stub>
-        <DeleteForm {...props} />
-      </Stub>
-    );
+    clicked = false;
+    props = {
+      deleteSite: () => { clicked = true; },
+      closeModal: () => { clicked = true; },
+    };
+    result = shallow(<DeleteForm {...props} />);
+  });
+
+  it('matches the snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
 
   it('renders Yes button', () => {
-    const button = TestUtils.findRenderedDOMComponentWithClass(result, 'c-btn c-btn--red');
-    expect(button.textContent).toContain('Yes');
+    const button = result.find('.c-btn--red');
+    expect(button.props().children).toContain('Yes');
+  });
+
+  it('handles the yes button click event', () => {
+    expect(clicked).toBeFalsy();
+    result.find('.c-btn--red').simulate('click');
+    expect(clicked).toBeTruthy();
   });
 
   it('renders Cancel button', () => {
-    const button = TestUtils.findRenderedDOMComponentWithClass(result, 'c-btn c-btn--gray--large');
-    expect(button.textContent).toBe('Cancel');
+    const button = result.find('.c-btn--gray--large');
+    expect(button.props().children).toBe('Cancel');
   });
 
+  it('handles the yes button click event', () => {
+    expect(clicked).toBeFalsy();
+    result.find('.c-btn--gray--large').simulate('click');
+    expect(clicked).toBeTruthy();
+  });
 });

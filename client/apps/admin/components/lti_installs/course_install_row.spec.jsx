@@ -1,87 +1,73 @@
-import React              from 'react';
-import TestUtils          from 'react-dom/test-utils';
-import { Provider }       from 'react-redux';
+import React from 'react';
+import { shallow } from 'enzyme';
 import _ from 'lodash';
-import Helper             from '../../../../specs_support/helper';
-import CourseInstallRow   from './course_install_row';
+import CourseInstallRow from './course_install_row';
 
 describe('lti installs course install row', () => {
 
   let result;
+  let props;
   const courseId = 123;
   const courseName = 'courseName';
   const installedToolId = 12;
 
-  const props = {
-    applicationInstance: {
-      name: 'application_name',
-      lti_key: 'lti_key',
-      lti_secret: 'lti_secret',
-      lti_config_xml: 'lti_config_xml',
-      site: {
-        url: 'example.com'
-      }
-    },
-    installedTool: {
-      id: installedToolId,
-    },
-    canvasRequest: () => {},
-    courseName,
-    courseId,
-  };
-
   beforeEach(() => {
-    result = TestUtils.renderIntoDocument(
-      <Provider store={Helper.makeStore()}>
-        <table><tbody>
-          <CourseInstallRow {...props} />
-        </tbody></table>
-      </Provider>
-    );
+    props = {
+      applicationInstance: {
+        name: 'application_name',
+        lti_key: 'lti_key',
+        lti_secret: 'lti_secret',
+        lti_config_xml: 'lti_config_xml',
+        site: {
+          url: 'example.com'
+        }
+      },
+      installedTool: {
+        id: installedToolId,
+      },
+      canvasRequest: () => {},
+      courseName,
+      courseId,
+    };
+    result = shallow(<CourseInstallRow {...props} />);
   });
 
   it('renders', () => {
     expect(result).toBeDefined();
   });
 
-  it('renders the form not null', () => {
-    expect(result).not.toBeNull();
+  it('matches the snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
 
   it('renders row', () => {
-    const courseTitle = TestUtils.findRenderedDOMComponentWithClass(result, 'c-table--inactive');
-    expect(courseTitle.textContent).toBe(courseName);
+    const courseTitle = result.find('.c-table--inactive');
+    expect(courseTitle.props().children).toEqual(
+      <a href="example.com/courses/123/external_tools/12" rel="noopener noreferrer" target="_blank">courseName</a>
+    );
   });
 
   it('renders buttons', () => {
-    const installButton = TestUtils.findRenderedDOMComponentWithTag(result, 'button');
-    expect(installButton.textContent).toBe('Uninstall');
+    const installButton = result.find('button');
+    expect(installButton.props().children).toBe('Uninstall');
   });
 
   it('renders link without external tool', () => {
     const tempProps = _.cloneDeep(props);
     delete tempProps.installedTool;
-    result = TestUtils.renderIntoDocument(
-      <Provider store={Helper.makeStore()}>
-        <table>
-          <tbody>
-            <CourseInstallRow {...tempProps} />
-          </tbody>
-        </table>
-      </Provider>
-    );
-    const link = TestUtils.findRenderedDOMComponentWithTag(result, 'a');
+    result = shallow(<CourseInstallRow {...tempProps} />);
+    const link = result.find('a');
     expect(link).toBeDefined();
     const installLink = `example.com/courses/${props.courseId}`;
-    const found = _.includes(link.href, installLink);
+    const found = _.includes(link.props().href, installLink);
     expect(found).toBe(true);
   });
 
   it('renders link with external tool', () => {
-    const link = TestUtils.findRenderedDOMComponentWithTag(result, 'a');
+    const link = result.find('a');
     expect(link).toBeDefined();
     const installLink = `example.com/courses/${props.courseId}/external_tools/${installedToolId}`;
-    const found = _.includes(link.href, installLink);
+    const found = _.includes(link.props().href, installLink);
     expect(found).toBe(true);
   });
 

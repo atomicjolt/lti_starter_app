@@ -1,42 +1,34 @@
-import React         from 'react';
-import TestUtils     from 'react-dom/test-utils';
-import { Provider }  from 'react-redux';
-import Helper        from '../../../../specs_support/helper';
-import Modal         from './modal';
+import React from 'react';
+import { shallow } from 'enzyme';
+import Modal from './modal';
 
 describe('applications modal', () => {
   let result;
   let props;
-  let isShown;
+  let saved;
+
   beforeEach(() => {
-    isShown = true;
+    saved = false;
     props = {
       application: {
         name        : 'SPEC_NAME',
         description : 'SPEC_STRING'
       },
       isOpen: true,
-      closeModal: () => { isShown = false; },
-      save: () => {}
+      closeModal: () => {},
+      save: () => { saved = true; },
     };
 
-    result = TestUtils.renderIntoDocument(
-      <Provider store={Helper.makeStore()} >
-        <Modal {...props} />
-      </Provider>
-    );
+    result = shallow(<Modal {...props} />);
   });
 
-  it('modal is shown', () => {
-    const modal = TestUtils.findRenderedComponentWithType(result, Modal);
-    expect(modal).toBeDefined();
-    expect(modal.props.isOpen).toBeTruthy();
+  it('modal matches snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
 
-  it('modal is hidden', () => {
-    const modal = TestUtils.findRenderedComponentWithType(result, Modal);
-    expect(modal).toBeDefined();
-    modal.props.closeModal();
-    expect(isShown).toBeFalsy();
+  it('saves the application', () => {
+    expect(saved).toBeFalsy();
+    result.instance().saveApplication();
+    expect(saved).toBeTruthy();
   });
 });

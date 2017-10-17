@@ -32,7 +32,6 @@ export default function List(props) {
           _.map(props.applicationInstances, (instance, key) => (
             <ListRow
               key={`instance_${key}`}
-              {...instance}
               application={application}
               applicationInstance={instance}
               settings={settings}

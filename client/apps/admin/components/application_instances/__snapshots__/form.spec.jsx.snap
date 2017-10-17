@@ -1,0 +1,797 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`application instance form matches the snapshot 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <form>
+    <div
+        className="o-grid o-grid__modal-top"
+    >
+        <div
+            className="o-grid__item u-half"
+        >
+            <div
+                className="c-input"
+            >
+                <span>
+                    Domain
+                </span>
+                <Select
+                    addLabelText="Add \\"{label}\\"?"
+                    arrowRenderer={[Function]}
+                    autosize={true}
+                    backspaceRemoves={true}
+                    backspaceToRemoveMessage="Press backspace to remove {label}"
+                    clearAllText="Clear all"
+                    clearRenderer={[Function]}
+                    clearValueText="Clear value"
+                    clearable={false}
+                    deleteRemoves={true}
+                    delimiter=","
+                    disabled={false}
+                    escapeClearsValue={true}
+                    filterOptions={[Function]}
+                    ignoreAccents={true}
+                    ignoreCase={true}
+                    inputProps={Object {}}
+                    isLoading={false}
+                    joinValues={false}
+                    labelKey="label"
+                    matchPos="any"
+                    matchProp="any"
+                    menuBuffer={0}
+                    menuRenderer={[Function]}
+                    multi={false}
+                    name="site_id"
+                    noResultsText="No results found"
+                    onBlurResetsInput={true}
+                    onChange={[Function]}
+                    onCloseResetsInput={true}
+                    optionComponent={[Function]}
+                    options={
+                        Array [
+                            Object {
+                              "label": <div>
+                                Add New
+                        </div>,
+                              "onSelect": [Function],
+                              "value": "new",
+                            },
+                          ]
+                    }
+                    pageSize={5}
+                    placeholder="Select a Domain"
+                    required={false}
+                    scrollMenuIntoView={true}
+                    searchable={false}
+                    simpleValue={false}
+                    tabSelectsValue={true}
+                    value="foo"
+                    valueComponent={[Function]}
+                    valueKey="value"
+                />
+            </div>
+        </div>
+        <div
+            className="o-grid__item u-half"
+        >
+            <Input
+                className="c-input"
+                inputProps={
+                    Object {
+                        "id": "instance_lti_key",
+                        "name": "lti_key",
+                        "onChange": [Function],
+                        "type": "text",
+                        "value": "",
+                      }
+                }
+                labelText="LTI Key"
+            />
+        </div>
+        <div
+            className="o-grid__item u-half"
+        >
+            <Input
+                className="c-input"
+                inputProps={
+                    Object {
+                        "id": "instance_lti_secret",
+                        "name": "lti_secret",
+                        "onChange": [Function],
+                        "type": "text",
+                        "value": "",
+                      }
+                }
+                labelText="LTI Secret"
+            />
+        </div>
+        <div
+            className="o-grid__item u-half"
+        >
+            <Input
+                className="c-input"
+                inputProps={
+                    Object {
+                        "id": "instance_canvas_token",
+                        "name": "canvas_token",
+                        "onChange": [Function],
+                        "type": "text",
+                        "value": "",
+                      }
+                }
+                labelText="Canvas Token"
+            />
+        </div>
+        <div
+            className="o-grid__item u-full"
+        >
+            <Textarea
+                className="c-input"
+                labelText="Config"
+                textareaProps={
+                    Object {
+                        "id": "application_instance_config",
+                        "name": "config",
+                        "onChange": [Function],
+                        "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                        "rows": 3,
+                        "value": "{ \\"foo\\": \\"bar\\" }",
+                      }
+                }
+                warning={null}
+            />
+        </div>
+        <div
+            className="o-grid__item u-full"
+        >
+            <h3
+                className="c-modal__subtitle"
+            >
+                LTI Configuration
+            </h3>
+            <Textarea
+                className="c-input"
+                labelText="Config"
+                textareaProps={
+                    Object {
+                        "id": "application_instance_lti_config",
+                        "name": "lti_config",
+                        "onChange": [Function],
+                        "rows": 3,
+                        "value": "",
+                      }
+                }
+                warning={null}
+            />
+        </div>
+    </div>
+    <button
+        className="c-btn c-btn--yellow"
+        onClick={[Function]}
+        type="button"
+    >
+        Save
+    </button>
+    <button
+        className="c-btn c-btn--gray--large u-m-right"
+        onClick={[Function]}
+        type="button"
+    >
+        Cancel
+    </button>
+</form>,
+  "nodes": Array [
+    <form>
+      <div
+            className="o-grid o-grid__modal-top"
+      >
+            <div
+                  className="o-grid__item u-half"
+            >
+                  <div
+                        className="c-input"
+                  >
+                        <span>
+                              Domain
+                        </span>
+                        <Select
+                              addLabelText="Add \\"{label}\\"?"
+                              arrowRenderer={[Function]}
+                              autosize={true}
+                              backspaceRemoves={true}
+                              backspaceToRemoveMessage="Press backspace to remove {label}"
+                              clearAllText="Clear all"
+                              clearRenderer={[Function]}
+                              clearValueText="Clear value"
+                              clearable={false}
+                              deleteRemoves={true}
+                              delimiter=","
+                              disabled={false}
+                              escapeClearsValue={true}
+                              filterOptions={[Function]}
+                              ignoreAccents={true}
+                              ignoreCase={true}
+                              inputProps={Object {}}
+                              isLoading={false}
+                              joinValues={false}
+                              labelKey="label"
+                              matchPos="any"
+                              matchProp="any"
+                              menuBuffer={0}
+                              menuRenderer={[Function]}
+                              multi={false}
+                              name="site_id"
+                              noResultsText="No results found"
+                              onBlurResetsInput={true}
+                              onChange={[Function]}
+                              onCloseResetsInput={true}
+                              optionComponent={[Function]}
+                              options={
+                                    Array [
+                                          Object {
+                                            "label": <div>
+                                              Add New
+                                    </div>,
+                                            "onSelect": [Function],
+                                            "value": "new",
+                                          },
+                                        ]
+                              }
+                              pageSize={5}
+                              placeholder="Select a Domain"
+                              required={false}
+                              scrollMenuIntoView={true}
+                              searchable={false}
+                              simpleValue={false}
+                              tabSelectsValue={true}
+                              value="foo"
+                              valueComponent={[Function]}
+                              valueKey="value"
+                        />
+                  </div>
+            </div>
+            <div
+                  className="o-grid__item u-half"
+            >
+                  <Input
+                        className="c-input"
+                        inputProps={
+                              Object {
+                                    "id": "instance_lti_key",
+                                    "name": "lti_key",
+                                    "onChange": [Function],
+                                    "type": "text",
+                                    "value": "",
+                                  }
+                        }
+                        labelText="LTI Key"
+                  />
+            </div>
+            <div
+                  className="o-grid__item u-half"
+            >
+                  <Input
+                        className="c-input"
+                        inputProps={
+                              Object {
+                                    "id": "instance_lti_secret",
+                                    "name": "lti_secret",
+                                    "onChange": [Function],
+                                    "type": "text",
+                                    "value": "",
+                                  }
+                        }
+                        labelText="LTI Secret"
+                  />
+            </div>
+            <div
+                  className="o-grid__item u-half"
+            >
+                  <Input
+                        className="c-input"
+                        inputProps={
+                              Object {
+                                    "id": "instance_canvas_token",
+                                    "name": "canvas_token",
+                                    "onChange": [Function],
+                                    "type": "text",
+                                    "value": "",
+                                  }
+                        }
+                        labelText="Canvas Token"
+                  />
+            </div>
+            <div
+                  className="o-grid__item u-full"
+            >
+                  <Textarea
+                        className="c-input"
+                        labelText="Config"
+                        textareaProps={
+                              Object {
+                                    "id": "application_instance_config",
+                                    "name": "config",
+                                    "onChange": [Function],
+                                    "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                                    "rows": 3,
+                                    "value": "{ \\"foo\\": \\"bar\\" }",
+                                  }
+                        }
+                        warning={null}
+                  />
+            </div>
+            <div
+                  className="o-grid__item u-full"
+            >
+                  <h3
+                        className="c-modal__subtitle"
+                  >
+                        LTI Configuration
+                  </h3>
+                  <Textarea
+                        className="c-input"
+                        labelText="Config"
+                        textareaProps={
+                              Object {
+                                    "id": "application_instance_lti_config",
+                                    "name": "lti_config",
+                                    "onChange": [Function],
+                                    "rows": 3,
+                                    "value": "",
+                                  }
+                        }
+                        warning={null}
+                  />
+            </div>
+      </div>
+      <button
+            className="c-btn c-btn--yellow"
+            onClick={[Function]}
+            type="button"
+      >
+            Save
+      </button>
+      <button
+            className="c-btn c-btn--gray--large u-m-right"
+            onClick={[Function]}
+            type="button"
+      >
+            Cancel
+      </button>
+</form>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <Form
+        closeModal={[Function]}
+        config="{ \\"foo\\": \\"bar\\" }"
+        newSite={[Function]}
+        onChange={[Function]}
+        save={[Function]}
+        site_id="foo"
+        sites={Object {}}
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": Form {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "closeModal": [Function],
+          "config": "{ \\"foo\\": \\"bar\\" }",
+          "newSite": [Function],
+          "onChange": [Function],
+          "save": [Function],
+          "site_id": "foo",
+          "sites": Object {},
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <form>
+          <div
+                    className="o-grid o-grid__modal-top"
+          >
+                    <div
+                              className="o-grid__item u-half"
+                    >
+                              <div
+                                        className="c-input"
+                              >
+                                        <span>
+                                                  Domain
+                                        </span>
+                                        <Select
+                                                  addLabelText="Add \\"{label}\\"?"
+                                                  arrowRenderer={[Function]}
+                                                  autosize={true}
+                                                  backspaceRemoves={true}
+                                                  backspaceToRemoveMessage="Press backspace to remove {label}"
+                                                  clearAllText="Clear all"
+                                                  clearRenderer={[Function]}
+                                                  clearValueText="Clear value"
+                                                  clearable={false}
+                                                  deleteRemoves={true}
+                                                  delimiter=","
+                                                  disabled={false}
+                                                  escapeClearsValue={true}
+                                                  filterOptions={[Function]}
+                                                  ignoreAccents={true}
+                                                  ignoreCase={true}
+                                                  inputProps={Object {}}
+                                                  isLoading={false}
+                                                  joinValues={false}
+                                                  labelKey="label"
+                                                  matchPos="any"
+                                                  matchProp="any"
+                                                  menuBuffer={0}
+                                                  menuRenderer={[Function]}
+                                                  multi={false}
+                                                  name="site_id"
+                                                  noResultsText="No results found"
+                                                  onBlurResetsInput={true}
+                                                  onChange={[Function]}
+                                                  onCloseResetsInput={true}
+                                                  optionComponent={[Function]}
+                                                  options={
+                                                            Array [
+                                                                      Object {
+                                                                        "label": <div>
+                                                                          Add New
+                                                            </div>,
+                                                                        "onSelect": [Function],
+                                                                        "value": "new",
+                                                                      },
+                                                                    ]
+                                                  }
+                                                  pageSize={5}
+                                                  placeholder="Select a Domain"
+                                                  required={false}
+                                                  scrollMenuIntoView={true}
+                                                  searchable={false}
+                                                  simpleValue={false}
+                                                  tabSelectsValue={true}
+                                                  value="foo"
+                                                  valueComponent={[Function]}
+                                                  valueKey="value"
+                                        />
+                              </div>
+                    </div>
+                    <div
+                              className="o-grid__item u-half"
+                    >
+                              <Input
+                                        className="c-input"
+                                        inputProps={
+                                                  Object {
+                                                            "id": "instance_lti_key",
+                                                            "name": "lti_key",
+                                                            "onChange": [Function],
+                                                            "type": "text",
+                                                            "value": "",
+                                                          }
+                                        }
+                                        labelText="LTI Key"
+                              />
+                    </div>
+                    <div
+                              className="o-grid__item u-half"
+                    >
+                              <Input
+                                        className="c-input"
+                                        inputProps={
+                                                  Object {
+                                                            "id": "instance_lti_secret",
+                                                            "name": "lti_secret",
+                                                            "onChange": [Function],
+                                                            "type": "text",
+                                                            "value": "",
+                                                          }
+                                        }
+                                        labelText="LTI Secret"
+                              />
+                    </div>
+                    <div
+                              className="o-grid__item u-half"
+                    >
+                              <Input
+                                        className="c-input"
+                                        inputProps={
+                                                  Object {
+                                                            "id": "instance_canvas_token",
+                                                            "name": "canvas_token",
+                                                            "onChange": [Function],
+                                                            "type": "text",
+                                                            "value": "",
+                                                          }
+                                        }
+                                        labelText="Canvas Token"
+                              />
+                    </div>
+                    <div
+                              className="o-grid__item u-full"
+                    >
+                              <Textarea
+                                        className="c-input"
+                                        labelText="Config"
+                                        textareaProps={
+                                                  Object {
+                                                            "id": "application_instance_config",
+                                                            "name": "config",
+                                                            "onChange": [Function],
+                                                            "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                                                            "rows": 3,
+                                                            "value": "{ \\"foo\\": \\"bar\\" }",
+                                                          }
+                                        }
+                                        warning={null}
+                              />
+                    </div>
+                    <div
+                              className="o-grid__item u-full"
+                    >
+                              <h3
+                                        className="c-modal__subtitle"
+                              >
+                                        LTI Configuration
+                              </h3>
+                              <Textarea
+                                        className="c-input"
+                                        labelText="Config"
+                                        textareaProps={
+                                                  Object {
+                                                            "id": "application_instance_lti_config",
+                                                            "name": "lti_config",
+                                                            "onChange": [Function],
+                                                            "rows": 3,
+                                                            "value": "",
+                                                          }
+                                        }
+                                        warning={null}
+                              />
+                    </div>
+          </div>
+          <button
+                    className="c-btn c-btn--yellow"
+                    onClick={[Function]}
+                    type="button"
+          >
+                    Save
+          </button>
+          <button
+                    className="c-btn c-btn--gray--large u-m-right"
+                    onClick={[Function]}
+                    type="button"
+          >
+                    Cancel
+          </button>
+</form>,
+        "_debugID": 2,
+        "_renderedOutput": <form>
+          <div
+                    className="o-grid o-grid__modal-top"
+          >
+                    <div
+                              className="o-grid__item u-half"
+                    >
+                              <div
+                                        className="c-input"
+                              >
+                                        <span>
+                                                  Domain
+                                        </span>
+                                        <Select
+                                                  addLabelText="Add \\"{label}\\"?"
+                                                  arrowRenderer={[Function]}
+                                                  autosize={true}
+                                                  backspaceRemoves={true}
+                                                  backspaceToRemoveMessage="Press backspace to remove {label}"
+                                                  clearAllText="Clear all"
+                                                  clearRenderer={[Function]}
+                                                  clearValueText="Clear value"
+                                                  clearable={false}
+                                                  deleteRemoves={true}
+                                                  delimiter=","
+                                                  disabled={false}
+                                                  escapeClearsValue={true}
+                                                  filterOptions={[Function]}
+                                                  ignoreAccents={true}
+                                                  ignoreCase={true}
+                                                  inputProps={Object {}}
+                                                  isLoading={false}
+                                                  joinValues={false}
+                                                  labelKey="label"
+                                                  matchPos="any"
+                                                  matchProp="any"
+                                                  menuBuffer={0}
+                                                  menuRenderer={[Function]}
+                                                  multi={false}
+                                                  name="site_id"
+                                                  noResultsText="No results found"
+                                                  onBlurResetsInput={true}
+                                                  onChange={[Function]}
+                                                  onCloseResetsInput={true}
+                                                  optionComponent={[Function]}
+                                                  options={
+                                                            Array [
+                                                                      Object {
+                                                                        "label": <div>
+                                                                          Add New
+                                                            </div>,
+                                                                        "onSelect": [Function],
+                                                                        "value": "new",
+                                                                      },
+                                                                    ]
+                                                  }
+                                                  pageSize={5}
+                                                  placeholder="Select a Domain"
+                                                  required={false}
+                                                  scrollMenuIntoView={true}
+                                                  searchable={false}
+                                                  simpleValue={false}
+                                                  tabSelectsValue={true}
+                                                  value="foo"
+                                                  valueComponent={[Function]}
+                                                  valueKey="value"
+                                        />
+                              </div>
+                    </div>
+                    <div
+                              className="o-grid__item u-half"
+                    >
+                              <Input
+                                        className="c-input"
+                                        inputProps={
+                                                  Object {
+                                                            "id": "instance_lti_key",
+                                                            "name": "lti_key",
+                                                            "onChange": [Function],
+                                                            "type": "text",
+                                                            "value": "",
+                                                          }
+                                        }
+                                        labelText="LTI Key"
+                              />
+                    </div>
+                    <div
+                              className="o-grid__item u-half"
+                    >
+                              <Input
+                                        className="c-input"
+                                        inputProps={
+                                                  Object {
+                                                            "id": "instance_lti_secret",
+                                                            "name": "lti_secret",
+                                                            "onChange": [Function],
+                                                            "type": "text",
+                                                            "value": "",
+                                                          }
+                                        }
+                                        labelText="LTI Secret"
+                              />
+                    </div>
+                    <div
+                              className="o-grid__item u-half"
+                    >
+                              <Input
+                                        className="c-input"
+                                        inputProps={
+                                                  Object {
+                                                            "id": "instance_canvas_token",
+                                                            "name": "canvas_token",
+                                                            "onChange": [Function],
+                                                            "type": "text",
+                                                            "value": "",
+                                                          }
+                                        }
+                                        labelText="Canvas Token"
+                              />
+                    </div>
+                    <div
+                              className="o-grid__item u-full"
+                    >
+                              <Textarea
+                                        className="c-input"
+                                        labelText="Config"
+                                        textareaProps={
+                                                  Object {
+                                                            "id": "application_instance_config",
+                                                            "name": "config",
+                                                            "onChange": [Function],
+                                                            "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                                                            "rows": 3,
+                                                            "value": "{ \\"foo\\": \\"bar\\" }",
+                                                          }
+                                        }
+                                        warning={null}
+                              />
+                    </div>
+                    <div
+                              className="o-grid__item u-full"
+                    >
+                              <h3
+                                        className="c-modal__subtitle"
+                              >
+                                        LTI Configuration
+                              </h3>
+                              <Textarea
+                                        className="c-input"
+                                        labelText="Config"
+                                        textareaProps={
+                                                  Object {
+                                                            "id": "application_instance_lti_config",
+                                                            "name": "lti_config",
+                                                            "onChange": [Function],
+                                                            "rows": 3,
+                                                            "value": "",
+                                                          }
+                                        }
+                                        warning={null}
+                              />
+                    </div>
+          </div>
+          <button
+                    className="c-btn c-btn--yellow"
+                    onClick={[Function]}
+                    type="button"
+          >
+                    Save
+          </button>
+          <button
+                    className="c-btn c-btn--gray--large u-m-right"
+                    onClick={[Function]}
+                    type="button"
+          >
+                    Cancel
+          </button>
+</form>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Form
+    closeModal={[Function]}
+    config="{ \\"foo\\": \\"bar\\" }"
+    newSite={[Function]}
+    onChange={[Function]}
+    save={[Function]}
+    site_id="foo"
+    sites={Object {}}
+/>,
+}
+`;

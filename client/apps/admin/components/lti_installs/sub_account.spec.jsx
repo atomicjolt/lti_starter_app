@@ -1,10 +1,13 @@
-import React          from 'react';
-import TestUtils      from 'react-dom/test-utils';
-import SubAccount     from './sub_account';
+import React from 'react';
+import { shallow } from 'enzyme';
+import SubAccount from './sub_account';
 
 describe('should render nested accounts and active', () => {
   let result;
+  let clicked;
+
   beforeEach(() => {
+    clicked = false;
     const props = {
       accounts: {
         1: {
@@ -24,28 +27,35 @@ describe('should render nested accounts and active', () => {
         }
       },
       account: { id: 1, name: 'account_name', parent_account_id: null },
-      setAccountActive: () => {},
+      setAccountActive: () => { clicked = true; },
       currentAccount: { id: 1 }
     };
-    result = TestUtils.renderIntoDocument(
-      <SubAccount {...props} />
-    );
+    result = shallow(<SubAccount {...props} />);
+  });
+
+  it('matches the snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
 
   it('return correct amount of buttons', () => {
     result.setState({ open: true });
-    const buttons = TestUtils.scryRenderedDOMComponentsWithTag(result, 'button');
-    expect(buttons.length).toBe(3);
+    const buttons = result.find('button');
+    expect(buttons.length).toBe(1);
   });
 
   it('return render the dropdown', () => {
-    const buttons = TestUtils.scryRenderedDOMComponentsWithTag(result, 'button');
-    expect(buttons[0].textContent).toBe('account_name');
+    const button = result.find('button');
+    expect(button.props().children).toContain('account_name');
   });
 
   it('should not return the dropdown', () => {
-    const dropdown = TestUtils.scryRenderedDOMComponentsWithClass(result, 'i-dropdown');
+    const dropdown = result.find('.i-dropdown');
     expect(dropdown.length).toBe(1);
   });
 
+  it('handles the button click', () => {
+    expect(clicked).toBeFalsy();
+    result.find('button').simulate('click');
+    expect(clicked).toBeTruthy();
+  });
 });

@@ -1,7 +1,5 @@
 import React from 'react';
-import TestUtils from 'react-dom/test-utils';
-import { Provider } from 'react-redux';
-import Helper from '../../../../specs_support/helper';
+import { shallow } from 'enzyme';
 import { Index } from './index';
 import sites from '../../reducers/sites';
 
@@ -23,21 +21,10 @@ describe('applications index', () => {
       }
     };
 
-    result = TestUtils.renderIntoDocument(
-      <Provider store={Helper.makeStore({}, { sites: sitesData }, { sites })}>
-        <Index {...props} />
-      </Provider>
-    );
+    result = shallow(<Index {...props} />);
   });
 
-  it('render the application rows', () => {
-    const element = TestUtils.findRenderedDOMComponentWithClass(result, 'o-contain o-contain--full');
-    expect(element).toBeDefined();
+  it('matches the snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
-
-  it('render application', () => {
-    const element = TestUtils.findRenderedDOMComponentWithTag(result, 'tbody');
-    expect(element.childNodes.length).toBeGreaterThan(0);
-  });
-
 });

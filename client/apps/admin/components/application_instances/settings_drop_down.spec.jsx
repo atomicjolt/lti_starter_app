@@ -1,6 +1,5 @@
-import React            from 'react';
-import TestUtils        from 'react-dom/test-utils';
-import Stub             from '../../../../specs_support/stub';
+import React from 'react';
+import { shallow } from 'enzyme';
 import SettingsDropDown from './settings_drop_down';
 
 describe('application instance modal', () => {
@@ -8,16 +7,11 @@ describe('application instance modal', () => {
   let result;
 
   beforeEach(() => {
-    result = TestUtils.renderIntoDocument(
-      <Stub>
-        <SettingsDropDown />
-      </Stub>
-    );
+    result = shallow(<SettingsDropDown />);
   });
 
   it('renders a list with settings', () => {
-    const ul = TestUtils.findRenderedDOMComponentWithTag(result, 'ul');
-    expect(ul.textContent).toContain('Settings');
+    expect(result).toMatchSnapshot();
   });
 
 });

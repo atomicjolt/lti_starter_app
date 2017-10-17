@@ -1,0 +1,182 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`site modal matches the snapshot 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <Modal
+    ariaHideApp={true}
+    className="c-modal c-modal--site is-open"
+    closeTimeoutMS={0}
+    contentLabel="Modal"
+    isOpen={true}
+    onRequestClose={[Function]}
+    overlayClassName="unused"
+    parentSelector={[Function]}
+    portalClassName="ReactModalPortal"
+    shouldCloseOnOverlayClick={true}
+>
+    <h2
+        className="c-modal__title"
+    >
+        Are you sure?
+    </h2>
+    <SiteForm
+        closeModal={[Function]}
+        deleteSite={[Function]}
+    />
+</Modal>,
+  "nodes": Array [
+    <Modal
+      ariaHideApp={true}
+      className="c-modal c-modal--site is-open"
+      closeTimeoutMS={0}
+      contentLabel="Modal"
+      isOpen={true}
+      onRequestClose={[Function]}
+      overlayClassName="unused"
+      parentSelector={[Function]}
+      portalClassName="ReactModalPortal"
+      shouldCloseOnOverlayClick={true}
+>
+      <h2
+            className="c-modal__title"
+      >
+            Are you sure?
+      </h2>
+      <SiteForm
+            closeModal={[Function]}
+            deleteSite={[Function]}
+      />
+</Modal>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <SiteModal
+        closeModal={[Function]}
+        deleteSite={[Function]}
+        isOpen={true}
+        site={
+                Object {
+                        "id": 1,
+                        "url": "bfcoder.com",
+                      }
+        }
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": SiteModal {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "closeModal": [Function],
+          "deleteSite": [Function],
+          "isOpen": true,
+          "site": Object {
+            "id": 1,
+            "url": "bfcoder.com",
+          },
+        },
+        "refs": Object {},
+        "state": Object {
+          "site": Object {
+            "id": 1,
+            "url": "bfcoder.com",
+          },
+        },
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <Modal
+          ariaHideApp={true}
+          className="c-modal c-modal--site is-open"
+          closeTimeoutMS={0}
+          contentLabel="Modal"
+          isOpen={true}
+          onRequestClose={[Function]}
+          overlayClassName="unused"
+          parentSelector={[Function]}
+          portalClassName="ReactModalPortal"
+          shouldCloseOnOverlayClick={true}
+>
+          <h2
+                    className="c-modal__title"
+          >
+                    Are you sure?
+          </h2>
+          <SiteForm
+                    closeModal={[Function]}
+                    deleteSite={[Function]}
+          />
+</Modal>,
+        "_debugID": 2,
+        "_renderedOutput": <Modal
+          ariaHideApp={true}
+          className="c-modal c-modal--site is-open"
+          closeTimeoutMS={0}
+          contentLabel="Modal"
+          isOpen={true}
+          onRequestClose={[Function]}
+          overlayClassName="unused"
+          parentSelector={[Function]}
+          portalClassName="ReactModalPortal"
+          shouldCloseOnOverlayClick={true}
+>
+          <h2
+                    className="c-modal__title"
+          >
+                    Are you sure?
+          </h2>
+          <SiteForm
+                    closeModal={[Function]}
+                    deleteSite={[Function]}
+          />
+</Modal>,
+      },
+      "_renderedNodeType": 1,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <SiteModal
+    closeModal={[Function]}
+    deleteSite={[Function]}
+    isOpen={true}
+    site={
+        Object {
+            "id": 1,
+            "url": "bfcoder.com",
+          }
+    }
+/>,
+}
+`;

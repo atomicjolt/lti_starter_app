@@ -1,0 +1,267 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`install pane matches the snapshot 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="o-right"
+>
+    <AccountInstall
+        account={
+            Object {
+                "installCount": 0,
+              }
+        }
+        accountInstalls={0}
+        applicationInstance={Object {}}
+        canvasRequest={[Function]}
+    />
+    <div>
+        <div
+            className="c-search c-search--small"
+        >
+            <input
+                onChange={[Function]}
+                placeholder="Search..."
+                type="text"
+            />
+            <i
+                className="i-search"
+            />
+        </div>
+        <CourseInstalls
+            applicationInstance={Object {}}
+            canvasRequest={[Function]}
+            courses={Array []}
+            loadingCourses={Object {}}
+        />
+        <Pagination
+            courses={Array []}
+            currentPage={0}
+            loadingCourses={Object {}}
+            pageCount={0}
+            pageSize={10}
+            setPage={[Function]}
+        />
+    </div>
+</div>,
+  "nodes": Array [
+    <div
+      className="o-right"
+>
+      <AccountInstall
+            account={
+                  Object {
+                        "installCount": 0,
+                      }
+            }
+            accountInstalls={0}
+            applicationInstance={Object {}}
+            canvasRequest={[Function]}
+      />
+      <div>
+            <div
+                  className="c-search c-search--small"
+            >
+                  <input
+                        onChange={[Function]}
+                        placeholder="Search..."
+                        type="text"
+                  />
+                  <i
+                        className="i-search"
+                  />
+            </div>
+            <CourseInstalls
+                  applicationInstance={Object {}}
+                  canvasRequest={[Function]}
+                  courses={Array []}
+                  loadingCourses={Object {}}
+            />
+            <Pagination
+                  courses={Array []}
+                  currentPage={0}
+                  loadingCourses={Object {}}
+                  pageCount={0}
+                  pageSize={10}
+                  setPage={[Function]}
+            />
+      </div>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <InstallPane
+        account={
+                Object {
+                        "installCount": 0,
+                      }
+        }
+        applicationInstance={Object {}}
+        canvasRequest={[Function]}
+        courses={Array []}
+        loadExternalTools={[Function]}
+        loadingCourses={Object {}}
+        onlyShowInstalled={false}
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": InstallPane {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "account": Object {
+            "installCount": 0,
+          },
+          "applicationInstance": Object {},
+          "canvasRequest": [Function],
+          "courses": Array [],
+          "loadExternalTools": [Function],
+          "loadingCourses": Object {},
+          "onlyShowInstalled": false,
+        },
+        "refs": Object {},
+        "state": Object {
+          "currentPage": 0,
+          "searchPrefix": "",
+        },
+        "updateSearchPrefix": [Function],
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="o-right"
+>
+          <AccountInstall
+                    account={
+                              Object {
+                                        "installCount": 0,
+                                      }
+                    }
+                    accountInstalls={0}
+                    applicationInstance={Object {}}
+                    canvasRequest={[Function]}
+          />
+          <div>
+                    <div
+                              className="c-search c-search--small"
+                    >
+                              <input
+                                        onChange={[Function]}
+                                        placeholder="Search..."
+                                        type="text"
+                              />
+                              <i
+                                        className="i-search"
+                              />
+                    </div>
+                    <CourseInstalls
+                              applicationInstance={Object {}}
+                              canvasRequest={[Function]}
+                              courses={Array []}
+                              loadingCourses={Object {}}
+                    />
+                    <Pagination
+                              courses={Array []}
+                              currentPage={0}
+                              loadingCourses={Object {}}
+                              pageCount={0}
+                              pageSize={10}
+                              setPage={[Function]}
+                    />
+          </div>
+</div>,
+        "_debugID": 2,
+        "_renderedOutput": <div
+          className="o-right"
+>
+          <AccountInstall
+                    account={
+                              Object {
+                                        "installCount": 0,
+                                      }
+                    }
+                    accountInstalls={0}
+                    applicationInstance={Object {}}
+                    canvasRequest={[Function]}
+          />
+          <div>
+                    <div
+                              className="c-search c-search--small"
+                    >
+                              <input
+                                        onChange={[Function]}
+                                        placeholder="Search..."
+                                        type="text"
+                              />
+                              <i
+                                        className="i-search"
+                              />
+                    </div>
+                    <CourseInstalls
+                              applicationInstance={Object {}}
+                              canvasRequest={[Function]}
+                              courses={Array []}
+                              loadingCourses={Object {}}
+                    />
+                    <Pagination
+                              courses={Array []}
+                              currentPage={0}
+                              loadingCourses={Object {}}
+                              pageCount={0}
+                              pageSize={10}
+                              setPage={[Function]}
+                    />
+          </div>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <InstallPane
+    account={
+        Object {
+            "installCount": 0,
+          }
+    }
+    applicationInstance={Object {}}
+    canvasRequest={[Function]}
+    courses={Array []}
+    loadExternalTools={[Function]}
+    loadingCourses={Object {}}
+    onlyShowInstalled={false}
+/>,
+}
+`;

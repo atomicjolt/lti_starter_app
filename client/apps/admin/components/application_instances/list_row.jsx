@@ -14,14 +14,15 @@ export default class ListRow extends React.Component {
     save: PropTypes.func.isRequired,
     lti_key: PropTypes.string,
     domain: PropTypes.string,
-    id: PropTypes.number.isRequired,
-    application_id: PropTypes.number.isRequired,
-    site: PropTypes.shape({
-      url: PropTypes.string
-    }).isRequired,
     sites: PropTypes.shape({}).isRequired,
     application: PropTypes.shape({}),
-    applicationInstance: PropTypes.shape({}).isRequired,
+    applicationInstance: PropTypes.shape({
+      site: PropTypes.shape({
+        url: PropTypes.string,
+      }),
+      id: PropTypes.number.isRequired,
+      application_id: PropTypes.number.isRequired,
+    }).isRequired,
     settings: PropTypes.shape({
       lti_key: PropTypes.string,
       user_canvas_domains: PropTypes.arrayOf(PropTypes.string),
@@ -53,7 +54,7 @@ export default class ListRow extends React.Component {
 
   checkAuthentication(e) {
     if (!_.find(this.props.settings.user_canvas_domains, canvasUrl =>
-      canvasUrl === this.props.site.url
+      canvasUrl === this.props.applicationInstance.site.url
     )) {
       e.stopPropagation();
       e.preventDefault();
@@ -62,9 +63,9 @@ export default class ListRow extends React.Component {
   }
 
   render() {
-    const styles = ListRow.getStyles();
-    const path = `applications/${this.props.application_id}/application_instances/${this.props.id}/installs`;
     const { applicationInstance } = this.props;
+    const styles = ListRow.getStyles();
+    const path = `applications/${applicationInstance.application_id}/application_instances/${applicationInstance.id}/installs`;
 
     return (
       <tr>
@@ -77,7 +78,7 @@ export default class ListRow extends React.Component {
             <input
               type="hidden"
               name="canvas_url"
-              value={this.props.site.url}
+              value={applicationInstance.site.url}
             />
             <input
               type="hidden"
@@ -89,9 +90,9 @@ export default class ListRow extends React.Component {
             onClick={(e) => { this.checkAuthentication(e); }}
             to={path}
           >
-            {_.capitalize(_.replace(this.props.site.url.split('.')[1], 'https://', ''))}
+            {_.capitalize(_.replace(applicationInstance.site.url.split('.')[1], 'https://', ''))}
           </Link>
-          <div>{_.replace(this.props.site.url, 'https://', '')}</div>
+          <div>{_.replace(applicationInstance.site.url, 'https://', '')}</div>
         </td>
         <td><span>{this.props.lti_key}</span></td>
         <td><span>{this.props.domain}</span></td>
@@ -122,7 +123,7 @@ export default class ListRow extends React.Component {
             isOpen={this.state.modalConfigXmlOpen}
             closeModal={() => this.setState({ modalConfigXmlOpen: false })}
             application={this.props.application}
-            applicationInstance={this.props.applicationInstance}
+            applicationInstance={applicationInstance}
           />
         </td>
         <td>
@@ -139,7 +140,7 @@ export default class ListRow extends React.Component {
           <button
             className="c-delete"
             onClick={() => {
-              this.props.delete(this.props.application_id, this.props.id);
+              this.props.delete(applicationInstance.application_id, applicationInstance.id);
             }}
           >
             <i className="i-delete" />

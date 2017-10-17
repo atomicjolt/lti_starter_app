@@ -1,30 +1,34 @@
 import React from 'react';
-import TestUtils from 'react-dom/test-utils';
-import Stub from '../../../../specs_support/stub';
+import { shallow } from 'enzyme';
 import Header from './header';
 
 describe('sites header', () => {
   let result;
-  const props = {
-    newSite: () => {},
-  };
+  let props;
+  let clicked;
 
   beforeEach(() => {
-    result = TestUtils.renderIntoDocument(
-      <Stub>
-        <Header {...props} />
-      </Stub>
-    );
+    clicked = false;
+    props = {
+      newSite: () => { clicked = true; },
+    };
+
+    result = shallow(<Header {...props} />);
   });
 
   it('renders the header', () => {
-    const h1 = TestUtils.findRenderedDOMComponentWithTag(result, 'h1');
-    expect(h1.textContent).toContain('Sites');
+    const h1 = result.find('h1');
+    expect(h1.props().children).toContain('Sites');
   });
 
   it('renders new site button', () => {
-    const button = TestUtils.findRenderedDOMComponentWithTag(result, 'button');
-    expect(button.textContent).toBe('New Site');
+    const button = result.find('button');
+    expect(button.props().children).toBe('New Site');
   });
 
+  it('handles the onClick event', () => {
+    expect(clicked).toBeFalsy();
+    result.find('button').simulate('click');
+    expect(clicked).toBeTruthy();
+  });
 });

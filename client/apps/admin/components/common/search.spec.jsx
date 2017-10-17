@@ -1,46 +1,34 @@
-import React        from 'react';
-import TestUtils    from 'react-dom/test-utils';
-import Stub         from '../../../../specs_support/stub';
-import Search       from './search';
+import React from 'react';
+import { shallow } from 'enzyme';
+import Search from './search';
 
 describe('common search', () => {
-
   let result;
-  let search = '';
-
-  const props = {
-    search: (value) => { search = value; },
-  };
+  let search;
+  let props;
 
   beforeEach(() => {
-    result = TestUtils.renderIntoDocument(
-      <Stub>
-        <Search {...props} />
-      </Stub>
-    );
+    search = false;
+    props = {
+      search: () => { search = true; },
+    };
+    result = shallow(<Search {...props} />);
   });
 
-  it('renders', () => {
-    expect(result).toBeDefined();
-  });
-
-  it('renders the form not null', () => {
-    expect(result).not.toBeNull();
+  it('matches the snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
 
   it('has search input', () => {
-    const input = TestUtils.findRenderedDOMComponentWithTag(result, 'input');
+    const input = result.find('input');
     expect(input).toBeDefined();
-    expect(input.type).toBe('text');
-    expect(input.placeholder).toBe('Search...');
+    expect(input.props().type).toBe('text');
+    expect(input.props().placeholder).toBe('Search...');
   });
 
   it('search input changes', () => {
-    const input = TestUtils.findRenderedDOMComponentWithTag(result, 'input');
-    const newValue = '27';
-    input.value = newValue;
-    TestUtils.Simulate.change(input);
-    expect(input.value).toBe(search);
+    expect(search).toBeFalsy();
+    result.find('input').simulate('change', { target: { value: 'new value' } });
+    expect(search).toBeTruthy();
   });
-
 });

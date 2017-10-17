@@ -1,0 +1,262 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sites list matches the snapshot 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <table
+    className="c-table c-table--lti"
+>
+    <thead>
+        <tr>
+            <th>
+                <span>
+                    URL
+                </span>
+            </th>
+            <th>
+                <span>
+                    SETTINGS
+                </span>
+            </th>
+            <th>
+                <span>
+                    DELETE
+                </span>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <SiteRow
+            site={
+                Object {
+                    "id": 1,
+                    "url": "bfcoder.com",
+                  }
+            }
+        />
+        <SiteRow
+            site={
+                Object {
+                    "id": 2,
+                    "url": "atomicjolt.com",
+                  }
+            }
+        />
+    </tbody>
+</table>,
+  "nodes": Array [
+    <table
+      className="c-table c-table--lti"
+>
+      <thead>
+            <tr>
+                  <th>
+                        <span>
+                              URL
+                        </span>
+                  </th>
+                  <th>
+                        <span>
+                              SETTINGS
+                        </span>
+                  </th>
+                  <th>
+                        <span>
+                              DELETE
+                        </span>
+                  </th>
+            </tr>
+      </thead>
+      <tbody>
+            <SiteRow
+                  site={
+                        Object {
+                              "id": 1,
+                              "url": "bfcoder.com",
+                            }
+                  }
+            />
+            <SiteRow
+                  site={
+                        Object {
+                              "id": 2,
+                              "url": "atomicjolt.com",
+                            }
+                  }
+            />
+      </tbody>
+</table>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <List
+        sites={
+                Object {
+                        "1": Object {
+                          "id": 1,
+                          "url": "bfcoder.com",
+                        },
+                        "2": Object {
+                          "id": 2,
+                          "url": "atomicjolt.com",
+                        },
+                      }
+        }
+/>,
+      "_debugID": 3,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "sites": Object {
+            "1": Object {
+              "id": 1,
+              "url": "bfcoder.com",
+            },
+            "2": Object {
+              "id": 2,
+              "url": "atomicjolt.com",
+            },
+          },
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 2,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <table
+          className="c-table c-table--lti"
+>
+          <thead>
+                    <tr>
+                              <th>
+                                        <span>
+                                                  URL
+                                        </span>
+                              </th>
+                              <th>
+                                        <span>
+                                                  SETTINGS
+                                        </span>
+                              </th>
+                              <th>
+                                        <span>
+                                                  DELETE
+                                        </span>
+                              </th>
+                    </tr>
+          </thead>
+          <tbody>
+                    <SiteRow
+                              site={
+                                        Object {
+                                                  "id": 1,
+                                                  "url": "bfcoder.com",
+                                                }
+                              }
+                    />
+                    <SiteRow
+                              site={
+                                        Object {
+                                                  "id": 2,
+                                                  "url": "atomicjolt.com",
+                                                }
+                              }
+                    />
+          </tbody>
+</table>,
+        "_debugID": 4,
+        "_renderedOutput": <table
+          className="c-table c-table--lti"
+>
+          <thead>
+                    <tr>
+                              <th>
+                                        <span>
+                                                  URL
+                                        </span>
+                              </th>
+                              <th>
+                                        <span>
+                                                  SETTINGS
+                                        </span>
+                              </th>
+                              <th>
+                                        <span>
+                                                  DELETE
+                                        </span>
+                              </th>
+                    </tr>
+          </thead>
+          <tbody>
+                    <SiteRow
+                              site={
+                                        Object {
+                                                  "id": 1,
+                                                  "url": "bfcoder.com",
+                                                }
+                              }
+                    />
+                    <SiteRow
+                              site={
+                                        Object {
+                                                  "id": 2,
+                                                  "url": "atomicjolt.com",
+                                                }
+                              }
+                    />
+          </tbody>
+</table>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <List
+    sites={
+        Object {
+            "1": Object {
+              "id": 1,
+              "url": "bfcoder.com",
+            },
+            "2": Object {
+              "id": 2,
+              "url": "atomicjolt.com",
+            },
+          }
+    }
+/>,
+}
+`;
