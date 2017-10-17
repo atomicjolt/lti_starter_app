@@ -2,141 +2,9 @@
 
 exports[`common search inputs matches the snapshot 1`] = `
 ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
   "length": 1,
-  "node": <div>
-    <input
-        name="oauth_consumer_key"
-        type="hidden"
-        value="lti_key"
-    />
-    <input
-        name="lti_key"
-        type="hidden"
-        value="lti_key"
-    />
-    <input
-        name="name"
-        type="hidden"
-        value="ltiName"
-    />
-</div>,
-  "nodes": Array [
-    <div>
-      <input
-            name="oauth_consumer_key"
-            type="hidden"
-            value="lti_key"
-      />
-      <input
-            name="lti_key"
-            type="hidden"
-            value="lti_key"
-      />
-      <input
-            name="name"
-            type="hidden"
-            value="ltiName"
-      />
-</div>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 2,
-      "_context": Object {},
-      "_currentElement": <SettingsInputs
-        settings={
-                Object {
-                        "lti_key": "lti_key",
-                        "name": "ltiName",
-                      }
-        }
-/>,
-      "_debugID": 3,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": StatelessComponent {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "props": Object {
-          "settings": Object {
-            "lti_key": "lti_key",
-            "name": "ltiName",
-          },
-        },
-        "refs": Object {},
-        "state": null,
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-      },
-      "_mountOrder": 2,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
-          <input
-                    name="oauth_consumer_key"
-                    type="hidden"
-                    value="lti_key"
-          />
-          <input
-                    name="lti_key"
-                    type="hidden"
-                    value="lti_key"
-          />
-          <input
-                    name="name"
-                    type="hidden"
-                    value="ltiName"
-          />
-</div>,
-        "_debugID": 4,
-        "_renderedOutput": <div>
-          <input
-                    name="oauth_consumer_key"
-                    type="hidden"
-                    value="lti_key"
-          />
-          <input
-                    name="lti_key"
-                    type="hidden"
-                    value="lti_key"
-          />
-          <input
-                    name="name"
-                    type="hidden"
-                    value="ltiName"
-          />
-</div>,
-      },
-      "_renderedNodeType": 0,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
-    },
-    "getRenderOutput": [Function],
-    "render": [Function],
-  },
-  "root": [Circular],
-  "unrendered": <SettingsInputs
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SettingsInputs
     settings={
         Object {
             "lti_key": "lti_key",
@@ -144,5 +12,159 @@ ShallowWrapper {
           }
     }
 />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": null,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <input
+          name="oauth_consumer_key"
+          type="hidden"
+          value="lti_key"
+/>,
+        Array [
+          <input
+            name="lti_key"
+            type="hidden"
+            value="lti_key"
+/>,
+          <input
+            name="name"
+            type="hidden"
+            value="ltiName"
+/>,
+        ],
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "name": "oauth_consumer_key",
+          "type": "hidden",
+          "value": "lti_key",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "input",
+      },
+      Object {
+        "instance": null,
+        "key": "lti_key",
+        "nodeType": "host",
+        "props": Object {
+          "name": "lti_key",
+          "type": "hidden",
+          "value": "lti_key",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "input",
+      },
+      Object {
+        "instance": null,
+        "key": "name",
+        "nodeType": "host",
+        "props": Object {
+          "name": "name",
+          "type": "hidden",
+          "value": "ltiName",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "input",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <input
+            name="oauth_consumer_key"
+            type="hidden"
+            value="lti_key"
+/>,
+          Array [
+            <input
+              name="lti_key"
+              type="hidden"
+              value="lti_key"
+/>,
+            <input
+              name="name"
+              type="hidden"
+              value="ltiName"
+/>,
+          ],
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "name": "oauth_consumer_key",
+            "type": "hidden",
+            "value": "lti_key",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "input",
+        },
+        Object {
+          "instance": null,
+          "key": "lti_key",
+          "nodeType": "host",
+          "props": Object {
+            "name": "lti_key",
+            "type": "hidden",
+            "value": "lti_key",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "input",
+        },
+        Object {
+          "instance": null,
+          "key": "name",
+          "nodeType": "host",
+          "props": Object {
+            "name": "name",
+            "type": "hidden",
+            "value": "ltiName",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "input",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
 }
 `;

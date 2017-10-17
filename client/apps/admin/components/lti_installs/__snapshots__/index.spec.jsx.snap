@@ -2,330 +2,9 @@
 
 exports[`the index component matches the snapshot 1`] = `
 ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
   "length": 1,
-  "node": <div
-    style={
-        Object {
-            "height": "100%",
-          }
-    }
->
-    <Connect(Heading)
-        backTo="/applications/application id/application_instances"
-    />
-    <div
-        className="o-contain"
-    >
-        <Sidebar
-            accounts={Object {}}
-            application={undefined}
-            applicationInstance={Object {}}
-            canvasRequest={[Function]}
-            currentAccount={null}
-            onlyShowInstalledChanged={[Function]}
-            saveApplicationInstance={[Function]}
-            setAccountActive={[Function]}
-            sites={Object {}}
-        />
-        <Connect(InstallPane)
-            account={null}
-            applicationInstance={Object {}}
-            canvasRequest={[Function]}
-            courses={
-                Array [
-                    Object {},
-                  ]
-            }
-            loadExternalTools={[Function]}
-            loadingCourses={Object {}}
-            onlyShowInstalled={false}
-        />
-    </div>
-    <Modal
-        ariaHideApp={true}
-        className="c-modal c-modal--site is-open c-modal--error loading"
-        closeTimeoutMS={0}
-        contentLabel="Modal"
-        isOpen={false}
-        overlayClassName="c-modal__background"
-        parentSelector={[Function]}
-        portalClassName="ReactModalPortal"
-        shouldCloseOnOverlayClick={true}
-    >
-        <div
-            className="c-loading-icon"
-        />
-           Loading...
-    </Modal>
-</div>,
-  "nodes": Array [
-    <div
-      style={
-            Object {
-                  "height": "100%",
-                }
-      }
->
-      <Connect(Heading)
-            backTo="/applications/application id/application_instances"
-      />
-      <div
-            className="o-contain"
-      >
-            <Sidebar
-                  accounts={Object {}}
-                  application={undefined}
-                  applicationInstance={Object {}}
-                  canvasRequest={[Function]}
-                  currentAccount={null}
-                  onlyShowInstalledChanged={[Function]}
-                  saveApplicationInstance={[Function]}
-                  setAccountActive={[Function]}
-                  sites={Object {}}
-            />
-            <Connect(InstallPane)
-                  account={null}
-                  applicationInstance={Object {}}
-                  canvasRequest={[Function]}
-                  courses={
-                        Array [
-                              Object {},
-                            ]
-                  }
-                  loadExternalTools={[Function]}
-                  loadingCourses={Object {}}
-                  onlyShowInstalled={false}
-            />
-      </div>
-      <Modal
-            ariaHideApp={true}
-            className="c-modal c-modal--site is-open c-modal--error loading"
-            closeTimeoutMS={0}
-            contentLabel="Modal"
-            isOpen={false}
-            overlayClassName="c-modal__background"
-            parentSelector={[Function]}
-            portalClassName="ReactModalPortal"
-            shouldCloseOnOverlayClick={true}
-      >
-            <div
-                  className="c-loading-icon"
-            />
-               Loading...
-      </Modal>
-</div>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 0,
-      "_context": Object {},
-      "_currentElement": <Index
-        accounts={Object {}}
-        applicationInstance={Object {}}
-        applications={Object {}}
-        canvasRequest={[Function]}
-        courses={
-                Array [
-                        Object {},
-                      ]
-        }
-        getApplicationInstance={[Function]}
-        loadingAccounts={false}
-        loadingCourses={Object {}}
-        params={
-                Object {
-                        "applicationId": "application id",
-                        "applicationInstanceId": "application instance id",
-                      }
-        }
-        rootAccount={
-                Object {
-                        "id": 1234,
-                      }
-        }
-        saveApplicationInstance={[Function]}
-        sites={Object {}}
-/>,
-      "_debugID": 1,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": Index {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "props": Object {
-          "accounts": Object {},
-          "applicationInstance": Object {},
-          "applications": Object {},
-          "canvasRequest": [Function],
-          "courses": Array [
-            Object {},
-          ],
-          "getApplicationInstance": [Function],
-          "loadingAccounts": false,
-          "loadingCourses": Object {},
-          "params": Object {
-            "applicationId": "application id",
-            "applicationInstanceId": "application instance id",
-          },
-          "rootAccount": Object {
-            "id": 1234,
-          },
-          "saveApplicationInstance": [Function],
-          "sites": Object {},
-        },
-        "refs": Object {},
-        "state": Object {
-          "currentAccount": null,
-          "onlyShowInstalled": false,
-        },
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-      },
-      "_mountOrder": 1,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div
-          style={
-                    Object {
-                              "height": "100%",
-                            }
-          }
->
-          <Connect(Heading)
-                    backTo="/applications/application id/application_instances"
-          />
-          <div
-                    className="o-contain"
-          >
-                    <Sidebar
-                              accounts={Object {}}
-                              application={undefined}
-                              applicationInstance={Object {}}
-                              canvasRequest={[Function]}
-                              currentAccount={null}
-                              onlyShowInstalledChanged={[Function]}
-                              saveApplicationInstance={[Function]}
-                              setAccountActive={[Function]}
-                              sites={Object {}}
-                    />
-                    <Connect(InstallPane)
-                              account={null}
-                              applicationInstance={Object {}}
-                              canvasRequest={[Function]}
-                              courses={
-                                        Array [
-                                                  Object {},
-                                                ]
-                              }
-                              loadExternalTools={[Function]}
-                              loadingCourses={Object {}}
-                              onlyShowInstalled={false}
-                    />
-          </div>
-          <Modal
-                    ariaHideApp={true}
-                    className="c-modal c-modal--site is-open c-modal--error loading"
-                    closeTimeoutMS={0}
-                    contentLabel="Modal"
-                    isOpen={false}
-                    overlayClassName="c-modal__background"
-                    parentSelector={[Function]}
-                    portalClassName="ReactModalPortal"
-                    shouldCloseOnOverlayClick={true}
-          >
-                    <div
-                              className="c-loading-icon"
-                    />
-                       Loading...
-          </Modal>
-</div>,
-        "_debugID": 2,
-        "_renderedOutput": <div
-          style={
-                    Object {
-                              "height": "100%",
-                            }
-          }
->
-          <Connect(Heading)
-                    backTo="/applications/application id/application_instances"
-          />
-          <div
-                    className="o-contain"
-          >
-                    <Sidebar
-                              accounts={Object {}}
-                              application={undefined}
-                              applicationInstance={Object {}}
-                              canvasRequest={[Function]}
-                              currentAccount={null}
-                              onlyShowInstalledChanged={[Function]}
-                              saveApplicationInstance={[Function]}
-                              setAccountActive={[Function]}
-                              sites={Object {}}
-                    />
-                    <Connect(InstallPane)
-                              account={null}
-                              applicationInstance={Object {}}
-                              canvasRequest={[Function]}
-                              courses={
-                                        Array [
-                                                  Object {},
-                                                ]
-                              }
-                              loadExternalTools={[Function]}
-                              loadingCourses={Object {}}
-                              onlyShowInstalled={false}
-                    />
-          </div>
-          <Modal
-                    ariaHideApp={true}
-                    className="c-modal c-modal--site is-open c-modal--error loading"
-                    closeTimeoutMS={0}
-                    contentLabel="Modal"
-                    isOpen={false}
-                    overlayClassName="c-modal__background"
-                    parentSelector={[Function]}
-                    portalClassName="ReactModalPortal"
-                    shouldCloseOnOverlayClick={true}
-          >
-                    <div
-                              className="c-loading-icon"
-                    />
-                       Loading...
-          </Modal>
-</div>,
-      },
-      "_renderedNodeType": 0,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
-    },
-    "getRenderOutput": [Function],
-    "render": [Function],
-  },
-  "root": [Circular],
-  "unrendered": <Index
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Index
     accounts={Object {}}
     applicationInstance={Object {}}
     applications={Object {}}
@@ -352,5 +31,397 @@ ShallowWrapper {
     saveApplicationInstance={[Function]}
     sites={Object {}}
 />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": null,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Connect(Heading)
+          backTo="/applications/application id/application_instances"
+/>,
+        <div
+          className="o-contain"
+>
+          <Sidebar
+                    accounts={Object {}}
+                    application={undefined}
+                    applicationInstance={Object {}}
+                    canvasRequest={[Function]}
+                    currentAccount={null}
+                    onlyShowInstalledChanged={[Function]}
+                    saveApplicationInstance={[Function]}
+                    setAccountActive={[Function]}
+                    sites={Object {}}
+          />
+          <Connect(InstallPane)
+                    account={null}
+                    applicationInstance={Object {}}
+                    canvasRequest={[Function]}
+                    courses={
+                              Array [
+                                        Object {},
+                                      ]
+                    }
+                    loadExternalTools={[Function]}
+                    loadingCourses={Object {}}
+                    onlyShowInstalled={false}
+          />
+</div>,
+        <Modal
+          ariaHideApp={true}
+          className="c-modal c-modal--site is-open c-modal--error loading"
+          closeTimeoutMS={0}
+          contentLabel="Modal"
+          isOpen={false}
+          overlayClassName="c-modal__background"
+          parentSelector={[Function]}
+          portalClassName="ReactModalPortal"
+          shouldCloseOnOverlayClick={true}
+>
+          <div
+                    className="c-loading-icon"
+          />
+             Loading...
+</Modal>,
+      ],
+      "style": Object {
+        "height": "100%",
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "backTo": "/applications/application id/application_instances",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <Sidebar
+              accounts={Object {}}
+              application={undefined}
+              applicationInstance={Object {}}
+              canvasRequest={[Function]}
+              currentAccount={null}
+              onlyShowInstalledChanged={[Function]}
+              saveApplicationInstance={[Function]}
+              setAccountActive={[Function]}
+              sites={Object {}}
+/>,
+            <Connect(InstallPane)
+              account={null}
+              applicationInstance={Object {}}
+              canvasRequest={[Function]}
+              courses={
+                            Array [
+                                          Object {},
+                                        ]
+              }
+              loadExternalTools={[Function]}
+              loadingCourses={Object {}}
+              onlyShowInstalled={false}
+/>,
+          ],
+          "className": "o-contain",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "accounts": Object {},
+              "application": undefined,
+              "applicationInstance": Object {},
+              "canvasRequest": [Function],
+              "currentAccount": null,
+              "onlyShowInstalledChanged": [Function],
+              "saveApplicationInstance": [Function],
+              "setAccountActive": [Function],
+              "sites": Object {},
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "account": null,
+              "applicationInstance": Object {},
+              "canvasRequest": [Function],
+              "courses": Array [
+                Object {},
+              ],
+              "loadExternalTools": [Function],
+              "loadingCourses": Object {},
+              "onlyShowInstalled": false,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "ariaHideApp": true,
+          "children": Array [
+            <div
+              className="c-loading-icon"
+/>,
+            "   Loading...",
+          ],
+          "className": "c-modal c-modal--site is-open c-modal--error loading",
+          "closeTimeoutMS": 0,
+          "contentLabel": "Modal",
+          "isOpen": false,
+          "overlayClassName": "c-modal__background",
+          "parentSelector": [Function],
+          "portalClassName": "ReactModalPortal",
+          "shouldCloseOnOverlayClick": true,
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "host",
+            "props": Object {
+              "className": "c-loading-icon",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "div",
+          },
+          "   Loading...",
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Connect(Heading)
+            backTo="/applications/application id/application_instances"
+/>,
+          <div
+            className="o-contain"
+>
+            <Sidebar
+                        accounts={Object {}}
+                        application={undefined}
+                        applicationInstance={Object {}}
+                        canvasRequest={[Function]}
+                        currentAccount={null}
+                        onlyShowInstalledChanged={[Function]}
+                        saveApplicationInstance={[Function]}
+                        setAccountActive={[Function]}
+                        sites={Object {}}
+            />
+            <Connect(InstallPane)
+                        account={null}
+                        applicationInstance={Object {}}
+                        canvasRequest={[Function]}
+                        courses={
+                                    Array [
+                                                Object {},
+                                              ]
+                        }
+                        loadExternalTools={[Function]}
+                        loadingCourses={Object {}}
+                        onlyShowInstalled={false}
+            />
+</div>,
+          <Modal
+            ariaHideApp={true}
+            className="c-modal c-modal--site is-open c-modal--error loading"
+            closeTimeoutMS={0}
+            contentLabel="Modal"
+            isOpen={false}
+            overlayClassName="c-modal__background"
+            parentSelector={[Function]}
+            portalClassName="ReactModalPortal"
+            shouldCloseOnOverlayClick={true}
+>
+            <div
+                        className="c-loading-icon"
+            />
+               Loading...
+</Modal>,
+        ],
+        "style": Object {
+          "height": "100%",
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "backTo": "/applications/application id/application_instances",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Sidebar
+                accounts={Object {}}
+                application={undefined}
+                applicationInstance={Object {}}
+                canvasRequest={[Function]}
+                currentAccount={null}
+                onlyShowInstalledChanged={[Function]}
+                saveApplicationInstance={[Function]}
+                setAccountActive={[Function]}
+                sites={Object {}}
+/>,
+              <Connect(InstallPane)
+                account={null}
+                applicationInstance={Object {}}
+                canvasRequest={[Function]}
+                courses={
+                                Array [
+                                                Object {},
+                                              ]
+                }
+                loadExternalTools={[Function]}
+                loadingCourses={Object {}}
+                onlyShowInstalled={false}
+/>,
+            ],
+            "className": "o-contain",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "accounts": Object {},
+                "application": undefined,
+                "applicationInstance": Object {},
+                "canvasRequest": [Function],
+                "currentAccount": null,
+                "onlyShowInstalledChanged": [Function],
+                "saveApplicationInstance": [Function],
+                "setAccountActive": [Function],
+                "sites": Object {},
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "account": null,
+                "applicationInstance": Object {},
+                "canvasRequest": [Function],
+                "courses": Array [
+                  Object {},
+                ],
+                "loadExternalTools": [Function],
+                "loadingCourses": Object {},
+                "onlyShowInstalled": false,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "ariaHideApp": true,
+            "children": Array [
+              <div
+                className="c-loading-icon"
+/>,
+              "   Loading...",
+            ],
+            "className": "c-modal c-modal--site is-open c-modal--error loading",
+            "closeTimeoutMS": 0,
+            "contentLabel": "Modal",
+            "isOpen": false,
+            "overlayClassName": "c-modal__background",
+            "parentSelector": [Function],
+            "portalClassName": "ReactModalPortal",
+            "shouldCloseOnOverlayClick": true,
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "host",
+              "props": Object {
+                "className": "c-loading-icon",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "div",
+            },
+            "   Loading...",
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
 }
 `;

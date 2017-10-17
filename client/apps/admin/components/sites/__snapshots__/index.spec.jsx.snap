@@ -2,203 +2,9 @@
 
 exports[`sites index matches the snapshot 1`] = `
 ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
   "length": 1,
-  "node": <div>
-    <Connect(Heading) />
-    <div
-        className="o-contain o-contain--full"
-    >
-        <Connect(SiteModal)
-            closeModal={[Function]}
-            isOpen={false}
-        />
-        <Header
-            newSite={[Function]}
-            openSettings={[Function]}
-        />
-        <List
-            sites={
-                Object {
-                    "1": Object {
-                      "id": 1,
-                      "url": "bfcoder.com",
-                    },
-                    "2": Object {
-                      "id": 2,
-                      "url": "atomicjolt.com",
-                    },
-                  }
-            }
-        />
-    </div>
-</div>,
-  "nodes": Array [
-    <div>
-      <Connect(Heading) />
-      <div
-            className="o-contain o-contain--full"
-      >
-            <Connect(SiteModal)
-                  closeModal={[Function]}
-                  isOpen={false}
-            />
-            <Header
-                  newSite={[Function]}
-                  openSettings={[Function]}
-            />
-            <List
-                  sites={
-                        Object {
-                              "1": Object {
-                                "id": 1,
-                                "url": "bfcoder.com",
-                              },
-                              "2": Object {
-                                "id": 2,
-                                "url": "atomicjolt.com",
-                              },
-                            }
-                  }
-            />
-      </div>
-</div>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 0,
-      "_context": Object {},
-      "_currentElement": <Index
-        sites={
-                Object {
-                        "1": Object {
-                          "id": 1,
-                          "url": "bfcoder.com",
-                        },
-                        "2": Object {
-                          "id": 2,
-                          "url": "atomicjolt.com",
-                        },
-                      }
-        }
-/>,
-      "_debugID": 3,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": Index {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "props": Object {
-          "sites": Object {
-            "1": Object {
-              "id": 1,
-              "url": "bfcoder.com",
-            },
-            "2": Object {
-              "id": 2,
-              "url": "atomicjolt.com",
-            },
-          },
-        },
-        "refs": Object {},
-        "state": Object {
-          "siteModalOpen": false,
-        },
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-      },
-      "_mountOrder": 2,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
-          <Connect(Heading) />
-          <div
-                    className="o-contain o-contain--full"
-          >
-                    <Connect(SiteModal)
-                              closeModal={[Function]}
-                              isOpen={false}
-                    />
-                    <Header
-                              newSite={[Function]}
-                              openSettings={[Function]}
-                    />
-                    <List
-                              sites={
-                                        Object {
-                                                  "1": Object {
-                                                    "id": 1,
-                                                    "url": "bfcoder.com",
-                                                  },
-                                                  "2": Object {
-                                                    "id": 2,
-                                                    "url": "atomicjolt.com",
-                                                  },
-                                                }
-                              }
-                    />
-          </div>
-</div>,
-        "_debugID": 4,
-        "_renderedOutput": <div>
-          <Connect(Heading) />
-          <div
-                    className="o-contain o-contain--full"
-          >
-                    <Connect(SiteModal)
-                              closeModal={[Function]}
-                              isOpen={false}
-                    />
-                    <Header
-                              newSite={[Function]}
-                              openSettings={[Function]}
-                    />
-                    <List
-                              sites={
-                                        Object {
-                                                  "1": Object {
-                                                    "id": 1,
-                                                    "url": "bfcoder.com",
-                                                  },
-                                                  "2": Object {
-                                                    "id": 2,
-                                                    "url": "atomicjolt.com",
-                                                  },
-                                                }
-                              }
-                    />
-          </div>
-</div>,
-      },
-      "_renderedNodeType": 0,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
-    },
-    "getRenderOutput": [Function],
-    "render": [Function],
-  },
-  "root": [Circular],
-  "unrendered": <Index
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Index
     sites={
         Object {
             "1": Object {
@@ -212,5 +18,279 @@ ShallowWrapper {
           }
     }
 />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": null,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Connect(Heading) />,
+        <div
+          className="o-contain o-contain--full"
+>
+          <Connect(SiteModal)
+                    closeModal={[Function]}
+                    isOpen={false}
+          />
+          <Header
+                    newSite={[Function]}
+                    openSettings={[Function]}
+          />
+          <List
+                    sites={
+                              Object {
+                                        "1": Object {
+                                          "id": 1,
+                                          "url": "bfcoder.com",
+                                        },
+                                        "2": Object {
+                                          "id": 2,
+                                          "url": "atomicjolt.com",
+                                        },
+                                      }
+                    }
+          />
+</div>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <Connect(SiteModal)
+              closeModal={[Function]}
+              isOpen={false}
+/>,
+            <Header
+              newSite={[Function]}
+              openSettings={[Function]}
+/>,
+            <List
+              sites={
+                            Object {
+                                          "1": Object {
+                                            "id": 1,
+                                            "url": "bfcoder.com",
+                                          },
+                                          "2": Object {
+                                            "id": 2,
+                                            "url": "atomicjolt.com",
+                                          },
+                                        }
+              }
+/>,
+          ],
+          "className": "o-contain o-contain--full",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "closeModal": [Function],
+              "isOpen": false,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "function",
+            "props": Object {
+              "newSite": [Function],
+              "openSettings": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "function",
+            "props": Object {
+              "sites": Object {
+                "1": Object {
+                  "id": 1,
+                  "url": "bfcoder.com",
+                },
+                "2": Object {
+                  "id": 2,
+                  "url": "atomicjolt.com",
+                },
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Connect(Heading) />,
+          <div
+            className="o-contain o-contain--full"
+>
+            <Connect(SiteModal)
+                        closeModal={[Function]}
+                        isOpen={false}
+            />
+            <Header
+                        newSite={[Function]}
+                        openSettings={[Function]}
+            />
+            <List
+                        sites={
+                                    Object {
+                                                "1": Object {
+                                                  "id": 1,
+                                                  "url": "bfcoder.com",
+                                                },
+                                                "2": Object {
+                                                  "id": 2,
+                                                  "url": "atomicjolt.com",
+                                                },
+                                              }
+                        }
+            />
+</div>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Connect(SiteModal)
+                closeModal={[Function]}
+                isOpen={false}
+/>,
+              <Header
+                newSite={[Function]}
+                openSettings={[Function]}
+/>,
+              <List
+                sites={
+                                Object {
+                                                "1": Object {
+                                                  "id": 1,
+                                                  "url": "bfcoder.com",
+                                                },
+                                                "2": Object {
+                                                  "id": 2,
+                                                  "url": "atomicjolt.com",
+                                                },
+                                              }
+                }
+/>,
+            ],
+            "className": "o-contain o-contain--full",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "closeModal": [Function],
+                "isOpen": false,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "function",
+              "props": Object {
+                "newSite": [Function],
+                "openSettings": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "function",
+              "props": Object {
+                "sites": Object {
+                  "1": Object {
+                    "id": 1,
+                    "url": "bfcoder.com",
+                  },
+                  "2": Object {
+                    "id": 2,
+                    "url": "atomicjolt.com",
+                  },
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
 }
 `;

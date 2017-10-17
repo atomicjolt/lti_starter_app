@@ -38,8 +38,6 @@ describe('the index component', () => {
   });
 
   it('calls the canvasRequest props function', () => {
-    expect(coursesRequested).toBeFalsy();
-    result.instance().loadExternalTools();
     expect(coursesRequested).toBeTruthy();
   });
 
