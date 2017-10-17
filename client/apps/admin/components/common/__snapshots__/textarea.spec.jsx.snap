@@ -2,173 +2,9 @@
 
 exports[`textarea matches the snapshot 1`] = `
 ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
   "length": 1,
-  "node": <label
-    className="imaclass"
-    htmlFor="IM AN ID"
->
-    <span>
-        IMA LABEL
-    </span>
-    <textarea
-        cols={3}
-        disabled={false}
-        id="IM AN ID"
-        maxLength={1}
-        minLength={1}
-        name="the name"
-        onChange={[Function]}
-        placeholder="IMA PLACEHOLDER"
-        rows={2}
-        value="IM A VALUE"
-    />
-</label>,
-  "nodes": Array [
-    <label
-      className="imaclass"
-      htmlFor="IM AN ID"
->
-      <span>
-            IMA LABEL
-      </span>
-      <textarea
-            cols={3}
-            disabled={false}
-            id="IM AN ID"
-            maxLength={1}
-            minLength={1}
-            name="the name"
-            onChange={[Function]}
-            placeholder="IMA PLACEHOLDER"
-            rows={2}
-            value="IM A VALUE"
-      />
-</label>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 2,
-      "_context": Object {},
-      "_currentElement": <Textarea
-        className="imaclass"
-        labelText="IMA LABEL"
-        textareaProps={
-                Object {
-                        "cols": 3,
-                        "disabled": false,
-                        "id": "IM AN ID",
-                        "maxLength": 1,
-                        "minLength": 1,
-                        "name": "the name",
-                        "onChange": [Function],
-                        "placeholder": "IMA PLACEHOLDER",
-                        "rows": 2,
-                        "value": "IM A VALUE",
-                      }
-        }
-/>,
-      "_debugID": 1,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": StatelessComponent {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "props": Object {
-          "className": "imaclass",
-          "labelText": "IMA LABEL",
-          "textareaProps": Object {
-            "cols": 3,
-            "disabled": false,
-            "id": "IM AN ID",
-            "maxLength": 1,
-            "minLength": 1,
-            "name": "the name",
-            "onChange": [Function],
-            "placeholder": "IMA PLACEHOLDER",
-            "rows": 2,
-            "value": "IM A VALUE",
-          },
-        },
-        "refs": Object {},
-        "state": null,
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-      },
-      "_mountOrder": 1,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <label
-          className="imaclass"
-          htmlFor="IM AN ID"
->
-          <span>
-                    IMA LABEL
-          </span>
-          <textarea
-                    cols={3}
-                    disabled={false}
-                    id="IM AN ID"
-                    maxLength={1}
-                    minLength={1}
-                    name="the name"
-                    onChange={[Function]}
-                    placeholder="IMA PLACEHOLDER"
-                    rows={2}
-                    value="IM A VALUE"
-          />
-</label>,
-        "_debugID": 2,
-        "_renderedOutput": <label
-          className="imaclass"
-          htmlFor="IM AN ID"
->
-          <span>
-                    IMA LABEL
-          </span>
-          <textarea
-                    cols={3}
-                    disabled={false}
-                    id="IM AN ID"
-                    maxLength={1}
-                    minLength={1}
-                    name="the name"
-                    onChange={[Function]}
-                    placeholder="IMA PLACEHOLDER"
-                    rows={2}
-                    value="IM A VALUE"
-          />
-</label>,
-      },
-      "_renderedNodeType": 0,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
-    },
-    "getRenderOutput": [Function],
-    "render": [Function],
-  },
-  "root": [Circular],
-  "unrendered": <Textarea
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Textarea
     className="imaclass"
     labelText="IMA LABEL"
     textareaProps={
@@ -186,5 +22,147 @@ ShallowWrapper {
           }
     }
 />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": null,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <span>
+          IMA LABEL
+</span>,
+        <textarea
+          cols={3}
+          disabled={false}
+          id="IM AN ID"
+          maxLength={1}
+          minLength={1}
+          name="the name"
+          onChange={[Function]}
+          placeholder="IMA PLACEHOLDER"
+          rows={2}
+          value="IM A VALUE"
+/>,
+        undefined,
+      ],
+      "className": "imaclass",
+      "htmlFor": "IM AN ID",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "children": "IMA LABEL",
+        },
+        "ref": null,
+        "rendered": "IMA LABEL",
+        "type": "span",
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "cols": 3,
+          "disabled": false,
+          "id": "IM AN ID",
+          "maxLength": 1,
+          "minLength": 1,
+          "name": "the name",
+          "onChange": [Function],
+          "placeholder": "IMA PLACEHOLDER",
+          "rows": 2,
+          "value": "IM A VALUE",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "textarea",
+      },
+      undefined,
+    ],
+    "type": "label",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <span>
+            IMA LABEL
+</span>,
+          <textarea
+            cols={3}
+            disabled={false}
+            id="IM AN ID"
+            maxLength={1}
+            minLength={1}
+            name="the name"
+            onChange={[Function]}
+            placeholder="IMA PLACEHOLDER"
+            rows={2}
+            value="IM A VALUE"
+/>,
+          undefined,
+        ],
+        "className": "imaclass",
+        "htmlFor": "IM AN ID",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "children": "IMA LABEL",
+          },
+          "ref": null,
+          "rendered": "IMA LABEL",
+          "type": "span",
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "cols": 3,
+            "disabled": false,
+            "id": "IM AN ID",
+            "maxLength": 1,
+            "minLength": 1,
+            "name": "the name",
+            "onChange": [Function],
+            "placeholder": "IMA PLACEHOLDER",
+            "rows": 2,
+            "value": "IM A VALUE",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "textarea",
+        },
+        undefined,
+      ],
+      "type": "label",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
 }
 `;

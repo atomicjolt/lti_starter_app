@@ -11,7 +11,7 @@ describe('applications application row', () => {
       application: {
         id                          : 314159,
         name                        : 'SPECNAME',
-        application_instances_count : 123
+        application_instances_count : 1234
       },
       saveApplication: () => {}
     };

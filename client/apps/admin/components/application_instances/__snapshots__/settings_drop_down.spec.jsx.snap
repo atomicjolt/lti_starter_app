@@ -2,152 +2,152 @@
 
 exports[`application instance modal renders a list with settings 1`] = `
 ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
   "length": 1,
-  "node": <ul
-    style={
-        Object {
-            "backgroundColor": "white",
-            "border": "1px solid black",
-            "borderRadius": "5px",
-            "display": "inline-block",
-            "fontSize": "2em",
-            "padding": "5px",
-            "position": "absolute",
-          }
-    }
->
-    <li>
-        Settings
-    </li>
-    <li>
-        Other Settings
-    </li>
-    <li>
-        More Settings
-    </li>
-</ul>,
-  "nodes": Array [
-    <ul
-      style={
-            Object {
-                  "backgroundColor": "white",
-                  "border": "1px solid black",
-                  "borderRadius": "5px",
-                  "display": "inline-block",
-                  "fontSize": "2em",
-                  "padding": "5px",
-                  "position": "absolute",
-                }
-      }
->
-      <li>
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <settingDropDown />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": null,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <li>
+          Settings
+</li>,
+        <li>
+          Other Settings
+</li>,
+        <li>
+          More Settings
+</li>,
+      ],
+      "style": Object {
+        "backgroundColor": "white",
+        "border": "1px solid black",
+        "borderRadius": "5px",
+        "display": "inline-block",
+        "fontSize": "2em",
+        "padding": "5px",
+        "position": "absolute",
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Settings",
+        },
+        "ref": null,
+        "rendered": "Settings",
+        "type": "li",
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Other Settings",
+        },
+        "ref": null,
+        "rendered": "Other Settings",
+        "type": "li",
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "children": "More Settings",
+        },
+        "ref": null,
+        "rendered": "More Settings",
+        "type": "li",
+      },
+    ],
+    "type": "ul",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <li>
             Settings
-      </li>
-      <li>
+</li>,
+          <li>
             Other Settings
-      </li>
-      <li>
+</li>,
+          <li>
             More Settings
-      </li>
-</ul>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 2,
-      "_context": Object {},
-      "_currentElement": <settingDropDown />,
-      "_debugID": 1,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": StatelessComponent {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "props": Object {},
-        "refs": Object {},
-        "state": null,
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
+</li>,
+        ],
+        "style": Object {
+          "backgroundColor": "white",
+          "border": "1px solid black",
+          "borderRadius": "5px",
+          "display": "inline-block",
+          "fontSize": "2em",
+          "padding": "5px",
+          "position": "absolute",
         },
       },
-      "_mountOrder": 1,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <ul
-          style={
-                    Object {
-                              "backgroundColor": "white",
-                              "border": "1px solid black",
-                              "borderRadius": "5px",
-                              "display": "inline-block",
-                              "fontSize": "2em",
-                              "padding": "5px",
-                              "position": "absolute",
-                            }
-          }
->
-          <li>
-                    Settings
-          </li>
-          <li>
-                    Other Settings
-          </li>
-          <li>
-                    More Settings
-          </li>
-</ul>,
-        "_debugID": 2,
-        "_renderedOutput": <ul
-          style={
-                    Object {
-                              "backgroundColor": "white",
-                              "border": "1px solid black",
-                              "borderRadius": "5px",
-                              "display": "inline-block",
-                              "fontSize": "2em",
-                              "padding": "5px",
-                              "position": "absolute",
-                            }
-          }
->
-          <li>
-                    Settings
-          </li>
-          <li>
-                    Other Settings
-          </li>
-          <li>
-                    More Settings
-          </li>
-</ul>,
-      },
-      "_renderedNodeType": 0,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Settings",
+          },
+          "ref": null,
+          "rendered": "Settings",
+          "type": "li",
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Other Settings",
+          },
+          "ref": null,
+          "rendered": "Other Settings",
+          "type": "li",
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "children": "More Settings",
+          },
+          "ref": null,
+          "rendered": "More Settings",
+          "type": "li",
+        },
+      ],
+      "type": "ul",
     },
-    "getRenderOutput": [Function],
-    "render": [Function],
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
   },
-  "root": [Circular],
-  "unrendered": <settingDropDown />,
 }
 `;

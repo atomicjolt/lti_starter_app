@@ -2,201 +2,9 @@
 
 exports[`applications modal modal matches snapshot 1`] = `
 ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
   "length": 1,
-  "node": <Modal
-    ariaHideApp={true}
-    className="c-modal c-modal--settings is-open"
-    closeTimeoutMS={0}
-    contentLabel="Modal"
-    isOpen={true}
-    onRequestClose={[Function]}
-    overlayClassName="c-modal__background"
-    parentSelector={[Function]}
-    portalClassName="ReactModalPortal"
-    save={[Function]}
-    shouldCloseOnOverlayClick={true}
->
-    <h2
-        className="c-modal__title"
-    >
-        SPEC_NAME
-         Settings
-    </h2>
-    <Form
-        canvasApiPermissions={undefined}
-        closeModal={[Function]}
-        configParseError={null}
-        defaultConfig={undefined}
-        description="SPEC_STRING"
-        onChange={[Function]}
-        save={[Function]}
-    />
-</Modal>,
-  "nodes": Array [
-    <Modal
-      ariaHideApp={true}
-      className="c-modal c-modal--settings is-open"
-      closeTimeoutMS={0}
-      contentLabel="Modal"
-      isOpen={true}
-      onRequestClose={[Function]}
-      overlayClassName="c-modal__background"
-      parentSelector={[Function]}
-      portalClassName="ReactModalPortal"
-      save={[Function]}
-      shouldCloseOnOverlayClick={true}
->
-      <h2
-            className="c-modal__title"
-      >
-            SPEC_NAME
-             Settings
-      </h2>
-      <Form
-            canvasApiPermissions={undefined}
-            closeModal={[Function]}
-            configParseError={null}
-            defaultConfig={undefined}
-            description="SPEC_STRING"
-            onChange={[Function]}
-            save={[Function]}
-      />
-</Modal>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 0,
-      "_context": Object {},
-      "_currentElement": <Modal
-        application={
-                Object {
-                        "description": "SPEC_STRING",
-                        "name": "SPEC_NAME",
-                      }
-        }
-        closeModal={[Function]}
-        isOpen={true}
-        save={[Function]}
-/>,
-      "_debugID": 1,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": Modal {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "props": Object {
-          "application": Object {
-            "description": "SPEC_STRING",
-            "name": "SPEC_NAME",
-          },
-          "closeModal": [Function],
-          "isOpen": true,
-          "save": [Function],
-        },
-        "refs": Object {},
-        "state": Object {
-          "application": Object {
-            "description": "SPEC_STRING",
-            "name": "SPEC_NAME",
-          },
-          "configParseError": null,
-        },
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-      },
-      "_mountOrder": 1,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <Modal
-          ariaHideApp={true}
-          className="c-modal c-modal--settings is-open"
-          closeTimeoutMS={0}
-          contentLabel="Modal"
-          isOpen={true}
-          onRequestClose={[Function]}
-          overlayClassName="c-modal__background"
-          parentSelector={[Function]}
-          portalClassName="ReactModalPortal"
-          save={[Function]}
-          shouldCloseOnOverlayClick={true}
->
-          <h2
-                    className="c-modal__title"
-          >
-                    SPEC_NAME
-                     Settings
-          </h2>
-          <Form
-                    canvasApiPermissions={undefined}
-                    closeModal={[Function]}
-                    configParseError={null}
-                    defaultConfig={undefined}
-                    description="SPEC_STRING"
-                    onChange={[Function]}
-                    save={[Function]}
-          />
-</Modal>,
-        "_debugID": 2,
-        "_renderedOutput": <Modal
-          ariaHideApp={true}
-          className="c-modal c-modal--settings is-open"
-          closeTimeoutMS={0}
-          contentLabel="Modal"
-          isOpen={true}
-          onRequestClose={[Function]}
-          overlayClassName="c-modal__background"
-          parentSelector={[Function]}
-          portalClassName="ReactModalPortal"
-          save={[Function]}
-          shouldCloseOnOverlayClick={true}
->
-          <h2
-                    className="c-modal__title"
-          >
-                    SPEC_NAME
-                     Settings
-          </h2>
-          <Form
-                    canvasApiPermissions={undefined}
-                    closeModal={[Function]}
-                    configParseError={null}
-                    defaultConfig={undefined}
-                    description="SPEC_STRING"
-                    onChange={[Function]}
-                    save={[Function]}
-          />
-</Modal>,
-      },
-      "_renderedNodeType": 1,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
-    },
-    "getRenderOutput": [Function],
-    "render": [Function],
-  },
-  "root": [Circular],
-  "unrendered": <Modal
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Modal
     application={
         Object {
             "description": "SPEC_STRING",
@@ -207,5 +15,169 @@ ShallowWrapper {
     isOpen={true}
     save={[Function]}
 />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": null,
+    "nodeType": "class",
+    "props": Object {
+      "ariaHideApp": true,
+      "children": Array [
+        <h2
+          className="c-modal__title"
+>
+          SPEC_NAME
+           Settings
+</h2>,
+        <Form
+          canvasApiPermissions={undefined}
+          closeModal={[Function]}
+          configParseError={null}
+          defaultConfig={undefined}
+          description="SPEC_STRING"
+          onChange={[Function]}
+          save={[Function]}
+/>,
+      ],
+      "className": "c-modal c-modal--settings is-open",
+      "closeTimeoutMS": 0,
+      "contentLabel": "Modal",
+      "isOpen": true,
+      "onRequestClose": [Function],
+      "overlayClassName": "c-modal__background",
+      "parentSelector": [Function],
+      "portalClassName": "ReactModalPortal",
+      "save": [Function],
+      "shouldCloseOnOverlayClick": true,
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            "SPEC_NAME",
+            " Settings",
+          ],
+          "className": "c-modal__title",
+        },
+        "ref": null,
+        "rendered": Array [
+          "SPEC_NAME",
+          " Settings",
+        ],
+        "type": "h2",
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "function",
+        "props": Object {
+          "canvasApiPermissions": undefined,
+          "closeModal": [Function],
+          "configParseError": null,
+          "defaultConfig": undefined,
+          "description": "SPEC_STRING",
+          "onChange": [Function],
+          "save": [Function],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "class",
+      "props": Object {
+        "ariaHideApp": true,
+        "children": Array [
+          <h2
+            className="c-modal__title"
+>
+            SPEC_NAME
+             Settings
+</h2>,
+          <Form
+            canvasApiPermissions={undefined}
+            closeModal={[Function]}
+            configParseError={null}
+            defaultConfig={undefined}
+            description="SPEC_STRING"
+            onChange={[Function]}
+            save={[Function]}
+/>,
+        ],
+        "className": "c-modal c-modal--settings is-open",
+        "closeTimeoutMS": 0,
+        "contentLabel": "Modal",
+        "isOpen": true,
+        "onRequestClose": [Function],
+        "overlayClassName": "c-modal__background",
+        "parentSelector": [Function],
+        "portalClassName": "ReactModalPortal",
+        "save": [Function],
+        "shouldCloseOnOverlayClick": true,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "SPEC_NAME",
+              " Settings",
+            ],
+            "className": "c-modal__title",
+          },
+          "ref": null,
+          "rendered": Array [
+            "SPEC_NAME",
+            " Settings",
+          ],
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "function",
+          "props": Object {
+            "canvasApiPermissions": undefined,
+            "closeModal": [Function],
+            "configParseError": null,
+            "defaultConfig": undefined,
+            "description": "SPEC_STRING",
+            "onChange": [Function],
+            "save": [Function],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
 }
 `;

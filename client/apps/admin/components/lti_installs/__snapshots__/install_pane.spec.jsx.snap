@@ -2,255 +2,9 @@
 
 exports[`install pane matches the snapshot 1`] = `
 ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
   "length": 1,
-  "node": <div
-    className="o-right"
->
-    <AccountInstall
-        account={
-            Object {
-                "installCount": 0,
-              }
-        }
-        accountInstalls={0}
-        applicationInstance={Object {}}
-        canvasRequest={[Function]}
-    />
-    <div>
-        <div
-            className="c-search c-search--small"
-        >
-            <input
-                onChange={[Function]}
-                placeholder="Search..."
-                type="text"
-            />
-            <i
-                className="i-search"
-            />
-        </div>
-        <CourseInstalls
-            applicationInstance={Object {}}
-            canvasRequest={[Function]}
-            courses={Array []}
-            loadingCourses={Object {}}
-        />
-        <Pagination
-            courses={Array []}
-            currentPage={0}
-            loadingCourses={Object {}}
-            pageCount={0}
-            pageSize={10}
-            setPage={[Function]}
-        />
-    </div>
-</div>,
-  "nodes": Array [
-    <div
-      className="o-right"
->
-      <AccountInstall
-            account={
-                  Object {
-                        "installCount": 0,
-                      }
-            }
-            accountInstalls={0}
-            applicationInstance={Object {}}
-            canvasRequest={[Function]}
-      />
-      <div>
-            <div
-                  className="c-search c-search--small"
-            >
-                  <input
-                        onChange={[Function]}
-                        placeholder="Search..."
-                        type="text"
-                  />
-                  <i
-                        className="i-search"
-                  />
-            </div>
-            <CourseInstalls
-                  applicationInstance={Object {}}
-                  canvasRequest={[Function]}
-                  courses={Array []}
-                  loadingCourses={Object {}}
-            />
-            <Pagination
-                  courses={Array []}
-                  currentPage={0}
-                  loadingCourses={Object {}}
-                  pageCount={0}
-                  pageSize={10}
-                  setPage={[Function]}
-            />
-      </div>
-</div>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 0,
-      "_context": Object {},
-      "_currentElement": <InstallPane
-        account={
-                Object {
-                        "installCount": 0,
-                      }
-        }
-        applicationInstance={Object {}}
-        canvasRequest={[Function]}
-        courses={Array []}
-        loadExternalTools={[Function]}
-        loadingCourses={Object {}}
-        onlyShowInstalled={false}
-/>,
-      "_debugID": 1,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": InstallPane {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "props": Object {
-          "account": Object {
-            "installCount": 0,
-          },
-          "applicationInstance": Object {},
-          "canvasRequest": [Function],
-          "courses": Array [],
-          "loadExternalTools": [Function],
-          "loadingCourses": Object {},
-          "onlyShowInstalled": false,
-        },
-        "refs": Object {},
-        "state": Object {
-          "currentPage": 0,
-          "searchPrefix": "",
-        },
-        "updateSearchPrefix": [Function],
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-      },
-      "_mountOrder": 1,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div
-          className="o-right"
->
-          <AccountInstall
-                    account={
-                              Object {
-                                        "installCount": 0,
-                                      }
-                    }
-                    accountInstalls={0}
-                    applicationInstance={Object {}}
-                    canvasRequest={[Function]}
-          />
-          <div>
-                    <div
-                              className="c-search c-search--small"
-                    >
-                              <input
-                                        onChange={[Function]}
-                                        placeholder="Search..."
-                                        type="text"
-                              />
-                              <i
-                                        className="i-search"
-                              />
-                    </div>
-                    <CourseInstalls
-                              applicationInstance={Object {}}
-                              canvasRequest={[Function]}
-                              courses={Array []}
-                              loadingCourses={Object {}}
-                    />
-                    <Pagination
-                              courses={Array []}
-                              currentPage={0}
-                              loadingCourses={Object {}}
-                              pageCount={0}
-                              pageSize={10}
-                              setPage={[Function]}
-                    />
-          </div>
-</div>,
-        "_debugID": 2,
-        "_renderedOutput": <div
-          className="o-right"
->
-          <AccountInstall
-                    account={
-                              Object {
-                                        "installCount": 0,
-                                      }
-                    }
-                    accountInstalls={0}
-                    applicationInstance={Object {}}
-                    canvasRequest={[Function]}
-          />
-          <div>
-                    <div
-                              className="c-search c-search--small"
-                    >
-                              <input
-                                        onChange={[Function]}
-                                        placeholder="Search..."
-                                        type="text"
-                              />
-                              <i
-                                        className="i-search"
-                              />
-                    </div>
-                    <CourseInstalls
-                              applicationInstance={Object {}}
-                              canvasRequest={[Function]}
-                              courses={Array []}
-                              loadingCourses={Object {}}
-                    />
-                    <Pagination
-                              courses={Array []}
-                              currentPage={0}
-                              loadingCourses={Object {}}
-                              pageCount={0}
-                              pageSize={10}
-                              setPage={[Function]}
-                    />
-          </div>
-</div>,
-      },
-      "_renderedNodeType": 0,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
-    },
-    "getRenderOutput": [Function],
-    "render": [Function],
-  },
-  "root": [Circular],
-  "unrendered": <InstallPane
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <InstallPane
     account={
         Object {
             "installCount": 0,
@@ -263,5 +17,391 @@ ShallowWrapper {
     loadingCourses={Object {}}
     onlyShowInstalled={false}
 />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": null,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <AccountInstall
+          account={
+                    Object {
+                              "installCount": 0,
+                            }
+          }
+          accountInstalls={0}
+          applicationInstance={Object {}}
+          canvasRequest={[Function]}
+/>,
+        <div>
+          <div
+                    className="c-search c-search--small"
+          >
+                    <input
+                              onChange={[Function]}
+                              placeholder="Search..."
+                              type="text"
+                    />
+                    <i
+                              className="i-search"
+                    />
+          </div>
+          <CourseInstalls
+                    applicationInstance={Object {}}
+                    canvasRequest={[Function]}
+                    courses={Array []}
+                    loadingCourses={Object {}}
+          />
+          <Pagination
+                    courses={Array []}
+                    currentPage={0}
+                    loadingCourses={Object {}}
+                    pageCount={0}
+                    pageSize={10}
+                    setPage={[Function]}
+          />
+</div>,
+      ],
+      "className": "o-right",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "function",
+        "props": Object {
+          "account": Object {
+            "installCount": 0,
+          },
+          "accountInstalls": 0,
+          "applicationInstance": Object {},
+          "canvasRequest": [Function],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="c-search c-search--small"
+>
+              <input
+                            onChange={[Function]}
+                            placeholder="Search..."
+                            type="text"
+              />
+              <i
+                            className="i-search"
+              />
+</div>,
+            null,
+            <CourseInstalls
+              applicationInstance={Object {}}
+              canvasRequest={[Function]}
+              courses={Array []}
+              loadingCourses={Object {}}
+/>,
+            <Pagination
+              courses={Array []}
+              currentPage={0}
+              loadingCourses={Object {}}
+              pageCount={0}
+              pageSize={10}
+              setPage={[Function]}
+/>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <input
+                  onChange={[Function]}
+                  placeholder="Search..."
+                  type="text"
+/>,
+                <i
+                  className="i-search"
+/>,
+              ],
+              "className": "c-search c-search--small",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "host",
+                "props": Object {
+                  "onChange": [Function],
+                  "placeholder": "Search...",
+                  "type": "text",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "input",
+              },
+              Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "host",
+                "props": Object {
+                  "className": "i-search",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "i",
+              },
+            ],
+            "type": "div",
+          },
+          null,
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "function",
+            "props": Object {
+              "applicationInstance": Object {},
+              "canvasRequest": [Function],
+              "courses": Array [],
+              "loadingCourses": Object {},
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "function",
+            "props": Object {
+              "courses": Array [],
+              "currentPage": 0,
+              "loadingCourses": Object {},
+              "pageCount": 0,
+              "pageSize": 10,
+              "setPage": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <AccountInstall
+            account={
+                        Object {
+                                    "installCount": 0,
+                                  }
+            }
+            accountInstalls={0}
+            applicationInstance={Object {}}
+            canvasRequest={[Function]}
+/>,
+          <div>
+            <div
+                        className="c-search c-search--small"
+            >
+                        <input
+                                    onChange={[Function]}
+                                    placeholder="Search..."
+                                    type="text"
+                        />
+                        <i
+                                    className="i-search"
+                        />
+            </div>
+            <CourseInstalls
+                        applicationInstance={Object {}}
+                        canvasRequest={[Function]}
+                        courses={Array []}
+                        loadingCourses={Object {}}
+            />
+            <Pagination
+                        courses={Array []}
+                        currentPage={0}
+                        loadingCourses={Object {}}
+                        pageCount={0}
+                        pageSize={10}
+                        setPage={[Function]}
+            />
+</div>,
+        ],
+        "className": "o-right",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "function",
+          "props": Object {
+            "account": Object {
+              "installCount": 0,
+            },
+            "accountInstalls": 0,
+            "applicationInstance": Object {},
+            "canvasRequest": [Function],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="c-search c-search--small"
+>
+                <input
+                                onChange={[Function]}
+                                placeholder="Search..."
+                                type="text"
+                />
+                <i
+                                className="i-search"
+                />
+</div>,
+              null,
+              <CourseInstalls
+                applicationInstance={Object {}}
+                canvasRequest={[Function]}
+                courses={Array []}
+                loadingCourses={Object {}}
+/>,
+              <Pagination
+                courses={Array []}
+                currentPage={0}
+                loadingCourses={Object {}}
+                pageCount={0}
+                pageSize={10}
+                setPage={[Function]}
+/>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <input
+                    onChange={[Function]}
+                    placeholder="Search..."
+                    type="text"
+/>,
+                  <i
+                    className="i-search"
+/>,
+                ],
+                "className": "c-search c-search--small",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "host",
+                  "props": Object {
+                    "onChange": [Function],
+                    "placeholder": "Search...",
+                    "type": "text",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "input",
+                },
+                Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "host",
+                  "props": Object {
+                    "className": "i-search",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "i",
+                },
+              ],
+              "type": "div",
+            },
+            null,
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "function",
+              "props": Object {
+                "applicationInstance": Object {},
+                "canvasRequest": [Function],
+                "courses": Array [],
+                "loadingCourses": Object {},
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "function",
+              "props": Object {
+                "courses": Array [],
+                "currentPage": 0,
+                "loadingCourses": Object {},
+                "pageCount": 0,
+                "pageSize": 10,
+                "setPage": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
 }
 `;
