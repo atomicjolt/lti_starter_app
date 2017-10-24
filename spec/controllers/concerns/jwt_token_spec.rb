@@ -8,7 +8,7 @@ describe ApplicationController, type: :controller do
     respond_to :json
 
     def index
-      render plain: "User: #{@user.display_name}"
+      render plain: "User: #{@jwt_user.display_name}"
     end
   end
 
