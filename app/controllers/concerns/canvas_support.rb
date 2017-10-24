@@ -11,6 +11,16 @@ module Concerns
       canvas_course: current_canvas_course
     )
       url = UrlHelper.scheme_host_port(application_instance.site.url)
+
+      if user_roles(context_id: params[:context_id]).include?("canvas_oauth_user")
+        # The user's has the role canvas_oauth_user.
+        # We know they have a token so use that token.
+        if auth = canvas_auth(application_instance.site, user: current_user)
+          return user_auth(auth, url, application_instance.site)
+        end
+        raise CanvasApiTokenRequired, "Could not find a valid canvas api token for the current user."
+      end
+
       if application_instance.canvas_token.present?
         global_auth(url, application_instance.canvas_token)
       elsif auth = canvas_auth_instance(application_instance.site, application_instance: application_instance)
@@ -79,13 +89,17 @@ module Concerns
     def canvas_api_authorized(type: params[:lms_proxy_call_type], context_id: params[:context_id])
       canvas_api_permissions.has_key?(type) &&
         allowed_roles(type: type).present? &&
-        (allowed_roles(type: type) & current_user.nil_or_context_roles(context_id).map(&:name)).present?
+        (allowed_roles(type: type) & user_roles(context_id: context_id)).present?
     end
 
     def allowed_roles(type: params[:lms_proxy_call_type])
       roles = (canvas_api_permissions[type] || []) + (canvas_api_permissions[:common] || [])
       roles = canvas_api_permissions[:default] || [] if roles.empty?
       roles
+    end
+
+    def user_roles(context_id: params[:context_id])
+      current_user.nil_or_context_roles(context_id).map(&:name)
     end
 
     def canvas_api_permissions
