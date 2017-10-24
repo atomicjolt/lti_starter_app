@@ -71,8 +71,6 @@ module Concerns
 
     def protect_canvas_api(type: params[:lms_proxy_call_type], context_id: params[:context_id])
       return if canvas_api_authorized(type: type, context_id: context_id)
-      # this is not permanent, we will remove this when we go away from using the new application instance to install
-      return if canvas_auth(current_application_instance.site).present?
       user_not_authorized
     end
 
