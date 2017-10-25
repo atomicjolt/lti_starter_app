@@ -77,13 +77,17 @@ module Concerns
     def canvas_api_authorized(type: params[:lms_proxy_call_type], context_id: params[:context_id])
       canvas_api_permissions.has_key?(type) &&
         allowed_roles(type: type).present? &&
-        (allowed_roles(type: type) & current_user.nil_or_context_roles(context_id).map(&:name)).present?
+        (allowed_roles(type: type) & current_user_roles(context_id: context_id)).present?
     end
 
     def allowed_roles(type: params[:lms_proxy_call_type])
       roles = (canvas_api_permissions[type] || []) + (canvas_api_permissions[:common] || [])
       roles = canvas_api_permissions[:default] || [] if roles.empty?
       roles
+    end
+
+    def current_user_roles(context_id: params[:context_id])
+      current_user.nil_or_context_roles(context_id).map(&:name)
     end
 
     def canvas_api_permissions
