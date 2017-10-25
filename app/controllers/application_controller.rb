@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
                 :current_bundle_instance,
                 :current_canvas_course,
                 :canvas_url,
-                :targeted_app_instance
+                :targeted_app_instance,
+                :current_user_roles
 
   protected
 
@@ -59,6 +60,10 @@ class ApplicationController < ActionController::Base
 
   def current_ability
     @current_ability ||= Ability.new(current_user, params[:context_id])
+  end
+
+  def current_user_roles(context_id: nil)
+    current_user.nil_or_context_roles(context_id).map(&:name)
   end
 
   def user_not_authorized
