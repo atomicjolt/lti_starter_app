@@ -93,6 +93,7 @@ module Concerns
 
     def custom_api_checks_pass(type: nil)
       # Add custom logic to protect specific api calls
+      true
     end
 
     class CanvasApiTokenRequired < LMS::Canvas::CanvasException

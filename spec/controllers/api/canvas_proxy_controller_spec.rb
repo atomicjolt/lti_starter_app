@@ -25,6 +25,7 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
     @user.add_to_role("urn:lti:role:ims/lis/Learner")
     @user.save!
     @user_token = AuthToken.issue_token({ user_id: @user.id })
+    @user_token_header = "Bearer #{@user_token}"
   end
 
   describe "proxy without authorization" do
@@ -40,7 +41,7 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
     before do
       allow(controller).to receive(:current_application_instance).and_return(@application_instance)
       allow(Application).to receive(:find_by).with(:lti_key).and_return(@application_instance)
-      request.headers["Authorization"] = @user_token
+      request.headers["Authorization"] = @user_token_header
       allow(controller.request).to receive(:host).and_return("example.com")
     end
 

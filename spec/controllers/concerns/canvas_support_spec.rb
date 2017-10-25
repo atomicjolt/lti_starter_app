@@ -15,6 +15,15 @@ describe ApplicationController, type: :controller do
       @application = FactoryGirl.create(:application, canvas_api_permissions: admin_api_permissions)
       @application_instance = FactoryGirl.create(:application_instance, application: @application)
       allow(controller).to receive(:current_application_instance).and_return(@application_instance)
+
+      @user = FactoryGirl.create(:user)
+      allow(controller).to receive(:current_user).and_return(@user)
+
+      @user.add_to_role("urn:lti:role:ims/lis/Learner")
+      @user.save!
+      @user_token = AuthToken.issue_token({ user_id: @user.id })
+      @user_token_header = "Bearer #{@user_token}"
+      request.headers["Authorization"] = @user_token_header
     end
 
     controller do
@@ -41,7 +50,11 @@ describe ApplicationController, type: :controller do
 
     it "prohibits a user from accessing the canvas api" do
       user = FactoryGirl.create(:user)
+      user_token = AuthToken.issue_token({ user_id: user.id })
+      user_token_header = "Bearer #{user_token}"
       allow(controller).to receive(:current_user).and_return(user)
+      request.headers["Authorization"] = user_token_header
+
       get :index, params: { lti_key: @application_instance.lti_key, lms_proxy_call_type: "LIST_ACCOUNTS" }, format: :json
       expect(response).to have_http_status(:unauthorized)
     end
@@ -63,7 +76,6 @@ describe ApplicationController, type: :controller do
       }, format: :json
       expect(response).to have_http_status(:unauthorized)
     end
-
   end
 
   describe "valid user api token" do
@@ -95,6 +107,10 @@ describe ApplicationController, type: :controller do
 
       @user.add_to_role("urn:lti:role:ims/lis/Learner")
       @user.save!
+
+      @user_token = AuthToken.issue_token({ user_id: @user.id })
+      @user_token_header = "Bearer #{@user_token}"
+      request.headers["Authorization"] = @user_token_header
     end
     controller do
       include Concerns::CanvasSupport
@@ -142,6 +158,9 @@ describe ApplicationController, type: :controller do
       @context_id = "123456"
       @user.add_to_role("urn:lti:role:ims/lis/Instructor", @context_id)
       @user.save!
+      @user_token = AuthToken.issue_token({ user_id: @user.id, context_id: @context_id })
+      @user_token_header = "Bearer #{@user_token}"
+      request.headers["Authorization"] = @user_token_header
     end
     controller do
       include Concerns::CanvasSupport
@@ -187,6 +206,9 @@ describe ApplicationController, type: :controller do
       @application = FactoryGirl.create(:application, canvas_api_permissions: canvas_api_permissions)
       @application_instance = FactoryGirl.create(:application_instance, canvas_token: nil, application: @application)
       allow(controller).to receive(:current_application_instance).and_return(@application_instance)
+
+      @user_token = AuthToken.issue_token({ user_id: @user.id })
+      @user_token_header = "Bearer #{@user_token}"
     end
 
     controller do
@@ -203,6 +225,7 @@ describe ApplicationController, type: :controller do
     end
 
     it "throws an exception if it can't find a canvas api token" do
+      request.headers["Authorization"] = @user_token_header
       expect do
         get :index, params: { lti_key: @application_instance.lti_key, lms_proxy_call_type: "LIST_ACCOUNTS" }, format: :json
       end.to raise_error(Concerns::CanvasSupport::CanvasApiTokenRequired)
