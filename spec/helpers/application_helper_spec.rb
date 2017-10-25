@@ -6,16 +6,4 @@ describe ApplicationHelper do
       expect(helper.application_base_url).to be
     end
   end
-
-  describe "jwt_token" do
-    it "generates a new jwt token" do
-      helper.class.instance_eval do
-        define_method(:canvas_url) { "https://atomicjolt.instructure.com" }
-      end
-      expect(helper).to receive("signed_in?").and_return(true)
-      expect(helper).to receive(:current_user).and_return(double(id: 1))
-      result = helper.jwt_token
-      expect(result).to be
-    end
-  end
 end
