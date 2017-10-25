@@ -22,6 +22,35 @@ RSpec.describe ApplicationController, type: :controller do
       end
     end
 
+    describe "#current_user_roles" do
+      it "returns the roles for the current user when context is nil" do
+        role = "admin"
+        user = FactoryGirl.create(:user)
+        user.add_to_role(role)
+        allow(subject).to receive(:current_user).and_return(user)
+        expect(subject.send(:current_user_roles)).to eq([role])
+      end
+      it "returns the roles for the current user for a given context" do
+        context_id = "math101"
+        role = "urn:lti:role:ims/lis/Instructor"
+        user = FactoryGirl.create(:user)
+        user.add_to_role(role, context_id)
+        allow(subject).to receive(:current_user).and_return(user)
+        expect(subject.send(:current_user_roles, context_id: context_id)).to eq([role])
+      end
+      it "does not return roles from other context" do
+        instructor_context_id = "math101"
+        learner_context_id = "math600"
+        instructor_role = "urn:lti:role:ims/lis/Instructor"
+        learner_role = "urn:lti:role:ims/lis/Learner"
+        user = FactoryGirl.create(:user)
+        user.add_to_role(instructor_role, instructor_context_id)
+        user.add_to_role(learner_role, learner_context_id)
+        allow(subject).to receive(:current_user).and_return(user)
+        expect(subject.send(:current_user_roles, context_id: learner_context_id)).to eq([learner_role])
+      end
+    end
+
     describe "#canvas_url" do
       it "returns the canvas url" do
         application_instance = FactoryGirl.create(:application_instance)

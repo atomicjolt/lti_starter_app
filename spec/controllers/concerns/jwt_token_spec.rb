@@ -28,11 +28,13 @@ describe ApplicationController, type: :controller do
   end
 
   context "valid authorization header" do
+    before do
+      @user = FactoryGirl.create(:user)
+      @user.confirm
+      @user_token = AuthToken.issue_token({ user_id: @user.id })
+      request.headers["Authorization"] = @user_token
+    end
     it "should be authorized" do
-      user = FactoryGirl.create(:user)
-      user.confirm
-      user_token = AuthToken.issue_token({ user_id: user.id })
-      request.headers["Authorization"] = user_token
       get :index, format: :json
       expect(response).to have_http_status(:success)
     end
