@@ -1,4 +1,3 @@
-# NOTE if you include the 
 module Concerns
   module CanvasSupport
     extend ActiveSupport::Concern
