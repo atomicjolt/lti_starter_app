@@ -39,16 +39,4 @@ describe ApplicationController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
-
-  describe "jwt_token" do
-    it "generates a new jwt token" do
-      controller.class.instance_eval do
-        define_method(:canvas_url) { "https://atomicjolt.instructure.com" }
-      end
-      expect(controller).to receive("signed_in?").and_return(true)
-      expect(controller).to receive(:current_user).and_return(double(id: 1))
-      result = controller.jwt_token
-      expect(result).to be
-    end
-  end
 end
