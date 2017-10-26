@@ -122,6 +122,7 @@ applications = [
 ]
 
 def setup_application_instances(application, application_instances)
+  puts "*** Seeding Application Instances ***"
   application_instances.each do |attrs|
     site = Site.find_by(url: attrs.delete(:site_url))
     attrs = attrs.merge(site_id: site.id)
@@ -129,11 +130,24 @@ def setup_application_instances(application, application_instances)
 
     app_inst = application.application_instances.new(attrs)
     if application_instance = application.application_instances.find_by(lti_key: app_inst.key)
-      # Don't change production lti keys or set keys to nil
-      attrs.delete(:lti_secret) if attrs[:lti_secret].blank? || Rails.env.production?
+      puts "Updating application instance with lti key: #{application_instance.lti_key} for site: #{site.url}"
+      # Don't change production lti keys and canvas_token or set keys to nil
+      if attrs[:lti_secret].blank?
+        attrs.delete(:lti_secret)
+        puts "- lti_secret is blank. Not updating value."
+      end
+      if attrs[:lti_key].blank?
+        attrs.delete(:lti_key)
+        puts "- lti_key is blank. Not updating value."
+      end
+      if attrs[:canvas_token].blank?
+        attrs.delete(:canvas_token)
+        puts "- canvas_token is blank. Not updating value."
+      end
 
       application_instance.update_attributes!(attrs)
     else
+      puts "Creating new application instance for site: #{site.url}"
       application_instance = application.application_instances.create!(attrs)
     end
 
@@ -148,19 +162,27 @@ def setup_application_instances(application, application_instances)
   end
 end
 
+puts "*** Seeding Sites ***"
 sites.each do |attrs|
   if site = Site.find_by(url: attrs[:url])
+    puts "Updating site: #{site.url}"
+    attrs.delete(:oauth_key) if attrs[:oauth_key].blank?
+    attrs.delete(:oauth_secret) if attrs[:oauth_secret].blank?
     site.update_attributes!(attrs)
   else
+    puts "Creating site: #{site.url}"
     Site.create!(attrs)
   end
 end
 
+puts "*** Seeding Applications ***"
 applications.each do |attrs|
   application_instances = attrs.delete(:application_instances)
   if application = Application.find_by(key: attrs[:key])
+    puts "Updating application: #{application.name}"
     application.update_attributes!(attrs)
   else
+    puts "Creating application: #{application.name}"
     application = Application.create!(attrs)
   end
   setup_application_instances(application, application_instances)
