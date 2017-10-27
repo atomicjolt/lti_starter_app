@@ -21,7 +21,6 @@ export default function instances(state = initialState, action) {
     case ApplicationInstancesConstants.GET_APPLICATION_INSTANCE_DONE:
     case ApplicationInstancesConstants.SAVE_APPLICATION_INSTANCE_DONE:
     case ApplicationInstancesConstants.CREATE_APPLICATION_INSTANCE_DONE: {
-      debugger
       const newState = _.cloneDeep(state);
       const instanceClone = _.cloneDeep(action.payload);
       instanceClone.config = JSON.stringify(action.payload.config);

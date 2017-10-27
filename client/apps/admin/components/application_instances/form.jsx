@@ -123,7 +123,6 @@ export default class Form extends React.Component {
                 onChange
               }}
             />
-            <div></div>
           </div>
           <div className="o-grid__item u-full">
             <Textarea
