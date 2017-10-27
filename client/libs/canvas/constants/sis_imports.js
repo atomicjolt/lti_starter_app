@@ -35,6 +35,7 @@ export const getSisImportList = { type: 'GET_SIS_IMPORT_LIST', method: 'get', ke
 //   extension
 //   batch_mode
 //   batch_mode_term_id
+//   multi_term_batch_mode
 //   override_sis_stickiness
 //   add_sis_stickiness
 //   clear_sis_stickiness

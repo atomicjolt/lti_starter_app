@@ -202,8 +202,8 @@ export const deleteModuleItem = { type: 'DELETE_MODULE_ITEM', method: 'delete', 
 export const markModuleItemAsDoneNotDone = { type: 'MARK_MODULE_ITEM_AS_DONE_NOT_DONE', method: 'put', key: 'mark_module_item_as_done_not_donemark_module_item_as_done_not_done_{course_id}_{module_id}_{id}', required: ['course_id', 'module_id', 'id'] };
 
 // Get module item sequence
-// Given an asset in a course, find the ModuleItem it belongs to, and also the previous and next Module Items
-// in the course sequence.
+// Given an asset in a course, find the ModuleItem it belongs to, the previous and next Module Items
+// in the course sequence, and also any applicable mastery path rules
 //
 // API Docs: https://canvas.instructure.com/doc/api/modules.html
 // API Url: courses/{course_id}/module_item_sequence
