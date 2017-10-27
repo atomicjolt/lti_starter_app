@@ -20,13 +20,13 @@ ShallowWrapper {
       "children": Array [
         <li>
           Settings
-</li>,
+        </li>,
         <li>
           Other Settings
-</li>,
+        </li>,
         <li>
           More Settings
-</li>,
+        </li>,
       ],
       "style": Object {
         "backgroundColor": "white",
@@ -85,13 +85,13 @@ ShallowWrapper {
         "children": Array [
           <li>
             Settings
-</li>,
+          </li>,
           <li>
             Other Settings
-</li>,
+          </li>,
           <li>
             More Settings
-</li>,
+          </li>,
         ],
         "style": Object {
           "backgroundColor": "white",

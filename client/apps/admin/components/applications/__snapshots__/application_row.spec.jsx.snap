@@ -6,14 +6,14 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ApplicationRow
     application={
-        Object {
-            "application_instances_count": 1234,
-            "id": 314159,
-            "name": "SPECNAME",
-          }
+      Object {
+        "application_instances_count": 1234,
+        "id": 314159,
+        "name": "SPECNAME",
+      }
     }
     saveApplication={[Function]}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -29,48 +29,48 @@ ShallowWrapper {
       "children": Array [
         <td>
           <Link
-                    onlyActiveOnIndex={false}
-                    style={Object {}}
-                    to="/applications/314159/application_instances"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/applications/314159/application_instances"
           >
-                    SPECNAME
+            SPECNAME
           </Link>
-</td>,
+        </td>,
         <td>
           <span>
-                    1234
+            1234
           </span>
-</td>,
+        </td>,
         <td>
           <button
-                    onClick={[Function]}
-                    style={
-                              Object {
-                                        "backgroundColor": "transparent",
-                                        "border": "none",
-                                        "color": "grey",
-                                        "cursor": "pointer",
-                                        "fontSize": "1.5em",
-                                      }
-                    }
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "transparent",
+                "border": "none",
+                "color": "grey",
+                "cursor": "pointer",
+                "fontSize": "1.5em",
+              }
+            }
           >
-                    <i
-                              className="i-settings"
-                    />
+            <i
+              className="i-settings"
+            />
           </button>
           <Modal
-                    application={
-                              Object {
-                                        "application_instances_count": 1234,
-                                        "id": 314159,
-                                        "name": "SPECNAME",
-                                      }
-                    }
-                    closeModal={[Function]}
-                    isOpen={false}
-                    save={[Function]}
+            application={
+              Object {
+                "application_instances_count": 1234,
+                "id": 314159,
+                "name": "SPECNAME",
+              }
+            }
+            closeModal={[Function]}
+            isOpen={false}
+            save={[Function]}
           />
-</td>,
+        </td>,
       ],
     },
     "ref": null,
@@ -84,9 +84,9 @@ ShallowWrapper {
             onlyActiveOnIndex={false}
             style={Object {}}
             to="/applications/314159/application_instances"
->
+          >
             SPECNAME
-</Link>,
+          </Link>,
         },
         "ref": null,
         "rendered": Object {
@@ -112,7 +112,7 @@ ShallowWrapper {
         "props": Object {
           "children": <span>
             1234
-</span>,
+          </span>,
         },
         "ref": null,
         "rendered": Object {
@@ -137,31 +137,31 @@ ShallowWrapper {
             <button
               onClick={[Function]}
               style={
-                            Object {
-                                          "backgroundColor": "transparent",
-                                          "border": "none",
-                                          "color": "grey",
-                                          "cursor": "pointer",
-                                          "fontSize": "1.5em",
-                                        }
+                Object {
+                  "backgroundColor": "transparent",
+                  "border": "none",
+                  "color": "grey",
+                  "cursor": "pointer",
+                  "fontSize": "1.5em",
+                }
               }
->
+            >
               <i
-                            className="i-settings"
+                className="i-settings"
               />
-</button>,
+            </button>,
             <Modal
               application={
-                            Object {
-                                          "application_instances_count": 1234,
-                                          "id": 314159,
-                                          "name": "SPECNAME",
-                                        }
+                Object {
+                  "application_instances_count": 1234,
+                  "id": 314159,
+                  "name": "SPECNAME",
+                }
               }
               closeModal={[Function]}
               isOpen={false}
               save={[Function]}
-/>,
+            />,
           ],
         },
         "ref": null,
@@ -173,7 +173,7 @@ ShallowWrapper {
             "props": Object {
               "children": <i
                 className="i-settings"
-/>,
+              />,
               "onClick": [Function],
               "style": Object {
                 "backgroundColor": "transparent",
@@ -230,48 +230,48 @@ ShallowWrapper {
         "children": Array [
           <td>
             <Link
-                        onlyActiveOnIndex={false}
-                        style={Object {}}
-                        to="/applications/314159/application_instances"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/applications/314159/application_instances"
             >
-                        SPECNAME
+              SPECNAME
             </Link>
-</td>,
+          </td>,
           <td>
             <span>
-                        1234
+              1234
             </span>
-</td>,
+          </td>,
           <td>
             <button
-                        onClick={[Function]}
-                        style={
-                                    Object {
-                                                "backgroundColor": "transparent",
-                                                "border": "none",
-                                                "color": "grey",
-                                                "cursor": "pointer",
-                                                "fontSize": "1.5em",
-                                              }
-                        }
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "border": "none",
+                  "color": "grey",
+                  "cursor": "pointer",
+                  "fontSize": "1.5em",
+                }
+              }
             >
-                        <i
-                                    className="i-settings"
-                        />
+              <i
+                className="i-settings"
+              />
             </button>
             <Modal
-                        application={
-                                    Object {
-                                                "application_instances_count": 1234,
-                                                "id": 314159,
-                                                "name": "SPECNAME",
-                                              }
-                        }
-                        closeModal={[Function]}
-                        isOpen={false}
-                        save={[Function]}
+              application={
+                Object {
+                  "application_instances_count": 1234,
+                  "id": 314159,
+                  "name": "SPECNAME",
+                }
+              }
+              closeModal={[Function]}
+              isOpen={false}
+              save={[Function]}
             />
-</td>,
+          </td>,
         ],
       },
       "ref": null,
@@ -285,9 +285,9 @@ ShallowWrapper {
               onlyActiveOnIndex={false}
               style={Object {}}
               to="/applications/314159/application_instances"
->
+            >
               SPECNAME
-</Link>,
+            </Link>,
           },
           "ref": null,
           "rendered": Object {
@@ -313,7 +313,7 @@ ShallowWrapper {
           "props": Object {
             "children": <span>
               1234
-</span>,
+            </span>,
           },
           "ref": null,
           "rendered": Object {
@@ -338,31 +338,31 @@ ShallowWrapper {
               <button
                 onClick={[Function]}
                 style={
-                                Object {
-                                                "backgroundColor": "transparent",
-                                                "border": "none",
-                                                "color": "grey",
-                                                "cursor": "pointer",
-                                                "fontSize": "1.5em",
-                                              }
+                  Object {
+                    "backgroundColor": "transparent",
+                    "border": "none",
+                    "color": "grey",
+                    "cursor": "pointer",
+                    "fontSize": "1.5em",
+                  }
                 }
->
+              >
                 <i
-                                className="i-settings"
+                  className="i-settings"
                 />
-</button>,
+              </button>,
               <Modal
                 application={
-                                Object {
-                                                "application_instances_count": 1234,
-                                                "id": 314159,
-                                                "name": "SPECNAME",
-                                              }
+                  Object {
+                    "application_instances_count": 1234,
+                    "id": 314159,
+                    "name": "SPECNAME",
+                  }
                 }
                 closeModal={[Function]}
                 isOpen={false}
                 save={[Function]}
-/>,
+              />,
             ],
           },
           "ref": null,
@@ -374,7 +374,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <i
                   className="i-settings"
-/>,
+                />,
                 "onClick": [Function],
                 "style": Object {
                   "backgroundColor": "transparent",

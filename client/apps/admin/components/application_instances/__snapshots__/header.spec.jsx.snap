@@ -6,12 +6,12 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Header
     application={
-        Object {
-            "name": "test application",
-          }
+      Object {
+        "name": "test application",
+      }
     }
     newApplicationInstance={[Function]}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -27,18 +27,18 @@ ShallowWrapper {
       "children": Array [
         <div
           className="c-title"
->
+        >
           <h1>
-                    test application
-                     Instances
+            test application
+             Instances
           </h1>
-</div>,
+        </div>,
         <button
           className="c-btn c-btn--yellow"
           onClick={[Function]}
->
+        >
           New Application Instance
-</button>,
+        </button>,
       ],
       "className": "c-info",
     },
@@ -52,7 +52,7 @@ ShallowWrapper {
           "children": <h1>
             test application
              Instances
-</h1>,
+          </h1>,
           "className": "c-title",
         },
         "ref": null,
@@ -100,18 +100,18 @@ ShallowWrapper {
         "children": Array [
           <div
             className="c-title"
->
+          >
             <h1>
-                        test application
-                         Instances
+              test application
+               Instances
             </h1>
-</div>,
+          </div>,
           <button
             className="c-btn c-btn--yellow"
             onClick={[Function]}
->
+          >
             New Application Instance
-</button>,
+          </button>,
         ],
         "className": "c-info",
       },
@@ -125,7 +125,7 @@ ShallowWrapper {
             "children": <h1>
               test application
                Instances
-</h1>,
+            </h1>,
             "className": "c-title",
           },
           "ref": null,

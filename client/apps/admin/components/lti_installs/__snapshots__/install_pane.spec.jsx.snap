@@ -6,9 +6,9 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <InstallPane
     account={
-        Object {
-            "installCount": 0,
-          }
+      Object {
+        "installCount": 0,
+      }
     }
     applicationInstance={Object {}}
     canvasRequest={[Function]}
@@ -16,7 +16,7 @@ ShallowWrapper {
     loadExternalTools={[Function]}
     loadingCourses={Object {}}
     onlyShowInstalled={false}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -32,42 +32,42 @@ ShallowWrapper {
       "children": Array [
         <AccountInstall
           account={
-                    Object {
-                              "installCount": 0,
-                            }
+            Object {
+              "installCount": 0,
+            }
           }
           accountInstalls={0}
           applicationInstance={Object {}}
           canvasRequest={[Function]}
-/>,
+        />,
         <div>
           <div
-                    className="c-search c-search--small"
+            className="c-search c-search--small"
           >
-                    <input
-                              onChange={[Function]}
-                              placeholder="Search..."
-                              type="text"
-                    />
-                    <i
-                              className="i-search"
-                    />
+            <input
+              onChange={[Function]}
+              placeholder="Search..."
+              type="text"
+            />
+            <i
+              className="i-search"
+            />
           </div>
           <CourseInstalls
-                    applicationInstance={Object {}}
-                    canvasRequest={[Function]}
-                    courses={Array []}
-                    loadingCourses={Object {}}
+            applicationInstance={Object {}}
+            canvasRequest={[Function]}
+            courses={Array []}
+            loadingCourses={Object {}}
           />
           <Pagination
-                    courses={Array []}
-                    currentPage={0}
-                    loadingCourses={Object {}}
-                    pageCount={0}
-                    pageSize={10}
-                    setPage={[Function]}
+            courses={Array []}
+            currentPage={0}
+            loadingCourses={Object {}}
+            pageCount={0}
+            pageSize={10}
+            setPage={[Function]}
           />
-</div>,
+        </div>,
       ],
       "className": "o-right",
     },
@@ -97,23 +97,23 @@ ShallowWrapper {
           "children": Array [
             <div
               className="c-search c-search--small"
->
+            >
               <input
-                            onChange={[Function]}
-                            placeholder="Search..."
-                            type="text"
+                onChange={[Function]}
+                placeholder="Search..."
+                type="text"
               />
               <i
-                            className="i-search"
+                className="i-search"
               />
-</div>,
+            </div>,
             null,
             <CourseInstalls
               applicationInstance={Object {}}
               canvasRequest={[Function]}
               courses={Array []}
               loadingCourses={Object {}}
-/>,
+            />,
             <Pagination
               courses={Array []}
               currentPage={0}
@@ -121,7 +121,7 @@ ShallowWrapper {
               pageCount={0}
               pageSize={10}
               setPage={[Function]}
-/>,
+            />,
           ],
         },
         "ref": null,
@@ -136,10 +136,10 @@ ShallowWrapper {
                   onChange={[Function]}
                   placeholder="Search..."
                   type="text"
-/>,
+                />,
                 <i
                   className="i-search"
-/>,
+                />,
               ],
               "className": "c-search c-search--small",
             },
@@ -218,42 +218,42 @@ ShallowWrapper {
         "children": Array [
           <AccountInstall
             account={
-                        Object {
-                                    "installCount": 0,
-                                  }
+              Object {
+                "installCount": 0,
+              }
             }
             accountInstalls={0}
             applicationInstance={Object {}}
             canvasRequest={[Function]}
-/>,
+          />,
           <div>
             <div
-                        className="c-search c-search--small"
+              className="c-search c-search--small"
             >
-                        <input
-                                    onChange={[Function]}
-                                    placeholder="Search..."
-                                    type="text"
-                        />
-                        <i
-                                    className="i-search"
-                        />
+              <input
+                onChange={[Function]}
+                placeholder="Search..."
+                type="text"
+              />
+              <i
+                className="i-search"
+              />
             </div>
             <CourseInstalls
-                        applicationInstance={Object {}}
-                        canvasRequest={[Function]}
-                        courses={Array []}
-                        loadingCourses={Object {}}
+              applicationInstance={Object {}}
+              canvasRequest={[Function]}
+              courses={Array []}
+              loadingCourses={Object {}}
             />
             <Pagination
-                        courses={Array []}
-                        currentPage={0}
-                        loadingCourses={Object {}}
-                        pageCount={0}
-                        pageSize={10}
-                        setPage={[Function]}
+              courses={Array []}
+              currentPage={0}
+              loadingCourses={Object {}}
+              pageCount={0}
+              pageSize={10}
+              setPage={[Function]}
             />
-</div>,
+          </div>,
         ],
         "className": "o-right",
       },
@@ -283,23 +283,23 @@ ShallowWrapper {
             "children": Array [
               <div
                 className="c-search c-search--small"
->
+              >
                 <input
-                                onChange={[Function]}
-                                placeholder="Search..."
-                                type="text"
+                  onChange={[Function]}
+                  placeholder="Search..."
+                  type="text"
                 />
                 <i
-                                className="i-search"
+                  className="i-search"
                 />
-</div>,
+              </div>,
               null,
               <CourseInstalls
                 applicationInstance={Object {}}
                 canvasRequest={[Function]}
                 courses={Array []}
                 loadingCourses={Object {}}
-/>,
+              />,
               <Pagination
                 courses={Array []}
                 currentPage={0}
@@ -307,7 +307,7 @@ ShallowWrapper {
                 pageCount={0}
                 pageSize={10}
                 setPage={[Function]}
-/>,
+              />,
             ],
           },
           "ref": null,
@@ -322,10 +322,10 @@ ShallowWrapper {
                     onChange={[Function]}
                     placeholder="Search..."
                     type="text"
-/>,
+                  />,
                   <i
                     className="i-search"
-/>,
+                  />,
                 ],
                 "className": "c-search c-search--small",
               },

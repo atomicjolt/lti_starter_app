@@ -9,12 +9,12 @@ ShallowWrapper {
     deleteSite={[Function]}
     isOpen={true}
     site={
-        Object {
-            "id": 1,
-            "url": "bfcoder.com",
-          }
+      Object {
+        "id": 1,
+        "url": "bfcoder.com",
+      }
     }
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -28,16 +28,17 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "ariaHideApp": true,
+      "bodyOpenClassName": "ReactModal__Body--open",
       "children": Array [
         <h2
           className="c-modal__title"
->
+        >
           Are you sure?
-</h2>,
+        </h2>,
         <SiteForm
           closeModal={[Function]}
           deleteSite={[Function]}
-/>,
+        />,
       ],
       "className": "c-modal c-modal--site is-open",
       "closeTimeoutMS": 0,
@@ -85,16 +86,17 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "ariaHideApp": true,
+        "bodyOpenClassName": "ReactModal__Body--open",
         "children": Array [
           <h2
             className="c-modal__title"
->
+          >
             Are you sure?
-</h2>,
+          </h2>,
           <SiteForm
             closeModal={[Function]}
             deleteSite={[Function]}
-/>,
+          />,
         ],
         "className": "c-modal c-modal--site is-open",
         "closeTimeoutMS": 0,

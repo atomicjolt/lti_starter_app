@@ -6,7 +6,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <search
     search={[Function]}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -24,10 +24,10 @@ ShallowWrapper {
           onChange={[Function]}
           placeholder="Search..."
           type="text"
-/>,
+        />,
         <i
           className="i-search"
-/>,
+        />,
       ],
       "className": "c-search c-search--small",
     },
@@ -71,10 +71,10 @@ ShallowWrapper {
             onChange={[Function]}
             placeholder="Search..."
             type="text"
-/>,
+          />,
           <i
             className="i-search"
-/>,
+          />,
         ],
         "className": "c-search c-search--small",
       },

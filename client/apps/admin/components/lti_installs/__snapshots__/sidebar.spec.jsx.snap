@@ -6,32 +6,32 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Sidebar
     accounts={
-        Object {
-            "1": Object {
-              "id": 1,
-              "name": "accountName",
-              "sub_accounts": Array [],
-            },
-          }
+      Object {
+        "1": Object {
+          "id": 1,
+          "name": "accountName",
+          "sub_accounts": Array [],
+        },
+      }
     }
     application={
-        Object {
-            "name": "applicationName",
-          }
+      Object {
+        "name": "applicationName",
+      }
     }
     applicationInstance={
-        Object {
-            "site": Object {
-              "url": "www.atomicjolt.com",
-            },
-          }
+      Object {
+        "site": Object {
+          "url": "www.atomicjolt.com",
+        },
+      }
     }
     canvasRequest={[Function]}
     onlyShowInstalledChanged={[Function]}
     saveApplicationInstance={[Function]}
     setAccountActive={[Function]}
     sites={Object {}}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -47,100 +47,100 @@ ShallowWrapper {
       "children": Array [
         <div
           className="c-tool"
->
+        >
           <span>
-                    <a
-                              onClick={[Function]}
-                    >
-                              <i
-                                        className="i-settings"
-                              />
-                    </a>
-                    <Modal
-                              application={
-                                        Object {
-                                                  "name": "applicationName",
-                                                }
-                              }
-                              applicationInstance={
-                                        Object {
-                                                  "site": Object {
-                                                    "url": "www.atomicjolt.com",
-                                                  },
-                                                }
-                              }
-                              closeModal={[Function]}
-                              isOpen={false}
-                              save={[Function]}
-                              sites={Object {}}
-                    />
+            <a
+              onClick={[Function]}
+            >
+              <i
+                className="i-settings"
+              />
+            </a>
+            <Modal
+              application={
+                Object {
+                  "name": "applicationName",
+                }
+              }
+              applicationInstance={
+                Object {
+                  "site": Object {
+                    "url": "www.atomicjolt.com",
+                  },
+                }
+              }
+              closeModal={[Function]}
+              isOpen={false}
+              save={[Function]}
+              sites={Object {}}
+            />
           </span>
           <h4
-                    className="c-tool__subtitle"
+            className="c-tool__subtitle"
           >
-                    LTI Tool
+            LTI Tool
           </h4>
           <h3
-                    className="c-tool__title"
+            className="c-tool__title"
           >
-                    applicationName
+            applicationName
           </h3>
-</div>,
+        </div>,
         <div
           className="c-tool"
->
+        >
           <h4
-                    className="c-tool__instance"
+            className="c-tool__instance"
           >
-                    <a
-                              href="www.atomicjolt.com"
-                    >
-                              www.atomicjolt.com
-                    </a>
+            <a
+              href="www.atomicjolt.com"
+            >
+              www.atomicjolt.com
+            </a>
           </h4>
-</div>,
+        </div>,
         <div
           className="c-filters"
->
+        >
           <h4
-                    className="c-sidebar-subtitle"
+            className="c-sidebar-subtitle"
           >
-                    Installed
+            Installed
           </h4>
           <div
-                    className="c-checkbox--yellow u-m-bottom"
+            className="c-checkbox--yellow u-m-bottom"
           >
-                    <input
-                              id="onlyShowInstalled"
-                              name="onlyShowInstalled"
-                              onChange={[Function]}
-                              type="checkbox"
-                    />
-                    <label
-                              htmlFor="onlyShowInstalled"
-                    >
-                              Show only installed
-                    </label>
+            <input
+              id="onlyShowInstalled"
+              name="onlyShowInstalled"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <label
+              htmlFor="onlyShowInstalled"
+            >
+              Show only installed
+            </label>
           </div>
           <h4
-                    className="c-sidebar-subtitle"
+            className="c-sidebar-subtitle"
           >
-                    Accounts
+            Accounts
           </h4>
           <Accounts
-                    accounts={
-                              Object {
-                                        "1": Object {
-                                          "id": 1,
-                                          "name": "accountName",
-                                          "sub_accounts": Array [],
-                                        },
-                                      }
-                    }
-                    currentAccount={undefined}
-                    setAccountActive={[Function]}
+            accounts={
+              Object {
+                "1": Object {
+                  "id": 1,
+                  "name": "accountName",
+                  "sub_accounts": Array [],
+                },
+              }
+            }
+            currentAccount={undefined}
+            setAccountActive={[Function]}
           />
-</div>,
+        </div>,
       ],
       "className": "o-left",
     },
@@ -154,41 +154,41 @@ ShallowWrapper {
           "children": Array [
             <span>
               <a
-                            onClick={[Function]}
+                onClick={[Function]}
               >
-                            <i
-                                          className="i-settings"
-                            />
+                <i
+                  className="i-settings"
+                />
               </a>
               <Modal
-                            application={
-                                          Object {
-                                                        "name": "applicationName",
-                                                      }
-                            }
-                            applicationInstance={
-                                          Object {
-                                                        "site": Object {
-                                                          "url": "www.atomicjolt.com",
-                                                        },
-                                                      }
-                            }
-                            closeModal={[Function]}
-                            isOpen={false}
-                            save={[Function]}
-                            sites={Object {}}
+                application={
+                  Object {
+                    "name": "applicationName",
+                  }
+                }
+                applicationInstance={
+                  Object {
+                    "site": Object {
+                      "url": "www.atomicjolt.com",
+                    },
+                  }
+                }
+                closeModal={[Function]}
+                isOpen={false}
+                save={[Function]}
+                sites={Object {}}
               />
-</span>,
+            </span>,
             <h4
               className="c-tool__subtitle"
->
+            >
               LTI Tool
-</h4>,
+            </h4>,
             <h3
               className="c-tool__title"
->
+            >
               applicationName
-</h3>,
+            </h3>,
           ],
           "className": "c-tool",
         },
@@ -202,29 +202,29 @@ ShallowWrapper {
               "children": Array [
                 <a
                   onClick={[Function]}
->
+                >
                   <i
-                                    className="i-settings"
+                    className="i-settings"
                   />
-</a>,
+                </a>,
                 <Modal
                   application={
-                                    Object {
-                                                      "name": "applicationName",
-                                                    }
+                    Object {
+                      "name": "applicationName",
+                    }
                   }
                   applicationInstance={
-                                    Object {
-                                                      "site": Object {
-                                                        "url": "www.atomicjolt.com",
-                                                      },
-                                                    }
+                    Object {
+                      "site": Object {
+                        "url": "www.atomicjolt.com",
+                      },
+                    }
                   }
                   closeModal={[Function]}
                   isOpen={false}
                   save={[Function]}
                   sites={Object {}}
-/>,
+                />,
               ],
             },
             "ref": null,
@@ -236,7 +236,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": <i
                     className="i-settings"
-/>,
+                  />,
                   "onClick": [Function],
                 },
                 "ref": null,
@@ -312,13 +312,13 @@ ShallowWrapper {
         "props": Object {
           "children": <h4
             className="c-tool__instance"
->
+          >
             <a
-                        href="www.atomicjolt.com"
+              href="www.atomicjolt.com"
             >
-                        www.atomicjolt.com
+              www.atomicjolt.com
             </a>
-</h4>,
+          </h4>,
           "className": "c-tool",
         },
         "ref": null,
@@ -329,9 +329,9 @@ ShallowWrapper {
           "props": Object {
             "children": <a
               href="www.atomicjolt.com"
->
+            >
               www.atomicjolt.com
-</a>,
+            </a>,
             "className": "c-tool__instance",
           },
           "ref": null,
@@ -359,42 +359,42 @@ ShallowWrapper {
           "children": Array [
             <h4
               className="c-sidebar-subtitle"
->
+            >
               Installed
-</h4>,
+            </h4>,
             <div
               className="c-checkbox--yellow u-m-bottom"
->
+            >
               <input
-                            id="onlyShowInstalled"
-                            name="onlyShowInstalled"
-                            onChange={[Function]}
-                            type="checkbox"
+                id="onlyShowInstalled"
+                name="onlyShowInstalled"
+                onChange={[Function]}
+                type="checkbox"
               />
               <label
-                            htmlFor="onlyShowInstalled"
+                htmlFor="onlyShowInstalled"
               >
-                            Show only installed
+                Show only installed
               </label>
-</div>,
+            </div>,
             <h4
               className="c-sidebar-subtitle"
->
+            >
               Accounts
-</h4>,
+            </h4>,
             <Accounts
               accounts={
-                            Object {
-                                          "1": Object {
-                                            "id": 1,
-                                            "name": "accountName",
-                                            "sub_accounts": Array [],
-                                          },
-                                        }
+                Object {
+                  "1": Object {
+                    "id": 1,
+                    "name": "accountName",
+                    "sub_accounts": Array [],
+                  },
+                }
               }
               currentAccount={undefined}
               setAccountActive={[Function]}
-/>,
+            />,
           ],
           "className": "c-filters",
         },
@@ -423,12 +423,12 @@ ShallowWrapper {
                   name="onlyShowInstalled"
                   onChange={[Function]}
                   type="checkbox"
-/>,
+                />,
                 <label
                   htmlFor="onlyShowInstalled"
->
+                >
                   Show only installed
-</label>,
+                </label>,
               ],
               "className": "c-checkbox--yellow u-m-bottom",
             },
@@ -509,100 +509,100 @@ ShallowWrapper {
         "children": Array [
           <div
             className="c-tool"
->
+          >
             <span>
-                        <a
-                                    onClick={[Function]}
-                        >
-                                    <i
-                                                className="i-settings"
-                                    />
-                        </a>
-                        <Modal
-                                    application={
-                                                Object {
-                                                            "name": "applicationName",
-                                                          }
-                                    }
-                                    applicationInstance={
-                                                Object {
-                                                            "site": Object {
-                                                              "url": "www.atomicjolt.com",
-                                                            },
-                                                          }
-                                    }
-                                    closeModal={[Function]}
-                                    isOpen={false}
-                                    save={[Function]}
-                                    sites={Object {}}
-                        />
+              <a
+                onClick={[Function]}
+              >
+                <i
+                  className="i-settings"
+                />
+              </a>
+              <Modal
+                application={
+                  Object {
+                    "name": "applicationName",
+                  }
+                }
+                applicationInstance={
+                  Object {
+                    "site": Object {
+                      "url": "www.atomicjolt.com",
+                    },
+                  }
+                }
+                closeModal={[Function]}
+                isOpen={false}
+                save={[Function]}
+                sites={Object {}}
+              />
             </span>
             <h4
-                        className="c-tool__subtitle"
+              className="c-tool__subtitle"
             >
-                        LTI Tool
+              LTI Tool
             </h4>
             <h3
-                        className="c-tool__title"
+              className="c-tool__title"
             >
-                        applicationName
+              applicationName
             </h3>
-</div>,
+          </div>,
           <div
             className="c-tool"
->
+          >
             <h4
-                        className="c-tool__instance"
+              className="c-tool__instance"
             >
-                        <a
-                                    href="www.atomicjolt.com"
-                        >
-                                    www.atomicjolt.com
-                        </a>
+              <a
+                href="www.atomicjolt.com"
+              >
+                www.atomicjolt.com
+              </a>
             </h4>
-</div>,
+          </div>,
           <div
             className="c-filters"
->
+          >
             <h4
-                        className="c-sidebar-subtitle"
+              className="c-sidebar-subtitle"
             >
-                        Installed
+              Installed
             </h4>
             <div
-                        className="c-checkbox--yellow u-m-bottom"
+              className="c-checkbox--yellow u-m-bottom"
             >
-                        <input
-                                    id="onlyShowInstalled"
-                                    name="onlyShowInstalled"
-                                    onChange={[Function]}
-                                    type="checkbox"
-                        />
-                        <label
-                                    htmlFor="onlyShowInstalled"
-                        >
-                                    Show only installed
-                        </label>
+              <input
+                id="onlyShowInstalled"
+                name="onlyShowInstalled"
+                onChange={[Function]}
+                type="checkbox"
+              />
+              <label
+                htmlFor="onlyShowInstalled"
+              >
+                Show only installed
+              </label>
             </div>
             <h4
-                        className="c-sidebar-subtitle"
+              className="c-sidebar-subtitle"
             >
-                        Accounts
+              Accounts
             </h4>
             <Accounts
-                        accounts={
-                                    Object {
-                                                "1": Object {
-                                                  "id": 1,
-                                                  "name": "accountName",
-                                                  "sub_accounts": Array [],
-                                                },
-                                              }
-                        }
-                        currentAccount={undefined}
-                        setAccountActive={[Function]}
+              accounts={
+                Object {
+                  "1": Object {
+                    "id": 1,
+                    "name": "accountName",
+                    "sub_accounts": Array [],
+                  },
+                }
+              }
+              currentAccount={undefined}
+              setAccountActive={[Function]}
             />
-</div>,
+          </div>,
         ],
         "className": "o-left",
       },
@@ -616,41 +616,41 @@ ShallowWrapper {
             "children": Array [
               <span>
                 <a
-                                onClick={[Function]}
+                  onClick={[Function]}
                 >
-                                <i
-                                                className="i-settings"
-                                />
+                  <i
+                    className="i-settings"
+                  />
                 </a>
                 <Modal
-                                application={
-                                                Object {
-                                                                "name": "applicationName",
-                                                              }
-                                }
-                                applicationInstance={
-                                                Object {
-                                                                "site": Object {
-                                                                  "url": "www.atomicjolt.com",
-                                                                },
-                                                              }
-                                }
-                                closeModal={[Function]}
-                                isOpen={false}
-                                save={[Function]}
-                                sites={Object {}}
+                  application={
+                    Object {
+                      "name": "applicationName",
+                    }
+                  }
+                  applicationInstance={
+                    Object {
+                      "site": Object {
+                        "url": "www.atomicjolt.com",
+                      },
+                    }
+                  }
+                  closeModal={[Function]}
+                  isOpen={false}
+                  save={[Function]}
+                  sites={Object {}}
                 />
-</span>,
+              </span>,
               <h4
                 className="c-tool__subtitle"
->
+              >
                 LTI Tool
-</h4>,
+              </h4>,
               <h3
                 className="c-tool__title"
->
+              >
                 applicationName
-</h3>,
+              </h3>,
             ],
             "className": "c-tool",
           },
@@ -664,29 +664,29 @@ ShallowWrapper {
                 "children": Array [
                   <a
                     onClick={[Function]}
->
+                  >
                     <i
-                                        className="i-settings"
+                      className="i-settings"
                     />
-</a>,
+                  </a>,
                   <Modal
                     application={
-                                        Object {
-                                                            "name": "applicationName",
-                                                          }
+                      Object {
+                        "name": "applicationName",
+                      }
                     }
                     applicationInstance={
-                                        Object {
-                                                            "site": Object {
-                                                              "url": "www.atomicjolt.com",
-                                                            },
-                                                          }
+                      Object {
+                        "site": Object {
+                          "url": "www.atomicjolt.com",
+                        },
+                      }
                     }
                     closeModal={[Function]}
                     isOpen={false}
                     save={[Function]}
                     sites={Object {}}
-/>,
+                  />,
                 ],
               },
               "ref": null,
@@ -698,7 +698,7 @@ ShallowWrapper {
                   "props": Object {
                     "children": <i
                       className="i-settings"
-/>,
+                    />,
                     "onClick": [Function],
                   },
                   "ref": null,
@@ -774,13 +774,13 @@ ShallowWrapper {
           "props": Object {
             "children": <h4
               className="c-tool__instance"
->
+            >
               <a
-                            href="www.atomicjolt.com"
+                href="www.atomicjolt.com"
               >
-                            www.atomicjolt.com
+                www.atomicjolt.com
               </a>
-</h4>,
+            </h4>,
             "className": "c-tool",
           },
           "ref": null,
@@ -791,9 +791,9 @@ ShallowWrapper {
             "props": Object {
               "children": <a
                 href="www.atomicjolt.com"
->
+              >
                 www.atomicjolt.com
-</a>,
+              </a>,
               "className": "c-tool__instance",
             },
             "ref": null,
@@ -821,42 +821,42 @@ ShallowWrapper {
             "children": Array [
               <h4
                 className="c-sidebar-subtitle"
->
+              >
                 Installed
-</h4>,
+              </h4>,
               <div
                 className="c-checkbox--yellow u-m-bottom"
->
+              >
                 <input
-                                id="onlyShowInstalled"
-                                name="onlyShowInstalled"
-                                onChange={[Function]}
-                                type="checkbox"
+                  id="onlyShowInstalled"
+                  name="onlyShowInstalled"
+                  onChange={[Function]}
+                  type="checkbox"
                 />
                 <label
-                                htmlFor="onlyShowInstalled"
+                  htmlFor="onlyShowInstalled"
                 >
-                                Show only installed
+                  Show only installed
                 </label>
-</div>,
+              </div>,
               <h4
                 className="c-sidebar-subtitle"
->
+              >
                 Accounts
-</h4>,
+              </h4>,
               <Accounts
                 accounts={
-                                Object {
-                                                "1": Object {
-                                                  "id": 1,
-                                                  "name": "accountName",
-                                                  "sub_accounts": Array [],
-                                                },
-                                              }
+                  Object {
+                    "1": Object {
+                      "id": 1,
+                      "name": "accountName",
+                      "sub_accounts": Array [],
+                    },
+                  }
                 }
                 currentAccount={undefined}
                 setAccountActive={[Function]}
-/>,
+              />,
             ],
             "className": "c-filters",
           },
@@ -885,12 +885,12 @@ ShallowWrapper {
                     name="onlyShowInstalled"
                     onChange={[Function]}
                     type="checkbox"
-/>,
+                  />,
                   <label
                     htmlFor="onlyShowInstalled"
->
+                  >
                     Show only installed
-</label>,
+                  </label>,
                 ],
                 "className": "c-checkbox--yellow u-m-bottom",
               },

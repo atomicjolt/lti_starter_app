@@ -11,7 +11,7 @@ ShallowWrapper {
     description="SPEC_DESCRIPTION"
     onChange={[Function]}
     save={[Function]}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -27,72 +27,72 @@ ShallowWrapper {
       "children": Array [
         <div
           className="o-grid o-grid__modal-top"
->
+        >
           <div
-                    className="o-grid__item u-half"
+            className="o-grid__item u-half"
           >
-                    <label
-                              className="c-input"
-                              htmlFor="description"
-                    >
-                              <span>
-                                        Description
-                              </span>
-                              <input
-                                        id="description"
-                                        name="description"
-                                        onChange={[Function]}
-                                        type="text"
-                                        value="SPEC_DESCRIPTION"
-                              />
-                    </label>
+            <label
+              className="c-input"
+              htmlFor="description"
+            >
+              <span>
+                Description
+              </span>
+              <input
+                id="description"
+                name="description"
+                onChange={[Function]}
+                type="text"
+                value="SPEC_DESCRIPTION"
+              />
+            </label>
           </div>
           <div
-                    className="o-grid__item u-half"
+            className="o-grid__item u-half"
           >
-                    <label
-                              className="c-input"
-                              htmlFor="permissions"
-                    >
-                              <span>
-                                        Canvas API Permissions
-                              </span>
-                    </label>
+            <label
+              className="c-input"
+              htmlFor="permissions"
+            >
+              <span>
+                Canvas API Permissions
+              </span>
+            </label>
           </div>
           <div
-                    className="o-grid__item u-full"
+            className="o-grid__item u-full"
           >
-                    <Textarea
-                              className="c-input"
-                              labelText="Default Config"
-                              textareaProps={
-                                        Object {
-                                                  "id": "application_default_config",
-                                                  "name": "default_config",
-                                                  "onChange": [Function],
-                                                  "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
-                                                  "rows": 3,
-                                                  "value": "{ \\"foo\\": \\"bar\\" }",
-                                                }
-                              }
-                              warning={null}
-                    />
+            <Textarea
+              className="c-input"
+              labelText="Default Config"
+              textareaProps={
+                Object {
+                  "id": "application_default_config",
+                  "name": "default_config",
+                  "onChange": [Function],
+                  "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                  "rows": 3,
+                  "value": "{ \\"foo\\": \\"bar\\" }",
+                }
+              }
+              warning={null}
+            />
           </div>
-</div>,
+        </div>,
         <button
           className="c-btn c-btn--yellow"
           onClick={[Function]}
           type="button"
->
+        >
           Save
-</button>,
+        </button>,
         <button
           className="c-btn c-btn--gray--large u-m-right"
           onClick={[Function]}
           type="button"
->
+        >
           Cancel
-</button>,
+        </button>,
       ],
     },
     "ref": null,
@@ -105,54 +105,54 @@ ShallowWrapper {
           "children": Array [
             <div
               className="o-grid__item u-half"
->
+            >
               <label
-                            className="c-input"
-                            htmlFor="description"
+                className="c-input"
+                htmlFor="description"
               >
-                            <span>
-                                          Description
-                            </span>
-                            <input
-                                          id="description"
-                                          name="description"
-                                          onChange={[Function]}
-                                          type="text"
-                                          value="SPEC_DESCRIPTION"
-                            />
+                <span>
+                  Description
+                </span>
+                <input
+                  id="description"
+                  name="description"
+                  onChange={[Function]}
+                  type="text"
+                  value="SPEC_DESCRIPTION"
+                />
               </label>
-</div>,
+            </div>,
             <div
               className="o-grid__item u-half"
->
+            >
               <label
-                            className="c-input"
-                            htmlFor="permissions"
+                className="c-input"
+                htmlFor="permissions"
               >
-                            <span>
-                                          Canvas API Permissions
-                            </span>
+                <span>
+                  Canvas API Permissions
+                </span>
               </label>
-</div>,
+            </div>,
             <div
               className="o-grid__item u-full"
->
+            >
               <Textarea
-                            className="c-input"
-                            labelText="Default Config"
-                            textareaProps={
-                                          Object {
-                                                        "id": "application_default_config",
-                                                        "name": "default_config",
-                                                        "onChange": [Function],
-                                                        "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
-                                                        "rows": 3,
-                                                        "value": "{ \\"foo\\": \\"bar\\" }",
-                                                      }
-                            }
-                            warning={null}
+                className="c-input"
+                labelText="Default Config"
+                textareaProps={
+                  Object {
+                    "id": "application_default_config",
+                    "name": "default_config",
+                    "onChange": [Function],
+                    "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                    "rows": 3,
+                    "value": "{ \\"foo\\": \\"bar\\" }",
+                  }
+                }
+                warning={null}
               />
-</div>,
+            </div>,
           ],
           "className": "o-grid o-grid__modal-top",
         },
@@ -166,18 +166,18 @@ ShallowWrapper {
               "children": <label
                 className="c-input"
                 htmlFor="description"
->
+              >
                 <span>
-                                Description
+                  Description
                 </span>
                 <input
-                                id="description"
-                                name="description"
-                                onChange={[Function]}
-                                type="text"
-                                value="SPEC_DESCRIPTION"
+                  id="description"
+                  name="description"
+                  onChange={[Function]}
+                  type="text"
+                  value="SPEC_DESCRIPTION"
                 />
-</label>,
+              </label>,
               "className": "o-grid__item u-half",
             },
             "ref": null,
@@ -189,14 +189,14 @@ ShallowWrapper {
                 "children": Array [
                   <span>
                     Description
-</span>,
+                  </span>,
                   <input
                     id="description"
                     name="description"
                     onChange={[Function]}
                     type="text"
                     value="SPEC_DESCRIPTION"
-/>,
+                  />,
                 ],
                 "className": "c-input",
                 "htmlFor": "description",
@@ -242,11 +242,11 @@ ShallowWrapper {
               "children": <label
                 className="c-input"
                 htmlFor="permissions"
->
+              >
                 <span>
-                                Canvas API Permissions
+                  Canvas API Permissions
                 </span>
-</label>,
+              </label>,
               "className": "o-grid__item u-half",
             },
             "ref": null,
@@ -258,7 +258,7 @@ ShallowWrapper {
                 "children": Array [
                   <span>
                     Canvas API Permissions
-</span>,
+                  </span>,
                   undefined,
                 ],
                 "className": "c-input",
@@ -292,17 +292,17 @@ ShallowWrapper {
                 className="c-input"
                 labelText="Default Config"
                 textareaProps={
-                                Object {
-                                                "id": "application_default_config",
-                                                "name": "default_config",
-                                                "onChange": [Function],
-                                                "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
-                                                "rows": 3,
-                                                "value": "{ \\"foo\\": \\"bar\\" }",
-                                              }
+                  Object {
+                    "id": "application_default_config",
+                    "name": "default_config",
+                    "onChange": [Function],
+                    "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                    "rows": 3,
+                    "value": "{ \\"foo\\": \\"bar\\" }",
+                  }
                 }
                 warning={null}
-/>,
+              />,
               "className": "o-grid__item u-full",
             },
             "ref": null,
@@ -372,72 +372,72 @@ ShallowWrapper {
         "children": Array [
           <div
             className="o-grid o-grid__modal-top"
->
+          >
             <div
-                        className="o-grid__item u-half"
+              className="o-grid__item u-half"
             >
-                        <label
-                                    className="c-input"
-                                    htmlFor="description"
-                        >
-                                    <span>
-                                                Description
-                                    </span>
-                                    <input
-                                                id="description"
-                                                name="description"
-                                                onChange={[Function]}
-                                                type="text"
-                                                value="SPEC_DESCRIPTION"
-                                    />
-                        </label>
+              <label
+                className="c-input"
+                htmlFor="description"
+              >
+                <span>
+                  Description
+                </span>
+                <input
+                  id="description"
+                  name="description"
+                  onChange={[Function]}
+                  type="text"
+                  value="SPEC_DESCRIPTION"
+                />
+              </label>
             </div>
             <div
-                        className="o-grid__item u-half"
+              className="o-grid__item u-half"
             >
-                        <label
-                                    className="c-input"
-                                    htmlFor="permissions"
-                        >
-                                    <span>
-                                                Canvas API Permissions
-                                    </span>
-                        </label>
+              <label
+                className="c-input"
+                htmlFor="permissions"
+              >
+                <span>
+                  Canvas API Permissions
+                </span>
+              </label>
             </div>
             <div
-                        className="o-grid__item u-full"
+              className="o-grid__item u-full"
             >
-                        <Textarea
-                                    className="c-input"
-                                    labelText="Default Config"
-                                    textareaProps={
-                                                Object {
-                                                            "id": "application_default_config",
-                                                            "name": "default_config",
-                                                            "onChange": [Function],
-                                                            "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
-                                                            "rows": 3,
-                                                            "value": "{ \\"foo\\": \\"bar\\" }",
-                                                          }
-                                    }
-                                    warning={null}
-                        />
+              <Textarea
+                className="c-input"
+                labelText="Default Config"
+                textareaProps={
+                  Object {
+                    "id": "application_default_config",
+                    "name": "default_config",
+                    "onChange": [Function],
+                    "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                    "rows": 3,
+                    "value": "{ \\"foo\\": \\"bar\\" }",
+                  }
+                }
+                warning={null}
+              />
             </div>
-</div>,
+          </div>,
           <button
             className="c-btn c-btn--yellow"
             onClick={[Function]}
             type="button"
->
+          >
             Save
-</button>,
+          </button>,
           <button
             className="c-btn c-btn--gray--large u-m-right"
             onClick={[Function]}
             type="button"
->
+          >
             Cancel
-</button>,
+          </button>,
         ],
       },
       "ref": null,
@@ -450,54 +450,54 @@ ShallowWrapper {
             "children": Array [
               <div
                 className="o-grid__item u-half"
->
+              >
                 <label
-                                className="c-input"
-                                htmlFor="description"
+                  className="c-input"
+                  htmlFor="description"
                 >
-                                <span>
-                                                Description
-                                </span>
-                                <input
-                                                id="description"
-                                                name="description"
-                                                onChange={[Function]}
-                                                type="text"
-                                                value="SPEC_DESCRIPTION"
-                                />
+                  <span>
+                    Description
+                  </span>
+                  <input
+                    id="description"
+                    name="description"
+                    onChange={[Function]}
+                    type="text"
+                    value="SPEC_DESCRIPTION"
+                  />
                 </label>
-</div>,
+              </div>,
               <div
                 className="o-grid__item u-half"
->
+              >
                 <label
-                                className="c-input"
-                                htmlFor="permissions"
+                  className="c-input"
+                  htmlFor="permissions"
                 >
-                                <span>
-                                                Canvas API Permissions
-                                </span>
+                  <span>
+                    Canvas API Permissions
+                  </span>
                 </label>
-</div>,
+              </div>,
               <div
                 className="o-grid__item u-full"
->
+              >
                 <Textarea
-                                className="c-input"
-                                labelText="Default Config"
-                                textareaProps={
-                                                Object {
-                                                                "id": "application_default_config",
-                                                                "name": "default_config",
-                                                                "onChange": [Function],
-                                                                "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
-                                                                "rows": 3,
-                                                                "value": "{ \\"foo\\": \\"bar\\" }",
-                                                              }
-                                }
-                                warning={null}
+                  className="c-input"
+                  labelText="Default Config"
+                  textareaProps={
+                    Object {
+                      "id": "application_default_config",
+                      "name": "default_config",
+                      "onChange": [Function],
+                      "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                      "rows": 3,
+                      "value": "{ \\"foo\\": \\"bar\\" }",
+                    }
+                  }
+                  warning={null}
                 />
-</div>,
+              </div>,
             ],
             "className": "o-grid o-grid__modal-top",
           },
@@ -511,18 +511,18 @@ ShallowWrapper {
                 "children": <label
                   className="c-input"
                   htmlFor="description"
->
+                >
                   <span>
-                                    Description
+                    Description
                   </span>
                   <input
-                                    id="description"
-                                    name="description"
-                                    onChange={[Function]}
-                                    type="text"
-                                    value="SPEC_DESCRIPTION"
+                    id="description"
+                    name="description"
+                    onChange={[Function]}
+                    type="text"
+                    value="SPEC_DESCRIPTION"
                   />
-</label>,
+                </label>,
                 "className": "o-grid__item u-half",
               },
               "ref": null,
@@ -534,14 +534,14 @@ ShallowWrapper {
                   "children": Array [
                     <span>
                       Description
-</span>,
+                    </span>,
                     <input
                       id="description"
                       name="description"
                       onChange={[Function]}
                       type="text"
                       value="SPEC_DESCRIPTION"
-/>,
+                    />,
                   ],
                   "className": "c-input",
                   "htmlFor": "description",
@@ -587,11 +587,11 @@ ShallowWrapper {
                 "children": <label
                   className="c-input"
                   htmlFor="permissions"
->
+                >
                   <span>
-                                    Canvas API Permissions
+                    Canvas API Permissions
                   </span>
-</label>,
+                </label>,
                 "className": "o-grid__item u-half",
               },
               "ref": null,
@@ -603,7 +603,7 @@ ShallowWrapper {
                   "children": Array [
                     <span>
                       Canvas API Permissions
-</span>,
+                    </span>,
                     undefined,
                   ],
                   "className": "c-input",
@@ -637,17 +637,17 @@ ShallowWrapper {
                   className="c-input"
                   labelText="Default Config"
                   textareaProps={
-                                    Object {
-                                                      "id": "application_default_config",
-                                                      "name": "default_config",
-                                                      "onChange": [Function],
-                                                      "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
-                                                      "rows": 3,
-                                                      "value": "{ \\"foo\\": \\"bar\\" }",
-                                                    }
+                    Object {
+                      "id": "application_default_config",
+                      "name": "default_config",
+                      "onChange": [Function],
+                      "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                      "rows": 3,
+                      "value": "{ \\"foo\\": \\"bar\\" }",
+                    }
                   }
                   warning={null}
-/>,
+                />,
                 "className": "o-grid__item u-full",
               },
               "ref": null,

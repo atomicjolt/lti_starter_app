@@ -6,15 +6,15 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Modal
     application={
-        Object {
-            "description": "SPEC_STRING",
-            "name": "SPEC_NAME",
-          }
+      Object {
+        "description": "SPEC_STRING",
+        "name": "SPEC_NAME",
+      }
     }
     closeModal={[Function]}
     isOpen={true}
     save={[Function]}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -28,13 +28,14 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "ariaHideApp": true,
+      "bodyOpenClassName": "ReactModal__Body--open",
       "children": Array [
         <h2
           className="c-modal__title"
->
+        >
           SPEC_NAME
            Settings
-</h2>,
+        </h2>,
         <Form
           canvasApiPermissions={undefined}
           closeModal={[Function]}
@@ -43,7 +44,7 @@ ShallowWrapper {
           description="SPEC_STRING"
           onChange={[Function]}
           save={[Function]}
-/>,
+        />,
       ],
       "className": "c-modal c-modal--settings is-open",
       "closeTimeoutMS": 0,
@@ -103,13 +104,14 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "ariaHideApp": true,
+        "bodyOpenClassName": "ReactModal__Body--open",
         "children": Array [
           <h2
             className="c-modal__title"
->
+          >
             SPEC_NAME
              Settings
-</h2>,
+          </h2>,
           <Form
             canvasApiPermissions={undefined}
             closeModal={[Function]}
@@ -118,7 +120,7 @@ ShallowWrapper {
             description="SPEC_STRING"
             onChange={[Function]}
             save={[Function]}
-/>,
+          />,
         ],
         "className": "c-modal c-modal--settings is-open",
         "closeTimeoutMS": 0,

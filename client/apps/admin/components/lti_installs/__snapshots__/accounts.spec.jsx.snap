@@ -6,17 +6,17 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Accounts
     accounts={
-        Object {
-            "1": Object {
-              "id": 1,
-              "name": "account_name",
-              "parent_account_id": null,
-            },
-          }
+      Object {
+        "1": Object {
+          "id": 1,
+          "name": "account_name",
+          "parent_account_id": null,
+        },
+      }
     }
     currentAccount={null}
     setAccountActive={[Function]}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -32,25 +32,25 @@ ShallowWrapper {
       "children": Array [
         <SubAccount
           account={
-                    Object {
-                              "id": 1,
-                              "name": "account_name",
-                              "parent_account_id": null,
-                            }
+            Object {
+              "id": 1,
+              "name": "account_name",
+              "parent_account_id": null,
+            }
           }
           accounts={
-                    Object {
-                              "1": Object {
-                                "id": 1,
-                                "name": "account_name",
-                                "parent_account_id": null,
-                              },
-                            }
+            Object {
+              "1": Object {
+                "id": 1,
+                "name": "account_name",
+                "parent_account_id": null,
+              },
+            }
           }
           currentAccount={null}
           isActive={null}
           setAccountActive={[Function]}
-/>,
+        />,
       ],
       "className": "c-filter-list",
     },
@@ -93,25 +93,25 @@ ShallowWrapper {
         "children": Array [
           <SubAccount
             account={
-                        Object {
-                                    "id": 1,
-                                    "name": "account_name",
-                                    "parent_account_id": null,
-                                  }
+              Object {
+                "id": 1,
+                "name": "account_name",
+                "parent_account_id": null,
+              }
             }
             accounts={
-                        Object {
-                                    "1": Object {
-                                      "id": 1,
-                                      "name": "account_name",
-                                      "parent_account_id": null,
-                                    },
-                                  }
+              Object {
+                "1": Object {
+                  "id": 1,
+                  "name": "account_name",
+                  "parent_account_id": null,
+                },
+              }
             }
             currentAccount={null}
             isActive={null}
             setAccountActive={[Function]}
-/>,
+          />,
         ],
         "className": "c-filter-list",
       },

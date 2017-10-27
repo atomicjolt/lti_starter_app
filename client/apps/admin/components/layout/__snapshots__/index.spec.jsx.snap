@@ -8,15 +8,15 @@ ShallowWrapper {
     getApplications={[Function]}
     getSites={[Function]}
     location={
-        Object {
-            "pathname": "/",
-          }
+      Object {
+        "pathname": "/",
+      }
     }
->
+  >
     <h1>
-        hello
+      hello
     </h1>
-</Index>,
+  </Index>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -31,7 +31,7 @@ ShallowWrapper {
     "props": Object {
       "children": <h1>
         hello
-</h1>,
+      </h1>,
       "className": "app-index",
     },
     "ref": null,
@@ -56,7 +56,7 @@ ShallowWrapper {
       "props": Object {
         "children": <h1>
           hello
-</h1>,
+        </h1>,
         "className": "app-index",
       },
       "ref": null,

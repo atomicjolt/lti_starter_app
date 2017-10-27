@@ -6,25 +6,25 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Modal
     application={
-        Object {
-            "id": 1,
-            "name": "the application",
-          }
+      Object {
+        "id": 1,
+        "name": "the application",
+      }
     }
     applicationInstance={
-        Object {
-            "config": "config string",
-            "id": 2,
-            "site": Object {
-              "id": 3,
-            },
-          }
+      Object {
+        "config": "config string",
+        "id": 2,
+        "site": Object {
+          "id": 3,
+        },
+      }
     }
     closeModal={[Function]}
     isOpen={true}
     save={[Function]}
     sites={Object {}}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -38,15 +38,16 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "ariaHideApp": true,
+      "bodyOpenClassName": "ReactModal__Body--open",
       "children": Array [
         <h2
           className="c-modal__title"
->
+        >
           Update
            
           the application
            Instance
-</h2>,
+        </h2>,
         <Form
           closeModal={[Function]}
           config="config string"
@@ -57,17 +58,17 @@ ShallowWrapper {
           onChange={[Function]}
           save={[Function]}
           site={
-                    Object {
-                              "id": 3,
-                            }
+            Object {
+              "id": 3,
+            }
           }
           site_id="3"
           sites={Object {}}
-/>,
+        />,
         <Connect(SiteModal)
           closeModal={[Function]}
           isOpen={false}
-/>,
+        />,
       ],
       "className": "c-modal c-modal--settings is-open",
       "closeTimeoutMS": 0,
@@ -148,15 +149,16 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "ariaHideApp": true,
+        "bodyOpenClassName": "ReactModal__Body--open",
         "children": Array [
           <h2
             className="c-modal__title"
->
+          >
             Update
              
             the application
              Instance
-</h2>,
+          </h2>,
           <Form
             closeModal={[Function]}
             config="config string"
@@ -167,17 +169,17 @@ ShallowWrapper {
             onChange={[Function]}
             save={[Function]}
             site={
-                        Object {
-                                    "id": 3,
-                                  }
+              Object {
+                "id": 3,
+              }
             }
             site_id="3"
             sites={Object {}}
-/>,
+          />,
           <Connect(SiteModal)
             closeModal={[Function]}
             isOpen={false}
-/>,
+          />,
         ],
         "className": "c-modal c-modal--settings is-open",
         "closeTimeoutMS": 0,
