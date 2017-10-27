@@ -1,6 +1,6 @@
 import _             from 'lodash';
 
-import { DONE }      from '../../../libs/constants/wrapper';
+import { DONE }      from 'atomic-fuel/libs/constants/wrapper';
 
 import {
   listExternalToolsAccounts,

@@ -5,10 +5,10 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 import routes from './routes';
-import DevTools from '../../libs/dev/dev_tools';
+import DevTools from 'atomic-fuel/libs/dev/dev_tools';
 import configureStore from './store/configure_store';
-import jwt from '../../libs/loaders/jwt';
-import { getInitialSettings } from '../../libs/reducers/settings';
+import jwt from 'atomic-fuel/libs/loaders/jwt';
+import { getInitialSettings } from 'atomic-fuel/libs/reducers/settings';
 
 
 import './styles/styles.scss';

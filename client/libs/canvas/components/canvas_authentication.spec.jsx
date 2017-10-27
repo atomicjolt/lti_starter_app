@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import TestUtils from 'react-dom/test-utils';
 import { CanvasAuthentication } from './canvas_authentication';
-import Stub from '../../../specs_support/stub';
+import Stub from 'atomic-fuel/libs/specs_support/stub';
 
 describe('Canvas authentication', () => {
   it('renders a button to authenticate with Canvas', () => {
