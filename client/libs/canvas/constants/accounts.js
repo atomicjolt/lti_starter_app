@@ -73,6 +73,9 @@ export const getSubAccountsOfAccount = { type: 'GET_SUB_ACCOUNTS_OF_ACCOUNT', me
 //   enrollment_term_id
 //   search_term
 //   include
+//   sort
+//   order
+//   search_by
 // }
 // return canvasRequest(list_active_courses_in_account, {account_id}, query);
 export const listActiveCoursesInAccount = { type: 'LIST_ACTIVE_COURSES_IN_ACCOUNT', method: 'get', key: 'list_active_courses_in_accountlist_active_courses_in_account_account_id', required: ['account_id'] };

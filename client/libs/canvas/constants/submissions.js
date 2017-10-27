@@ -94,7 +94,10 @@ export const listAssignmentSubmissionsSections = { type: 'LIST_ASSIGNMENT_SUBMIS
 //   student_ids
 //   assignment_ids
 //   grouped
+//   post_to_sis
 //   grading_period_id
+//   workflow_state
+//   enrollment_state
 //   order
 //   order_direction
 //   include
@@ -113,7 +116,10 @@ export const listSubmissionsForMultipleAssignmentsCourses = { type: 'LIST_SUBMIS
 //   student_ids
 //   assignment_ids
 //   grouped
+//   post_to_sis
 //   grading_period_id
+//   workflow_state
+//   enrollment_state
 //   order
 //   order_direction
 //   include
