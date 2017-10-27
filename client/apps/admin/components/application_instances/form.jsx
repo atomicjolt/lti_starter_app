@@ -30,6 +30,7 @@ export default class Form extends React.Component {
     lti_config: PropTypes.string,
     ltiConfigParseError: PropTypes.string,
     domain: PropTypes.string,
+    canvas_token_preview: PropTypes.string,
   };
 
   selectSite(option) {
@@ -123,6 +124,7 @@ export default class Form extends React.Component {
               this.renderInput('o-grid__item u-half', 'c-input', 'text', undefined, this.props.isUpdate, ...args)
             )
           }
+          <div className="o-grid__item u-full">Current Canvas Token: {this.props.canvas_token_preview}</div>
           <div className="o-grid__item u-full">
             <Textarea
               className="c-input"
