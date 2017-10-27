@@ -15,6 +15,8 @@
 // Example:
 // const query = {
 //   search_term
+//   sort
+//   order
 // }
 // return canvasRequest(list_users_in_account, {account_id}, query);
 export const listUsersInAccount = { type: 'LIST_USERS_IN_ACCOUNT', method: 'get', key: 'list_users_in_accountlist_users_in_account_account_id', required: ['account_id'] };
