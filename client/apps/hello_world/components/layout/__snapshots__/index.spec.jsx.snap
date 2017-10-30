@@ -18,6 +18,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": "",
+      "className": "app-index",
     },
     "ref": null,
     "rendered": "",
@@ -30,6 +31,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": "",
+        "className": "app-index",
       },
       "ref": null,
       "rendered": "",
