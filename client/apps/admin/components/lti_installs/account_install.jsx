@@ -4,7 +4,7 @@ import _ from 'lodash';
 import {
   createExternalToolAccounts,
   deleteExternalToolAccounts,
-} from '../../../../libs/canvas/constants/external_tools';
+} from 'atomic-canvas/libs/constants/external_tools';
 
 export default function AccountInstall(props) {
   function install(applicationInstance, installedTool) {

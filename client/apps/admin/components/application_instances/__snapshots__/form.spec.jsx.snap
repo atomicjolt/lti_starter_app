@@ -48,6 +48,7 @@ ShallowWrapper {
                                         clearRenderer={[Function]}
                                         clearValueText="Clear value"
                                         clearable={false}
+                                        closeOnSelect={true}
                                         deleteRemoves={true}
                                         delimiter=","
                                         disabled={false}
@@ -69,6 +70,8 @@ ShallowWrapper {
                                         onBlurResetsInput={true}
                                         onChange={[Function]}
                                         onCloseResetsInput={true}
+                                        onSelectResetsInput={true}
+                                        openOnClick={true}
                                         optionComponent={[Function]}
                                         options={
                                                   Array [
@@ -234,6 +237,7 @@ ShallowWrapper {
                                           clearRenderer={[Function]}
                                           clearValueText="Clear value"
                                           clearable={false}
+                                          closeOnSelect={true}
                                           deleteRemoves={true}
                                           delimiter=","
                                           disabled={false}
@@ -255,6 +259,8 @@ ShallowWrapper {
                                           onBlurResetsInput={true}
                                           onChange={[Function]}
                                           onCloseResetsInput={true}
+                                          onSelectResetsInput={true}
+                                          openOnClick={true}
                                           optionComponent={[Function]}
                                           options={
                                                         Array [
@@ -402,6 +408,7 @@ ShallowWrapper {
                                 clearRenderer={[Function]}
                                 clearValueText="Clear value"
                                 clearable={false}
+                                closeOnSelect={true}
                                 deleteRemoves={true}
                                 delimiter=","
                                 disabled={false}
@@ -423,6 +430,8 @@ ShallowWrapper {
                                 onBlurResetsInput={true}
                                 onChange={[Function]}
                                 onCloseResetsInput={true}
+                                onSelectResetsInput={true}
+                                openOnClick={true}
                                 optionComponent={[Function]}
                                 options={
                                                 Array [
@@ -469,6 +478,7 @@ ShallowWrapper {
                     clearRenderer={[Function]}
                     clearValueText="Clear value"
                     clearable={false}
+                    closeOnSelect={true}
                     deleteRemoves={true}
                     delimiter=","
                     disabled={false}
@@ -490,6 +500,8 @@ ShallowWrapper {
                     onBlurResetsInput={true}
                     onChange={[Function]}
                     onCloseResetsInput={true}
+                    onSelectResetsInput={true}
+                    openOnClick={true}
                     optionComponent={[Function]}
                     options={
                                         Array [
@@ -543,6 +555,7 @@ ShallowWrapper {
                     "clearRenderer": [Function],
                     "clearValueText": "Clear value",
                     "clearable": false,
+                    "closeOnSelect": true,
                     "deleteRemoves": true,
                     "delimiter": ",",
                     "disabled": false,
@@ -564,6 +577,8 @@ ShallowWrapper {
                     "onBlurResetsInput": true,
                     "onChange": [Function],
                     "onCloseResetsInput": true,
+                    "onSelectResetsInput": true,
+                    "openOnClick": true,
                     "optionComponent": [Function],
                     "options": Array [
                       Object {
@@ -912,6 +927,7 @@ ShallowWrapper {
                                                 clearRenderer={[Function]}
                                                 clearValueText="Clear value"
                                                 clearable={false}
+                                                closeOnSelect={true}
                                                 deleteRemoves={true}
                                                 delimiter=","
                                                 disabled={false}
@@ -933,6 +949,8 @@ ShallowWrapper {
                                                 onBlurResetsInput={true}
                                                 onChange={[Function]}
                                                 onCloseResetsInput={true}
+                                                onSelectResetsInput={true}
+                                                openOnClick={true}
                                                 optionComponent={[Function]}
                                                 options={
                                                             Array [
@@ -1098,6 +1116,7 @@ ShallowWrapper {
                                                 clearRenderer={[Function]}
                                                 clearValueText="Clear value"
                                                 clearable={false}
+                                                closeOnSelect={true}
                                                 deleteRemoves={true}
                                                 delimiter=","
                                                 disabled={false}
@@ -1119,6 +1138,8 @@ ShallowWrapper {
                                                 onBlurResetsInput={true}
                                                 onChange={[Function]}
                                                 onCloseResetsInput={true}
+                                                onSelectResetsInput={true}
+                                                openOnClick={true}
                                                 optionComponent={[Function]}
                                                 options={
                                                                 Array [
@@ -1266,6 +1287,7 @@ ShallowWrapper {
                                     clearRenderer={[Function]}
                                     clearValueText="Clear value"
                                     clearable={false}
+                                    closeOnSelect={true}
                                     deleteRemoves={true}
                                     delimiter=","
                                     disabled={false}
@@ -1287,6 +1309,8 @@ ShallowWrapper {
                                     onBlurResetsInput={true}
                                     onChange={[Function]}
                                     onCloseResetsInput={true}
+                                    onSelectResetsInput={true}
+                                    openOnClick={true}
                                     optionComponent={[Function]}
                                     options={
                                                       Array [
@@ -1333,6 +1357,7 @@ ShallowWrapper {
                       clearRenderer={[Function]}
                       clearValueText="Clear value"
                       clearable={false}
+                      closeOnSelect={true}
                       deleteRemoves={true}
                       delimiter=","
                       disabled={false}
@@ -1354,6 +1379,8 @@ ShallowWrapper {
                       onBlurResetsInput={true}
                       onChange={[Function]}
                       onCloseResetsInput={true}
+                      onSelectResetsInput={true}
+                      openOnClick={true}
                       optionComponent={[Function]}
                       options={
                                             Array [
@@ -1407,6 +1434,7 @@ ShallowWrapper {
                       "clearRenderer": [Function],
                       "clearValueText": "Clear value",
                       "clearable": false,
+                      "closeOnSelect": true,
                       "deleteRemoves": true,
                       "delimiter": ",",
                       "disabled": false,
@@ -1428,6 +1456,8 @@ ShallowWrapper {
                       "onBlurResetsInput": true,
                       "onChange": [Function],
                       "onCloseResetsInput": true,
+                      "onSelectResetsInput": true,
+                      "openOnClick": true,
                       "optionComponent": [Function],
                       "options": Array [
                         Object {

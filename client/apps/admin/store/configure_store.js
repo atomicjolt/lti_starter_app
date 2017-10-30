@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { persistState }                          from 'redux-devtools';
+import DevTools                                  from 'atomic-fuel/libs/dev/dev_tools';
+import API                                       from 'atomic-fuel/libs/middleware/api';
+import CanvasApi                                 from 'atomic-canvas/libs/middleware';
 import rootReducer                               from '../reducers';
-import DevTools                                  from '../../../libs/dev/dev_tools';
-import API                                       from '../../../libs/middleware/api';
-import CanvasApi                                 from '../../../libs/canvas/middleware';
 
 const middleware = [API, CanvasApi];
 

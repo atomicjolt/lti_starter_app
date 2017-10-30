@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import wrapper from '../../../libs/constants/wrapper';
-import Network from '../../../libs/constants/network';
+import wrapper from 'atomic-fuel/libs/constants/wrapper';
+import Network from 'atomic-fuel/libs/constants/network';
 
 // Local actions
 const actions = [];

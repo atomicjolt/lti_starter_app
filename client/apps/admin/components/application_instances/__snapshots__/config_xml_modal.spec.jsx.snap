@@ -35,6 +35,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "ariaHideApp": true,
+      "bodyOpenClassName": "ReactModal__Body--open",
       "children": Array [
         <h2
           className="c-modal__title"
@@ -284,6 +285,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "ariaHideApp": true,
+        "bodyOpenClassName": "ReactModal__Body--open",
         "children": Array [
           <h2
             className="c-modal__title"
