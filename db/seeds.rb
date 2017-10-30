@@ -170,7 +170,7 @@ sites.each do |attrs|
     attrs.delete(:oauth_secret) if attrs[:oauth_secret].blank?
     site.update_attributes!(attrs)
   else
-    puts "Creating site: #{site.url}"
+    puts "Creating site: #{attrs[:url]}"
     Site.create!(attrs)
   end
 end
@@ -182,7 +182,7 @@ applications.each do |attrs|
     puts "Updating application: #{application.name}"
     application.update_attributes!(attrs)
   else
-    puts "Creating application: #{application.name}"
+    puts "Creating application: #{attrs[:name]}"
     application = Application.create!(attrs)
   end
   setup_application_instances(application, application_instances)

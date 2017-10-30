@@ -3,24 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import ReactModal from 'react-modal';
+import { listActiveCoursesInAccount } from 'atomic-canvas/libs/constants/accounts';
+import { listExternalToolsCourses, listExternalToolsAccounts } from 'atomic-canvas/libs/constants/external_tools';
+import { helperListAccounts } from 'atomic-canvas/libs/helper_constants';
+import canvasRequest from 'atomic-canvas/libs/action';
 import * as ApplicationInstanceActions from '../../actions/application_instances';
 import Heading from '../common/heading';
 import Sidebar from './sidebar';
 import InstallPane from './install_pane';
-import canvasRequest from '../../../../libs/canvas/action';
 
-import {
-  listActiveCoursesInAccount
-} from '../../../../libs/canvas/constants/accounts';
-
-import {
-  listExternalToolsCourses,
-  listExternalToolsAccounts,
-} from '../../../../libs/canvas/constants/external_tools';
-
-import {
-  helperListAccounts,
-} from '../../../../libs/canvas/helper_constants';
 
 function select(state, props) {
   const instanceId = props.params.applicationInstanceId;

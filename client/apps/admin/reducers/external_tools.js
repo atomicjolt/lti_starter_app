@@ -6,7 +6,7 @@ import {
   listExternalToolsAccounts,
   createExternalToolAccounts,
   deleteExternalToolAccounts,
-} from '../../../libs/canvas/constants/external_tools';
+} from 'atomic-canvas/libs/constants/external_tools';
 
 const initialState = {};
 

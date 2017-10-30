@@ -1,5 +1,5 @@
 import configureStore from 'atomic-fuel/libs/store/configure_store';
-import CanvasApi      from '../../../libs/canvas/middleware';
+import CanvasApi      from 'atomic-canvas/libs/middleware';
 import rootReducer    from '../reducers/index';
 import API            from '../middleware/api';
 

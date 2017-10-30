@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import Auth from 'atomic-canvas/libs/components/canvas_authentication';
 import assets from '../libs/assets';
-import Auth from '../../../libs/canvas/components/canvas_authentication';
 import Selector from './content_item_select/selector';
 
 const select = state => ({
