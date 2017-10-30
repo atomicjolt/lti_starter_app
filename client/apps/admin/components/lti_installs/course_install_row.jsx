@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   createExternalToolCourses,
   deleteExternalToolCourses,
-} from '../../../../libs/canvas/constants/external_tools';
+} from 'atomic-canvas/libs/constants/external_tools';
 
 export default function CourseInstallRow(props) {
   const {

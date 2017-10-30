@@ -1,5 +1,5 @@
-import Network    from '../../../libs/constants/network';
-import wrapper    from '../../../libs/constants/wrapper';
+import Network    from 'atomic-fuel/libs/constants/network';
+import wrapper    from 'atomic-fuel/libs/constants/wrapper';
 
 // Local actions
 const actions = [];

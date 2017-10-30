@@ -1,7 +1,7 @@
-import accounts from './accounts';
 import {
   helperListAccounts,
-} from '../../../libs/canvas/helper_constants';
+} from 'atomic-canvas/libs/helper_constants';
+import accounts from './accounts';
 
 describe('accounts reducer', () => {
   describe('initial state', () => {

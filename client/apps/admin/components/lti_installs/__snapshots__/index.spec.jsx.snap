@@ -77,6 +77,7 @@ ShallowWrapper {
 </div>,
         <Modal
           ariaHideApp={true}
+          bodyOpenClassName="ReactModal__Body--open"
           className="c-modal c-modal--site is-open c-modal--error loading"
           closeTimeoutMS={0}
           contentLabel="Modal"
@@ -191,6 +192,7 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "ariaHideApp": true,
+          "bodyOpenClassName": "ReactModal__Body--open",
           "children": Array [
             <div
               className="c-loading-icon"
@@ -266,6 +268,7 @@ ShallowWrapper {
 </div>,
           <Modal
             ariaHideApp={true}
+            bodyOpenClassName="ReactModal__Body--open"
             className="c-modal c-modal--site is-open c-modal--error loading"
             closeTimeoutMS={0}
             contentLabel="Modal"
@@ -380,6 +383,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "ariaHideApp": true,
+            "bodyOpenClassName": "ReactModal__Body--open",
             "children": Array [
               <div
                 className="c-loading-icon"
