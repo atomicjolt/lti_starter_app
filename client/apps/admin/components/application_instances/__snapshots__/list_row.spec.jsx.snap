@@ -6,13 +6,13 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ListRow
     applicationInstance={
-      Object {
-        "application_id": 23,
-        "id": 2,
-        "site": Object {
-          "url": "http://www.example.com",
-        },
-      }
+        Object {
+            "application_id": 23,
+            "id": 2,
+            "site": Object {
+              "url": "http://www.example.com",
+            },
+          }
     }
     canvasOauthURL="http://www.example.com"
     delete={[Function]}
@@ -21,22 +21,22 @@ ShallowWrapper {
     lti_key="lti-key"
     save={[Function]}
     settings={
-      Object {
-        "lti_key": "lti-key",
-        "user_canvas_domains": Array [
-          "",
-        ],
-      }
+        Object {
+            "lti_key": "lti-key",
+            "user_canvas_domains": Array [
+              "",
+            ],
+          }
     }
     sites={
-      Object {
-        "1": Object {
-          "id": 1,
-          "url": "http://www.example.com",
-        },
-      }
+        Object {
+            "1": Object {
+              "id": 1,
+              "url": "http://www.example.com",
+            },
+          }
     }
-  />,
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -52,142 +52,142 @@ ShallowWrapper {
       "children": Array [
         <td>
           <form
-            action="http://www.example.com"
+                    action="http://www.example.com"
           >
-            <SettingsInputs
-              settings={
-                Object {
-                  "lti_key": "lti-key",
-                  "user_canvas_domains": Array [
-                    "",
-                  ],
-                }
-              }
-            />
-            <input
-              name="canvas_url"
-              type="hidden"
-              value="http://www.example.com"
-            />
-            <input
-              name="oauth_complete_url"
-              type="hidden"
-              value="about://blank#applications/23/application_instances/2/installs"
-            />
+                    <SettingsInputs
+                              settings={
+                                        Object {
+                                                  "lti_key": "lti-key",
+                                                  "user_canvas_domains": Array [
+                                                    "",
+                                                  ],
+                                                }
+                              }
+                    />
+                    <input
+                              name="canvas_url"
+                              type="hidden"
+                              value="http://www.example.com"
+                    />
+                    <input
+                              name="oauth_complete_url"
+                              type="hidden"
+                              value="about://blank#applications/23/application_instances/2/installs"
+                    />
           </form>
           <Link
-            onClick={[Function]}
-            onlyActiveOnIndex={false}
-            style={Object {}}
-            to="applications/23/application_instances/2/installs"
+                    onClick={[Function]}
+                    onlyActiveOnIndex={false}
+                    style={Object {}}
+                    to="applications/23/application_instances/2/installs"
           >
-            Example
+                    Example
           </Link>
           <div>
-            http://www.example.com
+                    http://www.example.com
           </div>
-        </td>,
+</td>,
         <td>
           <span>
-            lti-key
+                    lti-key
           </span>
-        </td>,
+</td>,
         <td>
           <span>
-            www.example.com
+                    www.example.com
           </span>
-        </td>,
+</td>,
         <td>
           <button
-            onClick={[Function]}
-            style={
-              Object {
-                "backgroundColor": "transparent",
-                "border": "none",
-                "color": "grey",
-                "cursor": "pointer",
-                "fontSize": "1.5em",
-              }
-            }
+                    onClick={[Function]}
+                    style={
+                              Object {
+                                        "backgroundColor": "transparent",
+                                        "border": "none",
+                                        "color": "grey",
+                                        "cursor": "pointer",
+                                        "fontSize": "1.5em",
+                                      }
+                    }
           >
-            <i
-              className="i-settings"
-            />
+                    <i
+                              className="i-settings"
+                    />
           </button>
           <Modal
-            application={undefined}
-            applicationInstance={
-              Object {
-                "application_id": 23,
-                "id": 2,
-                "site": Object {
-                  "url": "http://www.example.com",
-                },
-              }
-            }
-            closeModal={[Function]}
-            isOpen={false}
-            save={[Function]}
-            sites={
-              Object {
-                "1": Object {
-                  "id": 1,
-                  "url": "http://www.example.com",
-                },
-              }
-            }
+                    application={undefined}
+                    applicationInstance={
+                              Object {
+                                        "application_id": 23,
+                                        "id": 2,
+                                        "site": Object {
+                                          "url": "http://www.example.com",
+                                        },
+                                      }
+                    }
+                    closeModal={[Function]}
+                    isOpen={false}
+                    save={[Function]}
+                    sites={
+                              Object {
+                                        "1": Object {
+                                          "id": 1,
+                                          "url": "http://www.example.com",
+                                        },
+                                      }
+                    }
           />
-        </td>,
+</td>,
         <td>
           <button
-            onClick={[Function]}
-            style={
-              Object {
-                "backgroundColor": "transparent",
-                "border": "none",
-                "color": "grey",
-                "cursor": "pointer",
-                "fontSize": "1.5em",
-              }
-            }
+                    onClick={[Function]}
+                    style={
+                              Object {
+                                        "backgroundColor": "transparent",
+                                        "border": "none",
+                                        "color": "grey",
+                                        "cursor": "pointer",
+                                        "fontSize": "1.5em",
+                                      }
+                    }
           >
-            <i
-              className="i-settings"
-            />
+                    <i
+                              className="i-settings"
+                    />
           </button>
           <ConfigXmlModal
-            application={undefined}
-            applicationInstance={
-              Object {
-                "application_id": 23,
-                "id": 2,
-                "site": Object {
-                  "url": "http://www.example.com",
-                },
-              }
-            }
-            closeModal={[Function]}
-            isOpen={false}
+                    application={undefined}
+                    applicationInstance={
+                              Object {
+                                        "application_id": 23,
+                                        "id": 2,
+                                        "site": Object {
+                                          "url": "http://www.example.com",
+                                        },
+                                      }
+                    }
+                    closeModal={[Function]}
+                    isOpen={false}
           />
-        </td>,
+</td>,
         <td>
           <button
-            className="c-disable"
-            onClick={[Function]}
+                    className="c-disable"
+                    onClick={[Function]}
           >
-            <Enabled />
+                    <Enabled />
           </button>
-        </td>,
+</td>,
         <td>
           <button
-            className="c-delete"
-            onClick={[Function]}
+                    className="c-delete"
+                    onClick={[Function]}
           >
-            <i
-              className="i-delete"
-            />
+                    <i
+                              className="i-delete"
+                    />
           </button>
-        </td>,
+</td>,
       ],
     },
     "ref": null,
@@ -200,39 +200,39 @@ ShallowWrapper {
           "children": Array [
             <form
               action="http://www.example.com"
-            >
+>
               <SettingsInputs
-                settings={
-                  Object {
-                    "lti_key": "lti-key",
-                    "user_canvas_domains": Array [
-                      "",
-                    ],
-                  }
-                }
+                            settings={
+                                          Object {
+                                                        "lti_key": "lti-key",
+                                                        "user_canvas_domains": Array [
+                                                          "",
+                                                        ],
+                                                      }
+                            }
               />
               <input
-                name="canvas_url"
-                type="hidden"
-                value="http://www.example.com"
+                            name="canvas_url"
+                            type="hidden"
+                            value="http://www.example.com"
               />
               <input
-                name="oauth_complete_url"
-                type="hidden"
-                value="about://blank#applications/23/application_instances/2/installs"
+                            name="oauth_complete_url"
+                            type="hidden"
+                            value="about://blank#applications/23/application_instances/2/installs"
               />
-            </form>,
+</form>,
             <Link
               onClick={[Function]}
               onlyActiveOnIndex={false}
               style={Object {}}
               to="applications/23/application_instances/2/installs"
-            >
+>
               Example
-            </Link>,
+</Link>,
             <div>
               http://www.example.com
-            </div>,
+</div>,
           ],
         },
         "ref": null,
@@ -246,24 +246,24 @@ ShallowWrapper {
               "children": Array [
                 <SettingsInputs
                   settings={
-                    Object {
-                      "lti_key": "lti-key",
-                      "user_canvas_domains": Array [
-                        "",
-                      ],
-                    }
+                                    Object {
+                                                      "lti_key": "lti-key",
+                                                      "user_canvas_domains": Array [
+                                                        "",
+                                                      ],
+                                                    }
                   }
-                />,
+/>,
                 <input
                   name="canvas_url"
                   type="hidden"
                   value="http://www.example.com"
-                />,
+/>,
                 <input
                   name="oauth_complete_url"
                   type="hidden"
                   value="about://blank#applications/23/application_instances/2/installs"
-                />,
+/>,
               ],
             },
             "ref": [Function],
@@ -349,7 +349,7 @@ ShallowWrapper {
         "props": Object {
           "children": <span>
             lti-key
-          </span>,
+</span>,
         },
         "ref": null,
         "rendered": Object {
@@ -372,7 +372,7 @@ ShallowWrapper {
         "props": Object {
           "children": <span>
             www.example.com
-          </span>,
+</span>,
         },
         "ref": null,
         "rendered": Object {
@@ -397,42 +397,42 @@ ShallowWrapper {
             <button
               onClick={[Function]}
               style={
-                Object {
-                  "backgroundColor": "transparent",
-                  "border": "none",
-                  "color": "grey",
-                  "cursor": "pointer",
-                  "fontSize": "1.5em",
-                }
+                            Object {
+                                          "backgroundColor": "transparent",
+                                          "border": "none",
+                                          "color": "grey",
+                                          "cursor": "pointer",
+                                          "fontSize": "1.5em",
+                                        }
               }
-            >
+>
               <i
-                className="i-settings"
+                            className="i-settings"
               />
-            </button>,
+</button>,
             <Modal
               application={undefined}
               applicationInstance={
-                Object {
-                  "application_id": 23,
-                  "id": 2,
-                  "site": Object {
-                    "url": "http://www.example.com",
-                  },
-                }
+                            Object {
+                                          "application_id": 23,
+                                          "id": 2,
+                                          "site": Object {
+                                            "url": "http://www.example.com",
+                                          },
+                                        }
               }
               closeModal={[Function]}
               isOpen={false}
               save={[Function]}
               sites={
-                Object {
-                  "1": Object {
-                    "id": 1,
-                    "url": "http://www.example.com",
-                  },
-                }
+                            Object {
+                                          "1": Object {
+                                            "id": 1,
+                                            "url": "http://www.example.com",
+                                          },
+                                        }
               }
-            />,
+/>,
           ],
         },
         "ref": null,
@@ -444,7 +444,7 @@ ShallowWrapper {
             "props": Object {
               "children": <i
                 className="i-settings"
-              />,
+/>,
               "onClick": [Function],
               "style": Object {
                 "backgroundColor": "transparent",
@@ -507,33 +507,33 @@ ShallowWrapper {
             <button
               onClick={[Function]}
               style={
-                Object {
-                  "backgroundColor": "transparent",
-                  "border": "none",
-                  "color": "grey",
-                  "cursor": "pointer",
-                  "fontSize": "1.5em",
-                }
+                            Object {
+                                          "backgroundColor": "transparent",
+                                          "border": "none",
+                                          "color": "grey",
+                                          "cursor": "pointer",
+                                          "fontSize": "1.5em",
+                                        }
               }
-            >
+>
               <i
-                className="i-settings"
+                            className="i-settings"
               />
-            </button>,
+</button>,
             <ConfigXmlModal
               application={undefined}
               applicationInstance={
-                Object {
-                  "application_id": 23,
-                  "id": 2,
-                  "site": Object {
-                    "url": "http://www.example.com",
-                  },
-                }
+                            Object {
+                                          "application_id": 23,
+                                          "id": 2,
+                                          "site": Object {
+                                            "url": "http://www.example.com",
+                                          },
+                                        }
               }
               closeModal={[Function]}
               isOpen={false}
-            />,
+/>,
           ],
         },
         "ref": null,
@@ -545,7 +545,7 @@ ShallowWrapper {
             "props": Object {
               "children": <i
                 className="i-settings"
-              />,
+/>,
               "onClick": [Function],
               "style": Object {
                 "backgroundColor": "transparent",
@@ -600,9 +600,9 @@ ShallowWrapper {
           "children": <button
             className="c-disable"
             onClick={[Function]}
-          >
+>
             <Enabled />
-          </button>,
+</button>,
         },
         "ref": null,
         "rendered": Object {
@@ -636,11 +636,11 @@ ShallowWrapper {
           "children": <button
             className="c-delete"
             onClick={[Function]}
-          >
+>
             <i
-              className="i-delete"
+                        className="i-delete"
             />
-          </button>,
+</button>,
         },
         "ref": null,
         "rendered": Object {
@@ -650,7 +650,7 @@ ShallowWrapper {
           "props": Object {
             "children": <i
               className="i-delete"
-            />,
+/>,
             "className": "c-delete",
             "onClick": [Function],
           },
@@ -682,142 +682,142 @@ ShallowWrapper {
         "children": Array [
           <td>
             <form
-              action="http://www.example.com"
+                        action="http://www.example.com"
             >
-              <SettingsInputs
-                settings={
-                  Object {
-                    "lti_key": "lti-key",
-                    "user_canvas_domains": Array [
-                      "",
-                    ],
-                  }
-                }
-              />
-              <input
-                name="canvas_url"
-                type="hidden"
-                value="http://www.example.com"
-              />
-              <input
-                name="oauth_complete_url"
-                type="hidden"
-                value="about://blank#applications/23/application_instances/2/installs"
-              />
+                        <SettingsInputs
+                                    settings={
+                                                Object {
+                                                            "lti_key": "lti-key",
+                                                            "user_canvas_domains": Array [
+                                                              "",
+                                                            ],
+                                                          }
+                                    }
+                        />
+                        <input
+                                    name="canvas_url"
+                                    type="hidden"
+                                    value="http://www.example.com"
+                        />
+                        <input
+                                    name="oauth_complete_url"
+                                    type="hidden"
+                                    value="about://blank#applications/23/application_instances/2/installs"
+                        />
             </form>
             <Link
-              onClick={[Function]}
-              onlyActiveOnIndex={false}
-              style={Object {}}
-              to="applications/23/application_instances/2/installs"
+                        onClick={[Function]}
+                        onlyActiveOnIndex={false}
+                        style={Object {}}
+                        to="applications/23/application_instances/2/installs"
             >
-              Example
+                        Example
             </Link>
             <div>
-              http://www.example.com
+                        http://www.example.com
             </div>
-          </td>,
+</td>,
           <td>
             <span>
-              lti-key
+                        lti-key
             </span>
-          </td>,
+</td>,
           <td>
             <span>
-              www.example.com
+                        www.example.com
             </span>
-          </td>,
+</td>,
           <td>
             <button
-              onClick={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "transparent",
-                  "border": "none",
-                  "color": "grey",
-                  "cursor": "pointer",
-                  "fontSize": "1.5em",
-                }
-              }
+                        onClick={[Function]}
+                        style={
+                                    Object {
+                                                "backgroundColor": "transparent",
+                                                "border": "none",
+                                                "color": "grey",
+                                                "cursor": "pointer",
+                                                "fontSize": "1.5em",
+                                              }
+                        }
             >
-              <i
-                className="i-settings"
-              />
+                        <i
+                                    className="i-settings"
+                        />
             </button>
             <Modal
-              application={undefined}
-              applicationInstance={
-                Object {
-                  "application_id": 23,
-                  "id": 2,
-                  "site": Object {
-                    "url": "http://www.example.com",
-                  },
-                }
-              }
-              closeModal={[Function]}
-              isOpen={false}
-              save={[Function]}
-              sites={
-                Object {
-                  "1": Object {
-                    "id": 1,
-                    "url": "http://www.example.com",
-                  },
-                }
-              }
+                        application={undefined}
+                        applicationInstance={
+                                    Object {
+                                                "application_id": 23,
+                                                "id": 2,
+                                                "site": Object {
+                                                  "url": "http://www.example.com",
+                                                },
+                                              }
+                        }
+                        closeModal={[Function]}
+                        isOpen={false}
+                        save={[Function]}
+                        sites={
+                                    Object {
+                                                "1": Object {
+                                                  "id": 1,
+                                                  "url": "http://www.example.com",
+                                                },
+                                              }
+                        }
             />
-          </td>,
+</td>,
           <td>
             <button
-              onClick={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "transparent",
-                  "border": "none",
-                  "color": "grey",
-                  "cursor": "pointer",
-                  "fontSize": "1.5em",
-                }
-              }
+                        onClick={[Function]}
+                        style={
+                                    Object {
+                                                "backgroundColor": "transparent",
+                                                "border": "none",
+                                                "color": "grey",
+                                                "cursor": "pointer",
+                                                "fontSize": "1.5em",
+                                              }
+                        }
             >
-              <i
-                className="i-settings"
-              />
+                        <i
+                                    className="i-settings"
+                        />
             </button>
             <ConfigXmlModal
-              application={undefined}
-              applicationInstance={
-                Object {
-                  "application_id": 23,
-                  "id": 2,
-                  "site": Object {
-                    "url": "http://www.example.com",
-                  },
-                }
-              }
-              closeModal={[Function]}
-              isOpen={false}
+                        application={undefined}
+                        applicationInstance={
+                                    Object {
+                                                "application_id": 23,
+                                                "id": 2,
+                                                "site": Object {
+                                                  "url": "http://www.example.com",
+                                                },
+                                              }
+                        }
+                        closeModal={[Function]}
+                        isOpen={false}
             />
-          </td>,
+</td>,
           <td>
             <button
-              className="c-disable"
-              onClick={[Function]}
+                        className="c-disable"
+                        onClick={[Function]}
             >
-              <Enabled />
+                        <Enabled />
             </button>
-          </td>,
+</td>,
           <td>
             <button
-              className="c-delete"
-              onClick={[Function]}
+                        className="c-delete"
+                        onClick={[Function]}
             >
-              <i
-                className="i-delete"
-              />
+                        <i
+                                    className="i-delete"
+                        />
             </button>
-          </td>,
+</td>,
         ],
       },
       "ref": null,
@@ -830,39 +830,39 @@ ShallowWrapper {
             "children": Array [
               <form
                 action="http://www.example.com"
-              >
+>
                 <SettingsInputs
-                  settings={
-                    Object {
-                      "lti_key": "lti-key",
-                      "user_canvas_domains": Array [
-                        "",
-                      ],
-                    }
-                  }
+                                settings={
+                                                Object {
+                                                                "lti_key": "lti-key",
+                                                                "user_canvas_domains": Array [
+                                                                  "",
+                                                                ],
+                                                              }
+                                }
                 />
                 <input
-                  name="canvas_url"
-                  type="hidden"
-                  value="http://www.example.com"
+                                name="canvas_url"
+                                type="hidden"
+                                value="http://www.example.com"
                 />
                 <input
-                  name="oauth_complete_url"
-                  type="hidden"
-                  value="about://blank#applications/23/application_instances/2/installs"
+                                name="oauth_complete_url"
+                                type="hidden"
+                                value="about://blank#applications/23/application_instances/2/installs"
                 />
-              </form>,
+</form>,
               <Link
                 onClick={[Function]}
                 onlyActiveOnIndex={false}
                 style={Object {}}
                 to="applications/23/application_instances/2/installs"
-              >
+>
                 Example
-              </Link>,
+</Link>,
               <div>
                 http://www.example.com
-              </div>,
+</div>,
             ],
           },
           "ref": null,
@@ -876,24 +876,24 @@ ShallowWrapper {
                 "children": Array [
                   <SettingsInputs
                     settings={
-                      Object {
-                        "lti_key": "lti-key",
-                        "user_canvas_domains": Array [
-                          "",
-                        ],
-                      }
+                                        Object {
+                                                            "lti_key": "lti-key",
+                                                            "user_canvas_domains": Array [
+                                                              "",
+                                                            ],
+                                                          }
                     }
-                  />,
+/>,
                   <input
                     name="canvas_url"
                     type="hidden"
                     value="http://www.example.com"
-                  />,
+/>,
                   <input
                     name="oauth_complete_url"
                     type="hidden"
                     value="about://blank#applications/23/application_instances/2/installs"
-                  />,
+/>,
                 ],
               },
               "ref": [Function],
@@ -979,7 +979,7 @@ ShallowWrapper {
           "props": Object {
             "children": <span>
               lti-key
-            </span>,
+</span>,
           },
           "ref": null,
           "rendered": Object {
@@ -1002,7 +1002,7 @@ ShallowWrapper {
           "props": Object {
             "children": <span>
               www.example.com
-            </span>,
+</span>,
           },
           "ref": null,
           "rendered": Object {
@@ -1027,42 +1027,42 @@ ShallowWrapper {
               <button
                 onClick={[Function]}
                 style={
-                  Object {
-                    "backgroundColor": "transparent",
-                    "border": "none",
-                    "color": "grey",
-                    "cursor": "pointer",
-                    "fontSize": "1.5em",
-                  }
+                                Object {
+                                                "backgroundColor": "transparent",
+                                                "border": "none",
+                                                "color": "grey",
+                                                "cursor": "pointer",
+                                                "fontSize": "1.5em",
+                                              }
                 }
-              >
+>
                 <i
-                  className="i-settings"
+                                className="i-settings"
                 />
-              </button>,
+</button>,
               <Modal
                 application={undefined}
                 applicationInstance={
-                  Object {
-                    "application_id": 23,
-                    "id": 2,
-                    "site": Object {
-                      "url": "http://www.example.com",
-                    },
-                  }
+                                Object {
+                                                "application_id": 23,
+                                                "id": 2,
+                                                "site": Object {
+                                                  "url": "http://www.example.com",
+                                                },
+                                              }
                 }
                 closeModal={[Function]}
                 isOpen={false}
                 save={[Function]}
                 sites={
-                  Object {
-                    "1": Object {
-                      "id": 1,
-                      "url": "http://www.example.com",
-                    },
-                  }
+                                Object {
+                                                "1": Object {
+                                                  "id": 1,
+                                                  "url": "http://www.example.com",
+                                                },
+                                              }
                 }
-              />,
+/>,
             ],
           },
           "ref": null,
@@ -1074,7 +1074,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <i
                   className="i-settings"
-                />,
+/>,
                 "onClick": [Function],
                 "style": Object {
                   "backgroundColor": "transparent",
@@ -1137,33 +1137,33 @@ ShallowWrapper {
               <button
                 onClick={[Function]}
                 style={
-                  Object {
-                    "backgroundColor": "transparent",
-                    "border": "none",
-                    "color": "grey",
-                    "cursor": "pointer",
-                    "fontSize": "1.5em",
-                  }
+                                Object {
+                                                "backgroundColor": "transparent",
+                                                "border": "none",
+                                                "color": "grey",
+                                                "cursor": "pointer",
+                                                "fontSize": "1.5em",
+                                              }
                 }
-              >
+>
                 <i
-                  className="i-settings"
+                                className="i-settings"
                 />
-              </button>,
+</button>,
               <ConfigXmlModal
                 application={undefined}
                 applicationInstance={
-                  Object {
-                    "application_id": 23,
-                    "id": 2,
-                    "site": Object {
-                      "url": "http://www.example.com",
-                    },
-                  }
+                                Object {
+                                                "application_id": 23,
+                                                "id": 2,
+                                                "site": Object {
+                                                  "url": "http://www.example.com",
+                                                },
+                                              }
                 }
                 closeModal={[Function]}
                 isOpen={false}
-              />,
+/>,
             ],
           },
           "ref": null,
@@ -1175,7 +1175,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <i
                   className="i-settings"
-                />,
+/>,
                 "onClick": [Function],
                 "style": Object {
                   "backgroundColor": "transparent",
@@ -1230,9 +1230,9 @@ ShallowWrapper {
             "children": <button
               className="c-disable"
               onClick={[Function]}
-            >
+>
               <Enabled />
-            </button>,
+</button>,
           },
           "ref": null,
           "rendered": Object {
@@ -1266,11 +1266,11 @@ ShallowWrapper {
             "children": <button
               className="c-delete"
               onClick={[Function]}
-            >
+>
               <i
-                className="i-delete"
+                            className="i-delete"
               />
-            </button>,
+</button>,
           },
           "ref": null,
           "rendered": Object {
@@ -1280,7 +1280,7 @@ ShallowWrapper {
             "props": Object {
               "children": <i
                 className="i-delete"
-              />,
+/>,
               "className": "c-delete",
               "onClick": [Function],
             },

@@ -6,38 +6,38 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SubAccount
     account={
-      Object {
-        "id": 1,
-        "name": "account_name",
-        "parent_account_id": null,
-      }
+        Object {
+            "id": 1,
+            "name": "account_name",
+            "parent_account_id": null,
+          }
     }
     accounts={
-      Object {
-        "1": Object {
-          "id": 1,
-          "name": "account_name",
-          "parent_account_id": null,
-        },
-        "2": Object {
-          "id": 1,
-          "name": "account_name1",
-          "parent_account_id": 1,
-        },
-        "3": Object {
-          "id": 2,
-          "name": "account_name2",
-          "parent_account_id": 1,
-        },
-      }
+        Object {
+            "1": Object {
+              "id": 1,
+              "name": "account_name",
+              "parent_account_id": null,
+            },
+            "2": Object {
+              "id": 1,
+              "name": "account_name1",
+              "parent_account_id": 1,
+            },
+            "3": Object {
+              "id": 2,
+              "name": "account_name2",
+              "parent_account_id": 1,
+            },
+          }
     }
     currentAccount={
-      Object {
-        "id": 1,
-      }
+        Object {
+            "id": 1,
+          }
     }
     setAccountActive={[Function]}
-  />,
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -53,12 +53,12 @@ ShallowWrapper {
       "children": Array [
         <button
           onClick={[Function]}
-        >
+>
           <i
-            className="i-dropdown"
+                    className="i-dropdown"
           />
           account_name
-        </button>,
+</button>,
         null,
       ],
       "className": "c-filter__item",
@@ -73,7 +73,7 @@ ShallowWrapper {
           "children": Array [
             <i
               className="i-dropdown"
-            />,
+/>,
             "account_name",
           ],
           "onClick": [Function],
@@ -108,12 +108,12 @@ ShallowWrapper {
         "children": Array [
           <button
             onClick={[Function]}
-          >
+>
             <i
-              className="i-dropdown"
+                        className="i-dropdown"
             />
             account_name
-          </button>,
+</button>,
           null,
         ],
         "className": "c-filter__item",
@@ -128,7 +128,7 @@ ShallowWrapper {
             "children": Array [
               <i
                 className="i-dropdown"
-              />,
+/>,
               "account_name",
             ],
             "onClick": [Function],

@@ -6,11 +6,11 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SiteRow
     site={
-      Object {
-        "url": "http://www.example.com",
-      }
+        Object {
+            "url": "http://www.example.com",
+          }
     }
-  />,
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -27,70 +27,70 @@ ShallowWrapper {
         <td>
           http://www.example.com
           <span
-            className="c-alert c-alert--danger"
-            style={
-              Object {
-                "fontSize": "10px",
-              }
-            }
+                    className="c-alert c-alert--danger"
+                    style={
+                              Object {
+                                        "fontSize": "10px",
+                                      }
+                    }
           >
-            OAuth key and/or secret not configured
+                    OAuth key and/or secret not configured
           </span>
-        </td>,
+</td>,
         <td>
           <button
-            onClick={[Function]}
-            style={
-              Object {
-                "backgroundColor": "transparent",
-                "border": "none",
-                "color": "grey",
-                "cursor": "pointer",
-                "fontSize": "1.5em",
-              }
-            }
+                    onClick={[Function]}
+                    style={
+                              Object {
+                                        "backgroundColor": "transparent",
+                                        "border": "none",
+                                        "color": "grey",
+                                        "cursor": "pointer",
+                                        "fontSize": "1.5em",
+                                      }
+                    }
           >
-            <i
-              className="i-settings"
-            />
+                    <i
+                              className="i-settings"
+                    />
           </button>
           <Connect(SiteModal)
-            closeModal={[Function]}
-            isOpen={false}
-            site={
-              Object {
-                "url": "http://www.example.com",
-              }
-            }
+                    closeModal={[Function]}
+                    isOpen={false}
+                    site={
+                              Object {
+                                        "url": "http://www.example.com",
+                                      }
+                    }
           />
-        </td>,
+</td>,
         <td>
           <button
-            onClick={[Function]}
-            style={
-              Object {
-                "backgroundColor": "transparent",
-                "border": "none",
-                "color": "grey",
-                "cursor": "pointer",
-                "fontSize": "1.5em",
-              }
-            }
+                    onClick={[Function]}
+                    style={
+                              Object {
+                                        "backgroundColor": "transparent",
+                                        "border": "none",
+                                        "color": "grey",
+                                        "cursor": "pointer",
+                                        "fontSize": "1.5em",
+                                      }
+                    }
           >
-            <i
-              className="i-delete"
-            />
+                    <i
+                              className="i-delete"
+                    />
           </button>
           <Connect(SiteModal)
-            closeModal={[Function]}
-            isOpen={false}
-            site={
-              Object {
-                "url": "http://www.example.com",
-              }
-            }
+                    closeModal={[Function]}
+                    isOpen={false}
+                    site={
+                              Object {
+                                        "url": "http://www.example.com",
+                                      }
+                    }
           />
-        </td>,
+</td>,
       ],
     },
     "ref": null,
@@ -105,13 +105,13 @@ ShallowWrapper {
             <span
               className="c-alert c-alert--danger"
               style={
-                Object {
-                  "fontSize": "10px",
-                }
+                            Object {
+                                          "fontSize": "10px",
+                                        }
               }
-            >
+>
               OAuth key and/or secret not configured
-            </span>,
+</span>,
           ],
         },
         "ref": null,
@@ -144,28 +144,28 @@ ShallowWrapper {
             <button
               onClick={[Function]}
               style={
-                Object {
-                  "backgroundColor": "transparent",
-                  "border": "none",
-                  "color": "grey",
-                  "cursor": "pointer",
-                  "fontSize": "1.5em",
-                }
+                            Object {
+                                          "backgroundColor": "transparent",
+                                          "border": "none",
+                                          "color": "grey",
+                                          "cursor": "pointer",
+                                          "fontSize": "1.5em",
+                                        }
               }
-            >
+>
               <i
-                className="i-settings"
+                            className="i-settings"
               />
-            </button>,
+</button>,
             <Connect(SiteModal)
               closeModal={[Function]}
               isOpen={false}
               site={
-                Object {
-                  "url": "http://www.example.com",
-                }
+                            Object {
+                                          "url": "http://www.example.com",
+                                        }
               }
-            />,
+/>,
           ],
         },
         "ref": null,
@@ -177,7 +177,7 @@ ShallowWrapper {
             "props": Object {
               "children": <i
                 className="i-settings"
-              />,
+/>,
               "onClick": [Function],
               "style": Object {
                 "backgroundColor": "transparent",
@@ -228,28 +228,28 @@ ShallowWrapper {
             <button
               onClick={[Function]}
               style={
-                Object {
-                  "backgroundColor": "transparent",
-                  "border": "none",
-                  "color": "grey",
-                  "cursor": "pointer",
-                  "fontSize": "1.5em",
-                }
+                            Object {
+                                          "backgroundColor": "transparent",
+                                          "border": "none",
+                                          "color": "grey",
+                                          "cursor": "pointer",
+                                          "fontSize": "1.5em",
+                                        }
               }
-            >
+>
               <i
-                className="i-delete"
+                            className="i-delete"
               />
-            </button>,
+</button>,
             <Connect(SiteModal)
               closeModal={[Function]}
               isOpen={false}
               site={
-                Object {
-                  "url": "http://www.example.com",
-                }
+                            Object {
+                                          "url": "http://www.example.com",
+                                        }
               }
-            />,
+/>,
           ],
         },
         "ref": null,
@@ -261,7 +261,7 @@ ShallowWrapper {
             "props": Object {
               "children": <i
                 className="i-delete"
-              />,
+/>,
               "onClick": [Function],
               "style": Object {
                 "backgroundColor": "transparent",
@@ -316,70 +316,70 @@ ShallowWrapper {
           <td>
             http://www.example.com
             <span
-              className="c-alert c-alert--danger"
-              style={
-                Object {
-                  "fontSize": "10px",
-                }
-              }
+                        className="c-alert c-alert--danger"
+                        style={
+                                    Object {
+                                                "fontSize": "10px",
+                                              }
+                        }
             >
-              OAuth key and/or secret not configured
+                        OAuth key and/or secret not configured
             </span>
-          </td>,
+</td>,
           <td>
             <button
-              onClick={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "transparent",
-                  "border": "none",
-                  "color": "grey",
-                  "cursor": "pointer",
-                  "fontSize": "1.5em",
-                }
-              }
+                        onClick={[Function]}
+                        style={
+                                    Object {
+                                                "backgroundColor": "transparent",
+                                                "border": "none",
+                                                "color": "grey",
+                                                "cursor": "pointer",
+                                                "fontSize": "1.5em",
+                                              }
+                        }
             >
-              <i
-                className="i-settings"
-              />
+                        <i
+                                    className="i-settings"
+                        />
             </button>
             <Connect(SiteModal)
-              closeModal={[Function]}
-              isOpen={false}
-              site={
-                Object {
-                  "url": "http://www.example.com",
-                }
-              }
+                        closeModal={[Function]}
+                        isOpen={false}
+                        site={
+                                    Object {
+                                                "url": "http://www.example.com",
+                                              }
+                        }
             />
-          </td>,
+</td>,
           <td>
             <button
-              onClick={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "transparent",
-                  "border": "none",
-                  "color": "grey",
-                  "cursor": "pointer",
-                  "fontSize": "1.5em",
-                }
-              }
+                        onClick={[Function]}
+                        style={
+                                    Object {
+                                                "backgroundColor": "transparent",
+                                                "border": "none",
+                                                "color": "grey",
+                                                "cursor": "pointer",
+                                                "fontSize": "1.5em",
+                                              }
+                        }
             >
-              <i
-                className="i-delete"
-              />
+                        <i
+                                    className="i-delete"
+                        />
             </button>
             <Connect(SiteModal)
-              closeModal={[Function]}
-              isOpen={false}
-              site={
-                Object {
-                  "url": "http://www.example.com",
-                }
-              }
+                        closeModal={[Function]}
+                        isOpen={false}
+                        site={
+                                    Object {
+                                                "url": "http://www.example.com",
+                                              }
+                        }
             />
-          </td>,
+</td>,
         ],
       },
       "ref": null,
@@ -394,13 +394,13 @@ ShallowWrapper {
               <span
                 className="c-alert c-alert--danger"
                 style={
-                  Object {
-                    "fontSize": "10px",
-                  }
+                                Object {
+                                                "fontSize": "10px",
+                                              }
                 }
-              >
+>
                 OAuth key and/or secret not configured
-              </span>,
+</span>,
             ],
           },
           "ref": null,
@@ -433,28 +433,28 @@ ShallowWrapper {
               <button
                 onClick={[Function]}
                 style={
-                  Object {
-                    "backgroundColor": "transparent",
-                    "border": "none",
-                    "color": "grey",
-                    "cursor": "pointer",
-                    "fontSize": "1.5em",
-                  }
+                                Object {
+                                                "backgroundColor": "transparent",
+                                                "border": "none",
+                                                "color": "grey",
+                                                "cursor": "pointer",
+                                                "fontSize": "1.5em",
+                                              }
                 }
-              >
+>
                 <i
-                  className="i-settings"
+                                className="i-settings"
                 />
-              </button>,
+</button>,
               <Connect(SiteModal)
                 closeModal={[Function]}
                 isOpen={false}
                 site={
-                  Object {
-                    "url": "http://www.example.com",
-                  }
+                                Object {
+                                                "url": "http://www.example.com",
+                                              }
                 }
-              />,
+/>,
             ],
           },
           "ref": null,
@@ -466,7 +466,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <i
                   className="i-settings"
-                />,
+/>,
                 "onClick": [Function],
                 "style": Object {
                   "backgroundColor": "transparent",
@@ -517,28 +517,28 @@ ShallowWrapper {
               <button
                 onClick={[Function]}
                 style={
-                  Object {
-                    "backgroundColor": "transparent",
-                    "border": "none",
-                    "color": "grey",
-                    "cursor": "pointer",
-                    "fontSize": "1.5em",
-                  }
+                                Object {
+                                                "backgroundColor": "transparent",
+                                                "border": "none",
+                                                "color": "grey",
+                                                "cursor": "pointer",
+                                                "fontSize": "1.5em",
+                                              }
                 }
-              >
+>
                 <i
-                  className="i-delete"
+                                className="i-delete"
                 />
-              </button>,
+</button>,
               <Connect(SiteModal)
                 closeModal={[Function]}
                 isOpen={false}
                 site={
-                  Object {
-                    "url": "http://www.example.com",
-                  }
+                                Object {
+                                                "url": "http://www.example.com",
+                                              }
                 }
-              />,
+/>,
             ],
           },
           "ref": null,
@@ -550,7 +550,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <i
                   className="i-delete"
-                />,
+/>,
                 "onClick": [Function],
                 "style": Object {
                   "backgroundColor": "transparent",

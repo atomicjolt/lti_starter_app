@@ -6,12 +6,12 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SettingsInputs
     settings={
-      Object {
-        "lti_key": "lti_key",
-        "name": "ltiName",
-      }
+        Object {
+            "lti_key": "lti_key",
+            "name": "ltiName",
+          }
     }
-  />,
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -29,18 +29,18 @@ ShallowWrapper {
           name="oauth_consumer_key"
           type="hidden"
           value="lti_key"
-        />,
+/>,
         Array [
           <input
             name="lti_key"
             type="hidden"
             value="lti_key"
-          />,
+/>,
           <input
             name="name"
             type="hidden"
             value="ltiName"
-          />,
+/>,
         ],
       ],
     },
@@ -99,18 +99,18 @@ ShallowWrapper {
             name="oauth_consumer_key"
             type="hidden"
             value="lti_key"
-          />,
+/>,
           Array [
             <input
               name="lti_key"
               type="hidden"
               value="lti_key"
-            />,
+/>,
             <input
               name="name"
               type="hidden"
               value="ltiName"
-            />,
+/>,
           ],
         ],
       },

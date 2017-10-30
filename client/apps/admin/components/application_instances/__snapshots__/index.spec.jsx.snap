@@ -6,9 +6,9 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Index
     applicationInstances={
-      Array [
-        Object {},
-      ]
+        Array [
+            Object {},
+          ]
     }
     applications={Object {}}
     canvasOauthURL="https://www.example.com"
@@ -17,26 +17,26 @@ ShallowWrapper {
     disableApplicationInstance={[Function]}
     getApplicationInstances={[Function]}
     params={
-      Object {
-        "applicationId": "id",
-      }
+        Object {
+            "applicationId": "id",
+          }
     }
     saveApplicationInstance={[Function]}
     settings={
-      Object {
-        "canvas_callback_url": "https://www.example.com",
-      }
+        Object {
+            "canvas_callback_url": "https://www.example.com",
+          }
     }
     sites={
-      Object {
-        "1": Object {
-          "id": 1,
-          "oauth_key": "akey",
-          "oauth_secret": "secret",
-        },
-      }
+        Object {
+            "1": Object {
+              "id": 1,
+              "oauth_key": "akey",
+              "oauth_secret": "secret",
+            },
+          }
     }
-  />,
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -52,57 +52,57 @@ ShallowWrapper {
       "children": Array [
         <Connect(Heading)
           backTo="/applications"
-        />,
+/>,
         <div
           className="o-contain o-contain--full"
-        >
+>
           <Modal
-            application={undefined}
-            closeModal={[Function]}
-            isOpen={false}
-            save={[Function]}
-            sites={
-              Object {
-                "1": Object {
-                  "id": 1,
-                  "oauth_key": "akey",
-                  "oauth_secret": "secret",
-                },
-              }
-            }
+                    application={undefined}
+                    closeModal={[Function]}
+                    isOpen={false}
+                    save={[Function]}
+                    sites={
+                              Object {
+                                        "1": Object {
+                                          "id": 1,
+                                          "oauth_key": "akey",
+                                          "oauth_secret": "secret",
+                                        },
+                                      }
+                    }
           />
           <Header
-            application={undefined}
-            newApplicationInstance={[Function]}
-            openSettings={[Function]}
+                    application={undefined}
+                    newApplicationInstance={[Function]}
+                    openSettings={[Function]}
           />
           <List
-            application={undefined}
-            applicationInstances={
-              Array [
-                Object {},
-              ]
-            }
-            canvasOauthURL="https://www.example.com"
-            deleteApplicationInstance={[Function]}
-            disableApplicationInstance={[Function]}
-            saveApplicationInstance={[Function]}
-            settings={
-              Object {
-                "canvas_callback_url": "https://www.example.com",
-              }
-            }
-            sites={
-              Object {
-                "1": Object {
-                  "id": 1,
-                  "oauth_key": "akey",
-                  "oauth_secret": "secret",
-                },
-              }
-            }
+                    application={undefined}
+                    applicationInstances={
+                              Array [
+                                        Object {},
+                                      ]
+                    }
+                    canvasOauthURL="https://www.example.com"
+                    deleteApplicationInstance={[Function]}
+                    disableApplicationInstance={[Function]}
+                    saveApplicationInstance={[Function]}
+                    settings={
+                              Object {
+                                        "canvas_callback_url": "https://www.example.com",
+                                      }
+                    }
+                    sites={
+                              Object {
+                                        "1": Object {
+                                          "id": 1,
+                                          "oauth_key": "akey",
+                                          "oauth_secret": "secret",
+                                        },
+                                      }
+                    }
           />
-        </div>,
+</div>,
       ],
     },
     "ref": null,
@@ -130,46 +130,46 @@ ShallowWrapper {
               isOpen={false}
               save={[Function]}
               sites={
-                Object {
-                  "1": Object {
-                    "id": 1,
-                    "oauth_key": "akey",
-                    "oauth_secret": "secret",
-                  },
-                }
+                            Object {
+                                          "1": Object {
+                                            "id": 1,
+                                            "oauth_key": "akey",
+                                            "oauth_secret": "secret",
+                                          },
+                                        }
               }
-            />,
+/>,
             <Header
               application={undefined}
               newApplicationInstance={[Function]}
               openSettings={[Function]}
-            />,
+/>,
             <List
               application={undefined}
               applicationInstances={
-                Array [
-                  Object {},
-                ]
+                            Array [
+                                          Object {},
+                                        ]
               }
               canvasOauthURL="https://www.example.com"
               deleteApplicationInstance={[Function]}
               disableApplicationInstance={[Function]}
               saveApplicationInstance={[Function]}
               settings={
-                Object {
-                  "canvas_callback_url": "https://www.example.com",
-                }
+                            Object {
+                                          "canvas_callback_url": "https://www.example.com",
+                                        }
               }
               sites={
-                Object {
-                  "1": Object {
-                    "id": 1,
-                    "oauth_key": "akey",
-                    "oauth_secret": "secret",
-                  },
-                }
+                            Object {
+                                          "1": Object {
+                                            "id": 1,
+                                            "oauth_key": "akey",
+                                            "oauth_secret": "secret",
+                                          },
+                                        }
               }
-            />,
+/>,
           ],
           "className": "o-contain o-contain--full",
         },
@@ -252,57 +252,57 @@ ShallowWrapper {
         "children": Array [
           <Connect(Heading)
             backTo="/applications"
-          />,
+/>,
           <div
             className="o-contain o-contain--full"
-          >
+>
             <Modal
-              application={undefined}
-              closeModal={[Function]}
-              isOpen={false}
-              save={[Function]}
-              sites={
-                Object {
-                  "1": Object {
-                    "id": 1,
-                    "oauth_key": "akey",
-                    "oauth_secret": "secret",
-                  },
-                }
-              }
+                        application={undefined}
+                        closeModal={[Function]}
+                        isOpen={false}
+                        save={[Function]}
+                        sites={
+                                    Object {
+                                                "1": Object {
+                                                  "id": 1,
+                                                  "oauth_key": "akey",
+                                                  "oauth_secret": "secret",
+                                                },
+                                              }
+                        }
             />
             <Header
-              application={undefined}
-              newApplicationInstance={[Function]}
-              openSettings={[Function]}
+                        application={undefined}
+                        newApplicationInstance={[Function]}
+                        openSettings={[Function]}
             />
             <List
-              application={undefined}
-              applicationInstances={
-                Array [
-                  Object {},
-                ]
-              }
-              canvasOauthURL="https://www.example.com"
-              deleteApplicationInstance={[Function]}
-              disableApplicationInstance={[Function]}
-              saveApplicationInstance={[Function]}
-              settings={
-                Object {
-                  "canvas_callback_url": "https://www.example.com",
-                }
-              }
-              sites={
-                Object {
-                  "1": Object {
-                    "id": 1,
-                    "oauth_key": "akey",
-                    "oauth_secret": "secret",
-                  },
-                }
-              }
+                        application={undefined}
+                        applicationInstances={
+                                    Array [
+                                                Object {},
+                                              ]
+                        }
+                        canvasOauthURL="https://www.example.com"
+                        deleteApplicationInstance={[Function]}
+                        disableApplicationInstance={[Function]}
+                        saveApplicationInstance={[Function]}
+                        settings={
+                                    Object {
+                                                "canvas_callback_url": "https://www.example.com",
+                                              }
+                        }
+                        sites={
+                                    Object {
+                                                "1": Object {
+                                                  "id": 1,
+                                                  "oauth_key": "akey",
+                                                  "oauth_secret": "secret",
+                                                },
+                                              }
+                        }
             />
-          </div>,
+</div>,
         ],
       },
       "ref": null,
@@ -330,46 +330,46 @@ ShallowWrapper {
                 isOpen={false}
                 save={[Function]}
                 sites={
-                  Object {
-                    "1": Object {
-                      "id": 1,
-                      "oauth_key": "akey",
-                      "oauth_secret": "secret",
-                    },
-                  }
+                                Object {
+                                                "1": Object {
+                                                  "id": 1,
+                                                  "oauth_key": "akey",
+                                                  "oauth_secret": "secret",
+                                                },
+                                              }
                 }
-              />,
+/>,
               <Header
                 application={undefined}
                 newApplicationInstance={[Function]}
                 openSettings={[Function]}
-              />,
+/>,
               <List
                 application={undefined}
                 applicationInstances={
-                  Array [
-                    Object {},
-                  ]
+                                Array [
+                                                Object {},
+                                              ]
                 }
                 canvasOauthURL="https://www.example.com"
                 deleteApplicationInstance={[Function]}
                 disableApplicationInstance={[Function]}
                 saveApplicationInstance={[Function]}
                 settings={
-                  Object {
-                    "canvas_callback_url": "https://www.example.com",
-                  }
+                                Object {
+                                                "canvas_callback_url": "https://www.example.com",
+                                              }
                 }
                 sites={
-                  Object {
-                    "1": Object {
-                      "id": 1,
-                      "oauth_key": "akey",
-                      "oauth_secret": "secret",
-                    },
-                  }
+                                Object {
+                                                "1": Object {
+                                                  "id": 1,
+                                                  "oauth_key": "akey",
+                                                  "oauth_secret": "secret",
+                                                },
+                                              }
                 }
-              />,
+/>,
             ],
             "className": "o-contain o-contain--full",
           },

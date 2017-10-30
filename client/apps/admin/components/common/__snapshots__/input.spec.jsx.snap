@@ -7,17 +7,17 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Input
     className="imaclass"
     inputProps={
-      Object {
-        "checked": true,
-        "id": "IM AN ID",
-        "name": "the name",
-        "onChange": [Function],
-        "type": "radio",
-        "value": "IM A VALUE",
-      }
+        Object {
+            "checked": true,
+            "id": "IM AN ID",
+            "name": "the name",
+            "onChange": [Function],
+            "type": "radio",
+            "value": "IM A VALUE",
+          }
     }
     labelText="IMA LABEL"
-  />,
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -39,10 +39,10 @@ ShallowWrapper {
           onChange={[Function]}
           type="radio"
           value="IM A VALUE"
-        />,
+/>,
         <span>
           IMA LABEL
-        </span>,
+</span>,
       ],
       "className": "imaclass",
       "htmlFor": "IM AN ID",
@@ -95,10 +95,10 @@ ShallowWrapper {
             onChange={[Function]}
             type="radio"
             value="IM A VALUE"
-          />,
+/>,
           <span>
             IMA LABEL
-          </span>,
+</span>,
         ],
         "className": "imaclass",
         "htmlFor": "IM AN ID",

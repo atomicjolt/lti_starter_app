@@ -6,29 +6,29 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <CourseInstalls
     applicationInstance={
-      Object {
-        "lti_config_xml": "lti_config_xml",
-        "lti_key": "lti_key",
-        "lti_secret": "lti_secret",
-        "name": "application_name",
-      }
+        Object {
+            "lti_config_xml": "lti_config_xml",
+            "lti_key": "lti_key",
+            "lti_secret": "lti_secret",
+            "name": "application_name",
+          }
     }
     canvasRequest={[Function]}
     courseId={123}
     courseName="courseName"
     courses={Array []}
     installedTool={
-      Object {
-        "id": 12,
-      }
+        Object {
+            "id": 12,
+          }
     }
     loadingCourses={
-      Object {
-        "courseId": "id",
-        "courseName": "name",
-      }
+        Object {
+            "courseId": "id",
+            "courseName": "name",
+          }
     }
-  />,
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -44,14 +44,14 @@ ShallowWrapper {
       "children": Array [
         <thead>
           <tr>
-            <th>
-              <span>
-                Course Name
-              </span>
-            </th>
-            <th />
+                    <th>
+                              <span>
+                                        Course Name
+                              </span>
+                    </th>
+                    <th />
           </tr>
-        </thead>,
+</thead>,
         <tbody />,
       ],
       "className": "c-table c-table--installs",
@@ -65,12 +65,12 @@ ShallowWrapper {
         "props": Object {
           "children": <tr>
             <th>
-              <span>
-                Course Name
-              </span>
+                        <span>
+                                    Course Name
+                        </span>
             </th>
             <th />
-          </tr>,
+</tr>,
         },
         "ref": null,
         "rendered": Object {
@@ -81,9 +81,9 @@ ShallowWrapper {
             "children": Array [
               <th>
                 <span>
-                  Course Name
+                                Course Name
                 </span>
-              </th>,
+</th>,
               <th />,
             ],
           },
@@ -96,7 +96,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <span>
                   Course Name
-                </span>,
+</span>,
               },
               "ref": null,
               "rendered": Object {
@@ -149,14 +149,14 @@ ShallowWrapper {
         "children": Array [
           <thead>
             <tr>
-              <th>
-                <span>
-                  Course Name
-                </span>
-              </th>
-              <th />
+                        <th>
+                                    <span>
+                                                Course Name
+                                    </span>
+                        </th>
+                        <th />
             </tr>
-          </thead>,
+</thead>,
           <tbody />,
         ],
         "className": "c-table c-table--installs",
@@ -170,12 +170,12 @@ ShallowWrapper {
           "props": Object {
             "children": <tr>
               <th>
-                <span>
-                  Course Name
-                </span>
+                            <span>
+                                          Course Name
+                            </span>
               </th>
               <th />
-            </tr>,
+</tr>,
           },
           "ref": null,
           "rendered": Object {
@@ -186,9 +186,9 @@ ShallowWrapper {
               "children": Array [
                 <th>
                   <span>
-                    Course Name
+                                    Course Name
                   </span>
-                </th>,
+</th>,
                 <th />,
               ],
             },
@@ -201,7 +201,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": <span>
                     Course Name
-                  </span>,
+</span>,
                 },
                 "ref": null,
                 "rendered": Object {

@@ -6,15 +6,15 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <SubNav
     sites={
-      Object {
-        "1": Object {
-          "id": 1,
-          "oauth_key": "akey",
-          "oauth_secret": "secret",
-        },
-      }
+        Object {
+            "1": Object {
+              "id": 1,
+              "oauth_key": "akey",
+              "oauth_secret": "secret",
+            },
+          }
     }
-  />,
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -29,26 +29,26 @@ ShallowWrapper {
     "props": Object {
       "children": <ul>
         <li>
-          <Link
-            activeClassName="is-active"
-            onlyActiveOnIndex={false}
-            style={Object {}}
-            to="/applications"
-          >
-            LTI Tools
-          </Link>
+                <Link
+                        activeClassName="is-active"
+                        onlyActiveOnIndex={false}
+                        style={Object {}}
+                        to="/applications"
+                >
+                        LTI Tools
+                </Link>
         </li>
         <li>
-          <Link
-            activeClassName="is-active"
-            onlyActiveOnIndex={false}
-            style={Object {}}
-            to="/sites"
-          >
-            Sites
-          </Link>
+                <Link
+                        activeClassName="is-active"
+                        onlyActiveOnIndex={false}
+                        style={Object {}}
+                        to="/sites"
+                >
+                        Sites
+                </Link>
         </li>
-      </ul>,
+</ul>,
       "className": "c-subnav",
     },
     "ref": null,
@@ -60,24 +60,24 @@ ShallowWrapper {
         "children": Array [
           <li>
             <Link
-              activeClassName="is-active"
-              onlyActiveOnIndex={false}
-              style={Object {}}
-              to="/applications"
+                        activeClassName="is-active"
+                        onlyActiveOnIndex={false}
+                        style={Object {}}
+                        to="/applications"
             >
-              LTI Tools
+                        LTI Tools
             </Link>
-          </li>,
+</li>,
           <li>
             <Link
-              activeClassName="is-active"
-              onlyActiveOnIndex={false}
-              style={Object {}}
-              to="/sites"
+                        activeClassName="is-active"
+                        onlyActiveOnIndex={false}
+                        style={Object {}}
+                        to="/sites"
             >
-              Sites
+                        Sites
             </Link>
-          </li>,
+</li>,
         ],
       },
       "ref": null,
@@ -92,9 +92,9 @@ ShallowWrapper {
               onlyActiveOnIndex={false}
               style={Object {}}
               to="/applications"
-            >
+>
               LTI Tools
-            </Link>,
+</Link>,
           },
           "ref": null,
           "rendered": Object {
@@ -124,9 +124,9 @@ ShallowWrapper {
               onlyActiveOnIndex={false}
               style={Object {}}
               to="/sites"
-            >
+>
               Sites
-            </Link>,
+</Link>,
           },
           "ref": null,
           "rendered": Object {
@@ -165,26 +165,26 @@ ShallowWrapper {
       "props": Object {
         "children": <ul>
           <li>
-            <Link
-              activeClassName="is-active"
-              onlyActiveOnIndex={false}
-              style={Object {}}
-              to="/applications"
-            >
-              LTI Tools
-            </Link>
+                    <Link
+                              activeClassName="is-active"
+                              onlyActiveOnIndex={false}
+                              style={Object {}}
+                              to="/applications"
+                    >
+                              LTI Tools
+                    </Link>
           </li>
           <li>
-            <Link
-              activeClassName="is-active"
-              onlyActiveOnIndex={false}
-              style={Object {}}
-              to="/sites"
-            >
-              Sites
-            </Link>
+                    <Link
+                              activeClassName="is-active"
+                              onlyActiveOnIndex={false}
+                              style={Object {}}
+                              to="/sites"
+                    >
+                              Sites
+                    </Link>
           </li>
-        </ul>,
+</ul>,
         "className": "c-subnav",
       },
       "ref": null,
@@ -196,24 +196,24 @@ ShallowWrapper {
           "children": Array [
             <li>
               <Link
-                activeClassName="is-active"
-                onlyActiveOnIndex={false}
-                style={Object {}}
-                to="/applications"
+                            activeClassName="is-active"
+                            onlyActiveOnIndex={false}
+                            style={Object {}}
+                            to="/applications"
               >
-                LTI Tools
+                            LTI Tools
               </Link>
-            </li>,
+</li>,
             <li>
               <Link
-                activeClassName="is-active"
-                onlyActiveOnIndex={false}
-                style={Object {}}
-                to="/sites"
+                            activeClassName="is-active"
+                            onlyActiveOnIndex={false}
+                            style={Object {}}
+                            to="/sites"
               >
-                Sites
+                            Sites
               </Link>
-            </li>,
+</li>,
           ],
         },
         "ref": null,
@@ -228,9 +228,9 @@ ShallowWrapper {
                 onlyActiveOnIndex={false}
                 style={Object {}}
                 to="/applications"
-              >
+>
                 LTI Tools
-              </Link>,
+</Link>,
             },
             "ref": null,
             "rendered": Object {
@@ -260,9 +260,9 @@ ShallowWrapper {
                 onlyActiveOnIndex={false}
                 style={Object {}}
                 to="/sites"
-              >
+>
                 Sites
-              </Link>,
+</Link>,
             },
             "ref": null,
             "rendered": Object {

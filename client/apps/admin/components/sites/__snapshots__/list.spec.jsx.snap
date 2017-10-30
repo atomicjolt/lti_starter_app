@@ -6,18 +6,18 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <List
     sites={
-      Object {
-        "1": Object {
-          "id": 1,
-          "url": "bfcoder.com",
-        },
-        "2": Object {
-          "id": 2,
-          "url": "atomicjolt.com",
-        },
-      }
+        Object {
+            "1": Object {
+              "id": 1,
+              "url": "bfcoder.com",
+            },
+            "2": Object {
+              "id": 2,
+              "url": "atomicjolt.com",
+            },
+          }
     }
-  />,
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -33,41 +33,41 @@ ShallowWrapper {
       "children": Array [
         <thead>
           <tr>
-            <th>
-              <span>
-                URL
-              </span>
-            </th>
-            <th>
-              <span>
-                SETTINGS
-              </span>
-            </th>
-            <th>
-              <span>
-                DELETE
-              </span>
-            </th>
+                    <th>
+                              <span>
+                                        URL
+                              </span>
+                    </th>
+                    <th>
+                              <span>
+                                        SETTINGS
+                              </span>
+                    </th>
+                    <th>
+                              <span>
+                                        DELETE
+                              </span>
+                    </th>
           </tr>
-        </thead>,
+</thead>,
         <tbody>
           <SiteRow
-            site={
-              Object {
-                "id": 1,
-                "url": "bfcoder.com",
-              }
-            }
+                    site={
+                              Object {
+                                        "id": 1,
+                                        "url": "bfcoder.com",
+                                      }
+                    }
           />
           <SiteRow
-            site={
-              Object {
-                "id": 2,
-                "url": "atomicjolt.com",
-              }
-            }
+                    site={
+                              Object {
+                                        "id": 2,
+                                        "url": "atomicjolt.com",
+                                      }
+                    }
           />
-        </tbody>,
+</tbody>,
       ],
       "className": "c-table c-table--lti",
     },
@@ -80,21 +80,21 @@ ShallowWrapper {
         "props": Object {
           "children": <tr>
             <th>
-              <span>
-                URL
-              </span>
+                        <span>
+                                    URL
+                        </span>
             </th>
             <th>
-              <span>
-                SETTINGS
-              </span>
+                        <span>
+                                    SETTINGS
+                        </span>
             </th>
             <th>
-              <span>
-                DELETE
-              </span>
+                        <span>
+                                    DELETE
+                        </span>
             </th>
-          </tr>,
+</tr>,
         },
         "ref": null,
         "rendered": Object {
@@ -105,19 +105,19 @@ ShallowWrapper {
             "children": Array [
               <th>
                 <span>
-                  URL
+                                URL
                 </span>
-              </th>,
+</th>,
               <th>
                 <span>
-                  SETTINGS
+                                SETTINGS
                 </span>
-              </th>,
+</th>,
               <th>
                 <span>
-                  DELETE
+                                DELETE
                 </span>
-              </th>,
+</th>,
             ],
           },
           "ref": null,
@@ -129,7 +129,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <span>
                   URL
-                </span>,
+</span>,
               },
               "ref": null,
               "rendered": Object {
@@ -152,7 +152,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <span>
                   SETTINGS
-                </span>,
+</span>,
               },
               "ref": null,
               "rendered": Object {
@@ -175,7 +175,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <span>
                   DELETE
-                </span>,
+</span>,
               },
               "ref": null,
               "rendered": Object {
@@ -204,20 +204,20 @@ ShallowWrapper {
           "children": Array [
             <SiteRow
               site={
-                Object {
-                  "id": 1,
-                  "url": "bfcoder.com",
-                }
+                            Object {
+                                          "id": 1,
+                                          "url": "bfcoder.com",
+                                        }
               }
-            />,
+/>,
             <SiteRow
               site={
-                Object {
-                  "id": 2,
-                  "url": "atomicjolt.com",
-                }
+                            Object {
+                                          "id": 2,
+                                          "url": "atomicjolt.com",
+                                        }
               }
-            />,
+/>,
           ],
         },
         "ref": null,
@@ -265,41 +265,41 @@ ShallowWrapper {
         "children": Array [
           <thead>
             <tr>
-              <th>
-                <span>
-                  URL
-                </span>
-              </th>
-              <th>
-                <span>
-                  SETTINGS
-                </span>
-              </th>
-              <th>
-                <span>
-                  DELETE
-                </span>
-              </th>
+                        <th>
+                                    <span>
+                                                URL
+                                    </span>
+                        </th>
+                        <th>
+                                    <span>
+                                                SETTINGS
+                                    </span>
+                        </th>
+                        <th>
+                                    <span>
+                                                DELETE
+                                    </span>
+                        </th>
             </tr>
-          </thead>,
+</thead>,
           <tbody>
             <SiteRow
-              site={
-                Object {
-                  "id": 1,
-                  "url": "bfcoder.com",
-                }
-              }
+                        site={
+                                    Object {
+                                                "id": 1,
+                                                "url": "bfcoder.com",
+                                              }
+                        }
             />
             <SiteRow
-              site={
-                Object {
-                  "id": 2,
-                  "url": "atomicjolt.com",
-                }
-              }
+                        site={
+                                    Object {
+                                                "id": 2,
+                                                "url": "atomicjolt.com",
+                                              }
+                        }
             />
-          </tbody>,
+</tbody>,
         ],
         "className": "c-table c-table--lti",
       },
@@ -312,21 +312,21 @@ ShallowWrapper {
           "props": Object {
             "children": <tr>
               <th>
-                <span>
-                  URL
-                </span>
+                            <span>
+                                          URL
+                            </span>
               </th>
               <th>
-                <span>
-                  SETTINGS
-                </span>
+                            <span>
+                                          SETTINGS
+                            </span>
               </th>
               <th>
-                <span>
-                  DELETE
-                </span>
+                            <span>
+                                          DELETE
+                            </span>
               </th>
-            </tr>,
+</tr>,
           },
           "ref": null,
           "rendered": Object {
@@ -337,19 +337,19 @@ ShallowWrapper {
               "children": Array [
                 <th>
                   <span>
-                    URL
+                                    URL
                   </span>
-                </th>,
+</th>,
                 <th>
                   <span>
-                    SETTINGS
+                                    SETTINGS
                   </span>
-                </th>,
+</th>,
                 <th>
                   <span>
-                    DELETE
+                                    DELETE
                   </span>
-                </th>,
+</th>,
               ],
             },
             "ref": null,
@@ -361,7 +361,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": <span>
                     URL
-                  </span>,
+</span>,
                 },
                 "ref": null,
                 "rendered": Object {
@@ -384,7 +384,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": <span>
                     SETTINGS
-                  </span>,
+</span>,
                 },
                 "ref": null,
                 "rendered": Object {
@@ -407,7 +407,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": <span>
                     DELETE
-                  </span>,
+</span>,
                 },
                 "ref": null,
                 "rendered": Object {
@@ -436,20 +436,20 @@ ShallowWrapper {
             "children": Array [
               <SiteRow
                 site={
-                  Object {
-                    "id": 1,
-                    "url": "bfcoder.com",
-                  }
+                                Object {
+                                                "id": 1,
+                                                "url": "bfcoder.com",
+                                              }
                 }
-              />,
+/>,
               <SiteRow
                 site={
-                  Object {
-                    "id": 2,
-                    "url": "atomicjolt.com",
-                  }
+                                Object {
+                                                "id": 2,
+                                                "url": "atomicjolt.com",
+                                              }
                 }
-              />,
+/>,
             ],
           },
           "ref": null,

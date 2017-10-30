@@ -9,7 +9,7 @@ ShallowWrapper {
     isUpdate={false}
     onChange={[Function]}
     setupSite={[Function]}
-  />,
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -25,74 +25,74 @@ ShallowWrapper {
       "children": Array [
         <div
           className="o-grid o-grid__modal-top"
-        >
+>
           <div
-            className="o-grid__item u-full"
+                    className="o-grid__item u-full"
           >
-            <Input
-              className="c-input"
-              inputProps={
-                Object {
-                  "id": "site_url",
-                  "name": "url",
-                  "onChange": [Function],
-                  "type": "text",
-                  "value": "",
-                }
-              }
-              labelText="Canvas Domain"
-            />
+                    <Input
+                              className="c-input"
+                              inputProps={
+                                        Object {
+                                                  "id": "site_url",
+                                                  "name": "url",
+                                                  "onChange": [Function],
+                                                  "type": "text",
+                                                  "value": "",
+                                                }
+                              }
+                              labelText="Canvas Domain"
+                    />
           </div>
           <div
-            className="o-grid__item u-full"
+                    className="o-grid__item u-full"
           >
-            <Input
-              className="c-input"
-              inputProps={
-                Object {
-                  "id": "site_oauth_key",
-                  "name": "oauth_key",
-                  "onChange": [Function],
-                  "type": "text",
-                  "value": "",
-                }
-              }
-              labelText="Canvas Developer ID"
-            />
+                    <Input
+                              className="c-input"
+                              inputProps={
+                                        Object {
+                                                  "id": "site_oauth_key",
+                                                  "name": "oauth_key",
+                                                  "onChange": [Function],
+                                                  "type": "text",
+                                                  "value": "",
+                                                }
+                              }
+                              labelText="Canvas Developer ID"
+                    />
           </div>
           <div
-            className="o-grid__item u-full"
+                    className="o-grid__item u-full"
           >
-            <Input
-              className="c-input"
-              inputProps={
-                Object {
-                  "id": "site_oauth_secret",
-                  "name": "oauth_secret",
-                  "onChange": [Function],
-                  "type": "text",
-                  "value": "",
-                }
-              }
-              labelText="Canvas Developer Key"
-            />
+                    <Input
+                              className="c-input"
+                              inputProps={
+                                        Object {
+                                                  "id": "site_oauth_secret",
+                                                  "name": "oauth_secret",
+                                                  "onChange": [Function],
+                                                  "type": "text",
+                                                  "value": "",
+                                                }
+                              }
+                              labelText="Canvas Developer Key"
+                    />
           </div>
-        </div>,
+</div>,
         <button
           className="c-btn c-btn--yellow"
           onClick={[Function]}
           type="button"
-        >
+>
           Create
            Domain
-        </button>,
+</button>,
         <button
           className="c-btn c-btn--gray--large u-m-right"
           onClick={[Function]}
           type="button"
-        >
+>
           Cancel
-        </button>,
+</button>,
       ],
     },
     "ref": null,
@@ -105,55 +105,55 @@ ShallowWrapper {
           "children": Array [
             <div
               className="o-grid__item u-full"
-            >
+>
               <Input
-                className="c-input"
-                inputProps={
-                  Object {
-                    "id": "site_url",
-                    "name": "url",
-                    "onChange": [Function],
-                    "type": "text",
-                    "value": "",
-                  }
-                }
-                labelText="Canvas Domain"
+                            className="c-input"
+                            inputProps={
+                                          Object {
+                                                        "id": "site_url",
+                                                        "name": "url",
+                                                        "onChange": [Function],
+                                                        "type": "text",
+                                                        "value": "",
+                                                      }
+                            }
+                            labelText="Canvas Domain"
               />
-            </div>,
+</div>,
             <div
               className="o-grid__item u-full"
-            >
+>
               <Input
-                className="c-input"
-                inputProps={
-                  Object {
-                    "id": "site_oauth_key",
-                    "name": "oauth_key",
-                    "onChange": [Function],
-                    "type": "text",
-                    "value": "",
-                  }
-                }
-                labelText="Canvas Developer ID"
+                            className="c-input"
+                            inputProps={
+                                          Object {
+                                                        "id": "site_oauth_key",
+                                                        "name": "oauth_key",
+                                                        "onChange": [Function],
+                                                        "type": "text",
+                                                        "value": "",
+                                                      }
+                            }
+                            labelText="Canvas Developer ID"
               />
-            </div>,
+</div>,
             <div
               className="o-grid__item u-full"
-            >
+>
               <Input
-                className="c-input"
-                inputProps={
-                  Object {
-                    "id": "site_oauth_secret",
-                    "name": "oauth_secret",
-                    "onChange": [Function],
-                    "type": "text",
-                    "value": "",
-                  }
-                }
-                labelText="Canvas Developer Key"
+                            className="c-input"
+                            inputProps={
+                                          Object {
+                                                        "id": "site_oauth_secret",
+                                                        "name": "oauth_secret",
+                                                        "onChange": [Function],
+                                                        "type": "text",
+                                                        "value": "",
+                                                      }
+                            }
+                            labelText="Canvas Developer Key"
               />
-            </div>,
+</div>,
           ],
           "className": "o-grid o-grid__modal-top",
         },
@@ -167,16 +167,16 @@ ShallowWrapper {
               "children": <Input
                 className="c-input"
                 inputProps={
-                  Object {
-                    "id": "site_url",
-                    "name": "url",
-                    "onChange": [Function],
-                    "type": "text",
-                    "value": "",
-                  }
+                                Object {
+                                                "id": "site_url",
+                                                "name": "url",
+                                                "onChange": [Function],
+                                                "type": "text",
+                                                "value": "",
+                                              }
                 }
                 labelText="Canvas Domain"
-              />,
+/>,
               "className": "o-grid__item u-full",
             },
             "ref": null,
@@ -209,16 +209,16 @@ ShallowWrapper {
               "children": <Input
                 className="c-input"
                 inputProps={
-                  Object {
-                    "id": "site_oauth_key",
-                    "name": "oauth_key",
-                    "onChange": [Function],
-                    "type": "text",
-                    "value": "",
-                  }
+                                Object {
+                                                "id": "site_oauth_key",
+                                                "name": "oauth_key",
+                                                "onChange": [Function],
+                                                "type": "text",
+                                                "value": "",
+                                              }
                 }
                 labelText="Canvas Developer ID"
-              />,
+/>,
               "className": "o-grid__item u-full",
             },
             "ref": null,
@@ -251,16 +251,16 @@ ShallowWrapper {
               "children": <Input
                 className="c-input"
                 inputProps={
-                  Object {
-                    "id": "site_oauth_secret",
-                    "name": "oauth_secret",
-                    "onChange": [Function],
-                    "type": "text",
-                    "value": "",
-                  }
+                                Object {
+                                                "id": "site_oauth_secret",
+                                                "name": "oauth_secret",
+                                                "onChange": [Function],
+                                                "type": "text",
+                                                "value": "",
+                                              }
                 }
                 labelText="Canvas Developer Key"
-              />,
+/>,
               "className": "o-grid__item u-full",
             },
             "ref": null,
@@ -334,74 +334,74 @@ ShallowWrapper {
         "children": Array [
           <div
             className="o-grid o-grid__modal-top"
-          >
+>
             <div
-              className="o-grid__item u-full"
+                        className="o-grid__item u-full"
             >
-              <Input
-                className="c-input"
-                inputProps={
-                  Object {
-                    "id": "site_url",
-                    "name": "url",
-                    "onChange": [Function],
-                    "type": "text",
-                    "value": "",
-                  }
-                }
-                labelText="Canvas Domain"
-              />
+                        <Input
+                                    className="c-input"
+                                    inputProps={
+                                                Object {
+                                                            "id": "site_url",
+                                                            "name": "url",
+                                                            "onChange": [Function],
+                                                            "type": "text",
+                                                            "value": "",
+                                                          }
+                                    }
+                                    labelText="Canvas Domain"
+                        />
             </div>
             <div
-              className="o-grid__item u-full"
+                        className="o-grid__item u-full"
             >
-              <Input
-                className="c-input"
-                inputProps={
-                  Object {
-                    "id": "site_oauth_key",
-                    "name": "oauth_key",
-                    "onChange": [Function],
-                    "type": "text",
-                    "value": "",
-                  }
-                }
-                labelText="Canvas Developer ID"
-              />
+                        <Input
+                                    className="c-input"
+                                    inputProps={
+                                                Object {
+                                                            "id": "site_oauth_key",
+                                                            "name": "oauth_key",
+                                                            "onChange": [Function],
+                                                            "type": "text",
+                                                            "value": "",
+                                                          }
+                                    }
+                                    labelText="Canvas Developer ID"
+                        />
             </div>
             <div
-              className="o-grid__item u-full"
+                        className="o-grid__item u-full"
             >
-              <Input
-                className="c-input"
-                inputProps={
-                  Object {
-                    "id": "site_oauth_secret",
-                    "name": "oauth_secret",
-                    "onChange": [Function],
-                    "type": "text",
-                    "value": "",
-                  }
-                }
-                labelText="Canvas Developer Key"
-              />
+                        <Input
+                                    className="c-input"
+                                    inputProps={
+                                                Object {
+                                                            "id": "site_oauth_secret",
+                                                            "name": "oauth_secret",
+                                                            "onChange": [Function],
+                                                            "type": "text",
+                                                            "value": "",
+                                                          }
+                                    }
+                                    labelText="Canvas Developer Key"
+                        />
             </div>
-          </div>,
+</div>,
           <button
             className="c-btn c-btn--yellow"
             onClick={[Function]}
             type="button"
-          >
+>
             Create
              Domain
-          </button>,
+</button>,
           <button
             className="c-btn c-btn--gray--large u-m-right"
             onClick={[Function]}
             type="button"
-          >
+>
             Cancel
-          </button>,
+</button>,
         ],
       },
       "ref": null,
@@ -414,55 +414,55 @@ ShallowWrapper {
             "children": Array [
               <div
                 className="o-grid__item u-full"
-              >
+>
                 <Input
-                  className="c-input"
-                  inputProps={
-                    Object {
-                      "id": "site_url",
-                      "name": "url",
-                      "onChange": [Function],
-                      "type": "text",
-                      "value": "",
-                    }
-                  }
-                  labelText="Canvas Domain"
+                                className="c-input"
+                                inputProps={
+                                                Object {
+                                                                "id": "site_url",
+                                                                "name": "url",
+                                                                "onChange": [Function],
+                                                                "type": "text",
+                                                                "value": "",
+                                                              }
+                                }
+                                labelText="Canvas Domain"
                 />
-              </div>,
+</div>,
               <div
                 className="o-grid__item u-full"
-              >
+>
                 <Input
-                  className="c-input"
-                  inputProps={
-                    Object {
-                      "id": "site_oauth_key",
-                      "name": "oauth_key",
-                      "onChange": [Function],
-                      "type": "text",
-                      "value": "",
-                    }
-                  }
-                  labelText="Canvas Developer ID"
+                                className="c-input"
+                                inputProps={
+                                                Object {
+                                                                "id": "site_oauth_key",
+                                                                "name": "oauth_key",
+                                                                "onChange": [Function],
+                                                                "type": "text",
+                                                                "value": "",
+                                                              }
+                                }
+                                labelText="Canvas Developer ID"
                 />
-              </div>,
+</div>,
               <div
                 className="o-grid__item u-full"
-              >
+>
                 <Input
-                  className="c-input"
-                  inputProps={
-                    Object {
-                      "id": "site_oauth_secret",
-                      "name": "oauth_secret",
-                      "onChange": [Function],
-                      "type": "text",
-                      "value": "",
-                    }
-                  }
-                  labelText="Canvas Developer Key"
+                                className="c-input"
+                                inputProps={
+                                                Object {
+                                                                "id": "site_oauth_secret",
+                                                                "name": "oauth_secret",
+                                                                "onChange": [Function],
+                                                                "type": "text",
+                                                                "value": "",
+                                                              }
+                                }
+                                labelText="Canvas Developer Key"
                 />
-              </div>,
+</div>,
             ],
             "className": "o-grid o-grid__modal-top",
           },
@@ -476,16 +476,16 @@ ShallowWrapper {
                 "children": <Input
                   className="c-input"
                   inputProps={
-                    Object {
-                      "id": "site_url",
-                      "name": "url",
-                      "onChange": [Function],
-                      "type": "text",
-                      "value": "",
-                    }
+                                    Object {
+                                                      "id": "site_url",
+                                                      "name": "url",
+                                                      "onChange": [Function],
+                                                      "type": "text",
+                                                      "value": "",
+                                                    }
                   }
                   labelText="Canvas Domain"
-                />,
+/>,
                 "className": "o-grid__item u-full",
               },
               "ref": null,
@@ -518,16 +518,16 @@ ShallowWrapper {
                 "children": <Input
                   className="c-input"
                   inputProps={
-                    Object {
-                      "id": "site_oauth_key",
-                      "name": "oauth_key",
-                      "onChange": [Function],
-                      "type": "text",
-                      "value": "",
-                    }
+                                    Object {
+                                                      "id": "site_oauth_key",
+                                                      "name": "oauth_key",
+                                                      "onChange": [Function],
+                                                      "type": "text",
+                                                      "value": "",
+                                                    }
                   }
                   labelText="Canvas Developer ID"
-                />,
+/>,
                 "className": "o-grid__item u-full",
               },
               "ref": null,
@@ -560,16 +560,16 @@ ShallowWrapper {
                 "children": <Input
                   className="c-input"
                   inputProps={
-                    Object {
-                      "id": "site_oauth_secret",
-                      "name": "oauth_secret",
-                      "onChange": [Function],
-                      "type": "text",
-                      "value": "",
-                    }
+                                    Object {
+                                                      "id": "site_oauth_secret",
+                                                      "name": "oauth_secret",
+                                                      "onChange": [Function],
+                                                      "type": "text",
+                                                      "value": "",
+                                                    }
                   }
                   labelText="Canvas Developer Key"
-                />,
+/>,
                 "className": "o-grid__item u-full",
               },
               "ref": null,

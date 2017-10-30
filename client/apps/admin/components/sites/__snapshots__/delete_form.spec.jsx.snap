@@ -7,7 +7,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <SiteForm
     closeModal={[Function]}
     deleteSite={[Function]}
-  />,
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -25,16 +25,16 @@ ShallowWrapper {
           className="c-btn c-btn--red"
           onClick={[Function]}
           type="button"
-        >
+>
           Yes
-        </button>,
+</button>,
         <button
           className="c-btn c-btn--gray--large u-m-right"
           onClick={[Function]}
           type="button"
-        >
+>
           Cancel
-        </button>,
+</button>,
       ],
     },
     "ref": null,
@@ -81,16 +81,16 @@ ShallowWrapper {
             className="c-btn c-btn--red"
             onClick={[Function]}
             type="button"
-          >
+>
             Yes
-          </button>,
+</button>,
           <button
             className="c-btn c-btn--gray--large u-m-right"
             onClick={[Function]}
             type="button"
-          >
+>
             Cancel
-          </button>,
+</button>,
         ],
       },
       "ref": null,
