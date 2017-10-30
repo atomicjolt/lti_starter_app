@@ -24,6 +24,7 @@ FactoryGirl.define do
       lti_provider "canvas"
       after(:create) do |user|
         user.authentications << FactoryGirl.create(:authentication_canvas)
+        user.roles << FactoryGirl.create(:role)
       end
     end
   end
