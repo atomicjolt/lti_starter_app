@@ -3,12 +3,12 @@ import es6Promise from 'es6-promise';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import PropTypes from 'prop-types';
-import routes from './routes';
 import DevTools from 'atomic-fuel/libs/dev/dev_tools';
-import configureStore from './store/configure_store';
 import jwt from 'atomic-fuel/libs/loaders/jwt';
 import { getInitialSettings } from 'atomic-fuel/libs/reducers/settings';
+import PropTypes from 'prop-types';
+import routes from './routes';
+import configureStore from './store/configure_store';
 
 
 import './styles/styles.scss';
