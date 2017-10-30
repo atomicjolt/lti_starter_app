@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from 'enzyme';
 import ContentItemSelectionForm from './content_item_selection_form';
 
 describe('Content Item Selection Form', () => {
@@ -7,10 +7,14 @@ describe('Content Item Selection Form', () => {
   let props;
   it('matches the snapshot', () => {
     props = {
-      launchData: {},
+      launchData: {
+        testKey: 'testValue',
+        testedKey: 'testValue1',
+
+      },
       contentItemReturnURL: 'http://www.example.com',
     };
-    result = shallow(<ContentItemSelectionForm {...props} />);
+    result = render(<ContentItemSelectionForm {...props} />);
     expect(result).toMatchSnapshot();
   });
 });

@@ -1,6 +1,6 @@
-import _                           from 'lodash';
-import api                         from '../api/api';
-import { DONE }                    from '../constants/wrapper';
+import _ from 'lodash';
+import api from 'atomic-fuel/libs/api/api';
+import { DONE } from 'atomic-fuel/libs/constants/wrapper';
 import { getNextUrl, parseParams } from '../urls';
 
 const canvasProxyUrl = 'api/canvas';

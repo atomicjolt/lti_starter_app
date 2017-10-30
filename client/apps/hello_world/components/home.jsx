@@ -14,7 +14,7 @@ type Props = {
   ltiMessageType: string,
 };
 
-function Home(props :Props) :React.Node {
+export function Home(props :Props) :React.Node {
   const img = assets('./images/atomicjolt.jpg');
 
   if (props.ltiMessageType === 'ContentItemSelectionRequest') {
