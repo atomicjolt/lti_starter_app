@@ -149,7 +149,6 @@ ShallowWrapper {
                               }
                               labelText="Canvas Token - Current Canvas Token: undefined"
                     />
-                    <div />
           </div>
           <div
                     className="o-grid__item u-full"
@@ -338,7 +337,6 @@ ShallowWrapper {
                             }
                             labelText="Canvas Token - Current Canvas Token: undefined"
               />
-              <div />
 </div>,
             <div
               className="o-grid__item u-full"
@@ -700,57 +698,43 @@ ShallowWrapper {
             "key": null,
             "nodeType": "host",
             "props": Object {
-              "children": Array [
-                <Input
-                  className="c-input"
-                  inputProps={
-                                    Object {
-                                                      "id": "canvas_token_input",
-                                                      "name": "canvas_token",
-                                                      "onChange": [Function],
-                                                      "placeholder": "",
-                                                      "type": "text",
-                                                      "value": null,
-                                                    }
-                  }
-                  labelText="Canvas Token - Current Canvas Token: undefined"
+              "children": <Input
+                className="c-input"
+                inputProps={
+                                Object {
+                                                "id": "canvas_token_input",
+                                                "name": "canvas_token",
+                                                "onChange": [Function],
+                                                "placeholder": "",
+                                                "type": "text",
+                                                "value": null,
+                                              }
+                }
+                labelText="Canvas Token - Current Canvas Token: undefined"
 />,
-                <div />,
-              ],
               "className": "o-grid__item u-half",
             },
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "function",
-                "props": Object {
-                  "className": "c-input",
-                  "inputProps": Object {
-                    "id": "canvas_token_input",
-                    "name": "canvas_token",
-                    "onChange": [Function],
-                    "placeholder": "",
-                    "type": "text",
-                    "value": null,
-                  },
-                  "labelText": "Canvas Token - Current Canvas Token: undefined",
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "function",
+              "props": Object {
+                "className": "c-input",
+                "inputProps": Object {
+                  "id": "canvas_token_input",
+                  "name": "canvas_token",
+                  "onChange": [Function],
+                  "placeholder": "",
+                  "type": "text",
+                  "value": null,
                 },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
+                "labelText": "Canvas Token - Current Canvas Token: undefined",
               },
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "host",
-                "props": Object {},
-                "ref": null,
-                "rendered": null,
-                "type": "div",
-              },
-            ],
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
             "type": "div",
           },
           Object {
@@ -1028,7 +1012,6 @@ ShallowWrapper {
                                     }
                                     labelText="Canvas Token - Current Canvas Token: undefined"
                         />
-                        <div />
             </div>
             <div
                         className="o-grid__item u-full"
@@ -1217,7 +1200,6 @@ ShallowWrapper {
                                 }
                                 labelText="Canvas Token - Current Canvas Token: undefined"
                 />
-                <div />
 </div>,
               <div
                 className="o-grid__item u-full"
@@ -1579,57 +1561,43 @@ ShallowWrapper {
               "key": null,
               "nodeType": "host",
               "props": Object {
-                "children": Array [
-                  <Input
-                    className="c-input"
-                    inputProps={
-                                        Object {
-                                                            "id": "canvas_token_input",
-                                                            "name": "canvas_token",
-                                                            "onChange": [Function],
-                                                            "placeholder": "",
-                                                            "type": "text",
-                                                            "value": null,
-                                                          }
-                    }
-                    labelText="Canvas Token - Current Canvas Token: undefined"
+                "children": <Input
+                  className="c-input"
+                  inputProps={
+                                    Object {
+                                                      "id": "canvas_token_input",
+                                                      "name": "canvas_token",
+                                                      "onChange": [Function],
+                                                      "placeholder": "",
+                                                      "type": "text",
+                                                      "value": null,
+                                                    }
+                  }
+                  labelText="Canvas Token - Current Canvas Token: undefined"
 />,
-                  <div />,
-                ],
                 "className": "o-grid__item u-half",
               },
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": null,
-                  "nodeType": "function",
-                  "props": Object {
-                    "className": "c-input",
-                    "inputProps": Object {
-                      "id": "canvas_token_input",
-                      "name": "canvas_token",
-                      "onChange": [Function],
-                      "placeholder": "",
-                      "type": "text",
-                      "value": null,
-                    },
-                    "labelText": "Canvas Token - Current Canvas Token: undefined",
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "function",
+                "props": Object {
+                  "className": "c-input",
+                  "inputProps": Object {
+                    "id": "canvas_token_input",
+                    "name": "canvas_token",
+                    "onChange": [Function],
+                    "placeholder": "",
+                    "type": "text",
+                    "value": null,
                   },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
+                  "labelText": "Canvas Token - Current Canvas Token: undefined",
                 },
-                Object {
-                  "instance": null,
-                  "key": null,
-                  "nodeType": "host",
-                  "props": Object {},
-                  "ref": null,
-                  "rendered": null,
-                  "type": "div",
-                },
-              ],
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
               "type": "div",
             },
             Object {
