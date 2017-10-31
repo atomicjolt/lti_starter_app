@@ -34,12 +34,16 @@ module Concerns
 
     def jwt_lti_roles
       token = decoded_jwt_token(request)
-      token["lti_roles"]
+      token["lti_roles"] || []
     end
 
     def jwt_lms_course_id
       token = decoded_jwt_token(request)
       token["lms_course_id"]
+    end
+
+    def jwt_lti_roles_string
+      jwt_lti_roles.join(",")
     end
 
     protected
