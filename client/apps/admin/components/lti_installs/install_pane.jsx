@@ -101,7 +101,7 @@ export class InstallPane extends React.Component {
   }
 
   loadExternalTools() {
-    _.each(this.pageCourses(this.searchedCourses()), (course) => {
+    _.each(this.pageCourses(this.courses()), (course) => {
       if (course.external_tools === undefined) {
         this.props.loadExternalTools(course.id);
       }
