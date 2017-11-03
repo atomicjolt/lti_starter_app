@@ -16,6 +16,7 @@ ShallowWrapper {
     loadExternalTools={[Function]}
     loadingCourses={Object {}}
     onlyShowInstalled={false}
+    onlyShowInstalledChanged={[Function]}
 />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -58,6 +59,7 @@ ShallowWrapper {
                     canvasRequest={[Function]}
                     courses={Array []}
                     loadingCourses={Object {}}
+                    onlyShowInstalledChanged={[Function]}
           />
           <Pagination
                     courses={Array []}
@@ -113,6 +115,7 @@ ShallowWrapper {
               canvasRequest={[Function]}
               courses={Array []}
               loadingCourses={Object {}}
+              onlyShowInstalledChanged={[Function]}
 />,
             <Pagination
               courses={Array []}
@@ -182,6 +185,7 @@ ShallowWrapper {
               "canvasRequest": [Function],
               "courses": Array [],
               "loadingCourses": Object {},
+              "onlyShowInstalledChanged": [Function],
             },
             "ref": null,
             "rendered": null,
@@ -244,6 +248,7 @@ ShallowWrapper {
                         canvasRequest={[Function]}
                         courses={Array []}
                         loadingCourses={Object {}}
+                        onlyShowInstalledChanged={[Function]}
             />
             <Pagination
                         courses={Array []}
@@ -299,6 +304,7 @@ ShallowWrapper {
                 canvasRequest={[Function]}
                 courses={Array []}
                 loadingCourses={Object {}}
+                onlyShowInstalledChanged={[Function]}
 />,
               <Pagination
                 courses={Array []}
@@ -368,6 +374,7 @@ ShallowWrapper {
                 "canvasRequest": [Function],
                 "courses": Array [],
                 "loadingCourses": Object {},
+                "onlyShowInstalledChanged": [Function],
               },
               "ref": null,
               "rendered": null,
