@@ -20,11 +20,12 @@ export default class SubAccount extends React.Component {
     super();
     this.state = {
       open: false,
+      hasToggled: false,
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.currentAccount === nextProps.account) {
+    if (nextProps.currentAccount === nextProps.account && !this.state.hasToggled) {
       this.setState({ open: true });
     }
   }
@@ -47,7 +48,10 @@ export default class SubAccount extends React.Component {
   }
 
   handleAccountClick() {
-    this.setState({ open: !this.state.open });
+    this.setState({
+      open: !this.state.open,
+      hasToggled: true,
+    });
     this.props.setAccountActive(this.props.account);
   }
 
