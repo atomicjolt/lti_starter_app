@@ -5,11 +5,9 @@ import Sidebar from './sidebar';
 describe('lti installs sidebar', () => {
 
   let result;
-  let changed;
   const applicationName = 'applicationName';
 
   describe('should render sidebar', () => {
-    changed = false;
     beforeEach(() => {
       const props = {
         accounts: {
@@ -31,7 +29,6 @@ describe('lti installs sidebar', () => {
         canvasRequest: () => {},
         setAccountActive: () => {},
         sites: {},
-        onlyShowInstalledChanged: () => { changed = true; },
       };
       result = shallow(<Sidebar {...props} />);
     });
@@ -60,11 +57,5 @@ describe('lti installs sidebar', () => {
       );
     });
 
-    it('handles the onChange for input', () => {
-      expect(changed).toBeFalsy();
-      const input = result.find('input');
-      input.simulate('change');
-      expect(changed).toBeTruthy();
-    });
   });
 });
