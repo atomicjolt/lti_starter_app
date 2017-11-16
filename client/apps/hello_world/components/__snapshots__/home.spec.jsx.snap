@@ -14,7 +14,7 @@ ShallowWrapper {
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
-    "key": null,
+    "key": undefined,
     "nodeType": "host",
     "props": Object {
       "children": Array [
@@ -32,7 +32,7 @@ ShallowWrapper {
     "rendered": Array [
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "alt": "Atomic Jolt Logo",
@@ -44,12 +44,26 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {},
         "ref": null,
-        "rendered": null,
-        "type": "hr",
+        "rendered": Array [
+          "Welcome to the React Client starter app by ",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Atomic Jolt",
+              "href": "http://www.atomicjolt.com",
+            },
+            "ref": null,
+            "rendered": "Atomic Jolt",
+            "type": "a",
+          },
+        ],
+        "type": "p",
       },
       Object {
         "instance": null,
@@ -76,7 +90,7 @@ ShallowWrapper {
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
-      "key": null,
+      "key": undefined,
       "nodeType": "host",
       "props": Object {
         "children": Array [
@@ -94,7 +108,7 @@ ShallowWrapper {
       "rendered": Array [
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "alt": "Atomic Jolt Logo",
@@ -106,12 +120,26 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {},
           "ref": null,
-          "rendered": null,
-          "type": "hr",
+          "rendered": Array [
+            "Welcome to the React Client starter app by ",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Atomic Jolt",
+                "href": "http://www.atomicjolt.com",
+              },
+              "ref": null,
+              "rendered": "Atomic Jolt",
+              "type": "a",
+            },
+          ],
+          "type": "p",
         },
         Object {
           "instance": null,
