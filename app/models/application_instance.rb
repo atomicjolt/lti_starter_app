@@ -44,6 +44,10 @@ class ApplicationInstance < ActiveRecord::Base
     end
   end
 
+  def oauth_precedence
+    application.oauth_precedence.split(",")
+  end
+
   def key(application_key_override = nil)
     return lti_key if lti_key.present?
     return "" if site.blank? || application.blank?
