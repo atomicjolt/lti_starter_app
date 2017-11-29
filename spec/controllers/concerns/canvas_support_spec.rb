@@ -44,7 +44,10 @@ describe ApplicationController, type: :controller do
       admin.add_to_role("administrator")
       admin.save!
       allow(controller).to receive(:current_user).and_return(admin)
-      get :index, params: { lti_key: @application_instance.lti_key, lms_proxy_call_type: "LIST_ACCOUNTS" }, format: :json
+      get :index, params: {
+        lti_key: @application_instance.lti_key,
+        lms_proxy_call_type: "LIST_ACCOUNTS",
+      }, format: :json
       expect(response).to have_http_status(:success)
     end
 
@@ -55,7 +58,10 @@ describe ApplicationController, type: :controller do
       allow(controller).to receive(:current_user).and_return(user)
       request.headers["Authorization"] = user_token_header
 
-      get :index, params: { lti_key: @application_instance.lti_key, lms_proxy_call_type: "LIST_ACCOUNTS" }, format: :json
+      get :index, params: {
+        lti_key: @application_instance.lti_key,
+        lms_proxy_call_type: "LIST_ACCOUNTS",
+      }, format: :json
       expect(response).to have_http_status(:unauthorized)
     end
 
@@ -137,10 +143,10 @@ describe ApplicationController, type: :controller do
       allow(controller).to receive(:current_user).and_return(@user)
 
       canvas_api_permissions = {
-          default: [],
-          common: [],
-          LIST_ACCOUNTS: ["canvas_oauth_user"],
-        }
+        default: [],
+        common: [],
+        LIST_ACCOUNTS: ["canvas_oauth_user"],
+      }
       @application = FactoryGirl.create(:application, canvas_api_permissions: canvas_api_permissions)
 
       @application_instance = FactoryGirl.create(:application_instance, canvas_token: nil, application: @application)
@@ -174,7 +180,10 @@ describe ApplicationController, type: :controller do
 
     it "provides access to the canvas api using the user's token" do
       @user.authentications << @authentication
-      get :index, params: { lti_key: @application_instance.lti_key, lms_proxy_call_type: "LIST_ACCOUNTS" }, format: :json
+      get :index, params: {
+        lti_key: @application_instance.lti_key,
+        lms_proxy_call_type: "LIST_ACCOUNTS",
+      }, format: :json
       expect(response).to have_http_status(:success)
     end
 
@@ -183,7 +192,10 @@ describe ApplicationController, type: :controller do
       @application.save!
       @application_instance.authentications << @authentication
       expect do
-        get :index, params: { lti_key: @application_instance.lti_key, lms_proxy_call_type: "LIST_ACCOUNTS" }, format: :json
+        get :index, params: {
+          lti_key: @application_instance.lti_key,
+          lms_proxy_call_type: "LIST_ACCOUNTS",
+        }, format: :json
       end.to raise_error(Concerns::CanvasSupport::CanvasApiTokenRequired)
     end
   end
@@ -284,7 +296,10 @@ describe ApplicationController, type: :controller do
     it "throws an exception if it can't find a canvas api token" do
       request.headers["Authorization"] = @user_token_header
       expect do
-        get :index, params: { lti_key: @application_instance.lti_key, lms_proxy_call_type: "LIST_ACCOUNTS" }, format: :json
+        get :index, params: {
+          lti_key: @application_instance.lti_key,
+          lms_proxy_call_type: "LIST_ACCOUNTS",
+        }, format: :json
       end.to raise_error(Concerns::CanvasSupport::CanvasApiTokenRequired)
     end
   end
