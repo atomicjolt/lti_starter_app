@@ -7,6 +7,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Form
     closeModal={[Function]}
     config="{ \\"foo\\": \\"bar\\" }"
+    ltiConfigParseError=""
     newSite={[Function]}
     onChange={[Function]}
     save={[Function]}

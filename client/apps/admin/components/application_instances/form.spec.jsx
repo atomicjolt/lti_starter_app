@@ -1,4 +1,4 @@
-import React           from 'react';
+import React from 'react';
 import { shallow } from 'enzyme';
 import Form from './form';
 
@@ -6,9 +6,10 @@ describe('application instance form', () => {
   let result;
   let props;
   let modalClosed = false;
-  let saved = false;
+  let saved;
 
   beforeEach(() => {
+    saved = false;
     props = {
       onChange: () => {},
       closeModal: () => { modalClosed = true; },
@@ -17,6 +18,7 @@ describe('application instance form', () => {
       site_id: 'foo',
       sites: {},
       config: '{ "foo": "bar" }',
+      ltiConfigParseError: '',
     };
     result = shallow(<Form {...props} />);
   });
