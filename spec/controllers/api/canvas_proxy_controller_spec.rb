@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Api::CanvasProxyController, type: :controller do
   before do
-    canvas_api_permissions = {
+    @canvas_api_permissions = {
       default: [
         "administrator", # Internal (non-LTI) role
         "urn:lti:sysrole:ims/lis/SysAdmin",
@@ -17,7 +17,7 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
     }
     @application = FactoryGirl.create(
       :application,
-      canvas_api_permissions: canvas_api_permissions,
+      canvas_api_permissions: @canvas_api_permissions,
     )
     @application_instance = FactoryGirl.create(:application_instance, application: @application)
     @user = FactoryGirl.create(:user)
@@ -33,6 +33,56 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
       it "should return an unauthorized" do
         get :proxy, params: { lms_proxy_call_type: "foo" }, format: :json
         expect(response).to have_http_status(:unauthorized)
+      end
+    end
+  end
+
+  # This functionality lives in application_controller.rb but we need
+  # a real controller to test it
+  describe "rescue from LMS::Canvas::RefreshTokenRequired" do
+    before do
+      request.headers["Authorization"] = @user_token_header
+      allow(controller.request).to receive(:host).and_return("example.com")
+      def controller.proxy
+        @auth = FactoryGirl.create(:authentication)
+        raise LMS::Canvas::RefreshTokenRequired.new("", nil, @auth)
+      end
+    end
+    context "application instance allows user token" do
+      before do
+        allow(controller).to receive(:current_application_instance).and_return(@application_instance)
+        allow(Application).to receive(:find_by).with(:lti_key).and_return(@application_instance)
+      end
+      it "deletes the authentication and returns a status forbidden" do
+        type = "LIST_ACCOUNTS"
+        get :proxy, params: { lms_proxy_call_type: type, lti_key: @application_instance.lti_key }, format: :json
+        expect(response).to have_http_status(:forbidden)
+        auth = Authentication.find_by(id: @auth.id)
+        expect(auth).to be_nil
+        expect(response.body).to eq("{\"message\":\"canvas_authorization_required\"}")
+      end
+    end
+    context "application instance doesn't allow user token" do
+      before do
+        @application = FactoryGirl.create(
+          :application,
+          canvas_api_permissions: @canvas_api_permissions,
+          oauth_precedence: "global,application_instance,course",
+        )
+        @application_instance = FactoryGirl.create(
+          :application_instance,
+          application: @application,
+        )
+        allow(controller).to receive(:current_application_instance).and_return(@application_instance)
+        allow(Application).to receive(:find_by).with(:lti_key).and_return(@application_instance)
+      end
+      it "deletes the authentication and returns a status forbidden" do
+        type = "LIST_ACCOUNTS"
+        get :proxy, params: { lms_proxy_call_type: type, lti_key: @application_instance.lti_key }, format: :json
+        expect(response).to have_http_status(:forbidden)
+        auth = Authentication.find_by(id: @auth.id)
+        expect(auth).to be_nil
+        expect(response.body).to eq("{\"message\":\"Unable to find Canvas API Token.\"}")
       end
     end
   end
