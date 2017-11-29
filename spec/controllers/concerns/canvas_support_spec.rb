@@ -154,6 +154,10 @@ describe ApplicationController, type: :controller do
 
       @user.add_to_role("canvas_oauth_user")
       @user.save!
+
+      @user_token = AuthToken.issue_token({ user_id: @user.id })
+      @user_token_header = "Bearer #{@user_token}"
+      request.headers["Authorization"] = @user_token_header
     end
 
     controller do
@@ -164,7 +168,6 @@ describe ApplicationController, type: :controller do
       def index
         result = canvas_api.proxy(params[:lms_proxy_call_type], params.to_unsafe_h, request.body.read)
         response.status = result.code
-
         render plain: result.body
       end
     end
@@ -176,6 +179,8 @@ describe ApplicationController, type: :controller do
     end
 
     it "denies access to the canvas api when user doesn't have a token even if application instance does have a token" do
+      @application.oauth_precedence = "user"
+      @application.save!
       @application_instance.authentications << @authentication
       expect do
         get :index, params: { lti_key: @application_instance.lti_key, lms_proxy_call_type: "LIST_ACCOUNTS" }, format: :json
