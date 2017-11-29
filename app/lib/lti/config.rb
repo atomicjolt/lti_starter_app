@@ -228,6 +228,10 @@ module Lti
 
     def self.module_menu_from_args(config = {}, args = {})
       if args[:module_menu].present?
+        config["module_menu"] = args[:module_menu].stringify_keys
+        if config["module_menu"]["message_type"].present?
+          selection_config_from_args!(args, config, "module_menu")
+        end
         default_configs_from_args!(args, config, :module_menu)
       end
       config
@@ -249,6 +253,10 @@ module Lti
 
     def self.wiki_page_menu_from_args(config = {}, args = {})
       if args[:wiki_page_menu].present?
+        config["wiki_page_menu"] = args[:wiki_page_menu].stringify_keys
+        if config["wiki_page_menu"]["message_type"].present?
+          selection_config_from_args!(args, config, "wiki_page_menu")
+        end
         default_configs_from_args!(args, config, :wiki_page_menu)
       end
       config

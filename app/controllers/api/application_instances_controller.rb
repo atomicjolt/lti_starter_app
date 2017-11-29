@@ -9,6 +9,10 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
     application_instances = @application_instances.map do |app|
       app_json = app.as_json(include: :site)
       app_json["lti_config_xml"] = app.lti_config_xml
+      app_json["canvas_token_preview"] = app.canvas_token_preview
+      app_json.delete("encrypted_canvas_token")
+      app_json.delete("encrypted_canvas_token_salt")
+      app_json.delete("encrypted_canvas_token_iv")
       app_json
     end
 
@@ -47,6 +51,10 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   def respond_with_json
     application_instance = @application_instance.as_json(include: :site)
     application_instance["lti_config_xml"] = @application_instance.lti_config_xml
+    application_instance["canvas_token_preview"] = @application_instance.canvas_token_preview
+    application_instance.delete("encrypted_canvas_token")
+    application_instance.delete("encrypted_canvas_token_salt")
+    application_instance.delete("encrypted_canvas_token_iv")
     render json: application_instance
   end
 

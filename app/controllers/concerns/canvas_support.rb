@@ -2,6 +2,7 @@ module Concerns
   module CanvasSupport
     extend ActiveSupport::Concern
     include OauthHelper
+    include Concerns::JwtToken
 
     protected
 
@@ -11,16 +12,6 @@ module Concerns
       canvas_course: current_canvas_course
     )
       url = UrlHelper.scheme_host_port(application_instance.site.url)
-
-      if user_roles(context_id: params[:context_id]).include?("canvas_oauth_user")
-        # The user's has the role canvas_oauth_user.
-        # We know they have a token so use that token.
-        if auth = canvas_auth(application_instance.site, user: current_user)
-          return user_auth(auth, url, application_instance.site)
-        end
-        raise CanvasApiTokenRequired, "Could not find a valid canvas api token for the current user."
-      end
-
       if application_instance.canvas_token.present?
         global_auth(url, application_instance.canvas_token)
       elsif auth = canvas_auth_instance(application_instance.site, application_instance: application_instance)
@@ -79,15 +70,15 @@ module Concerns
       )
     end
 
-    def protect_canvas_api(type: params[:lms_proxy_call_type], context_id: params[:context_id])
-      return if canvas_api_authorized(type: type, context_id: context_id)
+    def protect_canvas_api(type: params[:lms_proxy_call_type], context_id: jwt_context_id)
+      return if canvas_api_authorized(type: type, context_id: context_id) && custom_api_checks_pass(type: type)
       user_not_authorized
     end
 
-    def canvas_api_authorized(type: params[:lms_proxy_call_type], context_id: params[:context_id])
+    def canvas_api_authorized(type: params[:lms_proxy_call_type], context_id: jwt_context_id)
       canvas_api_permissions.has_key?(type) &&
         allowed_roles(type: type).present? &&
-        (allowed_roles(type: type) & user_roles(context_id: context_id)).present?
+        (allowed_roles(type: type) & current_user_roles(context_id: context_id)).present?
     end
 
     def allowed_roles(type: params[:lms_proxy_call_type])
@@ -96,12 +87,13 @@ module Concerns
       roles
     end
 
-    def user_roles(context_id: params[:context_id])
-      current_user.nil_or_context_roles(context_id).map(&:name)
-    end
-
     def canvas_api_permissions
       @canvas_api_permissions ||= current_application_instance.application.canvas_api_permissions
+    end
+
+    def custom_api_checks_pass(type: nil)
+      # Add custom logic to protect specific api calls
+      true
     end
 
     class CanvasApiTokenRequired < LMS::Canvas::CanvasException

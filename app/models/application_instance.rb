@@ -50,6 +50,11 @@ class ApplicationInstance < ActiveRecord::Base
     "#{site.key}-#{application_key_override || application.key}"
   end
 
+  def canvas_token_preview
+    return nil if canvas_token.nil?
+    "#{canvas_token.first(4)}...#{canvas_token.last(4)}"
+  end
+
   private
 
   def set_lti

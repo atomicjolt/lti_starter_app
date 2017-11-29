@@ -1,10 +1,10 @@
 import _             from 'lodash';
 
-import { DONE }      from '../../../libs/constants/wrapper';
+import { DONE }      from 'atomic-fuel/libs/constants/wrapper';
 
 import {
   helperListAccounts,
-} from '../../../libs/canvas/helper_constants';
+} from 'atomic-canvas/libs/helper_constants';
 
 const initialState = {
   accounts : {},

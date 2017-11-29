@@ -48,6 +48,7 @@ ShallowWrapper {
                                         clearRenderer={[Function]}
                                         clearValueText="Clear value"
                                         clearable={false}
+                                        closeOnSelect={true}
                                         deleteRemoves={true}
                                         delimiter=","
                                         disabled={false}
@@ -69,6 +70,8 @@ ShallowWrapper {
                                         onBlurResetsInput={true}
                                         onChange={[Function]}
                                         onCloseResetsInput={true}
+                                        onSelectResetsInput={true}
+                                        openOnClick={true}
                                         optionComponent={[Function]}
                                         options={
                                                   Array [
@@ -101,11 +104,12 @@ ShallowWrapper {
                               className="c-input"
                               inputProps={
                                         Object {
-                                                  "id": "instance_lti_key",
+                                                  "disabled": undefined,
+                                                  "id": "lti_key_input",
                                                   "name": "lti_key",
                                                   "onChange": [Function],
                                                   "type": "text",
-                                                  "value": "",
+                                                  "value": undefined,
                                                 }
                               }
                               labelText="LTI Key"
@@ -118,11 +122,11 @@ ShallowWrapper {
                               className="c-input"
                               inputProps={
                                         Object {
-                                                  "id": "instance_lti_secret",
+                                                  "id": "lti_secret_input",
                                                   "name": "lti_secret",
                                                   "onChange": [Function],
                                                   "type": "text",
-                                                  "value": "",
+                                                  "value": undefined,
                                                 }
                               }
                               labelText="LTI Secret"
@@ -135,14 +139,15 @@ ShallowWrapper {
                               className="c-input"
                               inputProps={
                                         Object {
-                                                  "id": "instance_canvas_token",
+                                                  "id": "canvas_token_input",
                                                   "name": "canvas_token",
                                                   "onChange": [Function],
+                                                  "placeholder": "",
                                                   "type": "text",
-                                                  "value": "",
+                                                  "value": null,
                                                 }
                               }
-                              labelText="Canvas Token"
+                              labelText="Canvas Token - Current Canvas Token: undefined"
                     />
           </div>
           <div
@@ -231,6 +236,7 @@ ShallowWrapper {
                                           clearRenderer={[Function]}
                                           clearValueText="Clear value"
                                           clearable={false}
+                                          closeOnSelect={true}
                                           deleteRemoves={true}
                                           delimiter=","
                                           disabled={false}
@@ -252,6 +258,8 @@ ShallowWrapper {
                                           onBlurResetsInput={true}
                                           onChange={[Function]}
                                           onCloseResetsInput={true}
+                                          onSelectResetsInput={true}
+                                          openOnClick={true}
                                           optionComponent={[Function]}
                                           options={
                                                         Array [
@@ -277,59 +285,59 @@ ShallowWrapper {
                             />
               </div>
 </div>,
-            Array [
-              <div
-                className="o-grid__item u-half"
+            <div
+              className="o-grid__item u-half"
 >
-                <Input
-                                className="c-input"
-                                inputProps={
-                                                Object {
-                                                                "id": "instance_lti_key",
-                                                                "name": "lti_key",
-                                                                "onChange": [Function],
-                                                                "type": "text",
-                                                                "value": "",
-                                                              }
-                                }
-                                labelText="LTI Key"
-                />
+              <Input
+                            className="c-input"
+                            inputProps={
+                                          Object {
+                                                        "disabled": undefined,
+                                                        "id": "lti_key_input",
+                                                        "name": "lti_key",
+                                                        "onChange": [Function],
+                                                        "type": "text",
+                                                        "value": undefined,
+                                                      }
+                            }
+                            labelText="LTI Key"
+              />
 </div>,
-              <div
-                className="o-grid__item u-half"
+            <div
+              className="o-grid__item u-half"
 >
-                <Input
-                                className="c-input"
-                                inputProps={
-                                                Object {
-                                                                "id": "instance_lti_secret",
-                                                                "name": "lti_secret",
-                                                                "onChange": [Function],
-                                                                "type": "text",
-                                                                "value": "",
-                                                              }
-                                }
-                                labelText="LTI Secret"
-                />
+              <Input
+                            className="c-input"
+                            inputProps={
+                                          Object {
+                                                        "id": "lti_secret_input",
+                                                        "name": "lti_secret",
+                                                        "onChange": [Function],
+                                                        "type": "text",
+                                                        "value": undefined,
+                                                      }
+                            }
+                            labelText="LTI Secret"
+              />
 </div>,
-              <div
-                className="o-grid__item u-half"
+            <div
+              className="o-grid__item u-half"
 >
-                <Input
-                                className="c-input"
-                                inputProps={
-                                                Object {
-                                                                "id": "instance_canvas_token",
-                                                                "name": "canvas_token",
-                                                                "onChange": [Function],
-                                                                "type": "text",
-                                                                "value": "",
-                                                              }
-                                }
-                                labelText="Canvas Token"
-                />
+              <Input
+                            className="c-input"
+                            inputProps={
+                                          Object {
+                                                        "id": "canvas_token_input",
+                                                        "name": "canvas_token",
+                                                        "onChange": [Function],
+                                                        "placeholder": "",
+                                                        "type": "text",
+                                                        "value": null,
+                                                      }
+                            }
+                            labelText="Canvas Token - Current Canvas Token: undefined"
+              />
 </div>,
-            ],
             <div
               className="o-grid__item u-full"
 >
@@ -398,6 +406,7 @@ ShallowWrapper {
                                 clearRenderer={[Function]}
                                 clearValueText="Clear value"
                                 clearable={false}
+                                closeOnSelect={true}
                                 deleteRemoves={true}
                                 delimiter=","
                                 disabled={false}
@@ -419,6 +428,8 @@ ShallowWrapper {
                                 onBlurResetsInput={true}
                                 onChange={[Function]}
                                 onCloseResetsInput={true}
+                                onSelectResetsInput={true}
+                                openOnClick={true}
                                 optionComponent={[Function]}
                                 options={
                                                 Array [
@@ -465,6 +476,7 @@ ShallowWrapper {
                     clearRenderer={[Function]}
                     clearValueText="Clear value"
                     clearable={false}
+                    closeOnSelect={true}
                     deleteRemoves={true}
                     delimiter=","
                     disabled={false}
@@ -486,6 +498,8 @@ ShallowWrapper {
                     onBlurResetsInput={true}
                     onChange={[Function]}
                     onCloseResetsInput={true}
+                    onSelectResetsInput={true}
+                    openOnClick={true}
                     optionComponent={[Function]}
                     options={
                                         Array [
@@ -539,6 +553,7 @@ ShallowWrapper {
                     "clearRenderer": [Function],
                     "clearValueText": "Clear value",
                     "clearable": false,
+                    "closeOnSelect": true,
                     "deleteRemoves": true,
                     "delimiter": ",",
                     "disabled": false,
@@ -560,6 +575,8 @@ ShallowWrapper {
                     "onBlurResetsInput": true,
                     "onChange": [Function],
                     "onCloseResetsInput": true,
+                    "onSelectResetsInput": true,
+                    "openOnClick": true,
                     "optionComponent": [Function],
                     "options": Array [
                       Object {
@@ -592,18 +609,19 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": "lti_key",
+            "key": null,
             "nodeType": "host",
             "props": Object {
               "children": <Input
                 className="c-input"
                 inputProps={
                                 Object {
-                                                "id": "instance_lti_key",
+                                                "disabled": undefined,
+                                                "id": "lti_key_input",
                                                 "name": "lti_key",
                                                 "onChange": [Function],
                                                 "type": "text",
-                                                "value": "",
+                                                "value": undefined,
                                               }
                 }
                 labelText="LTI Key"
@@ -618,11 +636,12 @@ ShallowWrapper {
               "props": Object {
                 "className": "c-input",
                 "inputProps": Object {
-                  "id": "instance_lti_key",
+                  "disabled": undefined,
+                  "id": "lti_key_input",
                   "name": "lti_key",
                   "onChange": [Function],
                   "type": "text",
-                  "value": "",
+                  "value": undefined,
                 },
                 "labelText": "LTI Key",
               },
@@ -634,18 +653,18 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": "lti_secret",
+            "key": null,
             "nodeType": "host",
             "props": Object {
               "children": <Input
                 className="c-input"
                 inputProps={
                                 Object {
-                                                "id": "instance_lti_secret",
+                                                "id": "lti_secret_input",
                                                 "name": "lti_secret",
                                                 "onChange": [Function],
                                                 "type": "text",
-                                                "value": "",
+                                                "value": undefined,
                                               }
                 }
                 labelText="LTI Secret"
@@ -660,11 +679,11 @@ ShallowWrapper {
               "props": Object {
                 "className": "c-input",
                 "inputProps": Object {
-                  "id": "instance_lti_secret",
+                  "id": "lti_secret_input",
                   "name": "lti_secret",
                   "onChange": [Function],
                   "type": "text",
-                  "value": "",
+                  "value": undefined,
                 },
                 "labelText": "LTI Secret",
               },
@@ -676,21 +695,22 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": "canvas_token",
+            "key": null,
             "nodeType": "host",
             "props": Object {
               "children": <Input
                 className="c-input"
                 inputProps={
                                 Object {
-                                                "id": "instance_canvas_token",
+                                                "id": "canvas_token_input",
                                                 "name": "canvas_token",
                                                 "onChange": [Function],
+                                                "placeholder": "",
                                                 "type": "text",
-                                                "value": "",
+                                                "value": null,
                                               }
                 }
-                labelText="Canvas Token"
+                labelText="Canvas Token - Current Canvas Token: undefined"
 />,
               "className": "o-grid__item u-half",
             },
@@ -702,13 +722,14 @@ ShallowWrapper {
               "props": Object {
                 "className": "c-input",
                 "inputProps": Object {
-                  "id": "instance_canvas_token",
+                  "id": "canvas_token_input",
                   "name": "canvas_token",
                   "onChange": [Function],
+                  "placeholder": "",
                   "type": "text",
-                  "value": "",
+                  "value": null,
                 },
-                "labelText": "Canvas Token",
+                "labelText": "Canvas Token - Current Canvas Token: undefined",
               },
               "ref": null,
               "rendered": null,
@@ -890,6 +911,7 @@ ShallowWrapper {
                                                 clearRenderer={[Function]}
                                                 clearValueText="Clear value"
                                                 clearable={false}
+                                                closeOnSelect={true}
                                                 deleteRemoves={true}
                                                 delimiter=","
                                                 disabled={false}
@@ -911,6 +933,8 @@ ShallowWrapper {
                                                 onBlurResetsInput={true}
                                                 onChange={[Function]}
                                                 onCloseResetsInput={true}
+                                                onSelectResetsInput={true}
+                                                openOnClick={true}
                                                 optionComponent={[Function]}
                                                 options={
                                                             Array [
@@ -943,11 +967,12 @@ ShallowWrapper {
                                     className="c-input"
                                     inputProps={
                                                 Object {
-                                                            "id": "instance_lti_key",
+                                                            "disabled": undefined,
+                                                            "id": "lti_key_input",
                                                             "name": "lti_key",
                                                             "onChange": [Function],
                                                             "type": "text",
-                                                            "value": "",
+                                                            "value": undefined,
                                                           }
                                     }
                                     labelText="LTI Key"
@@ -960,11 +985,11 @@ ShallowWrapper {
                                     className="c-input"
                                     inputProps={
                                                 Object {
-                                                            "id": "instance_lti_secret",
+                                                            "id": "lti_secret_input",
                                                             "name": "lti_secret",
                                                             "onChange": [Function],
                                                             "type": "text",
-                                                            "value": "",
+                                                            "value": undefined,
                                                           }
                                     }
                                     labelText="LTI Secret"
@@ -977,14 +1002,15 @@ ShallowWrapper {
                                     className="c-input"
                                     inputProps={
                                                 Object {
-                                                            "id": "instance_canvas_token",
+                                                            "id": "canvas_token_input",
                                                             "name": "canvas_token",
                                                             "onChange": [Function],
+                                                            "placeholder": "",
                                                             "type": "text",
-                                                            "value": "",
+                                                            "value": null,
                                                           }
                                     }
-                                    labelText="Canvas Token"
+                                    labelText="Canvas Token - Current Canvas Token: undefined"
                         />
             </div>
             <div
@@ -1073,6 +1099,7 @@ ShallowWrapper {
                                                 clearRenderer={[Function]}
                                                 clearValueText="Clear value"
                                                 clearable={false}
+                                                closeOnSelect={true}
                                                 deleteRemoves={true}
                                                 delimiter=","
                                                 disabled={false}
@@ -1094,6 +1121,8 @@ ShallowWrapper {
                                                 onBlurResetsInput={true}
                                                 onChange={[Function]}
                                                 onCloseResetsInput={true}
+                                                onSelectResetsInput={true}
+                                                openOnClick={true}
                                                 optionComponent={[Function]}
                                                 options={
                                                                 Array [
@@ -1119,59 +1148,59 @@ ShallowWrapper {
                                 />
                 </div>
 </div>,
-              Array [
-                <div
-                  className="o-grid__item u-half"
+              <div
+                className="o-grid__item u-half"
 >
-                  <Input
-                                    className="c-input"
-                                    inputProps={
-                                                      Object {
-                                                                        "id": "instance_lti_key",
-                                                                        "name": "lti_key",
-                                                                        "onChange": [Function],
-                                                                        "type": "text",
-                                                                        "value": "",
-                                                                      }
-                                    }
-                                    labelText="LTI Key"
-                  />
+                <Input
+                                className="c-input"
+                                inputProps={
+                                                Object {
+                                                                "disabled": undefined,
+                                                                "id": "lti_key_input",
+                                                                "name": "lti_key",
+                                                                "onChange": [Function],
+                                                                "type": "text",
+                                                                "value": undefined,
+                                                              }
+                                }
+                                labelText="LTI Key"
+                />
 </div>,
-                <div
-                  className="o-grid__item u-half"
+              <div
+                className="o-grid__item u-half"
 >
-                  <Input
-                                    className="c-input"
-                                    inputProps={
-                                                      Object {
-                                                                        "id": "instance_lti_secret",
-                                                                        "name": "lti_secret",
-                                                                        "onChange": [Function],
-                                                                        "type": "text",
-                                                                        "value": "",
-                                                                      }
-                                    }
-                                    labelText="LTI Secret"
-                  />
+                <Input
+                                className="c-input"
+                                inputProps={
+                                                Object {
+                                                                "id": "lti_secret_input",
+                                                                "name": "lti_secret",
+                                                                "onChange": [Function],
+                                                                "type": "text",
+                                                                "value": undefined,
+                                                              }
+                                }
+                                labelText="LTI Secret"
+                />
 </div>,
-                <div
-                  className="o-grid__item u-half"
+              <div
+                className="o-grid__item u-half"
 >
-                  <Input
-                                    className="c-input"
-                                    inputProps={
-                                                      Object {
-                                                                        "id": "instance_canvas_token",
-                                                                        "name": "canvas_token",
-                                                                        "onChange": [Function],
-                                                                        "type": "text",
-                                                                        "value": "",
-                                                                      }
-                                    }
-                                    labelText="Canvas Token"
-                  />
+                <Input
+                                className="c-input"
+                                inputProps={
+                                                Object {
+                                                                "id": "canvas_token_input",
+                                                                "name": "canvas_token",
+                                                                "onChange": [Function],
+                                                                "placeholder": "",
+                                                                "type": "text",
+                                                                "value": null,
+                                                              }
+                                }
+                                labelText="Canvas Token - Current Canvas Token: undefined"
+                />
 </div>,
-              ],
               <div
                 className="o-grid__item u-full"
 >
@@ -1240,6 +1269,7 @@ ShallowWrapper {
                                     clearRenderer={[Function]}
                                     clearValueText="Clear value"
                                     clearable={false}
+                                    closeOnSelect={true}
                                     deleteRemoves={true}
                                     delimiter=","
                                     disabled={false}
@@ -1261,6 +1291,8 @@ ShallowWrapper {
                                     onBlurResetsInput={true}
                                     onChange={[Function]}
                                     onCloseResetsInput={true}
+                                    onSelectResetsInput={true}
+                                    openOnClick={true}
                                     optionComponent={[Function]}
                                     options={
                                                       Array [
@@ -1307,6 +1339,7 @@ ShallowWrapper {
                       clearRenderer={[Function]}
                       clearValueText="Clear value"
                       clearable={false}
+                      closeOnSelect={true}
                       deleteRemoves={true}
                       delimiter=","
                       disabled={false}
@@ -1328,6 +1361,8 @@ ShallowWrapper {
                       onBlurResetsInput={true}
                       onChange={[Function]}
                       onCloseResetsInput={true}
+                      onSelectResetsInput={true}
+                      openOnClick={true}
                       optionComponent={[Function]}
                       options={
                                             Array [
@@ -1381,6 +1416,7 @@ ShallowWrapper {
                       "clearRenderer": [Function],
                       "clearValueText": "Clear value",
                       "clearable": false,
+                      "closeOnSelect": true,
                       "deleteRemoves": true,
                       "delimiter": ",",
                       "disabled": false,
@@ -1402,6 +1438,8 @@ ShallowWrapper {
                       "onBlurResetsInput": true,
                       "onChange": [Function],
                       "onCloseResetsInput": true,
+                      "onSelectResetsInput": true,
+                      "openOnClick": true,
                       "optionComponent": [Function],
                       "options": Array [
                         Object {
@@ -1434,18 +1472,19 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": "lti_key",
+              "key": null,
               "nodeType": "host",
               "props": Object {
                 "children": <Input
                   className="c-input"
                   inputProps={
                                     Object {
-                                                      "id": "instance_lti_key",
+                                                      "disabled": undefined,
+                                                      "id": "lti_key_input",
                                                       "name": "lti_key",
                                                       "onChange": [Function],
                                                       "type": "text",
-                                                      "value": "",
+                                                      "value": undefined,
                                                     }
                   }
                   labelText="LTI Key"
@@ -1460,11 +1499,12 @@ ShallowWrapper {
                 "props": Object {
                   "className": "c-input",
                   "inputProps": Object {
-                    "id": "instance_lti_key",
+                    "disabled": undefined,
+                    "id": "lti_key_input",
                     "name": "lti_key",
                     "onChange": [Function],
                     "type": "text",
-                    "value": "",
+                    "value": undefined,
                   },
                   "labelText": "LTI Key",
                 },
@@ -1476,18 +1516,18 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": "lti_secret",
+              "key": null,
               "nodeType": "host",
               "props": Object {
                 "children": <Input
                   className="c-input"
                   inputProps={
                                     Object {
-                                                      "id": "instance_lti_secret",
+                                                      "id": "lti_secret_input",
                                                       "name": "lti_secret",
                                                       "onChange": [Function],
                                                       "type": "text",
-                                                      "value": "",
+                                                      "value": undefined,
                                                     }
                   }
                   labelText="LTI Secret"
@@ -1502,11 +1542,11 @@ ShallowWrapper {
                 "props": Object {
                   "className": "c-input",
                   "inputProps": Object {
-                    "id": "instance_lti_secret",
+                    "id": "lti_secret_input",
                     "name": "lti_secret",
                     "onChange": [Function],
                     "type": "text",
-                    "value": "",
+                    "value": undefined,
                   },
                   "labelText": "LTI Secret",
                 },
@@ -1518,21 +1558,22 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": "canvas_token",
+              "key": null,
               "nodeType": "host",
               "props": Object {
                 "children": <Input
                   className="c-input"
                   inputProps={
                                     Object {
-                                                      "id": "instance_canvas_token",
+                                                      "id": "canvas_token_input",
                                                       "name": "canvas_token",
                                                       "onChange": [Function],
+                                                      "placeholder": "",
                                                       "type": "text",
-                                                      "value": "",
+                                                      "value": null,
                                                     }
                   }
-                  labelText="Canvas Token"
+                  labelText="Canvas Token - Current Canvas Token: undefined"
 />,
                 "className": "o-grid__item u-half",
               },
@@ -1544,13 +1585,14 @@ ShallowWrapper {
                 "props": Object {
                   "className": "c-input",
                   "inputProps": Object {
-                    "id": "instance_canvas_token",
+                    "id": "canvas_token_input",
                     "name": "canvas_token",
                     "onChange": [Function],
+                    "placeholder": "",
                     "type": "text",
-                    "value": "",
+                    "value": null,
                   },
-                  "labelText": "Canvas Token",
+                  "labelText": "Canvas Token - Current Canvas Token: undefined",
                 },
                 "ref": null,
                 "rendered": null,

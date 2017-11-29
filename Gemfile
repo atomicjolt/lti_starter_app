@@ -71,6 +71,7 @@ group :development do
   gem "listen"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
+  gem "spring-commands-rspec"
   gem "spring-watcher-listen"
   gem "web-console"
 end
@@ -80,6 +81,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "faker"
+  gem "guard-rspec", require: false
   gem "rspec-rails"
   gem "rubocop"
 end

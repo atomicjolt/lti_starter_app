@@ -56,7 +56,6 @@ ShallowWrapper {
                     applicationInstance={Object {}}
                     canvasRequest={[Function]}
                     currentAccount={null}
-                    onlyShowInstalledChanged={[Function]}
                     saveApplicationInstance={[Function]}
                     setAccountActive={[Function]}
                     sites={Object {}}
@@ -73,10 +72,12 @@ ShallowWrapper {
                     loadExternalTools={[Function]}
                     loadingCourses={Object {}}
                     onlyShowInstalled={false}
+                    onlyShowInstalledChanged={[Function]}
           />
 </div>,
         <Modal
           ariaHideApp={true}
+          bodyOpenClassName="ReactModal__Body--open"
           className="c-modal c-modal--site is-open c-modal--error loading"
           closeTimeoutMS={0}
           contentLabel="Modal"
@@ -121,7 +122,6 @@ ShallowWrapper {
               applicationInstance={Object {}}
               canvasRequest={[Function]}
               currentAccount={null}
-              onlyShowInstalledChanged={[Function]}
               saveApplicationInstance={[Function]}
               setAccountActive={[Function]}
               sites={Object {}}
@@ -138,6 +138,7 @@ ShallowWrapper {
               loadExternalTools={[Function]}
               loadingCourses={Object {}}
               onlyShowInstalled={false}
+              onlyShowInstalledChanged={[Function]}
 />,
           ],
           "className": "o-contain",
@@ -154,7 +155,6 @@ ShallowWrapper {
               "applicationInstance": Object {},
               "canvasRequest": [Function],
               "currentAccount": null,
-              "onlyShowInstalledChanged": [Function],
               "saveApplicationInstance": [Function],
               "setAccountActive": [Function],
               "sites": Object {},
@@ -177,6 +177,7 @@ ShallowWrapper {
               "loadExternalTools": [Function],
               "loadingCourses": Object {},
               "onlyShowInstalled": false,
+              "onlyShowInstalledChanged": [Function],
             },
             "ref": null,
             "rendered": null,
@@ -191,6 +192,7 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "ariaHideApp": true,
+          "bodyOpenClassName": "ReactModal__Body--open",
           "children": Array [
             <div
               className="c-loading-icon"
@@ -245,7 +247,6 @@ ShallowWrapper {
                         applicationInstance={Object {}}
                         canvasRequest={[Function]}
                         currentAccount={null}
-                        onlyShowInstalledChanged={[Function]}
                         saveApplicationInstance={[Function]}
                         setAccountActive={[Function]}
                         sites={Object {}}
@@ -262,10 +263,12 @@ ShallowWrapper {
                         loadExternalTools={[Function]}
                         loadingCourses={Object {}}
                         onlyShowInstalled={false}
+                        onlyShowInstalledChanged={[Function]}
             />
 </div>,
           <Modal
             ariaHideApp={true}
+            bodyOpenClassName="ReactModal__Body--open"
             className="c-modal c-modal--site is-open c-modal--error loading"
             closeTimeoutMS={0}
             contentLabel="Modal"
@@ -310,7 +313,6 @@ ShallowWrapper {
                 applicationInstance={Object {}}
                 canvasRequest={[Function]}
                 currentAccount={null}
-                onlyShowInstalledChanged={[Function]}
                 saveApplicationInstance={[Function]}
                 setAccountActive={[Function]}
                 sites={Object {}}
@@ -327,6 +329,7 @@ ShallowWrapper {
                 loadExternalTools={[Function]}
                 loadingCourses={Object {}}
                 onlyShowInstalled={false}
+                onlyShowInstalledChanged={[Function]}
 />,
             ],
             "className": "o-contain",
@@ -343,7 +346,6 @@ ShallowWrapper {
                 "applicationInstance": Object {},
                 "canvasRequest": [Function],
                 "currentAccount": null,
-                "onlyShowInstalledChanged": [Function],
                 "saveApplicationInstance": [Function],
                 "setAccountActive": [Function],
                 "sites": Object {},
@@ -366,6 +368,7 @@ ShallowWrapper {
                 "loadExternalTools": [Function],
                 "loadingCourses": Object {},
                 "onlyShowInstalled": false,
+                "onlyShowInstalledChanged": [Function],
               },
               "ref": null,
               "rendered": null,
@@ -380,6 +383,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "ariaHideApp": true,
+            "bodyOpenClassName": "ReactModal__Body--open",
             "children": Array [
               <div
                 className="c-loading-icon"

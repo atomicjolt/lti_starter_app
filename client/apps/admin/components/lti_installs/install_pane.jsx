@@ -17,15 +17,16 @@ function select(state) {
 
 export class InstallPane extends React.Component {
   static propTypes = {
-    courses             : PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    loadExternalTools   : PropTypes.func,
+    courses: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    loadExternalTools: PropTypes.func,
     applicationInstance : PropTypes.shape({}),
-    canvasRequest       : PropTypes.func,
-    loadingCourses      : PropTypes.shape({}),
-    account             : PropTypes.shape({
-      installCount : PropTypes.number
+    canvasRequest: PropTypes.func,
+    loadingCourses: PropTypes.shape({}),
+    account: PropTypes.shape({
+      installCount: PropTypes.number
     }),
     onlyShowInstalled: PropTypes.bool.isRequired,
+    onlyShowInstalledChanged: PropTypes.func.isRequired,
   };
 
   constructor() {
@@ -101,7 +102,7 @@ export class InstallPane extends React.Component {
   }
 
   loadExternalTools() {
-    _.each(this.pageCourses(this.searchedCourses()), (course) => {
+    _.each(this.pageCourses(this.courses()), (course) => {
       if (course.external_tools === undefined) {
         this.props.loadExternalTools(course.id);
       }
@@ -151,6 +152,7 @@ export class InstallPane extends React.Component {
             courses={this.pageCourses(searchedCourses)}
             loadingCourses={this.props.loadingCourses}
             canvasRequest={this.props.canvasRequest}
+            onlyShowInstalledChanged={this.props.onlyShowInstalledChanged}
           />
           <Pagination
             setPage={change => this.setState({ currentPage: change.selected })}

@@ -19,7 +19,6 @@ export default class Sidebar extends React.Component {
     setAccountActive: PropTypes.func.isRequired,
     saveApplicationInstance: PropTypes.func.isRequired,
     sites: PropTypes.shape({}).isRequired,
-    onlyShowInstalledChanged: PropTypes.func.isRequired,
   }
 
   constructor() {
@@ -64,17 +63,6 @@ export default class Sidebar extends React.Component {
         </div>
 
         <div className="c-filters">
-          <h4 className="c-sidebar-subtitle">Installed</h4>
-          <div className="c-checkbox--yellow u-m-bottom">
-            <input
-              type="checkbox"
-              id="onlyShowInstalled"
-              name="onlyShowInstalled"
-              onChange={this.props.onlyShowInstalledChanged}
-            />
-            <label htmlFor="onlyShowInstalled">Show only installed</label>
-          </div>
-
           <h4 className="c-sidebar-subtitle">Accounts</h4>
           <Accounts
             currentAccount={this.props.currentAccount}

@@ -18,6 +18,7 @@ describe('install pane', () => {
       },
       loadExternalTools: () => {},
       onlyShowInstalled: false,
+      onlyShowInstalledChanged: () => {},
     };
     result = shallow(<InstallPane {...props} />);
   });

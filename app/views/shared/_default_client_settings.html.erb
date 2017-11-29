@@ -58,13 +58,14 @@
       settings[:oauth_callback]                         = params["oauth_callback"]
       settings[:resource_link_id]                       = params["resource_link_id"]
       settings[:resource_link_title]                    = params["resource_link_title"]
-      settings[:roles]                                  = lti_roles
+      settings[:roles]                                  = current_user_roles(context_id: params[:context_id])
       settings[:tool_consumer_info_product_family_code] = params["tool_consumer_info_product_family_code"]
       settings[:tool_consumer_info_version]             = params["tool_consumer_info_version"]
       settings[:tool_consumer_instance_contact_email]   = params["tool_consumer_instance_contact_email"]
       settings[:tool_consumer_instance_guid]            = params["tool_consumer_instance_guid"]
       settings[:tool_consumer_instance_name]            = params["tool_consumer_instance_name"]
       settings[:user_image]                             = params["user_image"]
+      settings[:content_items]                          = params["content_items"]
 
       # Outcome LTI parameters
       if params["lis_outcome_service_url"].present?

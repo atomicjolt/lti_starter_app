@@ -5,15 +5,6 @@ import ReactSelect from 'react-select';
 import Input from '../common/input';
 import Textarea from '../common/textarea';
 import Warning from '../common/warning';
-import {
-  canvasDevKeysUrl,
-  oauthCallbackUrl } from '../../libs/sites';
-
-export const TEXT_FIELDS = {
-  lti_key: 'LTI Key',
-  lti_secret: 'LTI Secret',
-  canvas_token: 'Canvas Token',
-};
 
 export default class Form extends React.Component {
 
@@ -28,8 +19,10 @@ export default class Form extends React.Component {
     config: PropTypes.string,
     configParseError: PropTypes.string,
     lti_config: PropTypes.string,
+    lti_key: PropTypes.string,
+    lti_secret: PropTypes.string,
     ltiConfigParseError: PropTypes.string,
-    domain: PropTypes.string,
+    canvas_token_preview: PropTypes.string,
   };
 
   selectSite(option) {
@@ -47,36 +40,8 @@ export default class Form extends React.Component {
     this.props.onChange(event);
   }
 
-  renderInput(outerClassName, className, type, altName, isUpdate, fieldLabel, field) {
-    const id = `instance_${field}`;
-    const name = altName || field;
-    const inputProps = {
-      id,
-      name,
-      type,
-      onChange: this.props.onChange
-    };
-    if (type === 'radio') {
-      inputProps.checked = this.props[altName] === field;
-      inputProps.value = field;
-    } else {
-      if (isUpdate && field === 'lti_key') {
-        inputProps.disabled = true;
-      }
-      inputProps.value = this.props[field] || '';
-    }
-    return (
-      <div key={field} className={outerClassName}>
-        <Input
-          className={className}
-          labelText={fieldLabel}
-          inputProps={inputProps}
-        />
-      </div>
-    );
-  }
-
   render() {
+    const { onChange } = this.props;
     const options = _.map(this.props.sites, site => ({
       label: site.url,
       value: `${site.id}`
@@ -118,11 +83,47 @@ export default class Form extends React.Component {
               />
             </div>
           </div>
-          {
-            _.map(TEXT_FIELDS, (...args) =>
-              this.renderInput('o-grid__item u-half', 'c-input', 'text', undefined, this.props.isUpdate, ...args)
-            )
-          }
+          <div className="o-grid__item u-half">
+            <Input
+              className="c-input"
+              labelText="LTI Key"
+              inputProps={{
+                id: 'lti_key_input',
+                name: 'lti_key',
+                type: 'text',
+                disabled: this.props.isUpdate,
+                value: this.props.lti_key,
+                onChange
+              }}
+            />
+          </div>
+          <div className="o-grid__item u-half">
+            <Input
+              className="c-input"
+              labelText="LTI Secret"
+              inputProps={{
+                id: 'lti_secret_input',
+                name: 'lti_secret',
+                type: 'text',
+                value: this.props.lti_secret,
+                onChange
+              }}
+            />
+          </div>
+          <div className="o-grid__item u-half">
+            <Input
+              className="c-input"
+              labelText={`Canvas Token - Current Canvas Token: ${this.props.canvas_token_preview}`}
+              inputProps={{
+                id: 'canvas_token_input',
+                name: 'canvas_token',
+                type: 'text',
+                placeholder: this.props.canvas_token_preview ? 'Token Set!' : '',
+                value: null,
+                onChange
+              }}
+            />
+          </div>
           <div className="o-grid__item u-full">
             <Textarea
               className="c-input"

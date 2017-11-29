@@ -6,10 +6,8 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import ContentItemSelectionForm from 'atomic-canvas/libs/lti/components/content_item_selection_form';
 
-import ContentItemSelectionForm from '../../../../libs/lti/components/content_item_selection_form';
-import { getContentItemSelection } from '../../actions/content_items';
-import { createLtiLaunch } from '../../actions/lti_launches';
 import {
   embedHtml,
   embedMultipleHtml,
@@ -17,7 +15,10 @@ import {
   embedIframe,
   embedLtiIframe,
   embedLtiIframeWriteBack,
-} from '../../../../libs/lti/content_item_selection';
+} from 'atomic-canvas/libs/lti/content_item_selection';
+
+import { createLtiLaunch } from '../../actions/lti_launches';
+import { getContentItemSelection } from '../../actions/content_items';
 
 const select = state => ({
   acceptMediaTypes: state.settings.accept_media_types,
