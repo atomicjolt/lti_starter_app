@@ -224,3 +224,11 @@ begin
 rescue Apartment::TenantExists
   # Do nothing if the tenant already exists
 end
+
+# TODO can be removed later
+Application.find_each do |application|
+  if application.oauth_precedence.blank?
+    application.oauth_precedence = "global,user,application_instance,course"
+    application.save!
+  end
+end

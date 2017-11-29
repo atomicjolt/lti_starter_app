@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171003181935) do
+ActiveRecord::Schema.define(version: 20171117203730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,14 +48,15 @@ ActiveRecord::Schema.define(version: 20171003181935) do
     t.string   "name"
     t.string   "description"
     t.string   "client_application_name"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                                                      null: false
+    t.datetime "updated_at",                                                                      null: false
     t.bigint   "kind",                        default: 0
     t.bigint   "application_instances_count"
     t.jsonb    "default_config",              default: {}
     t.jsonb    "lti_config"
     t.jsonb    "canvas_api_permissions",      default: {}
     t.string   "key"
+    t.string   "oauth_precedence",            default: "global,user,application_instance,course"
     t.index ["key"], name: "index_applications_on_key", using: :btree
   end
 
