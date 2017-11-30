@@ -45,6 +45,7 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
       allow(controller.request).to receive(:host).and_return("example.com")
       def controller.proxy
         @auth = FactoryGirl.create(:authentication)
+        @auth_id = @auth.id
         raise LMS::Canvas::RefreshTokenRequired.new("", nil, @auth)
       end
     end
@@ -57,7 +58,7 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
         type = "LIST_ACCOUNTS"
         get :proxy, params: { lms_proxy_call_type: type, lti_key: @application_instance.lti_key }, format: :json
         expect(response).to have_http_status(:forbidden)
-        auth = Authentication.find_by(id: @auth.id)
+        auth = Authentication.find_by(id: @auth_id)
         expect(auth).to be_nil
         expect(response.body).to eq("{\"message\":\"canvas_authorization_required\"}")
       end
@@ -80,7 +81,7 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
         type = "LIST_ACCOUNTS"
         get :proxy, params: { lms_proxy_call_type: type, lti_key: @application_instance.lti_key }, format: :json
         expect(response).to have_http_status(:forbidden)
-        auth = Authentication.find_by(id: @auth.id)
+        auth = Authentication.find_by(id: @auth_id)
         expect(auth).to be_nil
         expect(response.body).to eq("{\"message\":\"Unable to find Canvas API Token.\"}")
       end
