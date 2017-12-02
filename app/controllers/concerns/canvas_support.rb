@@ -13,37 +13,37 @@ module Concerns
     )
 
       # Find OAuth token
-      auth = find_auth(application_instance, user, canvas_course)
+      api = find_canvas_api(application_instance, user, canvas_course)
 
-      if auth.blank?
+      if api.blank?
         raise CanvasApiTokenRequired, "Could not find a global or user canvas api token."
       end
 
-      auth
+      api
     end
 
-    def find_auth(application_instance, user, canvas_course)
+    def find_canvas_api(application_instance, user, canvas_course)
       application_instance.oauth_precedence.each do |kind|
-        if auth = auth_for(kind, application_instance, user, canvas_course)
-          return auth # Return the first authentication object we find
+        if api = api_for(kind, application_instance, user, canvas_course)
+          return api # Return the first authentication object we find
         end
       end
       nil # Unable to find Canvas API token
     end
 
-    def auth_for(kind, application_instance, user, canvas_course)
+    def api_for(kind, application_instance, user, canvas_course)
       url = UrlHelper.scheme_host_port(application_instance.site.url)
       site = application_instance.site
 
       case kind
       when "global"
-        global_auth(application_instance, url)
+        global_api(application_instance, url)
       when "user"
-        user_auth(user, url, site)
+        user_api(user, url, site)
       when "application_instance"
-        application_instance_auth(application_instance, url, site)
+        application_instance_api(application_instance, url, site)
       when "course"
-        course_auth(canvas_course, url, site)
+        course_api(canvas_course, url, site)
       else
         nil
       end
@@ -52,7 +52,7 @@ module Concerns
     # Global token set on the application instance first.
     # This means someone set a token on the app and they
     # do not wish for any users to have to authenticate
-    def global_auth(application_instance, url)
+    def global_api(application_instance, url)
       if application_instance.canvas_token.present?
         LMS::Canvas.new(
           url,
@@ -68,7 +68,7 @@ module Concerns
     # account and figure out the correct token for that account
     # TODO When associating a token with an application instance
     # be sure to check that the token has complete access to the account
-    def application_instance_auth(application_instance, url, site)
+    def application_instance_api(application_instance, url, site)
       return nil unless application_instance.present?
       if auth = application_instance.authentications.find_by(provider_url: url)
         refreshable_auth(auth, url, site)
@@ -77,7 +77,7 @@ module Concerns
 
     # Look for an auth object associated with the course. This
     # will have been obtained during the onboarding process
-    def course_auth(course, url, site)
+    def course_api(course, url, site)
       return nil unless course.present?
       if auth = course.authentications.find_by(provider_url: url)
         refreshable_auth(auth, url, site)
@@ -85,7 +85,7 @@ module Concerns
     end
 
     # User specific authentication.
-    def user_auth(user, url, site)
+    def user_api(user, url, site)
       return nil unless user.present?
       if auth = user.authentications.find_by(provider_url: url)
         refreshable_auth(auth, url, site)
