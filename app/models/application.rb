@@ -28,13 +28,13 @@ class Application < ActiveRecord::Base
   HELLOWORLD = "helloworld".freeze
 
   def create_instance(site: nil, bundle_instance: nil, tenant: nil)
-    app = application_instances.find_or_create_by(
+    application_instance = application_instances.find_or_create_by(
       site: site,
       bundle_instance: bundle_instance,
     )
     if tenant.present?
-      app.update!(tenant: tenant)
+      application_instance.update!(tenant: tenant)
     end
-    app
+    application_instance
   end
 end
