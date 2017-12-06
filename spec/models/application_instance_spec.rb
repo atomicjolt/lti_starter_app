@@ -49,6 +49,13 @@ RSpec.describe ApplicationInstance, type: :model do
       expect(@application_instance.tenant).to eq(@application_instance.lti_key)
     end
 
+    it "sets anonymous to the value from application" do
+      @application.anonymous = true
+      @application.save!
+      @application_instance = create(:application_instance, site: @site, application: @application)
+      expect(@application_instance.anonymous).to eq(true)
+    end
+
     it "doesn't change the tenant" do
       @application_instance = create(
         :application_instance,

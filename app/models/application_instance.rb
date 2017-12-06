@@ -81,6 +81,7 @@ class ApplicationInstance < ActiveRecord::Base
   def create_config
     self.config = application.default_config if config.blank?
     self.lti_config = application.lti_config if lti_config.blank?
+    self.anonymous = application.anonymous if anonymous.blank?
   end
 
   # Danger! Whole databases will be lost with this method!
