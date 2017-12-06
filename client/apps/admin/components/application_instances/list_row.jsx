@@ -12,8 +12,6 @@ export default class ListRow extends React.Component {
   static propTypes = {
     delete: PropTypes.func.isRequired,
     save: PropTypes.func.isRequired,
-    lti_key: PropTypes.string,
-    domain: PropTypes.string,
     sites: PropTypes.shape({}).isRequired,
     application: PropTypes.shape({}),
     applicationInstance: PropTypes.shape({
@@ -66,6 +64,7 @@ export default class ListRow extends React.Component {
     const { applicationInstance } = this.props;
     const styles = ListRow.getStyles();
     const path = `applications/${applicationInstance.application_id}/application_instances/${applicationInstance.id}/installs`;
+    const createdAt = new Date(applicationInstance.created_at);
 
     return (
       <tr>
@@ -90,12 +89,11 @@ export default class ListRow extends React.Component {
             onClick={(e) => { this.checkAuthentication(e); }}
             to={path}
           >
-            {_.capitalize(_.replace(applicationInstance.site.url.split('.')[1], 'https://', ''))}
+            {applicationInstance.lti_key}
           </Link>
           <div>{_.replace(applicationInstance.site.url, 'https://', '')}</div>
         </td>
-        <td><span>{this.props.lti_key}</span></td>
-        <td><span>{this.props.domain}</span></td>
+        <td><span>{applicationInstance.domain}</span></td>
         <td>
           <button
             style={styles.buttonIcon}
@@ -135,6 +133,15 @@ export default class ListRow extends React.Component {
               applicationInstance.disabled_at ? <DisabledButton /> : <EnabledButton />
             }
           </button>
+        </td>
+        <td>
+          {applicationInstance.canvas_token_preview}
+        </td>
+        <td>
+          {applicationInstance.authentications_count}
+        </td>
+        <td>
+          {createdAt.toLocaleDateString()} {createdAt.toLocaleTimeString()}
         </td>
         <td>
           <button

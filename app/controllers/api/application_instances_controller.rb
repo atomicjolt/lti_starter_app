@@ -10,12 +10,12 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
       app_json = app.as_json(include: :site)
       app_json["lti_config_xml"] = app.lti_config_xml
       app_json["canvas_token_preview"] = app.canvas_token_preview
+      app_json["authentications_count"] = app.authentications.count
       app_json.delete("encrypted_canvas_token")
       app_json.delete("encrypted_canvas_token_salt")
       app_json.delete("encrypted_canvas_token_iv")
       app_json
     end
-
     render json: application_instances
   end
 
