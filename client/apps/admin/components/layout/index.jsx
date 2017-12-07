@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getApplications } from '../../actions/applications';
 import { getSites } from '../../actions/sites';
 import appHistory from '../../history';
-import Errors from './errors'
+import Errors from './errors';
 
 export class Index extends React.Component {
 

@@ -83,7 +83,11 @@ export function disableApplicationInstance(applicationId, applicationInstanceId,
   };
 }
 
-export function checkApplicationInstanceAuth(applicationId, applicationInstanceId, authenticationId) {
+export function checkApplicationInstanceAuth(
+  applicationId,
+  applicationInstanceId,
+  authenticationId,
+) {
   return {
     type   : Constants.CHECK_APPLICATION_INSTANCE_AUTH,
     method : Network.GET,
