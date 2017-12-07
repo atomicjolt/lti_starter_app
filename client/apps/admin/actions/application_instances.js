@@ -13,6 +13,7 @@ const requests = [
   'DELETE_APPLICATION_INSTANCE',
   'DISABLE_APPLICATION_INSTANCE',
   'SAVE_APPLICATION_INSTANCE',
+  'CHECK_APPLICATION_INSTANCE_AUTH',
 ];
 
 export const Constants = wrapper(actions, requests);
@@ -79,5 +80,20 @@ export function disableApplicationInstance(applicationId, applicationInstanceId,
       disabled_at: disabledAt,
     },
     applicationInstanceId,
+  };
+}
+
+export function checkApplicationInstanceAuth(
+  applicationId,
+  applicationInstanceId,
+  authenticationId,
+) {
+  return {
+    type   : Constants.CHECK_APPLICATION_INSTANCE_AUTH,
+    method : Network.GET,
+    url    : `/api/applications/${applicationId}/application_instances/${applicationInstanceId}/check_auth?authentication_id=${authenticationId}`,
+    applicationId,
+    applicationInstanceId,
+    authenticationId,
   };
 }

@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import _ from 'lodash';
+
 import Modal from './modal';
+import AuthenticationsModal from './authentications_modal';
 import SettingsInputs from '../common/settings_inputs';
 import ConfigXmlModal from './config_xml_modal';
 import EnabledButton from '../common/enabled';
@@ -12,8 +14,6 @@ export default class ListRow extends React.Component {
   static propTypes = {
     delete: PropTypes.func.isRequired,
     save: PropTypes.func.isRequired,
-    lti_key: PropTypes.string,
-    domain: PropTypes.string,
     sites: PropTypes.shape({}).isRequired,
     application: PropTypes.shape({}),
     applicationInstance: PropTypes.shape({
@@ -40,7 +40,15 @@ export default class ListRow extends React.Component {
         fontSize: '1.5em',
         cursor: 'pointer',
       },
-
+      buttonNumber: {
+        height: '3rem',
+        borderRadius: '3px',
+        background: '#f5f5f5',
+        border: 'none',
+        color: 'grey',
+        fontSize: '1.5em',
+        cursor: 'pointer',
+      },
     };
   }
 
@@ -48,6 +56,7 @@ export default class ListRow extends React.Component {
     super();
     this.state = {
       modalOpen: false,
+      authenticationModalOpen: false,
       modalConfigXmlOpen: false,
     };
   }
@@ -62,10 +71,40 @@ export default class ListRow extends React.Component {
     }
   }
 
+  renderAuthentications() {
+    const styles = ListRow.getStyles();
+    const { applicationInstance } = this.props;
+    if (applicationInstance.authentications.length <= 0) {
+      return (
+        <td>
+          {applicationInstance.authentications.length}
+        </td>
+      );
+    }
+    return (
+      <td>
+        <button
+          style={styles.buttonNumber}
+          onClick={() => this.setState({ authenticationModalOpen: true })}
+        >
+          {applicationInstance.authentications.length}
+        </button>
+        <AuthenticationsModal
+          isOpen={this.state.authenticationModalOpen}
+          closeModal={() => this.setState({ authenticationModalOpen: false })}
+          authentications={applicationInstance.authentications}
+          application={this.props.application}
+          applicationInstance={applicationInstance}
+        />
+      </td>
+    );
+  }
+
   render() {
     const { applicationInstance } = this.props;
     const styles = ListRow.getStyles();
     const path = `applications/${applicationInstance.application_id}/application_instances/${applicationInstance.id}/installs`;
+    const createdAt = new Date(applicationInstance.created_at);
 
     return (
       <tr>
@@ -90,12 +129,11 @@ export default class ListRow extends React.Component {
             onClick={(e) => { this.checkAuthentication(e); }}
             to={path}
           >
-            {_.capitalize(_.replace(applicationInstance.site.url.split('.')[1], 'https://', ''))}
+            {applicationInstance.lti_key}
           </Link>
           <div>{_.replace(applicationInstance.site.url, 'https://', '')}</div>
         </td>
-        <td><span>{this.props.lti_key}</span></td>
-        <td><span>{this.props.domain}</span></td>
+        <td><span>{applicationInstance.domain}</span></td>
         <td>
           <button
             style={styles.buttonIcon}
@@ -109,7 +147,7 @@ export default class ListRow extends React.Component {
             sites={this.props.sites}
             save={this.props.save}
             application={this.props.application}
-            applicationInstance={this.props.applicationInstance}
+            applicationInstance={applicationInstance}
           />
         </td>
         <td>
@@ -135,6 +173,13 @@ export default class ListRow extends React.Component {
               applicationInstance.disabled_at ? <DisabledButton /> : <EnabledButton />
             }
           </button>
+        </td>
+        <td>
+          {applicationInstance.canvas_token_preview}
+        </td>
+        { this.renderAuthentications() }
+        <td>
+          {createdAt.toLocaleDateString()} {createdAt.toLocaleTimeString()}
         </td>
         <td>
           <button

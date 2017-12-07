@@ -8,11 +8,11 @@ export default function SettingsInputs(props) {
       <input
         type="hidden"
         name="oauth_consumer_key"
-        value={props.settings.lti_key}
+        value={props.settings.lti_key || ''}
       />
       {
         _.map(props.settings, (value, key) => (
-          <input key={key} type="hidden" value={value} name={key} />
+          <input key={key} type="hidden" value={value || ''} name={key} />
         ))
       }
     </div>

@@ -29,38 +29,26 @@ ShallowWrapper {
     "key": null,
     "nodeType": "host",
     "props": Object {
-      "children": <h1>
-        hello
+      "children": Array [
+        <Connect(Errors) />,
+        <h1>
+          hello
 </h1>,
+      ],
       "className": "app-index",
     },
     "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": null,
-      "nodeType": "host",
-      "props": Object {
-        "children": "hello",
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
       },
-      "ref": null,
-      "rendered": "hello",
-      "type": "h1",
-    },
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": null,
-      "nodeType": "host",
-      "props": Object {
-        "children": <h1>
-          hello
-</h1>,
-        "className": "app-index",
-      },
-      "ref": null,
-      "rendered": Object {
+      Object {
         "instance": null,
         "key": null,
         "nodeType": "host",
@@ -71,6 +59,46 @@ ShallowWrapper {
         "rendered": "hello",
         "type": "h1",
       },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Connect(Errors) />,
+          <h1>
+            hello
+</h1>,
+        ],
+        "className": "app-index",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "children": "hello",
+          },
+          "ref": null,
+          "rendered": "hello",
+          "type": "h1",
+        },
+      ],
       "type": "div",
     },
   ],

@@ -53,7 +53,7 @@ ShallowWrapper {
                               Object {
                                         "id": "lti_config_xml_lti_key",
                                         "name": "lti_key",
-                                        "readonly": true,
+                                        "readOnly": true,
                                         "type": "text",
                                         "value": "something-special",
                                       }
@@ -70,7 +70,7 @@ ShallowWrapper {
                               Object {
                                         "id": "lti_config_xml_lti_secret",
                                         "name": "lti_secret",
-                                        "readonly": true,
+                                        "readOnly": true,
                                         "type": "text",
                                         "value": "12345",
                                       }
@@ -88,7 +88,7 @@ ShallowWrapper {
                               Object {
                                         "id": "application_instance_lti_config_xml",
                                         "name": "lti_config_xml",
-                                        "readonly": true,
+                                        "readOnly": true,
                                         "rows": 20,
                                         "value": "IMA XML",
                                       }
@@ -146,7 +146,7 @@ ShallowWrapper {
                         Object {
                                     "id": "lti_config_xml_lti_key",
                                     "name": "lti_key",
-                                    "readonly": true,
+                                    "readOnly": true,
                                     "type": "text",
                                     "value": "something-special",
                                   }
@@ -165,7 +165,7 @@ ShallowWrapper {
             "inputProps": Object {
               "id": "lti_config_xml_lti_key",
               "name": "lti_key",
-              "readonly": true,
+              "readOnly": true,
               "type": "text",
               "value": "something-special",
             },
@@ -188,7 +188,7 @@ ShallowWrapper {
                         Object {
                                     "id": "lti_config_xml_lti_secret",
                                     "name": "lti_secret",
-                                    "readonly": true,
+                                    "readOnly": true,
                                     "type": "text",
                                     "value": "12345",
                                   }
@@ -207,7 +207,7 @@ ShallowWrapper {
             "inputProps": Object {
               "id": "lti_config_xml_lti_secret",
               "name": "lti_secret",
-              "readonly": true,
+              "readOnly": true,
               "type": "text",
               "value": "12345",
             },
@@ -231,7 +231,7 @@ ShallowWrapper {
                         Object {
                                     "id": "application_instance_lti_config_xml",
                                     "name": "lti_config_xml",
-                                    "readonly": true,
+                                    "readOnly": true,
                                     "rows": 20,
                                     "value": "IMA XML",
                                   }
@@ -250,7 +250,7 @@ ShallowWrapper {
             "textareaProps": Object {
               "id": "application_instance_lti_config_xml",
               "name": "lti_config_xml",
-              "readonly": true,
+              "readOnly": true,
               "rows": 20,
               "value": "IMA XML",
             },
@@ -303,7 +303,7 @@ ShallowWrapper {
                                     Object {
                                                 "id": "lti_config_xml_lti_key",
                                                 "name": "lti_key",
-                                                "readonly": true,
+                                                "readOnly": true,
                                                 "type": "text",
                                                 "value": "something-special",
                                               }
@@ -320,7 +320,7 @@ ShallowWrapper {
                                     Object {
                                                 "id": "lti_config_xml_lti_secret",
                                                 "name": "lti_secret",
-                                                "readonly": true,
+                                                "readOnly": true,
                                                 "type": "text",
                                                 "value": "12345",
                                               }
@@ -338,7 +338,7 @@ ShallowWrapper {
                                     Object {
                                                 "id": "application_instance_lti_config_xml",
                                                 "name": "lti_config_xml",
-                                                "readonly": true,
+                                                "readOnly": true,
                                                 "rows": 20,
                                                 "value": "IMA XML",
                                               }
@@ -396,7 +396,7 @@ ShallowWrapper {
                             Object {
                                           "id": "lti_config_xml_lti_key",
                                           "name": "lti_key",
-                                          "readonly": true,
+                                          "readOnly": true,
                                           "type": "text",
                                           "value": "something-special",
                                         }
@@ -415,7 +415,7 @@ ShallowWrapper {
               "inputProps": Object {
                 "id": "lti_config_xml_lti_key",
                 "name": "lti_key",
-                "readonly": true,
+                "readOnly": true,
                 "type": "text",
                 "value": "something-special",
               },
@@ -438,7 +438,7 @@ ShallowWrapper {
                             Object {
                                           "id": "lti_config_xml_lti_secret",
                                           "name": "lti_secret",
-                                          "readonly": true,
+                                          "readOnly": true,
                                           "type": "text",
                                           "value": "12345",
                                         }
@@ -457,7 +457,7 @@ ShallowWrapper {
               "inputProps": Object {
                 "id": "lti_config_xml_lti_secret",
                 "name": "lti_secret",
-                "readonly": true,
+                "readOnly": true,
                 "type": "text",
                 "value": "12345",
               },
@@ -481,7 +481,7 @@ ShallowWrapper {
                             Object {
                                           "id": "application_instance_lti_config_xml",
                                           "name": "lti_config_xml",
-                                          "readonly": true,
+                                          "readOnly": true,
                                           "rows": 20,
                                           "value": "IMA XML",
                                         }
@@ -500,7 +500,7 @@ ShallowWrapper {
               "textareaProps": Object {
                 "id": "application_instance_lti_config_xml",
                 "name": "lti_config_xml",
-                "readonly": true,
+                "readOnly": true,
                 "rows": 20,
                 "value": "IMA XML",
               },

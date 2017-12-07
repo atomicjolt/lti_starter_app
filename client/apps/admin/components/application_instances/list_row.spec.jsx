@@ -21,6 +21,7 @@ describe('application instances list row', () => {
         site: { url: 'http://www.example.com' },
         id: 2,
         application_id: 23,
+        authentications: [],
       },
       settings: {
         lti_key: 'lti-key',
