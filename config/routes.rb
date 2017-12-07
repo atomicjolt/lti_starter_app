@@ -41,7 +41,11 @@ Rails.application.routes.draw do
     resources :oauths
 
     resources :applications do
-      resources :application_instances
+      resources :application_instances do
+        member do
+          get :check_auth
+        end
+      end
     end
 
     resources :canvas_accounts, only: [:index]

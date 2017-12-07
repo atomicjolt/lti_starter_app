@@ -54,6 +54,7 @@ class OauthStateMiddleware
   # Retrieves all original app parameters (settings) from the database during
   # an OAuth callback
   def get_state(request)
+    # TODO figure out if we can validate the code right here else we have a security problem
     if request.params["state"].present? && request.params["code"].present?
       if oauth_state = OauthState.find_by(state: request.params["state"])
         [oauth_state, JSON.parse(oauth_state.payload) || {}]

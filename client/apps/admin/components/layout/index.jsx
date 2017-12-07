@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getApplications } from '../../actions/applications';
 import { getSites } from '../../actions/sites';
 import appHistory from '../../history';
+import Errors from './errors'
 
 export class Index extends React.Component {
 
@@ -31,6 +32,7 @@ export class Index extends React.Component {
   render() {
     return (
       <div className="app-index">
+        <Errors />
         {this.props.children}
       </div>
     );

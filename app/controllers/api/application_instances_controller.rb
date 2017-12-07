@@ -1,16 +1,29 @@
 class Api::ApplicationInstancesController < Api::ApiApplicationController
 
+  include Concerns::CanvasSupport
+
   load_and_authorize_resource :application
   load_and_authorize_resource :application_instance, through: :application
 
   before_action :set_configs, only: [:create, :update]
 
   def index
-    application_instances = @application_instances.map do |app|
-      app_json = app.as_json(include: :site)
-      app_json["lti_config_xml"] = app.lti_config_xml
-      app_json["canvas_token_preview"] = app.canvas_token_preview
-      app_json["authentications_count"] = app.authentications.count
+    application_instances = @application_instances.map do |app_inst|
+      authentications = Apartment::Tenant.switch(app_inst.tenant) do
+        app_inst.authentications.map do |authentication|
+          {
+            id: authentication.id,
+            user: authentication.user.display_name,
+            email: authentication.user.email,
+            provider: authentication.provider,
+            created_at: authentication.created_at,
+          }
+        end
+      end
+      app_json = app_inst.as_json(include: :site)
+      app_json["lti_config_xml"] = app_inst.lti_config_xml
+      app_json["canvas_token_preview"] = app_inst.canvas_token_preview
+      app_json["authentications"] = authentications
       app_json.delete("encrypted_canvas_token")
       app_json.delete("encrypted_canvas_token_salt")
       app_json.delete("encrypted_canvas_token_iv")
@@ -36,6 +49,20 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   def destroy
     @application_instance.destroy
     render json: { head: :ok }
+  end
+
+  def check_auth
+    auth = Apartment::Tenant.switch(@application_instance.tenant) do
+      @application_instance.authentications.find(params[:authentication_id])
+    end
+    site = @application_instance.site
+    url = UrlHelper.scheme_host_port(site.url)
+    api = refreshable_auth(auth, url, site)
+    if accounts = api.proxy("LIST_ACCOUNTS", {}, {}, true)
+      render json: accounts
+    else
+      render json: []
+    end
   end
 
   private
