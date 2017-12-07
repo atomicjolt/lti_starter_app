@@ -31,54 +31,86 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
+        <label
+          className="imaclass"
+          htmlFor="IM AN ID"
+>
+          <input
+                    checked={true}
+                    id="IM AN ID"
+                    name="the name"
+                    onChange={[Function]}
+                    type="radio"
+                    value="IM A VALUE"
+          />
+          <span>
+                    IMA LABEL
+          </span>
+</label>,
         undefined,
-        <input
-          checked={true}
-          id="IM AN ID"
-          name="the name"
-          onChange={[Function]}
-          type="radio"
-          value="IM A VALUE"
-/>,
-        <span>
-          IMA LABEL
-</span>,
       ],
-      "className": "imaclass",
-      "htmlFor": "IM AN ID",
+      "className": "c-input--container",
     },
     "ref": null,
     "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            undefined,
+            <input
+              checked={true}
+              id="IM AN ID"
+              name="the name"
+              onChange={[Function]}
+              type="radio"
+              value="IM A VALUE"
+/>,
+            <span>
+              IMA LABEL
+</span>,
+          ],
+          "className": "imaclass",
+          "htmlFor": "IM AN ID",
+        },
+        "ref": null,
+        "rendered": Array [
+          undefined,
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "host",
+            "props": Object {
+              "checked": true,
+              "id": "IM AN ID",
+              "name": "the name",
+              "onChange": [Function],
+              "type": "radio",
+              "value": "IM A VALUE",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "input",
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "host",
+            "props": Object {
+              "children": "IMA LABEL",
+            },
+            "ref": null,
+            "rendered": "IMA LABEL",
+            "type": "span",
+          },
+        ],
+        "type": "label",
+      },
       undefined,
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "host",
-        "props": Object {
-          "checked": true,
-          "id": "IM AN ID",
-          "name": "the name",
-          "onChange": [Function],
-          "type": "radio",
-          "value": "IM A VALUE",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": "input",
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "host",
-        "props": Object {
-          "children": "IMA LABEL",
-        },
-        "ref": null,
-        "rendered": "IMA LABEL",
-        "type": "span",
-      },
     ],
-    "type": "label",
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
@@ -87,54 +119,86 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
+          <label
+            className="imaclass"
+            htmlFor="IM AN ID"
+>
+            <input
+                        checked={true}
+                        id="IM AN ID"
+                        name="the name"
+                        onChange={[Function]}
+                        type="radio"
+                        value="IM A VALUE"
+            />
+            <span>
+                        IMA LABEL
+            </span>
+</label>,
           undefined,
-          <input
-            checked={true}
-            id="IM AN ID"
-            name="the name"
-            onChange={[Function]}
-            type="radio"
-            value="IM A VALUE"
-/>,
-          <span>
-            IMA LABEL
-</span>,
         ],
-        "className": "imaclass",
-        "htmlFor": "IM AN ID",
+        "className": "c-input--container",
       },
       "ref": null,
       "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              undefined,
+              <input
+                checked={true}
+                id="IM AN ID"
+                name="the name"
+                onChange={[Function]}
+                type="radio"
+                value="IM A VALUE"
+/>,
+              <span>
+                IMA LABEL
+</span>,
+            ],
+            "className": "imaclass",
+            "htmlFor": "IM AN ID",
+          },
+          "ref": null,
+          "rendered": Array [
+            undefined,
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "host",
+              "props": Object {
+                "checked": true,
+                "id": "IM AN ID",
+                "name": "the name",
+                "onChange": [Function],
+                "type": "radio",
+                "value": "IM A VALUE",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "input",
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "host",
+              "props": Object {
+                "children": "IMA LABEL",
+              },
+              "ref": null,
+              "rendered": "IMA LABEL",
+              "type": "span",
+            },
+          ],
+          "type": "label",
+        },
         undefined,
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "host",
-          "props": Object {
-            "checked": true,
-            "id": "IM AN ID",
-            "name": "the name",
-            "onChange": [Function],
-            "type": "radio",
-            "value": "IM A VALUE",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": "input",
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "host",
-          "props": Object {
-            "children": "IMA LABEL",
-          },
-          "ref": null,
-          "rendered": "IMA LABEL",
-          "type": "span",
-        },
       ],
-      "type": "label",
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {

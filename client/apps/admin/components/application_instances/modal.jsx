@@ -73,7 +73,7 @@ export default class Modal extends React.Component {
     if (e.target.name === 'anonymous') {
       const newApplicationInstance = _.cloneDeep(this.state.newApplicationInstance);
       newApplicationInstance.anonymous = false;
-      if (e.target.value === 'true') {
+      if (e.target.checked) {
         newApplicationInstance.anonymous = true;
       }
       this.setState({ newApplicationInstance });
