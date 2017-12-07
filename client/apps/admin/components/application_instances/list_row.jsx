@@ -74,10 +74,13 @@ export default class ListRow extends React.Component {
   renderAuthentications() {
     const styles = ListRow.getStyles();
     const { applicationInstance } = this.props;
-    if (applicationInstance.authentications.length <= 0) {
+    const numberAuthentications = applicationInstance.authentications ?
+      applicationInstance.authentications.length : 0;
+
+    if (numberAuthentications <= 0) {
       return (
         <td>
-          {applicationInstance.authentications.length}
+          {numberAuthentications}
         </td>
       );
     }
@@ -87,7 +90,7 @@ export default class ListRow extends React.Component {
           style={styles.buttonNumber}
           onClick={() => this.setState({ authenticationModalOpen: true })}
         >
-          {applicationInstance.authentications.length}
+          {numberAuthentications}
         </button>
         <AuthenticationsModal
           isOpen={this.state.authenticationModalOpen}
