@@ -1,5 +1,10 @@
-.c-input{
+.c-input--container {
   margin-bottom: 3rem;
+  display: inline-block;
+  width: 100%;
+}
+
+.c-input{
   display: inline-block;
   width: 100%;
 
@@ -47,7 +52,6 @@
 .c-checkbox{
   font-size: 1.4rem;
   color: $text-color;
-  margin-bottom: 2rem;
   display: inline-block;
 
   input{
@@ -97,6 +101,11 @@
     width: 0.01rem;
     position: absolute;
   }
+}
+
+.helper-text{
+  clear:both;
+  width:100%;
 }
 
 .Select{

@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
@@ -67,6 +68,16 @@ export default class Modal extends React.Component {
       } catch (err) {
         ltiConfigParseError = err.toString();
       }
+    }
+
+    if (e.target.name === 'anonymous') {
+      const newApplicationInstance = _.cloneDeep(this.state.newApplicationInstance);
+      newApplicationInstance.anonymous = false;
+      if (e.target.value === 'true') {
+        newApplicationInstance.anonymous = true;
+      }
+      this.setState({ newApplicationInstance });
+      return;
     }
 
     this.setState({
