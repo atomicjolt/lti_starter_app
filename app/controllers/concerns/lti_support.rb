@@ -39,9 +39,8 @@ module Concerns
       lti_user_id = params[:user_id]
       user = User.find_by(lti_user_id: lti_user_id)
       if user.blank?
-        domain = params["custom_canvas_api_domain"] || Rails.application.secrets.application_main_domain
         user = _generate_new_lti_user(params)
-        _attempt_uniq_email(user, domain)
+        _attempt_uniq_email(user)
       else
         _update_roles(user, params)
       end
@@ -60,8 +59,8 @@ module Concerns
       end
     end
 
-    def generate_email(domain)
-      "generated-#{User.maximum(:id).next}@#{domain}"
+    def generate_email
+      "generated-#{params[:user_id]}@#{domain_for_email}"
     end
 
     def safe_save_email(user)
@@ -74,26 +73,32 @@ module Concerns
       end
     end
 
-    def _attempt_uniq_email(user, domain)
+    def _attempt_uniq_email(user)
       count = 0 # don't go infinite
       while !safe_save_email(user) && count < 10
-        user.email = generate_email(domain)
+        user.email = generate_email
         count = count + 1
       end
     end
 
     def _generate_new_lti_user(params)
       lti_user_id = params[:user_id]
-      # Generate a name from the LTI params
-      name = if params[:lis_person_name_full].present?
-               params[:lis_person_name_full]
-             else
-               "#{params[:lis_person_name_given]} #{params[:lis_person_name_family]}"
-             end
-      name = name.strip
-      name = params[:roles] if name.blank? # If the name is blank then use their role
 
-      email = _assemble_email
+      if current_application_instance.anonymous?
+        name = "anonymous"
+        email = generate_email
+      else
+        # Generate a name from the LTI params
+        name = if params[:lis_person_name_full].present?
+                 params[:lis_person_name_full]
+               else
+                 "#{params[:lis_person_name_given]} #{params[:lis_person_name_family]}"
+               end
+        name = name.strip
+        name = params[:roles] if name.blank? # If the name is blank then use their role
+
+        email = _assemble_email
+      end
 
       user = User.new(email: email, name: name)
       user.password = ::SecureRandom::hex(15)
@@ -137,13 +142,16 @@ module Concerns
       end
     end
 
+    def domain_for_email
+      params["custom_canvas_api_domain"] || Rails.application.secrets.application_main_domain
+    end
+
     def _assemble_email
       # If there isn't an email then we have to make one up. We use the user_id and instance guid
-      domain = params["custom_canvas_api_domain"] || Rails.application.secrets.application_main_domain
       email = params[:lis_person_contact_email_primary]
-      email = "user-#{params[:user_id]}@#{domain}" if email.blank? && params[:user_id].present?
+      email = "user-#{params[:user_id]}@#{domain_for_email}" if email.blank? && params[:user_id].present?
       # If there isn't an email then we have to make one up. We use the user_id and instance guid
-      email = generate_email(domain) if email.blank?
+      email = generate_email if email.blank?
       email
     end
 

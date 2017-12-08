@@ -35,6 +35,25 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
         expect(response).to have_http_status(401)
       end
     end
+
+    describe "GET show" do
+      it "returns unauthorized" do
+        get :show, params: { id: @application_instance.id, application_id: @application.id }, format: :json
+        expect(response).to have_http_status(401)
+      end
+    end
+
+    describe "GET check_auth" do
+      it "returns unauthorized" do
+        authentication = FactoryGirl.create(:authentication)
+        get :check_auth, params: {
+          application_id: @application.id,
+          id: @application_instance.id,
+          authentication_id: authentication.id,
+        }, format: :json
+        expect(response).to have_http_status(401)
+      end
+    end
   end
 
   context "as admin" do
@@ -45,6 +64,32 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
     describe "GET index" do
       it "renders all application instances as json" do
         get :index, params: { application_id: @application.id }, format: :json
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    describe "GET show" do
+      it "renders specific application instances as json" do
+        Apartment::Tenant.switch(@application_instance.tenant) do
+          FactoryGirl.create(:authentication, application_instance: @application_instance)
+        end
+        get :show, params: { id: @application_instance.id, application_id: @application.id }, format: :json
+        expect(response).to have_http_status(200)
+        json = JSON.parse(response.body)
+        expect(json["authentications"].length).to eq(1)
+      end
+    end
+
+    describe "GET check_auth" do
+      it "renders all accounts the auth object has access to" do
+        authentication = Apartment::Tenant.switch(@application_instance.tenant) do
+          FactoryGirl.create(:authentication, application_instance: @application_instance)
+        end
+        get :check_auth, params: {
+          application_id: @application.id,
+          id: @application_instance.id,
+          authentication_id: authentication.id,
+        }, format: :json
         expect(response).to have_http_status(200)
       end
     end

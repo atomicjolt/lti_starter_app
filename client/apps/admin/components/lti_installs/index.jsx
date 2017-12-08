@@ -17,35 +17,35 @@ function select(state, props) {
   const instanceId = props.params.applicationInstanceId;
 
   return {
-    applicationInstance : state.applicationInstances[instanceId],
-    applications        : state.applications,
-    accounts            : state.accounts.accounts,
-    rootAccount         : _.find(state.accounts.accounts, { parent_account_id: null }),
-    loadingAccounts     : state.accounts.loading,
-    courses             : _.sortBy(state.courses, course => course.name),
-    userName            : state.settings.display_name,
-    loadingCourses      : state.loadingCourses,
-    sites               : state.sites,
+    applicationInstance: state.applicationInstances[instanceId],
+    applications: state.applications,
+    accounts: state.accounts.accounts,
+    rootAccount: _.find(state.accounts.accounts, { parent_account_id: null }),
+    loadingAccounts: state.accounts.loading,
+    courses: _.sortBy(state.courses, course => course.name),
+    userName: state.settings.display_name,
+    loadingCourses: state.loadingCourses,
+    sites: state.sites,
   };
 }
 
 export class Index extends React.Component {
   static propTypes = {
-    accounts                : PropTypes.shape({}).isRequired,
-    rootAccount             : PropTypes.shape({
-      id                      : PropTypes.number
+    accounts: PropTypes.shape({}).isRequired,
+    rootAccount: PropTypes.shape({
+      id: PropTypes.number
     }),
-    applications            : PropTypes.shape({}).isRequired,
-    courses                 : PropTypes.arrayOf(PropTypes.shape({})),
-    applicationInstance     : PropTypes.shape({}),
-    loadingCourses          : PropTypes.shape({}),
-    loadingAccounts         : PropTypes.bool,
-    getApplicationInstance  : PropTypes.func.isRequired,
-    canvasRequest           : PropTypes.func.isRequired,
-    saveApplicationInstance : PropTypes.func.isRequired,
-    params                  : PropTypes.shape({
-      applicationId           : PropTypes.string,
-      applicationInstanceId   : PropTypes.string,
+    applications: PropTypes.shape({}).isRequired,
+    courses: PropTypes.arrayOf(PropTypes.shape({})),
+    applicationInstance: PropTypes.shape({}),
+    loadingCourses: PropTypes.shape({}),
+    loadingAccounts: PropTypes.bool,
+    getApplicationInstance: PropTypes.func.isRequired,
+    canvasRequest: PropTypes.func.isRequired,
+    saveApplicationInstance: PropTypes.func.isRequired,
+    params: PropTypes.shape({
+      applicationId: PropTypes.string,
+      applicationInstanceId: PropTypes.string,
     }).isRequired,
     sites: PropTypes.shape({}).isRequired,
   };

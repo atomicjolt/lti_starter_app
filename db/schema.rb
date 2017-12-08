@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171117203730) do
+ActiveRecord::Schema.define(version: 20171206054757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20171117203730) do
     t.string   "encrypted_canvas_token"
     t.string   "encrypted_canvas_token_salt"
     t.string   "encrypted_canvas_token_iv"
-    t.datetime "created_at",                                            null: false
-    t.datetime "updated_at",                                            null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.string   "domain",                      limit: 2048
     t.bigint   "site_id"
     t.string   "tenant"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20171117203730) do
     t.jsonb    "lti_config"
     t.datetime "disabled_at"
     t.bigint   "bundle_instance_id"
+    t.boolean  "anonymous",                                default: false
     t.index ["application_id"], name: "index_application_instances_on_application_id", using: :btree
     t.index ["lti_key"], name: "index_application_instances_on_lti_key", using: :btree
     t.index ["site_id"], name: "index_application_instances_on_site_id", using: :btree
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(version: 20171117203730) do
     t.jsonb    "canvas_api_permissions",      default: {}
     t.string   "key"
     t.string   "oauth_precedence",            default: "global,user,application_instance,course"
+    t.boolean  "anonymous",                   default: false
     t.index ["key"], name: "index_applications_on_key", using: :btree
   end
 

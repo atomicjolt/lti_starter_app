@@ -1,4 +1,4 @@
-import _             from 'lodash';
+import _ from 'lodash';
 import { Constants } from '../actions/sites';
 
 const initialState = {};

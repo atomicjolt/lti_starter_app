@@ -1,4 +1,4 @@
-import _             from 'lodash';
+import _ from 'lodash';
 
 const initialState = {};
 
@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
       const newState = _.cloneDeep(state);
       const course = newState[action.original.params.course_id];
 
-      if (course.external_tools === undefined) {
+      if (_.isUndefined(course.external_tools)) {
         course.external_tools = {};
       }
 
@@ -29,8 +29,16 @@ export default (state = initialState, action) => {
 
     case 'CREATE_EXTERNAL_TOOL_COURSES_DONE': {
       const newState = _.cloneDeep(state);
-      const course = newState[action.original.params.course_id];
-      course.external_tools[action.payload.id] = action.payload;
+      const courseId = action.original.params.course_id;
+      const eternalToolId = action.payload.id;
+      if (courseId) {
+        if (_.isUndefined(newState[courseId].external_tools)) {
+          newState[courseId].external_tools = {};
+        }
+        newState[courseId].external_tools[eternalToolId] = action.payload;
+      } else {
+        throw new Error(`Unable to find course with id: ${courseId} to set external tools`);
+      }
       return newState;
     }
 
