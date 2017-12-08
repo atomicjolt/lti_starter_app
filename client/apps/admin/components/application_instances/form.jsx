@@ -23,6 +23,7 @@ export default class Form extends React.Component {
     lti_secret: PropTypes.string,
     ltiConfigParseError: PropTypes.string,
     canvas_token_preview: PropTypes.string,
+    anonymous: PropTypes.bool,
   };
 
   selectSite(option) {
@@ -113,13 +114,29 @@ export default class Form extends React.Component {
           <div className="o-grid__item u-half">
             <Input
               className="c-input"
-              labelText={`Canvas Token - Current Canvas Token: ${this.props.canvas_token_preview}`}
+              labelText="Canvas Token"
+              helperText={`Current Canvas Token: ${this.props.canvas_token_preview}`}
               inputProps={{
                 id: 'canvas_token_input',
                 name: 'canvas_token',
                 type: 'text',
                 placeholder: this.props.canvas_token_preview ? 'Token Set!' : '',
-                value: null,
+                value: '',
+                onChange
+              }}
+            />
+          </div>
+          <div className="o-grid__item u-full">
+            <Input
+              className="c-checkbox"
+              labelText="Anonymous"
+              helperText="indicates whether or not user name and email is stored during LTI launch"
+              inputProps={{
+                id: 'anonymous_input',
+                name: 'anonymous',
+                type: 'checkbox',
+                value: 'true',
+                checked: this.props.anonymous,
                 onChange
               }}
             />
