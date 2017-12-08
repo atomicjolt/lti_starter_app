@@ -138,6 +138,7 @@ ShallowWrapper {
           >
                     <Input
                               className="c-input"
+                              helperText="Current Canvas Token: undefined"
                               inputProps={
                                         Object {
                                                   "id": "canvas_token_input",
@@ -145,10 +146,29 @@ ShallowWrapper {
                                                   "onChange": [Function],
                                                   "placeholder": "",
                                                   "type": "text",
-                                                  "value": null,
+                                                  "value": "",
                                                 }
                               }
-                              labelText="Canvas Token - Current Canvas Token: undefined"
+                              labelText="Canvas Token"
+                    />
+          </div>
+          <div
+                    className="o-grid__item u-full"
+          >
+                    <Input
+                              className="c-checkbox"
+                              helperText="indicates whether or not user name and email is stored during LTI launch"
+                              inputProps={
+                                        Object {
+                                                  "checked": undefined,
+                                                  "id": "anonymous_input",
+                                                  "name": "anonymous",
+                                                  "onChange": [Function],
+                                                  "type": "checkbox",
+                                                  "value": "true",
+                                                }
+                              }
+                              labelText="Anonymous"
                     />
           </div>
           <div
@@ -326,6 +346,7 @@ ShallowWrapper {
 >
               <Input
                             className="c-input"
+                            helperText="Current Canvas Token: undefined"
                             inputProps={
                                           Object {
                                                         "id": "canvas_token_input",
@@ -333,10 +354,29 @@ ShallowWrapper {
                                                         "onChange": [Function],
                                                         "placeholder": "",
                                                         "type": "text",
-                                                        "value": null,
+                                                        "value": "",
                                                       }
                             }
-                            labelText="Canvas Token - Current Canvas Token: undefined"
+                            labelText="Canvas Token"
+              />
+</div>,
+            <div
+              className="o-grid__item u-full"
+>
+              <Input
+                            className="c-checkbox"
+                            helperText="indicates whether or not user name and email is stored during LTI launch"
+                            inputProps={
+                                          Object {
+                                                        "checked": undefined,
+                                                        "id": "anonymous_input",
+                                                        "name": "anonymous",
+                                                        "onChange": [Function],
+                                                        "type": "checkbox",
+                                                        "value": "true",
+                                                      }
+                            }
+                            labelText="Anonymous"
               />
 </div>,
             <div
@@ -701,6 +741,7 @@ ShallowWrapper {
             "props": Object {
               "children": <Input
                 className="c-input"
+                helperText="Current Canvas Token: undefined"
                 inputProps={
                                 Object {
                                                 "id": "canvas_token_input",
@@ -708,10 +749,10 @@ ShallowWrapper {
                                                 "onChange": [Function],
                                                 "placeholder": "",
                                                 "type": "text",
-                                                "value": null,
+                                                "value": "",
                                               }
                 }
-                labelText="Canvas Token - Current Canvas Token: undefined"
+                labelText="Canvas Token"
 />,
               "className": "o-grid__item u-half",
             },
@@ -722,15 +763,62 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "className": "c-input",
+                "helperText": "Current Canvas Token: undefined",
                 "inputProps": Object {
                   "id": "canvas_token_input",
                   "name": "canvas_token",
                   "onChange": [Function],
                   "placeholder": "",
                   "type": "text",
-                  "value": null,
+                  "value": "",
                 },
-                "labelText": "Canvas Token - Current Canvas Token: undefined",
+                "labelText": "Canvas Token",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "host",
+            "props": Object {
+              "children": <Input
+                className="c-checkbox"
+                helperText="indicates whether or not user name and email is stored during LTI launch"
+                inputProps={
+                                Object {
+                                                "checked": undefined,
+                                                "id": "anonymous_input",
+                                                "name": "anonymous",
+                                                "onChange": [Function],
+                                                "type": "checkbox",
+                                                "value": "true",
+                                              }
+                }
+                labelText="Anonymous"
+/>,
+              "className": "o-grid__item u-full",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "function",
+              "props": Object {
+                "className": "c-checkbox",
+                "helperText": "indicates whether or not user name and email is stored during LTI launch",
+                "inputProps": Object {
+                  "checked": undefined,
+                  "id": "anonymous_input",
+                  "name": "anonymous",
+                  "onChange": [Function],
+                  "type": "checkbox",
+                  "value": "true",
+                },
+                "labelText": "Anonymous",
               },
               "ref": null,
               "rendered": null,
@@ -1001,6 +1089,7 @@ ShallowWrapper {
             >
                         <Input
                                     className="c-input"
+                                    helperText="Current Canvas Token: undefined"
                                     inputProps={
                                                 Object {
                                                             "id": "canvas_token_input",
@@ -1008,10 +1097,29 @@ ShallowWrapper {
                                                             "onChange": [Function],
                                                             "placeholder": "",
                                                             "type": "text",
-                                                            "value": null,
+                                                            "value": "",
                                                           }
                                     }
-                                    labelText="Canvas Token - Current Canvas Token: undefined"
+                                    labelText="Canvas Token"
+                        />
+            </div>
+            <div
+                        className="o-grid__item u-full"
+            >
+                        <Input
+                                    className="c-checkbox"
+                                    helperText="indicates whether or not user name and email is stored during LTI launch"
+                                    inputProps={
+                                                Object {
+                                                            "checked": undefined,
+                                                            "id": "anonymous_input",
+                                                            "name": "anonymous",
+                                                            "onChange": [Function],
+                                                            "type": "checkbox",
+                                                            "value": "true",
+                                                          }
+                                    }
+                                    labelText="Anonymous"
                         />
             </div>
             <div
@@ -1189,6 +1297,7 @@ ShallowWrapper {
 >
                 <Input
                                 className="c-input"
+                                helperText="Current Canvas Token: undefined"
                                 inputProps={
                                                 Object {
                                                                 "id": "canvas_token_input",
@@ -1196,10 +1305,29 @@ ShallowWrapper {
                                                                 "onChange": [Function],
                                                                 "placeholder": "",
                                                                 "type": "text",
-                                                                "value": null,
+                                                                "value": "",
                                                               }
                                 }
-                                labelText="Canvas Token - Current Canvas Token: undefined"
+                                labelText="Canvas Token"
+                />
+</div>,
+              <div
+                className="o-grid__item u-full"
+>
+                <Input
+                                className="c-checkbox"
+                                helperText="indicates whether or not user name and email is stored during LTI launch"
+                                inputProps={
+                                                Object {
+                                                                "checked": undefined,
+                                                                "id": "anonymous_input",
+                                                                "name": "anonymous",
+                                                                "onChange": [Function],
+                                                                "type": "checkbox",
+                                                                "value": "true",
+                                                              }
+                                }
+                                labelText="Anonymous"
                 />
 </div>,
               <div
@@ -1564,6 +1692,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <Input
                   className="c-input"
+                  helperText="Current Canvas Token: undefined"
                   inputProps={
                                     Object {
                                                       "id": "canvas_token_input",
@@ -1571,10 +1700,10 @@ ShallowWrapper {
                                                       "onChange": [Function],
                                                       "placeholder": "",
                                                       "type": "text",
-                                                      "value": null,
+                                                      "value": "",
                                                     }
                   }
-                  labelText="Canvas Token - Current Canvas Token: undefined"
+                  labelText="Canvas Token"
 />,
                 "className": "o-grid__item u-half",
               },
@@ -1585,15 +1714,62 @@ ShallowWrapper {
                 "nodeType": "function",
                 "props": Object {
                   "className": "c-input",
+                  "helperText": "Current Canvas Token: undefined",
                   "inputProps": Object {
                     "id": "canvas_token_input",
                     "name": "canvas_token",
                     "onChange": [Function],
                     "placeholder": "",
                     "type": "text",
-                    "value": null,
+                    "value": "",
                   },
-                  "labelText": "Canvas Token - Current Canvas Token: undefined",
+                  "labelText": "Canvas Token",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "host",
+              "props": Object {
+                "children": <Input
+                  className="c-checkbox"
+                  helperText="indicates whether or not user name and email is stored during LTI launch"
+                  inputProps={
+                                    Object {
+                                                      "checked": undefined,
+                                                      "id": "anonymous_input",
+                                                      "name": "anonymous",
+                                                      "onChange": [Function],
+                                                      "type": "checkbox",
+                                                      "value": "true",
+                                                    }
+                  }
+                  labelText="Anonymous"
+/>,
+                "className": "o-grid__item u-full",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "function",
+                "props": Object {
+                  "className": "c-checkbox",
+                  "helperText": "indicates whether or not user name and email is stored during LTI launch",
+                  "inputProps": Object {
+                    "checked": undefined,
+                    "id": "anonymous_input",
+                    "name": "anonymous",
+                    "onChange": [Function],
+                    "type": "checkbox",
+                    "value": "true",
+                  },
+                  "labelText": "Anonymous",
                 },
                 "ref": null,
                 "rendered": null,

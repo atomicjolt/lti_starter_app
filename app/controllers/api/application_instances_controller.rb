@@ -98,6 +98,7 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
       :canvas_token,
       :lti_key,
       :disabled_at,
+      :anonymous,
     )
   end
 
