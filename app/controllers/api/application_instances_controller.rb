@@ -62,8 +62,8 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
       application_instance_instance.authentications.map do |authentication|
         {
           id: authentication.id,
-          user: authentication.user.display_name,
-          email: authentication.user.email,
+          user: authentication.user&.display_name,
+          email: authentication.user&.email,
           provider: authentication.provider,
           created_at: authentication.created_at,
         }
