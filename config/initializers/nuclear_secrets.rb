@@ -19,5 +19,6 @@ NuclearSecrets.configure do |config|
     admin_lti_secret: String,
     secret_key_base: String,
     secret_token: NilClass,
+    deploy_env: String,
   }
 end
