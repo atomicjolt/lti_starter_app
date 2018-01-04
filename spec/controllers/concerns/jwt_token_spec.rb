@@ -68,26 +68,26 @@ describe ApplicationController, type: :controller do
       @user.confirm
     end
 
-    it "returns true for urn:lti:instrole:ims\/lis\/Administrator" do
-      user_token = AuthToken.issue_token({ user_id: @user.id, lti_roles: ["urn:lti:instrole:ims\/lis\/Administrator"] })
+    it "returns true for urn:lti:instrole:ims/lis/Administrator" do
+      user_token = AuthToken.issue_token({ user_id: @user.id, lti_roles: ["urn:lti:instrole:ims/lis/Administrator"] })
       request.headers["Authorization"] = "Bearer #{user_token}"
       expect(controller.lti_admin?).to eq(true)
     end
 
-    it "returns true for urn:lti:sysrole:ims\/lis\/SysAdmin" do
-      user_token = AuthToken.issue_token({ user_id: @user.id, lti_roles: ["urn:lti:sysrole:ims\/lis\/SysAdmin"] })
+    it "returns true for urn:lti:sysrole:ims/lis/SysAdmin" do
+      user_token = AuthToken.issue_token({ user_id: @user.id, lti_roles: ["urn:lti:sysrole:ims/lis/SysAdmin"] })
       request.headers["Authorization"] = "Bearer #{user_token}"
       expect(controller.lti_admin?).to eq(true)
     end
 
-    it "returns true for urn:lti:sysrole:ims\/lis\/Administrator" do
-      user_token = AuthToken.issue_token({ user_id: @user.id, lti_roles: ["urn:lti:sysrole:ims\/lis\/Administrator"] })
+    it "returns true for urn:lti:sysrole:ims/lis/Administrator" do
+      user_token = AuthToken.issue_token({ user_id: @user.id, lti_roles: ["urn:lti:sysrole:ims/lis/Administrator"] })
       request.headers["Authorization"] = "Bearer #{user_token}"
       expect(controller.lti_admin?).to eq(true)
     end
 
-    it "returns true for urn:lti:role:ims\/lis\/Administrator" do
-      user_token = AuthToken.issue_token({ user_id: @user.id, lti_roles: ["urn:lti:role:ims\/lis\/Administrator"] })
+    it "returns true for urn:lti:role:ims/lis/Administrator" do
+      user_token = AuthToken.issue_token({ user_id: @user.id, lti_roles: ["urn:lti:role:ims/lis/Administrator"] })
       request.headers["Authorization"] = "Bearer #{user_token}"
       expect(controller.lti_admin?).to eq(true)
     end
