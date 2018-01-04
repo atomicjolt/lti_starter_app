@@ -40,7 +40,7 @@ describe ApplicationController, type: :controller do
     end
   end
 
-  context "jwt_lti_roles_string" do
+  describe "jwt_lti_roles_string" do
     before do
       @user = FactoryGirl.create(:user_canvas)
       @user.confirm
@@ -59,6 +59,37 @@ describe ApplicationController, type: :controller do
       roles = controller.jwt_lti_roles
       expect(roles.empty?).to eq(false)
       expect(roles).to eq(@user.roles.map(&:name))
+    end
+  end
+
+  describe "lti_admin?" do
+    before do
+      @user = FactoryGirl.create(:user_canvas)
+      @user.confirm
+    end
+
+    it "returns true for urn:lti:instrole:ims/lis/Administrator" do
+      user_token = AuthToken.issue_token({ user_id: @user.id, lti_roles: ["urn:lti:instrole:ims/lis/Administrator"] })
+      request.headers["Authorization"] = "Bearer #{user_token}"
+      expect(controller.lti_admin?).to eq(true)
+    end
+
+    it "returns true for urn:lti:sysrole:ims/lis/SysAdmin" do
+      user_token = AuthToken.issue_token({ user_id: @user.id, lti_roles: ["urn:lti:sysrole:ims/lis/SysAdmin"] })
+      request.headers["Authorization"] = "Bearer #{user_token}"
+      expect(controller.lti_admin?).to eq(true)
+    end
+
+    it "returns true for urn:lti:sysrole:ims/lis/Administrator" do
+      user_token = AuthToken.issue_token({ user_id: @user.id, lti_roles: ["urn:lti:sysrole:ims/lis/Administrator"] })
+      request.headers["Authorization"] = "Bearer #{user_token}"
+      expect(controller.lti_admin?).to eq(true)
+    end
+
+    it "returns true for urn:lti:role:ims/lis/Administrator" do
+      user_token = AuthToken.issue_token({ user_id: @user.id, lti_roles: ["urn:lti:role:ims/lis/Administrator"] })
+      request.headers["Authorization"] = "Bearer #{user_token}"
+      expect(controller.lti_admin?).to eq(true)
     end
   end
 end
