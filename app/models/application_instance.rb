@@ -32,6 +32,8 @@ class ApplicationInstance < ActiveRecord::Base
   after_commit :create_schema, on: :create
   before_create :create_config
 
+  scope :for_tenant, ->(tenant) { where(tenant: tenant) }
+
   def lti_config_xml
     domain = self.domain || Rails.application.secrets.application_main_domain
     config = lti_config.dup
