@@ -2,17 +2,8 @@ require "rails_helper"
 
 RSpec.describe Api::SitesController, type: :controller do
   before do
-    @user = FactoryGirl.create(:user)
-    @user.confirm
-    @user_token = AuthToken.issue_token({ user_id: @user.id })
-
-    @admin = FactoryGirl.create(:user)
-    @admin.confirm
-    @admin.add_to_role("administrator")
-    @admin_token = AuthToken.issue_token({ user_id: @admin.id })
-
-    @application = FactoryGirl.create(:application)
-    @application_instance = FactoryGirl.create(:application_instance, application: @application)
+    setup_lti_users
+    setup_application_and_instance
   end
 
   context "no jwt" do
@@ -26,7 +17,7 @@ RSpec.describe Api::SitesController, type: :controller do
 
   context "as user" do
     before do
-      request.headers["Authorization"] = @user_token
+      request.headers["Authorization"] = @student_token
     end
 
     describe "GET index" do

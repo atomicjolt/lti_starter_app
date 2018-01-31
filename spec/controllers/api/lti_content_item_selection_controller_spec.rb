@@ -2,27 +2,9 @@ require "rails_helper"
 
 RSpec.describe Api::LtiContentItemSelectionController, type: :controller do
   before do
-    @application = FactoryGirl.create(
-      :application,
-      canvas_api_permissions: {
-        default: [
-          "administrator", # Internal (non-LTI) role
-          "urn:lti:sysrole:ims/lis/SysAdmin",
-          "urn:lti:sysrole:ims/lis/Administrator",
-        ],
-        common: [],
-        LIST_ACCOUNTS: [],
-        LIST_YOUR_COURSES: [],
-        CREATE_NEW_SUB_ACCOUNT: [],
-        UPDATE_ACCOUNT: [],
-      },
-    )
-    @application_instance = FactoryGirl.create(:application_instance, application: @application)
-    allow(controller).to receive(:current_application_instance).and_return(@application_instance)
+    setup_lti_users
+    setup_application_and_instance
 
-    @user = FactoryGirl.create(:user)
-    @user.confirm
-    @user_token = AuthToken.issue_token({ user_id: @user.id })
     @content_item_return_url = "http://www.example.com/return_to_me"
     @content_item_url = "http://www.example.com/lti_launch"
 
@@ -102,7 +84,7 @@ RSpec.describe Api::LtiContentItemSelectionController, type: :controller do
   context "with jwt token" do
     describe "GET index" do
       it "gets html launch params" do
-        request.headers["Authorization"] = @user_token
+        request.headers["Authorization"] = @student_token
         post :create, params: @html_params, format: :json
         expect(response).to have_http_status(:success)
         result = JSON.parse(response.body)
@@ -111,7 +93,7 @@ RSpec.describe Api::LtiContentItemSelectionController, type: :controller do
         expect(result["oauth_consumer_key"]).to eq(@application_instance.lti_key)
       end
       it "gets iframe launch params" do
-        request.headers["Authorization"] = @user_token
+        request.headers["Authorization"] = @student_token
         post :create, params: @iframe_params, format: :json
         expect(response).to have_http_status(:success)
         result = JSON.parse(response.body)
@@ -120,7 +102,7 @@ RSpec.describe Api::LtiContentItemSelectionController, type: :controller do
         expect(result["oauth_consumer_key"]).to eq(@application_instance.lti_key)
       end
       it "gets lti_link launch params" do
-        request.headers["Authorization"] = @user_token
+        request.headers["Authorization"] = @student_token
         post :create, params: @lti_link_params, format: :json
         expect(response).to have_http_status(:success)
         result = JSON.parse(response.body)
