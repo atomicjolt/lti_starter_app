@@ -28,7 +28,9 @@ module Concerns
     def encoded_token
       bearer_token = request.headers["Authorization"] || request.headers[:authorization]
       raise Exceptions::InvalidImsccTokenError, "Empty authorization header." if bearer_token.blank?
-      raise Exceptions::InvalidImsccTokenError, "Invalid authorization header." unless bearer_token.start_with?("Bearer ")
+      unless bearer_token.start_with?("Bearer ")
+        raise Exceptions::InvalidImsccTokenError, "Invalid authorization header."
+      end
       token = bearer_token.split(" ").last
       raise Exceptions::InvalidImsccTokenError, "Empty IMSCC JWT token." if token.blank?
       token
