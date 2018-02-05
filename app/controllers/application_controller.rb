@@ -80,10 +80,10 @@ class ApplicationController < ActionController::Base
     current_user.nil_or_context_roles(context_id).map(&:name)
   end
 
-  def user_not_authorized
+  def user_not_authorized(message = "")
     respond_to do |format|
       format.html { render file: "public/401.html", status: :unauthorized }
-      format.json { render json: {}, status: :unauthorized }
+      format.json { render json: { message: message }, status: :unauthorized }
     end
   end
 

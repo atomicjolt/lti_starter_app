@@ -8,8 +8,8 @@ describe Integrations::CanvasCoursesLti do
     @token = "test"
     @consumer_key = "key"
     @shared_secret = "secret"
-    @lti_launch_url = "http://www.example.com/launch"
-    @lti_rich_editor_button_image_url = "http://www.example.com/launch"
+    @lti_launch_url = "https://www.example.com/launch"
+    @lti_rich_editor_button_image_url = "https://www.example.com/launch"
     @provider_url = "http://www.example.com"
     @env = "test"
   end
@@ -39,6 +39,7 @@ describe Integrations::CanvasCoursesLti do
       lti_launch_url = "https://www.edu-apps.org/tool_redirect?id=ck12"
       lti_options = {
         launch_url: lti_launch_url,
+        secure_launch_url: lti_launch_url,
         button_url: @lti_rich_editor_button_image_url,
         env: @env,
       }

@@ -29,7 +29,8 @@ RSpec.describe LtiLaunchesController, type: :controller do
       request.env["CONTENT_TYPE"] = "application/x-www-form-urlencoded"
     end
     it "sets up the user, logs them and outputs the lti config to the client" do
-      @lti_launch = FactoryGirl.create(:lti_launch)
+      context_id = SecureRandom.hex(15)
+      @lti_launch = FactoryGirl.create(:lti_launch, context_id: context_id)
       params = lti_params(
         @app.lti_key,
         @app.lti_secret,
@@ -37,6 +38,7 @@ RSpec.describe LtiLaunchesController, type: :controller do
           "launch_url" => lti_launch_url(@lti_launch.token),
           "roles" => "Learner",
           "resource_link_id" => @lti_launch.token,
+          "context_id" => context_id,
         },
       )
       post :show, params: { id: @lti_launch.token }.merge(params)
