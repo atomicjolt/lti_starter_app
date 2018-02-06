@@ -15,8 +15,6 @@ class Api::ImsImportsController < ApplicationController
       lti_launch.save!
     end
 
-    respond_to do |format|
-      format.json { render json: { status: "completed" } }
-    end
+    render json: { status: "completed" }
   end
 end

@@ -3,13 +3,24 @@ require "rails_helper"
 RSpec.describe Api::ImsImportsController, type: :controller do
   before do
     setup_application_and_instance
+    tool_consumer_instance_guid = "4MRcxnx6vQbFXxhLb8005m5WXFM2Z2i8lQwhJ1QT:canvas-lms"
     initial_context_id = "a07291ea2fa1315059ed3bf0135a336d1eebe057"
     @import_context_id = "3155b3a04eba69bc0e52b987d3ffc465156daded"
     @ims_export = FactoryGirl.create(:ims_export)
 
-    @lti_launch_one = FactoryGirl.create(:lti_launch, context_id: initial_context_id)
-    @lti_launch_two = FactoryGirl.create(:lti_launch, context_id: initial_context_id)
-    lti_launches = LtiLaunch.where(context_id: initial_context_id)
+    lti_launch_tokens = Apartment::Tenant.switch(@application_instance.tenant) do
+      @lti_launch_one = FactoryGirl.create(
+        :lti_launch,
+        context_id: initial_context_id,
+        tool_consumer_instance_guid: tool_consumer_instance_guid,
+      )
+      @lti_launch_two = FactoryGirl.create(
+        :lti_launch,
+        context_id: initial_context_id,
+        tool_consumer_instance_guid: tool_consumer_instance_guid,
+      )
+      LtiLaunch.where(context_id: initial_context_id).pluck(:token)
+    end
 
     @import_params = {
       context_id: @import_context_id,
@@ -17,9 +28,9 @@ RSpec.describe Api::ImsImportsController, type: :controller do
         context_id: initial_context_id,
         application_instance_id: @application_instance.id,
         ims_export_id: @ims_export.token,
-        lti_launch_tokens: lti_launches.pluck(:token),
+        lti_launch_tokens: lti_launch_tokens,
       },
-      tool_consumer_instance_guid: "4MRcxnx6vQbFXxhLb8005m5WXFM2Z2i8lQwhJ1QT:canvas-lms",
+      tool_consumer_instance_guid: tool_consumer_instance_guid,
       custom_canvas_course_id: "2123",
     }
   end
