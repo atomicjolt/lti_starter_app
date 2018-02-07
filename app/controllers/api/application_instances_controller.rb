@@ -42,16 +42,16 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   end
 
   def check_auth
-    auth = Apartment::Tenant.switch(@application_instance.tenant) do
-      @application_instance.authentications.find(params[:authentication_id])
-    end
     site = @application_instance.site
     url = UrlHelper.scheme_host_port(site.url)
-    api = refreshable_auth(auth, url, site)
-    if accounts = api.proxy("LIST_ACCOUNTS", {}, {}, true)
-      render json: accounts
-    else
-      render json: []
+    Apartment::Tenant.switch(@application_instance.tenant) do
+      auth = @application_instance.authentications.find(params[:authentication_id])
+      api = refreshable_auth(auth, url, site)
+      if accounts = api.proxy("LIST_ACCOUNTS", {}, {}, true)
+        render json: accounts
+      else
+        render json: []
+      end
     end
   end
 
