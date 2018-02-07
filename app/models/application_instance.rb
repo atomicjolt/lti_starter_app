@@ -41,6 +41,8 @@ class ApplicationInstance < ActiveRecord::Base
       config[:launch_url] ||= "https://#{domain}/lti_launches"
       config[:secure_launch_url] ||= "https://#{domain}/lti_launches"
       config[:domain] ||= domain
+      config[:export_url] ||= "https://#{domain}/api/ims_exports.json"
+      config[:import_url] ||= "https://#{domain}/api/ims_imports.json"
       config[:icon] ||= "https://#{domain}/#{config[:icon]}"
       Lti::Config.xml(config)
     end

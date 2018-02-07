@@ -5,23 +5,28 @@ describe('the lti launches actions', () => {
     const config = {};
     const contentItemReturnURL = 'thisisthetestURL';
     const contentItem = {};
-    const settings = {};
+    const contextId = 'randomvaluethattypicallyrepresentsacourse';
+    const toolConsumerInstanceGuid = 'valuethatidentifiestheinstanceofthelms';
     const expectedAction = {
       method: 'post',
       type: 'CREATE_LTI_LAUNCH',
       url: 'api/lti_launches',
       body: {
         content_item_return_url: contentItemReturnURL,
-        config,
-        settings,
         content_item: contentItem,
+        lti_launch: {
+          context_id: contextId,
+          tool_consumer_instance_guid: toolConsumerInstanceGuid,
+          config,
+        }
       },
     };
     expect(LtiLaunches.createLtiLaunch(
       config,
       contentItemReturnURL,
       contentItem,
-      settings,
+      contextId,
+      toolConsumerInstanceGuid,
     )).toEqual(expectedAction);
   });
 });

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171206054757) do
+ActiveRecord::Schema.define(version: 20180201235220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,11 +117,25 @@ ActiveRecord::Schema.define(version: 20171206054757) do
     t.index ["lms_course_id"], name: "index_canvas_courses_on_lms_course_id", using: :btree
   end
 
+  create_table "ims_exports", force: :cascade do |t|
+    t.string   "token"
+    t.string   "tool_consumer_instance_guid"
+    t.string   "context_id"
+    t.string   "custom_canvas_course_id"
+    t.jsonb    "payload"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["token"], name: "index_ims_exports_on_token", using: :btree
+  end
+
   create_table "lti_launches", id: :bigserial, force: :cascade do |t|
     t.jsonb    "config"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "token"
+    t.string   "context_id"
+    t.string   "tool_consumer_instance_guid"
+    t.index ["context_id"], name: "index_lti_launches_on_context_id", using: :btree
     t.index ["token"], name: "index_lti_launches_on_token", unique: true, using: :btree
   end
 

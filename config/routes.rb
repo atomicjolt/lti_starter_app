@@ -52,6 +52,13 @@ Rails.application.routes.draw do
     resources :sites
     resources :lti_content_item_selection, only: [:create]
     resources :lti_launches
+
+    resources :ims_exports do
+      member do
+        get :status
+      end
+    end
+    resources :ims_imports, only: [:create]
   end
 
   get "api/canvas" => "api/canvas_proxy#proxy"

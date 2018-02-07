@@ -4,9 +4,13 @@ RSpec.describe Lti::Config do
   before do
     @domain = "www.example.com"
     @launch_url = "https://#{@domain}/lti_launches"
+    @import_url = "https://#{@domain}/api/ims_imports"
+    @export_url = "https://#{@domain}/api/ims_exports"
     @basic_config = {
       secure_launch_url: @launch_url,
       launch_url: @launch_url,
+      export_url: @export_url,
+      import_url: @import_url,
       title: "Atomic LTI test",
       description: "This is the test application for the Atomic LTI engine",
       icon: "oauth_icon.png",
@@ -933,10 +937,38 @@ RSpec.describe Lti::Config do
       expect(xml).to eq(wiki_page_menu_xml)
     end
 
+    it "generates extended configuration xml for an LTI tool with a content_migration support set to true" do
+      args = @basic_config.merge({ content_migration: true })
+      xml = described_class.xml(args)
+      expect(xml).to be_present
+      expected_xml = <<~XML
+        <?xml version="1.0" encoding="UTF-8"?>
+        <cartridge_basiclti_link xmlns="http://www.imsglobal.org/xsd/imslticc_v1p0" xmlns:blti="http://www.imsglobal.org/xsd/imsbasiclti_v1p0" xmlns:lticm="http://www.imsglobal.org/xsd/imslticm_v1p0" xmlns:lticp="http://www.imsglobal.org/xsd/imslticp_v1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imslticc_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticc_v1p0.xsd http://www.imsglobal.org/xsd/imsbasiclti_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0p1.xsd http://www.imsglobal.org/xsd/imslticm_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd http://www.imsglobal.org/xsd/imslticp_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd">
+          <blti:title>#{@basic_config[:title]}</blti:title>
+          <blti:description>#{@basic_config[:description]}</blti:description>
+          <blti:launch_url>#{@launch_url}</blti:launch_url>
+          <blti:secure_launch_url>#{@launch_url}</blti:secure_launch_url>
+          <blti:icon>#{@icon_url}</blti:icon>
+          <blti:extensions platform="canvas.instructure.com">
+            <lticm:options name="content_migration">
+              <lticm:property name="export_start_url">#{@export_url}</lticm:property>
+              <lticm:property name="import_start_url">#{@import_url}</lticm:property>
+            </lticm:options>
+            <lticm:property name="domain">www.example.com</lticm:property>
+            <lticm:property name="privacy_level">public</lticm:property>
+          </blti:extensions>
+        </cartridge_basiclti_link>
+      XML
+      expect(xml).to eq(expected_xml)
+    end
+
     it "generates xml with the given title" do
       title = "LTI Tool Title"
       args = {
+        secure_launch_url: @launch_url,
         launch_url: @launch_url,
+        export_url: @export_url,
+        import_url: @import_url,
         title: title,
       }
       xml = described_class.xml(args)
@@ -946,7 +978,10 @@ RSpec.describe Lti::Config do
     it "generates xml with the given description" do
       description = "LTI Tool Description"
       args = {
+        secure_launch_url: @launch_url,
         launch_url: @launch_url,
+        export_url: @export_url,
+        import_url: @import_url,
         description: description,
       }
       xml = described_class.xml(args)

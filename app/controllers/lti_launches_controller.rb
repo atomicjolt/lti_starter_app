@@ -15,7 +15,7 @@ class LtiLaunchesController < ApplicationController
   end
 
   def show
-    @lti_launch = LtiLaunch.find_by(token: params[:id]) if params[:id].present?
+    @lti_launch = LtiLaunch.find_by(token: params[:id], context_id: params[:context_id])
     setup_lti_response
     render :index
   end

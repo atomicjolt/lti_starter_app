@@ -22,6 +22,7 @@ Apartment.configure do |config|
     Bundle
     BundleInstance
     ApplicationBundle
+    ImsExport
   }
 
   # In order to migrate all of your Tenants you need to provide a list of Tenant names to Apartment.

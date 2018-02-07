@@ -110,6 +110,7 @@ applications = [
       link_selection: {
         text: "LTI Starter App - Content Item Select",
       },
+      content_migration: true,
     },
     application_instances: [{
       lti_secret: Rails.env.production? ? nil : secrets.hello_world_lti_secret,

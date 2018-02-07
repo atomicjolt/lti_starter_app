@@ -25,6 +25,8 @@ const select = state => ({
   contentItemReturnURL: state.settings.content_item_return_url,
   apiUrl : state.settings.api_url,
   contentItemSelection: state.contentItemSelection,
+  contextId: state.settings.context_id,
+  toolConsumerInstanceGuid: state.settings.tool_consumer_instance_guid,
 });
 
 export class Selector extends React.Component {
@@ -36,6 +38,8 @@ export class Selector extends React.Component {
     contentItemReturnURL: PropTypes.string,
     apiUrl: PropTypes.string,
     contentItemSelection: PropTypes.shape({}),
+    contextId: PropTypes.string,
+    toolConsumerInstanceGuid: PropTypes.string,
   };
 
   selectItem(contentItem) {
@@ -51,7 +55,9 @@ export class Selector extends React.Component {
     this.props.createLtiLaunch(
       config,
       this.props.contentItemReturnURL,
-      contentItem
+      contentItem,
+      this.props.contextId,
+      this.props.toolConsumerInstanceGuid,
     );
   }
 
