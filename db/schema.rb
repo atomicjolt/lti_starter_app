@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180201235220) do
+ActiveRecord::Schema.define(version: 20180209234904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 20180201235220) do
     t.string   "context_id"
     t.string   "tool_consumer_instance_guid"
     t.index ["context_id"], name: "index_lti_launches_on_context_id", using: :btree
-    t.index ["token"], name: "index_lti_launches_on_token", unique: true, using: :btree
+    t.index ["token", "context_id"], name: "index_lti_launches_on_token_and_context_id", unique: true, using: :btree
   end
 
   create_table "nonces", id: :bigserial, force: :cascade do |t|
