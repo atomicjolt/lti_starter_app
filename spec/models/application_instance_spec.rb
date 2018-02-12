@@ -109,6 +109,12 @@ RSpec.describe ApplicationInstance, type: :model do
       expect(app_instance.lti_config).to eq("foo" => "baz")
     end
 
+    it "is anonymous if the application is anonymous" do
+      app = create(:application, anonymous: true)
+      app_instance = create(:application_instance, application: app)
+      expect(app_instance.anonymous).to eq(app.anonymous)
+    end
+
     it "requires a site" do
       expect do
         create(:application_instance, site: nil, lti_key: "test")
