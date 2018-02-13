@@ -44,6 +44,7 @@ class ApplicationInstance < ActiveRecord::Base
       config[:export_url] ||= "https://#{domain}/api/ims_exports.json"
       config[:import_url] ||= "https://#{domain}/api/ims_imports.json"
       config[:icon] ||= "https://#{domain}/#{config[:icon]}"
+      config[:privacy_level] = "anonymous" if anonymous?
       Lti::Config.xml(config)
     end
   end
