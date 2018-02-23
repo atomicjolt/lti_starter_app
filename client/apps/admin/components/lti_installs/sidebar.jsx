@@ -26,6 +26,19 @@ export default class Sidebar extends React.Component {
     this.state = { modalOpen: false };
   }
 
+  get applicationInstanceModal() {
+    if (this.state.modalOpen) {
+      return <Modal
+        closeModal={() => this.setState({ modalOpen: false })}
+        sites={this.props.sites}
+        save={this.props.saveApplicationInstance}
+        application={this.props.application}
+        applicationInstance={this.props.applicationInstance}
+      />;
+    }
+    return null;
+  }
+
   settings() {
     if (this.props.applicationInstance) {
       return (
@@ -33,14 +46,7 @@ export default class Sidebar extends React.Component {
           <a onClick={() => this.setState({ modalOpen: true })}>
             <i className="i-settings" />
           </a>
-          <Modal
-            isOpen={this.state.modalOpen}
-            closeModal={() => this.setState({ modalOpen: false })}
-            sites={this.props.sites}
-            save={this.props.saveApplicationInstance}
-            application={this.props.application}
-            applicationInstance={this.props.applicationInstance}
-          />
+          { this.applicationInstanceModal }
         </span>
       );
     }
