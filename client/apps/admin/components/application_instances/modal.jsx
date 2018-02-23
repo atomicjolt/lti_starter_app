@@ -90,7 +90,7 @@ export default class Modal extends React.Component {
       siteId = this.state.newApplicationInstance.site_id || this.props.applicationInstance.site.id;
     }
     const isUpdate = !!(this.props.applicationInstance && this.props.applicationInstance.id);
-    console.log(this.state.newApplicationInstance.canvas_token_preview);
+
     return (
       <ReactModal
         isOpen
