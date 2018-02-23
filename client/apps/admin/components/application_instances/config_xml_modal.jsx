@@ -27,7 +27,7 @@ const ConfigXmlModal = (props) => {
             id: 'lti_config_xml_lti_key',
             name: 'lti_key',
             type: 'text',
-            readonly: true,
+            readOnly: true,
             value: props.applicationInstance.lti_key,
           }}
         />
@@ -40,7 +40,7 @@ const ConfigXmlModal = (props) => {
             id: 'lti_config_xml_lti_secret',
             name: 'lti_secret',
             type: 'text',
-            readonly: true,
+            readOnly: true,
             value: props.applicationInstance.lti_secret,
           }}
         />
@@ -53,7 +53,7 @@ const ConfigXmlModal = (props) => {
             id: 'application_instance_lti_config_xml',
             name: 'lti_config_xml',
             rows: 20,
-            readonly: true,
+            readOnly: true,
             value: props.applicationInstance.lti_config_xml || '',
           }}
         />

@@ -8,6 +8,7 @@ ShallowWrapper {
     applicationInstance={
         Object {
             "application_id": 23,
+            "authentications": Array [],
             "id": 2,
             "site": Object {
               "url": "http://www.example.com",
@@ -80,22 +81,13 @@ ShallowWrapper {
                     onlyActiveOnIndex={false}
                     style={Object {}}
                     to="applications/23/application_instances/2/installs"
-          >
-                    Example
-          </Link>
+          />
           <div>
                     http://www.example.com
           </div>
 </td>,
         <td>
-          <span>
-                    lti-key
-          </span>
-</td>,
-        <td>
-          <span>
-                    www.example.com
-          </span>
+          <span />
 </td>,
         <td>
           <button
@@ -119,6 +111,7 @@ ShallowWrapper {
                     applicationInstance={
                               Object {
                                         "application_id": 23,
+                                        "authentications": Array [],
                                         "id": 2,
                                         "site": Object {
                                           "url": "http://www.example.com",
@@ -160,6 +153,7 @@ ShallowWrapper {
                     applicationInstance={
                               Object {
                                         "application_id": 23,
+                                        "authentications": Array [],
                                         "id": 2,
                                         "site": Object {
                                           "url": "http://www.example.com",
@@ -177,6 +171,13 @@ ShallowWrapper {
           >
                     <Enabled />
           </button>
+</td>,
+        <td />,
+        <td />,
+        <td>
+          Invalid Date
+           
+          Invalid Date
 </td>,
         <td>
           <button
@@ -227,9 +228,7 @@ ShallowWrapper {
               onlyActiveOnIndex={false}
               style={Object {}}
               to="applications/23/application_instances/2/installs"
->
-              Example
-</Link>,
+/>,
             <div>
               http://www.example.com
 </div>,
@@ -318,14 +317,14 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": "Example",
+              "children": undefined,
               "onClick": [Function],
               "onlyActiveOnIndex": false,
               "style": Object {},
               "to": "applications/23/application_instances/2/installs",
             },
             "ref": null,
-            "rendered": "Example",
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -347,9 +346,7 @@ ShallowWrapper {
         "key": null,
         "nodeType": "host",
         "props": Object {
-          "children": <span>
-            lti-key
-</span>,
+          "children": <span />,
         },
         "ref": null,
         "rendered": Object {
@@ -357,33 +354,10 @@ ShallowWrapper {
           "key": null,
           "nodeType": "host",
           "props": Object {
-            "children": "lti-key",
+            "children": undefined,
           },
           "ref": null,
-          "rendered": "lti-key",
-          "type": "span",
-        },
-        "type": "td",
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "host",
-        "props": Object {
-          "children": <span>
-            www.example.com
-</span>,
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "host",
-          "props": Object {
-            "children": "www.example.com",
-          },
-          "ref": null,
-          "rendered": "www.example.com",
+          "rendered": null,
           "type": "span",
         },
         "type": "td",
@@ -415,6 +389,7 @@ ShallowWrapper {
               applicationInstance={
                             Object {
                                           "application_id": 23,
+                                          "authentications": Array [],
                                           "id": 2,
                                           "site": Object {
                                             "url": "http://www.example.com",
@@ -476,6 +451,7 @@ ShallowWrapper {
               "application": undefined,
               "applicationInstance": Object {
                 "application_id": 23,
+                "authentications": Array [],
                 "id": 2,
                 "site": Object {
                   "url": "http://www.example.com",
@@ -525,6 +501,7 @@ ShallowWrapper {
               applicationInstance={
                             Object {
                                           "application_id": 23,
+                                          "authentications": Array [],
                                           "id": 2,
                                           "site": Object {
                                             "url": "http://www.example.com",
@@ -577,6 +554,7 @@ ShallowWrapper {
               "application": undefined,
               "applicationInstance": Object {
                 "application_id": 23,
+                "authentications": Array [],
                 "id": 2,
                 "site": Object {
                   "url": "http://www.example.com",
@@ -626,6 +604,47 @@ ShallowWrapper {
           },
           "type": "button",
         },
+        "type": "td",
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "children": undefined,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "td",
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "children": 0,
+        },
+        "ref": null,
+        "rendered": 0,
+        "type": "td",
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            "Invalid Date",
+            " ",
+            "Invalid Date",
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          "Invalid Date",
+          " ",
+          "Invalid Date",
+        ],
         "type": "td",
       },
       Object {
@@ -710,22 +729,13 @@ ShallowWrapper {
                         onlyActiveOnIndex={false}
                         style={Object {}}
                         to="applications/23/application_instances/2/installs"
-            >
-                        Example
-            </Link>
+            />
             <div>
                         http://www.example.com
             </div>
 </td>,
           <td>
-            <span>
-                        lti-key
-            </span>
-</td>,
-          <td>
-            <span>
-                        www.example.com
-            </span>
+            <span />
 </td>,
           <td>
             <button
@@ -749,6 +759,7 @@ ShallowWrapper {
                         applicationInstance={
                                     Object {
                                                 "application_id": 23,
+                                                "authentications": Array [],
                                                 "id": 2,
                                                 "site": Object {
                                                   "url": "http://www.example.com",
@@ -790,6 +801,7 @@ ShallowWrapper {
                         applicationInstance={
                                     Object {
                                                 "application_id": 23,
+                                                "authentications": Array [],
                                                 "id": 2,
                                                 "site": Object {
                                                   "url": "http://www.example.com",
@@ -807,6 +819,13 @@ ShallowWrapper {
             >
                         <Enabled />
             </button>
+</td>,
+          <td />,
+          <td />,
+          <td>
+            Invalid Date
+             
+            Invalid Date
 </td>,
           <td>
             <button
@@ -857,9 +876,7 @@ ShallowWrapper {
                 onlyActiveOnIndex={false}
                 style={Object {}}
                 to="applications/23/application_instances/2/installs"
->
-                Example
-</Link>,
+/>,
               <div>
                 http://www.example.com
 </div>,
@@ -948,14 +965,14 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": "Example",
+                "children": undefined,
                 "onClick": [Function],
                 "onlyActiveOnIndex": false,
                 "style": Object {},
                 "to": "applications/23/application_instances/2/installs",
               },
               "ref": null,
-              "rendered": "Example",
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -977,9 +994,7 @@ ShallowWrapper {
           "key": null,
           "nodeType": "host",
           "props": Object {
-            "children": <span>
-              lti-key
-</span>,
+            "children": <span />,
           },
           "ref": null,
           "rendered": Object {
@@ -987,33 +1002,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "host",
             "props": Object {
-              "children": "lti-key",
+              "children": undefined,
             },
             "ref": null,
-            "rendered": "lti-key",
-            "type": "span",
-          },
-          "type": "td",
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "host",
-          "props": Object {
-            "children": <span>
-              www.example.com
-</span>,
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "host",
-            "props": Object {
-              "children": "www.example.com",
-            },
-            "ref": null,
-            "rendered": "www.example.com",
+            "rendered": null,
             "type": "span",
           },
           "type": "td",
@@ -1045,6 +1037,7 @@ ShallowWrapper {
                 applicationInstance={
                                 Object {
                                                 "application_id": 23,
+                                                "authentications": Array [],
                                                 "id": 2,
                                                 "site": Object {
                                                   "url": "http://www.example.com",
@@ -1106,6 +1099,7 @@ ShallowWrapper {
                 "application": undefined,
                 "applicationInstance": Object {
                   "application_id": 23,
+                  "authentications": Array [],
                   "id": 2,
                   "site": Object {
                     "url": "http://www.example.com",
@@ -1155,6 +1149,7 @@ ShallowWrapper {
                 applicationInstance={
                                 Object {
                                                 "application_id": 23,
+                                                "authentications": Array [],
                                                 "id": 2,
                                                 "site": Object {
                                                   "url": "http://www.example.com",
@@ -1207,6 +1202,7 @@ ShallowWrapper {
                 "application": undefined,
                 "applicationInstance": Object {
                   "application_id": 23,
+                  "authentications": Array [],
                   "id": 2,
                   "site": Object {
                     "url": "http://www.example.com",
@@ -1256,6 +1252,47 @@ ShallowWrapper {
             },
             "type": "button",
           },
+          "type": "td",
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "children": undefined,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "td",
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "children": 0,
+          },
+          "ref": null,
+          "rendered": 0,
+          "type": "td",
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "Invalid Date",
+              " ",
+              "Invalid Date",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Invalid Date",
+            " ",
+            "Invalid Date",
+          ],
           "type": "td",
         },
         Object {

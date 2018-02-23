@@ -32,6 +32,8 @@ class ApplicationInstance < ActiveRecord::Base
   after_commit :create_schema, on: :create
   before_create :create_config
 
+  scope :for_tenant, ->(tenant) { where(tenant: tenant) }
+
   def lti_config_xml
     domain = self.domain || Rails.application.secrets.application_main_domain
     config = lti_config.dup
@@ -39,9 +41,16 @@ class ApplicationInstance < ActiveRecord::Base
       config[:launch_url] ||= "https://#{domain}/lti_launches"
       config[:secure_launch_url] ||= "https://#{domain}/lti_launches"
       config[:domain] ||= domain
+      config[:export_url] ||= "https://#{domain}/api/ims_exports.json"
+      config[:import_url] ||= "https://#{domain}/api/ims_imports.json"
       config[:icon] ||= "https://#{domain}/#{config[:icon]}"
+      config[:privacy_level] = "anonymous" if anonymous?
       Lti::Config.xml(config)
     end
+  end
+
+  def oauth_precedence
+    application.oauth_precedence.split(",")
   end
 
   def key(application_key_override = nil)
@@ -77,6 +86,7 @@ class ApplicationInstance < ActiveRecord::Base
   def create_config
     self.config = application.default_config if config.blank?
     self.lti_config = application.lti_config if lti_config.blank?
+    self.anonymous = application.anonymous if anonymous.blank?
   end
 
   # Danger! Whole databases will be lost with this method!

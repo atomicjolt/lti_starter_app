@@ -35,6 +35,14 @@ module Lti
     end
 
     def self.config(args = {})
+      raise Exceptions::LtiConfigMissing, "Please provide an LTI launch url" if args[:launch_url].blank?
+      raise Exceptions::LtiConfigMissing, "Please provide an LTI secure launch url" if args[:secure_launch_url].blank?
+
+      if args[:content_migration].present?
+        raise Exceptions::LtiConfigMissing, "Please provide an IMS export url" if args[:export_url].blank?
+        raise Exceptions::LtiConfigMissing, "Please provide an IMS import url" if args[:import_url].blank?
+      end
+
       tc = tool_config(args)
 
       canvas_ext_config = default_config(args)
@@ -61,6 +69,7 @@ module Lti
       canvas_ext_config = quiz_menu_from_args(canvas_ext_config, args)
       canvas_ext_config = tool_configuration_from_args(canvas_ext_config, args)
       canvas_ext_config = wiki_page_menu_from_args(canvas_ext_config, args)
+      canvas_ext_config = content_migration_args(canvas_ext_config, args)
 
       tc.set_ext_params("canvas.instructure.com", canvas_ext_config.stringify_keys)
       tc
@@ -228,6 +237,10 @@ module Lti
 
     def self.module_menu_from_args(config = {}, args = {})
       if args[:module_menu].present?
+        config["module_menu"] = args[:module_menu].stringify_keys
+        if config["module_menu"]["message_type"].present?
+          selection_config_from_args!(args, config, "module_menu")
+        end
         default_configs_from_args!(args, config, :module_menu)
       end
       config
@@ -249,7 +262,20 @@ module Lti
 
     def self.wiki_page_menu_from_args(config = {}, args = {})
       if args[:wiki_page_menu].present?
+        config["wiki_page_menu"] = args[:wiki_page_menu].stringify_keys
+        if config["wiki_page_menu"]["message_type"].present?
+          selection_config_from_args!(args, config, "wiki_page_menu")
+        end
         default_configs_from_args!(args, config, :wiki_page_menu)
+      end
+      config
+    end
+
+    def self.content_migration_args(config = {}, args = {})
+      if args[:content_migration].present?
+        config[:content_migration] ||= {}
+        config[:content_migration]["export_start_url"] ||= args[:export_url]
+        config[:content_migration]["import_start_url"] ||= args[:import_url]
       end
       config
     end

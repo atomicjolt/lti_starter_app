@@ -2,9 +2,12 @@ module WebpackHelper
 
   def get_src(app_name, chunk_name, kind)
     if Rails.configuration.webpack[:use_manifest]
-      manifest = Rails.configuration.webpack[:asset_manifest][app_name]
-      asset_host = Rails.configuration.action_controller.asset_host
-      "#{asset_host}/assets/#{manifest[chunk_name][kind]}"
+      if manifest = Rails.configuration.webpack[:asset_manifest][app_name]
+        asset_host = Rails.configuration.action_controller.asset_host
+        "#{asset_host}/assets/#{manifest[chunk_name][kind]}"
+      else
+        raise Exceptions::ManifestMissing, "Could not find #{app_name}-webpack-assets.json for #{app_name}."
+      end
     else
       suffix = kind == "js" ? "_bundle.js" : ".css"
       "#{Rails.application.secrets.assets_url}/#{chunk_name}#{suffix}"

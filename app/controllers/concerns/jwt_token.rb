@@ -27,6 +27,31 @@ module Concerns
       render json: { error: "Unauthorized: Invalid token." }, status: :unauthorized
     end
 
+    def can_access_course?(lms_course_id)
+      jwt_lms_course_id.to_s == lms_course_id.to_s
+    end
+
+    def can_admin_course?(lms_course_id)
+      can_access_course?(lms_course_id) && lti_admin_or_instructor?
+    end
+
+    def lti_instructor?
+      jwt_lti_roles_string.match(/urn:lti:role:ims\/lis\/Instructor/).present?
+    end
+
+    def lti_admin?
+      (
+        jwt_lti_roles_string.match(/urn:lti:role:ims\/lis\/Administrator/) ||
+        jwt_lti_roles_string.match(/urn:lti:instrole:ims\/lis\/Administrator/) ||
+        jwt_lti_roles_string.match(/urn:lti:sysrole:ims\/lis\/SysAdmin/) ||
+        jwt_lti_roles_string.match(/urn:lti:sysrole:ims\/lis\/Administrator/)
+      ).present?
+    end
+
+    def lti_admin_or_instructor?
+      lti_instructor? || lti_admin?
+    end
+
     def jwt_context_id
       token = decoded_jwt_token(request)
       token["context_id"]
@@ -34,12 +59,16 @@ module Concerns
 
     def jwt_lti_roles
       token = decoded_jwt_token(request)
-      token["lti_roles"]
+      token["lti_roles"] || []
     end
 
     def jwt_lms_course_id
       token = decoded_jwt_token(request)
       token["lms_course_id"]
+    end
+
+    def jwt_lti_roles_string
+      jwt_lti_roles.join(",")
     end
 
     protected

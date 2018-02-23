@@ -1,4 +1,4 @@
-import _    from 'lodash';
+import _ from 'lodash';
 import { Constants as ApplicationInstancesConstants } from '../actions/application_instances';
 
 const initialState = {};

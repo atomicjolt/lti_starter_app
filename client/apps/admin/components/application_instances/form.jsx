@@ -6,6 +6,14 @@ import Input from '../common/input';
 import Textarea from '../common/textarea';
 import Warning from '../common/warning';
 
+function prettyJSON(str) {
+  if (_.isEmpty(str)) {
+    return str;
+  }
+  const obj = JSON.parse(str);
+  return JSON.stringify(obj, null, 2);
+}
+
 export default class Form extends React.Component {
 
   static propTypes = {
@@ -18,11 +26,13 @@ export default class Form extends React.Component {
     isUpdate: PropTypes.bool,
     config: PropTypes.string,
     configParseError: PropTypes.string,
+    domain: PropTypes.string,
     lti_config: PropTypes.string,
     lti_key: PropTypes.string,
     lti_secret: PropTypes.string,
     ltiConfigParseError: PropTypes.string,
     canvas_token_preview: PropTypes.string,
+    anonymous: PropTypes.bool,
   };
 
   selectSite(option) {
@@ -70,18 +80,31 @@ export default class Form extends React.Component {
         <div className="o-grid o-grid__modal-top">
           <div className="o-grid__item u-half">
             <div className="c-input">
-              <span>Domain</span>
+              <span>Canvas Url</span>
               <ReactSelect
                 options={options}
                 value={this.props.site_id}
                 name="site_id"
-                placeholder="Select a Domain"
+                placeholder="Select a Canvas Domain"
                 onChange={option => this.selectSite(option)}
                 searchable={false}
                 arrowRenderer={() => null}
                 clearable={false}
               />
             </div>
+          </div>
+          <div className="o-grid__item u-half">
+            <Input
+              className="c-input"
+              labelText="LTI Tool Domain"
+              inputProps={{
+                id: 'domain_input',
+                name: 'domain',
+                type: 'text',
+                value: this.props.domain,
+                onChange
+              }}
+            />
           </div>
           <div className="o-grid__item u-half">
             <Input
@@ -113,13 +136,29 @@ export default class Form extends React.Component {
           <div className="o-grid__item u-half">
             <Input
               className="c-input"
-              labelText={`Canvas Token - Current Canvas Token: ${this.props.canvas_token_preview}`}
+              labelText="Canvas Token"
+              helperText={`Current Canvas Token: ${this.props.canvas_token_preview}`}
               inputProps={{
                 id: 'canvas_token_input',
                 name: 'canvas_token',
                 type: 'text',
                 placeholder: this.props.canvas_token_preview ? 'Token Set!' : '',
-                value: null,
+                value: '',
+                onChange
+              }}
+            />
+          </div>
+          <div className="o-grid__item u-full">
+            <Input
+              className="c-checkbox"
+              labelText="Anonymous"
+              helperText="indicates whether or not user name and email is stored during LTI launch"
+              inputProps={{
+                id: 'anonymous_input',
+                name: 'anonymous',
+                type: 'checkbox',
+                value: 'true',
+                checked: this.props.anonymous,
                 onChange
               }}
             />
@@ -127,7 +166,7 @@ export default class Form extends React.Component {
           <div className="o-grid__item u-full">
             <Textarea
               className="c-input"
-              labelText="Config"
+              labelText="Custom Application Instance Configuration"
               textareaProps={{
                 id: 'application_instance_config',
                 name: 'config',
@@ -140,15 +179,14 @@ export default class Form extends React.Component {
             />
           </div>
           <div className="o-grid__item u-full">
-            <h3 className="c-modal__subtitle">LTI Configuration</h3>
             <Textarea
               className="c-input"
-              labelText="Config"
+              labelText="LTI Configuration"
               textareaProps={{
                 id: 'application_instance_lti_config',
                 name: 'lti_config',
-                rows: 3,
-                value: this.props.lti_config || '',
+                rows: 8,
+                value: prettyJSON(this.props.lti_config || ''),
                 onChange: this.props.onChange,
               }}
               warning={erroneousLtiConfigWarning}

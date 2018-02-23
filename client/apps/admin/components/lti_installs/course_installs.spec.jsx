@@ -4,6 +4,7 @@ import CourseInstalls from './course_installs';
 
 describe('lti installs course install', () => {
   let result;
+  let changed = false;
   let props;
   const courseId = 123;
 
@@ -16,6 +17,7 @@ describe('lti installs course install', () => {
         lti_config_xml: 'lti_config_xml',
       },
       canvasRequest: () => {},
+      onlyShowInstalledChanged: () => { changed = true; },
       loadingCourses: {
         courseName: 'name',
         courseId: 'id',
@@ -45,5 +47,12 @@ describe('lti installs course install', () => {
   it('renders buttons', () => {
     const courseName = result.find('span');
     expect(courseName.props().children).toBe('Course Name');
+  });
+
+  it('handles the onChange for input', () => {
+    expect(changed).toBeFalsy();
+    const input = result.find('input');
+    input.simulate('change');
+    expect(changed).toBeTruthy();
   });
 });

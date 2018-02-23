@@ -40,7 +40,6 @@ admin_api_permissions = {
   LIST_EXTERNAL_TOOLS_ACCOUNTS: [],
   CREATE_EXTERNAL_TOOL_ACCOUNTS: [],
   DELETE_EXTERNAL_TOOL_ACCOUNTS: [],
-  GET_SUB_ACCOUNTS_OF_ACCOUNT: [],
   HELPER_ALL_ACCOUNTS: [],
 }
 
@@ -111,6 +110,7 @@ applications = [
       link_selection: {
         text: "LTI Starter App - Content Item Select",
       },
+      content_migration: true,
     },
     application_instances: [{
       lti_secret: Rails.env.production? ? nil : secrets.hello_world_lti_secret,
@@ -162,66 +162,65 @@ def setup_application_instances(application, application_instances)
   end
 end
 
-puts "*** Seeding Sites ***"
-sites.each do |attrs|
-  if site = Site.find_by(url: attrs[:url])
-    puts "Updating site: #{site.url}"
-    attrs.delete(:oauth_key) if attrs[:oauth_key].blank?
-    attrs.delete(:oauth_secret) if attrs[:oauth_secret].blank?
-    site.update_attributes!(attrs)
-  else
-    puts "Creating site: #{attrs[:url]}"
-    Site.create!(attrs)
+if Apartment::Tenant.current == "public"
+  puts "*** Seeding Sites ***"
+  sites.each do |attrs|
+    if site = Site.find_by(url: attrs[:url])
+      puts "Updating site: #{site.url}"
+      attrs.delete(:oauth_key) if attrs[:oauth_key].blank?
+      attrs.delete(:oauth_secret) if attrs[:oauth_secret].blank?
+      site.update_attributes!(attrs)
+    else
+      puts "Creating site: #{attrs[:url]}"
+      Site.create!(attrs)
+    end
+  end
+
+  puts "*** Seeding Applications ***"
+  applications.each do |attrs|
+    application_instances = attrs.delete(:application_instances)
+    if application = Application.find_by(key: attrs[:key])
+      puts "Updating application: #{application.name}"
+      application.update_attributes!(attrs)
+    else
+      puts "Creating application: #{attrs[:name]}"
+      application = Application.create!(attrs)
+    end
+    setup_application_instances(application, application_instances)
+  end
+
+  bundles.each do |attrs|
+    current_bundle = Bundle.find_or_create_by(key: attrs[:key])
+    current_bundle.update!(name: attrs[:name], shared_tenant: attrs[:shared_tenant] == true)
+
+    attrs[:applications].reduce(current_bundle) do |bundle, key|
+      app = Application.find_by!(key: key)
+      bundle.application_bundles.find_or_create_by(bundle_id: bundle.id, application_id: app.id)
+      bundle
+    end
+  end
+
+  ApplicationInstance.where(bundle_instance_id: nil).find_each do |instance|
+    bundle = Bundle.includes(:applications).by_application_id(instance.application.id).last
+    BundleInstance.create(site: instance.site, bundle: bundle)
+  end
+
+  BundleInstance.find_each do |bundle_instance|
+    site = bundle_instance.site
+    bundle_instance.applications.each do |app|
+      if instance = app.application_instances.find_by(site: site)
+        instance.update(bundle_instance: bundle_instance) if instance.bundle_instance_id.nil?
+      end
+    end
+  end
+
+  begin
+    Apartment::Tenant.create Application::AUTH
+  rescue Apartment::TenantExists
+    # Do nothing if the tenant already exists
   end
 end
 
-puts "*** Seeding Applications ***"
-applications.each do |attrs|
-  application_instances = attrs.delete(:application_instances)
-  if application = Application.find_by(key: attrs[:key])
-    puts "Updating application: #{application.name}"
-    application.update_attributes!(attrs)
-  else
-    puts "Creating application: #{attrs[:name]}"
-    application = Application.create!(attrs)
-  end
-  setup_application_instances(application, application_instances)
-end
-
-## One Off
-Bundle.find_each do |bundle|
-  bundle_hash = bundles.detect { |b| b[:key] == bundle.key }
-  shared_tenant = bundle_hash[:shared_tenant] || bundle.shared_tenant == true
-  bundle.update(shared_tenant: shared_tenant)
-end
-## End One Off
-
-bundles.each do |attrs|
-  current_bundle = Bundle.find_or_create_by(key: attrs[:key])
-  current_bundle.update!(name: attrs[:name], shared_tenant: attrs[:shared_tenant] == true)
-
-  attrs[:applications].reduce(current_bundle) do |bundle, key|
-    app = Application.find_by!(key: key)
-    bundle.application_bundles.find_or_create_by(bundle_id: bundle.id, application_id: app.id)
-    bundle
-  end
-end
-
-ApplicationInstance.where(bundle_instance_id: nil).find_each do |instance|
-  bundle = Bundle.includes(:applications).by_application_id(instance.application.id).last
-  BundleInstance.create(site: instance.site, bundle: bundle)
-end
-
-BundleInstance.find_each do |bundle_instance|
-  site = bundle_instance.site
-  bundle_instance.applications.each do |app|
-    instance = app.application_instances.find_by(site: site)
-    instance.update(bundle_instance: bundle_instance) if instance.bundle_instance_id.nil?
-  end
-end
-
-begin
-  Apartment::Tenant.create Application::AUTH
-rescue Apartment::TenantExists
-  # Do nothing if the tenant already exists
-end
+## Use this to update all the application instances
+# ApplicationInstance.for_tenant(Apartment::Tenant.current).find_each do |ai|
+# end

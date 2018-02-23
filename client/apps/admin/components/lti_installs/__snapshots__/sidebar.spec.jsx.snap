@@ -27,7 +27,6 @@ ShallowWrapper {
           }
     }
     canvasRequest={[Function]}
-    onlyShowInstalledChanged={[Function]}
     saveApplicationInstance={[Function]}
     setAccountActive={[Function]}
     sites={Object {}}
@@ -102,26 +101,6 @@ ShallowWrapper {
         <div
           className="c-filters"
 >
-          <h4
-                    className="c-sidebar-subtitle"
-          >
-                    Installed
-          </h4>
-          <div
-                    className="c-checkbox--yellow u-m-bottom"
-          >
-                    <input
-                              id="onlyShowInstalled"
-                              name="onlyShowInstalled"
-                              onChange={[Function]}
-                              type="checkbox"
-                    />
-                    <label
-                              htmlFor="onlyShowInstalled"
-                    >
-                              Show only installed
-                    </label>
-          </div>
           <h4
                     className="c-sidebar-subtitle"
           >
@@ -360,26 +339,6 @@ ShallowWrapper {
             <h4
               className="c-sidebar-subtitle"
 >
-              Installed
-</h4>,
-            <div
-              className="c-checkbox--yellow u-m-bottom"
->
-              <input
-                            id="onlyShowInstalled"
-                            name="onlyShowInstalled"
-                            onChange={[Function]}
-                            type="checkbox"
-              />
-              <label
-                            htmlFor="onlyShowInstalled"
-              >
-                            Show only installed
-              </label>
-</div>,
-            <h4
-              className="c-sidebar-subtitle"
->
               Accounts
 </h4>,
             <Accounts
@@ -400,69 +359,6 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": Array [
-          Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "host",
-            "props": Object {
-              "children": "Installed",
-              "className": "c-sidebar-subtitle",
-            },
-            "ref": null,
-            "rendered": "Installed",
-            "type": "h4",
-          },
-          Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <input
-                  id="onlyShowInstalled"
-                  name="onlyShowInstalled"
-                  onChange={[Function]}
-                  type="checkbox"
-/>,
-                <label
-                  htmlFor="onlyShowInstalled"
->
-                  Show only installed
-</label>,
-              ],
-              "className": "c-checkbox--yellow u-m-bottom",
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "host",
-                "props": Object {
-                  "id": "onlyShowInstalled",
-                  "name": "onlyShowInstalled",
-                  "onChange": [Function],
-                  "type": "checkbox",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "input",
-              },
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "Show only installed",
-                  "htmlFor": "onlyShowInstalled",
-                },
-                "ref": null,
-                "rendered": "Show only installed",
-                "type": "label",
-              },
-            ],
-            "type": "div",
-          },
           Object {
             "instance": null,
             "key": null,
@@ -564,26 +460,6 @@ ShallowWrapper {
           <div
             className="c-filters"
 >
-            <h4
-                        className="c-sidebar-subtitle"
-            >
-                        Installed
-            </h4>
-            <div
-                        className="c-checkbox--yellow u-m-bottom"
-            >
-                        <input
-                                    id="onlyShowInstalled"
-                                    name="onlyShowInstalled"
-                                    onChange={[Function]}
-                                    type="checkbox"
-                        />
-                        <label
-                                    htmlFor="onlyShowInstalled"
-                        >
-                                    Show only installed
-                        </label>
-            </div>
             <h4
                         className="c-sidebar-subtitle"
             >
@@ -822,26 +698,6 @@ ShallowWrapper {
               <h4
                 className="c-sidebar-subtitle"
 >
-                Installed
-</h4>,
-              <div
-                className="c-checkbox--yellow u-m-bottom"
->
-                <input
-                                id="onlyShowInstalled"
-                                name="onlyShowInstalled"
-                                onChange={[Function]}
-                                type="checkbox"
-                />
-                <label
-                                htmlFor="onlyShowInstalled"
-                >
-                                Show only installed
-                </label>
-</div>,
-              <h4
-                className="c-sidebar-subtitle"
->
                 Accounts
 </h4>,
               <Accounts
@@ -862,69 +718,6 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": Array [
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "host",
-              "props": Object {
-                "children": "Installed",
-                "className": "c-sidebar-subtitle",
-              },
-              "ref": null,
-              "rendered": "Installed",
-              "type": "h4",
-            },
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <input
-                    id="onlyShowInstalled"
-                    name="onlyShowInstalled"
-                    onChange={[Function]}
-                    type="checkbox"
-/>,
-                  <label
-                    htmlFor="onlyShowInstalled"
->
-                    Show only installed
-</label>,
-                ],
-                "className": "c-checkbox--yellow u-m-bottom",
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": null,
-                  "nodeType": "host",
-                  "props": Object {
-                    "id": "onlyShowInstalled",
-                    "name": "onlyShowInstalled",
-                    "onChange": [Function],
-                    "type": "checkbox",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "input",
-                },
-                Object {
-                  "instance": null,
-                  "key": null,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "Show only installed",
-                    "htmlFor": "onlyShowInstalled",
-                  },
-                  "ref": null,
-                  "rendered": "Show only installed",
-                  "type": "label",
-                },
-              ],
-              "type": "div",
-            },
             Object {
               "instance": null,
               "key": null,

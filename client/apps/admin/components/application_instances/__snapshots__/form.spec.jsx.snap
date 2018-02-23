@@ -7,6 +7,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Form
     closeModal={[Function]}
     config="{ \\"foo\\": \\"bar\\" }"
+    ltiConfigParseError=""
     newSite={[Function]}
     onChange={[Function]}
     save={[Function]}
@@ -36,7 +37,7 @@ ShallowWrapper {
                               className="c-input"
                     >
                               <span>
-                                        Domain
+                                        Canvas Url
                               </span>
                               <Select
                                         addLabelText="Add \\"{label}\\"?"
@@ -85,7 +86,7 @@ ShallowWrapper {
                                                           ]
                                         }
                                         pageSize={5}
-                                        placeholder="Select a Domain"
+                                        placeholder="Select a Canvas Domain"
                                         required={false}
                                         scrollMenuIntoView={true}
                                         searchable={false}
@@ -96,6 +97,23 @@ ShallowWrapper {
                                         valueKey="value"
                               />
                     </div>
+          </div>
+          <div
+                    className="o-grid__item u-half"
+          >
+                    <Input
+                              className="c-input"
+                              inputProps={
+                                        Object {
+                                                  "id": "domain_input",
+                                                  "name": "domain",
+                                                  "onChange": [Function],
+                                                  "type": "text",
+                                                  "value": undefined,
+                                                }
+                              }
+                              labelText="LTI Tool Domain"
+                    />
           </div>
           <div
                     className="o-grid__item u-half"
@@ -137,6 +155,7 @@ ShallowWrapper {
           >
                     <Input
                               className="c-input"
+                              helperText="Current Canvas Token: undefined"
                               inputProps={
                                         Object {
                                                   "id": "canvas_token_input",
@@ -144,10 +163,29 @@ ShallowWrapper {
                                                   "onChange": [Function],
                                                   "placeholder": "",
                                                   "type": "text",
-                                                  "value": null,
+                                                  "value": "",
                                                 }
                               }
-                              labelText="Canvas Token - Current Canvas Token: undefined"
+                              labelText="Canvas Token"
+                    />
+          </div>
+          <div
+                    className="o-grid__item u-full"
+          >
+                    <Input
+                              className="c-checkbox"
+                              helperText="indicates whether or not user name and email is stored during LTI launch"
+                              inputProps={
+                                        Object {
+                                                  "checked": undefined,
+                                                  "id": "anonymous_input",
+                                                  "name": "anonymous",
+                                                  "onChange": [Function],
+                                                  "type": "checkbox",
+                                                  "value": "true",
+                                                }
+                              }
+                              labelText="Anonymous"
                     />
           </div>
           <div
@@ -155,7 +193,7 @@ ShallowWrapper {
           >
                     <Textarea
                               className="c-input"
-                              labelText="Config"
+                              labelText="Custom Application Instance Configuration"
                               textareaProps={
                                         Object {
                                                   "id": "application_instance_config",
@@ -172,20 +210,15 @@ ShallowWrapper {
           <div
                     className="o-grid__item u-full"
           >
-                    <h3
-                              className="c-modal__subtitle"
-                    >
-                              LTI Configuration
-                    </h3>
                     <Textarea
                               className="c-input"
-                              labelText="Config"
+                              labelText="LTI Configuration"
                               textareaProps={
                                         Object {
                                                   "id": "application_instance_lti_config",
                                                   "name": "lti_config",
                                                   "onChange": [Function],
-                                                  "rows": 3,
+                                                  "rows": 8,
                                                   "value": "",
                                                 }
                               }
@@ -224,7 +257,7 @@ ShallowWrapper {
                             className="c-input"
               >
                             <span>
-                                          Domain
+                                          Canvas Url
                             </span>
                             <Select
                                           addLabelText="Add \\"{label}\\"?"
@@ -273,7 +306,7 @@ ShallowWrapper {
                                                                     ]
                                           }
                                           pageSize={5}
-                                          placeholder="Select a Domain"
+                                          placeholder="Select a Canvas Domain"
                                           required={false}
                                           scrollMenuIntoView={true}
                                           searchable={false}
@@ -284,6 +317,23 @@ ShallowWrapper {
                                           valueKey="value"
                             />
               </div>
+</div>,
+            <div
+              className="o-grid__item u-half"
+>
+              <Input
+                            className="c-input"
+                            inputProps={
+                                          Object {
+                                                        "id": "domain_input",
+                                                        "name": "domain",
+                                                        "onChange": [Function],
+                                                        "type": "text",
+                                                        "value": undefined,
+                                                      }
+                            }
+                            labelText="LTI Tool Domain"
+              />
 </div>,
             <div
               className="o-grid__item u-half"
@@ -325,6 +375,7 @@ ShallowWrapper {
 >
               <Input
                             className="c-input"
+                            helperText="Current Canvas Token: undefined"
                             inputProps={
                                           Object {
                                                         "id": "canvas_token_input",
@@ -332,10 +383,29 @@ ShallowWrapper {
                                                         "onChange": [Function],
                                                         "placeholder": "",
                                                         "type": "text",
-                                                        "value": null,
+                                                        "value": "",
                                                       }
                             }
-                            labelText="Canvas Token - Current Canvas Token: undefined"
+                            labelText="Canvas Token"
+              />
+</div>,
+            <div
+              className="o-grid__item u-full"
+>
+              <Input
+                            className="c-checkbox"
+                            helperText="indicates whether or not user name and email is stored during LTI launch"
+                            inputProps={
+                                          Object {
+                                                        "checked": undefined,
+                                                        "id": "anonymous_input",
+                                                        "name": "anonymous",
+                                                        "onChange": [Function],
+                                                        "type": "checkbox",
+                                                        "value": "true",
+                                                      }
+                            }
+                            labelText="Anonymous"
               />
 </div>,
             <div
@@ -343,7 +413,7 @@ ShallowWrapper {
 >
               <Textarea
                             className="c-input"
-                            labelText="Config"
+                            labelText="Custom Application Instance Configuration"
                             textareaProps={
                                           Object {
                                                         "id": "application_instance_config",
@@ -360,20 +430,15 @@ ShallowWrapper {
             <div
               className="o-grid__item u-full"
 >
-              <h3
-                            className="c-modal__subtitle"
-              >
-                            LTI Configuration
-              </h3>
               <Textarea
                             className="c-input"
-                            labelText="Config"
+                            labelText="LTI Configuration"
                             textareaProps={
                                           Object {
                                                         "id": "application_instance_lti_config",
                                                         "name": "lti_config",
                                                         "onChange": [Function],
-                                                        "rows": 3,
+                                                        "rows": 8,
                                                         "value": "",
                                                       }
                             }
@@ -394,7 +459,7 @@ ShallowWrapper {
                 className="c-input"
 >
                 <span>
-                                Domain
+                                Canvas Url
                 </span>
                 <Select
                                 addLabelText="Add \\"{label}\\"?"
@@ -443,7 +508,7 @@ ShallowWrapper {
                                                               ]
                                 }
                                 pageSize={5}
-                                placeholder="Select a Domain"
+                                placeholder="Select a Canvas Domain"
                                 required={false}
                                 scrollMenuIntoView={true}
                                 searchable={false}
@@ -464,7 +529,7 @@ ShallowWrapper {
               "props": Object {
                 "children": Array [
                   <span>
-                    Domain
+                    Canvas Url
 </span>,
                   <Select
                     addLabelText="Add \\"{label}\\"?"
@@ -513,7 +578,7 @@ ShallowWrapper {
                                                           ]
                     }
                     pageSize={5}
-                    placeholder="Select a Domain"
+                    placeholder="Select a Canvas Domain"
                     required={false}
                     scrollMenuIntoView={true}
                     searchable={false}
@@ -533,10 +598,10 @@ ShallowWrapper {
                   "key": null,
                   "nodeType": "host",
                   "props": Object {
-                    "children": "Domain",
+                    "children": "Canvas Url",
                   },
                   "ref": null,
-                  "rendered": "Domain",
+                  "rendered": "Canvas Url",
                   "type": "span",
                 },
                 Object {
@@ -588,7 +653,7 @@ ShallowWrapper {
                       },
                     ],
                     "pageSize": 5,
-                    "placeholder": "Select a Domain",
+                    "placeholder": "Select a Canvas Domain",
                     "required": false,
                     "scrollMenuIntoView": true,
                     "searchable": false,
@@ -604,6 +669,48 @@ ShallowWrapper {
                 },
               ],
               "type": "div",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "host",
+            "props": Object {
+              "children": <Input
+                className="c-input"
+                inputProps={
+                                Object {
+                                                "id": "domain_input",
+                                                "name": "domain",
+                                                "onChange": [Function],
+                                                "type": "text",
+                                                "value": undefined,
+                                              }
+                }
+                labelText="LTI Tool Domain"
+/>,
+              "className": "o-grid__item u-half",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "function",
+              "props": Object {
+                "className": "c-input",
+                "inputProps": Object {
+                  "id": "domain_input",
+                  "name": "domain",
+                  "onChange": [Function],
+                  "type": "text",
+                  "value": undefined,
+                },
+                "labelText": "LTI Tool Domain",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
             },
             "type": "div",
           },
@@ -700,6 +807,7 @@ ShallowWrapper {
             "props": Object {
               "children": <Input
                 className="c-input"
+                helperText="Current Canvas Token: undefined"
                 inputProps={
                                 Object {
                                                 "id": "canvas_token_input",
@@ -707,10 +815,10 @@ ShallowWrapper {
                                                 "onChange": [Function],
                                                 "placeholder": "",
                                                 "type": "text",
-                                                "value": null,
+                                                "value": "",
                                               }
                 }
-                labelText="Canvas Token - Current Canvas Token: undefined"
+                labelText="Canvas Token"
 />,
               "className": "o-grid__item u-half",
             },
@@ -721,15 +829,62 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "className": "c-input",
+                "helperText": "Current Canvas Token: undefined",
                 "inputProps": Object {
                   "id": "canvas_token_input",
                   "name": "canvas_token",
                   "onChange": [Function],
                   "placeholder": "",
                   "type": "text",
-                  "value": null,
+                  "value": "",
                 },
-                "labelText": "Canvas Token - Current Canvas Token: undefined",
+                "labelText": "Canvas Token",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "host",
+            "props": Object {
+              "children": <Input
+                className="c-checkbox"
+                helperText="indicates whether or not user name and email is stored during LTI launch"
+                inputProps={
+                                Object {
+                                                "checked": undefined,
+                                                "id": "anonymous_input",
+                                                "name": "anonymous",
+                                                "onChange": [Function],
+                                                "type": "checkbox",
+                                                "value": "true",
+                                              }
+                }
+                labelText="Anonymous"
+/>,
+              "className": "o-grid__item u-full",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "function",
+              "props": Object {
+                "className": "c-checkbox",
+                "helperText": "indicates whether or not user name and email is stored during LTI launch",
+                "inputProps": Object {
+                  "checked": undefined,
+                  "id": "anonymous_input",
+                  "name": "anonymous",
+                  "onChange": [Function],
+                  "type": "checkbox",
+                  "value": "true",
+                },
+                "labelText": "Anonymous",
               },
               "ref": null,
               "rendered": null,
@@ -744,7 +899,7 @@ ShallowWrapper {
             "props": Object {
               "children": <Textarea
                 className="c-input"
-                labelText="Config"
+                labelText="Custom Application Instance Configuration"
                 textareaProps={
                                 Object {
                                                 "id": "application_instance_config",
@@ -766,7 +921,7 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "className": "c-input",
-                "labelText": "Config",
+                "labelText": "Custom Application Instance Configuration",
                 "textareaProps": Object {
                   "id": "application_instance_config",
                   "name": "config",
@@ -788,64 +943,43 @@ ShallowWrapper {
             "key": null,
             "nodeType": "host",
             "props": Object {
-              "children": Array [
-                <h3
-                  className="c-modal__subtitle"
->
-                  LTI Configuration
-</h3>,
-                <Textarea
-                  className="c-input"
-                  labelText="Config"
-                  textareaProps={
-                                    Object {
-                                                      "id": "application_instance_lti_config",
-                                                      "name": "lti_config",
-                                                      "onChange": [Function],
-                                                      "rows": 3,
-                                                      "value": "",
-                                                    }
-                  }
-                  warning={null}
+              "children": <Textarea
+                className="c-input"
+                labelText="LTI Configuration"
+                textareaProps={
+                                Object {
+                                                "id": "application_instance_lti_config",
+                                                "name": "lti_config",
+                                                "onChange": [Function],
+                                                "rows": 8,
+                                                "value": "",
+                                              }
+                }
+                warning={null}
 />,
-              ],
               "className": "o-grid__item u-full",
             },
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "LTI Configuration",
-                  "className": "c-modal__subtitle",
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "function",
+              "props": Object {
+                "className": "c-input",
+                "labelText": "LTI Configuration",
+                "textareaProps": Object {
+                  "id": "application_instance_lti_config",
+                  "name": "lti_config",
+                  "onChange": [Function],
+                  "rows": 8,
+                  "value": "",
                 },
-                "ref": null,
-                "rendered": "LTI Configuration",
-                "type": "h3",
+                "warning": null,
               },
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "function",
-                "props": Object {
-                  "className": "c-input",
-                  "labelText": "Config",
-                  "textareaProps": Object {
-                    "id": "application_instance_lti_config",
-                    "name": "lti_config",
-                    "onChange": [Function],
-                    "rows": 3,
-                    "value": "",
-                  },
-                  "warning": null,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-            ],
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
             "type": "div",
           },
         ],
@@ -899,7 +1033,7 @@ ShallowWrapper {
                                     className="c-input"
                         >
                                     <span>
-                                                Domain
+                                                Canvas Url
                                     </span>
                                     <Select
                                                 addLabelText="Add \\"{label}\\"?"
@@ -948,7 +1082,7 @@ ShallowWrapper {
                                                                       ]
                                                 }
                                                 pageSize={5}
-                                                placeholder="Select a Domain"
+                                                placeholder="Select a Canvas Domain"
                                                 required={false}
                                                 scrollMenuIntoView={true}
                                                 searchable={false}
@@ -959,6 +1093,23 @@ ShallowWrapper {
                                                 valueKey="value"
                                     />
                         </div>
+            </div>
+            <div
+                        className="o-grid__item u-half"
+            >
+                        <Input
+                                    className="c-input"
+                                    inputProps={
+                                                Object {
+                                                            "id": "domain_input",
+                                                            "name": "domain",
+                                                            "onChange": [Function],
+                                                            "type": "text",
+                                                            "value": undefined,
+                                                          }
+                                    }
+                                    labelText="LTI Tool Domain"
+                        />
             </div>
             <div
                         className="o-grid__item u-half"
@@ -1000,6 +1151,7 @@ ShallowWrapper {
             >
                         <Input
                                     className="c-input"
+                                    helperText="Current Canvas Token: undefined"
                                     inputProps={
                                                 Object {
                                                             "id": "canvas_token_input",
@@ -1007,10 +1159,29 @@ ShallowWrapper {
                                                             "onChange": [Function],
                                                             "placeholder": "",
                                                             "type": "text",
-                                                            "value": null,
+                                                            "value": "",
                                                           }
                                     }
-                                    labelText="Canvas Token - Current Canvas Token: undefined"
+                                    labelText="Canvas Token"
+                        />
+            </div>
+            <div
+                        className="o-grid__item u-full"
+            >
+                        <Input
+                                    className="c-checkbox"
+                                    helperText="indicates whether or not user name and email is stored during LTI launch"
+                                    inputProps={
+                                                Object {
+                                                            "checked": undefined,
+                                                            "id": "anonymous_input",
+                                                            "name": "anonymous",
+                                                            "onChange": [Function],
+                                                            "type": "checkbox",
+                                                            "value": "true",
+                                                          }
+                                    }
+                                    labelText="Anonymous"
                         />
             </div>
             <div
@@ -1018,7 +1189,7 @@ ShallowWrapper {
             >
                         <Textarea
                                     className="c-input"
-                                    labelText="Config"
+                                    labelText="Custom Application Instance Configuration"
                                     textareaProps={
                                                 Object {
                                                             "id": "application_instance_config",
@@ -1035,20 +1206,15 @@ ShallowWrapper {
             <div
                         className="o-grid__item u-full"
             >
-                        <h3
-                                    className="c-modal__subtitle"
-                        >
-                                    LTI Configuration
-                        </h3>
                         <Textarea
                                     className="c-input"
-                                    labelText="Config"
+                                    labelText="LTI Configuration"
                                     textareaProps={
                                                 Object {
                                                             "id": "application_instance_lti_config",
                                                             "name": "lti_config",
                                                             "onChange": [Function],
-                                                            "rows": 3,
+                                                            "rows": 8,
                                                             "value": "",
                                                           }
                                     }
@@ -1087,7 +1253,7 @@ ShallowWrapper {
                                 className="c-input"
                 >
                                 <span>
-                                                Domain
+                                                Canvas Url
                                 </span>
                                 <Select
                                                 addLabelText="Add \\"{label}\\"?"
@@ -1136,7 +1302,7 @@ ShallowWrapper {
                                                                               ]
                                                 }
                                                 pageSize={5}
-                                                placeholder="Select a Domain"
+                                                placeholder="Select a Canvas Domain"
                                                 required={false}
                                                 scrollMenuIntoView={true}
                                                 searchable={false}
@@ -1147,6 +1313,23 @@ ShallowWrapper {
                                                 valueKey="value"
                                 />
                 </div>
+</div>,
+              <div
+                className="o-grid__item u-half"
+>
+                <Input
+                                className="c-input"
+                                inputProps={
+                                                Object {
+                                                                "id": "domain_input",
+                                                                "name": "domain",
+                                                                "onChange": [Function],
+                                                                "type": "text",
+                                                                "value": undefined,
+                                                              }
+                                }
+                                labelText="LTI Tool Domain"
+                />
 </div>,
               <div
                 className="o-grid__item u-half"
@@ -1188,6 +1371,7 @@ ShallowWrapper {
 >
                 <Input
                                 className="c-input"
+                                helperText="Current Canvas Token: undefined"
                                 inputProps={
                                                 Object {
                                                                 "id": "canvas_token_input",
@@ -1195,10 +1379,29 @@ ShallowWrapper {
                                                                 "onChange": [Function],
                                                                 "placeholder": "",
                                                                 "type": "text",
-                                                                "value": null,
+                                                                "value": "",
                                                               }
                                 }
-                                labelText="Canvas Token - Current Canvas Token: undefined"
+                                labelText="Canvas Token"
+                />
+</div>,
+              <div
+                className="o-grid__item u-full"
+>
+                <Input
+                                className="c-checkbox"
+                                helperText="indicates whether or not user name and email is stored during LTI launch"
+                                inputProps={
+                                                Object {
+                                                                "checked": undefined,
+                                                                "id": "anonymous_input",
+                                                                "name": "anonymous",
+                                                                "onChange": [Function],
+                                                                "type": "checkbox",
+                                                                "value": "true",
+                                                              }
+                                }
+                                labelText="Anonymous"
                 />
 </div>,
               <div
@@ -1206,7 +1409,7 @@ ShallowWrapper {
 >
                 <Textarea
                                 className="c-input"
-                                labelText="Config"
+                                labelText="Custom Application Instance Configuration"
                                 textareaProps={
                                                 Object {
                                                                 "id": "application_instance_config",
@@ -1223,20 +1426,15 @@ ShallowWrapper {
               <div
                 className="o-grid__item u-full"
 >
-                <h3
-                                className="c-modal__subtitle"
-                >
-                                LTI Configuration
-                </h3>
                 <Textarea
                                 className="c-input"
-                                labelText="Config"
+                                labelText="LTI Configuration"
                                 textareaProps={
                                                 Object {
                                                                 "id": "application_instance_lti_config",
                                                                 "name": "lti_config",
                                                                 "onChange": [Function],
-                                                                "rows": 3,
+                                                                "rows": 8,
                                                                 "value": "",
                                                               }
                                 }
@@ -1257,7 +1455,7 @@ ShallowWrapper {
                   className="c-input"
 >
                   <span>
-                                    Domain
+                                    Canvas Url
                   </span>
                   <Select
                                     addLabelText="Add \\"{label}\\"?"
@@ -1306,7 +1504,7 @@ ShallowWrapper {
                                                                       ]
                                     }
                                     pageSize={5}
-                                    placeholder="Select a Domain"
+                                    placeholder="Select a Canvas Domain"
                                     required={false}
                                     scrollMenuIntoView={true}
                                     searchable={false}
@@ -1327,7 +1525,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": Array [
                     <span>
-                      Domain
+                      Canvas Url
 </span>,
                     <Select
                       addLabelText="Add \\"{label}\\"?"
@@ -1376,7 +1574,7 @@ ShallowWrapper {
                                                                 ]
                       }
                       pageSize={5}
-                      placeholder="Select a Domain"
+                      placeholder="Select a Canvas Domain"
                       required={false}
                       scrollMenuIntoView={true}
                       searchable={false}
@@ -1396,10 +1594,10 @@ ShallowWrapper {
                     "key": null,
                     "nodeType": "host",
                     "props": Object {
-                      "children": "Domain",
+                      "children": "Canvas Url",
                     },
                     "ref": null,
-                    "rendered": "Domain",
+                    "rendered": "Canvas Url",
                     "type": "span",
                   },
                   Object {
@@ -1451,7 +1649,7 @@ ShallowWrapper {
                         },
                       ],
                       "pageSize": 5,
-                      "placeholder": "Select a Domain",
+                      "placeholder": "Select a Canvas Domain",
                       "required": false,
                       "scrollMenuIntoView": true,
                       "searchable": false,
@@ -1467,6 +1665,48 @@ ShallowWrapper {
                   },
                 ],
                 "type": "div",
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "host",
+              "props": Object {
+                "children": <Input
+                  className="c-input"
+                  inputProps={
+                                    Object {
+                                                      "id": "domain_input",
+                                                      "name": "domain",
+                                                      "onChange": [Function],
+                                                      "type": "text",
+                                                      "value": undefined,
+                                                    }
+                  }
+                  labelText="LTI Tool Domain"
+/>,
+                "className": "o-grid__item u-half",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "function",
+                "props": Object {
+                  "className": "c-input",
+                  "inputProps": Object {
+                    "id": "domain_input",
+                    "name": "domain",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": undefined,
+                  },
+                  "labelText": "LTI Tool Domain",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
               },
               "type": "div",
             },
@@ -1563,6 +1803,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <Input
                   className="c-input"
+                  helperText="Current Canvas Token: undefined"
                   inputProps={
                                     Object {
                                                       "id": "canvas_token_input",
@@ -1570,10 +1811,10 @@ ShallowWrapper {
                                                       "onChange": [Function],
                                                       "placeholder": "",
                                                       "type": "text",
-                                                      "value": null,
+                                                      "value": "",
                                                     }
                   }
-                  labelText="Canvas Token - Current Canvas Token: undefined"
+                  labelText="Canvas Token"
 />,
                 "className": "o-grid__item u-half",
               },
@@ -1584,15 +1825,62 @@ ShallowWrapper {
                 "nodeType": "function",
                 "props": Object {
                   "className": "c-input",
+                  "helperText": "Current Canvas Token: undefined",
                   "inputProps": Object {
                     "id": "canvas_token_input",
                     "name": "canvas_token",
                     "onChange": [Function],
                     "placeholder": "",
                     "type": "text",
-                    "value": null,
+                    "value": "",
                   },
-                  "labelText": "Canvas Token - Current Canvas Token: undefined",
+                  "labelText": "Canvas Token",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "host",
+              "props": Object {
+                "children": <Input
+                  className="c-checkbox"
+                  helperText="indicates whether or not user name and email is stored during LTI launch"
+                  inputProps={
+                                    Object {
+                                                      "checked": undefined,
+                                                      "id": "anonymous_input",
+                                                      "name": "anonymous",
+                                                      "onChange": [Function],
+                                                      "type": "checkbox",
+                                                      "value": "true",
+                                                    }
+                  }
+                  labelText="Anonymous"
+/>,
+                "className": "o-grid__item u-full",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "function",
+                "props": Object {
+                  "className": "c-checkbox",
+                  "helperText": "indicates whether or not user name and email is stored during LTI launch",
+                  "inputProps": Object {
+                    "checked": undefined,
+                    "id": "anonymous_input",
+                    "name": "anonymous",
+                    "onChange": [Function],
+                    "type": "checkbox",
+                    "value": "true",
+                  },
+                  "labelText": "Anonymous",
                 },
                 "ref": null,
                 "rendered": null,
@@ -1607,7 +1895,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <Textarea
                   className="c-input"
-                  labelText="Config"
+                  labelText="Custom Application Instance Configuration"
                   textareaProps={
                                     Object {
                                                       "id": "application_instance_config",
@@ -1629,7 +1917,7 @@ ShallowWrapper {
                 "nodeType": "function",
                 "props": Object {
                   "className": "c-input",
-                  "labelText": "Config",
+                  "labelText": "Custom Application Instance Configuration",
                   "textareaProps": Object {
                     "id": "application_instance_config",
                     "name": "config",
@@ -1651,64 +1939,43 @@ ShallowWrapper {
               "key": null,
               "nodeType": "host",
               "props": Object {
-                "children": Array [
-                  <h3
-                    className="c-modal__subtitle"
->
-                    LTI Configuration
-</h3>,
-                  <Textarea
-                    className="c-input"
-                    labelText="Config"
-                    textareaProps={
-                                        Object {
-                                                            "id": "application_instance_lti_config",
-                                                            "name": "lti_config",
-                                                            "onChange": [Function],
-                                                            "rows": 3,
-                                                            "value": "",
-                                                          }
-                    }
-                    warning={null}
+                "children": <Textarea
+                  className="c-input"
+                  labelText="LTI Configuration"
+                  textareaProps={
+                                    Object {
+                                                      "id": "application_instance_lti_config",
+                                                      "name": "lti_config",
+                                                      "onChange": [Function],
+                                                      "rows": 8,
+                                                      "value": "",
+                                                    }
+                  }
+                  warning={null}
 />,
-                ],
                 "className": "o-grid__item u-full",
               },
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": null,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "LTI Configuration",
-                    "className": "c-modal__subtitle",
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "function",
+                "props": Object {
+                  "className": "c-input",
+                  "labelText": "LTI Configuration",
+                  "textareaProps": Object {
+                    "id": "application_instance_lti_config",
+                    "name": "lti_config",
+                    "onChange": [Function],
+                    "rows": 8,
+                    "value": "",
                   },
-                  "ref": null,
-                  "rendered": "LTI Configuration",
-                  "type": "h3",
+                  "warning": null,
                 },
-                Object {
-                  "instance": null,
-                  "key": null,
-                  "nodeType": "function",
-                  "props": Object {
-                    "className": "c-input",
-                    "labelText": "Config",
-                    "textareaProps": Object {
-                      "id": "application_instance_lti_config",
-                      "name": "lti_config",
-                      "onChange": [Function],
-                      "rows": 3,
-                      "value": "",
-                    },
-                    "warning": null,
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
-              ],
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
               "type": "div",
             },
           ],

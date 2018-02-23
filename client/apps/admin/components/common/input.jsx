@@ -13,12 +13,20 @@ export default function Input(props) {
     before = <span>{props.labelText}</span>;
   }
 
+  let helperText;
+  if (props.helperText) {
+    helperText = <div className="helper-text">{props.helperText}</div>;
+  }
+
   return (
-    <label htmlFor={props.inputProps.id} className={props.className}>
-      {before}
-      <input {...props.inputProps} />
-      {after}
-    </label>
+    <div className="c-input--container">
+      <label htmlFor={props.inputProps.id} className={props.className}>
+        {before}
+        <input {...props.inputProps} />
+        {after}
+      </label>
+      {helperText}
+    </div>
   );
 }
 
@@ -34,4 +42,5 @@ Input.propTypes = {
     onChange: PropTypes.func,
   }),
   className: PropTypes.string,
+  helperText: PropTypes.string,
 };

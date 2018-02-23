@@ -294,16 +294,16 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
-atomic-canvas@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/atomic-canvas/-/atomic-canvas-1.1.1.tgz#2b43d49a9626207da61a5f1c687a409c4ba901aa"
+atomic-canvas@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/atomic-canvas/-/atomic-canvas-1.1.2.tgz#dc227a1766c49f3f97f4c63ca8817957e65c3c62"
   dependencies:
     cli-highlight "^1.1.4"
     lodash "^4.17.4"
 
-atomic-fuel@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/atomic-fuel/-/atomic-fuel-1.0.4.tgz#f61216adbd6471629bac3c3e83af27b98d5a0a9b"
+atomic-fuel@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/atomic-fuel/-/atomic-fuel-1.2.3.tgz#7ec8efa1a2c1fd20b95b33901305f53e0efa7cd0"
   dependencies:
     atomic-reactor "^1.0.2"
     babel-cli "^6.26.0"

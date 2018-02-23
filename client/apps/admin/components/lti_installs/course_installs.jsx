@@ -27,7 +27,17 @@ export default function CourseInstalls(props) {
       <thead>
         <tr>
           <th><span>Course Name</span></th>
-          <th />
+          <th>
+            <div className="c-checkbox--right-titlebar">
+              <input
+                type="checkbox"
+                id="onlyShowInstalled"
+                name="onlyShowInstalled"
+                onChange={props.onlyShowInstalledChanged}
+              />
+              <label htmlFor="onlyShowInstalled">Show only installed</label>
+            </div>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -38,8 +48,8 @@ export default function CourseInstalls(props) {
 }
 
 CourseInstalls.propTypes = {
-  courses             : PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  loadingCourses      : PropTypes.shape({}),
-  // canvasRequest       : PropTypes.func,
-  applicationInstance : PropTypes.shape({}),
+  courses: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  loadingCourses: PropTypes.shape({}),
+  applicationInstance: PropTypes.shape({}),
+  onlyShowInstalledChanged: PropTypes.func.isRequired,
 };

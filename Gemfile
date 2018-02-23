@@ -23,9 +23,9 @@ gem "cancancan"
 gem "devise"
 gem "ims-lti", "~> 2.1.5" # IMS LTI tool consumers and providers
 gem "jwt", "~> 1.5.0" # json web token
-gem "lms-api", "~> 1.3.7"
+gem "lms-api", "~> 1.3.9"
 gem "omniauth"
-gem "omniauth-canvas", "~>1.0.1"
+gem "omniauth-canvas", "~>1.0.2"
 gem "rolify"
 
 # Email
@@ -71,6 +71,7 @@ group :development do
   gem "listen"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
+  gem "spring-commands-rspec"
   gem "spring-watcher-listen"
   gem "web-console"
 end
@@ -80,6 +81,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "faker"
+  gem "guard-rspec", require: false
   gem "rspec-rails"
   gem "rubocop"
 end

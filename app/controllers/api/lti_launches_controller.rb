@@ -42,6 +42,8 @@ class Api::LtiLaunchesController < Api::ApiApplicationController
   def lti_launch_params
     params.require(:lti_launch).permit(
       :config,
+      :tool_consumer_instance_guid,
+      :context_id,
     )
   end
 

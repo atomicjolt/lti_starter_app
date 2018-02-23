@@ -56,7 +56,6 @@ ShallowWrapper {
                     applicationInstance={Object {}}
                     canvasRequest={[Function]}
                     currentAccount={null}
-                    onlyShowInstalledChanged={[Function]}
                     saveApplicationInstance={[Function]}
                     setAccountActive={[Function]}
                     sites={Object {}}
@@ -73,6 +72,7 @@ ShallowWrapper {
                     loadExternalTools={[Function]}
                     loadingCourses={Object {}}
                     onlyShowInstalled={false}
+                    onlyShowInstalledChanged={[Function]}
           />
 </div>,
         <Modal
@@ -122,7 +122,6 @@ ShallowWrapper {
               applicationInstance={Object {}}
               canvasRequest={[Function]}
               currentAccount={null}
-              onlyShowInstalledChanged={[Function]}
               saveApplicationInstance={[Function]}
               setAccountActive={[Function]}
               sites={Object {}}
@@ -139,6 +138,7 @@ ShallowWrapper {
               loadExternalTools={[Function]}
               loadingCourses={Object {}}
               onlyShowInstalled={false}
+              onlyShowInstalledChanged={[Function]}
 />,
           ],
           "className": "o-contain",
@@ -155,7 +155,6 @@ ShallowWrapper {
               "applicationInstance": Object {},
               "canvasRequest": [Function],
               "currentAccount": null,
-              "onlyShowInstalledChanged": [Function],
               "saveApplicationInstance": [Function],
               "setAccountActive": [Function],
               "sites": Object {},
@@ -178,6 +177,7 @@ ShallowWrapper {
               "loadExternalTools": [Function],
               "loadingCourses": Object {},
               "onlyShowInstalled": false,
+              "onlyShowInstalledChanged": [Function],
             },
             "ref": null,
             "rendered": null,
@@ -247,7 +247,6 @@ ShallowWrapper {
                         applicationInstance={Object {}}
                         canvasRequest={[Function]}
                         currentAccount={null}
-                        onlyShowInstalledChanged={[Function]}
                         saveApplicationInstance={[Function]}
                         setAccountActive={[Function]}
                         sites={Object {}}
@@ -264,6 +263,7 @@ ShallowWrapper {
                         loadExternalTools={[Function]}
                         loadingCourses={Object {}}
                         onlyShowInstalled={false}
+                        onlyShowInstalledChanged={[Function]}
             />
 </div>,
           <Modal
@@ -313,7 +313,6 @@ ShallowWrapper {
                 applicationInstance={Object {}}
                 canvasRequest={[Function]}
                 currentAccount={null}
-                onlyShowInstalledChanged={[Function]}
                 saveApplicationInstance={[Function]}
                 setAccountActive={[Function]}
                 sites={Object {}}
@@ -330,6 +329,7 @@ ShallowWrapper {
                 loadExternalTools={[Function]}
                 loadingCourses={Object {}}
                 onlyShowInstalled={false}
+                onlyShowInstalledChanged={[Function]}
 />,
             ],
             "className": "o-contain",
@@ -346,7 +346,6 @@ ShallowWrapper {
                 "applicationInstance": Object {},
                 "canvasRequest": [Function],
                 "currentAccount": null,
-                "onlyShowInstalledChanged": [Function],
                 "saveApplicationInstance": [Function],
                 "setAccountActive": [Function],
                 "sites": Object {},
@@ -369,6 +368,7 @@ ShallowWrapper {
                 "loadExternalTools": [Function],
                 "loadingCourses": Object {},
                 "onlyShowInstalled": false,
+                "onlyShowInstalledChanged": [Function],
               },
               "ref": null,
               "rendered": null,

@@ -2,14 +2,8 @@ require "rails_helper"
 
 RSpec.describe Api::LtiLaunchesController, type: :controller do
   before do
-    @user = FactoryGirl.create(:user)
-    @user.confirm
-    @user_token = AuthToken.issue_token({ user_id: @user.id })
-
-    @application = FactoryGirl.create(:application)
-    @application_instance = FactoryGirl.create(:application_instance, application: @application)
-
-    allow(controller).to receive(:current_application_instance).and_return(@application_instance)
+    setup_lti_users
+    setup_application_and_instance
 
     @content_item = {
       "@context" => "http://purl.imsglobal.org/ctx/lti/v1/ContentItem",
@@ -35,7 +29,7 @@ RSpec.describe Api::LtiLaunchesController, type: :controller do
 
   context "as user" do
     before do
-      request.headers["Authorization"] = @user_token
+      request.headers["Authorization"] = @student_token
     end
 
     describe "POST create" do

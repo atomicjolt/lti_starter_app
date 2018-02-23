@@ -18,12 +18,14 @@ export default function List(props) {
     <table className="c-table c-table--instances">
       <thead>
         <tr>
-          <th><span>INSTANCE</span></th>
           <th><span>LTI KEY</span></th>
           <th><span>DOMAIN</span></th>
           <th><span>SETTINGS</span></th>
           <th><span>CONFIG XML</span></th>
           <th><span>ENABLED</span></th>
+          <th><span>TOKEN</span></th>
+          <th><span>AUTHENTICATIONS</span></th>
+          <th><span>CREATED</span></th>
           <th />
         </tr>
       </thead>

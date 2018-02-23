@@ -71,6 +71,7 @@ Metrics/BlockLength:
     - spec/**/**
     - config/*
     - lib/tasks/*
+    - Guardfile
 
 Style/ClassVars:
   Description: 'Avoid the use of class variables.'
@@ -436,6 +437,11 @@ Style/WhileUntilModifier:
 Style/WordArray:
   Description: 'Use %w or %W for arrays of words.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#percent-w'
+  Enabled: false
+
+Style/SymbolArray:
+  Description: 'Use `%i` or `%I` for an array of symbols'
+  StyleGuide: 'http://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/SymbolArray'
   Enabled: false
 
 # Lint

@@ -1,4 +1,5 @@
 require "rails_helper"
+require "nokogiri"
 
 RSpec.describe ApplicationInstance, type: :model do
   describe "create application" do
@@ -47,6 +48,13 @@ RSpec.describe ApplicationInstance, type: :model do
     it "sets a default tenant to the lti_key" do
       @application_instance = create(:application_instance, site: @site, application: @application)
       expect(@application_instance.tenant).to eq(@application_instance.lti_key)
+    end
+
+    it "sets anonymous to the value from application" do
+      @application.anonymous = true
+      @application.save!
+      @application_instance = create(:application_instance, site: @site, application: @application)
+      expect(@application_instance.anonymous).to eq(true)
     end
 
     it "doesn't change the tenant" do
@@ -101,6 +109,12 @@ RSpec.describe ApplicationInstance, type: :model do
       expect(app_instance.lti_config).to eq("foo" => "baz")
     end
 
+    it "is anonymous if the application is anonymous" do
+      app = create(:application, anonymous: true)
+      app_instance = create(:application_instance, application: app)
+      expect(app_instance.anonymous).to eq(app.anonymous)
+    end
+
     it "requires a site" do
       expect do
         create(:application_instance, site: nil, lti_key: "test")
@@ -116,6 +130,46 @@ RSpec.describe ApplicationInstance, type: :model do
       @application_instance = create(:application_instance)
       @application_instance.lti_key = "new-lti-key"
       expect(@application_instance.valid?).to be false
+    end
+
+    it "generates the lti xml config" do
+      lti_config = {
+        title: "LTI Starter App",
+        description: "The Atomic Jolt LTI Starter app",
+        privacy_level: "public",
+        icon: "oauth_icon.png",
+      }
+      app = create(:application, lti_config: lti_config)
+      application_instance = create(:application_instance, application: app)
+      xml = application_instance.lti_config_xml
+      doc = Nokogiri::XML(xml)
+      doc.xpath("//lticm:property").each do |lti_property|
+        if lti_property.attributes["name"].value == "privacy_level"
+          expect(lti_property.children.text).to eq("public")
+        elsif lti_property.attributes["name"].value == "domain"
+          expect(lti_property.children.text).to eq(application_instance.domain)
+        end
+      end
+    end
+
+    it "generates the lti xml config with privacy_level anonymous" do
+      lti_config = {
+        title: "LTI Starter App",
+        description: "The Atomic Jolt LTI Starter app",
+        privacy_level: "public",
+        icon: "oauth_icon.png",
+      }
+      app = create(:application, lti_config: lti_config)
+      application_instance = create(:application_instance, application: app, anonymous: true)
+      xml = application_instance.lti_config_xml
+      doc = Nokogiri::XML(xml)
+      doc.xpath("//lticm:property").each do |lti_property|
+        if lti_property.attributes["name"].value == "privacy_level"
+          expect(lti_property.children.text).to eq("anonymous")
+        elsif lti_property.attributes["name"].value == "domain"
+          expect(lti_property.children.text).to eq(application_instance.domain)
+        end
+      end
     end
   end
 end

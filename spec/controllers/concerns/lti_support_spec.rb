@@ -41,6 +41,21 @@ describe ApplicationController, type: :controller do
         expect(response).to have_http_status(200)
         expect(response.body).to include("User:")
       end
+      it "creates an anonymous user" do
+        @application_instance.anonymous = true
+        @application_instance.save!
+        params = lti_params(
+          @application_instance.lti_key,
+          @application_instance.lti_secret,
+          {
+            "launch_url" => @launch_url,
+            "roles" => "Learner",
+          },
+        )
+        post :index, params: params
+        expect(response).to have_http_status(200)
+        expect(response.body).to include("User: anonymous")
+      end
       it "adds lti roles to an existing user" do
         role = "urn:lti:role:ims/lis/Instructor"
         email = FactoryGirl.generate(:email)

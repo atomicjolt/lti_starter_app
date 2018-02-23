@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171003181935) do
+ActiveRecord::Schema.define(version: 20180209234904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20171003181935) do
     t.string   "encrypted_canvas_token"
     t.string   "encrypted_canvas_token_salt"
     t.string   "encrypted_canvas_token_iv"
-    t.datetime "created_at",                                            null: false
-    t.datetime "updated_at",                                            null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.string   "domain",                      limit: 2048
     t.bigint   "site_id"
     t.string   "tenant"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20171003181935) do
     t.jsonb    "lti_config"
     t.datetime "disabled_at"
     t.bigint   "bundle_instance_id"
+    t.boolean  "anonymous",                                default: false
     t.index ["application_id"], name: "index_application_instances_on_application_id", using: :btree
     t.index ["lti_key"], name: "index_application_instances_on_lti_key", using: :btree
     t.index ["site_id"], name: "index_application_instances_on_site_id", using: :btree
@@ -48,14 +49,16 @@ ActiveRecord::Schema.define(version: 20171003181935) do
     t.string   "name"
     t.string   "description"
     t.string   "client_application_name"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                                                      null: false
+    t.datetime "updated_at",                                                                      null: false
     t.bigint   "kind",                        default: 0
     t.bigint   "application_instances_count"
     t.jsonb    "default_config",              default: {}
     t.jsonb    "lti_config"
     t.jsonb    "canvas_api_permissions",      default: {}
     t.string   "key"
+    t.string   "oauth_precedence",            default: "global,user,application_instance,course"
+    t.boolean  "anonymous",                   default: false
     t.index ["key"], name: "index_applications_on_key", using: :btree
   end
 
@@ -114,12 +117,26 @@ ActiveRecord::Schema.define(version: 20171003181935) do
     t.index ["lms_course_id"], name: "index_canvas_courses_on_lms_course_id", using: :btree
   end
 
+  create_table "ims_exports", force: :cascade do |t|
+    t.string   "token"
+    t.string   "tool_consumer_instance_guid"
+    t.string   "context_id"
+    t.string   "custom_canvas_course_id"
+    t.jsonb    "payload"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["token"], name: "index_ims_exports_on_token", using: :btree
+  end
+
   create_table "lti_launches", id: :bigserial, force: :cascade do |t|
     t.jsonb    "config"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "token"
-    t.index ["token"], name: "index_lti_launches_on_token", unique: true, using: :btree
+    t.string   "context_id"
+    t.string   "tool_consumer_instance_guid"
+    t.index ["context_id"], name: "index_lti_launches_on_context_id", using: :btree
+    t.index ["token", "context_id"], name: "index_lti_launches_on_token_and_context_id", unique: true, using: :btree
   end
 
   create_table "nonces", id: :bigserial, force: :cascade do |t|

@@ -18,7 +18,8 @@
   box-shadow: 0 0 1rem rgba(0,0,0,0.5);
   @include transition(all 0.3s ease);
   outline: none;
-
+  bottom: 1%;
+  overflow: scroll;
   &.is-open{
     top: 5rem;
   }
