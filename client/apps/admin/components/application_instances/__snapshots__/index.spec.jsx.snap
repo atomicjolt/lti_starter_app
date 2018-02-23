@@ -56,21 +56,6 @@ ShallowWrapper {
         <div
           className="o-contain o-contain--full"
 >
-          <Modal
-                    application={undefined}
-                    closeModal={[Function]}
-                    isOpen={false}
-                    save={[Function]}
-                    sites={
-                              Object {
-                                        "1": Object {
-                                          "id": 1,
-                                          "oauth_key": "akey",
-                                          "oauth_secret": "secret",
-                                        },
-                                      }
-                    }
-          />
           <Header
                     application={undefined}
                     newApplicationInstance={[Function]}
@@ -124,21 +109,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            <Modal
-              application={undefined}
-              closeModal={[Function]}
-              isOpen={false}
-              save={[Function]}
-              sites={
-                            Object {
-                                          "1": Object {
-                                            "id": 1,
-                                            "oauth_key": "akey",
-                                            "oauth_secret": "secret",
-                                          },
-                                        }
-              }
-/>,
+            null,
             <Header
               application={undefined}
               newApplicationInstance={[Function]}
@@ -175,27 +146,7 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": Array [
-          Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "class",
-            "props": Object {
-              "application": undefined,
-              "closeModal": [Function],
-              "isOpen": false,
-              "save": [Function],
-              "sites": Object {
-                "1": Object {
-                  "id": 1,
-                  "oauth_key": "akey",
-                  "oauth_secret": "secret",
-                },
-              },
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
+          null,
           Object {
             "instance": null,
             "key": null,
@@ -256,21 +207,6 @@ ShallowWrapper {
           <div
             className="o-contain o-contain--full"
 >
-            <Modal
-                        application={undefined}
-                        closeModal={[Function]}
-                        isOpen={false}
-                        save={[Function]}
-                        sites={
-                                    Object {
-                                                "1": Object {
-                                                  "id": 1,
-                                                  "oauth_key": "akey",
-                                                  "oauth_secret": "secret",
-                                                },
-                                              }
-                        }
-            />
             <Header
                         application={undefined}
                         newApplicationInstance={[Function]}
@@ -324,21 +260,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              <Modal
-                application={undefined}
-                closeModal={[Function]}
-                isOpen={false}
-                save={[Function]}
-                sites={
-                                Object {
-                                                "1": Object {
-                                                  "id": 1,
-                                                  "oauth_key": "akey",
-                                                  "oauth_secret": "secret",
-                                                },
-                                              }
-                }
-/>,
+              null,
               <Header
                 application={undefined}
                 newApplicationInstance={[Function]}
@@ -375,27 +297,7 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": Array [
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "application": undefined,
-                "closeModal": [Function],
-                "isOpen": false,
-                "save": [Function],
-                "sites": Object {
-                  "1": Object {
-                    "id": 1,
-                    "oauth_key": "akey",
-                    "oauth_secret": "secret",
-                  },
-                },
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
+            null,
             Object {
               "instance": null,
               "key": null,

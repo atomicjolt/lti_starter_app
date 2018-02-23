@@ -53,13 +53,6 @@ describe('application instance modal', () => {
     expect(result.instance().state.siteModalOpen).toBeFalsy();
   });
 
-  it('renders isOpen class appropriately', () => {
-    expect(result.find('.is-open').length).toEqual(1);
-    props.isOpen = false;
-    result = shallow(<Modal {...props} />);
-    expect(result.find('.is-open').length).toEqual(0);
-  });
-
   it('handles the save function', () => {
     expect(saved).toBeFalsy();
     expect(result.instance().state.siteModalOpen).toBeFalsy();

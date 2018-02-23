@@ -61,6 +61,19 @@ export default class ListRow extends React.Component {
     };
   }
 
+  get applicationInstanceModal() {
+    if (this.state.modalOpen) {
+      return <Modal
+        closeModal={() => this.setState({ modalOpen: false })}
+        sites={this.props.sites}
+        save={this.props.save}
+        application={this.props.application}
+        applicationInstance={this.props.applicationInstance}
+      />;
+    }
+    return null;
+  }
+
   checkAuthentication(e) {
     if (!_.find(this.props.settings.user_canvas_domains, canvasUrl =>
       canvasUrl === this.props.applicationInstance.site.url
@@ -144,14 +157,7 @@ export default class ListRow extends React.Component {
           >
             <i className="i-settings" />
           </button>
-          <Modal
-            isOpen={this.state.modalOpen}
-            closeModal={() => this.setState({ modalOpen: false })}
-            sites={this.props.sites}
-            save={this.props.save}
-            application={this.props.application}
-            applicationInstance={applicationInstance}
-          />
+          { this.applicationInstanceModal }
         </td>
         <td>
           <button

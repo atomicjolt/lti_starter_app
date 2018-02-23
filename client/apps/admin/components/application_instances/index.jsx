@@ -42,24 +42,34 @@ export class Index extends React.Component {
     this.state = { modalOpen: false };
   }
 
+  get application() {
+    return this.props.applications[this.props.params.applicationId];
+  }
+
+  get newApplicationInstanceModal() {
+    if (this.state.modalOpen) {
+      return <Modal
+        closeModal={() => this.setState({ modalOpen: false })}
+        sites={this.props.sites}
+        save={this.props.createApplicationInstance}
+        application={this.application}
+      />;
+    }
+    return null;
+  }
+
   componentWillMount() {
     this.props.getApplicationInstances(this.props.params.applicationId);
   }
 
   render() {
-    const application = this.props.applications[this.props.params.applicationId];
+    const { application } = this;
 
     return (
       <div>
         <Heading backTo="/applications" />
         <div className="o-contain o-contain--full">
-          <Modal
-            isOpen={this.state.modalOpen}
-            closeModal={() => this.setState({ modalOpen: false })}
-            sites={this.props.sites}
-            save={this.props.createApplicationInstance}
-            application={application}
-          />
+          {this.newApplicationInstanceModal}
           <Header
             openSettings={() => {}}
             newApplicationInstance={() => this.setState({ modalOpen: true })}
