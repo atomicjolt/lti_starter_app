@@ -143,7 +143,7 @@ export default class Form extends React.Component {
                 name: 'canvas_token',
                 type: 'text',
                 placeholder: this.props.canvas_token_preview ? 'Token Set!' : '',
-                value: '',
+                value: this.props.canvas_token,
                 onChange
               }}
             />
