@@ -163,7 +163,7 @@ ShallowWrapper {
                                                   "onChange": [Function],
                                                   "placeholder": "",
                                                   "type": "text",
-                                                  "value": "",
+                                                  "value": undefined,
                                                 }
                               }
                               labelText="Canvas Token"
@@ -383,7 +383,7 @@ ShallowWrapper {
                                                         "onChange": [Function],
                                                         "placeholder": "",
                                                         "type": "text",
-                                                        "value": "",
+                                                        "value": undefined,
                                                       }
                             }
                             labelText="Canvas Token"
@@ -815,7 +815,7 @@ ShallowWrapper {
                                                 "onChange": [Function],
                                                 "placeholder": "",
                                                 "type": "text",
-                                                "value": "",
+                                                "value": undefined,
                                               }
                 }
                 labelText="Canvas Token"
@@ -836,7 +836,7 @@ ShallowWrapper {
                   "onChange": [Function],
                   "placeholder": "",
                   "type": "text",
-                  "value": "",
+                  "value": undefined,
                 },
                 "labelText": "Canvas Token",
               },
@@ -1159,7 +1159,7 @@ ShallowWrapper {
                                                             "onChange": [Function],
                                                             "placeholder": "",
                                                             "type": "text",
-                                                            "value": "",
+                                                            "value": undefined,
                                                           }
                                     }
                                     labelText="Canvas Token"
@@ -1379,7 +1379,7 @@ ShallowWrapper {
                                                                 "onChange": [Function],
                                                                 "placeholder": "",
                                                                 "type": "text",
-                                                                "value": "",
+                                                                "value": undefined,
                                                               }
                                 }
                                 labelText="Canvas Token"
@@ -1811,7 +1811,7 @@ ShallowWrapper {
                                                       "onChange": [Function],
                                                       "placeholder": "",
                                                       "type": "text",
-                                                      "value": "",
+                                                      "value": undefined,
                                                     }
                   }
                   labelText="Canvas Token"
@@ -1832,7 +1832,7 @@ ShallowWrapper {
                     "onChange": [Function],
                     "placeholder": "",
                     "type": "text",
-                    "value": "",
+                    "value": undefined,
                   },
                   "labelText": "Canvas Token",
                 },
