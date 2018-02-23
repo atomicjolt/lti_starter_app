@@ -55,24 +55,6 @@ ShallowWrapper {
                                         className="i-settings"
                               />
                     </a>
-                    <Modal
-                              application={
-                                        Object {
-                                                  "name": "applicationName",
-                                                }
-                              }
-                              applicationInstance={
-                                        Object {
-                                                  "site": Object {
-                                                    "url": "www.atomicjolt.com",
-                                                  },
-                                                }
-                              }
-                              closeModal={[Function]}
-                              isOpen={false}
-                              save={[Function]}
-                              sites={Object {}}
-                    />
           </span>
           <h4
                     className="c-tool__subtitle"
@@ -139,24 +121,6 @@ ShallowWrapper {
                                           className="i-settings"
                             />
               </a>
-              <Modal
-                            application={
-                                          Object {
-                                                        "name": "applicationName",
-                                                      }
-                            }
-                            applicationInstance={
-                                          Object {
-                                                        "site": Object {
-                                                          "url": "www.atomicjolt.com",
-                                                        },
-                                                      }
-                            }
-                            closeModal={[Function]}
-                            isOpen={false}
-                            save={[Function]}
-                            sites={Object {}}
-              />
 </span>,
             <h4
               className="c-tool__subtitle"
@@ -186,24 +150,7 @@ ShallowWrapper {
                                     className="i-settings"
                   />
 </a>,
-                <Modal
-                  application={
-                                    Object {
-                                                      "name": "applicationName",
-                                                    }
-                  }
-                  applicationInstance={
-                                    Object {
-                                                      "site": Object {
-                                                        "url": "www.atomicjolt.com",
-                                                      },
-                                                    }
-                  }
-                  closeModal={[Function]}
-                  isOpen={false}
-                  save={[Function]}
-                  sites={Object {}}
-/>,
+                null,
               ],
             },
             "ref": null,
@@ -232,28 +179,7 @@ ShallowWrapper {
                 },
                 "type": "a",
               },
-              Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "application": Object {
-                    "name": "applicationName",
-                  },
-                  "applicationInstance": Object {
-                    "site": Object {
-                      "url": "www.atomicjolt.com",
-                    },
-                  },
-                  "closeModal": [Function],
-                  "isOpen": false,
-                  "save": [Function],
-                  "sites": Object {},
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
+              null,
             ],
             "type": "span",
           },
@@ -414,24 +340,6 @@ ShallowWrapper {
                                                 className="i-settings"
                                     />
                         </a>
-                        <Modal
-                                    application={
-                                                Object {
-                                                            "name": "applicationName",
-                                                          }
-                                    }
-                                    applicationInstance={
-                                                Object {
-                                                            "site": Object {
-                                                              "url": "www.atomicjolt.com",
-                                                            },
-                                                          }
-                                    }
-                                    closeModal={[Function]}
-                                    isOpen={false}
-                                    save={[Function]}
-                                    sites={Object {}}
-                        />
             </span>
             <h4
                         className="c-tool__subtitle"
@@ -498,24 +406,6 @@ ShallowWrapper {
                                                 className="i-settings"
                                 />
                 </a>
-                <Modal
-                                application={
-                                                Object {
-                                                                "name": "applicationName",
-                                                              }
-                                }
-                                applicationInstance={
-                                                Object {
-                                                                "site": Object {
-                                                                  "url": "www.atomicjolt.com",
-                                                                },
-                                                              }
-                                }
-                                closeModal={[Function]}
-                                isOpen={false}
-                                save={[Function]}
-                                sites={Object {}}
-                />
 </span>,
               <h4
                 className="c-tool__subtitle"
@@ -545,24 +435,7 @@ ShallowWrapper {
                                         className="i-settings"
                     />
 </a>,
-                  <Modal
-                    application={
-                                        Object {
-                                                            "name": "applicationName",
-                                                          }
-                    }
-                    applicationInstance={
-                                        Object {
-                                                            "site": Object {
-                                                              "url": "www.atomicjolt.com",
-                                                            },
-                                                          }
-                    }
-                    closeModal={[Function]}
-                    isOpen={false}
-                    save={[Function]}
-                    sites={Object {}}
-/>,
+                  null,
                 ],
               },
               "ref": null,
@@ -591,28 +464,7 @@ ShallowWrapper {
                   },
                   "type": "a",
                 },
-                Object {
-                  "instance": null,
-                  "key": null,
-                  "nodeType": "class",
-                  "props": Object {
-                    "application": Object {
-                      "name": "applicationName",
-                    },
-                    "applicationInstance": Object {
-                      "site": Object {
-                        "url": "www.atomicjolt.com",
-                      },
-                    },
-                    "closeModal": [Function],
-                    "isOpen": false,
-                    "save": [Function],
-                    "sites": Object {},
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
+                null,
               ],
               "type": "span",
             },
