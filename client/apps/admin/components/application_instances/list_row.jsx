@@ -157,18 +157,7 @@ export default class ListRow extends React.Component {
           >
             <i className="i-settings" />
           </button>
-<<<<<<< HEAD
           { this.applicationInstanceModal }
-=======
-          <Modal
-            isOpen={this.state.modalOpen}
-            closeModal={() => this.setState({ modalOpen: false })}
-            sites={this.props.sites}
-            save={this.props.save}
-            application={this.props.application}
-            applicationInstance={applicationInstance}
-          />
->>>>>>> master
         </td>
         <td>
           <button
