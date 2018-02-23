@@ -106,30 +106,6 @@ ShallowWrapper {
                               className="i-settings"
                     />
           </button>
-          <Modal
-                    application={undefined}
-                    applicationInstance={
-                              Object {
-                                        "application_id": 23,
-                                        "authentications": Array [],
-                                        "id": 2,
-                                        "site": Object {
-                                          "url": "http://www.example.com",
-                                        },
-                                      }
-                    }
-                    closeModal={[Function]}
-                    isOpen={false}
-                    save={[Function]}
-                    sites={
-                              Object {
-                                        "1": Object {
-                                          "id": 1,
-                                          "url": "http://www.example.com",
-                                        },
-                                      }
-                    }
-          />
 </td>,
         <td>
           <button
@@ -384,30 +360,7 @@ ShallowWrapper {
                             className="i-settings"
               />
 </button>,
-            <Modal
-              application={undefined}
-              applicationInstance={
-                            Object {
-                                          "application_id": 23,
-                                          "authentications": Array [],
-                                          "id": 2,
-                                          "site": Object {
-                                            "url": "http://www.example.com",
-                                          },
-                                        }
-              }
-              closeModal={[Function]}
-              isOpen={false}
-              save={[Function]}
-              sites={
-                            Object {
-                                          "1": Object {
-                                            "id": 1,
-                                            "url": "http://www.example.com",
-                                          },
-                                        }
-              }
-/>,
+            null,
           ],
         },
         "ref": null,
@@ -443,34 +396,7 @@ ShallowWrapper {
             },
             "type": "button",
           },
-          Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "class",
-            "props": Object {
-              "application": undefined,
-              "applicationInstance": Object {
-                "application_id": 23,
-                "authentications": Array [],
-                "id": 2,
-                "site": Object {
-                  "url": "http://www.example.com",
-                },
-              },
-              "closeModal": [Function],
-              "isOpen": false,
-              "save": [Function],
-              "sites": Object {
-                "1": Object {
-                  "id": 1,
-                  "url": "http://www.example.com",
-                },
-              },
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
+          null,
         ],
         "type": "td",
       },
@@ -754,30 +680,6 @@ ShallowWrapper {
                                     className="i-settings"
                         />
             </button>
-            <Modal
-                        application={undefined}
-                        applicationInstance={
-                                    Object {
-                                                "application_id": 23,
-                                                "authentications": Array [],
-                                                "id": 2,
-                                                "site": Object {
-                                                  "url": "http://www.example.com",
-                                                },
-                                              }
-                        }
-                        closeModal={[Function]}
-                        isOpen={false}
-                        save={[Function]}
-                        sites={
-                                    Object {
-                                                "1": Object {
-                                                  "id": 1,
-                                                  "url": "http://www.example.com",
-                                                },
-                                              }
-                        }
-            />
 </td>,
           <td>
             <button
@@ -1032,30 +934,7 @@ ShallowWrapper {
                                 className="i-settings"
                 />
 </button>,
-              <Modal
-                application={undefined}
-                applicationInstance={
-                                Object {
-                                                "application_id": 23,
-                                                "authentications": Array [],
-                                                "id": 2,
-                                                "site": Object {
-                                                  "url": "http://www.example.com",
-                                                },
-                                              }
-                }
-                closeModal={[Function]}
-                isOpen={false}
-                save={[Function]}
-                sites={
-                                Object {
-                                                "1": Object {
-                                                  "id": 1,
-                                                  "url": "http://www.example.com",
-                                                },
-                                              }
-                }
-/>,
+              null,
             ],
           },
           "ref": null,
@@ -1091,34 +970,7 @@ ShallowWrapper {
               },
               "type": "button",
             },
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "application": undefined,
-                "applicationInstance": Object {
-                  "application_id": 23,
-                  "authentications": Array [],
-                  "id": 2,
-                  "site": Object {
-                    "url": "http://www.example.com",
-                  },
-                },
-                "closeModal": [Function],
-                "isOpen": false,
-                "save": [Function],
-                "sites": Object {
-                  "1": Object {
-                    "id": 1,
-                    "url": "http://www.example.com",
-                  },
-                },
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
+            null,
           ],
           "type": "td",
         },
