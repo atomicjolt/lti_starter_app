@@ -6,7 +6,6 @@ import ApplicationInstanceForm from './form';
 
 export default class Modal extends React.Component {
   static propTypes = {
-    isOpen: PropTypes.bool.isRequired,
     closeModal: PropTypes.func.isRequired,
     sites: PropTypes.shape({}),
     save: PropTypes.func.isRequired,
@@ -36,13 +35,6 @@ export default class Modal extends React.Component {
 
   closeSiteModal() {
     this.setState({ siteModalOpen: false });
-  }
-
-  showInstanceModal() {
-    if (this.props.isOpen && !this.state.siteModalOpen) {
-      return 'is-open';
-    }
-    return '';
   }
 
   closeModal() {
@@ -98,14 +90,14 @@ export default class Modal extends React.Component {
       siteId = this.state.newApplicationInstance.site_id || this.props.applicationInstance.site.id;
     }
     const isUpdate = !!(this.props.applicationInstance && this.props.applicationInstance.id);
-
+    console.log(this.state.newApplicationInstance.canvas_token_preview);
     return (
       <ReactModal
-        isOpen={this.props.isOpen}
+        isOpen
         onRequestClose={() => this.closeModal()}
         contentLabel="Application Instances Modal"
         overlayClassName="c-modal__background"
-        className={`c-modal c-modal--settings ${this.showInstanceModal()}`}
+        className="c-modal c-modal--settings is-open"
       >
         <h2 className="c-modal__title">
           {title} {applicationName} Instance

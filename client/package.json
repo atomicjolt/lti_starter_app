@@ -15,7 +15,6 @@
     "superagent": "^3.8.0"
   },
   "devDependencies": {
-    "atomic-fuel": "^1.0.3",
     "atomic-reactor": "^1.0.1",
     "cheerio": "^1.0.0-rc.2",
     "dotenv": "4.0.0",
