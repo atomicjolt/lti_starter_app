@@ -26,9 +26,11 @@ RSpec.describe Api::ImsImportsController, type: :controller do
       context_id: @import_context_id,
       data: {
         context_id: initial_context_id,
-        application_instance_id: @application_instance.id,
-        ims_export_id: @ims_export.token,
-        lti_launch_tokens: lti_launch_tokens,
+        "lti_launches" => [
+          { "token" => "dgqgRSCUGdkmmKMAC3Ma2nei", "config" => {"is_embedded" => "true", "iframe_height" => "510", "learnosity_activity_reference_id" => "Dynamic Content"}, "assignment" => {"embed_url" => nil, "is_embedded" => "true", "reference_id" => "Dynamic Content", "resource_title" => "Dynamic Content", "lms_assignment_override_id" => nil}, "context_id" => "3155b3a04eba69bc0e52b987d3ffc465156daded", "tool_consumer_instance_guid" => nil}, {"token" => "kcgmuAKNyRu55S1kT4XuY5ag", "config" => {"is_embedded" => "false", "iframe_height" => "510", "learnosity_activity_reference_id" => "Animals"}, "assignment" => {"embed_url" => nil, "is_embedded" => "false", "reference_id" => "Animals", "resource_title" => "Added via the connector", "$canvas_course_id" => "2114", "$canvas_assignment_id" => "19189", "lms_assignment_override_id" => nil}, "context_id" => "3155b3a04eba69bc0e52b987d3ffc465156daded", "tool_consumer_instance_guid" => nil}, {"token" => "jfvTHBDVW68y9auBLGihpq3G", "config" => {"is_embedded" => "true", "assignment_id" => "101", "iframe_height" => "510", "learnosity_activity_reference_id" => "Joseph Test"}, "assignment" => {"embed_url" => nil, "is_embedded" => "true", "reference_id" => "Joseph Test", "resource_title" => "Joseph Test", "$canvas_course_id" => "2114", "$canvas_assignment_id" => "$OBJECT_NOT_FOUND", "lms_assignment_override_id" => nil}, "context_id" => "3155b3a04eba69bc0e52b987d3ffc465156daded", "tool_consumer_instance_guid" => nil}, {"token" => "N4aDqFbQzQFrPhqzyZuEJErd", "config" => {"is_embedded" => "true", "assignment_id" => "102", "iframe_height" => "510", "learnosity_activity_reference_id" => "SETH"}, "assignment" => {"embed_url" => nil, "is_embedded" => "true", "reference_id" => "SETH", "resource_title" => "SETH", "$canvas_course_id" => "2114", "$canvas_assignment_id" => "19190", "lms_assignment_override_id" => nil}, "context_id" => "3155b3a04eba69bc0e52b987d3ffc465156daded", "tool_consumer_instance_guid" => nil }
+        ],
+        "application_instance_id" => "3",
+        "ims_export_id" => @ims_export.token,
       },
       tool_consumer_instance_guid: tool_consumer_instance_guid,
       custom_canvas_course_id: "2123",
@@ -62,12 +64,43 @@ RSpec.describe Api::ImsImportsController, type: :controller do
       it "starts the export process" do
         post :create, params: @import_params, format: :json
         expect(response).to have_http_status(:success)
-        new_lti_launch_one = LtiLaunch.find_by(token: @lti_launch_one.token, context_id: @import_context_id)
-        expect(new_lti_launch_one.token).to eq(@lti_launch_one.token)
-        new_lti_launch_two = LtiLaunch.find_by(token: @lti_launch_two.token, context_id: @import_context_id)
-        expect(new_lti_launch_two.token).to eq(@lti_launch_two.token)
         result = JSON.parse(response.body)
         expect(result["status"]).to eq("completed")
+        expect(LtiLaunch.find_by(token: "kcgmuAKNyRu55S1kT4XuY5ag")).to be
+        expect(LtiLaunch.find_by(token: "jfvTHBDVW68y9auBLGihpq3G")).to be
+        expect(LtiLaunch.find_by(token: "N4aDqFbQzQFrPhqzyZuEJErd")).to be
+
+        lti_launch = LtiLaunch.find_by(token: "dgqgRSCUGdkmmKMAC3Ma2nei")
+        expect(lti_launch).to be
+        expect(lti_launch.config).to eq(
+          {
+            "is_embedded" => "true",
+            "iframe_height" => "510",
+            "learnosity_activity_reference_id" => "Dynamic Content",
+          },
+        )
+      end
+
+      it "handles importing the same package multiple times" do
+        post :create, params: @import_params, format: :json
+        expect(response).to have_http_status(:success)
+        result = JSON.parse(response.body)
+        expect(result["status"]).to eq("completed")
+
+        post :create, params: @import_params, format: :json
+        expect(response).to have_http_status(:success)
+        result = JSON.parse(response.body)
+        expect(result["status"]).to eq("completed")
+
+        lti_launch = LtiLaunch.find_by(token: "dgqgRSCUGdkmmKMAC3Ma2nei")
+        expect(lti_launch).to be
+        expect(lti_launch.config).to eq(
+          {
+            "is_embedded" => "true",
+            "iframe_height" => "510",
+            "learnosity_activity_reference_id" => "Dynamic Content",
+          },
+        )
       end
     end
   end
