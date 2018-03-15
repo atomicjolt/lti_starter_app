@@ -98,6 +98,11 @@ class User < ApplicationRecord
     timezone
   end
 
+  def self.oauth_lti_user_id(auth)
+    info, raw_info = oauth_info(auth)
+    raw_info["lti_user_id"]
+  end
+
   def self.params_for_create(auth)
     {
       email: oauth_email(auth),
