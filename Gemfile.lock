@@ -382,7 +382,7 @@ DEPENDENCIES
   nuclear_secrets
   omniauth
   omniauth-canvas (~> 1.0.2)
-  pg
+  pg (~> 0.21)
   puma
   rack-cors
   rails (= 5.0.2)

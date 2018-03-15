@@ -15,7 +15,7 @@ gem "rails", "5.0.2"
 
 # Database
 gem "apartment"
-gem "pg"
+gem "pg", "~> 0.21"
 
 # authentication, authorization, integrations
 gem "attr_encrypted"
