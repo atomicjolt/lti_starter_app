@@ -2,6 +2,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   include Concerns::LtiSupport
 
   before_action :verify_oauth_response, except: [:passthru]
+  before_action :login_canvas_lti_user
   before_action :associated_using_oauth, except: [:passthru]
   before_action :find_using_oauth, except: [:passthru]
   before_action :create_using_oauth, except: [:passthru]
@@ -34,6 +35,18 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   protected
+
+  # This will ensure that a user previously logged in via LTI will
+  # still be logged in after the OAuth Dance with Canvas
+  def login_canvas_lti_user
+    return true if user_signed_in?
+    auth = request.env["omniauth.auth"]
+    if auth["provider"].downcase == "canvas" && lti_user_id = User.oauth_lti_user_id(auth)
+      if @user = User.find_by(lti_user_id: lti_user_id)
+        sign_in_or_register("Canvas")
+      end
+    end
+  end
 
   def redirect_params
     params.permit(:error)
