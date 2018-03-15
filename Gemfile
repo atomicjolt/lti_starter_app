@@ -20,7 +20,7 @@ gem "pg", "~> 0.21"
 # authentication, authorization, integrations
 gem "attr_encrypted"
 gem "cancancan"
-gem "devise"
+gem "devise", "4.4.1" # 4.4.2 has bug the prevents specs from passing. We can remove this lock when > 4.4.2 is released.
 gem "ims-lti", "~> 2.1.5" # IMS LTI tool consumers and providers
 gem "jwt", "~> 1.5.0" # json web token
 gem "lms-api", "~> 1.3.15"
