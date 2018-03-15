@@ -180,6 +180,13 @@ describe User, type: :model do
         expect(timezone.name).to eq("America/Denver")
       end
     end
+    describe "oauth_lti_user_id" do
+      it "should extract the lti_user_id from the auth object" do
+        auth = get_canvas_omniauth
+        oauth_lti_user_id = User.oauth_lti_user_id(auth)
+        expect(oauth_lti_user_id).to eq("atomicjoltrocks!")
+      end
+    end
     describe "params_for_create" do
       it "should get the create parameters for the user" do
         auth = get_canvas_omniauth

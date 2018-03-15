@@ -36,6 +36,29 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
       expect(response).to redirect_to oauth_complete_url
     end
 
+    it "should pass through with valid auth and a user logged in via lti credentials" do
+      user = FactoryGirl.create :user_canvas
+      authentication = user.authentications.find_by(provider: "canvas")
+      canvas_opts = {
+        "uid" => authentication.uid,
+        "info" => {
+          "url" => authentication.provider_url,
+        },
+      }
+      request.env["omniauth.auth"] = get_canvas_omniauth(canvas_opts)
+      user.lti_user_id = User.oauth_lti_user_id(request.env["omniauth.auth"])
+      user.save!
+      oauth_complete_url = "http://example.com"
+      response = get :canvas, params: {
+        oauth_complete_url: oauth_complete_url,
+        canvas_url: "https://example.instructure.com",
+      }
+
+      expect(response).to redirect_to oauth_complete_url
+      expect(warden.authenticated?(:user)).to be true
+      expect(warden.user).to eq(user)
+    end
+
     it "should redirect to origin without auth" do
       origin_url = "http://example.com"
       request.env["omniauth.origin"] = origin_url
