@@ -1,3 +1,90 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`lti installs pagination matches the snapshot 1`] = `undefined`;
+exports[`lti installs pagination matches the snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Pagination
+    courses={
+        Array [
+            Object {
+              "id": 1,
+              "name": "name",
+            },
+            Object {
+              "id": 2,
+              "name": "name",
+            },
+          ]
+    }
+    currentPage={2}
+    pageCount={21}
+    pageSize={1}
+    setPage={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "activeClassName": "selected",
+      "breakLabel": "...",
+      "containerClassName": "pagination",
+      "disableInitialCallback": false,
+      "disabledClassName": "disabled",
+      "initialPage": 2,
+      "marginPagesDisplayed": 1,
+      "nextClassName": "next",
+      "nextLabel": "Next",
+      "onPageChange": [Function],
+      "pageCount": 21,
+      "pageRangeDisplayed": 5,
+      "previousClassName": "previous",
+      "previousLabel": "Prev",
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "activeClassName": "selected",
+        "breakLabel": "...",
+        "containerClassName": "pagination",
+        "disableInitialCallback": false,
+        "disabledClassName": "disabled",
+        "initialPage": 2,
+        "marginPagesDisplayed": 1,
+        "nextClassName": "next",
+        "nextLabel": "Next",
+        "onPageChange": [Function],
+        "pageCount": 21,
+        "pageRangeDisplayed": 5,
+        "previousClassName": "previous",
+        "previousLabel": "Prev",
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

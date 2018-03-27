@@ -1,3 +1,149 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`site modal matches the snapshot 1`] = `undefined`;
+exports[`site modal matches the snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SiteModal
+    closeModal={[Function]}
+    deleteSite={[Function]}
+    isOpen={true}
+    site={
+        Object {
+            "id": 1,
+            "url": "bfcoder.com",
+          }
+    }
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "ariaHideApp": true,
+      "bodyOpenClassName": "ReactModal__Body--open",
+      "children": Array [
+        <h2
+          className="c-modal__title"
+>
+          Are you sure?
+</h2>,
+        <SiteForm
+          closeModal={[Function]}
+          deleteSite={[Function]}
+/>,
+      ],
+      "className": "c-modal c-modal--site is-open",
+      "closeTimeoutMS": 0,
+      "contentLabel": "Modal",
+      "isOpen": true,
+      "onRequestClose": [Function],
+      "overlayClassName": "unused",
+      "parentSelector": [Function],
+      "portalClassName": "ReactModalPortal",
+      "shouldCloseOnOverlayClick": true,
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Are you sure?",
+          "className": "c-modal__title",
+        },
+        "ref": null,
+        "rendered": "Are you sure?",
+        "type": "h2",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "closeModal": [Function],
+          "deleteSite": [Function],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "ariaHideApp": true,
+        "bodyOpenClassName": "ReactModal__Body--open",
+        "children": Array [
+          <h2
+            className="c-modal__title"
+>
+            Are you sure?
+</h2>,
+          <SiteForm
+            closeModal={[Function]}
+            deleteSite={[Function]}
+/>,
+        ],
+        "className": "c-modal c-modal--site is-open",
+        "closeTimeoutMS": 0,
+        "contentLabel": "Modal",
+        "isOpen": true,
+        "onRequestClose": [Function],
+        "overlayClassName": "unused",
+        "parentSelector": [Function],
+        "portalClassName": "ReactModalPortal",
+        "shouldCloseOnOverlayClick": true,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Are you sure?",
+            "className": "c-modal__title",
+          },
+          "ref": null,
+          "rendered": "Are you sure?",
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "closeModal": [Function],
+            "deleteSite": [Function],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

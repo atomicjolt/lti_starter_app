@@ -1,6 +1,8 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Auth from 'atomic-canvas/libs/components/canvas_authentication';
+
 import assets from '../libs/assets';
 import Selector from './content_item_select/selector';
 
@@ -9,27 +11,30 @@ const select = state => ({
   ltiMessageType: state.settings.lti_message_type,
 });
 
-type Props = {
-  canvasAuthRequired: boolean,
-  ltiMessageType: string,
-};
+export class Home extends React.Component {
 
-export function Home(props :Props) :React.Node {
-  const img = assets('./images/atomicjolt.jpg');
+  static propTypes = {
+    canvasAuthRequired: PropTypes.bool,
+    ltiMessageType: PropTypes.string,
+  };
 
-  if (props.ltiMessageType === 'ContentItemSelectionRequest') {
-    return <Selector />;
+  render() {
+    const img = assets('./images/atomicjolt.jpg');
+
+    if (this.props.ltiMessageType === 'ContentItemSelectionRequest') {
+      return <Selector />;
+    }
+
+    return (
+      <div>
+        <img src={img} alt="Atomic Jolt Logo" />
+        <hr />
+        <Auth />
+        <hr />
+        { this.props.canvasAuthRequired ? <Auth /> : null }
+      </div>
+    );
   }
-
-  return (
-    <div>
-      <img src={img} alt="Atomic Jolt Logo" />
-      <hr />
-      <Auth />
-      <hr />
-      { props.canvasAuthRequired ? <Auth /> : null }
-    </div>
-  );
 
 }
 

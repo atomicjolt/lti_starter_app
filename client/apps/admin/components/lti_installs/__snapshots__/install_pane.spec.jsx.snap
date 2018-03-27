@@ -1,3 +1,414 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`install pane matches the snapshot 1`] = `undefined`;
+exports[`install pane matches the snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <InstallPane
+    account={
+        Object {
+            "installCount": 0,
+          }
+    }
+    applicationInstance={Object {}}
+    canvasRequest={[Function]}
+    courses={Array []}
+    loadExternalTools={[Function]}
+    loadingCourses={Object {}}
+    onlyShowInstalled={false}
+    onlyShowInstalledChanged={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <AccountInstall
+          account={
+                    Object {
+                              "installCount": 0,
+                            }
+          }
+          accountInstalls={0}
+          applicationInstance={Object {}}
+          canvasRequest={[Function]}
+/>,
+        <div>
+          <div
+                    className="c-search c-search--small"
+          >
+                    <input
+                              onChange={[Function]}
+                              placeholder="Search..."
+                              type="text"
+                    />
+                    <i
+                              className="i-search"
+                    />
+          </div>
+          <CourseInstalls
+                    applicationInstance={Object {}}
+                    canvasRequest={[Function]}
+                    courses={Array []}
+                    loadingCourses={Object {}}
+                    onlyShowInstalledChanged={[Function]}
+          />
+          <Pagination
+                    courses={Array []}
+                    currentPage={0}
+                    loadingCourses={Object {}}
+                    pageCount={0}
+                    pageSize={10}
+                    setPage={[Function]}
+          />
+</div>,
+      ],
+      "className": "o-right",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "account": Object {
+            "installCount": 0,
+          },
+          "accountInstalls": 0,
+          "applicationInstance": Object {},
+          "canvasRequest": [Function],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="c-search c-search--small"
+>
+              <input
+                            onChange={[Function]}
+                            placeholder="Search..."
+                            type="text"
+              />
+              <i
+                            className="i-search"
+              />
+</div>,
+            null,
+            <CourseInstalls
+              applicationInstance={Object {}}
+              canvasRequest={[Function]}
+              courses={Array []}
+              loadingCourses={Object {}}
+              onlyShowInstalledChanged={[Function]}
+/>,
+            <Pagination
+              courses={Array []}
+              currentPage={0}
+              loadingCourses={Object {}}
+              pageCount={0}
+              pageSize={10}
+              setPage={[Function]}
+/>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <input
+                  onChange={[Function]}
+                  placeholder="Search..."
+                  type="text"
+/>,
+                <i
+                  className="i-search"
+/>,
+              ],
+              "className": "c-search c-search--small",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "onChange": [Function],
+                  "placeholder": "Search...",
+                  "type": "text",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "input",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "className": "i-search",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "i",
+              },
+            ],
+            "type": "div",
+          },
+          null,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "applicationInstance": Object {},
+              "canvasRequest": [Function],
+              "courses": Array [],
+              "loadingCourses": Object {},
+              "onlyShowInstalledChanged": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "courses": Array [],
+              "currentPage": 0,
+              "loadingCourses": Object {},
+              "pageCount": 0,
+              "pageSize": 10,
+              "setPage": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <AccountInstall
+            account={
+                        Object {
+                                    "installCount": 0,
+                                  }
+            }
+            accountInstalls={0}
+            applicationInstance={Object {}}
+            canvasRequest={[Function]}
+/>,
+          <div>
+            <div
+                        className="c-search c-search--small"
+            >
+                        <input
+                                    onChange={[Function]}
+                                    placeholder="Search..."
+                                    type="text"
+                        />
+                        <i
+                                    className="i-search"
+                        />
+            </div>
+            <CourseInstalls
+                        applicationInstance={Object {}}
+                        canvasRequest={[Function]}
+                        courses={Array []}
+                        loadingCourses={Object {}}
+                        onlyShowInstalledChanged={[Function]}
+            />
+            <Pagination
+                        courses={Array []}
+                        currentPage={0}
+                        loadingCourses={Object {}}
+                        pageCount={0}
+                        pageSize={10}
+                        setPage={[Function]}
+            />
+</div>,
+        ],
+        "className": "o-right",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "account": Object {
+              "installCount": 0,
+            },
+            "accountInstalls": 0,
+            "applicationInstance": Object {},
+            "canvasRequest": [Function],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="c-search c-search--small"
+>
+                <input
+                                onChange={[Function]}
+                                placeholder="Search..."
+                                type="text"
+                />
+                <i
+                                className="i-search"
+                />
+</div>,
+              null,
+              <CourseInstalls
+                applicationInstance={Object {}}
+                canvasRequest={[Function]}
+                courses={Array []}
+                loadingCourses={Object {}}
+                onlyShowInstalledChanged={[Function]}
+/>,
+              <Pagination
+                courses={Array []}
+                currentPage={0}
+                loadingCourses={Object {}}
+                pageCount={0}
+                pageSize={10}
+                setPage={[Function]}
+/>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <input
+                    onChange={[Function]}
+                    placeholder="Search..."
+                    type="text"
+/>,
+                  <i
+                    className="i-search"
+/>,
+                ],
+                "className": "c-search c-search--small",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "onChange": [Function],
+                    "placeholder": "Search...",
+                    "type": "text",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "input",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "className": "i-search",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "i",
+                },
+              ],
+              "type": "div",
+            },
+            null,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "applicationInstance": Object {},
+                "canvasRequest": [Function],
+                "courses": Array [],
+                "loadingCourses": Object {},
+                "onlyShowInstalledChanged": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "courses": Array [],
+                "currentPage": 0,
+                "loadingCourses": Object {},
+                "pageCount": 0,
+                "pageSize": 10,
+                "setPage": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

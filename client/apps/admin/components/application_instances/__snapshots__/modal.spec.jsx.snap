@@ -1,3 +1,265 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`application instance modal match the snapshot 1`] = `undefined`;
+exports[`application instance modal match the snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Modal
+    application={
+        Object {
+            "id": 1,
+            "name": "the application",
+          }
+    }
+    applicationInstance={
+        Object {
+            "config": "config string",
+            "id": 2,
+            "site": Object {
+              "id": 3,
+            },
+          }
+    }
+    closeModal={[Function]}
+    isOpen={true}
+    save={[Function]}
+    sites={Object {}}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "ariaHideApp": true,
+      "bodyOpenClassName": "ReactModal__Body--open",
+      "children": Array [
+        <h2
+          className="c-modal__title"
+>
+          Update
+           
+          the application
+           Instance
+</h2>,
+        <Form
+          closeModal={[Function]}
+          config="config string"
+          configParseError={undefined}
+          id={2}
+          isUpdate={true}
+          newSite={[Function]}
+          onChange={[Function]}
+          save={[Function]}
+          site={
+                    Object {
+                              "id": 3,
+                            }
+          }
+          site_id="3"
+          sites={Object {}}
+/>,
+        <Connect(SiteModal)
+          closeModal={[Function]}
+          isOpen={false}
+/>,
+      ],
+      "className": "c-modal c-modal--settings is-open",
+      "closeTimeoutMS": 0,
+      "contentLabel": "Application Instances Modal",
+      "isOpen": true,
+      "onRequestClose": [Function],
+      "overlayClassName": "c-modal__background",
+      "parentSelector": [Function],
+      "portalClassName": "ReactModalPortal",
+      "shouldCloseOnOverlayClick": true,
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            "Update",
+            " ",
+            "the application",
+            " Instance",
+          ],
+          "className": "c-modal__title",
+        },
+        "ref": null,
+        "rendered": Array [
+          "Update",
+          " ",
+          "the application",
+          " Instance",
+        ],
+        "type": "h2",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "closeModal": [Function],
+          "config": "config string",
+          "configParseError": undefined,
+          "id": 2,
+          "isUpdate": true,
+          "newSite": [Function],
+          "onChange": [Function],
+          "save": [Function],
+          "site": Object {
+            "id": 3,
+          },
+          "site_id": "3",
+          "sites": Object {},
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "closeModal": [Function],
+          "isOpen": false,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "ariaHideApp": true,
+        "bodyOpenClassName": "ReactModal__Body--open",
+        "children": Array [
+          <h2
+            className="c-modal__title"
+>
+            Update
+             
+            the application
+             Instance
+</h2>,
+          <Form
+            closeModal={[Function]}
+            config="config string"
+            configParseError={undefined}
+            id={2}
+            isUpdate={true}
+            newSite={[Function]}
+            onChange={[Function]}
+            save={[Function]}
+            site={
+                        Object {
+                                    "id": 3,
+                                  }
+            }
+            site_id="3"
+            sites={Object {}}
+/>,
+          <Connect(SiteModal)
+            closeModal={[Function]}
+            isOpen={false}
+/>,
+        ],
+        "className": "c-modal c-modal--settings is-open",
+        "closeTimeoutMS": 0,
+        "contentLabel": "Application Instances Modal",
+        "isOpen": true,
+        "onRequestClose": [Function],
+        "overlayClassName": "c-modal__background",
+        "parentSelector": [Function],
+        "portalClassName": "ReactModalPortal",
+        "shouldCloseOnOverlayClick": true,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "Update",
+              " ",
+              "the application",
+              " Instance",
+            ],
+            "className": "c-modal__title",
+          },
+          "ref": null,
+          "rendered": Array [
+            "Update",
+            " ",
+            "the application",
+            " Instance",
+          ],
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "closeModal": [Function],
+            "config": "config string",
+            "configParseError": undefined,
+            "id": 2,
+            "isUpdate": true,
+            "newSite": [Function],
+            "onChange": [Function],
+            "save": [Function],
+            "site": Object {
+              "id": 3,
+            },
+            "site_id": "3",
+            "sites": Object {},
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "closeModal": [Function],
+            "isOpen": false,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

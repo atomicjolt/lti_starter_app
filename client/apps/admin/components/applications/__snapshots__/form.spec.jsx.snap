@@ -1,3 +1,720 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`applications form matches the snapshot 1`] = `undefined`;
+exports[`applications form matches the snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Form
+    closeModal={[Function]}
+    configParseError=""
+    defaultConfig="{ \\"foo\\": \\"bar\\" }"
+    description="SPEC_DESCRIPTION"
+    onChange={[Function]}
+    save={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="o-grid o-grid__modal-top"
+>
+          <div
+                    className="o-grid__item u-half"
+          >
+                    <label
+                              className="c-input"
+                              htmlFor="description"
+                    >
+                              <span>
+                                        Description
+                              </span>
+                              <input
+                                        id="description"
+                                        name="description"
+                                        onChange={[Function]}
+                                        type="text"
+                                        value="SPEC_DESCRIPTION"
+                              />
+                    </label>
+          </div>
+          <div
+                    className="o-grid__item u-half"
+          >
+                    <label
+                              className="c-input"
+                              htmlFor="permissions"
+                    >
+                              <span>
+                                        Canvas API Permissions
+                              </span>
+                    </label>
+          </div>
+          <div
+                    className="o-grid__item u-full"
+          >
+                    <Textarea
+                              className="c-input"
+                              labelText="Default Config"
+                              textareaProps={
+                                        Object {
+                                                  "id": "application_default_config",
+                                                  "name": "default_config",
+                                                  "onChange": [Function],
+                                                  "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                                                  "rows": 3,
+                                                  "value": "{ \\"foo\\": \\"bar\\" }",
+                                                }
+                              }
+                              warning={null}
+                    />
+          </div>
+</div>,
+        <button
+          className="c-btn c-btn--yellow"
+          onClick={[Function]}
+          type="button"
+>
+          Save
+</button>,
+        <button
+          className="c-btn c-btn--gray--large u-m-right"
+          onClick={[Function]}
+          type="button"
+>
+          Cancel
+</button>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="o-grid__item u-half"
+>
+              <label
+                            className="c-input"
+                            htmlFor="description"
+              >
+                            <span>
+                                          Description
+                            </span>
+                            <input
+                                          id="description"
+                                          name="description"
+                                          onChange={[Function]}
+                                          type="text"
+                                          value="SPEC_DESCRIPTION"
+                            />
+              </label>
+</div>,
+            <div
+              className="o-grid__item u-half"
+>
+              <label
+                            className="c-input"
+                            htmlFor="permissions"
+              >
+                            <span>
+                                          Canvas API Permissions
+                            </span>
+              </label>
+</div>,
+            <div
+              className="o-grid__item u-full"
+>
+              <Textarea
+                            className="c-input"
+                            labelText="Default Config"
+                            textareaProps={
+                                          Object {
+                                                        "id": "application_default_config",
+                                                        "name": "default_config",
+                                                        "onChange": [Function],
+                                                        "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                                                        "rows": 3,
+                                                        "value": "{ \\"foo\\": \\"bar\\" }",
+                                                      }
+                            }
+                            warning={null}
+              />
+</div>,
+          ],
+          "className": "o-grid o-grid__modal-top",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <label
+                className="c-input"
+                htmlFor="description"
+>
+                <span>
+                                Description
+                </span>
+                <input
+                                id="description"
+                                name="description"
+                                onChange={[Function]}
+                                type="text"
+                                value="SPEC_DESCRIPTION"
+                />
+</label>,
+              "className": "o-grid__item u-half",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <span>
+                    Description
+</span>,
+                  <input
+                    id="description"
+                    name="description"
+                    onChange={[Function]}
+                    type="text"
+                    value="SPEC_DESCRIPTION"
+/>,
+                ],
+                "className": "c-input",
+                "htmlFor": "description",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Description",
+                  },
+                  "ref": null,
+                  "rendered": "Description",
+                  "type": "span",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "id": "description",
+                    "name": "description",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": "SPEC_DESCRIPTION",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "input",
+                },
+              ],
+              "type": "label",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <label
+                className="c-input"
+                htmlFor="permissions"
+>
+                <span>
+                                Canvas API Permissions
+                </span>
+</label>,
+              "className": "o-grid__item u-half",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <span>
+                    Canvas API Permissions
+</span>,
+                  undefined,
+                ],
+                "className": "c-input",
+                "htmlFor": "permissions",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Canvas API Permissions",
+                  },
+                  "ref": null,
+                  "rendered": "Canvas API Permissions",
+                  "type": "span",
+                },
+                undefined,
+              ],
+              "type": "label",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <Textarea
+                className="c-input"
+                labelText="Default Config"
+                textareaProps={
+                                Object {
+                                                "id": "application_default_config",
+                                                "name": "default_config",
+                                                "onChange": [Function],
+                                                "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                                                "rows": 3,
+                                                "value": "{ \\"foo\\": \\"bar\\" }",
+                                              }
+                }
+                warning={null}
+/>,
+              "className": "o-grid__item u-full",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "className": "c-input",
+                "labelText": "Default Config",
+                "textareaProps": Object {
+                  "id": "application_default_config",
+                  "name": "default_config",
+                  "onChange": [Function],
+                  "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                  "rows": 3,
+                  "value": "{ \\"foo\\": \\"bar\\" }",
+                },
+                "warning": null,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Save",
+          "className": "c-btn c-btn--yellow",
+          "onClick": [Function],
+          "type": "button",
+        },
+        "ref": null,
+        "rendered": "Save",
+        "type": "button",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Cancel",
+          "className": "c-btn c-btn--gray--large u-m-right",
+          "onClick": [Function],
+          "type": "button",
+        },
+        "ref": null,
+        "rendered": "Cancel",
+        "type": "button",
+      },
+    ],
+    "type": "form",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="o-grid o-grid__modal-top"
+>
+            <div
+                        className="o-grid__item u-half"
+            >
+                        <label
+                                    className="c-input"
+                                    htmlFor="description"
+                        >
+                                    <span>
+                                                Description
+                                    </span>
+                                    <input
+                                                id="description"
+                                                name="description"
+                                                onChange={[Function]}
+                                                type="text"
+                                                value="SPEC_DESCRIPTION"
+                                    />
+                        </label>
+            </div>
+            <div
+                        className="o-grid__item u-half"
+            >
+                        <label
+                                    className="c-input"
+                                    htmlFor="permissions"
+                        >
+                                    <span>
+                                                Canvas API Permissions
+                                    </span>
+                        </label>
+            </div>
+            <div
+                        className="o-grid__item u-full"
+            >
+                        <Textarea
+                                    className="c-input"
+                                    labelText="Default Config"
+                                    textareaProps={
+                                                Object {
+                                                            "id": "application_default_config",
+                                                            "name": "default_config",
+                                                            "onChange": [Function],
+                                                            "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                                                            "rows": 3,
+                                                            "value": "{ \\"foo\\": \\"bar\\" }",
+                                                          }
+                                    }
+                                    warning={null}
+                        />
+            </div>
+</div>,
+          <button
+            className="c-btn c-btn--yellow"
+            onClick={[Function]}
+            type="button"
+>
+            Save
+</button>,
+          <button
+            className="c-btn c-btn--gray--large u-m-right"
+            onClick={[Function]}
+            type="button"
+>
+            Cancel
+</button>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="o-grid__item u-half"
+>
+                <label
+                                className="c-input"
+                                htmlFor="description"
+                >
+                                <span>
+                                                Description
+                                </span>
+                                <input
+                                                id="description"
+                                                name="description"
+                                                onChange={[Function]}
+                                                type="text"
+                                                value="SPEC_DESCRIPTION"
+                                />
+                </label>
+</div>,
+              <div
+                className="o-grid__item u-half"
+>
+                <label
+                                className="c-input"
+                                htmlFor="permissions"
+                >
+                                <span>
+                                                Canvas API Permissions
+                                </span>
+                </label>
+</div>,
+              <div
+                className="o-grid__item u-full"
+>
+                <Textarea
+                                className="c-input"
+                                labelText="Default Config"
+                                textareaProps={
+                                                Object {
+                                                                "id": "application_default_config",
+                                                                "name": "default_config",
+                                                                "onChange": [Function],
+                                                                "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                                                                "rows": 3,
+                                                                "value": "{ \\"foo\\": \\"bar\\" }",
+                                                              }
+                                }
+                                warning={null}
+                />
+</div>,
+            ],
+            "className": "o-grid o-grid__modal-top",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <label
+                  className="c-input"
+                  htmlFor="description"
+>
+                  <span>
+                                    Description
+                  </span>
+                  <input
+                                    id="description"
+                                    name="description"
+                                    onChange={[Function]}
+                                    type="text"
+                                    value="SPEC_DESCRIPTION"
+                  />
+</label>,
+                "className": "o-grid__item u-half",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <span>
+                      Description
+</span>,
+                    <input
+                      id="description"
+                      name="description"
+                      onChange={[Function]}
+                      type="text"
+                      value="SPEC_DESCRIPTION"
+/>,
+                  ],
+                  "className": "c-input",
+                  "htmlFor": "description",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Description",
+                    },
+                    "ref": null,
+                    "rendered": "Description",
+                    "type": "span",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "id": "description",
+                      "name": "description",
+                      "onChange": [Function],
+                      "type": "text",
+                      "value": "SPEC_DESCRIPTION",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": "input",
+                  },
+                ],
+                "type": "label",
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <label
+                  className="c-input"
+                  htmlFor="permissions"
+>
+                  <span>
+                                    Canvas API Permissions
+                  </span>
+</label>,
+                "className": "o-grid__item u-half",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <span>
+                      Canvas API Permissions
+</span>,
+                    undefined,
+                  ],
+                  "className": "c-input",
+                  "htmlFor": "permissions",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Canvas API Permissions",
+                    },
+                    "ref": null,
+                    "rendered": "Canvas API Permissions",
+                    "type": "span",
+                  },
+                  undefined,
+                ],
+                "type": "label",
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <Textarea
+                  className="c-input"
+                  labelText="Default Config"
+                  textareaProps={
+                                    Object {
+                                                      "id": "application_default_config",
+                                                      "name": "default_config",
+                                                      "onChange": [Function],
+                                                      "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                                                      "rows": 3,
+                                                      "value": "{ \\"foo\\": \\"bar\\" }",
+                                                    }
+                  }
+                  warning={null}
+/>,
+                "className": "o-grid__item u-full",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "className": "c-input",
+                  "labelText": "Default Config",
+                  "textareaProps": Object {
+                    "id": "application_default_config",
+                    "name": "default_config",
+                    "onChange": [Function],
+                    "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                    "rows": 3,
+                    "value": "{ \\"foo\\": \\"bar\\" }",
+                  },
+                  "warning": null,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Save",
+            "className": "c-btn c-btn--yellow",
+            "onClick": [Function],
+            "type": "button",
+          },
+          "ref": null,
+          "rendered": "Save",
+          "type": "button",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Cancel",
+            "className": "c-btn c-btn--gray--large u-m-right",
+            "onClick": [Function],
+            "type": "button",
+          },
+          "ref": null,
+          "rendered": "Cancel",
+          "type": "button",
+        },
+      ],
+      "type": "form",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

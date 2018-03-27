@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Home from './home';
+import { Home } from './home';
 
 jest.mock('../libs/assets.js');
 

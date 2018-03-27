@@ -1,3 +1,153 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`application instance modal renders a list with settings 1`] = `undefined`;
+exports[`application instance modal renders a list with settings 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <settingDropDown />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <li>
+          Settings
+</li>,
+        <li>
+          Other Settings
+</li>,
+        <li>
+          More Settings
+</li>,
+      ],
+      "style": Object {
+        "backgroundColor": "white",
+        "border": "1px solid black",
+        "borderRadius": "5px",
+        "display": "inline-block",
+        "fontSize": "2em",
+        "padding": "5px",
+        "position": "absolute",
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Settings",
+        },
+        "ref": null,
+        "rendered": "Settings",
+        "type": "li",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Other Settings",
+        },
+        "ref": null,
+        "rendered": "Other Settings",
+        "type": "li",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "More Settings",
+        },
+        "ref": null,
+        "rendered": "More Settings",
+        "type": "li",
+      },
+    ],
+    "type": "ul",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <li>
+            Settings
+</li>,
+          <li>
+            Other Settings
+</li>,
+          <li>
+            More Settings
+</li>,
+        ],
+        "style": Object {
+          "backgroundColor": "white",
+          "border": "1px solid black",
+          "borderRadius": "5px",
+          "display": "inline-block",
+          "fontSize": "2em",
+          "padding": "5px",
+          "position": "absolute",
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Settings",
+          },
+          "ref": null,
+          "rendered": "Settings",
+          "type": "li",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Other Settings",
+          },
+          "ref": null,
+          "rendered": "Other Settings",
+          "type": "li",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "More Settings",
+          },
+          "ref": null,
+          "rendered": "More Settings",
+          "type": "li",
+        },
+      ],
+      "type": "ul",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
