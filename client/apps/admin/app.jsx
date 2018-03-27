@@ -9,6 +9,7 @@ import { getInitialSettings } from 'atomic-fuel/libs/reducers/settings';
 import PropTypes from 'prop-types';
 import routes from './routes';
 import configureStore from './store/configure_store';
+import ReactModal from 'react-modal';
 
 
 import './styles/styles.scss';
@@ -40,6 +41,8 @@ const store = configureStore({ settings, jwt: window.DEFAULT_JWT });
 if (window.DEFAULT_JWT) { // Setup JWT refresh
   jwt(store.dispatch, settings.user_id);
 }
+
+ReactModal.setAppElement('#main-app');
 
 ReactDOM.render(
   <Root store={store} />,
