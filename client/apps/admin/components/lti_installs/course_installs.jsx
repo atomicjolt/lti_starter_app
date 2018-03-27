@@ -29,13 +29,15 @@ export default function CourseInstalls(props) {
           <th><span>Course Name</span></th>
           <th>
             <div className="c-checkbox--right-titlebar">
+              {/*Removed for now. In order to show only the installs we have to load
+                the external tools for all courses which ends up being hundreds of API calls.
               <input
                 type="checkbox"
                 id="onlyShowInstalled"
                 name="onlyShowInstalled"
                 onChange={props.onlyShowInstalledChanged}
               />
-              <label htmlFor="onlyShowInstalled">Show only installed</label>
+              <label htmlFor="onlyShowInstalled">Show only installed</label>*/}
             </div>
           </th>
         </tr>

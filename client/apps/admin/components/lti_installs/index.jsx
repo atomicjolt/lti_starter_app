@@ -96,12 +96,6 @@ export class Index extends React.Component {
     }
   }
 
-  onlyShowInstalledChanged(e) {
-    this.setState({
-      onlyShowInstalled: e.target.checked,
-    });
-  }
-
   setAccountActive(account) {
     if (account.external_tools === undefined) {
       this.props.canvasRequest(
@@ -129,14 +123,6 @@ export class Index extends React.Component {
   render() {
     const applicationId = parseInt(this.props.params.applicationId, 10);
     const backTo = `/applications/${this.props.params.applicationId}/application_instances`;
-    let accountCourses = this.props.courses;
-
-    if (this.state.currentAccount) {
-      accountCourses = _.filter(
-        this.props.courses,
-        course => this.state.currentAccount.id === course.account_id
-      );
-    }
 
     return (
       <div style={{ height: '100%' }}>
@@ -156,11 +142,8 @@ export class Index extends React.Component {
             canvasRequest={this.props.canvasRequest}
             loadingCourses={this.props.loadingCourses}
             applicationInstance={this.props.applicationInstance}
-            courses={accountCourses}
             account={this.state.currentAccount}
             loadExternalTools={courseId => this.loadExternalTools(courseId)}
-            onlyShowInstalled={this.state.onlyShowInstalled}
-            onlyShowInstalledChanged={e => this.onlyShowInstalledChanged(e)}
           />
         </div>
         <ReactModal
