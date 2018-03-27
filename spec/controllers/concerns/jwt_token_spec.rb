@@ -35,6 +35,10 @@ describe ApplicationController, type: :controller do
       request.headers["Authorization"] = @user_token
     end
     it "should be authorized" do
+      user = FactoryBot.create(:user)
+      user.confirm
+      user_token = AuthToken.issue_token({ user_id: user.id })
+      request.headers["Authorization"] = user_token
       get :index, format: :json
       expect(response).to have_http_status(:success)
     end

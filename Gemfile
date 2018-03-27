@@ -11,7 +11,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "5.0.2"
+gem "rails", "5.1.5"
 
 # Database
 gem "apartment"
@@ -79,7 +79,7 @@ end
 group :development, :test do
   gem "byebug", platform: :mri
   gem "dotenv-rails"
-  gem "factory_girl_rails"
+  gem "factory_bot_rails"
   gem "faker"
   gem "guard-rspec", require: false
   gem "rspec-rails"

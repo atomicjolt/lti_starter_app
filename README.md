@@ -166,6 +166,46 @@ The React Rails Starter App uses React. All client side code can be found in the
 <%= webpack_bundle_tag 'app' %>
 ```
 
+##### Custom Build Settings
+-----------
+Default build settings can be overridden by adding an options.json file to the application directory.
+
+###### Options:
+-----------
+* outName - Change the output directory for an application by specifying "outName" which will override the default name
+used when generating a path.
+* port - Hard code a port for the application to run. Typically, you won't need to set this value as the build process
+will calculate one for you.
+* onlyPack - If true don't generate html files. Instead, only run the webpack process and output the resulting files.
+* noClean - If true then don't delete files before starting a new build.
+* rootOutput - Dump the application directly into the root directory.
+
+Example options.json
+`
+{
+  "outName": "hello_world",
+  "port": 8080,
+  "onlyPack": true,
+  "noClean": false,
+  "rootOutput": false,
+  "codeSplittingOff": true, // Turn off code splitting
+  "extractCssOff": true     // Turn off css extraction
+}
+`
+
+By default app.jsx is used as the webpack entry point. This can be overriden in webpack.json. Change the buildSuffix,
+filename, chunkFilename and other settings:
+
+In webpack.json
+`
+{
+  "file": "app.js",         // The webpack entry. Default is app.jsx
+  "buildSuffix": ".js",     // Change the build suffix. Default is _bundle.js
+  "filename": "[name]",     // Change the output file name. Default is based on production/development
+  "chunkFilename": "[id]",  // Change the chunkFilename. Default is based on production/development
+}
+`
+
 #### Assets
 Any files added to the assets directory can be used by in code and assigned to a variable. This allows for referring to assets using dynamically generated strings. The assets will be built according to the rules specified in your webpack configuration. Typically, this means that in production the names will be changed to include a SHA.
 
