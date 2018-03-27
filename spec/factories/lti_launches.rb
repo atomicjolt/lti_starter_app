@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :lti_launch do
     config { { important_value: "something" } }
   end

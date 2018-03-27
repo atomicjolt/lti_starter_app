@@ -36,7 +36,7 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
 
     describe "GET check_auth" do
       it "returns unauthorized" do
-        authentication = FactoryGirl.create(:authentication)
+        authentication = FactoryBot.create(:authentication)
         get :check_auth, params: {
           application_id: @application.id,
           id: @application_instance.id,
@@ -62,7 +62,7 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
     describe "GET show" do
       it "renders specific application instances as json" do
         Apartment::Tenant.switch(@application_instance.tenant) do
-          FactoryGirl.create(:authentication, application_instance: @application_instance)
+          FactoryBot.create(:authentication, application_instance: @application_instance)
         end
         get :show, params: { id: @application_instance.id, application_id: @application.id }, format: :json
         expect(response).to have_http_status(200)
@@ -74,7 +74,7 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
     describe "GET check_auth" do
       it "renders all accounts the auth object has access to" do
         authentication = Apartment::Tenant.switch(@application_instance.tenant) do
-          FactoryGirl.create(:authentication, application_instance: @application_instance)
+          FactoryBot.create(:authentication, application_instance: @application_instance)
         end
         get :check_auth, params: {
           application_id: @application.id,
@@ -87,7 +87,7 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
 
     describe "GET create" do
       it "creates a new application instances and returns json" do
-        site = FactoryGirl.create(:site)
+        site = FactoryBot.create(:site)
         attrs = {
           lti_key: "test-key",
           site_id: site.id,

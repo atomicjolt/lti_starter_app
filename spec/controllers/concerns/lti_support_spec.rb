@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe ApplicationController, type: :controller do
   before do
-    @application_instance = FactoryGirl.create(:application_instance)
+    @application_instance = FactoryBot.create(:application_instance)
     @launch_url = "http://test.host/anonymous" # url when posting to anonymous controller created below.
     allow(controller).to receive(:current_application_instance).and_return(@application_instance)
     allow(Application).to receive(:find_by).with(:lti_key).and_return(@application_instance)
@@ -36,7 +36,7 @@ describe ApplicationController, type: :controller do
             "roles" => "Learner",
           },
         )
-        FactoryGirl.create(:user, email: params["lis_person_contact_email_primary"])
+        FactoryBot.create(:user, email: params["lis_person_contact_email_primary"])
         post :index, params: params
         expect(response).to have_http_status(200)
         expect(response.body).to include("User:")
@@ -58,7 +58,7 @@ describe ApplicationController, type: :controller do
       end
       it "adds lti roles to an existing user" do
         role = "urn:lti:role:ims/lis/Instructor"
-        email = FactoryGirl.generate(:email)
+        email = FactoryBot.generate(:email)
         params = lti_params(
           @application_instance.lti_key,
           @application_instance.lti_secret,
@@ -68,7 +68,7 @@ describe ApplicationController, type: :controller do
             "lis_person_contact_email_primary" => email,
           },
         )
-        FactoryGirl.create(
+        FactoryBot.create(
           :user,
           email: email,
           lti_provider: params["tool_consumer_instance_guid"],

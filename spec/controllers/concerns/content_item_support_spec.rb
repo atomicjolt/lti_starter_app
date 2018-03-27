@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe ApplicationController, type: :controller do
   before do
-    @app = FactoryGirl.create(:application_instance)
+    @app = FactoryBot.create(:application_instance)
     allow(controller).to receive(:current_application_instance).and_return(@app)
     allow(Application).to receive(:find_by).with(:lti_key).and_return(@app)
 

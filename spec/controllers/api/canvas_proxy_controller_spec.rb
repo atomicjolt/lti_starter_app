@@ -96,7 +96,7 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
         request.headers["Authorization"] = @admin_token
         allow(controller.request).to receive(:host).and_return("example.com")
         def controller.proxy
-          @auth = FactoryGirl.create(:authentication)
+          @auth = FactoryBot.create(:authentication)
           @auth_id = @auth.id
           raise LMS::Canvas::RefreshTokenRequired.new("", nil, @auth)
         end
@@ -117,12 +117,12 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
       end
       context "application instance doesn't allow user token" do
         before do
-          @application = FactoryGirl.create(
+          @application = FactoryBot.create(
             :application,
             canvas_api_permissions: @canvas_api_permissions,
             oauth_precedence: "global,application_instance,course",
           )
-          @application_instance = FactoryGirl.create(
+          @application_instance = FactoryBot.create(
             :application_instance,
             application: @application,
           )

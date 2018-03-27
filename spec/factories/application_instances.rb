@@ -1,9 +1,9 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :application_instance do
     application
-    lti_key { FactoryGirl.generate(:lti_key) }
-    lti_secret { FactoryGirl.generate(:password) }
+    lti_key { FactoryBot.generate(:lti_key) }
+    lti_secret { FactoryBot.generate(:password) }
     site
-    canvas_token { FactoryGirl.generate(:password) }
+    canvas_token { FactoryBot.generate(:password) }
   end
 end

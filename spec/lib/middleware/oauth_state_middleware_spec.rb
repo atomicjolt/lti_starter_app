@@ -4,13 +4,13 @@ require "rack/mock"
 describe OauthStateMiddleware do
   context "using site id from site" do
     before do
-      @site = FactoryGirl.create(:site)
+      @site = FactoryBot.create(:site)
       @app_callback_url = "http://atomic.example.com"
       @payload = {
         site_id: @site.id,
         app_callback_url: @app_callback_url,
       }
-      @oauth_state = FactoryGirl.create(:oauth_state, payload: @payload.to_json)
+      @oauth_state = FactoryBot.create(:oauth_state, payload: @payload.to_json)
       @state = @oauth_state.state
       @code = "1234"
       @nonce = SecureRandom.hex(64)
@@ -71,13 +71,13 @@ describe OauthStateMiddleware do
 
   context "using oauth_consumer_key from application instance" do
     before do
-      @application_instance = FactoryGirl.create(:application_instance)
+      @application_instance = FactoryBot.create(:application_instance)
       @app_callback_url = "http://atomic.example.com"
       @payload = {
         oauth_consumer_key: @application_instance.lti_key,
         app_callback_url: @app_callback_url,
       }
-      @oauth_state = FactoryGirl.create(:oauth_state, payload: @payload.to_json)
+      @oauth_state = FactoryBot.create(:oauth_state, payload: @payload.to_json)
       @state = @oauth_state.state
       @code = "1234"
       @nonce = SecureRandom.hex(64)

@@ -7,7 +7,7 @@ describe ApplicationController, type: :controller do
   render_views
 
   before do
-    @app = FactoryGirl.create(:application_instance)
+    @app = FactoryBot.create(:application_instance)
     # url when posting to anonymous controller created below.
     @launch_url = "http://test.host/anonymous"
     allow(controller).to receive(:current_application_instance).and_return(@app)

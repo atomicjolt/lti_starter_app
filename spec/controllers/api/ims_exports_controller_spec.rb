@@ -34,7 +34,7 @@ RSpec.describe Api::ImsExportsController, type: :controller do
 
     describe "GET show" do
       it "provides the payload of the export object" do
-        ims_export = FactoryGirl.create(:ims_export)
+        ims_export = FactoryBot.create(:ims_export)
         get :show, params: { id: ims_export.token }, format: :json
         expect(response).to have_http_status(:success)
         result = JSON.parse(response.body)
@@ -44,7 +44,7 @@ RSpec.describe Api::ImsExportsController, type: :controller do
 
     describe "GET status" do
       it "provides the status of the export process" do
-        ims_export = FactoryGirl.create(:ims_export)
+        ims_export = FactoryBot.create(:ims_export)
         get :status, params: { id: ims_export.token }, format: :json
         expect(response).to have_http_status(:success)
         result = JSON.parse(response.body)

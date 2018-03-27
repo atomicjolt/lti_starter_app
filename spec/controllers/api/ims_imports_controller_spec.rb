@@ -6,15 +6,15 @@ RSpec.describe Api::ImsImportsController, type: :controller do
     tool_consumer_instance_guid = "4MRcxnx6vQbFXxhLb8005m5WXFM2Z2i8lQwhJ1QT:canvas-lms"
     initial_context_id = "a07291ea2fa1315059ed3bf0135a336d1eebe057"
     @import_context_id = "3155b3a04eba69bc0e52b987d3ffc465156daded"
-    @ims_export = FactoryGirl.create(:ims_export)
+    @ims_export = FactoryBot.create(:ims_export)
 
     lti_launch_tokens = Apartment::Tenant.switch(@application_instance.tenant) do
-      @lti_launch_one = FactoryGirl.create(
+      @lti_launch_one = FactoryBot.create(
         :lti_launch,
         context_id: initial_context_id,
         tool_consumer_instance_guid: tool_consumer_instance_guid,
       )
-      @lti_launch_two = FactoryGirl.create(
+      @lti_launch_two = FactoryBot.create(
         :lti_launch,
         context_id: initial_context_id,
         tool_consumer_instance_guid: tool_consumer_instance_guid,

@@ -1,5 +1,5 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :site do
-    url { FactoryGirl.generate(:url) }
+    url { FactoryBot.generate(:url) }
   end
 end

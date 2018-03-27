@@ -12,13 +12,13 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
   before do
     request.env["devise.mapping"] = Devise.mappings[:user] # If using Devise
     request.env["omniauth.strategy"] = MockStrategy.new
-    @app = FactoryGirl.create(:application_instance)
+    @app = FactoryBot.create(:application_instance)
     allow(controller).to receive(:current_application_instance).and_return(@app)
   end
 
   describe "GET canvas" do
     it "should pass through with valid auth" do
-      user = FactoryGirl.create :user_canvas
+      user = FactoryBot.create :user_canvas
       authentication = user.authentications.find_by(provider: "canvas")
       canvas_opts = {
         "uid" => authentication.uid,
@@ -37,7 +37,7 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
     end
 
     it "should pass through with valid auth and a user logged in via lti credentials" do
-      user = FactoryGirl.create :user_canvas
+      user = FactoryBot.create :user_canvas
       authentication = user.authentications.find_by(provider: "canvas")
       canvas_opts = {
         "uid" => authentication.uid,
