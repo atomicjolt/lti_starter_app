@@ -53,19 +53,7 @@ ShallowWrapper {
                     <th>
                               <div
                                         className="c-checkbox--right-titlebar"
-                              >
-                                        <input
-                                                  id="onlyShowInstalled"
-                                                  name="onlyShowInstalled"
-                                                  onChange={[Function]}
-                                                  type="checkbox"
-                                        />
-                                        <label
-                                                  htmlFor="onlyShowInstalled"
-                                        >
-                                                  Show only installed
-                                        </label>
-                              </div>
+                              />
                     </th>
           </tr>
 </thead>,
@@ -89,19 +77,7 @@ ShallowWrapper {
             <th>
                         <div
                                     className="c-checkbox--right-titlebar"
-                        >
-                                    <input
-                                                id="onlyShowInstalled"
-                                                name="onlyShowInstalled"
-                                                onChange={[Function]}
-                                                type="checkbox"
-                                    />
-                                    <label
-                                                htmlFor="onlyShowInstalled"
-                                    >
-                                                Show only installed
-                                    </label>
-                        </div>
+                        />
             </th>
 </tr>,
         },
@@ -120,19 +96,7 @@ ShallowWrapper {
               <th>
                 <div
                                 className="c-checkbox--right-titlebar"
-                >
-                                <input
-                                                id="onlyShowInstalled"
-                                                name="onlyShowInstalled"
-                                                onChange={[Function]}
-                                                type="checkbox"
-                                />
-                                <label
-                                                htmlFor="onlyShowInstalled"
-                                >
-                                                Show only installed
-                                </label>
-                </div>
+                />
 </th>,
             ],
           },
@@ -168,19 +132,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <div
                   className="c-checkbox--right-titlebar"
->
-                  <input
-                                    id="onlyShowInstalled"
-                                    name="onlyShowInstalled"
-                                    onChange={[Function]}
-                                    type="checkbox"
-                  />
-                  <label
-                                    htmlFor="onlyShowInstalled"
-                  >
-                                    Show only installed
-                  </label>
-</div>,
+/>,
               },
               "ref": null,
               "rendered": Object {
@@ -188,50 +140,10 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "children": Array [
-                    <input
-                      id="onlyShowInstalled"
-                      name="onlyShowInstalled"
-                      onChange={[Function]}
-                      type="checkbox"
-/>,
-                    <label
-                      htmlFor="onlyShowInstalled"
->
-                      Show only installed
-</label>,
-                  ],
                   "className": "c-checkbox--right-titlebar",
                 },
                 "ref": null,
-                "rendered": Array [
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "id": "onlyShowInstalled",
-                      "name": "onlyShowInstalled",
-                      "onChange": [Function],
-                      "type": "checkbox",
-                    },
-                    "ref": null,
-                    "rendered": null,
-                    "type": "input",
-                  },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": "Show only installed",
-                      "htmlFor": "onlyShowInstalled",
-                    },
-                    "ref": null,
-                    "rendered": "Show only installed",
-                    "type": "label",
-                  },
-                ],
+                "rendered": null,
                 "type": "div",
               },
               "type": "th",
@@ -272,19 +184,7 @@ ShallowWrapper {
                         <th>
                                     <div
                                                 className="c-checkbox--right-titlebar"
-                                    >
-                                                <input
-                                                            id="onlyShowInstalled"
-                                                            name="onlyShowInstalled"
-                                                            onChange={[Function]}
-                                                            type="checkbox"
-                                                />
-                                                <label
-                                                            htmlFor="onlyShowInstalled"
-                                                >
-                                                            Show only installed
-                                                </label>
-                                    </div>
+                                    />
                         </th>
             </tr>
 </thead>,
@@ -308,19 +208,7 @@ ShallowWrapper {
               <th>
                             <div
                                           className="c-checkbox--right-titlebar"
-                            >
-                                          <input
-                                                        id="onlyShowInstalled"
-                                                        name="onlyShowInstalled"
-                                                        onChange={[Function]}
-                                                        type="checkbox"
-                                          />
-                                          <label
-                                                        htmlFor="onlyShowInstalled"
-                                          >
-                                                        Show only installed
-                                          </label>
-                            </div>
+                            />
               </th>
 </tr>,
           },
@@ -339,19 +227,7 @@ ShallowWrapper {
                 <th>
                   <div
                                     className="c-checkbox--right-titlebar"
-                  >
-                                    <input
-                                                      id="onlyShowInstalled"
-                                                      name="onlyShowInstalled"
-                                                      onChange={[Function]}
-                                                      type="checkbox"
-                                    />
-                                    <label
-                                                      htmlFor="onlyShowInstalled"
-                                    >
-                                                      Show only installed
-                                    </label>
-                  </div>
+                  />
 </th>,
               ],
             },
@@ -387,19 +263,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": <div
                     className="c-checkbox--right-titlebar"
->
-                    <input
-                                        id="onlyShowInstalled"
-                                        name="onlyShowInstalled"
-                                        onChange={[Function]}
-                                        type="checkbox"
-                    />
-                    <label
-                                        htmlFor="onlyShowInstalled"
-                    >
-                                        Show only installed
-                    </label>
-</div>,
+/>,
                 },
                 "ref": null,
                 "rendered": Object {
@@ -407,50 +271,10 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "host",
                   "props": Object {
-                    "children": Array [
-                      <input
-                        id="onlyShowInstalled"
-                        name="onlyShowInstalled"
-                        onChange={[Function]}
-                        type="checkbox"
-/>,
-                      <label
-                        htmlFor="onlyShowInstalled"
->
-                        Show only installed
-</label>,
-                    ],
                     "className": "c-checkbox--right-titlebar",
                   },
                   "ref": null,
-                  "rendered": Array [
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "host",
-                      "props": Object {
-                        "id": "onlyShowInstalled",
-                        "name": "onlyShowInstalled",
-                        "onChange": [Function],
-                        "type": "checkbox",
-                      },
-                      "ref": null,
-                      "rendered": null,
-                      "type": "input",
-                    },
-                    Object {
-                      "instance": null,
-                      "key": undefined,
-                      "nodeType": "host",
-                      "props": Object {
-                        "children": "Show only installed",
-                        "htmlFor": "onlyShowInstalled",
-                      },
-                      "ref": null,
-                      "rendered": "Show only installed",
-                      "type": "label",
-                    },
-                  ],
+                  "rendered": null,
                   "type": "div",
                 },
                 "type": "th",

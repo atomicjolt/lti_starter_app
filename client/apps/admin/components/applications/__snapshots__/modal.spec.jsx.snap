@@ -55,7 +55,10 @@ ShallowWrapper {
       "parentSelector": [Function],
       "portalClassName": "ReactModalPortal",
       "save": [Function],
+      "shouldCloseOnEsc": true,
       "shouldCloseOnOverlayClick": true,
+      "shouldFocusAfterRender": true,
+      "shouldReturnFocusAfterClose": true,
     },
     "ref": null,
     "rendered": Array [
@@ -131,7 +134,10 @@ ShallowWrapper {
         "parentSelector": [Function],
         "portalClassName": "ReactModalPortal",
         "save": [Function],
+        "shouldCloseOnEsc": true,
         "shouldCloseOnOverlayClick": true,
+        "shouldFocusAfterRender": true,
+        "shouldReturnFocusAfterClose": true,
       },
       "ref": null,
       "rendered": Array [

@@ -88,6 +88,7 @@ ShallowWrapper {
                               Object {
                                         "id": "application_instance_lti_config_xml",
                                         "name": "lti_config_xml",
+                                        "onChange": [Function],
                                         "readOnly": true,
                                         "rows": 20,
                                         "value": "IMA XML",
@@ -111,7 +112,10 @@ ShallowWrapper {
       "overlayClassName": "c-modal__background",
       "parentSelector": [Function],
       "portalClassName": "ReactModalPortal",
+      "shouldCloseOnEsc": true,
       "shouldCloseOnOverlayClick": true,
+      "shouldFocusAfterRender": true,
+      "shouldReturnFocusAfterClose": true,
     },
     "ref": null,
     "rendered": Array [
@@ -231,6 +235,7 @@ ShallowWrapper {
                         Object {
                                     "id": "application_instance_lti_config_xml",
                                     "name": "lti_config_xml",
+                                    "onChange": [Function],
                                     "readOnly": true,
                                     "rows": 20,
                                     "value": "IMA XML",
@@ -250,6 +255,7 @@ ShallowWrapper {
             "textareaProps": Object {
               "id": "application_instance_lti_config_xml",
               "name": "lti_config_xml",
+              "onChange": [Function],
               "readOnly": true,
               "rows": 20,
               "value": "IMA XML",
@@ -338,6 +344,7 @@ ShallowWrapper {
                                     Object {
                                                 "id": "application_instance_lti_config_xml",
                                                 "name": "lti_config_xml",
+                                                "onChange": [Function],
                                                 "readOnly": true,
                                                 "rows": 20,
                                                 "value": "IMA XML",
@@ -361,7 +368,10 @@ ShallowWrapper {
         "overlayClassName": "c-modal__background",
         "parentSelector": [Function],
         "portalClassName": "ReactModalPortal",
+        "shouldCloseOnEsc": true,
         "shouldCloseOnOverlayClick": true,
+        "shouldFocusAfterRender": true,
+        "shouldReturnFocusAfterClose": true,
       },
       "ref": null,
       "rendered": Array [
@@ -481,6 +491,7 @@ ShallowWrapper {
                             Object {
                                           "id": "application_instance_lti_config_xml",
                                           "name": "lti_config_xml",
+                                          "onChange": [Function],
                                           "readOnly": true,
                                           "rows": 20,
                                           "value": "IMA XML",
@@ -500,6 +511,7 @@ ShallowWrapper {
               "textareaProps": Object {
                 "id": "application_instance_lti_config_xml",
                 "name": "lti_config_xml",
+                "onChange": [Function],
                 "readOnly": true,
                 "rows": 20,
                 "value": "IMA XML",

@@ -64,15 +64,8 @@ ShallowWrapper {
                     account={null}
                     applicationInstance={Object {}}
                     canvasRequest={[Function]}
-                    courses={
-                              Array [
-                                        Object {},
-                                      ]
-                    }
                     loadExternalTools={[Function]}
                     loadingCourses={Object {}}
-                    onlyShowInstalled={false}
-                    onlyShowInstalledChanged={[Function]}
           />
 </div>,
         <Modal
@@ -85,7 +78,10 @@ ShallowWrapper {
           overlayClassName="c-modal__background"
           parentSelector={[Function]}
           portalClassName="ReactModalPortal"
+          shouldCloseOnEsc={true}
           shouldCloseOnOverlayClick={true}
+          shouldFocusAfterRender={true}
+          shouldReturnFocusAfterClose={true}
 >
           <div
                     className="c-loading-icon"
@@ -130,15 +126,8 @@ ShallowWrapper {
               account={null}
               applicationInstance={Object {}}
               canvasRequest={[Function]}
-              courses={
-                            Array [
-                                          Object {},
-                                        ]
-              }
               loadExternalTools={[Function]}
               loadingCourses={Object {}}
-              onlyShowInstalled={false}
-              onlyShowInstalledChanged={[Function]}
 />,
           ],
           "className": "o-contain",
@@ -171,13 +160,8 @@ ShallowWrapper {
               "account": null,
               "applicationInstance": Object {},
               "canvasRequest": [Function],
-              "courses": Array [
-                Object {},
-              ],
               "loadExternalTools": [Function],
               "loadingCourses": Object {},
-              "onlyShowInstalled": false,
-              "onlyShowInstalledChanged": [Function],
             },
             "ref": null,
             "rendered": null,
@@ -206,7 +190,10 @@ ShallowWrapper {
           "overlayClassName": "c-modal__background",
           "parentSelector": [Function],
           "portalClassName": "ReactModalPortal",
+          "shouldCloseOnEsc": true,
           "shouldCloseOnOverlayClick": true,
+          "shouldFocusAfterRender": true,
+          "shouldReturnFocusAfterClose": true,
         },
         "ref": null,
         "rendered": Array [
@@ -255,15 +242,8 @@ ShallowWrapper {
                         account={null}
                         applicationInstance={Object {}}
                         canvasRequest={[Function]}
-                        courses={
-                                    Array [
-                                                Object {},
-                                              ]
-                        }
                         loadExternalTools={[Function]}
                         loadingCourses={Object {}}
-                        onlyShowInstalled={false}
-                        onlyShowInstalledChanged={[Function]}
             />
 </div>,
           <Modal
@@ -276,7 +256,10 @@ ShallowWrapper {
             overlayClassName="c-modal__background"
             parentSelector={[Function]}
             portalClassName="ReactModalPortal"
+            shouldCloseOnEsc={true}
             shouldCloseOnOverlayClick={true}
+            shouldFocusAfterRender={true}
+            shouldReturnFocusAfterClose={true}
 >
             <div
                         className="c-loading-icon"
@@ -321,15 +304,8 @@ ShallowWrapper {
                 account={null}
                 applicationInstance={Object {}}
                 canvasRequest={[Function]}
-                courses={
-                                Array [
-                                                Object {},
-                                              ]
-                }
                 loadExternalTools={[Function]}
                 loadingCourses={Object {}}
-                onlyShowInstalled={false}
-                onlyShowInstalledChanged={[Function]}
 />,
             ],
             "className": "o-contain",
@@ -362,13 +338,8 @@ ShallowWrapper {
                 "account": null,
                 "applicationInstance": Object {},
                 "canvasRequest": [Function],
-                "courses": Array [
-                  Object {},
-                ],
                 "loadExternalTools": [Function],
                 "loadingCourses": Object {},
-                "onlyShowInstalled": false,
-                "onlyShowInstalledChanged": [Function],
               },
               "ref": null,
               "rendered": null,
@@ -397,7 +368,10 @@ ShallowWrapper {
             "overlayClassName": "c-modal__background",
             "parentSelector": [Function],
             "portalClassName": "ReactModalPortal",
+            "shouldCloseOnEsc": true,
             "shouldCloseOnOverlayClick": true,
+            "shouldFocusAfterRender": true,
+            "shouldReturnFocusAfterClose": true,
           },
           "ref": null,
           "rendered": Array [
