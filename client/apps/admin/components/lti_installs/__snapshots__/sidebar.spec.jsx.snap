@@ -40,7 +40,7 @@ ShallowWrapper {
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
-    "key": null,
+    "key": undefined,
     "nodeType": "host",
     "props": Object {
       "children": Array [
@@ -109,7 +109,7 @@ ShallowWrapper {
     "rendered": Array [
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": Array [
@@ -139,7 +139,7 @@ ShallowWrapper {
         "rendered": Array [
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": Array [
@@ -157,7 +157,7 @@ ShallowWrapper {
             "rendered": Array [
               Object {
                 "instance": null,
-                "key": null,
+                "key": undefined,
                 "nodeType": "host",
                 "props": Object {
                   "children": <i
@@ -168,7 +168,7 @@ ShallowWrapper {
                 "ref": null,
                 "rendered": Object {
                   "instance": null,
-                  "key": null,
+                  "key": undefined,
                   "nodeType": "host",
                   "props": Object {
                     "className": "i-settings",
@@ -185,7 +185,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": "LTI Tool",
@@ -197,7 +197,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": "applicationName",
@@ -212,7 +212,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": <h4
@@ -229,7 +229,7 @@ ShallowWrapper {
         "ref": null,
         "rendered": Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": <a
@@ -242,7 +242,7 @@ ShallowWrapper {
           "ref": null,
           "rendered": Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": "www.atomicjolt.com",
@@ -258,7 +258,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": Array [
@@ -287,7 +287,7 @@ ShallowWrapper {
         "rendered": Array [
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": "Accounts",
@@ -299,7 +299,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "class",
             "props": Object {
               "accounts": Object {
@@ -325,7 +325,7 @@ ShallowWrapper {
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
-      "key": null,
+      "key": undefined,
       "nodeType": "host",
       "props": Object {
         "children": Array [
@@ -394,7 +394,7 @@ ShallowWrapper {
       "rendered": Array [
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": Array [
@@ -424,7 +424,7 @@ ShallowWrapper {
           "rendered": Array [
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "children": Array [
@@ -442,7 +442,7 @@ ShallowWrapper {
               "rendered": Array [
                 Object {
                   "instance": null,
-                  "key": null,
+                  "key": undefined,
                   "nodeType": "host",
                   "props": Object {
                     "children": <i
@@ -453,7 +453,7 @@ ShallowWrapper {
                   "ref": null,
                   "rendered": Object {
                     "instance": null,
-                    "key": null,
+                    "key": undefined,
                     "nodeType": "host",
                     "props": Object {
                       "className": "i-settings",
@@ -470,7 +470,7 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "children": "LTI Tool",
@@ -482,7 +482,7 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "children": "applicationName",
@@ -497,7 +497,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": <h4
@@ -514,7 +514,7 @@ ShallowWrapper {
           "ref": null,
           "rendered": Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": <a
@@ -527,7 +527,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "children": "www.atomicjolt.com",
@@ -543,7 +543,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": Array [
@@ -572,7 +572,7 @@ ShallowWrapper {
           "rendered": Array [
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "children": "Accounts",
@@ -584,7 +584,7 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "class",
               "props": Object {
                 "accounts": Object {
@@ -609,9 +609,9 @@ ShallowWrapper {
     },
   ],
   Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenAdapter {
+    "adapter": ReactSixteenAdapter {
       "options": Object {
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
+        "enableComponentDidUpdateOnSetState": true,
       },
     },
   },

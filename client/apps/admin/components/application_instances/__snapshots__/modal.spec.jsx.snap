@@ -34,7 +34,7 @@ ShallowWrapper {
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
-    "key": null,
+    "key": undefined,
     "nodeType": "class",
     "props": Object {
       "ariaHideApp": true,
@@ -78,13 +78,16 @@ ShallowWrapper {
       "overlayClassName": "c-modal__background",
       "parentSelector": [Function],
       "portalClassName": "ReactModalPortal",
+      "shouldCloseOnEsc": true,
       "shouldCloseOnOverlayClick": true,
+      "shouldFocusAfterRender": true,
+      "shouldReturnFocusAfterClose": true,
     },
     "ref": null,
     "rendered": Array [
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": Array [
@@ -106,7 +109,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "class",
         "props": Object {
           "closeModal": [Function],
@@ -129,7 +132,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "class",
         "props": Object {
           "closeModal": [Function],
@@ -145,7 +148,7 @@ ShallowWrapper {
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
-      "key": null,
+      "key": undefined,
       "nodeType": "class",
       "props": Object {
         "ariaHideApp": true,
@@ -189,13 +192,16 @@ ShallowWrapper {
         "overlayClassName": "c-modal__background",
         "parentSelector": [Function],
         "portalClassName": "ReactModalPortal",
+        "shouldCloseOnEsc": true,
         "shouldCloseOnOverlayClick": true,
+        "shouldFocusAfterRender": true,
+        "shouldReturnFocusAfterClose": true,
       },
       "ref": null,
       "rendered": Array [
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": Array [
@@ -217,7 +223,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "class",
           "props": Object {
             "closeModal": [Function],
@@ -240,7 +246,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "class",
           "props": Object {
             "closeModal": [Function],
@@ -255,9 +261,9 @@ ShallowWrapper {
     },
   ],
   Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenAdapter {
+    "adapter": ReactSixteenAdapter {
       "options": Object {
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
+        "enableComponentDidUpdateOnSetState": true,
       },
     },
   },

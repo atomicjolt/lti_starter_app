@@ -26,7 +26,7 @@ ShallowWrapper {
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
-    "key": null,
+    "key": undefined,
     "nodeType": "host",
     "props": Object {
       "children": Array [
@@ -87,7 +87,7 @@ ShallowWrapper {
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
-      "key": null,
+      "key": undefined,
       "nodeType": "host",
       "props": Object {
         "children": Array [
@@ -147,9 +147,9 @@ ShallowWrapper {
     },
   ],
   Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenAdapter {
+    "adapter": ReactSixteenAdapter {
       "options": Object {
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
+        "enableComponentDidUpdateOnSetState": true,
       },
     },
   },

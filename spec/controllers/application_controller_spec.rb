@@ -4,7 +4,7 @@ RSpec.describe ApplicationController, type: :controller do
   describe "helper methods" do
     describe "#current_application_instance" do
       it "returns the current application instance" do
-        application_instance = FactoryGirl.create(:application_instance)
+        application_instance = FactoryBot.create(:application_instance)
         subject.params = {
           oauth_consumer_key: application_instance.lti_key,
         }
@@ -14,7 +14,7 @@ RSpec.describe ApplicationController, type: :controller do
 
     describe "#current_bundle_instance" do
       it "returns the canvas url" do
-        bundle_instance = FactoryGirl.create(:bundle_instance)
+        bundle_instance = FactoryBot.create(:bundle_instance)
         subject.params = {
           bundle_instance_token: bundle_instance.id_token,
         }
@@ -25,7 +25,7 @@ RSpec.describe ApplicationController, type: :controller do
     describe "#current_user_roles" do
       it "returns the roles for the current user when context is nil" do
         role = "admin"
-        user = FactoryGirl.create(:user)
+        user = FactoryBot.create(:user)
         user.add_to_role(role)
         allow(subject).to receive(:current_user).and_return(user)
         expect(subject.send(:current_user_roles)).to eq([role])
@@ -33,7 +33,7 @@ RSpec.describe ApplicationController, type: :controller do
       it "returns the roles for the current user for a given context" do
         context_id = "math101"
         role = "urn:lti:role:ims/lis/Instructor"
-        user = FactoryGirl.create(:user)
+        user = FactoryBot.create(:user)
         user.add_to_role(role, context_id)
         allow(subject).to receive(:current_user).and_return(user)
         expect(subject.send(:current_user_roles, context_id: context_id)).to eq([role])
@@ -43,7 +43,7 @@ RSpec.describe ApplicationController, type: :controller do
         learner_context_id = "math600"
         instructor_role = "urn:lti:role:ims/lis/Instructor"
         learner_role = "urn:lti:role:ims/lis/Learner"
-        user = FactoryGirl.create(:user)
+        user = FactoryBot.create(:user)
         user.add_to_role(instructor_role, instructor_context_id)
         user.add_to_role(learner_role, learner_context_id)
         allow(subject).to receive(:current_user).and_return(user)
@@ -53,7 +53,7 @@ RSpec.describe ApplicationController, type: :controller do
 
     describe "#canvas_url" do
       it "returns the canvas url" do
-        application_instance = FactoryGirl.create(:application_instance)
+        application_instance = FactoryBot.create(:application_instance)
         subject.params = {
           oauth_consumer_key: application_instance.lti_key,
         }

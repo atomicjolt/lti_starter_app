@@ -16,7 +16,7 @@ ShallowWrapper {
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
-    "key": null,
+    "key": undefined,
     "nodeType": "host",
     "props": Object {
       "children": Array [
@@ -35,7 +35,7 @@ ShallowWrapper {
     "rendered": Array [
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "onChange": [Function],
@@ -48,7 +48,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "className": "i-search",
@@ -63,7 +63,7 @@ ShallowWrapper {
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
-      "key": null,
+      "key": undefined,
       "nodeType": "host",
       "props": Object {
         "children": Array [
@@ -82,7 +82,7 @@ ShallowWrapper {
       "rendered": Array [
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "onChange": [Function],
@@ -95,7 +95,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "className": "i-search",
@@ -109,9 +109,9 @@ ShallowWrapper {
     },
   ],
   Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenAdapter {
+    "adapter": ReactSixteenAdapter {
       "options": Object {
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
+        "enableComponentDidUpdateOnSetState": true,
       },
     },
   },

@@ -31,7 +31,7 @@ ShallowWrapper {
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
-    "key": null,
+    "key": undefined,
     "nodeType": "class",
     "props": Object {
       "ariaHideApp": true,
@@ -88,6 +88,7 @@ ShallowWrapper {
                               Object {
                                         "id": "application_instance_lti_config_xml",
                                         "name": "lti_config_xml",
+                                        "onChange": [Function],
                                         "readOnly": true,
                                         "rows": 20,
                                         "value": "IMA XML",
@@ -111,13 +112,16 @@ ShallowWrapper {
       "overlayClassName": "c-modal__background",
       "parentSelector": [Function],
       "portalClassName": "ReactModalPortal",
+      "shouldCloseOnEsc": true,
       "shouldCloseOnOverlayClick": true,
+      "shouldFocusAfterRender": true,
+      "shouldReturnFocusAfterClose": true,
     },
     "ref": null,
     "rendered": Array [
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": Array [
@@ -137,7 +141,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": <Input
@@ -158,7 +162,7 @@ ShallowWrapper {
         "ref": null,
         "rendered": Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "function",
           "props": Object {
             "className": "c-input",
@@ -179,7 +183,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": <Input
@@ -200,7 +204,7 @@ ShallowWrapper {
         "ref": null,
         "rendered": Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "function",
           "props": Object {
             "className": "c-input",
@@ -221,7 +225,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": <Textarea
@@ -231,6 +235,7 @@ ShallowWrapper {
                         Object {
                                     "id": "application_instance_lti_config_xml",
                                     "name": "lti_config_xml",
+                                    "onChange": [Function],
                                     "readOnly": true,
                                     "rows": 20,
                                     "value": "IMA XML",
@@ -242,7 +247,7 @@ ShallowWrapper {
         "ref": null,
         "rendered": Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "function",
           "props": Object {
             "className": "c-input",
@@ -250,6 +255,7 @@ ShallowWrapper {
             "textareaProps": Object {
               "id": "application_instance_lti_config_xml",
               "name": "lti_config_xml",
+              "onChange": [Function],
               "readOnly": true,
               "rows": 20,
               "value": "IMA XML",
@@ -263,7 +269,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": "Close",
@@ -281,7 +287,7 @@ ShallowWrapper {
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
-      "key": null,
+      "key": undefined,
       "nodeType": "class",
       "props": Object {
         "ariaHideApp": true,
@@ -338,6 +344,7 @@ ShallowWrapper {
                                     Object {
                                                 "id": "application_instance_lti_config_xml",
                                                 "name": "lti_config_xml",
+                                                "onChange": [Function],
                                                 "readOnly": true,
                                                 "rows": 20,
                                                 "value": "IMA XML",
@@ -361,13 +368,16 @@ ShallowWrapper {
         "overlayClassName": "c-modal__background",
         "parentSelector": [Function],
         "portalClassName": "ReactModalPortal",
+        "shouldCloseOnEsc": true,
         "shouldCloseOnOverlayClick": true,
+        "shouldFocusAfterRender": true,
+        "shouldReturnFocusAfterClose": true,
       },
       "ref": null,
       "rendered": Array [
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": Array [
@@ -387,7 +397,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": <Input
@@ -408,7 +418,7 @@ ShallowWrapper {
           "ref": null,
           "rendered": Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "function",
             "props": Object {
               "className": "c-input",
@@ -429,7 +439,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": <Input
@@ -450,7 +460,7 @@ ShallowWrapper {
           "ref": null,
           "rendered": Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "function",
             "props": Object {
               "className": "c-input",
@@ -471,7 +481,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": <Textarea
@@ -481,6 +491,7 @@ ShallowWrapper {
                             Object {
                                           "id": "application_instance_lti_config_xml",
                                           "name": "lti_config_xml",
+                                          "onChange": [Function],
                                           "readOnly": true,
                                           "rows": 20,
                                           "value": "IMA XML",
@@ -492,7 +503,7 @@ ShallowWrapper {
           "ref": null,
           "rendered": Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "function",
             "props": Object {
               "className": "c-input",
@@ -500,6 +511,7 @@ ShallowWrapper {
               "textareaProps": Object {
                 "id": "application_instance_lti_config_xml",
                 "name": "lti_config_xml",
+                "onChange": [Function],
                 "readOnly": true,
                 "rows": 20,
                 "value": "IMA XML",
@@ -513,7 +525,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": "Close",
@@ -530,9 +542,9 @@ ShallowWrapper {
     },
   ],
   Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenAdapter {
+    "adapter": ReactSixteenAdapter {
       "options": Object {
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
+        "enableComponentDidUpdateOnSetState": true,
       },
     },
   },

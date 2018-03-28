@@ -21,7 +21,7 @@ export default function Pagination(props) {
 Pagination.propTypes = {
   setPage: PropTypes.func.isRequired,
   pageCount: PropTypes.number.isRequired,
-  courses: PropTypes.arrayOf(PropTypes.shape({})),
+  courses: PropTypes.shape({}),
   pageSize: PropTypes.number,
   currentPage: PropTypes.number
 };

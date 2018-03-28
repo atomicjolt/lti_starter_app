@@ -35,7 +35,7 @@ RSpec.describe Api::LtiLaunchesController, type: :controller do
     describe "POST create" do
       it "creates a new lti launch and return the result" do
         post :create, params: {
-          lti_launch: FactoryGirl.attributes_for(:lti_launch),
+          lti_launch: FactoryBot.attributes_for(:lti_launch),
           content_item: @content_item,
           content_item_return_url: "http://www.example.com/return",
         }, format: :json

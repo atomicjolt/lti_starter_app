@@ -29,12 +29,16 @@ describe ApplicationController, type: :controller do
 
   context "valid authorization header" do
     before do
-      @user = FactoryGirl.create(:user)
+      @user = FactoryBot.create(:user)
       @user.confirm
       @user_token = AuthToken.issue_token({ user_id: @user.id })
       request.headers["Authorization"] = @user_token
     end
     it "should be authorized" do
+      user = FactoryBot.create(:user)
+      user.confirm
+      user_token = AuthToken.issue_token({ user_id: user.id })
+      request.headers["Authorization"] = user_token
       get :index, format: :json
       expect(response).to have_http_status(:success)
     end
@@ -42,7 +46,7 @@ describe ApplicationController, type: :controller do
 
   describe "jwt_lti_roles_string" do
     before do
-      @user = FactoryGirl.create(:user_canvas)
+      @user = FactoryBot.create(:user_canvas)
       @user.confirm
       @user_token = AuthToken.issue_token({ user_id: @user.id, lti_roles: @user.roles.map(&:name) })
       request.headers["Authorization"] = "Bearer #{@user_token}"
@@ -64,7 +68,7 @@ describe ApplicationController, type: :controller do
 
   describe "lti_admin?" do
     before do
-      @user = FactoryGirl.create(:user_canvas)
+      @user = FactoryBot.create(:user_canvas)
       @user.confirm
     end
 

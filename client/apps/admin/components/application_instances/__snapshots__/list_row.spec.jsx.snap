@@ -47,7 +47,7 @@ ShallowWrapper {
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
-    "key": null,
+    "key": undefined,
     "nodeType": "host",
     "props": Object {
       "children": Array [
@@ -171,7 +171,7 @@ ShallowWrapper {
     "rendered": Array [
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": Array [
@@ -214,7 +214,7 @@ ShallowWrapper {
         "rendered": Array [
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "action": "http://www.example.com",
@@ -245,7 +245,7 @@ ShallowWrapper {
             "rendered": Array [
               Object {
                 "instance": null,
-                "key": null,
+                "key": undefined,
                 "nodeType": "function",
                 "props": Object {
                   "settings": Object {
@@ -261,7 +261,7 @@ ShallowWrapper {
               },
               Object {
                 "instance": null,
-                "key": null,
+                "key": undefined,
                 "nodeType": "host",
                 "props": Object {
                   "name": "canvas_url",
@@ -274,7 +274,7 @@ ShallowWrapper {
               },
               Object {
                 "instance": null,
-                "key": null,
+                "key": undefined,
                 "nodeType": "host",
                 "props": Object {
                   "name": "oauth_complete_url",
@@ -290,7 +290,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "class",
             "props": Object {
               "children": undefined,
@@ -305,7 +305,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": "http://www.example.com",
@@ -319,7 +319,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": <span />,
@@ -327,7 +327,7 @@ ShallowWrapper {
         "ref": null,
         "rendered": Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": undefined,
@@ -340,7 +340,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": Array [
@@ -367,7 +367,7 @@ ShallowWrapper {
         "rendered": Array [
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": <i
@@ -385,7 +385,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "className": "i-settings",
@@ -402,7 +402,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": Array [
@@ -443,7 +443,7 @@ ShallowWrapper {
         "rendered": Array [
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": <i
@@ -461,7 +461,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "className": "i-settings",
@@ -474,7 +474,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "function",
             "props": Object {
               "application": undefined,
@@ -498,7 +498,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": <button
@@ -511,7 +511,7 @@ ShallowWrapper {
         "ref": null,
         "rendered": Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": <Enabled />,
@@ -521,7 +521,7 @@ ShallowWrapper {
           "ref": null,
           "rendered": Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "function",
             "props": Object {},
             "ref": null,
@@ -534,7 +534,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": undefined,
@@ -545,7 +545,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": 0,
@@ -556,7 +556,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": Array [
@@ -575,7 +575,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": <button
@@ -590,7 +590,7 @@ ShallowWrapper {
         "ref": null,
         "rendered": Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": <i
@@ -602,7 +602,7 @@ ShallowWrapper {
           "ref": null,
           "rendered": Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "className": "i-delete",
@@ -621,7 +621,7 @@ ShallowWrapper {
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
-      "key": null,
+      "key": undefined,
       "nodeType": "host",
       "props": Object {
         "children": Array [
@@ -745,7 +745,7 @@ ShallowWrapper {
       "rendered": Array [
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": Array [
@@ -788,7 +788,7 @@ ShallowWrapper {
           "rendered": Array [
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "action": "http://www.example.com",
@@ -819,7 +819,7 @@ ShallowWrapper {
               "rendered": Array [
                 Object {
                   "instance": null,
-                  "key": null,
+                  "key": undefined,
                   "nodeType": "function",
                   "props": Object {
                     "settings": Object {
@@ -835,7 +835,7 @@ ShallowWrapper {
                 },
                 Object {
                   "instance": null,
-                  "key": null,
+                  "key": undefined,
                   "nodeType": "host",
                   "props": Object {
                     "name": "canvas_url",
@@ -848,7 +848,7 @@ ShallowWrapper {
                 },
                 Object {
                   "instance": null,
-                  "key": null,
+                  "key": undefined,
                   "nodeType": "host",
                   "props": Object {
                     "name": "oauth_complete_url",
@@ -864,7 +864,7 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "class",
               "props": Object {
                 "children": undefined,
@@ -879,7 +879,7 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "children": "http://www.example.com",
@@ -893,7 +893,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": <span />,
@@ -901,7 +901,7 @@ ShallowWrapper {
           "ref": null,
           "rendered": Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": undefined,
@@ -914,7 +914,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": Array [
@@ -941,7 +941,7 @@ ShallowWrapper {
           "rendered": Array [
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "children": <i
@@ -959,7 +959,7 @@ ShallowWrapper {
               "ref": null,
               "rendered": Object {
                 "instance": null,
-                "key": null,
+                "key": undefined,
                 "nodeType": "host",
                 "props": Object {
                   "className": "i-settings",
@@ -976,7 +976,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": Array [
@@ -1017,7 +1017,7 @@ ShallowWrapper {
           "rendered": Array [
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "children": <i
@@ -1035,7 +1035,7 @@ ShallowWrapper {
               "ref": null,
               "rendered": Object {
                 "instance": null,
-                "key": null,
+                "key": undefined,
                 "nodeType": "host",
                 "props": Object {
                   "className": "i-settings",
@@ -1048,7 +1048,7 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "function",
               "props": Object {
                 "application": undefined,
@@ -1072,7 +1072,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": <button
@@ -1085,7 +1085,7 @@ ShallowWrapper {
           "ref": null,
           "rendered": Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": <Enabled />,
@@ -1095,7 +1095,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "function",
               "props": Object {},
               "ref": null,
@@ -1108,7 +1108,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": undefined,
@@ -1119,7 +1119,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": 0,
@@ -1130,7 +1130,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": Array [
@@ -1149,7 +1149,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": <button
@@ -1164,7 +1164,7 @@ ShallowWrapper {
           "ref": null,
           "rendered": Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": <i
@@ -1176,7 +1176,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "className": "i-delete",
@@ -1194,9 +1194,9 @@ ShallowWrapper {
     },
   ],
   Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenAdapter {
+    "adapter": ReactSixteenAdapter {
       "options": Object {
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
+        "enableComponentDidUpdateOnSetState": true,
       },
     },
   },

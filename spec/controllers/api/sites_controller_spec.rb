@@ -29,14 +29,14 @@ RSpec.describe Api::SitesController, type: :controller do
 
     describe "POST create" do
       it "returns unauthorized" do
-        post :create, params: { site: FactoryGirl.attributes_for(:site) }, format: :json
+        post :create, params: { site: FactoryBot.attributes_for(:site) }, format: :json
         expect(response).to have_http_status(401)
       end
     end
 
     describe "PUT update" do
       it "returns unauthorized" do
-        site = FactoryGirl.create(:site)
+        site = FactoryBot.create(:site)
         put :update, params: { id: site.id, site: site }, format: :json
         expect(response).to have_http_status(401)
       end
@@ -44,7 +44,7 @@ RSpec.describe Api::SitesController, type: :controller do
 
     describe "DELETE destroy" do
       it "returns unauthorized" do
-        site = FactoryGirl.create(:site)
+        site = FactoryBot.create(:site)
         delete :destroy, params: { id: site.id, site: site }, format: :json
         expect(response).to have_http_status(401)
       end
@@ -70,14 +70,14 @@ RSpec.describe Api::SitesController, type: :controller do
 
     describe "POST create" do
       it "creates a new site" do
-        post :create, params: { site: FactoryGirl.attributes_for(:site) }, format: :json
+        post :create, params: { site: FactoryBot.attributes_for(:site) }, format: :json
         expect(response).to be_success
       end
     end
 
     describe "PUT update" do
       it "updates the site" do
-        site = FactoryGirl.create(:site)
+        site = FactoryBot.create(:site)
         put :update, params: { id: site.id, site: { oauth_key: "12345" } }, format: :json
         expect(response).to be_success
         updated = JSON.parse(response.body)
@@ -87,7 +87,7 @@ RSpec.describe Api::SitesController, type: :controller do
 
     describe "DELETE destroy" do
       it "returns unauthorized" do
-        site = FactoryGirl.create(:site)
+        site = FactoryBot.create(:site)
         delete :destroy, params: { id: site.id }, format: :json
         expect(response).to be_success
       end

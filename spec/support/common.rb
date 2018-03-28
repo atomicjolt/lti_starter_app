@@ -1,10 +1,10 @@
 # Setup a user and an admin
 def setup_users
-  @user = FactoryGirl.create(:user)
+  @user = FactoryBot.create(:user)
   @user.confirm
   @user_token = AuthToken.issue_token({ user_id: @user.id })
 
-  @admin = FactoryGirl.create(:user)
+  @admin = FactoryBot.create(:user)
   @admin.confirm
   @admin.add_to_role("administrator")
   @admin_token = AuthToken.issue_token({ user_id: @admin.id })
@@ -12,7 +12,7 @@ end
 
 # Sets up users in the 3 most common roles for lti launches
 def setup_lti_users
-  @student = FactoryGirl.create(:user)
+  @student = FactoryBot.create(:user)
   @student.confirm
   @student_token = AuthToken.issue_token(
     {
@@ -23,7 +23,7 @@ def setup_lti_users
     },
   )
 
-  @instructor = FactoryGirl.create(:user)
+  @instructor = FactoryBot.create(:user)
   @instructor.confirm
   @instructor_token = AuthToken.issue_token(
     {
@@ -34,7 +34,7 @@ def setup_lti_users
     },
   )
 
-  @admin = FactoryGirl.create(:user)
+  @admin = FactoryBot.create(:user)
   @admin.confirm
   @admin.add_to_role("administrator")
   @admin_token = AuthToken.issue_token(
@@ -80,10 +80,10 @@ def setup_application_and_instance
     # DELETE_ASSIGNMENT: [],
     # LIST_ASSIGNMENTS: [],
   }
-  @application = FactoryGirl.create(
+  @application = FactoryBot.create(
     :application,
     canvas_api_permissions: @canvas_api_permissions,
   )
-  @application_instance = FactoryGirl.create(:application_instance, application: @application)
+  @application_instance = FactoryBot.create(:application_instance, application: @application)
   allow(controller).to receive(:current_application_instance).and_return(@application_instance)
 end

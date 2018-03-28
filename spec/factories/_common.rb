@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence :lti_key do |n|
     "lti_key_#{n}"
   end

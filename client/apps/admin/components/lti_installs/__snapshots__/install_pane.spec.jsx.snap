@@ -12,7 +12,7 @@ ShallowWrapper {
     }
     applicationInstance={Object {}}
     canvasRequest={[Function]}
-    courses={Array []}
+    courses={Object {}}
     loadExternalTools={[Function]}
     loadingCourses={Object {}}
     onlyShowInstalled={false}
@@ -27,7 +27,7 @@ ShallowWrapper {
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
-    "key": null,
+    "key": undefined,
     "nodeType": "host",
     "props": Object {
       "children": Array [
@@ -62,7 +62,7 @@ ShallowWrapper {
                     onlyShowInstalledChanged={[Function]}
           />
           <Pagination
-                    courses={Array []}
+                    courses={Object {}}
                     currentPage={0}
                     loadingCourses={Object {}}
                     pageCount={0}
@@ -77,7 +77,7 @@ ShallowWrapper {
     "rendered": Array [
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "function",
         "props": Object {
           "account": Object {
@@ -93,7 +93,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": Array [
@@ -118,7 +118,7 @@ ShallowWrapper {
               onlyShowInstalledChanged={[Function]}
 />,
             <Pagination
-              courses={Array []}
+              courses={Object {}}
               currentPage={0}
               loadingCourses={Object {}}
               pageCount={0}
@@ -131,7 +131,7 @@ ShallowWrapper {
         "rendered": Array [
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": Array [
@@ -150,7 +150,7 @@ ShallowWrapper {
             "rendered": Array [
               Object {
                 "instance": null,
-                "key": null,
+                "key": undefined,
                 "nodeType": "host",
                 "props": Object {
                   "onChange": [Function],
@@ -163,7 +163,7 @@ ShallowWrapper {
               },
               Object {
                 "instance": null,
-                "key": null,
+                "key": undefined,
                 "nodeType": "host",
                 "props": Object {
                   "className": "i-search",
@@ -178,7 +178,7 @@ ShallowWrapper {
           null,
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "function",
             "props": Object {
               "applicationInstance": Object {},
@@ -193,10 +193,10 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "function",
             "props": Object {
-              "courses": Array [],
+              "courses": Object {},
               "currentPage": 0,
               "loadingCourses": Object {},
               "pageCount": 0,
@@ -216,7 +216,7 @@ ShallowWrapper {
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
-      "key": null,
+      "key": undefined,
       "nodeType": "host",
       "props": Object {
         "children": Array [
@@ -251,7 +251,7 @@ ShallowWrapper {
                         onlyShowInstalledChanged={[Function]}
             />
             <Pagination
-                        courses={Array []}
+                        courses={Object {}}
                         currentPage={0}
                         loadingCourses={Object {}}
                         pageCount={0}
@@ -266,7 +266,7 @@ ShallowWrapper {
       "rendered": Array [
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "function",
           "props": Object {
             "account": Object {
@@ -282,7 +282,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": Array [
@@ -307,7 +307,7 @@ ShallowWrapper {
                 onlyShowInstalledChanged={[Function]}
 />,
               <Pagination
-                courses={Array []}
+                courses={Object {}}
                 currentPage={0}
                 loadingCourses={Object {}}
                 pageCount={0}
@@ -320,7 +320,7 @@ ShallowWrapper {
           "rendered": Array [
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "children": Array [
@@ -339,7 +339,7 @@ ShallowWrapper {
               "rendered": Array [
                 Object {
                   "instance": null,
-                  "key": null,
+                  "key": undefined,
                   "nodeType": "host",
                   "props": Object {
                     "onChange": [Function],
@@ -352,7 +352,7 @@ ShallowWrapper {
                 },
                 Object {
                   "instance": null,
-                  "key": null,
+                  "key": undefined,
                   "nodeType": "host",
                   "props": Object {
                     "className": "i-search",
@@ -367,7 +367,7 @@ ShallowWrapper {
             null,
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "function",
               "props": Object {
                 "applicationInstance": Object {},
@@ -382,10 +382,10 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "function",
               "props": Object {
-                "courses": Array [],
+                "courses": Object {},
                 "currentPage": 0,
                 "loadingCourses": Object {},
                 "pageCount": 0,
@@ -404,9 +404,9 @@ ShallowWrapper {
     },
   ],
   Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenAdapter {
+    "adapter": ReactSixteenAdapter {
       "options": Object {
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
+        "enableComponentDidUpdateOnSetState": true,
       },
     },
   },

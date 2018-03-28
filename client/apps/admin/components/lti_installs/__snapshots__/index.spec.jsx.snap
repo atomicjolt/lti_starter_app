@@ -40,7 +40,7 @@ ShallowWrapper {
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
-    "key": null,
+    "key": undefined,
     "nodeType": "host",
     "props": Object {
       "children": Array [
@@ -64,15 +64,8 @@ ShallowWrapper {
                     account={null}
                     applicationInstance={Object {}}
                     canvasRequest={[Function]}
-                    courses={
-                              Array [
-                                        Object {},
-                                      ]
-                    }
                     loadExternalTools={[Function]}
                     loadingCourses={Object {}}
-                    onlyShowInstalled={false}
-                    onlyShowInstalledChanged={[Function]}
           />
 </div>,
         <Modal
@@ -85,7 +78,10 @@ ShallowWrapper {
           overlayClassName="c-modal__background"
           parentSelector={[Function]}
           portalClassName="ReactModalPortal"
+          shouldCloseOnEsc={true}
           shouldCloseOnOverlayClick={true}
+          shouldFocusAfterRender={true}
+          shouldReturnFocusAfterClose={true}
 >
           <div
                     className="c-loading-icon"
@@ -101,7 +97,7 @@ ShallowWrapper {
     "rendered": Array [
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "class",
         "props": Object {
           "backTo": "/applications/application id/application_instances",
@@ -112,7 +108,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": Array [
@@ -130,15 +126,8 @@ ShallowWrapper {
               account={null}
               applicationInstance={Object {}}
               canvasRequest={[Function]}
-              courses={
-                            Array [
-                                          Object {},
-                                        ]
-              }
               loadExternalTools={[Function]}
               loadingCourses={Object {}}
-              onlyShowInstalled={false}
-              onlyShowInstalledChanged={[Function]}
 />,
           ],
           "className": "o-contain",
@@ -147,7 +136,7 @@ ShallowWrapper {
         "rendered": Array [
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "class",
             "props": Object {
               "accounts": Object {},
@@ -165,19 +154,14 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "class",
             "props": Object {
               "account": null,
               "applicationInstance": Object {},
               "canvasRequest": [Function],
-              "courses": Array [
-                Object {},
-              ],
               "loadExternalTools": [Function],
               "loadingCourses": Object {},
-              "onlyShowInstalled": false,
-              "onlyShowInstalledChanged": [Function],
             },
             "ref": null,
             "rendered": null,
@@ -188,7 +172,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "class",
         "props": Object {
           "ariaHideApp": true,
@@ -206,13 +190,16 @@ ShallowWrapper {
           "overlayClassName": "c-modal__background",
           "parentSelector": [Function],
           "portalClassName": "ReactModalPortal",
+          "shouldCloseOnEsc": true,
           "shouldCloseOnOverlayClick": true,
+          "shouldFocusAfterRender": true,
+          "shouldReturnFocusAfterClose": true,
         },
         "ref": null,
         "rendered": Array [
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "className": "c-loading-icon",
@@ -231,7 +218,7 @@ ShallowWrapper {
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
-      "key": null,
+      "key": undefined,
       "nodeType": "host",
       "props": Object {
         "children": Array [
@@ -255,15 +242,8 @@ ShallowWrapper {
                         account={null}
                         applicationInstance={Object {}}
                         canvasRequest={[Function]}
-                        courses={
-                                    Array [
-                                                Object {},
-                                              ]
-                        }
                         loadExternalTools={[Function]}
                         loadingCourses={Object {}}
-                        onlyShowInstalled={false}
-                        onlyShowInstalledChanged={[Function]}
             />
 </div>,
           <Modal
@@ -276,7 +256,10 @@ ShallowWrapper {
             overlayClassName="c-modal__background"
             parentSelector={[Function]}
             portalClassName="ReactModalPortal"
+            shouldCloseOnEsc={true}
             shouldCloseOnOverlayClick={true}
+            shouldFocusAfterRender={true}
+            shouldReturnFocusAfterClose={true}
 >
             <div
                         className="c-loading-icon"
@@ -292,7 +275,7 @@ ShallowWrapper {
       "rendered": Array [
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "class",
           "props": Object {
             "backTo": "/applications/application id/application_instances",
@@ -303,7 +286,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": Array [
@@ -321,15 +304,8 @@ ShallowWrapper {
                 account={null}
                 applicationInstance={Object {}}
                 canvasRequest={[Function]}
-                courses={
-                                Array [
-                                                Object {},
-                                              ]
-                }
                 loadExternalTools={[Function]}
                 loadingCourses={Object {}}
-                onlyShowInstalled={false}
-                onlyShowInstalledChanged={[Function]}
 />,
             ],
             "className": "o-contain",
@@ -338,7 +314,7 @@ ShallowWrapper {
           "rendered": Array [
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "class",
               "props": Object {
                 "accounts": Object {},
@@ -356,19 +332,14 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "class",
               "props": Object {
                 "account": null,
                 "applicationInstance": Object {},
                 "canvasRequest": [Function],
-                "courses": Array [
-                  Object {},
-                ],
                 "loadExternalTools": [Function],
                 "loadingCourses": Object {},
-                "onlyShowInstalled": false,
-                "onlyShowInstalledChanged": [Function],
               },
               "ref": null,
               "rendered": null,
@@ -379,7 +350,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "class",
           "props": Object {
             "ariaHideApp": true,
@@ -397,13 +368,16 @@ ShallowWrapper {
             "overlayClassName": "c-modal__background",
             "parentSelector": [Function],
             "portalClassName": "ReactModalPortal",
+            "shouldCloseOnEsc": true,
             "shouldCloseOnOverlayClick": true,
+            "shouldFocusAfterRender": true,
+            "shouldReturnFocusAfterClose": true,
           },
           "ref": null,
           "rendered": Array [
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "className": "c-loading-icon",
@@ -421,9 +395,9 @@ ShallowWrapper {
     },
   ],
   Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenAdapter {
+    "adapter": ReactSixteenAdapter {
       "options": Object {
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
+        "enableComponentDidUpdateOnSetState": true,
       },
     },
   },

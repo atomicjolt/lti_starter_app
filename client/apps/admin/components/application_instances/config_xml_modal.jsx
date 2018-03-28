@@ -55,6 +55,7 @@ const ConfigXmlModal = (props) => {
             rows: 20,
             readOnly: true,
             value: props.applicationInstance.lti_config_xml || '',
+            onChange: () => {},
           }}
         />
       </div>

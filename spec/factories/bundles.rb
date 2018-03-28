@@ -1,6 +1,6 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :bundle do
-    name { FactoryGirl.generate(:name) }
-    key { FactoryGirl.generate(:lti_key) }
+    name { FactoryBot.generate(:name) }
+    key { FactoryBot.generate(:lti_key) }
   end
 end

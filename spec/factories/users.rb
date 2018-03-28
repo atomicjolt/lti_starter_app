@@ -1,11 +1,11 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
-    name { FactoryGirl.generate(:name) }
-    email { FactoryGirl.generate(:email) }
-    password { FactoryGirl.generate(:password) }
+    name { FactoryBot.generate(:name) }
+    email { FactoryBot.generate(:email) }
+    password { FactoryBot.generate(:password) }
     after(:build, &:confirm)
     after(:create) do |user|
-      FactoryGirl.create(:authentication, user_id: user.id, provider_url: FactoryGirl.generate(:domain))
+      FactoryBot.create(:authentication, user_id: user.id, provider_url: FactoryBot.generate(:domain))
     end
 
     factory :user_facebook do
@@ -23,8 +23,8 @@ FactoryGirl.define do
     factory :user_canvas do
       lti_provider "canvas"
       after(:create) do |user|
-        user.authentications << FactoryGirl.create(:authentication_canvas)
-        user.roles << FactoryGirl.create(:role)
+        user.authentications << FactoryBot.create(:authentication_canvas)
+        user.roles << FactoryBot.create(:role)
       end
     end
   end

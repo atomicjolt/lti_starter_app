@@ -12,7 +12,7 @@ describe('install pane', () => {
       canvasRequest: () => {},
       loadingCourses: {},
       applicationInstance: {},
-      courses: [],
+      courses: {},
       account: {
         installCount: 0,
       },

@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Admin::HomeController, type: :controller do
   before do
-    @application = FactoryGirl.create(:application)
+    @application = FactoryBot.create(:application)
   end
 
   context "not logged in" do

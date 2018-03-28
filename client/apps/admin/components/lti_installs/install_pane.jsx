@@ -11,13 +11,12 @@ const COURSE_TYPES = ['basic', 'course_navigation', 'wysiwyg_button'];
 
 function select(state) {
   return {
-    allCourses: state.courses,
+    courses: state.courses,
   };
 }
 
 export class InstallPane extends React.Component {
   static propTypes = {
-    courses: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     loadExternalTools: PropTypes.func,
     applicationInstance : PropTypes.shape({}),
     canvasRequest: PropTypes.func,
@@ -25,8 +24,6 @@ export class InstallPane extends React.Component {
     account: PropTypes.shape({
       installCount: PropTypes.number
     }),
-    onlyShowInstalled: PropTypes.bool.isRequired,
-    onlyShowInstalledChanged: PropTypes.func.isRequired,
   };
 
   constructor() {
@@ -34,6 +31,7 @@ export class InstallPane extends React.Component {
     this.state = {
       currentPage: 0,
       searchPrefix: '',
+      onlyShowInstalled: false,
     };
   }
 
@@ -57,16 +55,11 @@ export class InstallPane extends React.Component {
   }
 
   filteredCourses(courses) {
-    const {
-      applicationInstance,
-      onlyShowInstalled,
-    } = this.props;
-
-    if (onlyShowInstalled) {
+    if (this.state.onlyShowInstalled) {
       return _.filter(courses, course => (
         _.find(
           course.external_tools,
-          tool => tool.consumer_key === applicationInstance.lti_key
+          tool => tool.consumer_key === this.props.applicationInstance.lti_key
         )
       ));
     }
@@ -74,8 +67,8 @@ export class InstallPane extends React.Component {
   }
 
   searchedCourses() {
-    const { allCourses } = this.props;
-    return _.filter(this.filteredCourses(allCourses), course => (
+    const { courses } = this.props;
+    return _.filter(this.filteredCourses(courses), course => (
       _.includes(
         _.lowerCase(course.name),
         _.lowerCase(this.state.searchPrefix)
@@ -84,7 +77,17 @@ export class InstallPane extends React.Component {
   }
 
   courses() {
-    const { courses } = this.props;
+    let courses;
+    if (this.state.onlyShowInstalled) {
+      courses = this.props.courses;
+    } else {
+      // Only show courses from the current account
+      courses = _.filter(
+        this.props.courses,
+        course => this.props.account.id === course.account_id
+      );
+    }
+
     return _.filter(this.filteredCourses(courses), course => (
       _.includes(
         _.lowerCase(course.name),
@@ -152,7 +155,7 @@ export class InstallPane extends React.Component {
             courses={this.pageCourses(searchedCourses)}
             loadingCourses={this.props.loadingCourses}
             canvasRequest={this.props.canvasRequest}
-            onlyShowInstalledChanged={this.props.onlyShowInstalledChanged}
+            onlyShowInstalledChanged={e => this.setState({ onlyShowInstalled: e.target.checked })}
           />
           <Pagination
             setPage={change => this.setState({ currentPage: change.selected })}

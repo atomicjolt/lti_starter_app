@@ -6,16 +6,16 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Pagination
     courses={
-        Array [
-            Object {
+        Object {
+            "1": Object {
               "id": 1,
               "name": "name",
             },
-            Object {
+            "2": Object {
               "id": 2,
               "name": "name",
             },
-          ]
+          }
     }
     currentPage={2}
     pageCount={21}
@@ -31,7 +31,7 @@ ShallowWrapper {
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
-    "key": null,
+    "key": undefined,
     "nodeType": "class",
     "props": Object {
       "activeClassName": "selected",
@@ -56,7 +56,7 @@ ShallowWrapper {
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
-      "key": null,
+      "key": undefined,
       "nodeType": "class",
       "props": Object {
         "activeClassName": "selected",
@@ -80,9 +80,9 @@ ShallowWrapper {
     },
   ],
   Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenAdapter {
+    "adapter": ReactSixteenAdapter {
       "options": Object {
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
+        "enableComponentDidUpdateOnSetState": true,
       },
     },
   },

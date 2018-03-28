@@ -4,7 +4,7 @@ RSpec.describe LtiLaunchesController, type: :controller do
   render_views
 
   before do
-    @app = FactoryGirl.create(:application_instance)
+    @app = FactoryBot.create(:application_instance)
     allow(controller).to receive(:current_application_instance).and_return(@app)
   end
 
@@ -30,7 +30,7 @@ RSpec.describe LtiLaunchesController, type: :controller do
     end
     it "sets up the user, logs them and outputs the lti config to the client" do
       context_id = SecureRandom.hex(15)
-      @lti_launch = FactoryGirl.create(:lti_launch, context_id: context_id)
+      @lti_launch = FactoryBot.create(:lti_launch, context_id: context_id)
       params = lti_params(
         @app.lti_key,
         @app.lti_secret,

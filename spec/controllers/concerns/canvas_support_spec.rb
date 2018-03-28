@@ -12,11 +12,11 @@ describe ApplicationController, type: :controller do
         common: [],
         LIST_ACCOUNTS: [],
       }
-      @application = FactoryGirl.create(:application, canvas_api_permissions: admin_api_permissions)
-      @application_instance = FactoryGirl.create(:application_instance, application: @application)
+      @application = FactoryBot.create(:application, canvas_api_permissions: admin_api_permissions)
+      @application_instance = FactoryBot.create(:application_instance, application: @application)
       allow(controller).to receive(:current_application_instance).and_return(@application_instance)
 
-      @user = FactoryGirl.create(:user)
+      @user = FactoryBot.create(:user)
       allow(controller).to receive(:current_user).and_return(@user)
 
       @user.add_to_role("urn:lti:role:ims/lis/Learner")
@@ -40,7 +40,7 @@ describe ApplicationController, type: :controller do
     end
 
     it "provides access to the canvas api for an administrator" do
-      admin = FactoryGirl.create(:user)
+      admin = FactoryBot.create(:user)
       admin.add_to_role("administrator")
       admin.save!
       allow(controller).to receive(:current_user).and_return(admin)
@@ -52,7 +52,7 @@ describe ApplicationController, type: :controller do
     end
 
     it "prohibits a user from accessing the canvas api" do
-      user = FactoryGirl.create(:user)
+      user = FactoryBot.create(:user)
       user_token = AuthToken.issue_token({ user_id: user.id })
       user_token_header = "Bearer #{user_token}"
       allow(controller).to receive(:current_user).and_return(user)
@@ -74,7 +74,7 @@ describe ApplicationController, type: :controller do
     end
 
     it "doesn't allow access to unauthorized API endpoints when application instances doesn't have an API token" do
-      application_instance = FactoryGirl.create(:application_instance, application: @application, canvas_token: nil)
+      application_instance = FactoryBot.create(:application_instance, application: @application, canvas_token: nil)
       allow(controller).to receive(:current_application_instance).and_return(application_instance)
       get :index, params: {
         lti_key: @application_instance.lti_key,
@@ -86,7 +86,7 @@ describe ApplicationController, type: :controller do
 
   describe "valid user api token" do
     before do
-      @user = FactoryGirl.create(:user)
+      @user = FactoryBot.create(:user)
       allow(controller).to receive(:current_user).and_return(@user)
 
       canvas_api_permissions = {
@@ -99,12 +99,12 @@ describe ApplicationController, type: :controller do
         common: [],
         LIST_ACCOUNTS: [],
       }
-      @application = FactoryGirl.create(:application, canvas_api_permissions: canvas_api_permissions)
+      @application = FactoryBot.create(:application, canvas_api_permissions: canvas_api_permissions)
 
-      @application_instance = FactoryGirl.create(:application_instance, canvas_token: nil, application: @application)
+      @application_instance = FactoryBot.create(:application_instance, canvas_token: nil, application: @application)
       allow(controller).to receive(:current_application_instance).and_return(@application_instance)
 
-      @authentication = FactoryGirl.create(
+      @authentication = FactoryBot.create(
         :authentication,
         provider_url: UrlHelper.scheme_host_port(@application_instance.site.url),
         refresh_token: "asdf",
@@ -139,7 +139,7 @@ describe ApplicationController, type: :controller do
 
   describe "user with canvas_oauth_user" do
     before do
-      @user = FactoryGirl.create(:user)
+      @user = FactoryBot.create(:user)
       allow(controller).to receive(:current_user).and_return(@user)
 
       canvas_api_permissions = {
@@ -147,12 +147,12 @@ describe ApplicationController, type: :controller do
         common: [],
         LIST_ACCOUNTS: ["canvas_oauth_user"],
       }
-      @application = FactoryGirl.create(:application, canvas_api_permissions: canvas_api_permissions)
+      @application = FactoryBot.create(:application, canvas_api_permissions: canvas_api_permissions)
 
-      @application_instance = FactoryGirl.create(:application_instance, canvas_token: nil, application: @application)
+      @application_instance = FactoryBot.create(:application_instance, canvas_token: nil, application: @application)
       allow(controller).to receive(:current_application_instance).and_return(@application_instance)
 
-      @authentication = FactoryGirl.create(
+      @authentication = FactoryBot.create(
         :authentication,
         provider_url: UrlHelper.scheme_host_port(@application_instance.site.url),
         refresh_token: "asdf",
@@ -202,7 +202,7 @@ describe ApplicationController, type: :controller do
 
   describe "check context" do
     before do
-      @user = FactoryGirl.create(:user)
+      @user = FactoryBot.create(:user)
       allow(controller).to receive(:current_user).and_return(@user)
 
       canvas_api_permissions = {
@@ -212,12 +212,12 @@ describe ApplicationController, type: :controller do
         common: [],
         LIST_ACCOUNTS: [],
       }
-      @application = FactoryGirl.create(:application, canvas_api_permissions: canvas_api_permissions)
+      @application = FactoryBot.create(:application, canvas_api_permissions: canvas_api_permissions)
 
-      @application_instance = FactoryGirl.create(:application_instance, canvas_token: nil, application: @application)
+      @application_instance = FactoryBot.create(:application_instance, canvas_token: nil, application: @application)
       allow(controller).to receive(:current_application_instance).and_return(@application_instance)
 
-      @authentication = FactoryGirl.create(
+      @authentication = FactoryBot.create(
         :authentication,
         provider_url: UrlHelper.scheme_host_port(@application_instance.site.url),
         refresh_token: "asdf",
@@ -256,7 +256,7 @@ describe ApplicationController, type: :controller do
 
   describe "no api token for application instance or user" do
     before do
-      @user = FactoryGirl.create(:user)
+      @user = FactoryBot.create(:user)
       allow(controller).to receive(:current_user).and_return(@user)
 
       @user.add_to_role("urn:lti:role:ims/lis/Learner")
@@ -272,8 +272,8 @@ describe ApplicationController, type: :controller do
         common: [],
         LIST_ACCOUNTS: [],
       }
-      @application = FactoryGirl.create(:application, canvas_api_permissions: canvas_api_permissions)
-      @application_instance = FactoryGirl.create(:application_instance, canvas_token: nil, application: @application)
+      @application = FactoryBot.create(:application, canvas_api_permissions: canvas_api_permissions)
+      @application_instance = FactoryBot.create(:application_instance, canvas_token: nil, application: @application)
       allow(controller).to receive(:current_application_instance).and_return(@application_instance)
 
       @user_token = AuthToken.issue_token({ user_id: @user.id })

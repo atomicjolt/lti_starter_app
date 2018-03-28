@@ -23,7 +23,7 @@ ShallowWrapper {
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
-    "key": null,
+    "key": undefined,
     "nodeType": "host",
     "props": Object {
       "children": Array [
@@ -40,7 +40,6 @@ ShallowWrapper {
                                         Canvas Url
                               </span>
                               <Select
-                                        addLabelText="Add \\"{label}\\"?"
                                         arrowRenderer={[Function]}
                                         autosize={true}
                                         backspaceRemoves={true}
@@ -87,11 +86,14 @@ ShallowWrapper {
                                         }
                                         pageSize={5}
                                         placeholder="Select a Canvas Domain"
+                                        removeSelected={true}
                                         required={false}
+                                        rtl={false}
                                         scrollMenuIntoView={true}
                                         searchable={false}
                                         simpleValue={false}
                                         tabSelectsValue={true}
+                                        trimFilter={true}
                                         value="foo"
                                         valueComponent={[Function]}
                                         valueKey="value"
@@ -163,7 +165,7 @@ ShallowWrapper {
                                                   "onChange": [Function],
                                                   "placeholder": "",
                                                   "type": "text",
-                                                  "value": undefined,
+                                                  "value": "",
                                                 }
                               }
                               labelText="Canvas Token"
@@ -246,7 +248,7 @@ ShallowWrapper {
     "rendered": Array [
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": Array [
@@ -260,7 +262,6 @@ ShallowWrapper {
                                           Canvas Url
                             </span>
                             <Select
-                                          addLabelText="Add \\"{label}\\"?"
                                           arrowRenderer={[Function]}
                                           autosize={true}
                                           backspaceRemoves={true}
@@ -307,11 +308,14 @@ ShallowWrapper {
                                           }
                                           pageSize={5}
                                           placeholder="Select a Canvas Domain"
+                                          removeSelected={true}
                                           required={false}
+                                          rtl={false}
                                           scrollMenuIntoView={true}
                                           searchable={false}
                                           simpleValue={false}
                                           tabSelectsValue={true}
+                                          trimFilter={true}
                                           value="foo"
                                           valueComponent={[Function]}
                                           valueKey="value"
@@ -383,7 +387,7 @@ ShallowWrapper {
                                                         "onChange": [Function],
                                                         "placeholder": "",
                                                         "type": "text",
-                                                        "value": undefined,
+                                                        "value": "",
                                                       }
                             }
                             labelText="Canvas Token"
@@ -452,7 +456,7 @@ ShallowWrapper {
         "rendered": Array [
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": <div
@@ -462,7 +466,6 @@ ShallowWrapper {
                                 Canvas Url
                 </span>
                 <Select
-                                addLabelText="Add \\"{label}\\"?"
                                 arrowRenderer={[Function]}
                                 autosize={true}
                                 backspaceRemoves={true}
@@ -509,11 +512,14 @@ ShallowWrapper {
                                 }
                                 pageSize={5}
                                 placeholder="Select a Canvas Domain"
+                                removeSelected={true}
                                 required={false}
+                                rtl={false}
                                 scrollMenuIntoView={true}
                                 searchable={false}
                                 simpleValue={false}
                                 tabSelectsValue={true}
+                                trimFilter={true}
                                 value="foo"
                                 valueComponent={[Function]}
                                 valueKey="value"
@@ -524,7 +530,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "children": Array [
@@ -532,7 +538,6 @@ ShallowWrapper {
                     Canvas Url
 </span>,
                   <Select
-                    addLabelText="Add \\"{label}\\"?"
                     arrowRenderer={[Function]}
                     autosize={true}
                     backspaceRemoves={true}
@@ -579,11 +584,14 @@ ShallowWrapper {
                     }
                     pageSize={5}
                     placeholder="Select a Canvas Domain"
+                    removeSelected={true}
                     required={false}
+                    rtl={false}
                     scrollMenuIntoView={true}
                     searchable={false}
                     simpleValue={false}
                     tabSelectsValue={true}
+                    trimFilter={true}
                     value="foo"
                     valueComponent={[Function]}
                     valueKey="value"
@@ -595,7 +603,7 @@ ShallowWrapper {
               "rendered": Array [
                 Object {
                   "instance": null,
-                  "key": null,
+                  "key": undefined,
                   "nodeType": "host",
                   "props": Object {
                     "children": "Canvas Url",
@@ -606,10 +614,9 @@ ShallowWrapper {
                 },
                 Object {
                   "instance": null,
-                  "key": null,
+                  "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "addLabelText": "Add \\"{label}\\"?",
                     "arrowRenderer": [Function],
                     "autosize": true,
                     "backspaceRemoves": true,
@@ -654,11 +661,14 @@ ShallowWrapper {
                     ],
                     "pageSize": 5,
                     "placeholder": "Select a Canvas Domain",
+                    "removeSelected": true,
                     "required": false,
+                    "rtl": false,
                     "scrollMenuIntoView": true,
                     "searchable": false,
                     "simpleValue": false,
                     "tabSelectsValue": true,
+                    "trimFilter": true,
                     "value": "foo",
                     "valueComponent": [Function],
                     "valueKey": "value",
@@ -674,7 +684,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": <Input
@@ -695,7 +705,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "function",
               "props": Object {
                 "className": "c-input",
@@ -716,7 +726,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": <Input
@@ -738,7 +748,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "function",
               "props": Object {
                 "className": "c-input",
@@ -760,7 +770,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": <Input
@@ -781,7 +791,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "function",
               "props": Object {
                 "className": "c-input",
@@ -802,7 +812,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": <Input
@@ -815,7 +825,7 @@ ShallowWrapper {
                                                 "onChange": [Function],
                                                 "placeholder": "",
                                                 "type": "text",
-                                                "value": undefined,
+                                                "value": "",
                                               }
                 }
                 labelText="Canvas Token"
@@ -825,7 +835,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "function",
               "props": Object {
                 "className": "c-input",
@@ -836,7 +846,7 @@ ShallowWrapper {
                   "onChange": [Function],
                   "placeholder": "",
                   "type": "text",
-                  "value": undefined,
+                  "value": "",
                 },
                 "labelText": "Canvas Token",
               },
@@ -848,7 +858,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": <Input
@@ -871,7 +881,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "function",
               "props": Object {
                 "className": "c-checkbox",
@@ -894,7 +904,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": <Textarea
@@ -917,7 +927,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "function",
               "props": Object {
                 "className": "c-input",
@@ -940,7 +950,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "host",
             "props": Object {
               "children": <Textarea
@@ -962,7 +972,7 @@ ShallowWrapper {
             "ref": null,
             "rendered": Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "function",
               "props": Object {
                 "className": "c-input",
@@ -987,7 +997,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": "Save",
@@ -1001,7 +1011,7 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": "Cancel",
@@ -1019,7 +1029,7 @@ ShallowWrapper {
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
-      "key": null,
+      "key": undefined,
       "nodeType": "host",
       "props": Object {
         "children": Array [
@@ -1036,7 +1046,6 @@ ShallowWrapper {
                                                 Canvas Url
                                     </span>
                                     <Select
-                                                addLabelText="Add \\"{label}\\"?"
                                                 arrowRenderer={[Function]}
                                                 autosize={true}
                                                 backspaceRemoves={true}
@@ -1083,11 +1092,14 @@ ShallowWrapper {
                                                 }
                                                 pageSize={5}
                                                 placeholder="Select a Canvas Domain"
+                                                removeSelected={true}
                                                 required={false}
+                                                rtl={false}
                                                 scrollMenuIntoView={true}
                                                 searchable={false}
                                                 simpleValue={false}
                                                 tabSelectsValue={true}
+                                                trimFilter={true}
                                                 value="foo"
                                                 valueComponent={[Function]}
                                                 valueKey="value"
@@ -1159,7 +1171,7 @@ ShallowWrapper {
                                                             "onChange": [Function],
                                                             "placeholder": "",
                                                             "type": "text",
-                                                            "value": undefined,
+                                                            "value": "",
                                                           }
                                     }
                                     labelText="Canvas Token"
@@ -1242,7 +1254,7 @@ ShallowWrapper {
       "rendered": Array [
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": Array [
@@ -1256,7 +1268,6 @@ ShallowWrapper {
                                                 Canvas Url
                                 </span>
                                 <Select
-                                                addLabelText="Add \\"{label}\\"?"
                                                 arrowRenderer={[Function]}
                                                 autosize={true}
                                                 backspaceRemoves={true}
@@ -1303,11 +1314,14 @@ ShallowWrapper {
                                                 }
                                                 pageSize={5}
                                                 placeholder="Select a Canvas Domain"
+                                                removeSelected={true}
                                                 required={false}
+                                                rtl={false}
                                                 scrollMenuIntoView={true}
                                                 searchable={false}
                                                 simpleValue={false}
                                                 tabSelectsValue={true}
+                                                trimFilter={true}
                                                 value="foo"
                                                 valueComponent={[Function]}
                                                 valueKey="value"
@@ -1379,7 +1393,7 @@ ShallowWrapper {
                                                                 "onChange": [Function],
                                                                 "placeholder": "",
                                                                 "type": "text",
-                                                                "value": undefined,
+                                                                "value": "",
                                                               }
                                 }
                                 labelText="Canvas Token"
@@ -1448,7 +1462,7 @@ ShallowWrapper {
           "rendered": Array [
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "children": <div
@@ -1458,7 +1472,6 @@ ShallowWrapper {
                                     Canvas Url
                   </span>
                   <Select
-                                    addLabelText="Add \\"{label}\\"?"
                                     arrowRenderer={[Function]}
                                     autosize={true}
                                     backspaceRemoves={true}
@@ -1505,11 +1518,14 @@ ShallowWrapper {
                                     }
                                     pageSize={5}
                                     placeholder="Select a Canvas Domain"
+                                    removeSelected={true}
                                     required={false}
+                                    rtl={false}
                                     scrollMenuIntoView={true}
                                     searchable={false}
                                     simpleValue={false}
                                     tabSelectsValue={true}
+                                    trimFilter={true}
                                     value="foo"
                                     valueComponent={[Function]}
                                     valueKey="value"
@@ -1520,7 +1536,7 @@ ShallowWrapper {
               "ref": null,
               "rendered": Object {
                 "instance": null,
-                "key": null,
+                "key": undefined,
                 "nodeType": "host",
                 "props": Object {
                   "children": Array [
@@ -1528,7 +1544,6 @@ ShallowWrapper {
                       Canvas Url
 </span>,
                     <Select
-                      addLabelText="Add \\"{label}\\"?"
                       arrowRenderer={[Function]}
                       autosize={true}
                       backspaceRemoves={true}
@@ -1575,11 +1590,14 @@ ShallowWrapper {
                       }
                       pageSize={5}
                       placeholder="Select a Canvas Domain"
+                      removeSelected={true}
                       required={false}
+                      rtl={false}
                       scrollMenuIntoView={true}
                       searchable={false}
                       simpleValue={false}
                       tabSelectsValue={true}
+                      trimFilter={true}
                       value="foo"
                       valueComponent={[Function]}
                       valueKey="value"
@@ -1591,7 +1609,7 @@ ShallowWrapper {
                 "rendered": Array [
                   Object {
                     "instance": null,
-                    "key": null,
+                    "key": undefined,
                     "nodeType": "host",
                     "props": Object {
                       "children": "Canvas Url",
@@ -1602,10 +1620,9 @@ ShallowWrapper {
                   },
                   Object {
                     "instance": null,
-                    "key": null,
+                    "key": undefined,
                     "nodeType": "class",
                     "props": Object {
-                      "addLabelText": "Add \\"{label}\\"?",
                       "arrowRenderer": [Function],
                       "autosize": true,
                       "backspaceRemoves": true,
@@ -1650,11 +1667,14 @@ ShallowWrapper {
                       ],
                       "pageSize": 5,
                       "placeholder": "Select a Canvas Domain",
+                      "removeSelected": true,
                       "required": false,
+                      "rtl": false,
                       "scrollMenuIntoView": true,
                       "searchable": false,
                       "simpleValue": false,
                       "tabSelectsValue": true,
+                      "trimFilter": true,
                       "value": "foo",
                       "valueComponent": [Function],
                       "valueKey": "value",
@@ -1670,7 +1690,7 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "children": <Input
@@ -1691,7 +1711,7 @@ ShallowWrapper {
               "ref": null,
               "rendered": Object {
                 "instance": null,
-                "key": null,
+                "key": undefined,
                 "nodeType": "function",
                 "props": Object {
                   "className": "c-input",
@@ -1712,7 +1732,7 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "children": <Input
@@ -1734,7 +1754,7 @@ ShallowWrapper {
               "ref": null,
               "rendered": Object {
                 "instance": null,
-                "key": null,
+                "key": undefined,
                 "nodeType": "function",
                 "props": Object {
                   "className": "c-input",
@@ -1756,7 +1776,7 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "children": <Input
@@ -1777,7 +1797,7 @@ ShallowWrapper {
               "ref": null,
               "rendered": Object {
                 "instance": null,
-                "key": null,
+                "key": undefined,
                 "nodeType": "function",
                 "props": Object {
                   "className": "c-input",
@@ -1798,7 +1818,7 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "children": <Input
@@ -1811,7 +1831,7 @@ ShallowWrapper {
                                                       "onChange": [Function],
                                                       "placeholder": "",
                                                       "type": "text",
-                                                      "value": undefined,
+                                                      "value": "",
                                                     }
                   }
                   labelText="Canvas Token"
@@ -1821,7 +1841,7 @@ ShallowWrapper {
               "ref": null,
               "rendered": Object {
                 "instance": null,
-                "key": null,
+                "key": undefined,
                 "nodeType": "function",
                 "props": Object {
                   "className": "c-input",
@@ -1832,7 +1852,7 @@ ShallowWrapper {
                     "onChange": [Function],
                     "placeholder": "",
                     "type": "text",
-                    "value": undefined,
+                    "value": "",
                   },
                   "labelText": "Canvas Token",
                 },
@@ -1844,7 +1864,7 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "children": <Input
@@ -1867,7 +1887,7 @@ ShallowWrapper {
               "ref": null,
               "rendered": Object {
                 "instance": null,
-                "key": null,
+                "key": undefined,
                 "nodeType": "function",
                 "props": Object {
                   "className": "c-checkbox",
@@ -1890,7 +1910,7 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "children": <Textarea
@@ -1913,7 +1933,7 @@ ShallowWrapper {
               "ref": null,
               "rendered": Object {
                 "instance": null,
-                "key": null,
+                "key": undefined,
                 "nodeType": "function",
                 "props": Object {
                   "className": "c-input",
@@ -1936,7 +1956,7 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": null,
+              "key": undefined,
               "nodeType": "host",
               "props": Object {
                 "children": <Textarea
@@ -1958,7 +1978,7 @@ ShallowWrapper {
               "ref": null,
               "rendered": Object {
                 "instance": null,
-                "key": null,
+                "key": undefined,
                 "nodeType": "function",
                 "props": Object {
                   "className": "c-input",
@@ -1983,7 +2003,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": "Save",
@@ -1997,7 +2017,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": "Cancel",
@@ -2014,9 +2034,9 @@ ShallowWrapper {
     },
   ],
   Symbol(enzyme.__options__): Object {
-    "adapter": ReactFifteenAdapter {
+    "adapter": ReactSixteenAdapter {
       "options": Object {
-        "supportPrevContextArgumentOfComponentDidUpdate": true,
+        "enableComponentDidUpdateOnSetState": true,
       },
     },
   },
