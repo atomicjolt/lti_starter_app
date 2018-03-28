@@ -49,10 +49,11 @@ describe('lti installs course install', () => {
     expect(courseName.props().children).toBe('Course Name');
   });
 
-  it('handles the onChange for input', () => {
-    expect(changed).toBeFalsy();
-    const input = result.find('input');
-    input.simulate('change');
-    expect(changed).toBeTruthy();
-  });
+  // Remove the checkbox so removing the test for now
+  // it('handles the onChange for input', () => {
+  //   expect(changed).toBeFalsy();
+  //   const input = result.find('input');
+  //   input.simulate('change');
+  //   expect(changed).toBeTruthy();
+  // });
 });

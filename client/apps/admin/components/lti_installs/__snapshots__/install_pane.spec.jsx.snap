@@ -12,7 +12,7 @@ ShallowWrapper {
     }
     applicationInstance={Object {}}
     canvasRequest={[Function]}
-    courses={Array []}
+    courses={Object {}}
     loadExternalTools={[Function]}
     loadingCourses={Object {}}
     onlyShowInstalled={false}
@@ -62,7 +62,7 @@ ShallowWrapper {
                     onlyShowInstalledChanged={[Function]}
           />
           <Pagination
-                    courses={Array []}
+                    courses={Object {}}
                     currentPage={0}
                     loadingCourses={Object {}}
                     pageCount={0}
@@ -118,7 +118,7 @@ ShallowWrapper {
               onlyShowInstalledChanged={[Function]}
 />,
             <Pagination
-              courses={Array []}
+              courses={Object {}}
               currentPage={0}
               loadingCourses={Object {}}
               pageCount={0}
@@ -196,7 +196,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
-              "courses": Array [],
+              "courses": Object {},
               "currentPage": 0,
               "loadingCourses": Object {},
               "pageCount": 0,
@@ -251,7 +251,7 @@ ShallowWrapper {
                         onlyShowInstalledChanged={[Function]}
             />
             <Pagination
-                        courses={Array []}
+                        courses={Object {}}
                         currentPage={0}
                         loadingCourses={Object {}}
                         pageCount={0}
@@ -307,7 +307,7 @@ ShallowWrapper {
                 onlyShowInstalledChanged={[Function]}
 />,
               <Pagination
-                courses={Array []}
+                courses={Object {}}
                 currentPage={0}
                 loadingCourses={Object {}}
                 pageCount={0}
@@ -385,7 +385,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "function",
               "props": Object {
-                "courses": Array [],
+                "courses": Object {},
                 "currentPage": 0,
                 "loadingCourses": Object {},
                 "pageCount": 0,

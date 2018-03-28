@@ -6,16 +6,16 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Pagination
     courses={
-        Array [
-            Object {
+        Object {
+            "1": Object {
               "id": 1,
               "name": "name",
             },
-            Object {
+            "2": Object {
               "id": 2,
               "name": "name",
             },
-          ]
+          }
     }
     currentPage={2}
     pageCount={21}
