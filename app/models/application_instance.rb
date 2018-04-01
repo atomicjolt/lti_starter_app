@@ -73,7 +73,7 @@ class ApplicationInstance < ActiveRecord::Base
   end
 
   def set_domain
-    self.domain = domain || "#{key}.#{Rails.application.secrets.application_root_domain}"
+    self.domain = domain || "#{key.gsub(/[^A-Za-z0-9\\-]/,"")}.#{Rails.application.secrets.application_root_domain}"
   end
 
   def create_schema
