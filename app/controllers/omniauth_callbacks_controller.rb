@@ -141,9 +141,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def find_using_oauth
     return if @user # Previous filter was successful and we already have a user
     if @user = User.for_auth(request.env["omniauth.auth"])
+      @user.skip_confirmation!
       kind = params[:action].titleize
       @user.update_oauth(request.env["omniauth.auth"])
-      @user.skip_confirmation!
       if kind == "Canvas"
         @user.add_to_role("canvas_oauth_user")
       end
@@ -157,12 +157,12 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     auth = request.env["omniauth.auth"]
     kind = params[:action].titleize # Should give us Facebook, Twitter, Linked In, etc
     @user = User.new
+    @user.skip_confirmation!
     @user.password = SecureRandom.hex(15)
     @user.password_confirmation = @user.password
     @user.create_method = User.create_methods[:oauth]
     @user.lti_user_id = auth["extra"]["raw_info"]["lti_user_id"]
     @user.apply_oauth(auth)
-    @user.skip_confirmation!
     if kind == "Canvas"
       @user.add_to_role("canvas_oauth_user")
     end
