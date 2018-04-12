@@ -106,7 +106,7 @@ module Concerns
       user.lti_user_id = lti_user_id
       user.lti_provider = lti_provider
       user.lms_user_id = params[:custom_canvas_user_id] || params[:user_id]
-      user.create_method = User.create_methods[:oauth]
+      user.create_method = User.create_methods[:lti]
       user.skip_confirmation!
 
       # store lti roles for the user
