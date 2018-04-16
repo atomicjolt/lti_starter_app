@@ -24,7 +24,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     @user.save!
 
-    set_lti_launch_values
+    set_lti_launch_values if params[:oauth_consumer_key].present?
     @canvas_auth_required = false
 
     if params["oauth_complete_url"].present?
