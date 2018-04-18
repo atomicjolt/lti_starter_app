@@ -111,7 +111,11 @@ module Concerns
 
     def protect_canvas_api(type: params[:lms_proxy_call_type], context_id: jwt_context_id)
       return if canvas_api_authorized(type: type, context_id: context_id) && custom_api_checks_pass(type: type)
-      user_not_authorized
+      message = "This application is not authorized to access the requested Canvas API endpoint: #{type}"
+      respond_to do |format|
+        format.html { render html: helpers.tag.strong(message), status: :unauthorized }
+        format.json { render json: { message: message }, status: :unauthorized }
+      end
     end
 
     def canvas_api_authorized(type: params[:lms_proxy_call_type], context_id: jwt_context_id)
