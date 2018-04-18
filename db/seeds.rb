@@ -83,6 +83,12 @@ applications = [
         "urn:lti:sysrole:ims/lis/Administrator",
         "urn:lti:instrole:ims/lis/Administrator",
         "urn:lti:role:ims/lis/Instructor",
+      ],
+      LIST_YOUR_COURSES: [
+        "urn:lti:sysrole:ims/lis/SysAdmin",
+        "urn:lti:sysrole:ims/lis/Administrator",
+        "urn:lti:instrole:ims/lis/Administrator",
+        "urn:lti:role:ims/lis/Instructor",
         "urn:lti:role:ims/lis/Learner",
       ],
     },

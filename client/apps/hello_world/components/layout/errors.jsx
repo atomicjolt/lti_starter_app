@@ -24,7 +24,7 @@ export class Errors extends React.Component {
       return null;
     }
 
-    const errors = _.map(this.props.errors, (error) => {
+    const errors = _(this.props.errors).map((error) => {
       if (error.response && error.response.text) {
         let message = error.response.text;
         try {
@@ -33,6 +33,9 @@ export class Errors extends React.Component {
         } catch (e) {
           // Throw away exception. String wasn't valid json.
         }
+        if (message.indexOf('canvas_authorization_required') >= 0) {
+          message = 'Please re-authorize Canvas.';
+        }
         return (
           <li>{message}</li>
         );
@@ -40,7 +43,7 @@ export class Errors extends React.Component {
       return (
         <li>{error.toString()}</li>
       );
-    });
+    }).flatten().value();
     return <ul>{errors}</ul>;
   }
 }

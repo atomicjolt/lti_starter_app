@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   rescue_from LMS::Canvas::RefreshTokenRequired do |exception|
     # Auth has gone bad. Remove it and request that the user do OAuth
     user = nil
-    if auth = Authentication.find_by(id: exception.auth.id)
+    if auth = Authentication.find_by(id: exception.auth&.id)
       user = auth.user
       auth.destroy
     end
