@@ -325,9 +325,9 @@ atob@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.0.3.tgz#19c7a760473774468f20b2d2d03372ad7d4cbf5d"
 
-atomic-canvas@^1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/atomic-canvas/-/atomic-canvas-1.1.6.tgz#4dac9777df4d25e086c8df9c8e67656d54583018"
+atomic-canvas@^1.1.8:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/atomic-canvas/-/atomic-canvas-1.1.8.tgz#cb76adde849c5b1d10889a0f1d41c802120de7a3"
   dependencies:
     cli-highlight "^1.1.4"
     lodash "^4.17.4"
