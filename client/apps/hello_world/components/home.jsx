@@ -33,9 +33,7 @@ export class Home extends React.Component {
   componentDidMount() {
     if (!this.props.canvasAuthRequired) {
       // Example Canvas API call
-      this.props.canvasRequest(
-        listYourCourses,
-      );
+      this.props.canvasRequest(listYourCourses);
     }
   }
 

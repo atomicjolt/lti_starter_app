@@ -9,7 +9,9 @@ describe('home', () => {
   let props;
 
   beforeEach(() => {
-    props = {};
+    props = {
+      canvasRequest: () => {},
+    };
     result = shallow(<Home {...props} />);
   });
 
