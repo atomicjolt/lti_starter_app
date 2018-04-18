@@ -13,6 +13,7 @@ const select = state => ({
   ltiMessageType: state.settings.lti_message_type,
   courses: state.courses,
   canvasReAuthorizationRequired: state.canvasErrors.canvasReAuthorizationRequired,
+  canvasUrl: state.settings.canvas_url,
 });
 
 export class Home extends React.Component {
@@ -21,8 +22,10 @@ export class Home extends React.Component {
     canvasAuthRequired: PropTypes.bool,
     ltiMessageType: PropTypes.string,
     canvasRequest: PropTypes.func.isRequired,
+    canvasUrl: PropTypes.string,
     courses: PropTypes.arrayOf(PropTypes.shape({
-
+      id: PropTypes.number,
+      name: PropTypes.string,
     })),
     canvasReAuthorizationRequired: PropTypes.bool,
   };
@@ -44,7 +47,9 @@ export class Home extends React.Component {
     return this.props.courses.map((course) => {
       return (
         <li key={`course_${course.id}`}>
-          {course.id}
+          <a target="_top" href={`${this.props.canvasUrl}/courses/${course.id}`}>
+            {course.name}
+          </a>
         </li>
       );
     });
