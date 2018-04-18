@@ -82,6 +82,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "faker"
   gem "guard-rspec", require: false
+  gem "rails-controller-testing"
   gem "rspec-rails"
   gem "rubocop"
 end
