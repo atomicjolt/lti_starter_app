@@ -4,7 +4,7 @@
     "watch": "./node_modules/jest/bin/jest.js --config=config/jest_config.json --watch"
   },
   "dependencies": {
-    "atomic-canvas": "^1.1.3",
+    "atomic-canvas": "^1.1.8",
     "atomic-fuel": "^1.2.5",
     "babel": "^6.23.0",
     "babel-polyfill": "^6.26.0",
