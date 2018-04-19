@@ -11,6 +11,9 @@ module Concerns
     def do_lti
       if valid_lti_request?(current_application_instance.lti_secret)
         if user = user_from_lti
+          # until the code to fix the valid lti request is up
+          # then we will confirm emails here to use it on the course nav
+          user.confirm unless user.confirmed?
           sign_in(user, event: :authentication)
           return
         end
@@ -37,7 +40,14 @@ module Concerns
 
     def user_from_lti
       lti_user_id = params[:user_id]
-      user = User.find_by(lti_user_id: lti_user_id)
+      if user = User.find_by(lms_user_id: lms_user_id)
+        if user.lti_user_id != lti_user_id
+          user.update!(lti_user_id: lti_user_id)
+        end
+      end
+
+      user ||= User.find_by(lti_user_id: lti_user_id)
+
       if user.blank?
         user = _generate_new_lti_user(params)
         _attempt_uniq_email(user)
@@ -106,7 +116,7 @@ module Concerns
       user.password_confirmation = user.password
       user.lti_user_id = lti_user_id
       user.lti_provider = lti_provider
-      user.lms_user_id = params[:custom_canvas_user_id] || params[:user_id]
+      user.lms_user_id = lms_user_id
       user.create_method = User.create_methods[:lti]
 
       # store lti roles for the user
@@ -157,6 +167,10 @@ module Concerns
 
     def lti_roles
       params["ext_roles"] || params["roles"]
+    end
+
+    def lms_user_id
+      params[:custom_canvas_user_id] || params[:user_id]
     end
 
   end
