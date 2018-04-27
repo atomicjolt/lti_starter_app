@@ -1,6 +1,12 @@
 require "rails_helper"
 
 RSpec.describe Api::ImsExportsController, type: :controller do
+  include ActiveJob::TestHelper
+
+  after do
+    clear_enqueued_jobs
+  end
+
   before do
     setup_application_and_instance
     @export_params = {
@@ -48,7 +54,7 @@ RSpec.describe Api::ImsExportsController, type: :controller do
         get :status, params: { id: ims_export.token }, format: :json
         expect(response).to have_http_status(:success)
         result = JSON.parse(response.body)
-        expect(result["status"]).to eq("completed")
+        expect(result["status"]).to eq(ImsExport::PROCESSING)
       end
     end
 
@@ -65,6 +71,17 @@ RSpec.describe Api::ImsExportsController, type: :controller do
         export = ImsExport.find_by(tool_consumer_instance_guid: tool_consumer_instance_guid)
         expect(result["status_url"]).to eq(status_api_ims_export_url(export.token))
         expect(result["fetch_url"]).to eq(api_ims_export_url(export.token))
+      end
+
+      it "starts the export process" do
+        tool_consumer_instance_guid = ::SecureRandom::hex(15)
+        export_params = {
+          tool_consumer_instance_guid: tool_consumer_instance_guid,
+          context_id: "thisisacontextid",
+        }
+        expect do
+          post :create, params: export_params, format: :json
+        end.to have_enqueued_job(ImsExportJob)
       end
     end
   end

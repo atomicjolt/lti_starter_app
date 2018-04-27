@@ -2,7 +2,9 @@ class Api::ImsImportsController < ApplicationController
   include Concerns::CanvasImsccSupport
 
   def create
-    params[:data][:lti_launches].each do |current_params|
+    lti_launches = params[:data][:lti_launches]
+
+    lti_launches&.each do |current_params|
       lti_launch_attrs = lti_launch_params(current_params)
 
       # Check to see if we already have an LTI Launch. If we do the user is likely importing the same content again.
