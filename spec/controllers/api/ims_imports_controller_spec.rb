@@ -1,6 +1,12 @@
 require "rails_helper"
 
 RSpec.describe Api::ImsImportsController, type: :controller do
+  include ActiveJob::TestHelper
+
+  after do
+    clear_enqueued_jobs
+  end
+
   before do
     setup_application_and_instance
     tool_consumer_instance_guid = "4MRcxnx6vQbFXxhLb8005m5WXFM2Z2i8lQwhJ1QT:canvas-lms"
@@ -61,46 +67,12 @@ RSpec.describe Api::ImsImportsController, type: :controller do
     end
 
     describe "POST create" do
-      it "starts the export process" do
-        post :create, params: @import_params, format: :json
-        expect(response).to have_http_status(:success)
-        result = JSON.parse(response.body)
-        expect(result["status"]).to eq("completed")
-        expect(LtiLaunch.find_by(token: "kcgmuAKNyRu55S1kT4XuY5ag")).to be
-        expect(LtiLaunch.find_by(token: "jfvTHBDVW68y9auBLGihpq3G")).to be
-        expect(LtiLaunch.find_by(token: "N4aDqFbQzQFrPhqzyZuEJErd")).to be
-
-        lti_launch = LtiLaunch.find_by(token: "dgqgRSCUGdkmmKMAC3Ma2nei")
-        expect(lti_launch).to be
-        expect(lti_launch.config).to eq(
-          {
-            "is_embedded" => "true",
-            "iframe_height" => "510",
-            "learnosity_activity_reference_id" => "Dynamic Content",
-          },
-        )
-      end
-
-      it "handles importing the same package multiple times" do
-        post :create, params: @import_params, format: :json
-        expect(response).to have_http_status(:success)
-        result = JSON.parse(response.body)
-        expect(result["status"]).to eq("completed")
-
-        post :create, params: @import_params, format: :json
-        expect(response).to have_http_status(:success)
-        result = JSON.parse(response.body)
-        expect(result["status"]).to eq("completed")
-
-        lti_launch = LtiLaunch.find_by(token: "dgqgRSCUGdkmmKMAC3Ma2nei")
-        expect(lti_launch).to be
-        expect(lti_launch.config).to eq(
-          {
-            "is_embedded" => "true",
-            "iframe_height" => "510",
-            "learnosity_activity_reference_id" => "Dynamic Content",
-          },
-        )
+      context "background jobs" do
+        it "enqueues processing" do
+          expect do
+            post :create, params: @import_params, format: :json
+          end.to have_enqueued_job(ImsImportJob)
+        end
       end
     end
   end
