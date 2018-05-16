@@ -26,7 +26,7 @@ class Api::ImsExportsController < ApplicationController
     )
     ImsExportJob.perform_later(
       export,
-      current_application_instance,
+      @application_instance,
       ims_export_params.to_json,
     )
     response = {

@@ -13,8 +13,8 @@ module Concerns
     def validate_token
       decoded_token = AuthToken.decode(encoded_token, nil, false)
       lti_key = decoded_token[1]["kid"]
-      if application_instance = ApplicationInstance.find_by(lti_key: lti_key)
-        token = AuthToken.valid?(encoded_token, application_instance.lti_secret)
+      if @application_instance = ApplicationInstance.find_by(lti_key: lti_key)
+        token = AuthToken.valid?(encoded_token, @application_instance.lti_secret)
         raise InvalidTokenError, "Unable to decode IMSCC jwt token" if token.blank?
         raise InvalidTokenError, "Invalid IMSCC jwt token payload" if token.empty?
         token[0]

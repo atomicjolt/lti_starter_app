@@ -73,4 +73,10 @@ describe ApplicationController, type: :controller do
     json = JSON.parse(response.body)
     expect(json["message"]).to eq("all is well")
   end
+
+  it "sets @application_instance" do
+    request.headers["Authorization"] = "Bearer #{@token}"
+    post :create, params: {}, format: :json
+    expect(assigns(:application_instance)).to eq(@application_instance)
+  end
 end

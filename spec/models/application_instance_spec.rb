@@ -15,7 +15,8 @@ RSpec.describe ApplicationInstance, type: :model do
       @application_instance = create(:application_instance, lti_key: lti_key, site: @site, application: @application)
       expect(@application_instance.key).to eq(lti_key)
       expect(@application_instance.lti_key).to eq(lti_key)
-      expect(@application_instance.domain).to eq("#{lti_key}.#{Rails.application.secrets.application_root_domain}")
+      domain = "#{@application.key}.#{Rails.application.secrets.application_root_domain}"
+      expect(@application_instance.domain).to eq(domain)
     end
 
     it "sets a default lti key" do
@@ -36,7 +37,7 @@ RSpec.describe ApplicationInstance, type: :model do
         site: @site,
         application: @application,
       )
-      application_instance_domain = "#{@application_instance.key}.#{Rails.application.secrets.application_root_domain}"
+      application_instance_domain = "#{@application.key}.#{Rails.application.secrets.application_root_domain}"
       expect(@application_instance.domain).to eq(application_instance_domain)
     end
 
