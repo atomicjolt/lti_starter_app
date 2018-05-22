@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426214200) do
+ActiveRecord::Schema.define(version: 20180522201717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 20180426214200) do
     t.index ["lms_course_id"], name: "index_canvas_courses_on_lms_course_id"
   end
 
-  create_table "ims_exports", force: :cascade do |t|
+  create_table "ims_exports", id: :serial, force: :cascade do |t|
     t.string "token"
     t.string "tool_consumer_instance_guid"
     t.string "context_id"
@@ -208,6 +208,7 @@ ActiveRecord::Schema.define(version: 20180426214200) do
     t.string "lms_user_id"
     t.bigint "create_method", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["lms_user_id", "lti_user_id"], name: "index_users_on_lms_user_id_and_lti_user_id"
     t.index ["lti_user_id"], name: "index_users_on_lti_user_id", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
