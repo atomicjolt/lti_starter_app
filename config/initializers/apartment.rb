@@ -112,10 +112,10 @@ Rails.application.config.middleware.insert_before Warden::Manager, Apartment::El
   end
   host = request.host_with_port
   subdomain = host.split(".").first
-  if application_instance = ApplicationInstance.find_by(lti_key: key)
-    application_instance.tenant
-  elsif subdomain == Application::AUTH
+  if subdomain == Application::AUTH
     Application::AUTH
+  elsif application_instance = ApplicationInstance.find_by(lti_key: key)
+    application_instance.tenant
   else
     raise "Please specify a valid oauth_consumer_key or valid domain name for this request"
   end
