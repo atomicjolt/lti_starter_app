@@ -40,12 +40,21 @@ module Concerns
 
     def user_from_lti
       lti_user_id = params[:user_id]
-      if user = User.find_by(lms_user_id: lms_user_id)
-        if user.lti_user_id != lti_user_id
-          user.update!(lti_user_id: lti_user_id)
+
+      # Match on both fields if possible
+      user = User.find_by(lms_user_id: lms_user_id, lti_user_id: lti_user_id)
+
+      # Match on only lms_user_id. This happens when a user uses OAuth to create and
+      # account before they ever do an LTI launch.
+      if user.blank?
+        if user = User.find_by(lms_user_id: lms_user_id)
+          if user.lti_user_id != lti_user_id
+            user.update!(lti_user_id: lti_user_id)
+          end
         end
       end
 
+      # Find the user with just the lti_user_id
       user ||= User.find_by(lti_user_id: lti_user_id)
 
       if user.blank?
