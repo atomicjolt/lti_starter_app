@@ -118,6 +118,8 @@ Rails.application.config.middleware.insert_before Warden::Manager, Apartment::El
     Application::ADMIN
   elsif application_instance = ApplicationInstance.find_by(lti_key: key)
     application_instance.tenant
+  elsif request.path.start_with? "/assets/" # Only affects development env
+    Application::ADMIN
   else
     raise "Please specify a valid oauth_consumer_key or valid domain name for this request"
   end
