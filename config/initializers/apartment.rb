@@ -100,16 +100,7 @@ PAYLOAD = 0
 HEADER = 1
 
 Rails.application.config.middleware.insert_before Warden::Manager, Apartment::Elevators::Generic, lambda { |request|
-  key = request.params["oauth_consumer_key"]
-  if key.blank?
-    if bearer_token = request.get_header("HTTP_AUTHORIZATION")
-      token = bearer_token.split(" ").last
-      decoded_token = AuthToken.decode(token, nil, false)
-      # Canvas sticks the `kid` in the header
-      # We stick the `kid` in the payload
-      key = decoded_token[PAYLOAD]["kid"] || decoded_token[HEADER]["kid"]
-    end
-  end
+  key = Lti::Request.oauth_consumer_key(request)
   host = request.host_with_port
   subdomain = host.split(".").first
   if subdomain == Application::AUTH
