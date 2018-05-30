@@ -25,8 +25,40 @@ RSpec.describe Lti::Request do
       params = {
         "oauth_consumer_key" => oauth_consumer_key,
       }
+      env = {}
+      session = {}
       request = double("request")
       allow(request).to receive(:params) { params }
+      allow(request).to receive(:env) { env }
+      allow(request).to receive(:session) { session }
+      expect(Lti::Request.oauth_consumer_key(request)).to eq oauth_consumer_key
+    end
+
+    it "returns the lti key from the env" do
+      oauth_consumer_key = "atestkey"
+      params = {}
+      env = {
+        "oauth_consumer_key" => oauth_consumer_key,
+      }
+      session = {}
+      request = double("request")
+      allow(request).to receive(:params) { params }
+      allow(request).to receive(:env) { env }
+      allow(request).to receive(:session) { session }
+      expect(Lti::Request.oauth_consumer_key(request)).to eq oauth_consumer_key
+    end
+
+    it "returns the lti key from the session" do
+      oauth_consumer_key = "atestkey"
+      params = {}
+      env = {}
+      session = {
+        oauth_consumer_key: oauth_consumer_key,
+      }
+      request = double("request")
+      allow(request).to receive(:params) { params }
+      allow(request).to receive(:env) { env }
+      allow(request).to receive(:session) { session }
       expect(Lti::Request.oauth_consumer_key(request)).to eq oauth_consumer_key
     end
 
@@ -34,8 +66,12 @@ RSpec.describe Lti::Request do
       oauth_consumer_key = "atestkey"
       token = AuthToken.issue_token({ kid: oauth_consumer_key })
       params = {}
+      env = {}
+      session = {}
       request = double("request")
       allow(request).to receive(:params) { params }
+      allow(request).to receive(:env) { env }
+      allow(request).to receive(:session) { session }
       allow(request).to receive(:get_header).with("HTTP_AUTHORIZATION") { "Bearer #{token}" }
       expect(Lti::Request.oauth_consumer_key(request)).to eq oauth_consumer_key
     end
