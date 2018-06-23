@@ -13,7 +13,7 @@ ShallowWrapper {
     save={[Function]}
     site_id="foo"
     sites={Object {}}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -29,219 +29,219 @@ ShallowWrapper {
       "children": Array [
         <div
           className="o-grid o-grid__modal-top"
->
+        >
           <div
-                    className="o-grid__item u-half"
+            className="o-grid__item u-half"
           >
-                    <div
-                              className="c-input"
-                    >
-                              <span>
-                                        Canvas Url
-                              </span>
-                              <Select
-                                        arrowRenderer={[Function]}
-                                        autosize={true}
-                                        backspaceRemoves={true}
-                                        backspaceToRemoveMessage="Press backspace to remove {label}"
-                                        clearAllText="Clear all"
-                                        clearRenderer={[Function]}
-                                        clearValueText="Clear value"
-                                        clearable={false}
-                                        closeOnSelect={true}
-                                        deleteRemoves={true}
-                                        delimiter=","
-                                        disabled={false}
-                                        escapeClearsValue={true}
-                                        filterOptions={[Function]}
-                                        ignoreAccents={true}
-                                        ignoreCase={true}
-                                        inputProps={Object {}}
-                                        isLoading={false}
-                                        joinValues={false}
-                                        labelKey="label"
-                                        matchPos="any"
-                                        matchProp="any"
-                                        menuBuffer={0}
-                                        menuRenderer={[Function]}
-                                        multi={false}
-                                        name="site_id"
-                                        noResultsText="No results found"
-                                        onBlurResetsInput={true}
-                                        onChange={[Function]}
-                                        onCloseResetsInput={true}
-                                        onSelectResetsInput={true}
-                                        openOnClick={true}
-                                        optionComponent={[Function]}
-                                        options={
-                                                  Array [
-                                                            Object {
-                                                              "label": <div>
-                                                                Add New
-                                                  </div>,
-                                                              "onSelect": [Function],
-                                                              "value": "new",
-                                                            },
-                                                          ]
-                                        }
-                                        pageSize={5}
-                                        placeholder="Select a Canvas Domain"
-                                        removeSelected={true}
-                                        required={false}
-                                        rtl={false}
-                                        scrollMenuIntoView={true}
-                                        searchable={false}
-                                        simpleValue={false}
-                                        tabSelectsValue={true}
-                                        trimFilter={true}
-                                        value="foo"
-                                        valueComponent={[Function]}
-                                        valueKey="value"
-                              />
-                    </div>
+            <div
+              className="c-input"
+            >
+              <span>
+                Canvas Url
+              </span>
+              <Select
+                arrowRenderer={[Function]}
+                autosize={true}
+                backspaceRemoves={true}
+                backspaceToRemoveMessage="Press backspace to remove {label}"
+                clearAllText="Clear all"
+                clearRenderer={[Function]}
+                clearValueText="Clear value"
+                clearable={false}
+                closeOnSelect={true}
+                deleteRemoves={true}
+                delimiter=","
+                disabled={false}
+                escapeClearsValue={true}
+                filterOptions={[Function]}
+                ignoreAccents={true}
+                ignoreCase={true}
+                inputProps={Object {}}
+                isLoading={false}
+                joinValues={false}
+                labelKey="label"
+                matchPos="any"
+                matchProp="any"
+                menuBuffer={0}
+                menuRenderer={[Function]}
+                multi={false}
+                name="site_id"
+                noResultsText="No results found"
+                onBlurResetsInput={true}
+                onChange={[Function]}
+                onCloseResetsInput={true}
+                onSelectResetsInput={true}
+                openOnClick={true}
+                optionComponent={[Function]}
+                options={
+                  Array [
+                    Object {
+                      "label": <div>
+                        Add New
+                      </div>,
+                      "onSelect": [Function],
+                      "value": "new",
+                    },
+                  ]
+                }
+                pageSize={5}
+                placeholder="Select a Canvas Domain"
+                removeSelected={true}
+                required={false}
+                rtl={false}
+                scrollMenuIntoView={true}
+                searchable={false}
+                simpleValue={false}
+                tabSelectsValue={true}
+                trimFilter={true}
+                value="foo"
+                valueComponent={[Function]}
+                valueKey="value"
+              />
+            </div>
           </div>
           <div
-                    className="o-grid__item u-half"
+            className="o-grid__item u-half"
           >
-                    <Input
-                              className="c-input"
-                              inputProps={
-                                        Object {
-                                                  "id": "domain_input",
-                                                  "name": "domain",
-                                                  "onChange": [Function],
-                                                  "type": "text",
-                                                  "value": undefined,
-                                                }
-                              }
-                              labelText="LTI Tool Domain"
-                    />
+            <Input
+              className="c-input"
+              inputProps={
+                Object {
+                  "id": "domain_input",
+                  "name": "domain",
+                  "onChange": [Function],
+                  "type": "text",
+                  "value": undefined,
+                }
+              }
+              labelText="LTI Tool Domain"
+            />
           </div>
           <div
-                    className="o-grid__item u-half"
+            className="o-grid__item u-half"
           >
-                    <Input
-                              className="c-input"
-                              inputProps={
-                                        Object {
-                                                  "disabled": undefined,
-                                                  "id": "lti_key_input",
-                                                  "name": "lti_key",
-                                                  "onChange": [Function],
-                                                  "type": "text",
-                                                  "value": undefined,
-                                                }
-                              }
-                              labelText="LTI Key"
-                    />
+            <Input
+              className="c-input"
+              inputProps={
+                Object {
+                  "disabled": undefined,
+                  "id": "lti_key_input",
+                  "name": "lti_key",
+                  "onChange": [Function],
+                  "type": "text",
+                  "value": undefined,
+                }
+              }
+              labelText="LTI Key"
+            />
           </div>
           <div
-                    className="o-grid__item u-half"
+            className="o-grid__item u-half"
           >
-                    <Input
-                              className="c-input"
-                              inputProps={
-                                        Object {
-                                                  "id": "lti_secret_input",
-                                                  "name": "lti_secret",
-                                                  "onChange": [Function],
-                                                  "type": "text",
-                                                  "value": undefined,
-                                                }
-                              }
-                              labelText="LTI Secret"
-                    />
+            <Input
+              className="c-input"
+              inputProps={
+                Object {
+                  "id": "lti_secret_input",
+                  "name": "lti_secret",
+                  "onChange": [Function],
+                  "type": "text",
+                  "value": undefined,
+                }
+              }
+              labelText="LTI Secret"
+            />
           </div>
           <div
-                    className="o-grid__item u-half"
+            className="o-grid__item u-half"
           >
-                    <Input
-                              className="c-input"
-                              helperText="Current Canvas Token: undefined"
-                              inputProps={
-                                        Object {
-                                                  "id": "canvas_token_input",
-                                                  "name": "canvas_token",
-                                                  "onChange": [Function],
-                                                  "placeholder": "",
-                                                  "type": "text",
-                                                  "value": "",
-                                                }
-                              }
-                              labelText="Canvas Token"
-                    />
+            <Input
+              className="c-input"
+              helperText="Current Canvas Token: undefined"
+              inputProps={
+                Object {
+                  "id": "canvas_token_input",
+                  "name": "canvas_token",
+                  "onChange": [Function],
+                  "placeholder": "",
+                  "type": "text",
+                  "value": "",
+                }
+              }
+              labelText="Canvas Token"
+            />
           </div>
           <div
-                    className="o-grid__item u-full"
+            className="o-grid__item u-full"
           >
-                    <Input
-                              className="c-checkbox"
-                              helperText="indicates whether or not user name and email is stored during LTI launch"
-                              inputProps={
-                                        Object {
-                                                  "checked": undefined,
-                                                  "id": "anonymous_input",
-                                                  "name": "anonymous",
-                                                  "onChange": [Function],
-                                                  "type": "checkbox",
-                                                  "value": "true",
-                                                }
-                              }
-                              labelText="Anonymous"
-                    />
+            <Input
+              className="c-checkbox"
+              helperText="indicates whether or not user name and email is stored during LTI launch"
+              inputProps={
+                Object {
+                  "checked": undefined,
+                  "id": "anonymous_input",
+                  "name": "anonymous",
+                  "onChange": [Function],
+                  "type": "checkbox",
+                  "value": "true",
+                }
+              }
+              labelText="Anonymous"
+            />
           </div>
           <div
-                    className="o-grid__item u-full"
+            className="o-grid__item u-full"
           >
-                    <Textarea
-                              className="c-input"
-                              labelText="Custom Application Instance Configuration"
-                              textareaProps={
-                                        Object {
-                                                  "id": "application_instance_config",
-                                                  "name": "config",
-                                                  "onChange": [Function],
-                                                  "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
-                                                  "rows": 3,
-                                                  "value": "{ \\"foo\\": \\"bar\\" }",
-                                                }
-                              }
-                              warning={null}
-                    />
+            <Textarea
+              className="c-input"
+              labelText="Custom Application Instance Configuration"
+              textareaProps={
+                Object {
+                  "id": "application_instance_config",
+                  "name": "config",
+                  "onChange": [Function],
+                  "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                  "rows": 3,
+                  "value": "{ \\"foo\\": \\"bar\\" }",
+                }
+              }
+              warning={null}
+            />
           </div>
           <div
-                    className="o-grid__item u-full"
+            className="o-grid__item u-full"
           >
-                    <Textarea
-                              className="c-input"
-                              labelText="LTI Configuration"
-                              textareaProps={
-                                        Object {
-                                                  "id": "application_instance_lti_config",
-                                                  "name": "lti_config",
-                                                  "onChange": [Function],
-                                                  "rows": 8,
-                                                  "value": "",
-                                                }
-                              }
-                              warning={null}
-                    />
+            <Textarea
+              className="c-input"
+              labelText="LTI Configuration"
+              textareaProps={
+                Object {
+                  "id": "application_instance_lti_config",
+                  "name": "lti_config",
+                  "onChange": [Function],
+                  "rows": 8,
+                  "value": "",
+                }
+              }
+              warning={null}
+            />
           </div>
-</div>,
+        </div>,
         <button
           className="c-btn c-btn--yellow"
           onClick={[Function]}
           type="button"
->
+        >
           Save
-</button>,
+        </button>,
         <button
           className="c-btn c-btn--gray--large u-m-right"
           onClick={[Function]}
           type="button"
->
+        >
           Cancel
-</button>,
+        </button>,
       ],
     },
     "ref": null,
@@ -254,201 +254,201 @@ ShallowWrapper {
           "children": Array [
             <div
               className="o-grid__item u-half"
->
+            >
               <div
-                            className="c-input"
+                className="c-input"
               >
-                            <span>
-                                          Canvas Url
-                            </span>
-                            <Select
-                                          arrowRenderer={[Function]}
-                                          autosize={true}
-                                          backspaceRemoves={true}
-                                          backspaceToRemoveMessage="Press backspace to remove {label}"
-                                          clearAllText="Clear all"
-                                          clearRenderer={[Function]}
-                                          clearValueText="Clear value"
-                                          clearable={false}
-                                          closeOnSelect={true}
-                                          deleteRemoves={true}
-                                          delimiter=","
-                                          disabled={false}
-                                          escapeClearsValue={true}
-                                          filterOptions={[Function]}
-                                          ignoreAccents={true}
-                                          ignoreCase={true}
-                                          inputProps={Object {}}
-                                          isLoading={false}
-                                          joinValues={false}
-                                          labelKey="label"
-                                          matchPos="any"
-                                          matchProp="any"
-                                          menuBuffer={0}
-                                          menuRenderer={[Function]}
-                                          multi={false}
-                                          name="site_id"
-                                          noResultsText="No results found"
-                                          onBlurResetsInput={true}
-                                          onChange={[Function]}
-                                          onCloseResetsInput={true}
-                                          onSelectResetsInput={true}
-                                          openOnClick={true}
-                                          optionComponent={[Function]}
-                                          options={
-                                                        Array [
-                                                                      Object {
-                                                                        "label": <div>
-                                                                          Add New
-                                                        </div>,
-                                                                        "onSelect": [Function],
-                                                                        "value": "new",
-                                                                      },
-                                                                    ]
-                                          }
-                                          pageSize={5}
-                                          placeholder="Select a Canvas Domain"
-                                          removeSelected={true}
-                                          required={false}
-                                          rtl={false}
-                                          scrollMenuIntoView={true}
-                                          searchable={false}
-                                          simpleValue={false}
-                                          tabSelectsValue={true}
-                                          trimFilter={true}
-                                          value="foo"
-                                          valueComponent={[Function]}
-                                          valueKey="value"
-                            />
+                <span>
+                  Canvas Url
+                </span>
+                <Select
+                  arrowRenderer={[Function]}
+                  autosize={true}
+                  backspaceRemoves={true}
+                  backspaceToRemoveMessage="Press backspace to remove {label}"
+                  clearAllText="Clear all"
+                  clearRenderer={[Function]}
+                  clearValueText="Clear value"
+                  clearable={false}
+                  closeOnSelect={true}
+                  deleteRemoves={true}
+                  delimiter=","
+                  disabled={false}
+                  escapeClearsValue={true}
+                  filterOptions={[Function]}
+                  ignoreAccents={true}
+                  ignoreCase={true}
+                  inputProps={Object {}}
+                  isLoading={false}
+                  joinValues={false}
+                  labelKey="label"
+                  matchPos="any"
+                  matchProp="any"
+                  menuBuffer={0}
+                  menuRenderer={[Function]}
+                  multi={false}
+                  name="site_id"
+                  noResultsText="No results found"
+                  onBlurResetsInput={true}
+                  onChange={[Function]}
+                  onCloseResetsInput={true}
+                  onSelectResetsInput={true}
+                  openOnClick={true}
+                  optionComponent={[Function]}
+                  options={
+                    Array [
+                      Object {
+                        "label": <div>
+                          Add New
+                        </div>,
+                        "onSelect": [Function],
+                        "value": "new",
+                      },
+                    ]
+                  }
+                  pageSize={5}
+                  placeholder="Select a Canvas Domain"
+                  removeSelected={true}
+                  required={false}
+                  rtl={false}
+                  scrollMenuIntoView={true}
+                  searchable={false}
+                  simpleValue={false}
+                  tabSelectsValue={true}
+                  trimFilter={true}
+                  value="foo"
+                  valueComponent={[Function]}
+                  valueKey="value"
+                />
               </div>
-</div>,
+            </div>,
             <div
               className="o-grid__item u-half"
->
+            >
               <Input
-                            className="c-input"
-                            inputProps={
-                                          Object {
-                                                        "id": "domain_input",
-                                                        "name": "domain",
-                                                        "onChange": [Function],
-                                                        "type": "text",
-                                                        "value": undefined,
-                                                      }
-                            }
-                            labelText="LTI Tool Domain"
+                className="c-input"
+                inputProps={
+                  Object {
+                    "id": "domain_input",
+                    "name": "domain",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": undefined,
+                  }
+                }
+                labelText="LTI Tool Domain"
               />
-</div>,
+            </div>,
             <div
               className="o-grid__item u-half"
->
+            >
               <Input
-                            className="c-input"
-                            inputProps={
-                                          Object {
-                                                        "disabled": undefined,
-                                                        "id": "lti_key_input",
-                                                        "name": "lti_key",
-                                                        "onChange": [Function],
-                                                        "type": "text",
-                                                        "value": undefined,
-                                                      }
-                            }
-                            labelText="LTI Key"
+                className="c-input"
+                inputProps={
+                  Object {
+                    "disabled": undefined,
+                    "id": "lti_key_input",
+                    "name": "lti_key",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": undefined,
+                  }
+                }
+                labelText="LTI Key"
               />
-</div>,
+            </div>,
             <div
               className="o-grid__item u-half"
->
+            >
               <Input
-                            className="c-input"
-                            inputProps={
-                                          Object {
-                                                        "id": "lti_secret_input",
-                                                        "name": "lti_secret",
-                                                        "onChange": [Function],
-                                                        "type": "text",
-                                                        "value": undefined,
-                                                      }
-                            }
-                            labelText="LTI Secret"
+                className="c-input"
+                inputProps={
+                  Object {
+                    "id": "lti_secret_input",
+                    "name": "lti_secret",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": undefined,
+                  }
+                }
+                labelText="LTI Secret"
               />
-</div>,
+            </div>,
             <div
               className="o-grid__item u-half"
->
+            >
               <Input
-                            className="c-input"
-                            helperText="Current Canvas Token: undefined"
-                            inputProps={
-                                          Object {
-                                                        "id": "canvas_token_input",
-                                                        "name": "canvas_token",
-                                                        "onChange": [Function],
-                                                        "placeholder": "",
-                                                        "type": "text",
-                                                        "value": "",
-                                                      }
-                            }
-                            labelText="Canvas Token"
+                className="c-input"
+                helperText="Current Canvas Token: undefined"
+                inputProps={
+                  Object {
+                    "id": "canvas_token_input",
+                    "name": "canvas_token",
+                    "onChange": [Function],
+                    "placeholder": "",
+                    "type": "text",
+                    "value": "",
+                  }
+                }
+                labelText="Canvas Token"
               />
-</div>,
+            </div>,
             <div
               className="o-grid__item u-full"
->
+            >
               <Input
-                            className="c-checkbox"
-                            helperText="indicates whether or not user name and email is stored during LTI launch"
-                            inputProps={
-                                          Object {
-                                                        "checked": undefined,
-                                                        "id": "anonymous_input",
-                                                        "name": "anonymous",
-                                                        "onChange": [Function],
-                                                        "type": "checkbox",
-                                                        "value": "true",
-                                                      }
-                            }
-                            labelText="Anonymous"
+                className="c-checkbox"
+                helperText="indicates whether or not user name and email is stored during LTI launch"
+                inputProps={
+                  Object {
+                    "checked": undefined,
+                    "id": "anonymous_input",
+                    "name": "anonymous",
+                    "onChange": [Function],
+                    "type": "checkbox",
+                    "value": "true",
+                  }
+                }
+                labelText="Anonymous"
               />
-</div>,
+            </div>,
             <div
               className="o-grid__item u-full"
->
+            >
               <Textarea
-                            className="c-input"
-                            labelText="Custom Application Instance Configuration"
-                            textareaProps={
-                                          Object {
-                                                        "id": "application_instance_config",
-                                                        "name": "config",
-                                                        "onChange": [Function],
-                                                        "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
-                                                        "rows": 3,
-                                                        "value": "{ \\"foo\\": \\"bar\\" }",
-                                                      }
-                            }
-                            warning={null}
+                className="c-input"
+                labelText="Custom Application Instance Configuration"
+                textareaProps={
+                  Object {
+                    "id": "application_instance_config",
+                    "name": "config",
+                    "onChange": [Function],
+                    "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                    "rows": 3,
+                    "value": "{ \\"foo\\": \\"bar\\" }",
+                  }
+                }
+                warning={null}
               />
-</div>,
+            </div>,
             <div
               className="o-grid__item u-full"
->
+            >
               <Textarea
-                            className="c-input"
-                            labelText="LTI Configuration"
-                            textareaProps={
-                                          Object {
-                                                        "id": "application_instance_lti_config",
-                                                        "name": "lti_config",
-                                                        "onChange": [Function],
-                                                        "rows": 8,
-                                                        "value": "",
-                                                      }
-                            }
-                            warning={null}
+                className="c-input"
+                labelText="LTI Configuration"
+                textareaProps={
+                  Object {
+                    "id": "application_instance_lti_config",
+                    "name": "lti_config",
+                    "onChange": [Function],
+                    "rows": 8,
+                    "value": "",
+                  }
+                }
+                warning={null}
               />
-</div>,
+            </div>,
           ],
           "className": "o-grid o-grid__modal-top",
         },
@@ -461,70 +461,70 @@ ShallowWrapper {
             "props": Object {
               "children": <div
                 className="c-input"
->
+              >
                 <span>
-                                Canvas Url
+                  Canvas Url
                 </span>
                 <Select
-                                arrowRenderer={[Function]}
-                                autosize={true}
-                                backspaceRemoves={true}
-                                backspaceToRemoveMessage="Press backspace to remove {label}"
-                                clearAllText="Clear all"
-                                clearRenderer={[Function]}
-                                clearValueText="Clear value"
-                                clearable={false}
-                                closeOnSelect={true}
-                                deleteRemoves={true}
-                                delimiter=","
-                                disabled={false}
-                                escapeClearsValue={true}
-                                filterOptions={[Function]}
-                                ignoreAccents={true}
-                                ignoreCase={true}
-                                inputProps={Object {}}
-                                isLoading={false}
-                                joinValues={false}
-                                labelKey="label"
-                                matchPos="any"
-                                matchProp="any"
-                                menuBuffer={0}
-                                menuRenderer={[Function]}
-                                multi={false}
-                                name="site_id"
-                                noResultsText="No results found"
-                                onBlurResetsInput={true}
-                                onChange={[Function]}
-                                onCloseResetsInput={true}
-                                onSelectResetsInput={true}
-                                openOnClick={true}
-                                optionComponent={[Function]}
-                                options={
-                                                Array [
-                                                                Object {
-                                                                  "label": <div>
-                                                                    Add New
-                                                </div>,
-                                                                  "onSelect": [Function],
-                                                                  "value": "new",
-                                                                },
-                                                              ]
-                                }
-                                pageSize={5}
-                                placeholder="Select a Canvas Domain"
-                                removeSelected={true}
-                                required={false}
-                                rtl={false}
-                                scrollMenuIntoView={true}
-                                searchable={false}
-                                simpleValue={false}
-                                tabSelectsValue={true}
-                                trimFilter={true}
-                                value="foo"
-                                valueComponent={[Function]}
-                                valueKey="value"
+                  arrowRenderer={[Function]}
+                  autosize={true}
+                  backspaceRemoves={true}
+                  backspaceToRemoveMessage="Press backspace to remove {label}"
+                  clearAllText="Clear all"
+                  clearRenderer={[Function]}
+                  clearValueText="Clear value"
+                  clearable={false}
+                  closeOnSelect={true}
+                  deleteRemoves={true}
+                  delimiter=","
+                  disabled={false}
+                  escapeClearsValue={true}
+                  filterOptions={[Function]}
+                  ignoreAccents={true}
+                  ignoreCase={true}
+                  inputProps={Object {}}
+                  isLoading={false}
+                  joinValues={false}
+                  labelKey="label"
+                  matchPos="any"
+                  matchProp="any"
+                  menuBuffer={0}
+                  menuRenderer={[Function]}
+                  multi={false}
+                  name="site_id"
+                  noResultsText="No results found"
+                  onBlurResetsInput={true}
+                  onChange={[Function]}
+                  onCloseResetsInput={true}
+                  onSelectResetsInput={true}
+                  openOnClick={true}
+                  optionComponent={[Function]}
+                  options={
+                    Array [
+                      Object {
+                        "label": <div>
+                          Add New
+                        </div>,
+                        "onSelect": [Function],
+                        "value": "new",
+                      },
+                    ]
+                  }
+                  pageSize={5}
+                  placeholder="Select a Canvas Domain"
+                  removeSelected={true}
+                  required={false}
+                  rtl={false}
+                  scrollMenuIntoView={true}
+                  searchable={false}
+                  simpleValue={false}
+                  tabSelectsValue={true}
+                  trimFilter={true}
+                  value="foo"
+                  valueComponent={[Function]}
+                  valueKey="value"
                 />
-</div>,
+              </div>,
               "className": "o-grid__item u-half",
             },
             "ref": null,
@@ -536,7 +536,7 @@ ShallowWrapper {
                 "children": Array [
                   <span>
                     Canvas Url
-</span>,
+                  </span>,
                   <Select
                     arrowRenderer={[Function]}
                     autosize={true}
@@ -572,15 +572,15 @@ ShallowWrapper {
                     openOnClick={true}
                     optionComponent={[Function]}
                     options={
-                                        Array [
-                                                            Object {
-                                                              "label": <div>
-                                                                Add New
-                                        </div>,
-                                                              "onSelect": [Function],
-                                                              "value": "new",
-                                                            },
-                                                          ]
+                      Array [
+                        Object {
+                          "label": <div>
+                            Add New
+                          </div>,
+                          "onSelect": [Function],
+                          "value": "new",
+                        },
+                      ]
                     }
                     pageSize={5}
                     placeholder="Select a Canvas Domain"
@@ -595,7 +595,7 @@ ShallowWrapper {
                     value="foo"
                     valueComponent={[Function]}
                     valueKey="value"
-/>,
+                  />,
                 ],
                 "className": "c-input",
               },
@@ -654,7 +654,7 @@ ShallowWrapper {
                       Object {
                         "label": <div>
                           Add New
-</div>,
+                        </div>,
                         "onSelect": [Function],
                         "value": "new",
                       },
@@ -690,16 +690,16 @@ ShallowWrapper {
               "children": <Input
                 className="c-input"
                 inputProps={
-                                Object {
-                                                "id": "domain_input",
-                                                "name": "domain",
-                                                "onChange": [Function],
-                                                "type": "text",
-                                                "value": undefined,
-                                              }
+                  Object {
+                    "id": "domain_input",
+                    "name": "domain",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": undefined,
+                  }
                 }
                 labelText="LTI Tool Domain"
-/>,
+              />,
               "className": "o-grid__item u-half",
             },
             "ref": null,
@@ -732,17 +732,17 @@ ShallowWrapper {
               "children": <Input
                 className="c-input"
                 inputProps={
-                                Object {
-                                                "disabled": undefined,
-                                                "id": "lti_key_input",
-                                                "name": "lti_key",
-                                                "onChange": [Function],
-                                                "type": "text",
-                                                "value": undefined,
-                                              }
+                  Object {
+                    "disabled": undefined,
+                    "id": "lti_key_input",
+                    "name": "lti_key",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": undefined,
+                  }
                 }
                 labelText="LTI Key"
-/>,
+              />,
               "className": "o-grid__item u-half",
             },
             "ref": null,
@@ -776,16 +776,16 @@ ShallowWrapper {
               "children": <Input
                 className="c-input"
                 inputProps={
-                                Object {
-                                                "id": "lti_secret_input",
-                                                "name": "lti_secret",
-                                                "onChange": [Function],
-                                                "type": "text",
-                                                "value": undefined,
-                                              }
+                  Object {
+                    "id": "lti_secret_input",
+                    "name": "lti_secret",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": undefined,
+                  }
                 }
                 labelText="LTI Secret"
-/>,
+              />,
               "className": "o-grid__item u-half",
             },
             "ref": null,
@@ -819,17 +819,17 @@ ShallowWrapper {
                 className="c-input"
                 helperText="Current Canvas Token: undefined"
                 inputProps={
-                                Object {
-                                                "id": "canvas_token_input",
-                                                "name": "canvas_token",
-                                                "onChange": [Function],
-                                                "placeholder": "",
-                                                "type": "text",
-                                                "value": "",
-                                              }
+                  Object {
+                    "id": "canvas_token_input",
+                    "name": "canvas_token",
+                    "onChange": [Function],
+                    "placeholder": "",
+                    "type": "text",
+                    "value": "",
+                  }
                 }
                 labelText="Canvas Token"
-/>,
+              />,
               "className": "o-grid__item u-half",
             },
             "ref": null,
@@ -865,17 +865,17 @@ ShallowWrapper {
                 className="c-checkbox"
                 helperText="indicates whether or not user name and email is stored during LTI launch"
                 inputProps={
-                                Object {
-                                                "checked": undefined,
-                                                "id": "anonymous_input",
-                                                "name": "anonymous",
-                                                "onChange": [Function],
-                                                "type": "checkbox",
-                                                "value": "true",
-                                              }
+                  Object {
+                    "checked": undefined,
+                    "id": "anonymous_input",
+                    "name": "anonymous",
+                    "onChange": [Function],
+                    "type": "checkbox",
+                    "value": "true",
+                  }
                 }
                 labelText="Anonymous"
-/>,
+              />,
               "className": "o-grid__item u-full",
             },
             "ref": null,
@@ -911,17 +911,17 @@ ShallowWrapper {
                 className="c-input"
                 labelText="Custom Application Instance Configuration"
                 textareaProps={
-                                Object {
-                                                "id": "application_instance_config",
-                                                "name": "config",
-                                                "onChange": [Function],
-                                                "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
-                                                "rows": 3,
-                                                "value": "{ \\"foo\\": \\"bar\\" }",
-                                              }
+                  Object {
+                    "id": "application_instance_config",
+                    "name": "config",
+                    "onChange": [Function],
+                    "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                    "rows": 3,
+                    "value": "{ \\"foo\\": \\"bar\\" }",
+                  }
                 }
                 warning={null}
-/>,
+              />,
               "className": "o-grid__item u-full",
             },
             "ref": null,
@@ -957,16 +957,16 @@ ShallowWrapper {
                 className="c-input"
                 labelText="LTI Configuration"
                 textareaProps={
-                                Object {
-                                                "id": "application_instance_lti_config",
-                                                "name": "lti_config",
-                                                "onChange": [Function],
-                                                "rows": 8,
-                                                "value": "",
-                                              }
+                  Object {
+                    "id": "application_instance_lti_config",
+                    "name": "lti_config",
+                    "onChange": [Function],
+                    "rows": 8,
+                    "value": "",
+                  }
                 }
                 warning={null}
-/>,
+              />,
               "className": "o-grid__item u-full",
             },
             "ref": null,
@@ -1035,219 +1035,219 @@ ShallowWrapper {
         "children": Array [
           <div
             className="o-grid o-grid__modal-top"
->
+          >
             <div
-                        className="o-grid__item u-half"
+              className="o-grid__item u-half"
             >
-                        <div
-                                    className="c-input"
-                        >
-                                    <span>
-                                                Canvas Url
-                                    </span>
-                                    <Select
-                                                arrowRenderer={[Function]}
-                                                autosize={true}
-                                                backspaceRemoves={true}
-                                                backspaceToRemoveMessage="Press backspace to remove {label}"
-                                                clearAllText="Clear all"
-                                                clearRenderer={[Function]}
-                                                clearValueText="Clear value"
-                                                clearable={false}
-                                                closeOnSelect={true}
-                                                deleteRemoves={true}
-                                                delimiter=","
-                                                disabled={false}
-                                                escapeClearsValue={true}
-                                                filterOptions={[Function]}
-                                                ignoreAccents={true}
-                                                ignoreCase={true}
-                                                inputProps={Object {}}
-                                                isLoading={false}
-                                                joinValues={false}
-                                                labelKey="label"
-                                                matchPos="any"
-                                                matchProp="any"
-                                                menuBuffer={0}
-                                                menuRenderer={[Function]}
-                                                multi={false}
-                                                name="site_id"
-                                                noResultsText="No results found"
-                                                onBlurResetsInput={true}
-                                                onChange={[Function]}
-                                                onCloseResetsInput={true}
-                                                onSelectResetsInput={true}
-                                                openOnClick={true}
-                                                optionComponent={[Function]}
-                                                options={
-                                                            Array [
-                                                                        Object {
-                                                                          "label": <div>
-                                                                            Add New
-                                                            </div>,
-                                                                          "onSelect": [Function],
-                                                                          "value": "new",
-                                                                        },
-                                                                      ]
-                                                }
-                                                pageSize={5}
-                                                placeholder="Select a Canvas Domain"
-                                                removeSelected={true}
-                                                required={false}
-                                                rtl={false}
-                                                scrollMenuIntoView={true}
-                                                searchable={false}
-                                                simpleValue={false}
-                                                tabSelectsValue={true}
-                                                trimFilter={true}
-                                                value="foo"
-                                                valueComponent={[Function]}
-                                                valueKey="value"
-                                    />
-                        </div>
+              <div
+                className="c-input"
+              >
+                <span>
+                  Canvas Url
+                </span>
+                <Select
+                  arrowRenderer={[Function]}
+                  autosize={true}
+                  backspaceRemoves={true}
+                  backspaceToRemoveMessage="Press backspace to remove {label}"
+                  clearAllText="Clear all"
+                  clearRenderer={[Function]}
+                  clearValueText="Clear value"
+                  clearable={false}
+                  closeOnSelect={true}
+                  deleteRemoves={true}
+                  delimiter=","
+                  disabled={false}
+                  escapeClearsValue={true}
+                  filterOptions={[Function]}
+                  ignoreAccents={true}
+                  ignoreCase={true}
+                  inputProps={Object {}}
+                  isLoading={false}
+                  joinValues={false}
+                  labelKey="label"
+                  matchPos="any"
+                  matchProp="any"
+                  menuBuffer={0}
+                  menuRenderer={[Function]}
+                  multi={false}
+                  name="site_id"
+                  noResultsText="No results found"
+                  onBlurResetsInput={true}
+                  onChange={[Function]}
+                  onCloseResetsInput={true}
+                  onSelectResetsInput={true}
+                  openOnClick={true}
+                  optionComponent={[Function]}
+                  options={
+                    Array [
+                      Object {
+                        "label": <div>
+                          Add New
+                        </div>,
+                        "onSelect": [Function],
+                        "value": "new",
+                      },
+                    ]
+                  }
+                  pageSize={5}
+                  placeholder="Select a Canvas Domain"
+                  removeSelected={true}
+                  required={false}
+                  rtl={false}
+                  scrollMenuIntoView={true}
+                  searchable={false}
+                  simpleValue={false}
+                  tabSelectsValue={true}
+                  trimFilter={true}
+                  value="foo"
+                  valueComponent={[Function]}
+                  valueKey="value"
+                />
+              </div>
             </div>
             <div
-                        className="o-grid__item u-half"
+              className="o-grid__item u-half"
             >
-                        <Input
-                                    className="c-input"
-                                    inputProps={
-                                                Object {
-                                                            "id": "domain_input",
-                                                            "name": "domain",
-                                                            "onChange": [Function],
-                                                            "type": "text",
-                                                            "value": undefined,
-                                                          }
-                                    }
-                                    labelText="LTI Tool Domain"
-                        />
+              <Input
+                className="c-input"
+                inputProps={
+                  Object {
+                    "id": "domain_input",
+                    "name": "domain",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": undefined,
+                  }
+                }
+                labelText="LTI Tool Domain"
+              />
             </div>
             <div
-                        className="o-grid__item u-half"
+              className="o-grid__item u-half"
             >
-                        <Input
-                                    className="c-input"
-                                    inputProps={
-                                                Object {
-                                                            "disabled": undefined,
-                                                            "id": "lti_key_input",
-                                                            "name": "lti_key",
-                                                            "onChange": [Function],
-                                                            "type": "text",
-                                                            "value": undefined,
-                                                          }
-                                    }
-                                    labelText="LTI Key"
-                        />
+              <Input
+                className="c-input"
+                inputProps={
+                  Object {
+                    "disabled": undefined,
+                    "id": "lti_key_input",
+                    "name": "lti_key",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": undefined,
+                  }
+                }
+                labelText="LTI Key"
+              />
             </div>
             <div
-                        className="o-grid__item u-half"
+              className="o-grid__item u-half"
             >
-                        <Input
-                                    className="c-input"
-                                    inputProps={
-                                                Object {
-                                                            "id": "lti_secret_input",
-                                                            "name": "lti_secret",
-                                                            "onChange": [Function],
-                                                            "type": "text",
-                                                            "value": undefined,
-                                                          }
-                                    }
-                                    labelText="LTI Secret"
-                        />
+              <Input
+                className="c-input"
+                inputProps={
+                  Object {
+                    "id": "lti_secret_input",
+                    "name": "lti_secret",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": undefined,
+                  }
+                }
+                labelText="LTI Secret"
+              />
             </div>
             <div
-                        className="o-grid__item u-half"
+              className="o-grid__item u-half"
             >
-                        <Input
-                                    className="c-input"
-                                    helperText="Current Canvas Token: undefined"
-                                    inputProps={
-                                                Object {
-                                                            "id": "canvas_token_input",
-                                                            "name": "canvas_token",
-                                                            "onChange": [Function],
-                                                            "placeholder": "",
-                                                            "type": "text",
-                                                            "value": "",
-                                                          }
-                                    }
-                                    labelText="Canvas Token"
-                        />
+              <Input
+                className="c-input"
+                helperText="Current Canvas Token: undefined"
+                inputProps={
+                  Object {
+                    "id": "canvas_token_input",
+                    "name": "canvas_token",
+                    "onChange": [Function],
+                    "placeholder": "",
+                    "type": "text",
+                    "value": "",
+                  }
+                }
+                labelText="Canvas Token"
+              />
             </div>
             <div
-                        className="o-grid__item u-full"
+              className="o-grid__item u-full"
             >
-                        <Input
-                                    className="c-checkbox"
-                                    helperText="indicates whether or not user name and email is stored during LTI launch"
-                                    inputProps={
-                                                Object {
-                                                            "checked": undefined,
-                                                            "id": "anonymous_input",
-                                                            "name": "anonymous",
-                                                            "onChange": [Function],
-                                                            "type": "checkbox",
-                                                            "value": "true",
-                                                          }
-                                    }
-                                    labelText="Anonymous"
-                        />
+              <Input
+                className="c-checkbox"
+                helperText="indicates whether or not user name and email is stored during LTI launch"
+                inputProps={
+                  Object {
+                    "checked": undefined,
+                    "id": "anonymous_input",
+                    "name": "anonymous",
+                    "onChange": [Function],
+                    "type": "checkbox",
+                    "value": "true",
+                  }
+                }
+                labelText="Anonymous"
+              />
             </div>
             <div
-                        className="o-grid__item u-full"
+              className="o-grid__item u-full"
             >
-                        <Textarea
-                                    className="c-input"
-                                    labelText="Custom Application Instance Configuration"
-                                    textareaProps={
-                                                Object {
-                                                            "id": "application_instance_config",
-                                                            "name": "config",
-                                                            "onChange": [Function],
-                                                            "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
-                                                            "rows": 3,
-                                                            "value": "{ \\"foo\\": \\"bar\\" }",
-                                                          }
-                                    }
-                                    warning={null}
-                        />
+              <Textarea
+                className="c-input"
+                labelText="Custom Application Instance Configuration"
+                textareaProps={
+                  Object {
+                    "id": "application_instance_config",
+                    "name": "config",
+                    "onChange": [Function],
+                    "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                    "rows": 3,
+                    "value": "{ \\"foo\\": \\"bar\\" }",
+                  }
+                }
+                warning={null}
+              />
             </div>
             <div
-                        className="o-grid__item u-full"
+              className="o-grid__item u-full"
             >
-                        <Textarea
-                                    className="c-input"
-                                    labelText="LTI Configuration"
-                                    textareaProps={
-                                                Object {
-                                                            "id": "application_instance_lti_config",
-                                                            "name": "lti_config",
-                                                            "onChange": [Function],
-                                                            "rows": 8,
-                                                            "value": "",
-                                                          }
-                                    }
-                                    warning={null}
-                        />
+              <Textarea
+                className="c-input"
+                labelText="LTI Configuration"
+                textareaProps={
+                  Object {
+                    "id": "application_instance_lti_config",
+                    "name": "lti_config",
+                    "onChange": [Function],
+                    "rows": 8,
+                    "value": "",
+                  }
+                }
+                warning={null}
+              />
             </div>
-</div>,
+          </div>,
           <button
             className="c-btn c-btn--yellow"
             onClick={[Function]}
             type="button"
->
+          >
             Save
-</button>,
+          </button>,
           <button
             className="c-btn c-btn--gray--large u-m-right"
             onClick={[Function]}
             type="button"
->
+          >
             Cancel
-</button>,
+          </button>,
         ],
       },
       "ref": null,
@@ -1260,201 +1260,201 @@ ShallowWrapper {
             "children": Array [
               <div
                 className="o-grid__item u-half"
->
+              >
                 <div
-                                className="c-input"
+                  className="c-input"
                 >
-                                <span>
-                                                Canvas Url
-                                </span>
-                                <Select
-                                                arrowRenderer={[Function]}
-                                                autosize={true}
-                                                backspaceRemoves={true}
-                                                backspaceToRemoveMessage="Press backspace to remove {label}"
-                                                clearAllText="Clear all"
-                                                clearRenderer={[Function]}
-                                                clearValueText="Clear value"
-                                                clearable={false}
-                                                closeOnSelect={true}
-                                                deleteRemoves={true}
-                                                delimiter=","
-                                                disabled={false}
-                                                escapeClearsValue={true}
-                                                filterOptions={[Function]}
-                                                ignoreAccents={true}
-                                                ignoreCase={true}
-                                                inputProps={Object {}}
-                                                isLoading={false}
-                                                joinValues={false}
-                                                labelKey="label"
-                                                matchPos="any"
-                                                matchProp="any"
-                                                menuBuffer={0}
-                                                menuRenderer={[Function]}
-                                                multi={false}
-                                                name="site_id"
-                                                noResultsText="No results found"
-                                                onBlurResetsInput={true}
-                                                onChange={[Function]}
-                                                onCloseResetsInput={true}
-                                                onSelectResetsInput={true}
-                                                openOnClick={true}
-                                                optionComponent={[Function]}
-                                                options={
-                                                                Array [
-                                                                                Object {
-                                                                                  "label": <div>
-                                                                                    Add New
-                                                                </div>,
-                                                                                  "onSelect": [Function],
-                                                                                  "value": "new",
-                                                                                },
-                                                                              ]
-                                                }
-                                                pageSize={5}
-                                                placeholder="Select a Canvas Domain"
-                                                removeSelected={true}
-                                                required={false}
-                                                rtl={false}
-                                                scrollMenuIntoView={true}
-                                                searchable={false}
-                                                simpleValue={false}
-                                                tabSelectsValue={true}
-                                                trimFilter={true}
-                                                value="foo"
-                                                valueComponent={[Function]}
-                                                valueKey="value"
-                                />
+                  <span>
+                    Canvas Url
+                  </span>
+                  <Select
+                    arrowRenderer={[Function]}
+                    autosize={true}
+                    backspaceRemoves={true}
+                    backspaceToRemoveMessage="Press backspace to remove {label}"
+                    clearAllText="Clear all"
+                    clearRenderer={[Function]}
+                    clearValueText="Clear value"
+                    clearable={false}
+                    closeOnSelect={true}
+                    deleteRemoves={true}
+                    delimiter=","
+                    disabled={false}
+                    escapeClearsValue={true}
+                    filterOptions={[Function]}
+                    ignoreAccents={true}
+                    ignoreCase={true}
+                    inputProps={Object {}}
+                    isLoading={false}
+                    joinValues={false}
+                    labelKey="label"
+                    matchPos="any"
+                    matchProp="any"
+                    menuBuffer={0}
+                    menuRenderer={[Function]}
+                    multi={false}
+                    name="site_id"
+                    noResultsText="No results found"
+                    onBlurResetsInput={true}
+                    onChange={[Function]}
+                    onCloseResetsInput={true}
+                    onSelectResetsInput={true}
+                    openOnClick={true}
+                    optionComponent={[Function]}
+                    options={
+                      Array [
+                        Object {
+                          "label": <div>
+                            Add New
+                          </div>,
+                          "onSelect": [Function],
+                          "value": "new",
+                        },
+                      ]
+                    }
+                    pageSize={5}
+                    placeholder="Select a Canvas Domain"
+                    removeSelected={true}
+                    required={false}
+                    rtl={false}
+                    scrollMenuIntoView={true}
+                    searchable={false}
+                    simpleValue={false}
+                    tabSelectsValue={true}
+                    trimFilter={true}
+                    value="foo"
+                    valueComponent={[Function]}
+                    valueKey="value"
+                  />
                 </div>
-</div>,
+              </div>,
               <div
                 className="o-grid__item u-half"
->
+              >
                 <Input
-                                className="c-input"
-                                inputProps={
-                                                Object {
-                                                                "id": "domain_input",
-                                                                "name": "domain",
-                                                                "onChange": [Function],
-                                                                "type": "text",
-                                                                "value": undefined,
-                                                              }
-                                }
-                                labelText="LTI Tool Domain"
+                  className="c-input"
+                  inputProps={
+                    Object {
+                      "id": "domain_input",
+                      "name": "domain",
+                      "onChange": [Function],
+                      "type": "text",
+                      "value": undefined,
+                    }
+                  }
+                  labelText="LTI Tool Domain"
                 />
-</div>,
+              </div>,
               <div
                 className="o-grid__item u-half"
->
+              >
                 <Input
-                                className="c-input"
-                                inputProps={
-                                                Object {
-                                                                "disabled": undefined,
-                                                                "id": "lti_key_input",
-                                                                "name": "lti_key",
-                                                                "onChange": [Function],
-                                                                "type": "text",
-                                                                "value": undefined,
-                                                              }
-                                }
-                                labelText="LTI Key"
+                  className="c-input"
+                  inputProps={
+                    Object {
+                      "disabled": undefined,
+                      "id": "lti_key_input",
+                      "name": "lti_key",
+                      "onChange": [Function],
+                      "type": "text",
+                      "value": undefined,
+                    }
+                  }
+                  labelText="LTI Key"
                 />
-</div>,
+              </div>,
               <div
                 className="o-grid__item u-half"
->
+              >
                 <Input
-                                className="c-input"
-                                inputProps={
-                                                Object {
-                                                                "id": "lti_secret_input",
-                                                                "name": "lti_secret",
-                                                                "onChange": [Function],
-                                                                "type": "text",
-                                                                "value": undefined,
-                                                              }
-                                }
-                                labelText="LTI Secret"
+                  className="c-input"
+                  inputProps={
+                    Object {
+                      "id": "lti_secret_input",
+                      "name": "lti_secret",
+                      "onChange": [Function],
+                      "type": "text",
+                      "value": undefined,
+                    }
+                  }
+                  labelText="LTI Secret"
                 />
-</div>,
+              </div>,
               <div
                 className="o-grid__item u-half"
->
+              >
                 <Input
-                                className="c-input"
-                                helperText="Current Canvas Token: undefined"
-                                inputProps={
-                                                Object {
-                                                                "id": "canvas_token_input",
-                                                                "name": "canvas_token",
-                                                                "onChange": [Function],
-                                                                "placeholder": "",
-                                                                "type": "text",
-                                                                "value": "",
-                                                              }
-                                }
-                                labelText="Canvas Token"
+                  className="c-input"
+                  helperText="Current Canvas Token: undefined"
+                  inputProps={
+                    Object {
+                      "id": "canvas_token_input",
+                      "name": "canvas_token",
+                      "onChange": [Function],
+                      "placeholder": "",
+                      "type": "text",
+                      "value": "",
+                    }
+                  }
+                  labelText="Canvas Token"
                 />
-</div>,
+              </div>,
               <div
                 className="o-grid__item u-full"
->
+              >
                 <Input
-                                className="c-checkbox"
-                                helperText="indicates whether or not user name and email is stored during LTI launch"
-                                inputProps={
-                                                Object {
-                                                                "checked": undefined,
-                                                                "id": "anonymous_input",
-                                                                "name": "anonymous",
-                                                                "onChange": [Function],
-                                                                "type": "checkbox",
-                                                                "value": "true",
-                                                              }
-                                }
-                                labelText="Anonymous"
+                  className="c-checkbox"
+                  helperText="indicates whether or not user name and email is stored during LTI launch"
+                  inputProps={
+                    Object {
+                      "checked": undefined,
+                      "id": "anonymous_input",
+                      "name": "anonymous",
+                      "onChange": [Function],
+                      "type": "checkbox",
+                      "value": "true",
+                    }
+                  }
+                  labelText="Anonymous"
                 />
-</div>,
+              </div>,
               <div
                 className="o-grid__item u-full"
->
+              >
                 <Textarea
-                                className="c-input"
-                                labelText="Custom Application Instance Configuration"
-                                textareaProps={
-                                                Object {
-                                                                "id": "application_instance_config",
-                                                                "name": "config",
-                                                                "onChange": [Function],
-                                                                "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
-                                                                "rows": 3,
-                                                                "value": "{ \\"foo\\": \\"bar\\" }",
-                                                              }
-                                }
-                                warning={null}
+                  className="c-input"
+                  labelText="Custom Application Instance Configuration"
+                  textareaProps={
+                    Object {
+                      "id": "application_instance_config",
+                      "name": "config",
+                      "onChange": [Function],
+                      "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                      "rows": 3,
+                      "value": "{ \\"foo\\": \\"bar\\" }",
+                    }
+                  }
+                  warning={null}
                 />
-</div>,
+              </div>,
               <div
                 className="o-grid__item u-full"
->
+              >
                 <Textarea
-                                className="c-input"
-                                labelText="LTI Configuration"
-                                textareaProps={
-                                                Object {
-                                                                "id": "application_instance_lti_config",
-                                                                "name": "lti_config",
-                                                                "onChange": [Function],
-                                                                "rows": 8,
-                                                                "value": "",
-                                                              }
-                                }
-                                warning={null}
+                  className="c-input"
+                  labelText="LTI Configuration"
+                  textareaProps={
+                    Object {
+                      "id": "application_instance_lti_config",
+                      "name": "lti_config",
+                      "onChange": [Function],
+                      "rows": 8,
+                      "value": "",
+                    }
+                  }
+                  warning={null}
                 />
-</div>,
+              </div>,
             ],
             "className": "o-grid o-grid__modal-top",
           },
@@ -1467,70 +1467,70 @@ ShallowWrapper {
               "props": Object {
                 "children": <div
                   className="c-input"
->
+                >
                   <span>
-                                    Canvas Url
+                    Canvas Url
                   </span>
                   <Select
-                                    arrowRenderer={[Function]}
-                                    autosize={true}
-                                    backspaceRemoves={true}
-                                    backspaceToRemoveMessage="Press backspace to remove {label}"
-                                    clearAllText="Clear all"
-                                    clearRenderer={[Function]}
-                                    clearValueText="Clear value"
-                                    clearable={false}
-                                    closeOnSelect={true}
-                                    deleteRemoves={true}
-                                    delimiter=","
-                                    disabled={false}
-                                    escapeClearsValue={true}
-                                    filterOptions={[Function]}
-                                    ignoreAccents={true}
-                                    ignoreCase={true}
-                                    inputProps={Object {}}
-                                    isLoading={false}
-                                    joinValues={false}
-                                    labelKey="label"
-                                    matchPos="any"
-                                    matchProp="any"
-                                    menuBuffer={0}
-                                    menuRenderer={[Function]}
-                                    multi={false}
-                                    name="site_id"
-                                    noResultsText="No results found"
-                                    onBlurResetsInput={true}
-                                    onChange={[Function]}
-                                    onCloseResetsInput={true}
-                                    onSelectResetsInput={true}
-                                    openOnClick={true}
-                                    optionComponent={[Function]}
-                                    options={
-                                                      Array [
-                                                                        Object {
-                                                                          "label": <div>
-                                                                            Add New
-                                                      </div>,
-                                                                          "onSelect": [Function],
-                                                                          "value": "new",
-                                                                        },
-                                                                      ]
-                                    }
-                                    pageSize={5}
-                                    placeholder="Select a Canvas Domain"
-                                    removeSelected={true}
-                                    required={false}
-                                    rtl={false}
-                                    scrollMenuIntoView={true}
-                                    searchable={false}
-                                    simpleValue={false}
-                                    tabSelectsValue={true}
-                                    trimFilter={true}
-                                    value="foo"
-                                    valueComponent={[Function]}
-                                    valueKey="value"
+                    arrowRenderer={[Function]}
+                    autosize={true}
+                    backspaceRemoves={true}
+                    backspaceToRemoveMessage="Press backspace to remove {label}"
+                    clearAllText="Clear all"
+                    clearRenderer={[Function]}
+                    clearValueText="Clear value"
+                    clearable={false}
+                    closeOnSelect={true}
+                    deleteRemoves={true}
+                    delimiter=","
+                    disabled={false}
+                    escapeClearsValue={true}
+                    filterOptions={[Function]}
+                    ignoreAccents={true}
+                    ignoreCase={true}
+                    inputProps={Object {}}
+                    isLoading={false}
+                    joinValues={false}
+                    labelKey="label"
+                    matchPos="any"
+                    matchProp="any"
+                    menuBuffer={0}
+                    menuRenderer={[Function]}
+                    multi={false}
+                    name="site_id"
+                    noResultsText="No results found"
+                    onBlurResetsInput={true}
+                    onChange={[Function]}
+                    onCloseResetsInput={true}
+                    onSelectResetsInput={true}
+                    openOnClick={true}
+                    optionComponent={[Function]}
+                    options={
+                      Array [
+                        Object {
+                          "label": <div>
+                            Add New
+                          </div>,
+                          "onSelect": [Function],
+                          "value": "new",
+                        },
+                      ]
+                    }
+                    pageSize={5}
+                    placeholder="Select a Canvas Domain"
+                    removeSelected={true}
+                    required={false}
+                    rtl={false}
+                    scrollMenuIntoView={true}
+                    searchable={false}
+                    simpleValue={false}
+                    tabSelectsValue={true}
+                    trimFilter={true}
+                    value="foo"
+                    valueComponent={[Function]}
+                    valueKey="value"
                   />
-</div>,
+                </div>,
                 "className": "o-grid__item u-half",
               },
               "ref": null,
@@ -1542,7 +1542,7 @@ ShallowWrapper {
                   "children": Array [
                     <span>
                       Canvas Url
-</span>,
+                    </span>,
                     <Select
                       arrowRenderer={[Function]}
                       autosize={true}
@@ -1578,15 +1578,15 @@ ShallowWrapper {
                       openOnClick={true}
                       optionComponent={[Function]}
                       options={
-                                            Array [
-                                                                  Object {
-                                                                    "label": <div>
-                                                                      Add New
-                                            </div>,
-                                                                    "onSelect": [Function],
-                                                                    "value": "new",
-                                                                  },
-                                                                ]
+                        Array [
+                          Object {
+                            "label": <div>
+                              Add New
+                            </div>,
+                            "onSelect": [Function],
+                            "value": "new",
+                          },
+                        ]
                       }
                       pageSize={5}
                       placeholder="Select a Canvas Domain"
@@ -1601,7 +1601,7 @@ ShallowWrapper {
                       value="foo"
                       valueComponent={[Function]}
                       valueKey="value"
-/>,
+                    />,
                   ],
                   "className": "c-input",
                 },
@@ -1660,7 +1660,7 @@ ShallowWrapper {
                         Object {
                           "label": <div>
                             Add New
-</div>,
+                          </div>,
                           "onSelect": [Function],
                           "value": "new",
                         },
@@ -1696,16 +1696,16 @@ ShallowWrapper {
                 "children": <Input
                   className="c-input"
                   inputProps={
-                                    Object {
-                                                      "id": "domain_input",
-                                                      "name": "domain",
-                                                      "onChange": [Function],
-                                                      "type": "text",
-                                                      "value": undefined,
-                                                    }
+                    Object {
+                      "id": "domain_input",
+                      "name": "domain",
+                      "onChange": [Function],
+                      "type": "text",
+                      "value": undefined,
+                    }
                   }
                   labelText="LTI Tool Domain"
-/>,
+                />,
                 "className": "o-grid__item u-half",
               },
               "ref": null,
@@ -1738,17 +1738,17 @@ ShallowWrapper {
                 "children": <Input
                   className="c-input"
                   inputProps={
-                                    Object {
-                                                      "disabled": undefined,
-                                                      "id": "lti_key_input",
-                                                      "name": "lti_key",
-                                                      "onChange": [Function],
-                                                      "type": "text",
-                                                      "value": undefined,
-                                                    }
+                    Object {
+                      "disabled": undefined,
+                      "id": "lti_key_input",
+                      "name": "lti_key",
+                      "onChange": [Function],
+                      "type": "text",
+                      "value": undefined,
+                    }
                   }
                   labelText="LTI Key"
-/>,
+                />,
                 "className": "o-grid__item u-half",
               },
               "ref": null,
@@ -1782,16 +1782,16 @@ ShallowWrapper {
                 "children": <Input
                   className="c-input"
                   inputProps={
-                                    Object {
-                                                      "id": "lti_secret_input",
-                                                      "name": "lti_secret",
-                                                      "onChange": [Function],
-                                                      "type": "text",
-                                                      "value": undefined,
-                                                    }
+                    Object {
+                      "id": "lti_secret_input",
+                      "name": "lti_secret",
+                      "onChange": [Function],
+                      "type": "text",
+                      "value": undefined,
+                    }
                   }
                   labelText="LTI Secret"
-/>,
+                />,
                 "className": "o-grid__item u-half",
               },
               "ref": null,
@@ -1825,17 +1825,17 @@ ShallowWrapper {
                   className="c-input"
                   helperText="Current Canvas Token: undefined"
                   inputProps={
-                                    Object {
-                                                      "id": "canvas_token_input",
-                                                      "name": "canvas_token",
-                                                      "onChange": [Function],
-                                                      "placeholder": "",
-                                                      "type": "text",
-                                                      "value": "",
-                                                    }
+                    Object {
+                      "id": "canvas_token_input",
+                      "name": "canvas_token",
+                      "onChange": [Function],
+                      "placeholder": "",
+                      "type": "text",
+                      "value": "",
+                    }
                   }
                   labelText="Canvas Token"
-/>,
+                />,
                 "className": "o-grid__item u-half",
               },
               "ref": null,
@@ -1871,17 +1871,17 @@ ShallowWrapper {
                   className="c-checkbox"
                   helperText="indicates whether or not user name and email is stored during LTI launch"
                   inputProps={
-                                    Object {
-                                                      "checked": undefined,
-                                                      "id": "anonymous_input",
-                                                      "name": "anonymous",
-                                                      "onChange": [Function],
-                                                      "type": "checkbox",
-                                                      "value": "true",
-                                                    }
+                    Object {
+                      "checked": undefined,
+                      "id": "anonymous_input",
+                      "name": "anonymous",
+                      "onChange": [Function],
+                      "type": "checkbox",
+                      "value": "true",
+                    }
                   }
                   labelText="Anonymous"
-/>,
+                />,
                 "className": "o-grid__item u-full",
               },
               "ref": null,
@@ -1917,17 +1917,17 @@ ShallowWrapper {
                   className="c-input"
                   labelText="Custom Application Instance Configuration"
                   textareaProps={
-                                    Object {
-                                                      "id": "application_instance_config",
-                                                      "name": "config",
-                                                      "onChange": [Function],
-                                                      "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
-                                                      "rows": 3,
-                                                      "value": "{ \\"foo\\": \\"bar\\" }",
-                                                    }
+                    Object {
+                      "id": "application_instance_config",
+                      "name": "config",
+                      "onChange": [Function],
+                      "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+                      "rows": 3,
+                      "value": "{ \\"foo\\": \\"bar\\" }",
+                    }
                   }
                   warning={null}
-/>,
+                />,
                 "className": "o-grid__item u-full",
               },
               "ref": null,
@@ -1963,16 +1963,16 @@ ShallowWrapper {
                   className="c-input"
                   labelText="LTI Configuration"
                   textareaProps={
-                                    Object {
-                                                      "id": "application_instance_lti_config",
-                                                      "name": "lti_config",
-                                                      "onChange": [Function],
-                                                      "rows": 8,
-                                                      "value": "",
-                                                    }
+                    Object {
+                      "id": "application_instance_lti_config",
+                      "name": "lti_config",
+                      "onChange": [Function],
+                      "rows": 8,
+                      "value": "",
+                    }
                   }
                   warning={null}
-/>,
+                />,
                 "className": "o-grid__item u-full",
               },
               "ref": null,

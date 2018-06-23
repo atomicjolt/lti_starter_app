@@ -6,18 +6,18 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Index
     sites={
-        Object {
-            "1": Object {
-              "id": 1,
-              "url": "bfcoder.com",
-            },
-            "2": Object {
-              "id": 2,
-              "url": "atomicjolt.com",
-            },
-          }
+      Object {
+        "1": Object {
+          "id": 1,
+          "url": "bfcoder.com",
+        },
+        "2": Object {
+          "id": 2,
+          "url": "atomicjolt.com",
+        },
+      }
     }
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -34,30 +34,30 @@ ShallowWrapper {
         <Connect(Heading) />,
         <div
           className="o-contain o-contain--full"
->
+        >
           <Connect(SiteModal)
-                    closeModal={[Function]}
-                    isOpen={false}
+            closeModal={[Function]}
+            isOpen={false}
           />
           <Header
-                    newSite={[Function]}
-                    openSettings={[Function]}
+            newSite={[Function]}
+            openSettings={[Function]}
           />
           <List
-                    sites={
-                              Object {
-                                        "1": Object {
-                                          "id": 1,
-                                          "url": "bfcoder.com",
-                                        },
-                                        "2": Object {
-                                          "id": 2,
-                                          "url": "atomicjolt.com",
-                                        },
-                                      }
-                    }
+            sites={
+              Object {
+                "1": Object {
+                  "id": 1,
+                  "url": "bfcoder.com",
+                },
+                "2": Object {
+                  "id": 2,
+                  "url": "atomicjolt.com",
+                },
+              }
+            }
           />
-</div>,
+        </div>,
       ],
     },
     "ref": null,
@@ -80,25 +80,25 @@ ShallowWrapper {
             <Connect(SiteModal)
               closeModal={[Function]}
               isOpen={false}
-/>,
+            />,
             <Header
               newSite={[Function]}
               openSettings={[Function]}
-/>,
+            />,
             <List
               sites={
-                            Object {
-                                          "1": Object {
-                                            "id": 1,
-                                            "url": "bfcoder.com",
-                                          },
-                                          "2": Object {
-                                            "id": 2,
-                                            "url": "atomicjolt.com",
-                                          },
-                                        }
+                Object {
+                  "1": Object {
+                    "id": 1,
+                    "url": "bfcoder.com",
+                  },
+                  "2": Object {
+                    "id": 2,
+                    "url": "atomicjolt.com",
+                  },
+                }
               }
-/>,
+            />,
           ],
           "className": "o-contain o-contain--full",
         },
@@ -164,30 +164,30 @@ ShallowWrapper {
           <Connect(Heading) />,
           <div
             className="o-contain o-contain--full"
->
+          >
             <Connect(SiteModal)
-                        closeModal={[Function]}
-                        isOpen={false}
+              closeModal={[Function]}
+              isOpen={false}
             />
             <Header
-                        newSite={[Function]}
-                        openSettings={[Function]}
+              newSite={[Function]}
+              openSettings={[Function]}
             />
             <List
-                        sites={
-                                    Object {
-                                                "1": Object {
-                                                  "id": 1,
-                                                  "url": "bfcoder.com",
-                                                },
-                                                "2": Object {
-                                                  "id": 2,
-                                                  "url": "atomicjolt.com",
-                                                },
-                                              }
-                        }
+              sites={
+                Object {
+                  "1": Object {
+                    "id": 1,
+                    "url": "bfcoder.com",
+                  },
+                  "2": Object {
+                    "id": 2,
+                    "url": "atomicjolt.com",
+                  },
+                }
+              }
             />
-</div>,
+          </div>,
         ],
       },
       "ref": null,
@@ -210,25 +210,25 @@ ShallowWrapper {
               <Connect(SiteModal)
                 closeModal={[Function]}
                 isOpen={false}
-/>,
+              />,
               <Header
                 newSite={[Function]}
                 openSettings={[Function]}
-/>,
+              />,
               <List
                 sites={
-                                Object {
-                                                "1": Object {
-                                                  "id": 1,
-                                                  "url": "bfcoder.com",
-                                                },
-                                                "2": Object {
-                                                  "id": 2,
-                                                  "url": "atomicjolt.com",
-                                                },
-                                              }
+                  Object {
+                    "1": Object {
+                      "id": 1,
+                      "url": "bfcoder.com",
+                    },
+                    "2": Object {
+                      "id": 2,
+                      "url": "atomicjolt.com",
+                    },
+                  }
                 }
-/>,
+              />,
             ],
             "className": "o-contain o-contain--full",
           },

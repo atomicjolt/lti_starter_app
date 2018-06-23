@@ -7,12 +7,12 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <List
     application={Object {}}
     applicationInstances={
-        Array [
-            Object {
-              "application_id": 7,
-              "id": 4,
-            },
-          ]
+      Array [
+        Object {
+          "application_id": 7,
+          "id": 4,
+        },
+      ]
     }
     canvasOauthURL="https://example.com"
     deleteApplicationInstance={[Function]}
@@ -20,14 +20,14 @@ ShallowWrapper {
     saveApplicationInstance={[Function]}
     settings={Object {}}
     sites={
-        Object {
-            "1": Object {
-              "id": 1,
-              "url": "http://www.example.com",
-            },
-          }
+      Object {
+        "1": Object {
+          "id": 1,
+          "url": "http://www.example.com",
+        },
+      }
     }
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -43,73 +43,73 @@ ShallowWrapper {
       "children": Array [
         <thead>
           <tr>
-                    <th>
-                              <span>
-                                        LTI KEY
-                              </span>
-                    </th>
-                    <th>
-                              <span>
-                                        DOMAIN
-                              </span>
-                    </th>
-                    <th>
-                              <span>
-                                        SETTINGS
-                              </span>
-                    </th>
-                    <th>
-                              <span>
-                                        CONFIG XML
-                              </span>
-                    </th>
-                    <th>
-                              <span>
-                                        ENABLED
-                              </span>
-                    </th>
-                    <th>
-                              <span>
-                                        TOKEN
-                              </span>
-                    </th>
-                    <th>
-                              <span>
-                                        AUTHENTICATIONS
-                              </span>
-                    </th>
-                    <th>
-                              <span>
-                                        CREATED
-                              </span>
-                    </th>
-                    <th />
+            <th>
+              <span>
+                LTI KEY
+              </span>
+            </th>
+            <th>
+              <span>
+                DOMAIN
+              </span>
+            </th>
+            <th>
+              <span>
+                SETTINGS
+              </span>
+            </th>
+            <th>
+              <span>
+                CONFIG XML
+              </span>
+            </th>
+            <th>
+              <span>
+                ENABLED
+              </span>
+            </th>
+            <th>
+              <span>
+                TOKEN
+              </span>
+            </th>
+            <th>
+              <span>
+                AUTHENTICATIONS
+              </span>
+            </th>
+            <th>
+              <span>
+                CREATED
+              </span>
+            </th>
+            <th />
           </tr>
-</thead>,
+        </thead>,
         <tbody>
           <ListRow
-                    application={Object {}}
-                    applicationInstance={
-                              Object {
-                                        "application_id": 7,
-                                        "id": 4,
-                                      }
-                    }
-                    canvasOauthURL="https://example.com"
-                    delete={[Function]}
-                    disable={[Function]}
-                    save={[Function]}
-                    settings={Object {}}
-                    sites={
-                              Object {
-                                        "1": Object {
-                                          "id": 1,
-                                          "url": "http://www.example.com",
-                                        },
-                                      }
-                    }
+            application={Object {}}
+            applicationInstance={
+              Object {
+                "application_id": 7,
+                "id": 4,
+              }
+            }
+            canvasOauthURL="https://example.com"
+            delete={[Function]}
+            disable={[Function]}
+            save={[Function]}
+            settings={Object {}}
+            sites={
+              Object {
+                "1": Object {
+                  "id": 1,
+                  "url": "http://www.example.com",
+                },
+              }
+            }
           />
-</tbody>,
+        </tbody>,
       ],
       "className": "c-table c-table--instances",
     },
@@ -122,47 +122,47 @@ ShallowWrapper {
         "props": Object {
           "children": <tr>
             <th>
-                        <span>
-                                    LTI KEY
-                        </span>
+              <span>
+                LTI KEY
+              </span>
             </th>
             <th>
-                        <span>
-                                    DOMAIN
-                        </span>
+              <span>
+                DOMAIN
+              </span>
             </th>
             <th>
-                        <span>
-                                    SETTINGS
-                        </span>
+              <span>
+                SETTINGS
+              </span>
             </th>
             <th>
-                        <span>
-                                    CONFIG XML
-                        </span>
+              <span>
+                CONFIG XML
+              </span>
             </th>
             <th>
-                        <span>
-                                    ENABLED
-                        </span>
+              <span>
+                ENABLED
+              </span>
             </th>
             <th>
-                        <span>
-                                    TOKEN
-                        </span>
+              <span>
+                TOKEN
+              </span>
             </th>
             <th>
-                        <span>
-                                    AUTHENTICATIONS
-                        </span>
+              <span>
+                AUTHENTICATIONS
+              </span>
             </th>
             <th>
-                        <span>
-                                    CREATED
-                        </span>
+              <span>
+                CREATED
+              </span>
             </th>
             <th />
-</tr>,
+          </tr>,
         },
         "ref": null,
         "rendered": Object {
@@ -173,44 +173,44 @@ ShallowWrapper {
             "children": Array [
               <th>
                 <span>
-                                LTI KEY
+                  LTI KEY
                 </span>
-</th>,
+              </th>,
               <th>
                 <span>
-                                DOMAIN
+                  DOMAIN
                 </span>
-</th>,
+              </th>,
               <th>
                 <span>
-                                SETTINGS
+                  SETTINGS
                 </span>
-</th>,
+              </th>,
               <th>
                 <span>
-                                CONFIG XML
+                  CONFIG XML
                 </span>
-</th>,
+              </th>,
               <th>
                 <span>
-                                ENABLED
+                  ENABLED
                 </span>
-</th>,
+              </th>,
               <th>
                 <span>
-                                TOKEN
+                  TOKEN
                 </span>
-</th>,
+              </th>,
               <th>
                 <span>
-                                AUTHENTICATIONS
+                  AUTHENTICATIONS
                 </span>
-</th>,
+              </th>,
               <th>
                 <span>
-                                CREATED
+                  CREATED
                 </span>
-</th>,
+              </th>,
               <th />,
             ],
           },
@@ -223,7 +223,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <span>
                   LTI KEY
-</span>,
+                </span>,
               },
               "ref": null,
               "rendered": Object {
@@ -246,7 +246,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <span>
                   DOMAIN
-</span>,
+                </span>,
               },
               "ref": null,
               "rendered": Object {
@@ -269,7 +269,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <span>
                   SETTINGS
-</span>,
+                </span>,
               },
               "ref": null,
               "rendered": Object {
@@ -292,7 +292,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <span>
                   CONFIG XML
-</span>,
+                </span>,
               },
               "ref": null,
               "rendered": Object {
@@ -315,7 +315,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <span>
                   ENABLED
-</span>,
+                </span>,
               },
               "ref": null,
               "rendered": Object {
@@ -338,7 +338,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <span>
                   TOKEN
-</span>,
+                </span>,
               },
               "ref": null,
               "rendered": Object {
@@ -361,7 +361,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <span>
                   AUTHENTICATIONS
-</span>,
+                </span>,
               },
               "ref": null,
               "rendered": Object {
@@ -384,7 +384,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <span>
                   CREATED
-</span>,
+                </span>,
               },
               "ref": null,
               "rendered": Object {
@@ -423,10 +423,10 @@ ShallowWrapper {
             <ListRow
               application={Object {}}
               applicationInstance={
-                            Object {
-                                          "application_id": 7,
-                                          "id": 4,
-                                        }
+                Object {
+                  "application_id": 7,
+                  "id": 4,
+                }
               }
               canvasOauthURL="https://example.com"
               delete={[Function]}
@@ -434,14 +434,14 @@ ShallowWrapper {
               save={[Function]}
               settings={Object {}}
               sites={
-                            Object {
-                                          "1": Object {
-                                            "id": 1,
-                                            "url": "http://www.example.com",
-                                          },
-                                        }
+                Object {
+                  "1": Object {
+                    "id": 1,
+                    "url": "http://www.example.com",
+                  },
+                }
               }
-/>,
+            />,
           ],
         },
         "ref": null,
@@ -487,73 +487,73 @@ ShallowWrapper {
         "children": Array [
           <thead>
             <tr>
-                        <th>
-                                    <span>
-                                                LTI KEY
-                                    </span>
-                        </th>
-                        <th>
-                                    <span>
-                                                DOMAIN
-                                    </span>
-                        </th>
-                        <th>
-                                    <span>
-                                                SETTINGS
-                                    </span>
-                        </th>
-                        <th>
-                                    <span>
-                                                CONFIG XML
-                                    </span>
-                        </th>
-                        <th>
-                                    <span>
-                                                ENABLED
-                                    </span>
-                        </th>
-                        <th>
-                                    <span>
-                                                TOKEN
-                                    </span>
-                        </th>
-                        <th>
-                                    <span>
-                                                AUTHENTICATIONS
-                                    </span>
-                        </th>
-                        <th>
-                                    <span>
-                                                CREATED
-                                    </span>
-                        </th>
-                        <th />
+              <th>
+                <span>
+                  LTI KEY
+                </span>
+              </th>
+              <th>
+                <span>
+                  DOMAIN
+                </span>
+              </th>
+              <th>
+                <span>
+                  SETTINGS
+                </span>
+              </th>
+              <th>
+                <span>
+                  CONFIG XML
+                </span>
+              </th>
+              <th>
+                <span>
+                  ENABLED
+                </span>
+              </th>
+              <th>
+                <span>
+                  TOKEN
+                </span>
+              </th>
+              <th>
+                <span>
+                  AUTHENTICATIONS
+                </span>
+              </th>
+              <th>
+                <span>
+                  CREATED
+                </span>
+              </th>
+              <th />
             </tr>
-</thead>,
+          </thead>,
           <tbody>
             <ListRow
-                        application={Object {}}
-                        applicationInstance={
-                                    Object {
-                                                "application_id": 7,
-                                                "id": 4,
-                                              }
-                        }
-                        canvasOauthURL="https://example.com"
-                        delete={[Function]}
-                        disable={[Function]}
-                        save={[Function]}
-                        settings={Object {}}
-                        sites={
-                                    Object {
-                                                "1": Object {
-                                                  "id": 1,
-                                                  "url": "http://www.example.com",
-                                                },
-                                              }
-                        }
+              application={Object {}}
+              applicationInstance={
+                Object {
+                  "application_id": 7,
+                  "id": 4,
+                }
+              }
+              canvasOauthURL="https://example.com"
+              delete={[Function]}
+              disable={[Function]}
+              save={[Function]}
+              settings={Object {}}
+              sites={
+                Object {
+                  "1": Object {
+                    "id": 1,
+                    "url": "http://www.example.com",
+                  },
+                }
+              }
             />
-</tbody>,
+          </tbody>,
         ],
         "className": "c-table c-table--instances",
       },
@@ -566,47 +566,47 @@ ShallowWrapper {
           "props": Object {
             "children": <tr>
               <th>
-                            <span>
-                                          LTI KEY
-                            </span>
+                <span>
+                  LTI KEY
+                </span>
               </th>
               <th>
-                            <span>
-                                          DOMAIN
-                            </span>
+                <span>
+                  DOMAIN
+                </span>
               </th>
               <th>
-                            <span>
-                                          SETTINGS
-                            </span>
+                <span>
+                  SETTINGS
+                </span>
               </th>
               <th>
-                            <span>
-                                          CONFIG XML
-                            </span>
+                <span>
+                  CONFIG XML
+                </span>
               </th>
               <th>
-                            <span>
-                                          ENABLED
-                            </span>
+                <span>
+                  ENABLED
+                </span>
               </th>
               <th>
-                            <span>
-                                          TOKEN
-                            </span>
+                <span>
+                  TOKEN
+                </span>
               </th>
               <th>
-                            <span>
-                                          AUTHENTICATIONS
-                            </span>
+                <span>
+                  AUTHENTICATIONS
+                </span>
               </th>
               <th>
-                            <span>
-                                          CREATED
-                            </span>
+                <span>
+                  CREATED
+                </span>
               </th>
               <th />
-</tr>,
+            </tr>,
           },
           "ref": null,
           "rendered": Object {
@@ -617,44 +617,44 @@ ShallowWrapper {
               "children": Array [
                 <th>
                   <span>
-                                    LTI KEY
+                    LTI KEY
                   </span>
-</th>,
+                </th>,
                 <th>
                   <span>
-                                    DOMAIN
+                    DOMAIN
                   </span>
-</th>,
+                </th>,
                 <th>
                   <span>
-                                    SETTINGS
+                    SETTINGS
                   </span>
-</th>,
+                </th>,
                 <th>
                   <span>
-                                    CONFIG XML
+                    CONFIG XML
                   </span>
-</th>,
+                </th>,
                 <th>
                   <span>
-                                    ENABLED
+                    ENABLED
                   </span>
-</th>,
+                </th>,
                 <th>
                   <span>
-                                    TOKEN
+                    TOKEN
                   </span>
-</th>,
+                </th>,
                 <th>
                   <span>
-                                    AUTHENTICATIONS
+                    AUTHENTICATIONS
                   </span>
-</th>,
+                </th>,
                 <th>
                   <span>
-                                    CREATED
+                    CREATED
                   </span>
-</th>,
+                </th>,
                 <th />,
               ],
             },
@@ -667,7 +667,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": <span>
                     LTI KEY
-</span>,
+                  </span>,
                 },
                 "ref": null,
                 "rendered": Object {
@@ -690,7 +690,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": <span>
                     DOMAIN
-</span>,
+                  </span>,
                 },
                 "ref": null,
                 "rendered": Object {
@@ -713,7 +713,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": <span>
                     SETTINGS
-</span>,
+                  </span>,
                 },
                 "ref": null,
                 "rendered": Object {
@@ -736,7 +736,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": <span>
                     CONFIG XML
-</span>,
+                  </span>,
                 },
                 "ref": null,
                 "rendered": Object {
@@ -759,7 +759,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": <span>
                     ENABLED
-</span>,
+                  </span>,
                 },
                 "ref": null,
                 "rendered": Object {
@@ -782,7 +782,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": <span>
                     TOKEN
-</span>,
+                  </span>,
                 },
                 "ref": null,
                 "rendered": Object {
@@ -805,7 +805,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": <span>
                     AUTHENTICATIONS
-</span>,
+                  </span>,
                 },
                 "ref": null,
                 "rendered": Object {
@@ -828,7 +828,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": <span>
                     CREATED
-</span>,
+                  </span>,
                 },
                 "ref": null,
                 "rendered": Object {
@@ -867,10 +867,10 @@ ShallowWrapper {
               <ListRow
                 application={Object {}}
                 applicationInstance={
-                                Object {
-                                                "application_id": 7,
-                                                "id": 4,
-                                              }
+                  Object {
+                    "application_id": 7,
+                    "id": 4,
+                  }
                 }
                 canvasOauthURL="https://example.com"
                 delete={[Function]}
@@ -878,14 +878,14 @@ ShallowWrapper {
                 save={[Function]}
                 settings={Object {}}
                 sites={
-                                Object {
-                                                "1": Object {
-                                                  "id": 1,
-                                                  "url": "http://www.example.com",
-                                                },
-                                              }
+                  Object {
+                    "1": Object {
+                      "id": 1,
+                      "url": "http://www.example.com",
+                    },
+                  }
                 }
-/>,
+              />,
             ],
           },
           "ref": null,

@@ -9,19 +9,19 @@ ShallowWrapper {
     createSite={[Function]}
     isOpen={true}
     settings={
-        Object {
-            "canvas_callback_url": "",
-            "lti_key": "",
-          }
+      Object {
+        "canvas_callback_url": "",
+        "lti_key": "",
+      }
     }
     site={
-        Object {
-            "id": 1,
-            "url": "bfcoder.com",
-          }
+      Object {
+        "id": 1,
+        "url": "bfcoder.com",
+      }
     }
     updateSite={[Function]}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -39,35 +39,35 @@ ShallowWrapper {
       "children": Array [
         <h2
           className="c-modal__title"
->
+        >
           Update
            Domain
-</h2>,
+        </h2>,
         <h3
           className="c-modal__subtext"
->
+        >
           <div>
-                    <div>
-                              Use the redirect URI: 
-                              
-                    </div>
-                    <div>
-                              <a
-                                        className="c-modal__subtext-link"
-                                        href="bfcoder.com/accounts/site_admin/developer_keys"
-                                        rel="noopener noreferrer"
-                                        target="_blank"
-                              >
-                                        Get Canvas Developer Keys Here
-                              </a>
-                    </div>
+            <div>
+              Use the redirect URI: 
+              
+            </div>
+            <div>
+              <a
+                className="c-modal__subtext-link"
+                href="bfcoder.com/accounts/site_admin/developer_keys"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Get Canvas Developer Keys Here
+              </a>
+            </div>
           </div>
-</h3>,
+        </h3>,
         <h3
           className="c-modal__subtext"
->
+        >
           Url must begin with "https://"
-</h3>,
+        </h3>,
         <SiteForm
           closeModal={[Function]}
           id={1}
@@ -75,7 +75,7 @@ ShallowWrapper {
           onChange={[Function]}
           setupSite={[Function]}
           url="bfcoder.com"
-/>,
+        />,
       ],
       "className": "c-modal c-modal--site is-open",
       "closeTimeoutMS": 0,
@@ -117,20 +117,20 @@ ShallowWrapper {
         "props": Object {
           "children": <div>
             <div>
-                        Use the redirect URI: 
-                        
+              Use the redirect URI: 
+              
             </div>
             <div>
-                        <a
-                                    className="c-modal__subtext-link"
-                                    href="bfcoder.com/accounts/site_admin/developer_keys"
-                                    rel="noopener noreferrer"
-                                    target="_blank"
-                        >
-                                    Get Canvas Developer Keys Here
-                        </a>
+              <a
+                className="c-modal__subtext-link"
+                href="bfcoder.com/accounts/site_admin/developer_keys"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Get Canvas Developer Keys Here
+              </a>
             </div>
-</div>,
+          </div>,
           "className": "c-modal__subtext",
         },
         "ref": null,
@@ -143,17 +143,17 @@ ShallowWrapper {
               <div>
                 Use the redirect URI: 
                 
-</div>,
+              </div>,
               <div>
                 <a
-                                className="c-modal__subtext-link"
-                                href="bfcoder.com/accounts/site_admin/developer_keys"
-                                rel="noopener noreferrer"
-                                target="_blank"
+                  className="c-modal__subtext-link"
+                  href="bfcoder.com/accounts/site_admin/developer_keys"
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
-                                Get Canvas Developer Keys Here
+                  Get Canvas Developer Keys Here
                 </a>
-</div>,
+              </div>,
             ],
           },
           "ref": null,
@@ -185,9 +185,9 @@ ShallowWrapper {
                   href="bfcoder.com/accounts/site_admin/developer_keys"
                   rel="noopener noreferrer"
                   target="_blank"
->
+                >
                   Get Canvas Developer Keys Here
-</a>,
+                </a>,
               },
               "ref": null,
               "rendered": Object {
@@ -254,35 +254,35 @@ ShallowWrapper {
         "children": Array [
           <h2
             className="c-modal__title"
->
+          >
             Update
              Domain
-</h2>,
+          </h2>,
           <h3
             className="c-modal__subtext"
->
+          >
             <div>
-                        <div>
-                                    Use the redirect URI: 
-                                    
-                        </div>
-                        <div>
-                                    <a
-                                                className="c-modal__subtext-link"
-                                                href="bfcoder.com/accounts/site_admin/developer_keys"
-                                                rel="noopener noreferrer"
-                                                target="_blank"
-                                    >
-                                                Get Canvas Developer Keys Here
-                                    </a>
-                        </div>
+              <div>
+                Use the redirect URI: 
+                
+              </div>
+              <div>
+                <a
+                  className="c-modal__subtext-link"
+                  href="bfcoder.com/accounts/site_admin/developer_keys"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Get Canvas Developer Keys Here
+                </a>
+              </div>
             </div>
-</h3>,
+          </h3>,
           <h3
             className="c-modal__subtext"
->
+          >
             Url must begin with "https://"
-</h3>,
+          </h3>,
           <SiteForm
             closeModal={[Function]}
             id={1}
@@ -290,7 +290,7 @@ ShallowWrapper {
             onChange={[Function]}
             setupSite={[Function]}
             url="bfcoder.com"
-/>,
+          />,
         ],
         "className": "c-modal c-modal--site is-open",
         "closeTimeoutMS": 0,
@@ -332,20 +332,20 @@ ShallowWrapper {
           "props": Object {
             "children": <div>
               <div>
-                            Use the redirect URI: 
-                            
+                Use the redirect URI: 
+                
               </div>
               <div>
-                            <a
-                                          className="c-modal__subtext-link"
-                                          href="bfcoder.com/accounts/site_admin/developer_keys"
-                                          rel="noopener noreferrer"
-                                          target="_blank"
-                            >
-                                          Get Canvas Developer Keys Here
-                            </a>
+                <a
+                  className="c-modal__subtext-link"
+                  href="bfcoder.com/accounts/site_admin/developer_keys"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Get Canvas Developer Keys Here
+                </a>
               </div>
-</div>,
+            </div>,
             "className": "c-modal__subtext",
           },
           "ref": null,
@@ -358,17 +358,17 @@ ShallowWrapper {
                 <div>
                   Use the redirect URI: 
                   
-</div>,
+                </div>,
                 <div>
                   <a
-                                    className="c-modal__subtext-link"
-                                    href="bfcoder.com/accounts/site_admin/developer_keys"
-                                    rel="noopener noreferrer"
-                                    target="_blank"
+                    className="c-modal__subtext-link"
+                    href="bfcoder.com/accounts/site_admin/developer_keys"
+                    rel="noopener noreferrer"
+                    target="_blank"
                   >
-                                    Get Canvas Developer Keys Here
+                    Get Canvas Developer Keys Here
                   </a>
-</div>,
+                </div>,
               ],
             },
             "ref": null,
@@ -400,9 +400,9 @@ ShallowWrapper {
                     href="bfcoder.com/accounts/site_admin/developer_keys"
                     rel="noopener noreferrer"
                     target="_blank"
->
+                  >
                     Get Canvas Developer Keys Here
-</a>,
+                  </a>,
                 },
                 "ref": null,
                 "rendered": Object {
