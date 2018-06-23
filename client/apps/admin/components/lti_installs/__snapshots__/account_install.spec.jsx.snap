@@ -6,22 +6,22 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <AccountInstall
     account={
-        Object {
-            "external_tools": Object {
-              "consumer_key": "consumer_key",
-            },
-            "id": 12,
-            "name": "accountName",
-          }
+      Object {
+        "external_tools": Object {
+          "consumer_key": "consumer_key",
+        },
+        "id": 12,
+        "name": "accountName",
+      }
     }
     accountInstalls={123}
     applicationInstance={
-        Object {
-            "lti_key": "lti_key",
-          }
+      Object {
+        "lti_key": "lti_key",
+      }
     }
     canvasRequest={[Function]}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -37,20 +37,20 @@ ShallowWrapper {
       "children": Array [
         <div
           className="c-title"
->
+        >
           <h1>
-                    123
+            123
           </h1>
           <h3>
-                    accountName
+            accountName
           </h3>
-</div>,
+        </div>,
         <button
           className="c-btn c-btn--yellow"
           onClick={[Function]}
->
+        >
           Install Into Account
-</button>,
+        </button>,
       ],
       "className": "c-info",
     },
@@ -64,10 +64,10 @@ ShallowWrapper {
           "children": Array [
             <h1>
               123
-</h1>,
+            </h1>,
             <h3>
               accountName
-</h3>,
+            </h3>,
           ],
           "className": "c-title",
         },
@@ -123,20 +123,20 @@ ShallowWrapper {
         "children": Array [
           <div
             className="c-title"
->
+          >
             <h1>
-                        123
+              123
             </h1>
             <h3>
-                        accountName
+              accountName
             </h3>
-</div>,
+          </div>,
           <button
             className="c-btn c-btn--yellow"
             onClick={[Function]}
->
+          >
             Install Into Account
-</button>,
+          </button>,
         ],
         "className": "c-info",
       },
@@ -150,10 +150,10 @@ ShallowWrapper {
             "children": Array [
               <h1>
                 123
-</h1>,
+              </h1>,
               <h3>
                 accountName
-</h3>,
+              </h3>,
             ],
             "className": "c-title",
           },

@@ -6,25 +6,25 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Modal
     application={
-        Object {
-            "id": 1,
-            "name": "the application",
-          }
+      Object {
+        "id": 1,
+        "name": "the application",
+      }
     }
     applicationInstance={
-        Object {
-            "config": "config string",
-            "id": 2,
-            "site": Object {
-              "id": 3,
-            },
-          }
+      Object {
+        "config": "config string",
+        "id": 2,
+        "site": Object {
+          "id": 3,
+        },
+      }
     }
     closeModal={[Function]}
     isOpen={true}
     save={[Function]}
     sites={Object {}}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -42,33 +42,32 @@ ShallowWrapper {
       "children": Array [
         <h2
           className="c-modal__title"
->
+        >
           Update
            
           the application
            Instance
-</h2>,
+        </h2>,
         <Form
           closeModal={[Function]}
           config="config string"
-          configParseError={undefined}
           id={2}
           isUpdate={true}
           newSite={[Function]}
           onChange={[Function]}
           save={[Function]}
           site={
-                    Object {
-                              "id": 3,
-                            }
+            Object {
+              "id": 3,
+            }
           }
           site_id="3"
           sites={Object {}}
-/>,
+        />,
         <Connect(SiteModal)
           closeModal={[Function]}
           isOpen={false}
-/>,
+        />,
       ],
       "className": "c-modal c-modal--settings is-open",
       "closeTimeoutMS": 0,
@@ -156,33 +155,32 @@ ShallowWrapper {
         "children": Array [
           <h2
             className="c-modal__title"
->
+          >
             Update
              
             the application
              Instance
-</h2>,
+          </h2>,
           <Form
             closeModal={[Function]}
             config="config string"
-            configParseError={undefined}
             id={2}
             isUpdate={true}
             newSite={[Function]}
             onChange={[Function]}
             save={[Function]}
             site={
-                        Object {
-                                    "id": 3,
-                                  }
+              Object {
+                "id": 3,
+              }
             }
             site_id="3"
             sites={Object {}}
-/>,
+          />,
           <Connect(SiteModal)
             closeModal={[Function]}
             isOpen={false}
-/>,
+          />,
         ],
         "className": "c-modal c-modal--settings is-open",
         "closeTimeoutMS": 0,

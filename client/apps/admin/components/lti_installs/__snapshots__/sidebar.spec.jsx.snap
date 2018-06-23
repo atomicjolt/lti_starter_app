@@ -6,31 +6,31 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Sidebar
     accounts={
-        Object {
-            "1": Object {
-              "id": 1,
-              "name": "accountName",
-              "sub_accounts": Array [],
-            },
-          }
+      Object {
+        "1": Object {
+          "id": 1,
+          "name": "accountName",
+          "sub_accounts": Array [],
+        },
+      }
     }
     application={
-        Object {
-            "name": "applicationName",
-          }
+      Object {
+        "name": "applicationName",
+      }
     }
     applicationInstance={
-        Object {
-            "site": Object {
-              "url": "www.atomicjolt.com",
-            },
-          }
+      Object {
+        "site": Object {
+          "url": "www.atomicjolt.com",
+        },
+      }
     }
     canvasRequest={[Function]}
     saveApplicationInstance={[Function]}
     setAccountActive={[Function]}
     sites={Object {}}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -46,62 +46,61 @@ ShallowWrapper {
       "children": Array [
         <div
           className="c-tool"
->
+        >
           <span>
-                    <a
-                              onClick={[Function]}
-                    >
-                              <i
-                                        className="i-settings"
-                              />
-                    </a>
+            <a
+              onClick={[Function]}
+            >
+              <i
+                className="i-settings"
+              />
+            </a>
           </span>
           <h4
-                    className="c-tool__subtitle"
+            className="c-tool__subtitle"
           >
-                    LTI Tool
+            LTI Tool
           </h4>
           <h3
-                    className="c-tool__title"
+            className="c-tool__title"
           >
-                    applicationName
+            applicationName
           </h3>
-</div>,
+        </div>,
         <div
           className="c-tool"
->
+        >
           <h4
-                    className="c-tool__instance"
+            className="c-tool__instance"
           >
-                    <a
-                              href="www.atomicjolt.com"
-                    >
-                              www.atomicjolt.com
-                    </a>
+            <a
+              href="www.atomicjolt.com"
+            >
+              www.atomicjolt.com
+            </a>
           </h4>
-</div>,
+        </div>,
         <div
           className="c-filters"
->
+        >
           <h4
-                    className="c-sidebar-subtitle"
+            className="c-sidebar-subtitle"
           >
-                    Accounts
+            Accounts
           </h4>
           <Accounts
-                    accounts={
-                              Object {
-                                        "1": Object {
-                                          "id": 1,
-                                          "name": "accountName",
-                                          "sub_accounts": Array [],
-                                        },
-                                      }
-                    }
-                    currentAccount={undefined}
-                    setAccountActive={[Function]}
+            accounts={
+              Object {
+                "1": Object {
+                  "id": 1,
+                  "name": "accountName",
+                  "sub_accounts": Array [],
+                },
+              }
+            }
+            setAccountActive={[Function]}
           />
-</div>,
+        </div>,
       ],
       "className": "o-left",
     },
@@ -115,23 +114,23 @@ ShallowWrapper {
           "children": Array [
             <span>
               <a
-                            onClick={[Function]}
+                onClick={[Function]}
               >
-                            <i
-                                          className="i-settings"
-                            />
+                <i
+                  className="i-settings"
+                />
               </a>
-</span>,
+            </span>,
             <h4
               className="c-tool__subtitle"
->
+            >
               LTI Tool
-</h4>,
+            </h4>,
             <h3
               className="c-tool__title"
->
+            >
               applicationName
-</h3>,
+            </h3>,
           ],
           "className": "c-tool",
         },
@@ -145,11 +144,11 @@ ShallowWrapper {
               "children": Array [
                 <a
                   onClick={[Function]}
->
+                >
                   <i
-                                    className="i-settings"
+                    className="i-settings"
                   />
-</a>,
+                </a>,
                 null,
               ],
             },
@@ -162,7 +161,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": <i
                     className="i-settings"
-/>,
+                  />,
                   "onClick": [Function],
                 },
                 "ref": null,
@@ -217,13 +216,13 @@ ShallowWrapper {
         "props": Object {
           "children": <h4
             className="c-tool__instance"
->
+          >
             <a
-                        href="www.atomicjolt.com"
+              href="www.atomicjolt.com"
             >
-                        www.atomicjolt.com
+              www.atomicjolt.com
             </a>
-</h4>,
+          </h4>,
           "className": "c-tool",
         },
         "ref": null,
@@ -234,9 +233,9 @@ ShallowWrapper {
           "props": Object {
             "children": <a
               href="www.atomicjolt.com"
->
+            >
               www.atomicjolt.com
-</a>,
+            </a>,
             "className": "c-tool__instance",
           },
           "ref": null,
@@ -264,22 +263,21 @@ ShallowWrapper {
           "children": Array [
             <h4
               className="c-sidebar-subtitle"
->
+            >
               Accounts
-</h4>,
+            </h4>,
             <Accounts
               accounts={
-                            Object {
-                                          "1": Object {
-                                            "id": 1,
-                                            "name": "accountName",
-                                            "sub_accounts": Array [],
-                                          },
-                                        }
+                Object {
+                  "1": Object {
+                    "id": 1,
+                    "name": "accountName",
+                    "sub_accounts": Array [],
+                  },
+                }
               }
-              currentAccount={undefined}
               setAccountActive={[Function]}
-/>,
+            />,
           ],
           "className": "c-filters",
         },
@@ -331,62 +329,61 @@ ShallowWrapper {
         "children": Array [
           <div
             className="c-tool"
->
+          >
             <span>
-                        <a
-                                    onClick={[Function]}
-                        >
-                                    <i
-                                                className="i-settings"
-                                    />
-                        </a>
+              <a
+                onClick={[Function]}
+              >
+                <i
+                  className="i-settings"
+                />
+              </a>
             </span>
             <h4
-                        className="c-tool__subtitle"
+              className="c-tool__subtitle"
             >
-                        LTI Tool
+              LTI Tool
             </h4>
             <h3
-                        className="c-tool__title"
+              className="c-tool__title"
             >
-                        applicationName
+              applicationName
             </h3>
-</div>,
+          </div>,
           <div
             className="c-tool"
->
+          >
             <h4
-                        className="c-tool__instance"
+              className="c-tool__instance"
             >
-                        <a
-                                    href="www.atomicjolt.com"
-                        >
-                                    www.atomicjolt.com
-                        </a>
+              <a
+                href="www.atomicjolt.com"
+              >
+                www.atomicjolt.com
+              </a>
             </h4>
-</div>,
+          </div>,
           <div
             className="c-filters"
->
+          >
             <h4
-                        className="c-sidebar-subtitle"
+              className="c-sidebar-subtitle"
             >
-                        Accounts
+              Accounts
             </h4>
             <Accounts
-                        accounts={
-                                    Object {
-                                                "1": Object {
-                                                  "id": 1,
-                                                  "name": "accountName",
-                                                  "sub_accounts": Array [],
-                                                },
-                                              }
-                        }
-                        currentAccount={undefined}
-                        setAccountActive={[Function]}
+              accounts={
+                Object {
+                  "1": Object {
+                    "id": 1,
+                    "name": "accountName",
+                    "sub_accounts": Array [],
+                  },
+                }
+              }
+              setAccountActive={[Function]}
             />
-</div>,
+          </div>,
         ],
         "className": "o-left",
       },
@@ -400,23 +397,23 @@ ShallowWrapper {
             "children": Array [
               <span>
                 <a
-                                onClick={[Function]}
+                  onClick={[Function]}
                 >
-                                <i
-                                                className="i-settings"
-                                />
+                  <i
+                    className="i-settings"
+                  />
                 </a>
-</span>,
+              </span>,
               <h4
                 className="c-tool__subtitle"
->
+              >
                 LTI Tool
-</h4>,
+              </h4>,
               <h3
                 className="c-tool__title"
->
+              >
                 applicationName
-</h3>,
+              </h3>,
             ],
             "className": "c-tool",
           },
@@ -430,11 +427,11 @@ ShallowWrapper {
                 "children": Array [
                   <a
                     onClick={[Function]}
->
+                  >
                     <i
-                                        className="i-settings"
+                      className="i-settings"
                     />
-</a>,
+                  </a>,
                   null,
                 ],
               },
@@ -447,7 +444,7 @@ ShallowWrapper {
                   "props": Object {
                     "children": <i
                       className="i-settings"
-/>,
+                    />,
                     "onClick": [Function],
                   },
                   "ref": null,
@@ -502,13 +499,13 @@ ShallowWrapper {
           "props": Object {
             "children": <h4
               className="c-tool__instance"
->
+            >
               <a
-                            href="www.atomicjolt.com"
+                href="www.atomicjolt.com"
               >
-                            www.atomicjolt.com
+                www.atomicjolt.com
               </a>
-</h4>,
+            </h4>,
             "className": "c-tool",
           },
           "ref": null,
@@ -519,9 +516,9 @@ ShallowWrapper {
             "props": Object {
               "children": <a
                 href="www.atomicjolt.com"
->
+              >
                 www.atomicjolt.com
-</a>,
+              </a>,
               "className": "c-tool__instance",
             },
             "ref": null,
@@ -549,22 +546,21 @@ ShallowWrapper {
             "children": Array [
               <h4
                 className="c-sidebar-subtitle"
->
+              >
                 Accounts
-</h4>,
+              </h4>,
               <Accounts
                 accounts={
-                                Object {
-                                                "1": Object {
-                                                  "id": 1,
-                                                  "name": "accountName",
-                                                  "sub_accounts": Array [],
-                                                },
-                                              }
+                  Object {
+                    "1": Object {
+                      "id": 1,
+                      "name": "accountName",
+                      "sub_accounts": Array [],
+                    },
+                  }
                 }
-                currentAccount={undefined}
                 setAccountActive={[Function]}
-/>,
+              />,
             ],
             "className": "c-filters",
           },
