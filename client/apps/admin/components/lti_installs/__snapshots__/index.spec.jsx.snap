@@ -10,27 +10,27 @@ ShallowWrapper {
     applications={Object {}}
     canvasRequest={[Function]}
     courses={
-        Array [
-            Object {},
-          ]
+      Array [
+        Object {},
+      ]
     }
     getApplicationInstance={[Function]}
     loadingAccounts={false}
     loadingCourses={Object {}}
     params={
-        Object {
-            "applicationId": "application id",
-            "applicationInstanceId": "application instance id",
-          }
+      Object {
+        "applicationId": "application id",
+        "applicationInstanceId": "application instance id",
+      }
     }
     rootAccount={
-        Object {
-            "id": 1234,
-          }
+      Object {
+        "id": 1234,
+      }
     }
     saveApplicationInstance={[Function]}
     sites={Object {}}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -46,28 +46,27 @@ ShallowWrapper {
       "children": Array [
         <Connect(Heading)
           backTo="/applications/application id/application_instances"
-/>,
+        />,
         <div
           className="o-contain"
->
+        >
           <Sidebar
-                    accounts={Object {}}
-                    application={undefined}
-                    applicationInstance={Object {}}
-                    canvasRequest={[Function]}
-                    currentAccount={null}
-                    saveApplicationInstance={[Function]}
-                    setAccountActive={[Function]}
-                    sites={Object {}}
+            accounts={Object {}}
+            applicationInstance={Object {}}
+            canvasRequest={[Function]}
+            currentAccount={null}
+            saveApplicationInstance={[Function]}
+            setAccountActive={[Function]}
+            sites={Object {}}
           />
           <Connect(InstallPane)
-                    account={null}
-                    applicationInstance={Object {}}
-                    canvasRequest={[Function]}
-                    loadExternalTools={[Function]}
-                    loadingCourses={Object {}}
+            account={null}
+            applicationInstance={Object {}}
+            canvasRequest={[Function]}
+            loadExternalTools={[Function]}
+            loadingCourses={Object {}}
           />
-</div>,
+        </div>,
         <Modal
           ariaHideApp={true}
           bodyOpenClassName="ReactModal__Body--open"
@@ -82,12 +81,12 @@ ShallowWrapper {
           shouldCloseOnOverlayClick={true}
           shouldFocusAfterRender={true}
           shouldReturnFocusAfterClose={true}
->
+        >
           <div
-                    className="c-loading-icon"
+            className="c-loading-icon"
           />
              Loading...
-</Modal>,
+        </Modal>,
       ],
       "style": Object {
         "height": "100%",
@@ -114,21 +113,20 @@ ShallowWrapper {
           "children": Array [
             <Sidebar
               accounts={Object {}}
-              application={undefined}
               applicationInstance={Object {}}
               canvasRequest={[Function]}
               currentAccount={null}
               saveApplicationInstance={[Function]}
               setAccountActive={[Function]}
               sites={Object {}}
-/>,
+            />,
             <Connect(InstallPane)
               account={null}
               applicationInstance={Object {}}
               canvasRequest={[Function]}
               loadExternalTools={[Function]}
               loadingCourses={Object {}}
-/>,
+            />,
           ],
           "className": "o-contain",
         },
@@ -180,7 +178,7 @@ ShallowWrapper {
           "children": Array [
             <div
               className="c-loading-icon"
-/>,
+            />,
             "   Loading...",
           ],
           "className": "c-modal c-modal--site is-open c-modal--error loading",
@@ -224,28 +222,27 @@ ShallowWrapper {
         "children": Array [
           <Connect(Heading)
             backTo="/applications/application id/application_instances"
-/>,
+          />,
           <div
             className="o-contain"
->
+          >
             <Sidebar
-                        accounts={Object {}}
-                        application={undefined}
-                        applicationInstance={Object {}}
-                        canvasRequest={[Function]}
-                        currentAccount={null}
-                        saveApplicationInstance={[Function]}
-                        setAccountActive={[Function]}
-                        sites={Object {}}
+              accounts={Object {}}
+              applicationInstance={Object {}}
+              canvasRequest={[Function]}
+              currentAccount={null}
+              saveApplicationInstance={[Function]}
+              setAccountActive={[Function]}
+              sites={Object {}}
             />
             <Connect(InstallPane)
-                        account={null}
-                        applicationInstance={Object {}}
-                        canvasRequest={[Function]}
-                        loadExternalTools={[Function]}
-                        loadingCourses={Object {}}
+              account={null}
+              applicationInstance={Object {}}
+              canvasRequest={[Function]}
+              loadExternalTools={[Function]}
+              loadingCourses={Object {}}
             />
-</div>,
+          </div>,
           <Modal
             ariaHideApp={true}
             bodyOpenClassName="ReactModal__Body--open"
@@ -260,12 +257,12 @@ ShallowWrapper {
             shouldCloseOnOverlayClick={true}
             shouldFocusAfterRender={true}
             shouldReturnFocusAfterClose={true}
->
+          >
             <div
-                        className="c-loading-icon"
+              className="c-loading-icon"
             />
                Loading...
-</Modal>,
+          </Modal>,
         ],
         "style": Object {
           "height": "100%",
@@ -292,21 +289,20 @@ ShallowWrapper {
             "children": Array [
               <Sidebar
                 accounts={Object {}}
-                application={undefined}
                 applicationInstance={Object {}}
                 canvasRequest={[Function]}
                 currentAccount={null}
                 saveApplicationInstance={[Function]}
                 setAccountActive={[Function]}
                 sites={Object {}}
-/>,
+              />,
               <Connect(InstallPane)
                 account={null}
                 applicationInstance={Object {}}
                 canvasRequest={[Function]}
                 loadExternalTools={[Function]}
                 loadingCourses={Object {}}
-/>,
+              />,
             ],
             "className": "o-contain",
           },
@@ -358,7 +354,7 @@ ShallowWrapper {
             "children": Array [
               <div
                 className="c-loading-icon"
-/>,
+              />,
               "   Loading...",
             ],
             "className": "c-modal c-modal--site is-open c-modal--error loading",
