@@ -6,15 +6,15 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Index
     applications={
-        Object {
-            "Spiderman": Object {
-              "Power1": "Wall Crawling",
-              "Power2": "Spidey Sense",
-            },
-          }
+      Object {
+        "Spiderman": Object {
+          "Power1": "Wall Crawling",
+          "Power2": "Spidey Sense",
+        },
+      }
     }
     saveApplication={[Function]}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -31,53 +31,53 @@ ShallowWrapper {
         <Connect(Heading) />,
         <div
           className="o-contain o-contain--full"
->
+        >
           <div
-                    className="c-info"
+            className="c-info"
           >
-                    <div
-                              className="c-title"
-                    >
-                              <h1>
-                                        LTI Applications
-                              </h1>
-                    </div>
+            <div
+              className="c-title"
+            >
+              <h1>
+                LTI Applications
+              </h1>
+            </div>
           </div>
           <table
-                    className="c-table c-table--lti"
+            className="c-table c-table--lti"
           >
-                    <thead>
-                              <tr>
-                                        <th>
-                                                  <span>
-                                                            NAME
-                                                  </span>
-                                        </th>
-                                        <th>
-                                                  <span>
-                                                            INSTANCES
-                                                  </span>
-                                        </th>
-                                        <th>
-                                                  <span>
-                                                            SETTINGS
-                                                  </span>
-                                        </th>
-                              </tr>
-                    </thead>
-                    <tbody>
-                              <ApplicationRow
-                                        application={
-                                                  Object {
-                                                            "Power1": "Wall Crawling",
-                                                            "Power2": "Spidey Sense",
-                                                          }
-                                        }
-                                        saveApplication={[Function]}
-                              />
-                    </tbody>
+            <thead>
+              <tr>
+                <th>
+                  <span>
+                    NAME
+                  </span>
+                </th>
+                <th>
+                  <span>
+                    INSTANCES
+                  </span>
+                </th>
+                <th>
+                  <span>
+                    SETTINGS
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <ApplicationRow
+                application={
+                  Object {
+                    "Power1": "Wall Crawling",
+                    "Power2": "Spidey Sense",
+                  }
+                }
+                saveApplication={[Function]}
+              />
+            </tbody>
           </table>
-</div>,
+        </div>,
       ],
     },
     "ref": null,
@@ -99,49 +99,49 @@ ShallowWrapper {
           "children": Array [
             <div
               className="c-info"
->
+            >
               <div
-                            className="c-title"
+                className="c-title"
               >
-                            <h1>
-                                          LTI Applications
-                            </h1>
+                <h1>
+                  LTI Applications
+                </h1>
               </div>
-</div>,
+            </div>,
             <table
               className="c-table c-table--lti"
->
+            >
               <thead>
-                            <tr>
-                                          <th>
-                                                        <span>
-                                                                      NAME
-                                                        </span>
-                                          </th>
-                                          <th>
-                                                        <span>
-                                                                      INSTANCES
-                                                        </span>
-                                          </th>
-                                          <th>
-                                                        <span>
-                                                                      SETTINGS
-                                                        </span>
-                                          </th>
-                            </tr>
+                <tr>
+                  <th>
+                    <span>
+                      NAME
+                    </span>
+                  </th>
+                  <th>
+                    <span>
+                      INSTANCES
+                    </span>
+                  </th>
+                  <th>
+                    <span>
+                      SETTINGS
+                    </span>
+                  </th>
+                </tr>
               </thead>
               <tbody>
-                            <ApplicationRow
-                                          application={
-                                                        Object {
-                                                                      "Power1": "Wall Crawling",
-                                                                      "Power2": "Spidey Sense",
-                                                                    }
-                                          }
-                                          saveApplication={[Function]}
-                            />
+                <ApplicationRow
+                  application={
+                    Object {
+                      "Power1": "Wall Crawling",
+                      "Power2": "Spidey Sense",
+                    }
+                  }
+                  saveApplication={[Function]}
+                />
               </tbody>
-</table>,
+            </table>,
           ],
           "className": "o-contain o-contain--full",
         },
@@ -154,11 +154,11 @@ ShallowWrapper {
             "props": Object {
               "children": <div
                 className="c-title"
->
+              >
                 <h1>
-                                LTI Applications
+                  LTI Applications
                 </h1>
-</div>,
+              </div>,
               "className": "c-info",
             },
             "ref": null,
@@ -169,7 +169,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <h1>
                   LTI Applications
-</h1>,
+                </h1>,
                 "className": "c-title",
               },
               "ref": null,
@@ -196,34 +196,34 @@ ShallowWrapper {
               "children": Array [
                 <thead>
                   <tr>
-                                    <th>
-                                                      <span>
-                                                                        NAME
-                                                      </span>
-                                    </th>
-                                    <th>
-                                                      <span>
-                                                                        INSTANCES
-                                                      </span>
-                                    </th>
-                                    <th>
-                                                      <span>
-                                                                        SETTINGS
-                                                      </span>
-                                    </th>
+                    <th>
+                      <span>
+                        NAME
+                      </span>
+                    </th>
+                    <th>
+                      <span>
+                        INSTANCES
+                      </span>
+                    </th>
+                    <th>
+                      <span>
+                        SETTINGS
+                      </span>
+                    </th>
                   </tr>
-</thead>,
+                </thead>,
                 <tbody>
                   <ApplicationRow
-                                    application={
-                                                      Object {
-                                                                        "Power1": "Wall Crawling",
-                                                                        "Power2": "Spidey Sense",
-                                                                      }
-                                    }
-                                    saveApplication={[Function]}
+                    application={
+                      Object {
+                        "Power1": "Wall Crawling",
+                        "Power2": "Spidey Sense",
+                      }
+                    }
+                    saveApplication={[Function]}
                   />
-</tbody>,
+                </tbody>,
               ],
               "className": "c-table c-table--lti",
             },
@@ -236,21 +236,21 @@ ShallowWrapper {
                 "props": Object {
                   "children": <tr>
                     <th>
-                                        <span>
-                                                            NAME
-                                        </span>
+                      <span>
+                        NAME
+                      </span>
                     </th>
                     <th>
-                                        <span>
-                                                            INSTANCES
-                                        </span>
+                      <span>
+                        INSTANCES
+                      </span>
                     </th>
                     <th>
-                                        <span>
-                                                            SETTINGS
-                                        </span>
+                      <span>
+                        SETTINGS
+                      </span>
                     </th>
-</tr>,
+                  </tr>,
                 },
                 "ref": null,
                 "rendered": Object {
@@ -261,19 +261,19 @@ ShallowWrapper {
                     "children": Array [
                       <th>
                         <span>
-                                                NAME
+                          NAME
                         </span>
-</th>,
+                      </th>,
                       <th>
                         <span>
-                                                INSTANCES
+                          INSTANCES
                         </span>
-</th>,
+                      </th>,
                       <th>
                         <span>
-                                                SETTINGS
+                          SETTINGS
                         </span>
-</th>,
+                      </th>,
                     ],
                   },
                   "ref": null,
@@ -285,7 +285,7 @@ ShallowWrapper {
                       "props": Object {
                         "children": <span>
                           NAME
-</span>,
+                        </span>,
                       },
                       "ref": null,
                       "rendered": Object {
@@ -308,7 +308,7 @@ ShallowWrapper {
                       "props": Object {
                         "children": <span>
                           INSTANCES
-</span>,
+                        </span>,
                       },
                       "ref": null,
                       "rendered": Object {
@@ -331,7 +331,7 @@ ShallowWrapper {
                       "props": Object {
                         "children": <span>
                           SETTINGS
-</span>,
+                        </span>,
                       },
                       "ref": null,
                       "rendered": Object {
@@ -360,13 +360,13 @@ ShallowWrapper {
                   "children": Array [
                     <ApplicationRow
                       application={
-                                            Object {
-                                                                  "Power1": "Wall Crawling",
-                                                                  "Power2": "Spidey Sense",
-                                                                }
+                        Object {
+                          "Power1": "Wall Crawling",
+                          "Power2": "Spidey Sense",
+                        }
                       }
                       saveApplication={[Function]}
-/>,
+                    />,
                   ],
                 },
                 "ref": null,
@@ -408,53 +408,53 @@ ShallowWrapper {
           <Connect(Heading) />,
           <div
             className="o-contain o-contain--full"
->
+          >
             <div
-                        className="c-info"
+              className="c-info"
             >
-                        <div
-                                    className="c-title"
-                        >
-                                    <h1>
-                                                LTI Applications
-                                    </h1>
-                        </div>
+              <div
+                className="c-title"
+              >
+                <h1>
+                  LTI Applications
+                </h1>
+              </div>
             </div>
             <table
-                        className="c-table c-table--lti"
+              className="c-table c-table--lti"
             >
-                        <thead>
-                                    <tr>
-                                                <th>
-                                                            <span>
-                                                                        NAME
-                                                            </span>
-                                                </th>
-                                                <th>
-                                                            <span>
-                                                                        INSTANCES
-                                                            </span>
-                                                </th>
-                                                <th>
-                                                            <span>
-                                                                        SETTINGS
-                                                            </span>
-                                                </th>
-                                    </tr>
-                        </thead>
-                        <tbody>
-                                    <ApplicationRow
-                                                application={
-                                                            Object {
-                                                                        "Power1": "Wall Crawling",
-                                                                        "Power2": "Spidey Sense",
-                                                                      }
-                                                }
-                                                saveApplication={[Function]}
-                                    />
-                        </tbody>
+              <thead>
+                <tr>
+                  <th>
+                    <span>
+                      NAME
+                    </span>
+                  </th>
+                  <th>
+                    <span>
+                      INSTANCES
+                    </span>
+                  </th>
+                  <th>
+                    <span>
+                      SETTINGS
+                    </span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <ApplicationRow
+                  application={
+                    Object {
+                      "Power1": "Wall Crawling",
+                      "Power2": "Spidey Sense",
+                    }
+                  }
+                  saveApplication={[Function]}
+                />
+              </tbody>
             </table>
-</div>,
+          </div>,
         ],
       },
       "ref": null,
@@ -476,49 +476,49 @@ ShallowWrapper {
             "children": Array [
               <div
                 className="c-info"
->
+              >
                 <div
-                                className="c-title"
+                  className="c-title"
                 >
-                                <h1>
-                                                LTI Applications
-                                </h1>
+                  <h1>
+                    LTI Applications
+                  </h1>
                 </div>
-</div>,
+              </div>,
               <table
                 className="c-table c-table--lti"
->
+              >
                 <thead>
-                                <tr>
-                                                <th>
-                                                                <span>
-                                                                                NAME
-                                                                </span>
-                                                </th>
-                                                <th>
-                                                                <span>
-                                                                                INSTANCES
-                                                                </span>
-                                                </th>
-                                                <th>
-                                                                <span>
-                                                                                SETTINGS
-                                                                </span>
-                                                </th>
-                                </tr>
+                  <tr>
+                    <th>
+                      <span>
+                        NAME
+                      </span>
+                    </th>
+                    <th>
+                      <span>
+                        INSTANCES
+                      </span>
+                    </th>
+                    <th>
+                      <span>
+                        SETTINGS
+                      </span>
+                    </th>
+                  </tr>
                 </thead>
                 <tbody>
-                                <ApplicationRow
-                                                application={
-                                                                Object {
-                                                                                "Power1": "Wall Crawling",
-                                                                                "Power2": "Spidey Sense",
-                                                                              }
-                                                }
-                                                saveApplication={[Function]}
-                                />
+                  <ApplicationRow
+                    application={
+                      Object {
+                        "Power1": "Wall Crawling",
+                        "Power2": "Spidey Sense",
+                      }
+                    }
+                    saveApplication={[Function]}
+                  />
                 </tbody>
-</table>,
+              </table>,
             ],
             "className": "o-contain o-contain--full",
           },
@@ -531,11 +531,11 @@ ShallowWrapper {
               "props": Object {
                 "children": <div
                   className="c-title"
->
+                >
                   <h1>
-                                    LTI Applications
+                    LTI Applications
                   </h1>
-</div>,
+                </div>,
                 "className": "c-info",
               },
               "ref": null,
@@ -546,7 +546,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": <h1>
                     LTI Applications
-</h1>,
+                  </h1>,
                   "className": "c-title",
                 },
                 "ref": null,
@@ -573,34 +573,34 @@ ShallowWrapper {
                 "children": Array [
                   <thead>
                     <tr>
-                                        <th>
-                                                            <span>
-                                                                                NAME
-                                                            </span>
-                                        </th>
-                                        <th>
-                                                            <span>
-                                                                                INSTANCES
-                                                            </span>
-                                        </th>
-                                        <th>
-                                                            <span>
-                                                                                SETTINGS
-                                                            </span>
-                                        </th>
+                      <th>
+                        <span>
+                          NAME
+                        </span>
+                      </th>
+                      <th>
+                        <span>
+                          INSTANCES
+                        </span>
+                      </th>
+                      <th>
+                        <span>
+                          SETTINGS
+                        </span>
+                      </th>
                     </tr>
-</thead>,
+                  </thead>,
                   <tbody>
                     <ApplicationRow
-                                        application={
-                                                            Object {
-                                                                                "Power1": "Wall Crawling",
-                                                                                "Power2": "Spidey Sense",
-                                                                              }
-                                        }
-                                        saveApplication={[Function]}
+                      application={
+                        Object {
+                          "Power1": "Wall Crawling",
+                          "Power2": "Spidey Sense",
+                        }
+                      }
+                      saveApplication={[Function]}
                     />
-</tbody>,
+                  </tbody>,
                 ],
                 "className": "c-table c-table--lti",
               },
@@ -613,21 +613,21 @@ ShallowWrapper {
                   "props": Object {
                     "children": <tr>
                       <th>
-                                            <span>
-                                                                  NAME
-                                            </span>
+                        <span>
+                          NAME
+                        </span>
                       </th>
                       <th>
-                                            <span>
-                                                                  INSTANCES
-                                            </span>
+                        <span>
+                          INSTANCES
+                        </span>
                       </th>
                       <th>
-                                            <span>
-                                                                  SETTINGS
-                                            </span>
+                        <span>
+                          SETTINGS
+                        </span>
                       </th>
-</tr>,
+                    </tr>,
                   },
                   "ref": null,
                   "rendered": Object {
@@ -638,19 +638,19 @@ ShallowWrapper {
                       "children": Array [
                         <th>
                           <span>
-                                                    NAME
+                            NAME
                           </span>
-</th>,
+                        </th>,
                         <th>
                           <span>
-                                                    INSTANCES
+                            INSTANCES
                           </span>
-</th>,
+                        </th>,
                         <th>
                           <span>
-                                                    SETTINGS
+                            SETTINGS
                           </span>
-</th>,
+                        </th>,
                       ],
                     },
                     "ref": null,
@@ -662,7 +662,7 @@ ShallowWrapper {
                         "props": Object {
                           "children": <span>
                             NAME
-</span>,
+                          </span>,
                         },
                         "ref": null,
                         "rendered": Object {
@@ -685,7 +685,7 @@ ShallowWrapper {
                         "props": Object {
                           "children": <span>
                             INSTANCES
-</span>,
+                          </span>,
                         },
                         "ref": null,
                         "rendered": Object {
@@ -708,7 +708,7 @@ ShallowWrapper {
                         "props": Object {
                           "children": <span>
                             SETTINGS
-</span>,
+                          </span>,
                         },
                         "ref": null,
                         "rendered": Object {
@@ -737,13 +737,13 @@ ShallowWrapper {
                     "children": Array [
                       <ApplicationRow
                         application={
-                                                Object {
-                                                                        "Power1": "Wall Crawling",
-                                                                        "Power2": "Spidey Sense",
-                                                                      }
+                          Object {
+                            "Power1": "Wall Crawling",
+                            "Power2": "Spidey Sense",
+                          }
                         }
                         saveApplication={[Function]}
-/>,
+                      />,
                     ],
                   },
                   "ref": null,

@@ -7,17 +7,17 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Input
     className="imaclass"
     inputProps={
-        Object {
-            "checked": true,
-            "id": "IM AN ID",
-            "name": "the name",
-            "onChange": [Function],
-            "type": "radio",
-            "value": "IM A VALUE",
-          }
+      Object {
+        "checked": true,
+        "id": "IM AN ID",
+        "name": "the name",
+        "onChange": [Function],
+        "type": "radio",
+        "value": "IM A VALUE",
+      }
     }
     labelText="IMA LABEL"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -34,19 +34,19 @@ ShallowWrapper {
         <label
           className="imaclass"
           htmlFor="IM AN ID"
->
+        >
           <input
-                    checked={true}
-                    id="IM AN ID"
-                    name="the name"
-                    onChange={[Function]}
-                    type="radio"
-                    value="IM A VALUE"
+            checked={true}
+            id="IM AN ID"
+            name="the name"
+            onChange={[Function]}
+            type="radio"
+            value="IM A VALUE"
           />
           <span>
-                    IMA LABEL
+            IMA LABEL
           </span>
-</label>,
+        </label>,
         undefined,
       ],
       "className": "c-input--container",
@@ -67,10 +67,10 @@ ShallowWrapper {
               onChange={[Function]}
               type="radio"
               value="IM A VALUE"
-/>,
+            />,
             <span>
               IMA LABEL
-</span>,
+            </span>,
           ],
           "className": "imaclass",
           "htmlFor": "IM AN ID",
@@ -122,19 +122,19 @@ ShallowWrapper {
           <label
             className="imaclass"
             htmlFor="IM AN ID"
->
+          >
             <input
-                        checked={true}
-                        id="IM AN ID"
-                        name="the name"
-                        onChange={[Function]}
-                        type="radio"
-                        value="IM A VALUE"
+              checked={true}
+              id="IM AN ID"
+              name="the name"
+              onChange={[Function]}
+              type="radio"
+              value="IM A VALUE"
             />
             <span>
-                        IMA LABEL
+              IMA LABEL
             </span>
-</label>,
+          </label>,
           undefined,
         ],
         "className": "c-input--container",
@@ -155,10 +155,10 @@ ShallowWrapper {
                 onChange={[Function]}
                 type="radio"
                 value="IM A VALUE"
-/>,
+              />,
               <span>
                 IMA LABEL
-</span>,
+              </span>,
             ],
             "className": "imaclass",
             "htmlFor": "IM AN ID",

@@ -49,6 +49,7 @@ class OauthStateMiddleware
     end
     oauth_state.destroy
     env["canvas.url"] = site.url
+    env["oauth_consumer_key"] = state_params["oauth_consumer_key"]
   end
 
   # Retrieves all original app parameters (settings) from the database during

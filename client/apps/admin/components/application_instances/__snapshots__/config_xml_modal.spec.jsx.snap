@@ -6,22 +6,22 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ConfigXmlModal
     application={
-        Object {
-            "id": 1,
-            "name": "bfcoder",
-          }
+      Object {
+        "id": 1,
+        "name": "bfcoder",
+      }
     }
     applicationInstance={
-        Object {
-            "id": 1,
-            "lti_config_xml": "IMA XML",
-            "lti_key": "something-special",
-            "lti_secret": "12345",
-          }
+      Object {
+        "id": 1,
+        "lti_config_xml": "IMA XML",
+        "lti_key": "something-special",
+        "lti_secret": "12345",
+      }
     }
     closeModal={[Function]}
     isOpen={true}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -39,70 +39,70 @@ ShallowWrapper {
       "children": Array [
         <h2
           className="c-modal__title"
->
+        >
           Config XML for 
           bfcoder
            Instance
-</h2>,
+        </h2>,
         <div
           className="o-grid__item u-half"
->
+        >
           <Input
-                    className="c-input"
-                    inputProps={
-                              Object {
-                                        "id": "lti_config_xml_lti_key",
-                                        "name": "lti_key",
-                                        "readOnly": true,
-                                        "type": "text",
-                                        "value": "something-special",
-                                      }
-                    }
-                    labelText="LTI Key"
+            className="c-input"
+            inputProps={
+              Object {
+                "id": "lti_config_xml_lti_key",
+                "name": "lti_key",
+                "readOnly": true,
+                "type": "text",
+                "value": "something-special",
+              }
+            }
+            labelText="LTI Key"
           />
-</div>,
+        </div>,
         <div
           className="o-grid__item u-half"
->
+        >
           <Input
-                    className="c-input"
-                    inputProps={
-                              Object {
-                                        "id": "lti_config_xml_lti_secret",
-                                        "name": "lti_secret",
-                                        "readOnly": true,
-                                        "type": "text",
-                                        "value": "12345",
-                                      }
-                    }
-                    labelText="LTI Secret"
+            className="c-input"
+            inputProps={
+              Object {
+                "id": "lti_config_xml_lti_secret",
+                "name": "lti_secret",
+                "readOnly": true,
+                "type": "text",
+                "value": "12345",
+              }
+            }
+            labelText="LTI Secret"
           />
-</div>,
+        </div>,
         <div
           className="o-grid__item u-full"
->
+        >
           <Textarea
-                    className="c-input"
-                    labelText="LTI Config XML"
-                    textareaProps={
-                              Object {
-                                        "id": "application_instance_lti_config_xml",
-                                        "name": "lti_config_xml",
-                                        "onChange": [Function],
-                                        "readOnly": true,
-                                        "rows": 20,
-                                        "value": "IMA XML",
-                                      }
-                    }
+            className="c-input"
+            labelText="LTI Config XML"
+            textareaProps={
+              Object {
+                "id": "application_instance_lti_config_xml",
+                "name": "lti_config_xml",
+                "onChange": [Function],
+                "readOnly": true,
+                "rows": 20,
+                "value": "IMA XML",
+              }
+            }
           />
-</div>,
+        </div>,
         <button
           className="c-btn c-btn--gray--large u-m-right"
           onClick={[Function]}
           type="button"
->
+        >
           Close
-</button>,
+        </button>,
       ],
       "className": "c-modal c-modal--settings is-open",
       "closeTimeoutMS": 0,
@@ -147,16 +147,16 @@ ShallowWrapper {
           "children": <Input
             className="c-input"
             inputProps={
-                        Object {
-                                    "id": "lti_config_xml_lti_key",
-                                    "name": "lti_key",
-                                    "readOnly": true,
-                                    "type": "text",
-                                    "value": "something-special",
-                                  }
+              Object {
+                "id": "lti_config_xml_lti_key",
+                "name": "lti_key",
+                "readOnly": true,
+                "type": "text",
+                "value": "something-special",
+              }
             }
             labelText="LTI Key"
-/>,
+          />,
           "className": "o-grid__item u-half",
         },
         "ref": null,
@@ -189,16 +189,16 @@ ShallowWrapper {
           "children": <Input
             className="c-input"
             inputProps={
-                        Object {
-                                    "id": "lti_config_xml_lti_secret",
-                                    "name": "lti_secret",
-                                    "readOnly": true,
-                                    "type": "text",
-                                    "value": "12345",
-                                  }
+              Object {
+                "id": "lti_config_xml_lti_secret",
+                "name": "lti_secret",
+                "readOnly": true,
+                "type": "text",
+                "value": "12345",
+              }
             }
             labelText="LTI Secret"
-/>,
+          />,
           "className": "o-grid__item u-half",
         },
         "ref": null,
@@ -232,16 +232,16 @@ ShallowWrapper {
             className="c-input"
             labelText="LTI Config XML"
             textareaProps={
-                        Object {
-                                    "id": "application_instance_lti_config_xml",
-                                    "name": "lti_config_xml",
-                                    "onChange": [Function],
-                                    "readOnly": true,
-                                    "rows": 20,
-                                    "value": "IMA XML",
-                                  }
+              Object {
+                "id": "application_instance_lti_config_xml",
+                "name": "lti_config_xml",
+                "onChange": [Function],
+                "readOnly": true,
+                "rows": 20,
+                "value": "IMA XML",
+              }
             }
-/>,
+          />,
           "className": "o-grid__item u-full",
         },
         "ref": null,
@@ -295,70 +295,70 @@ ShallowWrapper {
         "children": Array [
           <h2
             className="c-modal__title"
->
+          >
             Config XML for 
             bfcoder
              Instance
-</h2>,
+          </h2>,
           <div
             className="o-grid__item u-half"
->
+          >
             <Input
-                        className="c-input"
-                        inputProps={
-                                    Object {
-                                                "id": "lti_config_xml_lti_key",
-                                                "name": "lti_key",
-                                                "readOnly": true,
-                                                "type": "text",
-                                                "value": "something-special",
-                                              }
-                        }
-                        labelText="LTI Key"
+              className="c-input"
+              inputProps={
+                Object {
+                  "id": "lti_config_xml_lti_key",
+                  "name": "lti_key",
+                  "readOnly": true,
+                  "type": "text",
+                  "value": "something-special",
+                }
+              }
+              labelText="LTI Key"
             />
-</div>,
+          </div>,
           <div
             className="o-grid__item u-half"
->
+          >
             <Input
-                        className="c-input"
-                        inputProps={
-                                    Object {
-                                                "id": "lti_config_xml_lti_secret",
-                                                "name": "lti_secret",
-                                                "readOnly": true,
-                                                "type": "text",
-                                                "value": "12345",
-                                              }
-                        }
-                        labelText="LTI Secret"
+              className="c-input"
+              inputProps={
+                Object {
+                  "id": "lti_config_xml_lti_secret",
+                  "name": "lti_secret",
+                  "readOnly": true,
+                  "type": "text",
+                  "value": "12345",
+                }
+              }
+              labelText="LTI Secret"
             />
-</div>,
+          </div>,
           <div
             className="o-grid__item u-full"
->
+          >
             <Textarea
-                        className="c-input"
-                        labelText="LTI Config XML"
-                        textareaProps={
-                                    Object {
-                                                "id": "application_instance_lti_config_xml",
-                                                "name": "lti_config_xml",
-                                                "onChange": [Function],
-                                                "readOnly": true,
-                                                "rows": 20,
-                                                "value": "IMA XML",
-                                              }
-                        }
+              className="c-input"
+              labelText="LTI Config XML"
+              textareaProps={
+                Object {
+                  "id": "application_instance_lti_config_xml",
+                  "name": "lti_config_xml",
+                  "onChange": [Function],
+                  "readOnly": true,
+                  "rows": 20,
+                  "value": "IMA XML",
+                }
+              }
             />
-</div>,
+          </div>,
           <button
             className="c-btn c-btn--gray--large u-m-right"
             onClick={[Function]}
             type="button"
->
+          >
             Close
-</button>,
+          </button>,
         ],
         "className": "c-modal c-modal--settings is-open",
         "closeTimeoutMS": 0,
@@ -403,16 +403,16 @@ ShallowWrapper {
             "children": <Input
               className="c-input"
               inputProps={
-                            Object {
-                                          "id": "lti_config_xml_lti_key",
-                                          "name": "lti_key",
-                                          "readOnly": true,
-                                          "type": "text",
-                                          "value": "something-special",
-                                        }
+                Object {
+                  "id": "lti_config_xml_lti_key",
+                  "name": "lti_key",
+                  "readOnly": true,
+                  "type": "text",
+                  "value": "something-special",
+                }
               }
               labelText="LTI Key"
-/>,
+            />,
             "className": "o-grid__item u-half",
           },
           "ref": null,
@@ -445,16 +445,16 @@ ShallowWrapper {
             "children": <Input
               className="c-input"
               inputProps={
-                            Object {
-                                          "id": "lti_config_xml_lti_secret",
-                                          "name": "lti_secret",
-                                          "readOnly": true,
-                                          "type": "text",
-                                          "value": "12345",
-                                        }
+                Object {
+                  "id": "lti_config_xml_lti_secret",
+                  "name": "lti_secret",
+                  "readOnly": true,
+                  "type": "text",
+                  "value": "12345",
+                }
               }
               labelText="LTI Secret"
-/>,
+            />,
             "className": "o-grid__item u-half",
           },
           "ref": null,
@@ -488,16 +488,16 @@ ShallowWrapper {
               className="c-input"
               labelText="LTI Config XML"
               textareaProps={
-                            Object {
-                                          "id": "application_instance_lti_config_xml",
-                                          "name": "lti_config_xml",
-                                          "onChange": [Function],
-                                          "readOnly": true,
-                                          "rows": 20,
-                                          "value": "IMA XML",
-                                        }
+                Object {
+                  "id": "application_instance_lti_config_xml",
+                  "name": "lti_config_xml",
+                  "onChange": [Function],
+                  "readOnly": true,
+                  "rows": 20,
+                  "value": "IMA XML",
+                }
               }
-/>,
+            />,
             "className": "o-grid__item u-full",
           },
           "ref": null,
