@@ -106,15 +106,15 @@ applications = [
         visibility: "public",
       },
       editor_button: {
-        text: "LTI Starter App - Content Item Select",
+        text: "LTI Starter App",
         visibility: "admins",
         icon_url: "atomicjolt.png",
       },
       assignment_selection: {
-        text: "LTI Starter App - Content Item Select",
+        text: "LTI Starter App",
       },
       link_selection: {
-        text: "LTI Starter App - Content Item Select",
+        text: "LTI Starter App",
       },
       content_migration: true,
     },
