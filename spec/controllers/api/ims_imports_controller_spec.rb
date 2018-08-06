@@ -76,12 +76,24 @@ RSpec.describe Api::ImsImportsController, type: :controller do
       end
 
       context "no lti_launches" do
-        it "does not enque processing" do
+        it "enqueues processing" do
           import_params = @import_params.with_indifferent_access
           import_params[:data].delete(:lti_launches)
           expect do
             post :create, params: import_params, format: :json
-          end.to_not have_enqueued_job(ImsImportJob)
+          end.to have_enqueued_job(ImsImportJob)
+        end
+
+        it "enqueues processing with nil lti_launches" do
+          import_params = @import_params.with_indifferent_access
+          import_params[:data].delete(:lti_launches)
+          data = {
+            lti_launches: nil,
+            context_id: import_params[:context_id],
+            tool_consumer_instance_guid: import_params[:tool_consumer_instance_guid],
+          }
+          expect(ImsImportJob).to receive(:perform_later).with(data.to_json)
+          post :create, params: import_params, format: :json
         end
       end
     end
