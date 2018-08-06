@@ -2,8 +2,11 @@ class Api::ImsImportsController < ApplicationController
   include Concerns::CanvasImsccSupport
 
   def create
-    if params[:data] && params[:data][:lti_launches].present?
-      lti_launches = lti_launches_params(params[:data])[:lti_launches]
+    data = params[:data]
+    if data.present?
+      lti_launches = if data[:lti_launches].present?
+                       lti_launches_params(data)[:lti_launches]
+                     end
 
       data = {
         lti_launches: lti_launches,
