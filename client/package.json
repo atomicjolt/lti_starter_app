@@ -8,6 +8,7 @@
     "nuke": "rm -rf node_modules && for dir in apps/*; do cd \"$dir\" || continue; rm -rf node_modules; cd ..; cd ..; done"
   },
   "dependencies": {
+    "atomic-fuel": "^2.3.0",
     "eventsource-polyfill": "^0.9.6",
     "superagent": "^3.8.2"
   },
