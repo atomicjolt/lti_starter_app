@@ -196,7 +196,7 @@ describe ApplicationController, type: :controller do
           lti_key: @application_instance.lti_key,
           lms_proxy_call_type: "LIST_ACCOUNTS",
         }, format: :json
-      end.to raise_error(Concerns::CanvasSupport::CanvasApiTokenRequired)
+      end.to raise_error(Integrations::CanvasApiSupport::CanvasApiTokenRequired)
     end
   end
 
@@ -300,7 +300,7 @@ describe ApplicationController, type: :controller do
           lti_key: @application_instance.lti_key,
           lms_proxy_call_type: "LIST_ACCOUNTS",
         }, format: :json
-      end.to raise_error(Concerns::CanvasSupport::CanvasApiTokenRequired)
+      end.to raise_error(Integrations::CanvasApiSupport::CanvasApiTokenRequired)
     end
   end
 end
