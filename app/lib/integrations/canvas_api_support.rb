@@ -38,8 +38,6 @@ module Integrations
         application_instance_api(application_instance, url, site)
       when "course"
         course_api(canvas_course, url, site)
-      else
-        nil
       end
     end
 
