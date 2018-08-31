@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import AccountInstall from './account_install';
 import CourseInstalls from './course_installs';
-import Pagination from './pagination';
+import Pagination from '../common/pagination';
 
 const PAGE_SIZE = 10;
 const COURSE_TYPES = ['basic', 'course_navigation', 'wysiwyg_button'];
@@ -160,9 +160,6 @@ export class InstallPane extends React.Component {
           <Pagination
             setPage={change => this.setState({ currentPage: change.selected })}
             pageCount={pageCount}
-            courses={this.props.courses}
-            pageSize={PAGE_SIZE}
-            loadingCourses={this.props.loadingCourses}
             currentPage={this.state.currentPage}
           />
         </div>

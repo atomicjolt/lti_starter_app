@@ -4,9 +4,15 @@ import applicationInstances from './application_instances';
 describe('application_instances reducer', () => {
   describe('initial state', () => {
     it('returns empty state', () => {
-      const initialState = {};
+      const initialState = {
+        applicationInstances: {},
+        totalPages: 1,
+      };
       const state = applicationInstances(initialState, {});
-      expect(state).toEqual({});
+      expect(state).toEqual({
+        applicationInstances: {},
+        totalPages: 1,
+      });
     });
   });
 
@@ -23,10 +29,10 @@ describe('application_instances reducer', () => {
 
       const results = applicationInstances(state, {
         type: 'GET_APPLICATION_INSTANCES_DONE',
-        payload: [{ config, id: payloadId }]
+        payload: { application_instances: [{ config, id: payloadId }], total_pages: 1 }
       });
-      expect(results[payloadId].config).toBe(`${config}`);
-      expect(results[payloadId].id).toBe(payloadId);
+      expect(results.applicationInstances[payloadId].config).toBe(`${config}`);
+      expect(results.applicationInstances[payloadId].id).toBe(payloadId);
     });
   });
 
@@ -47,8 +53,8 @@ describe('application_instances reducer', () => {
         type: 'GET_APPLICATION_INSTANCE_DONE',
         payload: { config, id: payloadId }
       });
-      expect(results[payloadId].config).toBe(`${config}`);
-      expect(results[payloadId].id).toBe(payloadId);
+      expect(results.applicationInstances[payloadId].config).toBe(`${config}`);
+      expect(results.applicationInstances[payloadId].id).toBe(payloadId);
     });
   });
 
