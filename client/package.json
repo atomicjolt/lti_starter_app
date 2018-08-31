@@ -10,6 +10,8 @@
   "dependencies": {
     "atomic-fuel": "^2.3.0",
     "eventsource-polyfill": "^0.9.6",
+    "lodash": "^4.17.10",
+    "resize-observer-polyfill": "^1.5.0",
     "superagent": "^3.8.2"
   },
   "devDependencies": {
