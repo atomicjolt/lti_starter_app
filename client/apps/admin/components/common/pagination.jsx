@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
 
 export default function Pagination(props) {
-  if (props.courses.length < props.pageSize) return null;
+  if (props.pageCount === 1) {
+    return null;
+  }
+
+  const disableInitialCallback = props.disableInitialCallback || false;
 
   return (
     <ReactPaginate
@@ -14,6 +18,7 @@ export default function Pagination(props) {
       marginPagesDisplayed={1}
       onPageChange={props.setPage}
       initialPage={props.currentPage}
+      disableInitialCallback={disableInitialCallback}
     />
   );
 }
@@ -21,7 +26,6 @@ export default function Pagination(props) {
 Pagination.propTypes = {
   setPage: PropTypes.func.isRequired,
   pageCount: PropTypes.number.isRequired,
-  courses: PropTypes.shape({}),
-  pageSize: PropTypes.number,
-  currentPage: PropTypes.number
+  currentPage: PropTypes.number,
+  disableInitialCallback: PropTypes.bool,
 };

@@ -23,10 +23,6 @@ describe('install pane', () => {
     result = shallow(<InstallPane {...props} />);
   });
 
-  it('matches the snapshot', () => {
-    expect(result).toMatchSnapshot();
-  });
-
   it('renders the install pane with course installs for basic', () => {
     const input = result.find('input');
     expect(input.props().placeholder).toContain('Search...');

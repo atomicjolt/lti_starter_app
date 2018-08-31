@@ -17,7 +17,7 @@ function select(state, props) {
   const instanceId = props.params.applicationInstanceId;
 
   return {
-    applicationInstance: state.applicationInstances[instanceId],
+    applicationInstance: state.applicationInstances.applicationInstances[instanceId],
     applications: state.applications,
     accounts: state.accounts.accounts,
     rootAccount: _.find(state.accounts.accounts, { parent_account_id: null }),

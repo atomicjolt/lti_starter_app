@@ -8,6 +8,8 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   before_action :set_configs, only: [:create, :update]
 
   def index
+    @application_instances = @application_instances.
+      paginate(page: params[:page], per_page: 30)
     application_instances = @application_instances.map do |app_inst|
       authentications = get_authentications(app_inst)
       app_inst_json = app_inst.as_json(include: :site)
@@ -19,7 +21,10 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
       app_inst_json.delete("encrypted_canvas_token_iv")
       app_inst_json
     end
-    render json: application_instances
+    render json: {
+      application_instances: application_instances,
+      total_pages: @application_instances.total_pages,
+    }
   end
 
   def show
