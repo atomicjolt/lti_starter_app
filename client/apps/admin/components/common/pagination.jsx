@@ -26,5 +26,6 @@ export default function Pagination(props) {
 Pagination.propTypes = {
   setPage: PropTypes.func.isRequired,
   pageCount: PropTypes.number.isRequired,
-  currentPage: PropTypes.number
+  currentPage: PropTypes.number,
+  disableInitialCallback: PropTypes.bool,
 };
