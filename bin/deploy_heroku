@@ -12,7 +12,7 @@ function finish {
 }
 trap finish EXIT
 
-RAILS_ENV=production rake assets:precompile
+RAILS_ENV=production bundle exec rails assets:precompile
 
 git add -f public/assets
 git add -f config/assets
