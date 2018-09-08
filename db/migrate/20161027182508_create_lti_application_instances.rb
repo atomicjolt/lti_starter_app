@@ -1,4 +1,4 @@
-class CreateLtiApplicationInstances < ActiveRecord::Migration
+class CreateLtiApplicationInstances < ActiveRecord::Migration[4.2]
   def change
     create_table :lti_application_instances do |t|
       t.integer  :lti_application_id
