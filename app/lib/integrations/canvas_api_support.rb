@@ -11,7 +11,7 @@ module Integrations
     def api
       api = find_canvas_api(@application_instance, @user, @canvas_course)
       if api.blank?
-        raise CanvasApiTokenRequired, "Could not find a global or user canvas api token."
+        raise Exceptions::CanvasApiTokenRequired, "Could not find a global or user canvas api token."
       end
       api
     end
@@ -107,8 +107,6 @@ module Integrations
       "#{Application::AUTH}.#{Rails.application.secrets.application_root_domain}"
     end
 
-    class CanvasApiTokenRequired < LMS::Canvas::CanvasException
-    end
   end
 
 end
