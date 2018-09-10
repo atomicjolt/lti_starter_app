@@ -30,7 +30,7 @@ describe Integrations::CanvasApiSupport do
     expect(@api_support.api).to be_present
   end
   it "should find an api using a global token" do
-    application_instance = FactoryBot.create(:application_instance, canvas_token: 'afakecanvastoken')
+    application_instance = FactoryBot.create(:application_instance, canvas_token: "afakecanvastoken")
     @api_support = Integrations::CanvasApiSupport.new(@user, @canvas_course, application_instance)
     expect(@api_support.api).to be_present
   end
