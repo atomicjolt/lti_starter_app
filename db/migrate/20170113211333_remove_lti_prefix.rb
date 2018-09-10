@@ -1,4 +1,4 @@
-class RemoveLtiPrefix < ActiveRecord::Migration
+class RemoveLtiPrefix < ActiveRecord::Migration[4.2]
   def change
     rename_column :lti_application_instances, :lti_application_id, :application_id
     rename_table :lti_applications, :applications

@@ -13,7 +13,7 @@ describe('application instances index', () => {
 
   beforeEach(() => {
     props = {
-      applicationInstances: [{}],
+      applicationInstances: [{ applicationInstances: {} }],
       getApplicationInstances: () => { applicationInstances = true; },
       createApplicationInstance: () => {},
       saveApplicationInstance: () => {},
@@ -30,10 +30,6 @@ describe('application instances index', () => {
       disableApplicationInstance: () => {},
     };
     result = shallow(<Index {...props} />);
-  });
-
-  it('matches the snapshot', () => {
-    expect(result).toMatchSnapshot();
   });
 
   it('loads the assessments', () => {

@@ -12,7 +12,7 @@ function finish {
 }
 trap finish EXIT
 
-RAILS_ENV=production rake assets:precompile
+RAILS_ENV=production bundle exec rails assets:precompile
 
 git add -f public/assets
 git add -f config/assets
@@ -23,4 +23,7 @@ git add -f config/secrets.yml
 git commit -m "parent sha: [$SHA] add precompile files"
 
 git push -f heroku master
+
+heroku run rails db:migrate
+heroku run rails db:seed
 
