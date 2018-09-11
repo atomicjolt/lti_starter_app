@@ -16,6 +16,7 @@ import settings from './settings';
 
 import appHistory from './history';
 import Index from './components/layout/index';
+import initResizeHandler from '../../common/libs/resize_iframe';
 
 import './styles/styles';
 
@@ -77,7 +78,10 @@ const client = new ApolloClient({
   cache: inCacheMemory,
 });
 
+const mainApp =  document.getElementById('main-app');
+initResizeHandler(mainApp);
+
 ReactDOM.render(
   <Root client={client} />,
-  document.getElementById('main-app'),
+  mainApp,
 );

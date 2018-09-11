@@ -12,6 +12,7 @@ import jwt from 'atomic-fuel/libs/loaders/jwt';
 import configureStore from './store/configure_store';
 import Index from './components/layout/index';
 import appHistory from './history';
+import initResizeHandler from '../../common/libs/resize_iframe';
 
 import './styles/styles';
 
@@ -45,7 +46,10 @@ if (window.DEFAULT_JWT) { // Setup JWT refresh
   jwt(store.dispatch, settings.user_id);
 }
 
+const mainApp =  document.getElementById('main-app');
+initResizeHandler(mainApp);
+
 ReactDOM.render(
   <Root store={store} />,
-  document.getElementById('main-app'),
+  mainApp,
 );

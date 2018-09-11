@@ -10,6 +10,7 @@ import ContentItemSelectionForm from 'atomic-canvas/libs/lti/components/content_
 
 import {
   embedHtml,
+  embedImage,
   embedMultipleHtml,
   ltiLaunch,
   embedIframe,
@@ -137,7 +138,7 @@ export class Selector extends React.Component {
           { this.renderButton(
               'Add Image',
               'image/*',
-              () => embedHtml(`${this.props.apiUrl}atomicjolt.png`)
+              () => embedImage('Atomic Jolt Logo', 'Atomic Jolt Logo', '828px', '571px', `${this.props.apiUrl}atomicjolt.png`)
           ) }
         </ul>
       </div>
