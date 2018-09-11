@@ -2,7 +2,6 @@
 
 exports[`application instances list row matches the snapshot 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ListRow
     applicationInstance={
@@ -42,6 +41,7 @@ ShallowWrapper {
     "batchedUpdates": [Function],
     "getNode": [Function],
     "render": [Function],
+    "simulateError": [Function],
     "simulateEvent": [Function],
     "unmount": [Function],
   },
@@ -73,7 +73,7 @@ ShallowWrapper {
             <input
               name="oauth_complete_url"
               type="hidden"
-              value="about://blank#applications/23/application_instances/2/installs"
+              value="http://localhost/#applications/23/application_instances/2/installs"
             />
           </form>
           <Link
@@ -197,7 +197,7 @@ ShallowWrapper {
               <input
                 name="oauth_complete_url"
                 type="hidden"
-                value="about://blank#applications/23/application_instances/2/installs"
+                value="http://localhost/#applications/23/application_instances/2/installs"
               />
             </form>,
             <Link
@@ -238,7 +238,7 @@ ShallowWrapper {
                 <input
                   name="oauth_complete_url"
                   type="hidden"
-                  value="about://blank#applications/23/application_instances/2/installs"
+                  value="http://localhost/#applications/23/application_instances/2/installs"
                 />,
               ],
             },
@@ -280,7 +280,7 @@ ShallowWrapper {
                 "props": Object {
                   "name": "oauth_complete_url",
                   "type": "hidden",
-                  "value": "about://blank#applications/23/application_instances/2/installs",
+                  "value": "http://localhost/#applications/23/application_instances/2/installs",
                 },
                 "ref": null,
                 "rendered": null,
@@ -647,7 +647,7 @@ ShallowWrapper {
               <input
                 name="oauth_complete_url"
                 type="hidden"
-                value="about://blank#applications/23/application_instances/2/installs"
+                value="http://localhost/#applications/23/application_instances/2/installs"
               />
             </form>
             <Link
@@ -771,7 +771,7 @@ ShallowWrapper {
                 <input
                   name="oauth_complete_url"
                   type="hidden"
-                  value="about://blank#applications/23/application_instances/2/installs"
+                  value="http://localhost/#applications/23/application_instances/2/installs"
                 />
               </form>,
               <Link
@@ -812,7 +812,7 @@ ShallowWrapper {
                   <input
                     name="oauth_complete_url"
                     type="hidden"
-                    value="about://blank#applications/23/application_instances/2/installs"
+                    value="http://localhost/#applications/23/application_instances/2/installs"
                   />,
                 ],
               },
@@ -854,7 +854,7 @@ ShallowWrapper {
                   "props": Object {
                     "name": "oauth_complete_url",
                     "type": "hidden",
-                    "value": "about://blank#applications/23/application_instances/2/installs",
+                    "value": "http://localhost/#applications/23/application_instances/2/installs",
                   },
                   "ref": null,
                   "rendered": null,
@@ -1197,8 +1197,20 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
       },
     },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
   },
 }
 `;
