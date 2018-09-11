@@ -8,9 +8,10 @@ module Concerns
     def canvas_api(
       application_instance: current_application_instance,
       user: current_user,
-      canvas_course: current_canvas_course
+      canvas_course: current_canvas_course,
+      prefer_user: false
     )
-      Integrations::CanvasApiSupport.new(user, canvas_course, application_instance).api
+      Integrations::CanvasApiSupport.new(user, canvas_course, application_instance, prefer_user).api
     end
 
     def protect_canvas_api(type: params[:lms_proxy_call_type], context_id: jwt_context_id)
