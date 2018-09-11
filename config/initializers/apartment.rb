@@ -23,6 +23,7 @@ Apartment.configure do |config|
     BundleInstance
     ApplicationBundle
     ImsExport
+    LtiLaunch
   }
 
   # In order to migrate all of your Tenants you need to provide a list of Tenant names to Apartment.
