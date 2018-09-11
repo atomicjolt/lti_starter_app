@@ -37,7 +37,7 @@ class LtiLaunchesController < ApplicationController
     begin
       @canvas_api = canvas_api
       @canvas_auth_required = @canvas_api.blank?
-    rescue CanvasApiTokenRequired
+    rescue Exceptions::CanvasApiTokenRequired
       @canvas_auth_required = true
     end
     set_lti_launch_values

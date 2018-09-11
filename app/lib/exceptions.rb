@@ -7,4 +7,6 @@ module Exceptions
   end
   class FileMvException < StandardError
   end
+  class CanvasApiTokenRequired < LMS::Canvas::CanvasException
+  end
 end
