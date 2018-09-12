@@ -2,21 +2,27 @@ module Integrations
 
   class CanvasApiSupport
 
-    def initialize(user, canvas_course, application_instance)
+    def initialize(user, canvas_course, application_instance, prefer_user = false)
       @user = user
       @canvas_course = canvas_course
       @application_instance = application_instance
+      @prefer_user = prefer_user
     end
 
     def api
-      api = find_canvas_api(@application_instance, @user, @canvas_course)
+      api = find_canvas_api(@application_instance, @user, @canvas_course, @prefer_user)
       if api.blank?
         raise Exceptions::CanvasApiTokenRequired, "Could not find a global or user canvas api token."
       end
       api
     end
 
-    def find_canvas_api(application_instance, user, canvas_course)
+    def find_canvas_api(application_instance, user, canvas_course, prefer_user = false)
+      if prefer_user
+        if api = api_for("user", application_instance, user, canvas_course)
+          return api
+        end
+      end
       application_instance.oauth_precedence.each do |kind|
         if api = api_for(kind, application_instance, user, canvas_course)
           return api # Return the first authentication object we find

@@ -118,22 +118,76 @@ describe ApplicationController, type: :controller do
       @user_token_header = "Bearer #{@user_token}"
       request.headers["Authorization"] = @user_token_header
     end
-    controller do
-      include Concerns::CanvasSupport
 
-      before_action :protect_canvas_api
+    describe "use application_instance.auth_precedence" do
+      controller do
+        include Concerns::CanvasSupport
 
-      def index
-        result = canvas_api.proxy(params[:lms_proxy_call_type], params.to_unsafe_h, request.body.read)
-        response.status = result.code
+        before_action :protect_canvas_api
 
-        render plain: result.body
+        def index
+          result = canvas_api.proxy(params[:lms_proxy_call_type], params.to_unsafe_h, request.body.read)
+          response.status = result.code
+
+          render plain: result.body
+        end
+      end
+
+      it "provides access to the canvas api" do
+        get :index, params: { lti_key: @application_instance.lti_key, lms_proxy_call_type: "LIST_ACCOUNTS" }, format: :json
+        expect(response).to have_http_status(:success)
       end
     end
 
-    it "provides access to the canvas api" do
-      get :index, params: { lti_key: @application_instance.lti_key, lms_proxy_call_type: "LIST_ACCOUNTS" }, format: :json
-      expect(response).to have_http_status(:success)
+    describe "prefer user authentication" do
+      before do
+        canvas_api_permissions = {
+          default: [
+            "administrator", # Internal (non-LTI) role
+            "urn:lti:sysrole:ims/lis/SysAdmin",
+            "urn:lti:sysrole:ims/lis/Administrator",
+            "urn:lti:role:ims/lis/Learner",
+          ],
+          common: [],
+          LIST_ACCOUNTS: [],
+        }
+        application = FactoryBot.create(
+          :application,
+          canvas_api_permissions: canvas_api_permissions,
+          oauth_precedence: "global,application_instance,course,user",
+        )
+        @application_instance = FactoryBot.create(
+          :application_instance,
+          canvas_token: "afaketoken",
+          application: application,
+        )
+        @authentication = FactoryBot.create(
+          :authentication,
+          provider_url: UrlHelper.scheme_host_port(@application_instance.site.url),
+          refresh_token: "qwerty",
+        )
+        @user.authentications << @authentication
+        @application_instance.authentications << @authentication
+        @application_instance.save!
+        allow(controller).to receive(:current_application_instance).and_return(@application_instance)
+      end
+      controller do
+        include Concerns::CanvasSupport
+
+        before_action :protect_canvas_api
+
+        def index
+          api = canvas_api(prefer_user: true)
+          render json: api
+        end
+      end
+
+      it "provides access to the canvas api using the user's authentication" do
+        get :index, params: { lti_key: @application_instance.lti_key, lms_proxy_call_type: "LIST_ACCOUNTS" }, format: :json
+        expect(response).to have_http_status(:success)
+        json = JSON.parse(response.body)
+        expect(@user.authentications.pluck(:id).include?(json["authentication"]["id"])).to be true
+      end
     end
   end
 
