@@ -5344,7 +5344,7 @@ jest@^21.2.1:
   dependencies:
     jest-cli "^21.2.1"
 
-jest@^23.1.0:
+jest@^23.6.0:
   version "23.6.0"
   resolved "https://registry.yarnpkg.com/jest/-/jest-23.6.0.tgz#ad5835e923ebf6e19e7a1d7529a432edfee7813d"
   dependencies:
