@@ -461,7 +461,7 @@ atomic-canvas@^1.2.0:
     cli-highlight "^1.1.4"
     lodash "^4.17.4"
 
-atomic-fuel@^2.3.0, atomic-fuel@^2.5.0:
+atomic-fuel@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/atomic-fuel/-/atomic-fuel-2.5.0.tgz#ddbc9ed01e79bd797f3b9c674ae9d8133b473a61"
   dependencies:
