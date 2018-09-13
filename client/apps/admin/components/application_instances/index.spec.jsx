@@ -28,6 +28,7 @@ describe('application instances index', () => {
       },
       canvasOauthURL: 'https://www.example.com',
       disableApplicationInstance: () => {},
+      totalPages: 10,
     };
     result = shallow(<Index {...props} />);
   });
