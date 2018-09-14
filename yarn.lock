@@ -7347,7 +7347,7 @@ react-dock@^0.2.4:
     lodash.debounce "^3.1.1"
     prop-types "^15.5.8"
 
-react-dom@^16.2.0:
+react-dom@^16.5.1:
   version "16.5.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.5.1.tgz#29d0c5a01ed3b6b4c14309aa91af6ec4eb4f292c"
   dependencies:
@@ -7496,15 +7496,6 @@ react-test-renderer@^16.2.0:
     react-is "^16.5.1"
     schedule "^0.4.0"
 
-react@^16.2.0:
-  version "16.5.1"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.5.1.tgz#8cb8e9f8cdcb4bde41c9a138bfbf907e66132372"
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    schedule "^0.4.0"
-
 react@^16.4.0:
   version "16.5.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.5.0.tgz#f2c1e754bf9751a549d9c6d9aca41905beb56575"
@@ -7513,6 +7504,15 @@ react@^16.4.0:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     schedule "^0.3.0"
+
+react@^16.5.1:
+  version "16.5.1"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.5.1.tgz#8cb8e9f8cdcb4bde41c9a138bfbf907e66132372"
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    schedule "^0.4.0"
 
 read-cache@^1.0.0:
   version "1.0.0"
