@@ -8,7 +8,7 @@
   "dependencies": {
     "atomic-canvas": "^1.2.0",
     "atomic-fuel": "^2.5.0",
-    "babel": "^6.23.0",
+    "babel": "^6.26.3",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "es6-promise": "^4.2.4",
