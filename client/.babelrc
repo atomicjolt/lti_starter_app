@@ -6,7 +6,6 @@
         ["transform-runtime"],
         ["transform-decorators-legacy"],
         ["transform-class-properties"],
-        ["babel-plugin-rewire"],
       ],
       "ignore": [
         "node_modules",
