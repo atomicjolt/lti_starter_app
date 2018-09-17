@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "atomic-canvas": "^1.2.0",
-    "atomic-fuel": "^2.5.0",
+    "atomic-fuel": "^2.6.0",
     "babel": "^6.23.0",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
@@ -26,9 +26,5 @@
     "react-tap-event-plugin": "2.0.1",
     "redux": "3.6.0",
     "uuid": "3.0.1"
-  },
-  "devDependencies": {
-    "jest": "^23.6.0",
-    "redux-devtools": "^3.4.0"
   }
 }

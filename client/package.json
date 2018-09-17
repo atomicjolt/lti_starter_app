@@ -8,7 +8,7 @@
     "nuke": "rm -rf node_modules && for dir in apps/*; do cd \"$dir\" || continue; rm -rf node_modules; cd ..; cd ..; done"
   },
   "dependencies": {
-    "atomic-fuel": "^2.5.0",
+    "atomic-fuel": "^2.6.0",
     "eventsource-polyfill": "^0.9.6",
     "lodash": "^4.17.10",
     "resize-observer-polyfill": "^1.5.0",
@@ -28,6 +28,9 @@
     "jest": "^23.6.0",
     "nock": "^9.2.3",
     "phantomjs-prebuilt": "^2.1.16",
-    "react-test-renderer": "^16.5.1"
+    "react-test-renderer": "^16.5.1",
+    "redux-devtools": "^3.4.1",
+    "redux-devtools-dock-monitor": "^1.1.2",
+    "redux-devtools-log-monitor": "^1.4.0"
   }
 }
