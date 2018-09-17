@@ -28,9 +28,5 @@
     "react-proxy-loader": "^0.3.5",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2"
-  },
-  "devDependencies": {
-    "jest": "^23.6.0",
-    "redux-devtools": "^3.4.1"
   }
 }

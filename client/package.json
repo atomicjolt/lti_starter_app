@@ -28,6 +28,9 @@
     "jest": "^23.6.0",
     "nock": "^9.2.3",
     "phantomjs-prebuilt": "^2.1.16",
-    "react-test-renderer": "^16.5.1"
+    "react-test-renderer": "^16.5.1",
+    "redux-devtools": "^3.4.1",
+    "redux-devtools-dock-monitor": "^1.1.2",
+    "redux-devtools-log-monitor": "^1.4.0"
   }
 }
