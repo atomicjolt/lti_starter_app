@@ -1,11 +1,11 @@
 import _ from 'lodash';
 import ResizeObserver from 'resize-observer-polyfill';
-import { postMessage } from 'atomic-fuel/libs/actions/post_message';
+import { broadcastMessage } from 'atomic-fuel/libs/communications/communicator';
 
 function sendLtiIframeResize(height) {
   if (height > 0) {
     const message = { subject: 'lti.frameResize', height };
-    postMessage(message, true);
+    broadcastMessage(message);
   }
 }
 
