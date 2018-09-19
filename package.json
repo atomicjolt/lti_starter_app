@@ -8,7 +8,7 @@
   "scripts": {
     "test": "./tests.sh",
     "test_debug": "./tests_debug.sh",
-    "test_update": "ls client/apps | xargs -I % sh -c 'cd client/apps/% && yarn test -u' && sh -c 'cd client/common/ && yarn test -u'",
+    "test_update": "./tests_update.sh",
     "clear_jest_cache": "./clear_jest_cache.sh",
     "watch": "cd ./client && for dir in apps/*; do cd \"$dir\" || continue; yarn watch; cd ..; cd ..; done",
     "hot": "atomic-webpack-hot --hotPack --configDir=client/config",
