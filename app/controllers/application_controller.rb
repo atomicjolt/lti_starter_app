@@ -42,8 +42,15 @@ class ApplicationController < ActionController::Base
 
   def canvas_url
     @canvas_url ||= session[:canvas_url] ||
+      custom_canvas_api_domain ||
       current_application_instance&.site&.url ||
       current_bundle_instance&.site&.url
+  end
+
+  def custom_canvas_api_domain
+    if params[:custom_canvas_api_domain].present?
+      "https://#{params[:custom_canvas_api_domain]}"
+    end
   end
 
   def configure_permitted_parameters
