@@ -10,8 +10,14 @@ function prettyJSON(str) {
   if (_.isEmpty(str)) {
     return str;
   }
-  const obj = JSON.parse(str);
-  return JSON.stringify(obj, null, 2);
+
+  try {
+    const obj = JSON.parse(str);
+    return JSON.stringify(obj, null, 2);
+  } catch (e) {
+    // Invalid json. Warn the user and just output the string
+    return str;
+  }
 }
 
 export default class Form extends React.Component {
@@ -172,7 +178,7 @@ export default class Form extends React.Component {
                 name: 'config',
                 placeholder: 'ex: { "foo": "bar" }',
                 rows: 3,
-                value: this.props.config || '',
+                value: prettyJSON(this.props.config || '{}'),
                 onChange: this.props.onChange,
               }}
               warning={erroneousConfigWarning}
@@ -186,7 +192,7 @@ export default class Form extends React.Component {
                 id: 'application_instance_lti_config',
                 name: 'lti_config',
                 rows: 8,
-                value: prettyJSON(this.props.lti_config || ''),
+                value: prettyJSON(this.props.lti_config || '{}'),
                 onChange: this.props.onChange,
               }}
               warning={erroneousLtiConfigWarning}

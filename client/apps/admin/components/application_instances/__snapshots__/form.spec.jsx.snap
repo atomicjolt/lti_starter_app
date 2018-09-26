@@ -203,7 +203,9 @@ ShallowWrapper {
                   "onChange": [Function],
                   "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
                   "rows": 3,
-                  "value": "{ \\"foo\\": \\"bar\\" }",
+                  "value": "{
+  \\"foo\\": \\"bar\\"
+}",
                 }
               }
               warning={null}
@@ -221,7 +223,7 @@ ShallowWrapper {
                   "name": "lti_config",
                   "onChange": [Function],
                   "rows": 8,
-                  "value": "",
+                  "value": "{}",
                 }
               }
               warning={null}
@@ -425,7 +427,9 @@ ShallowWrapper {
                     "onChange": [Function],
                     "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
                     "rows": 3,
-                    "value": "{ \\"foo\\": \\"bar\\" }",
+                    "value": "{
+  \\"foo\\": \\"bar\\"
+}",
                   }
                 }
                 warning={null}
@@ -443,7 +447,7 @@ ShallowWrapper {
                     "name": "lti_config",
                     "onChange": [Function],
                     "rows": 8,
-                    "value": "",
+                    "value": "{}",
                   }
                 }
                 warning={null}
@@ -917,7 +921,9 @@ ShallowWrapper {
                     "onChange": [Function],
                     "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
                     "rows": 3,
-                    "value": "{ \\"foo\\": \\"bar\\" }",
+                    "value": "{
+  \\"foo\\": \\"bar\\"
+}",
                   }
                 }
                 warning={null}
@@ -938,7 +944,9 @@ ShallowWrapper {
                   "onChange": [Function],
                   "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
                   "rows": 3,
-                  "value": "{ \\"foo\\": \\"bar\\" }",
+                  "value": "{
+  \\"foo\\": \\"bar\\"
+}",
                 },
                 "warning": null,
               },
@@ -962,7 +970,7 @@ ShallowWrapper {
                     "name": "lti_config",
                     "onChange": [Function],
                     "rows": 8,
-                    "value": "",
+                    "value": "{}",
                   }
                 }
                 warning={null}
@@ -982,7 +990,7 @@ ShallowWrapper {
                   "name": "lti_config",
                   "onChange": [Function],
                   "rows": 8,
-                  "value": "",
+                  "value": "{}",
                 },
                 "warning": null,
               },
@@ -1209,7 +1217,9 @@ ShallowWrapper {
                     "onChange": [Function],
                     "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
                     "rows": 3,
-                    "value": "{ \\"foo\\": \\"bar\\" }",
+                    "value": "{
+  \\"foo\\": \\"bar\\"
+}",
                   }
                 }
                 warning={null}
@@ -1227,7 +1237,7 @@ ShallowWrapper {
                     "name": "lti_config",
                     "onChange": [Function],
                     "rows": 8,
-                    "value": "",
+                    "value": "{}",
                   }
                 }
                 warning={null}
@@ -1431,7 +1441,9 @@ ShallowWrapper {
                       "onChange": [Function],
                       "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
                       "rows": 3,
-                      "value": "{ \\"foo\\": \\"bar\\" }",
+                      "value": "{
+  \\"foo\\": \\"bar\\"
+}",
                     }
                   }
                   warning={null}
@@ -1449,7 +1461,7 @@ ShallowWrapper {
                       "name": "lti_config",
                       "onChange": [Function],
                       "rows": 8,
-                      "value": "",
+                      "value": "{}",
                     }
                   }
                   warning={null}
@@ -1923,7 +1935,9 @@ ShallowWrapper {
                       "onChange": [Function],
                       "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
                       "rows": 3,
-                      "value": "{ \\"foo\\": \\"bar\\" }",
+                      "value": "{
+  \\"foo\\": \\"bar\\"
+}",
                     }
                   }
                   warning={null}
@@ -1944,7 +1958,9 @@ ShallowWrapper {
                     "onChange": [Function],
                     "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
                     "rows": 3,
-                    "value": "{ \\"foo\\": \\"bar\\" }",
+                    "value": "{
+  \\"foo\\": \\"bar\\"
+}",
                   },
                   "warning": null,
                 },
@@ -1968,7 +1984,7 @@ ShallowWrapper {
                       "name": "lti_config",
                       "onChange": [Function],
                       "rows": 8,
-                      "value": "",
+                      "value": "{}",
                     }
                   }
                   warning={null}
@@ -1988,7 +2004,7 @@ ShallowWrapper {
                     "name": "lti_config",
                     "onChange": [Function],
                     "rows": 8,
-                    "value": "",
+                    "value": "{}",
                   },
                   "warning": null,
                 },

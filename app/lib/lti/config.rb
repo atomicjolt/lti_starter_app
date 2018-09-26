@@ -81,7 +81,7 @@ module Lti
         launch_url: args[:launch_url],
         secure_launch_url: args[:secure_launch_url],
         description: args[:description],
-        icon: "https://#{args[:domain]}/#{args[:icon]}",
+        icon: args[:icon].include?("http") ? args[:icon] : "https://#{args[:domain]}/#{args[:icon]}",
       )
     end
 
