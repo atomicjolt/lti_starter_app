@@ -100,6 +100,7 @@ applications = [
       icon: "oauth_icon.png",
       custom_fields: {
         canvas_course_id: "$Canvas.course.id",
+        canvas_api_domain: "$Canvas.api.domain",
       },
       course_navigation: {
         text: "LTI Starter App",
