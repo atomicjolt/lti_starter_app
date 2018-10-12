@@ -64,6 +64,17 @@ class ApplicationInstance < ActiveRecord::Base
     "#{canvas_token.first(4)}...#{canvas_token.last(4)}"
   end
 
+  # if you add a new value to an application's default settings, it will not
+  # propogate to old app instances, this falls back to the default if it's not
+  # present
+  def get_config(key)
+    if config.key? key
+      config[key]
+    else
+      application.default_config[key]
+    end
+  end
+
   private
 
   def set_lti
