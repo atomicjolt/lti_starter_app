@@ -37,20 +37,20 @@ class ApplicationController < ActionController::Base
     render_error 401, message
   end
 
-  def record_exception(e)
-    Rollbar.error(e)
+  def record_exception(exception)
+    Rollbar.error(exception)
     Rails.logger.error "Unexpected exception during execution"
-    Rails.logger.error "#{e.class.name} (#{e.message}):"
-    Rails.logger.error "  #{e.backtrace.join("\n  ")}"
+    Rails.logger.error "#{exception.class.name} (#{exception.message}):"
+    Rails.logger.error "  #{exception.backtrace.join("\n  ")}"
   end
 
   # NOTE: Exceptions are specified in order of most general at the top with more specific at the bottom
 
   # Exceptions defined in order of increasing specificity.
-  rescue_from Exception, :with => :internal_error
-  def internal_error(e)
-    record_exception(e)
-    render_error 500, "Internal error: #{e.message}"
+  rescue_from Exception, with: :internal_error
+  def internal_error(exception)
+    record_exception(exception)
+    render_error 500, "Internal error: #{exception.message}"
   end
 
   rescue_from CanCan::AccessDenied, with: :permission_denied
@@ -92,6 +92,7 @@ class ApplicationController < ActionController::Base
   rescue_from Exceptions::CanvasApiTokenRequired, with: :handle_canvas_token_required
   def handle_canvas_token_required(exception)
     json_options = {
+      exception: exception,
       canvas_authorization_required: true,
     }
     render_error 401, "Unable to find valid Canvas API Token.", json_options

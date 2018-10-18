@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe ApplicationController, type: :controller do
-
   describe "helper methods" do
     describe "#current_application_instance" do
       it "returns the current application instance" do
@@ -192,5 +191,4 @@ RSpec.describe ApplicationController, type: :controller do
 
     end
   end
-
 end
