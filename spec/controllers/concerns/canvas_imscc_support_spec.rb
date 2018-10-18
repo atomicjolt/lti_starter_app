@@ -33,7 +33,7 @@ describe ApplicationController, type: :controller do
     post :create, params: {}, format: :json
     expect(response).to have_http_status(:unauthorized)
     json = JSON.parse(response.body)
-    expect(json["message"]).to eq("Unauthorized: Invalid token: Invalid authorization header.")
+    expect(json["errors"][0]["message"]).to eq("Unauthorized: Invalid token: Invalid authorization header.")
   end
 
   it "Returns unauthorized if the kid header value has a bad ltt key" do
@@ -48,7 +48,7 @@ describe ApplicationController, type: :controller do
     post :create, params: {}, format: :json
     expect(response).to have_http_status(:unauthorized)
     json = JSON.parse(response.body)
-    expect(json["message"]).to eq("Unauthorized: Invalid token: Invalid authorization header.")
+    expect(json["errors"][0]["message"]).to eq("Unauthorized: Invalid token: Invalid authorization header.")
   end
 
   it "Returns unauthorized if the token has the wrong signature" do
@@ -63,7 +63,7 @@ describe ApplicationController, type: :controller do
     post :create, params: {}, format: :json
     expect(response).to have_http_status(:unauthorized)
     json = JSON.parse(response.body)
-    expect(json["message"]).to eq("Unauthorized: Invalid token: Signature verification raised")
+    expect(json["errors"][0]["message"]).to eq("Unauthorized: Invalid token: Signature verification raised")
   end
 
   it "Returns true if the token is valid" do

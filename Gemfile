@@ -23,7 +23,7 @@ gem "cancancan"
 gem "devise"
 gem "ims-lti", "~> 2.1.5" # IMS LTI tool consumers and providers
 gem "jwt", "~> 1.5.0" # json web token
-gem "lms-api", "~>1.6.0"
+gem "lms-api", "~>1.7.0"
 gem "omniauth"
 gem "omniauth-canvas", "~>1.0.2"
 gem "rolify"
@@ -36,6 +36,9 @@ gem "yajl-ruby", require: "yajl"
 
 # server
 gem "puma"
+
+# Errors
+gem "rollbar"
 
 # Used for deploying to Heroku. Can be removed if not deploying to Heroku.
 gem "heroku_secrets", git: "https://github.com/alexpeattie/heroku_secrets.git"
