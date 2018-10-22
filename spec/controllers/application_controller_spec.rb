@@ -56,5 +56,139 @@ RSpec.describe ApplicationController, type: :controller do
         expect(subject.send(:canvas_url)).to eq(application_instance.site.url)
       end
     end
+
+    describe "Exception handlers" do
+      before do
+        application_instance = FactoryBot.create(:application_instance)
+        allow(controller).to receive(:current_application_instance).and_return(application_instance)
+      end
+
+      describe "CanCan::AccessDenied exception" do
+        controller do
+          def index
+            raise CanCan::AccessDenied
+          end
+        end
+        it "renders a unauthorized page" do
+          get :index
+          expect(response).to have_http_status(403)
+        end
+        it "renders unauthorized json" do
+          get :index, format: :json
+          expect(response).to have_http_status(403)
+          expect(JSON.parse(response.body)["errors"][0]["message"]).to eq("You are not authorized to access this page.")
+        end
+      end
+
+      describe "Exception" do
+        controller do
+          def index
+            raise Exception
+          end
+        end
+        it "renders an error page" do
+          get :index
+          expect(response).to have_http_status(500)
+        end
+        it "renders error json" do
+          get :index, format: :json
+          expect(response).to have_http_status(500)
+          expect(JSON.parse(response.body)["errors"][0]["message"]).to eq("Internal error: Exception")
+        end
+      end
+
+      describe "LMS::Canvas::CanvasException" do
+        controller do
+          def index
+            raise LMS::Canvas::CanvasException
+          end
+        end
+        it "renders an error page" do
+          get :index
+          expect(response).to have_http_status(500)
+        end
+        it "renders error json" do
+          get :index, format: :json
+          expect(response).to have_http_status(500)
+          expect(JSON.parse(response.body)["errors"][0]["message"]).to eq("Error while accessing Canvas: .")
+        end
+      end
+
+      describe "LMS::Canvas::RefreshTokenFailedException" do
+        controller do
+          def index
+            raise LMS::Canvas::RefreshTokenFailedException
+          end
+        end
+        it "renders an error page" do
+          get :index
+          expect(response).to have_http_status(401)
+        end
+        it "renders error json" do
+          get :index, format: :json
+          expect(response).to have_http_status(401)
+          result = JSON.parse(response.body)
+          expect(result["errors"][0]["message"]).to eq("Canvas API Token has expired.")
+          expect(result["canvas_authorization_required"]).to eq(true)
+        end
+      end
+
+      describe "LMS::Canvas::RefreshTokenRequired" do
+        controller do
+          def index
+            raise LMS::Canvas::RefreshTokenRequired
+          end
+        end
+        it "renders an error page" do
+          get :index
+          expect(response).to have_http_status(401)
+        end
+        it "renders error json" do
+          get :index, format: :json
+          expect(response).to have_http_status(401)
+          result = JSON.parse(response.body)
+          expect(result["errors"][0]["message"]).to eq("Canvas API Token has expired.")
+          expect(result["canvas_authorization_required"]).to eq(true)
+        end
+      end
+
+      describe "Exceptions::CanvasApiTokenRequired" do
+        controller do
+          def index
+            raise Exceptions::CanvasApiTokenRequired
+          end
+        end
+        it "renders an error page" do
+          get :index
+          expect(response).to have_http_status(401)
+        end
+        it "renders error json" do
+          get :index, format: :json
+          expect(response).to have_http_status(401)
+          result = JSON.parse(response.body)
+          expect(result["errors"][0]["message"]).to eq("Unable to find valid Canvas API Token.")
+          expect(result["canvas_authorization_required"]).to eq(true)
+        end
+      end
+
+      describe "LMS::Canvas::InvalidAPIRequestFailedException" do
+        controller do
+          def index
+            raise LMS::Canvas::InvalidAPIRequestFailedException
+          end
+        end
+        it "renders an error page" do
+          get :index
+          expect(response).to have_http_status(500)
+        end
+        it "renders error json" do
+          get :index, format: :json
+          expect(response).to have_http_status(500)
+          result = JSON.parse(response.body)
+          expect(result["errors"][0]["message"]).to eq("An error occured when calling the Canvas API: ")
+        end
+      end
+
+    end
   end
 end

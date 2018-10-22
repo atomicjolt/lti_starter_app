@@ -14,30 +14,97 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  rescue_from CanCan::AccessDenied do |exception|
+  def render_error(status, message, json_options = {})
     respond_to do |format|
-      format.html { redirect_to root_url, alert: exception.message }
-      format.json { render json: { error: exception.message }, status: :unauthorized }
+      format.html { render file: "public/#{status}.html", status: status }
+      format.json do
+        render json: {
+          message: message,
+        }.merge(json_options), status: status
+      end
     end
   end
 
-  rescue_from LMS::Canvas::RefreshTokenRequired do |exception|
+  def invalid_request(message)
+    render_error 400, message
+  end
+
+  def not_found
+    render_error 404, "Unable to find the requested record"
+  end
+
+  def user_not_authorized(message = "")
+    render_error 401, message
+  end
+
+  def record_exception(exception)
+    Rollbar.error(exception)
+    Rails.logger.error "Unexpected exception during execution"
+    Rails.logger.error "#{exception.class.name} (#{exception.message}):"
+    Rails.logger.error "  #{exception.backtrace.join("\n  ")}"
+  end
+
+  # NOTE: Exceptions are specified in order of most general at the top with more specific at the bottom
+
+  # Exceptions defined in order of increasing specificity.
+  rescue_from Exception, with: :internal_error
+  def internal_error(exception)
+    record_exception(exception)
+    render_error 500, "Internal error: #{exception.message}"
+  end
+
+  rescue_from CanCan::AccessDenied, with: :permission_denied
+  def permission_denied(exception = nil)
+    message = exception.present? ? exception.message : "Permission denied"
+    render_error 403, message
+  end
+
+  # Handle other Canvas related exceptions
+  rescue_from LMS::Canvas::CanvasException, with: :handle_canvas_exception
+  def handle_canvas_exception(exception)
+    record_exception(exception)
+    render_error 500, "Error while accessing Canvas: #{exception.message}.", { exception: exception }
+  end
+
+  # Raised when a new token cannot be retrieved using the refresh token
+  rescue_from LMS::Canvas::RefreshTokenFailedException, with: :handle_canvas_token_expired
+
+  # Raised if a refresh token or its options are not available
+  rescue_from LMS::Canvas::RefreshTokenRequired, with: :handle_canvas_token_expired
+  def handle_canvas_token_expired(exception)
     # Auth has gone bad. Remove it and request that the user do OAuth
     user = nil
     if auth = Authentication.find_by(id: exception.auth&.id)
       user = auth.user
       auth.destroy
     end
+    json_options = {}
     if current_application_instance.oauth_precedence.include?("user") || # The application allows for user tokens
         current_user == user # User owns the authentication. We can ask them to refresh
-      respond_to do |format|
-        format.json { render json: { message: "canvas_authorization_required" }, status: :forbidden }
-      end
-    else
-      respond_to do |format|
-        format.json { render json: { message: "Unable to find Canvas API Token." }, status: :forbidden }
-      end
+      json_options = {
+        canvas_authorization_required: true,
+      }
     end
+    render_error 401, "Canvas API Token has expired.", json_options
+  end
+
+  # Raised when no Canvas token is available
+  rescue_from Exceptions::CanvasApiTokenRequired, with: :handle_canvas_token_required
+  def handle_canvas_token_required(exception)
+    json_options = {
+      exception: exception,
+      canvas_authorization_required: true,
+    }
+    render_error 401, "Unable to find valid Canvas API Token.", json_options
+  end
+
+  rescue_from LMS::Canvas::InvalidAPIRequestFailedException, with: :handle_invalid_canvas_api_request
+  def handle_invalid_canvas_api_request(exception)
+    json_options = {
+      exception: exception,
+      backtrace: exception.backtrace,
+    }
+    render_error 500, "An error occured when calling the Canvas API: #{exception.message}", json_options
   end
 
   def canvas_url
@@ -87,13 +154,6 @@ class ApplicationController < ActionController::Base
 
   def current_user_roles(context_id: nil)
     current_user.nil_or_context_roles(context_id).map(&:name)
-  end
-
-  def user_not_authorized(message = "")
-    respond_to do |format|
-      format.html { render file: "public/401.html", status: :unauthorized }
-      format.json { render json: { message: message }, status: :unauthorized }
-    end
   end
 
   def set_lti_launch_values

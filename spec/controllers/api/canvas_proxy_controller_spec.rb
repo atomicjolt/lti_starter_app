@@ -25,17 +25,17 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
       end
 
       describe "GET" do
-        it "return unauthorized" do
+        it "returns forbidden" do
           type = "LIST_ACCOUNTS"
           get :proxy, params: { lms_proxy_call_type: type, lti_key: @application_instance.lti_key }, format: :json
-          expect(response).to have_http_status(:unauthorized)
+          expect(response).to have_http_status(:forbidden)
         end
-        it "return unauthorized" do
+        it "returns forbidden" do
           type = "LIST_YOUR_COURSES"
           get :proxy, params: { lms_proxy_call_type: type, lti_key: @application_instance.lti_key, account_id: 1 }, format: :json
-          expect(response).to have_http_status(:unauthorized)
+          expect(response).to have_http_status(:forbidden)
         end
-        it "return unauthorized" do
+        it "returns forbidden" do
           type = "LIST_YOUR_COURSES"
           get :proxy,
               params: {
@@ -46,12 +46,12 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
                 per_page: 100,
               },
               format: :json
-          expect(response).to have_http_status(:unauthorized)
+          expect(response).to have_http_status(:forbidden)
         end
       end
 
       describe "POST" do
-        it "return unauthorized" do
+        it "returns forbidden" do
           type = "CREATE_NEW_SUB_ACCOUNT"
           payload = {
             account: { name: "Canvas Demo Courses" },
@@ -64,12 +64,12 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
                  account_id: 1,
                },
                format: :json
-          expect(response).to have_http_status(:unauthorized)
+          expect(response).to have_http_status(:forbidden)
         end
       end
 
       describe "PUT" do
-        it "successfully puts to the canvas api" do
+        it "returns forbidden" do
           type = "UPDATE_ACCOUNT"
           payload = {
             name: "Canvas Demo Courses",
@@ -82,7 +82,7 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
                 id: 1,
               },
               format: :json
-          expect(response).to have_http_status(:unauthorized)
+          expect(response).to have_http_status(:forbidden)
         end
       end
     end
@@ -106,13 +106,14 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
           allow(controller).to receive(:current_application_instance).and_return(@application_instance)
           allow(Application).to receive(:find_by).with(:lti_key).and_return(@application_instance)
         end
-        it "deletes the authentication and returns a status forbidden" do
+        it "deletes the authentication and returns a status unauthorized" do
           type = "LIST_ACCOUNTS"
           get :proxy, params: { lms_proxy_call_type: type, lti_key: @application_instance.lti_key }, format: :json
-          expect(response).to have_http_status(:forbidden)
+          expect(response).to have_http_status(:unauthorized)
           auth = Authentication.find_by(id: @auth_id)
           expect(auth).to be_nil
-          expect(response.body).to eq("{\"message\":\"canvas_authorization_required\"}")
+          expect(response.body).to
+            eq("{\"errors\":[{\"message\":\"Canvas API Token has expired.\"}],\"canvas_authorization_required\":true}")
         end
       end
       context "application instance doesn't allow user token" do
@@ -132,10 +133,10 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
         it "deletes the authentication and returns a status forbidden" do
           type = "LIST_ACCOUNTS"
           get :proxy, params: { lms_proxy_call_type: type, lti_key: @application_instance.lti_key }, format: :json
-          expect(response).to have_http_status(:forbidden)
+          expect(response).to have_http_status(:unauthorized)
           auth = Authentication.find_by(id: @auth_id)
           expect(auth).to be_nil
-          expect(response.body).to eq("{\"message\":\"Unable to find Canvas API Token.\"}")
+          expect(response.body).to eq("{\"errors\":[{\"message\":\"Canvas API Token has expired.\"}]}")
         end
       end
     end
