@@ -81,8 +81,16 @@ module Lti
         launch_url: args[:launch_url],
         secure_launch_url: args[:secure_launch_url],
         description: args[:description],
-        icon: args[:icon].include?("http") ? args[:icon] : "https://#{args[:domain]}/#{args[:icon]}",
+        icon: icon(args),
       )
+    end
+
+    def self.icon(args)
+      if args[:icon].present?
+        args[:icon].include?("http") ? args[:icon] : "https://#{args[:domain]}/#{args[:icon]}"
+      else
+        nil
+      end
     end
 
     def self.default_config(args = {})
