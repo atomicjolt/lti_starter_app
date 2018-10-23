@@ -76,7 +76,7 @@ RSpec.describe ApplicationController, type: :controller do
         it "renders unauthorized json" do
           get :index, format: :json
           expect(response).to have_http_status(403)
-          expect(JSON.parse(response.body)["errors"][0]["message"]).to eq("You are not authorized to access this page.")
+          expect(JSON.parse(response.body)["message"]).to eq("You are not authorized to access this page.")
         end
       end
 
@@ -93,7 +93,7 @@ RSpec.describe ApplicationController, type: :controller do
         it "renders error json" do
           get :index, format: :json
           expect(response).to have_http_status(500)
-          expect(JSON.parse(response.body)["errors"][0]["message"]).to eq("Internal error: Exception")
+          expect(JSON.parse(response.body)["message"]).to eq("Internal error: Exception")
         end
       end
 
@@ -110,7 +110,7 @@ RSpec.describe ApplicationController, type: :controller do
         it "renders error json" do
           get :index, format: :json
           expect(response).to have_http_status(500)
-          expect(JSON.parse(response.body)["errors"][0]["message"]).to eq("Error while accessing Canvas: .")
+          expect(JSON.parse(response.body)["message"]).to eq("Error while accessing Canvas: .")
         end
       end
 
@@ -128,7 +128,7 @@ RSpec.describe ApplicationController, type: :controller do
           get :index, format: :json
           expect(response).to have_http_status(401)
           result = JSON.parse(response.body)
-          expect(result["errors"][0]["message"]).to eq("Canvas API Token has expired.")
+          expect(result["message"]).to eq("Canvas API Token has expired.")
           expect(result["canvas_authorization_required"]).to eq(true)
         end
       end
@@ -147,7 +147,7 @@ RSpec.describe ApplicationController, type: :controller do
           get :index, format: :json
           expect(response).to have_http_status(401)
           result = JSON.parse(response.body)
-          expect(result["errors"][0]["message"]).to eq("Canvas API Token has expired.")
+          expect(result["message"]).to eq("Canvas API Token has expired.")
           expect(result["canvas_authorization_required"]).to eq(true)
         end
       end
@@ -166,7 +166,7 @@ RSpec.describe ApplicationController, type: :controller do
           get :index, format: :json
           expect(response).to have_http_status(401)
           result = JSON.parse(response.body)
-          expect(result["errors"][0]["message"]).to eq("Unable to find valid Canvas API Token.")
+          expect(result["message"]).to eq("Unable to find valid Canvas API Token.")
           expect(result["canvas_authorization_required"]).to eq(true)
         end
       end
@@ -185,7 +185,7 @@ RSpec.describe ApplicationController, type: :controller do
           get :index, format: :json
           expect(response).to have_http_status(500)
           result = JSON.parse(response.body)
-          expect(result["errors"][0]["message"]).to eq("An error occured when calling the Canvas API: ")
+          expect(result["message"]).to eq("An error occured when calling the Canvas API: ")
         end
       end
 

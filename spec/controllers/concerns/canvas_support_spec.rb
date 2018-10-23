@@ -353,7 +353,7 @@ describe ApplicationController, type: :controller do
         lms_proxy_call_type: "LIST_ACCOUNTS",
       }, format: :json
       result = JSON.parse(response.body)
-      expect(result["errors"][0]["message"]).to eq("Unable to find valid Canvas API Token.")
+      expect(result["message"]).to eq("Unable to find valid Canvas API Token.")
       expect(result["canvas_authorization_required"]).to eq(true)
     end
   end

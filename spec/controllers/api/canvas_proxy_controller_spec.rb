@@ -112,8 +112,7 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
           expect(response).to have_http_status(:unauthorized)
           auth = Authentication.find_by(id: @auth_id)
           expect(auth).to be_nil
-          expect(response.body).to
-            eq("{\"errors\":[{\"message\":\"Canvas API Token has expired.\"}],\"canvas_authorization_required\":true}")
+          expect(response.body).to eq("{\"message\":\"Canvas API Token has expired.\",\"canvas_authorization_required\":true}")
         end
       end
       context "application instance doesn't allow user token" do
@@ -136,7 +135,7 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
           expect(response).to have_http_status(:unauthorized)
           auth = Authentication.find_by(id: @auth_id)
           expect(auth).to be_nil
-          expect(response.body).to eq("{\"errors\":[{\"message\":\"Canvas API Token has expired.\"}]}")
+          expect(response.body).to eq("{\"message\":\"Canvas API Token has expired.\"}")
         end
       end
     end
