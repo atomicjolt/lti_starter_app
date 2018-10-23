@@ -28,7 +28,5 @@ class Api::CanvasProxyController < Api::ApiApplicationController
       end
       render json: result.body
     end
-  rescue LMS::Canvas::CanvasException => e
-    render json: { error: e, status: e.status }, status: e.status
   end
 end

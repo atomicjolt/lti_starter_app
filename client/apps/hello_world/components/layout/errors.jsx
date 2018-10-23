@@ -16,7 +16,7 @@ export class Errors extends React.Component {
   componentDidMount() {
     setTimeout(() => {
       this.props.clearErrors();
-    }, 5000);
+    }, 10000);
   }
 
   render() {
@@ -24,24 +24,29 @@ export class Errors extends React.Component {
       return null;
     }
 
-    const errors = _(this.props.errors).map((error) => {
+    const errors = _(this.props.errors).map((error, index) => {
       if (error.response && error.response.text) {
         let message = error.response.text;
         try {
           const json = JSON.parse(error.response.text);
           message = json.message;
+          if (json.canvas_authorization_required) {
+            message = 'Please re-authorize Canvas.';
+          }
         } catch (e) {
           // Throw away exception. String wasn't valid json.
         }
-        if (message.indexOf('canvas_authorization_required') >= 0) {
-          message = 'Please re-authorize Canvas.';
-        }
+
         return (
-          <li>{message}</li>
+          <li key={index}>{message}</li>
+        );
+      } else if (error.message) {
+        return (
+          <li key={index}>{error.message}</li>
         );
       }
       return (
-        <li>{error.toString()}</li>
+        <li key={index}>{error.toString()}</li>
       );
     }).flatten().value();
     return <ul>{errors}</ul>;

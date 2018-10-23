@@ -431,16 +431,15 @@ atob@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
 
-atomic-canvas@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/atomic-canvas/-/atomic-canvas-1.2.0.tgz#f6c18e06b516be3a793f08cea7604f8a8e5c684a"
+atomic-canvas@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/atomic-canvas/-/atomic-canvas-1.3.1.tgz#04fe4f2f5bfdadbc012265bde44a227697f5dbe4"
   dependencies:
     cli-highlight "^1.1.4"
-    lodash "^4.17.4"
 
-atomic-fuel@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/atomic-fuel/-/atomic-fuel-2.6.0.tgz#1c7cbf6b54b5519e34232d30cdf6acf4725c485c"
+atomic-fuel@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/atomic-fuel/-/atomic-fuel-2.7.0.tgz#9fa489477bf23d98503bce0091bc3e31a51b6c3e"
 
 atomic-reactor@^3.1.0:
   version "3.1.0"

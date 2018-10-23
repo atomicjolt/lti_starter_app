@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Auth from 'atomic-canvas/libs/components/canvas_authentication';
+import CanvasAuthentication from 'atomic-canvas/libs/components/canvas_authentication';
 import canvasRequest from 'atomic-canvas/libs/action';
 import { listYourCourses } from 'atomic-canvas/libs/constants/courses';
 
@@ -57,6 +57,8 @@ export class Home extends React.Component {
     const img = assets('./images/atomicjolt.jpg');
     const authRequired = this.props.canvasAuthRequired || this.props.canvasReAuthorizationRequired;
 
+    const buttonText = this.props.canvasReAuthorizationRequired ? 'Reauthorize' : 'Authorize';
+
     if (this.props.ltiMessageType === 'ContentItemSelectionRequest') {
       return <Selector />;
     }
@@ -65,9 +67,10 @@ export class Home extends React.Component {
       <div>
         <img src={img} alt="Atomic Jolt Logo" />
         <hr />
-        { authRequired ? <Auth /> : 'You have authenticated with Canvas' }
+        { this.props.canvasReAuthorizationRequired ? 'Please reauthorize Canvas access' : null }
+        { authRequired ? <CanvasAuthentication buttonText={buttonText} /> : 'You have authenticated with Canvas' }
         <ul>
-          { this.renderCourses() }
+          { authRequired ? null : this.renderCourses() }
         </ul>
       </div>
     );
