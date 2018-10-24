@@ -102,7 +102,7 @@ module Lti
 
     def self.custom_fields_from_args(config = {}, args = {})
       custom_fields = {
-        custom_canvas_api_domain: "$Canvas.api.domain"
+        custom_canvas_api_domain: "$Canvas.api.domain",
       }
       config["custom_fields"] = if args[:custom_fields].present?
                                   custom_fields.merge(args[:custom_fields])
