@@ -241,9 +241,11 @@ Devise.setup do |config|
     site = Site.find_by(url: url)
     next unless site
 
+    custom_canvas_api_domain = request.params["custom_canvas_api_domain"]
+    site_url = custom_canvas_api_domain.present? ? "https://#{custom_api_domain}" : site.url
     env["omniauth.strategy"].options[:client_id] = site.oauth_key
     env["omniauth.strategy"].options[:client_secret] = site.oauth_secret
-    env["omniauth.strategy"].options[:client_options].site = site.url
+    env["omniauth.strategy"].options[:client_options].site = site_url
   end
 
   config.omniauth :canvas, setup: CANVAS_SETUP

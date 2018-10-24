@@ -101,9 +101,14 @@ module Lti
     end
 
     def self.custom_fields_from_args(config = {}, args = {})
-      if args[:custom_fields].present?
-        config["custom_fields"] = args[:custom_fields]
-      end
+      custom_fields = {
+        custom_canvas_api_domain: "$Canvas.api.domain",
+      }
+      config["custom_fields"] = if args[:custom_fields].present?
+                                  custom_fields.merge(args[:custom_fields])
+                                else
+                                  custom_fields
+                                end
       config
     end
 
