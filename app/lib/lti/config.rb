@@ -105,9 +105,9 @@ module Lti
         custom_canvas_api_domain: "$Canvas.api.domain",
       }
       config["custom_fields"] = if args[:custom_fields].present?
-                                  custom_fields.merge(args[:custom_fields])
+                                  custom_fields.merge(args[:custom_fields]).stringify_keys
                                 else
-                                  custom_fields
+                                  custom_fields.stringify_keys
                                 end
       config
     end
