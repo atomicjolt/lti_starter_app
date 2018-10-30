@@ -29,10 +29,6 @@ class ApplicationController < ActionController::Base
     render_error 400, message
   end
 
-  def not_found
-    render_error 404, "Unable to find the requested record"
-  end
-
   def user_not_authorized(message = "")
     render_error 401, message
   end
@@ -51,6 +47,11 @@ class ApplicationController < ActionController::Base
   def internal_error(exception)
     record_exception(exception)
     render_error 500, "Internal error: #{exception.message}"
+  end
+
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
+  def not_found
+    render_error 404, "Unable to find the requested record"
   end
 
   rescue_from CanCan::AccessDenied, with: :permission_denied
