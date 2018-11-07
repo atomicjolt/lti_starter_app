@@ -33,6 +33,9 @@ class ApplicationInstance < ActiveRecord::Base
   before_create :create_config
 
   scope :for_tenant, ->(tenant) { where(tenant: tenant) }
+  scope :by_newest, -> { order(created_at: :desc) }
+  scope :by_oldest, -> { order(created_at: :asc) }
+  scope :by_latest, -> { order(updated_at: :desc) }
 
   def lti_config_xml
     domain = self.domain || Rails.application.secrets.application_main_domain

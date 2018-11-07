@@ -9,6 +9,7 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
 
   def index
     @application_instances = @application_instances.
+      by_oldest.
       paginate(page: params[:page], per_page: 30)
     application_instances = @application_instances.map do |app_inst|
       authentications = get_authentications(app_inst)
