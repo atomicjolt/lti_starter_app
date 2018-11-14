@@ -175,7 +175,7 @@ module Concerns
     end
 
     def lti_roles
-      params["ext_roles"] || params["roles"]
+      params["roles"]
     end
 
     def lms_user_id
