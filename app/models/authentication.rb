@@ -66,7 +66,6 @@ class Authentication < ApplicationRecord
       provider: auth["provider"],
       provider_url: provider_url,
       lti_user_id: raw_info["lti_user_id"],
-      json_response: auth.to_json,
     }
     if credentials = auth["credentials"]
       attributes[:token] = credentials["token"]

@@ -173,13 +173,6 @@ describe User, type: :model do
         expect(email).to eq("1@atomicjolt.instructure.com")
       end
     end
-    describe "oauth_timezone" do
-      it "should extract the correct timezone from the auth object" do
-        auth = get_canvas_omniauth
-        timezone = User.oauth_timezone(auth)
-        expect(timezone.name).to eq("America/Denver")
-      end
-    end
     describe "oauth_lti_user_id" do
       it "should extract the lti_user_id from the auth object" do
         auth = get_canvas_omniauth
