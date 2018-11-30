@@ -12,6 +12,7 @@
   settings[:oauth_consumer_key] = current_application_instance.lti_key
   settings[:canvas_auth_required] = @canvas_auth_required
   settings[:canvas_url] = canvas_url
+  settings[:has_global_auth] = current_application_instance.canvas_token.present?
 
   if signed_in?
     settings[:user_id]      = current_user.id

@@ -1,27 +1,28 @@
 {
-  "name": "hello_world",
+  "name": "common",
   "version": "1.0.0",
   "scripts": {
-    "test": "jest --config=config/jest_config.json",
+    "test": "jest --config=config/jest_config.json --verbose",
     "watch": "jest --config=config/jest_config.json --watch"
   },
   "dependencies": {
-    "atomic-canvas": "^1.4.0",
-    "atomic-fuel": "^2.7.0",
+    "atomic-canvas": "^1.2.0",
+    "atomic-fuel": "^2.8.0",
     "babel": "^6.23.0",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "es6-promise": "^4.2.4",
     "history": "^4.7.2",
-    "lodash": "~>4.17.10",
+    "lodash": "4.17.10",
     "prop-types": "^15.6.1",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
-    "react-proxy-loader": "^0.3.5",
+    "react-paginate": "^5.2.4",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.0",
-    "redux": "3.6.0",
-    "uuid": "3.1.0"
+    "react-router-dom": "^4.2.2",
+    "react-tap-event-plugin": "3.0.2",
+    "redux": "3.7.2",
+    "uuid": "3.0.1"
   }
 }

@@ -9,4 +9,6 @@ do
   cd ../..
 done
 
+cd ./common && echo $dir && (yarn test --passWithNoTests || SUCCESS=false)
+
 $SUCCESS

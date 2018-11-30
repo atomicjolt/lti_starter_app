@@ -8,5 +8,6 @@ do
   yarn test || SUCCESS=false
   cd ../..
 done
+cd ./common && echo $dir && (yarn test --passWithNoTests || SUCCESS=false)
 
 $SUCCESS
