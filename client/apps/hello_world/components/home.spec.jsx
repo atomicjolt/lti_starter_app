@@ -5,18 +5,15 @@ import { Home } from './home';
 jest.mock('../libs/assets.js');
 
 describe('home', () => {
-  let result;
-  let props;
-
-  beforeEach(() => {
-    props = {
-      canvasRequest: () => {},
-    };
-    result = shallow(<Home {...props} />);
-  });
-
   it('renders the home component', () => {
-    expect(result).toBeDefined();
+    const props = {
+      canvasRequest: () => {},
+      settings: {
+        canvas_auth_required: false,
+      },
+    };
+    const result = shallow(<Home {...props} />);
+    expect(result).toMatchSnapshot();
   });
 
 });
