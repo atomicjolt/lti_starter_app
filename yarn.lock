@@ -425,9 +425,16 @@ atob@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
 
-atomic-canvas@^1.2.0, atomic-canvas@^1.4.0:
+atomic-canvas@^1.2.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/atomic-canvas/-/atomic-canvas-1.4.0.tgz#55c9f5a8f864b9f2a48ccab4b338c6d726312706"
+  dependencies:
+    cli-highlight "^1.1.4"
+
+atomic-canvas@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/atomic-canvas/-/atomic-canvas-1.7.0.tgz#c34b3ad53ac776057b3f3afe33d7d162f18896a0"
+  integrity sha512-VNf/7p2U3bs7nkCNNYqREOsoS5wJNOW8p/9A1OKaJvHe1WUiRwyzLwUUD6ly2rmHamFzTTLn5HDS8KiLPFUcBw==
   dependencies:
     cli-highlight "^1.1.4"
 
