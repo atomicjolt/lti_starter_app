@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180522201717) do
+ActiveRecord::Schema.define(version: 20181127204956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 20180522201717) do
     t.string "provider"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "json_response"
     t.string "uid"
     t.string "provider_avatar"
     t.string "username"
@@ -201,7 +200,6 @@ ActiveRecord::Schema.define(version: 20180522201717) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "time_zone", default: "UTC"
     t.string "password_salt"
     t.string "lti_user_id"
     t.string "lti_provider"
