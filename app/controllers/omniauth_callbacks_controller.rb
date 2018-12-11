@@ -17,8 +17,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.lti_provider.blank?
       auth = @user.authentications.find_by(provider_url: canvas_url, provider: "canvas")
-      json = Yajl::Parser.parse(auth["json_response"])
-      @user.lti_provider = UrlHelper.host(json["info"]["url"])
+      @user.lti_provider = UrlHelper.host(auth["provider_url"])
       @user.lms_user_id = auth.uid
     end
 
