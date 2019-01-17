@@ -10,13 +10,15 @@ export class CanvasAuth extends React.Component {
       has_global_auth: PropTypes.bool.isRequired,
     }).isRequired,
     canvasReAuthorizationRequired: PropTypes.bool,
+    autoSubmit: PropTypes.bool,
+    hideButton: PropTypes.bool,
   };
 
   render() {
     const authRequired = this.props.settings.canvas_auth_required ||
       this.props.canvasReAuthorizationRequired;
     if (!authRequired) {
-      return "";
+      return '';
     }
 
     // Have to render a larger view area so we don't resize too small to see the Canvas auth page
@@ -42,19 +44,31 @@ export class CanvasAuth extends React.Component {
       <div style={authStyle} className="c-main__contain c-text--center c-main__center">
         <h1 className="c-title--large">Authorize with Canvas</h1>
         <p className="c-text">Please click the button below to authorization the application to work with Canvas.</p>
-        <CanvasAuthentication buttonText={buttonText} buttonClassName="c-btn c-btn--blue" />
+        <CanvasAuthentication
+          buttonText={buttonText}
+          buttonClassName="c-btn c-btn--blue"
+          autoSubmit={this.props.autoSubmit}
+          hideButton={this.props.hideButton}
+        />
       </div>
     );
   }
 }
 
-export function displayCanvasAuth(settings, canvasReAuthorizationRequired) {
+export function displayCanvasAuth(
+  settings,
+  canvasReAuthorizationRequired,
+  autoSubmit = false,
+  hideButton = false
+) {
   const authRequired = settings.canvas_auth_required ||
       canvasReAuthorizationRequired;
 
   if (authRequired) {
     return (
       <CanvasAuth
+        autoSubmit={autoSubmit}
+        hideButton={hideButton}
         settings={settings}
         canvasReAuthorizationRequired={canvasReAuthorizationRequired}
       />
