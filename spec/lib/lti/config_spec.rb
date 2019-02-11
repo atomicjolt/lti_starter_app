@@ -463,7 +463,6 @@ RSpec.describe Lti::Config do
     end
 
     it "generates extended configuration xml for an LTI tool with a assignment_edit placement" do
-      icon_url = "http://www.example.com/button_image.png"
       assignment_edit = {
         url: @launch_url,
       }
@@ -527,6 +526,7 @@ RSpec.describe Lti::Config do
     end
 
     it "generates extended configuration xml for an LTI tool with a assignment_menu placement" do
+      icon_url = "http://www.example.com/button_image.png"
       assignment_menu = {
         text: "user level tool",
         visibility: "members",
