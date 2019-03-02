@@ -71,7 +71,7 @@ describe User, type: :model do
 
   describe "password validations" do
     it "should require a password" do
-      user = FactoryBot.build(:user, @attr.merge(password: "", password_confirmation: ""))
+      user = User.new(@attr.merge(password: "", password_confirmation: ""))
       expect(user).to be_invalid
     end
 
@@ -277,6 +277,94 @@ describe User, type: :model do
         user.add_to_role("thewall")
         expect(user.any_role?("thewall", "brick")).to be true
         expect(user.any_role?("brick", "foo")).to be false
+      end
+    end
+
+    describe "create_on_tenant" do
+      before do
+        @a1 = FactoryBot.create :application_instance
+        @a2 = FactoryBot.create :application_instance
+      end
+
+      it "should copy user to application_instance" do
+        expected_user_data = { count: 1 }
+        received_user_data = {}
+        Apartment::Tenant.switch @a1.tenant do
+          user = FactoryBot.create :user
+          User.create_on_tenant(@a2, user)
+          expected_user_data.tap do |user_attr|
+            user_attr[:lti_user_id] = user.lti_user_id
+          end
+        end
+
+        Apartment::Tenant.switch @a2.tenant do
+          received_user_data.tap do |received_data|
+            received_data[:count] = User.count
+            received_data[:lti_user_id] = User.first.lti_user_id
+          end
+        end
+        expect(received_user_data[:count]).to eq(expected_user_data[:count])
+        expect(received_user_data[:lti_user_id]).to eq(expected_user_data[:lti_user_id])
+      end
+
+      it "should copy user roles to application_instance" do
+        Apartment::Tenant.switch @a2.tenant do
+          10.times { FactoryBot.create :permission }
+        end
+
+        expected_user_data = {}
+        received_user_data = {}
+        Apartment::Tenant.switch @a1.tenant do
+          user = FactoryBot.create(:user).tap do |new_user|
+            new_user.permissions << FactoryBot.create(:permission)
+          end
+
+          User.create_on_tenant(@a2, user)
+          expected_user_data.tap do |user_attr|
+            user_attr[:role] = user.roles.first.name
+            user_attr[:lti_user_id] = user.lti_user_id
+          end
+        end
+
+        Apartment::Tenant.switch @a2.tenant do
+          received_user_data.tap do |received_data|
+            user = User.find_by(lti_user_id: expected_user_data[:lti_user_id])
+            received_data[:role] = user.roles.first.name
+          end
+        end
+        expect(received_user_data[:role]).to eq(expected_user_data[:role])
+      end
+
+      it "should not duplicate permissions" do
+        Apartment::Tenant.switch @a2.tenant do
+          10.times { FactoryBot.create :permission }
+        end
+
+        expected_user_data = {}
+        received_user_data = {}
+        Apartment::Tenant.switch @a1.tenant do
+          user = FactoryBot.create(:user).tap do |new_user|
+            new_user.permissions << FactoryBot.create(:permission)
+          end
+
+          User.create_on_tenant(@a2, user)
+          User.create_on_tenant(@a2, user)
+
+          expected_user_data.tap do |user_attr|
+            user_attr[:permissions] = user.permissions.count
+            user_attr[:lti_user_id] = user.lti_user_id
+          end
+        end
+
+        Apartment::Tenant.switch @a2.tenant do
+          received_user_data.tap do |received_data|
+            user = User.find_by(lti_user_id: expected_user_data[:lti_user_id])
+            received_data[:permissions] = user.permissions.count
+          end
+        end
+
+        expect(received_user_data[:permissions]).to eq(1)
+        expect(expected_user_data[:permissions]).to eq(1)
       end
     end
   end

@@ -18,16 +18,29 @@ class User < ApplicationRecord
   end
 
   def self.create_on_tenant(application_instance, user)
+    user_permissions = user.permissions.load.includes(:role).load
     Apartment::Tenant.switch(application_instance.tenant) do
       user_dup = User.find_or_initialize_by(
         lti_user_id: user.lti_user_id,
       )
       user_dup.update_attributes(user.copy_attributes)
+
       if user_dup.password.blank?
         user_dup.password = SecureRandom.hex(15)
         user_dup.password_confirmation = user_dup.password
       end
+
       user_dup.save
+
+      user_permissions.each do |permission|
+        role = Role.find_or_create_by(name: permission.role.name)
+        Permission.find_or_create_by(
+          role_id: role.id,
+          user_id: user_dup.id,
+          context_id: permission.context_id,
+        )
+      end
+
       user_dup
     end
   end
