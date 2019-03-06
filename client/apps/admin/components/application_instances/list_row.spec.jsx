@@ -37,12 +37,6 @@ describe('application instances list row', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it('deletes the application instance', () => {
-    expect(deleted).toBeFalsy();
-    result.find('.c-delete').simulate('click');
-    expect(deleted).toBeTruthy();
-  });
-
   // the following tests will break if the order of the buttopns is changed
   // to remedy this a class would need to be added to each button
 

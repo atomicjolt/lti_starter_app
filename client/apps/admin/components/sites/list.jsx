@@ -8,6 +8,7 @@ const List = (props) => {
     <SiteRow
       key={`site_${index}`}
       site={site}
+      deleteSite={props.deleteSite}
     />
   ));
 
@@ -33,6 +34,7 @@ const List = (props) => {
 
 List.propTypes = {
   sites: PropTypes.shape({}).isRequired,
+  deleteSite: PropTypes.func.isRequired,
 };
 
 export default List;

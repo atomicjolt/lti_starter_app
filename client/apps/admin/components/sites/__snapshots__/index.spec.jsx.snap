@@ -133,6 +133,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
+              "deleteSite": undefined,
               "sites": Object {
                 "1": Object {
                   "id": 1,
@@ -263,6 +264,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "function",
               "props": Object {
+                "deleteSite": undefined,
                 "sites": Object {
                   "1": Object {
                     "id": 1,

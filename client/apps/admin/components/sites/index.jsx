@@ -5,6 +5,7 @@ import Heading from '../common/heading';
 import Header from './header';
 import SiteModal from './modal';
 import List from './list';
+import { deleteSite } from '../../actions/sites';
 
 function select(state) {
   return {
@@ -15,6 +16,7 @@ function select(state) {
 export class Index extends React.Component {
   static propTypes = {
     sites: PropTypes.shape({}).isRequired,
+    deleteSite: PropTypes.func.isRequired,
   }
 
   constructor() {
@@ -45,6 +47,7 @@ export class Index extends React.Component {
           />
           <List
             sites={this.props.sites}
+            deleteSite={this.props.deleteSite}
           />
         </div>
       </div>
@@ -52,4 +55,4 @@ export class Index extends React.Component {
   }
 }
 
-export default connect(select, {})(Index);
+export default connect(select, { deleteSite })(Index);
