@@ -16,7 +16,6 @@ ShallowWrapper {
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
-    "checkPropTypes": [Function],
     "getNode": [Function],
     "render": [Function],
     "simulateError": [Function],
@@ -49,7 +48,6 @@ ShallowWrapper {
       "overlayClassName": "unused",
       "parentSelector": [Function],
       "portalClassName": "ReactModalPortal",
-      "role": "dialog",
       "shouldCloseOnEsc": true,
       "shouldCloseOnOverlayClick": true,
       "shouldFocusAfterRender": true,
@@ -111,7 +109,6 @@ ShallowWrapper {
         "overlayClassName": "unused",
         "parentSelector": [Function],
         "portalClassName": "ReactModalPortal",
-        "role": "dialog",
         "shouldCloseOnEsc": true,
         "shouldCloseOnOverlayClick": true,
         "shouldFocusAfterRender": true,
@@ -151,13 +148,9 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
-        "legacyContextMode": "parent",
         "lifecycles": Object {
           "componentDidUpdate": Object {
             "onSetState": true,
-          },
-          "getChildContext": Object {
-            "calledByRenderer": false,
           },
           "getDerivedStateFromProps": true,
           "getSnapshotBeforeUpdate": true,
@@ -168,6 +161,5 @@ ShallowWrapper {
       },
     },
   },
-  Symbol(enzyme.__childContext__): null,
 }
 `;
