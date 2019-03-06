@@ -75,7 +75,7 @@ describe('Canvas Auth', () => {
     const result = shallow(
       <CanvasAuth {...props} />
     );
-    expect(result.isEmptyRender()).toEqual(true);
+    expect(result.html()).toEqual(null);
   });
 
 });
