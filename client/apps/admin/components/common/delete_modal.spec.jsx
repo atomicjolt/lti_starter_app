@@ -1,8 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import DeleteForm from './delete_form';
+import { mount } from 'enzyme';
+import DeleteModal from './delete_modal';
 
-describe('sites delete form', () => {
+describe('delete modal', () => {
   let result;
   let clicked;
   let props;
@@ -10,14 +10,11 @@ describe('sites delete form', () => {
   beforeEach(() => {
     clicked = false;
     props = {
-      deleteSite: () => { clicked = true; },
+      isOpen: true,
       closeModal: () => { clicked = true; },
+      deleteRecord: () => { clicked = true; },
     };
-    result = shallow(<DeleteForm {...props} />);
-  });
-
-  it('matches the snapshot', () => {
-    expect(result).toMatchSnapshot();
+    result = mount(<DeleteModal {...props} />);
   });
 
   it('renders Yes button', () => {

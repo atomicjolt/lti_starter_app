@@ -227,6 +227,7 @@ ShallowWrapper {
             "key": "site_1",
             "nodeType": "class",
             "props": Object {
+              "deleteSite": undefined,
               "site": Object {
                 "id": 1,
                 "url": "bfcoder.com",
@@ -241,6 +242,7 @@ ShallowWrapper {
             "key": "site_2",
             "nodeType": "class",
             "props": Object {
+              "deleteSite": undefined,
               "site": Object {
                 "id": 2,
                 "url": "atomicjolt.com",
@@ -459,6 +461,7 @@ ShallowWrapper {
               "key": "site_1",
               "nodeType": "class",
               "props": Object {
+                "deleteSite": undefined,
                 "site": Object {
                   "id": 1,
                   "url": "bfcoder.com",
@@ -473,6 +476,7 @@ ShallowWrapper {
               "key": "site_2",
               "nodeType": "class",
               "props": Object {
+                "deleteSite": undefined,
                 "site": Object {
                   "id": 2,
                   "url": "atomicjolt.com",

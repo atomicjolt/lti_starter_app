@@ -160,11 +160,25 @@ ShallowWrapper {
           <button
             className="c-delete"
             onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "transparent",
+                "border": "none",
+                "color": "grey",
+                "cursor": "pointer",
+                "fontSize": "1.5em",
+              }
+            }
           >
             <i
               className="i-delete"
             />
           </button>
+          <DeleteModal
+            closeModal={[Function]}
+            deleteRecord={[Function]}
+            isOpen={false}
+          />
         </td>,
       ],
     },
@@ -578,41 +592,79 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": <button
-            className="c-delete"
-            onClick={[Function]}
-          >
-            <i
-              className="i-delete"
-            />
-          </button>,
+          "children": Array [
+            <button
+              className="c-delete"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "border": "none",
+                  "color": "grey",
+                  "cursor": "pointer",
+                  "fontSize": "1.5em",
+                }
+              }
+            >
+              <i
+                className="i-delete"
+              />
+            </button>,
+            <DeleteModal
+              closeModal={[Function]}
+              deleteRecord={[Function]}
+              isOpen={false}
+            />,
+          ],
         },
         "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": <i
-              className="i-delete"
-            />,
-            "className": "c-delete",
-            "onClick": [Function],
-          },
-          "ref": null,
-          "rendered": Object {
+        "rendered": Array [
+          Object {
             "instance": null,
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "className": "i-delete",
+              "children": <i
+                className="i-delete"
+              />,
+              "className": "c-delete",
+              "onClick": [Function],
+              "style": Object {
+                "backgroundColor": "transparent",
+                "border": "none",
+                "color": "grey",
+                "cursor": "pointer",
+                "fontSize": "1.5em",
+              },
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "i-delete",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "i",
+            },
+            "type": "button",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "closeModal": [Function],
+              "deleteRecord": [Function],
+              "isOpen": false,
             },
             "ref": null,
             "rendered": null,
-            "type": "i",
+            "type": [Function],
           },
-          "type": "button",
-        },
+        ],
         "type": "td",
       },
     ],
@@ -734,11 +786,25 @@ ShallowWrapper {
             <button
               className="c-delete"
               onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "border": "none",
+                  "color": "grey",
+                  "cursor": "pointer",
+                  "fontSize": "1.5em",
+                }
+              }
             >
               <i
                 className="i-delete"
               />
             </button>
+            <DeleteModal
+              closeModal={[Function]}
+              deleteRecord={[Function]}
+              isOpen={false}
+            />
           </td>,
         ],
       },
@@ -1152,41 +1218,79 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": <button
-              className="c-delete"
-              onClick={[Function]}
-            >
-              <i
-                className="i-delete"
-              />
-            </button>,
+            "children": Array [
+              <button
+                className="c-delete"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "backgroundColor": "transparent",
+                    "border": "none",
+                    "color": "grey",
+                    "cursor": "pointer",
+                    "fontSize": "1.5em",
+                  }
+                }
+              >
+                <i
+                  className="i-delete"
+                />
+              </button>,
+              <DeleteModal
+                closeModal={[Function]}
+                deleteRecord={[Function]}
+                isOpen={false}
+              />,
+            ],
           },
           "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": <i
-                className="i-delete"
-              />,
-              "className": "c-delete",
-              "onClick": [Function],
-            },
-            "ref": null,
-            "rendered": Object {
+          "rendered": Array [
+            Object {
               "instance": null,
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "className": "i-delete",
+                "children": <i
+                  className="i-delete"
+                />,
+                "className": "c-delete",
+                "onClick": [Function],
+                "style": Object {
+                  "backgroundColor": "transparent",
+                  "border": "none",
+                  "color": "grey",
+                  "cursor": "pointer",
+                  "fontSize": "1.5em",
+                },
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "className": "i-delete",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "i",
+              },
+              "type": "button",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "closeModal": [Function],
+                "deleteRecord": [Function],
+                "isOpen": false,
               },
               "ref": null,
               "rendered": null,
-              "type": "i",
+              "type": [Function],
             },
-            "type": "button",
-          },
+          ],
           "type": "td",
         },
       ],

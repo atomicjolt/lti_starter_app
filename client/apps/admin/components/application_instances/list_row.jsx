@@ -9,6 +9,7 @@ import SettingsInputs from '../common/settings_inputs';
 import ConfigXmlModal from './config_xml_modal';
 import EnabledButton from '../common/enabled';
 import DisabledButton from '../common/disabled';
+import DeleteModal from '../common/delete_modal';
 
 export default class ListRow extends React.Component {
   static propTypes = {
@@ -58,6 +59,7 @@ export default class ListRow extends React.Component {
       modalOpen: false,
       authenticationModalOpen: false,
       modalConfigXmlOpen: false,
+      confirmDeleteModalOpen: false,
     };
   }
 
@@ -72,6 +74,12 @@ export default class ListRow extends React.Component {
       />;
     }
     return null;
+  }
+
+  closeDeleteModal() {
+    this.setState({
+      confirmDeleteModalOpen: false,
+    });
   }
 
   checkAuthentication(e) {
@@ -114,6 +122,13 @@ export default class ListRow extends React.Component {
         />
       </td>
     );
+  }
+
+  deleteAppInstance(appId, appInstId) {
+    this.setState({
+      confirmDeleteModalOpen: false,
+    });
+    this.props.delete(appId, appInstId);
   }
 
   render() {
@@ -193,12 +208,21 @@ export default class ListRow extends React.Component {
         <td>
           <button
             className="c-delete"
-            onClick={() => {
-              this.props.delete(applicationInstance.application_id, applicationInstance.id);
-            }}
+            style={styles.buttonIcon}
+            onClick={() => this.setState({ confirmDeleteModalOpen: true })}
           >
             <i className="i-delete" />
           </button>
+          <DeleteModal
+            isOpen={this.state.confirmDeleteModalOpen}
+            closeModal={() => this.closeDeleteModal()}
+            deleteRecord={
+              () => this.deleteAppInstance(
+                applicationInstance.application_id,
+                applicationInstance.id,
+              )
+            }
+          />
         </td>
       </tr>
     );

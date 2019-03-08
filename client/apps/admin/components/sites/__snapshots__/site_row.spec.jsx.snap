@@ -81,14 +81,10 @@ ShallowWrapper {
               className="i-delete"
             />
           </button>
-          <Connect(SiteModal)
+          <DeleteModal
             closeModal={[Function]}
+            deleteRecord={[Function]}
             isOpen={false}
-            site={
-              Object {
-                "url": "http://www.example.com",
-              }
-            }
           />
         </td>,
       ],
@@ -241,14 +237,10 @@ ShallowWrapper {
                 className="i-delete"
               />
             </button>,
-            <Connect(SiteModal)
+            <DeleteModal
               closeModal={[Function]}
+              deleteRecord={[Function]}
               isOpen={false}
-              site={
-                Object {
-                  "url": "http://www.example.com",
-                }
-              }
             />,
           ],
         },
@@ -291,10 +283,8 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "closeModal": [Function],
+              "deleteRecord": [Function],
               "isOpen": false,
-              "site": Object {
-                "url": "http://www.example.com",
-              },
             },
             "ref": null,
             "rendered": null,
@@ -370,14 +360,10 @@ ShallowWrapper {
                 className="i-delete"
               />
             </button>
-            <Connect(SiteModal)
+            <DeleteModal
               closeModal={[Function]}
+              deleteRecord={[Function]}
               isOpen={false}
-              site={
-                Object {
-                  "url": "http://www.example.com",
-                }
-              }
             />
           </td>,
         ],
@@ -530,14 +516,10 @@ ShallowWrapper {
                   className="i-delete"
                 />
               </button>,
-              <Connect(SiteModal)
+              <DeleteModal
                 closeModal={[Function]}
+                deleteRecord={[Function]}
                 isOpen={false}
-                site={
-                  Object {
-                    "url": "http://www.example.com",
-                  }
-                }
               />,
             ],
           },
@@ -580,10 +562,8 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "closeModal": [Function],
+                "deleteRecord": [Function],
                 "isOpen": false,
-                "site": Object {
-                  "url": "http://www.example.com",
-                },
               },
               "ref": null,
               "rendered": null,

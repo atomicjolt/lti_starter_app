@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import SiteModal from './modal';
-import DeleteSiteModal from './delete_modal';
+import DeleteModal from '../common/delete_modal';
 
 export default class SiteRow extends React.Component {
 
@@ -12,6 +12,7 @@ export default class SiteRow extends React.Component {
       oauth_key: PropTypes.string,
       oauth_secret: PropTypes.string,
     }).isRequired,
+    deleteSite: PropTypes.func.isRequired,
   };
 
   static getStyles() {
@@ -47,6 +48,13 @@ export default class SiteRow extends React.Component {
     this.setState({
       confirmDeleteModalOpen: false,
     });
+  }
+
+  deleteSite(siteId) {
+    this.setState({
+      confirmDeleteModalOpen: false,
+    });
+    this.props.deleteSite(siteId);
   }
 
   render() {
@@ -85,8 +93,8 @@ export default class SiteRow extends React.Component {
           >
             <i className="i-delete" />
           </button>
-          <DeleteSiteModal
-            site={this.props.site}
+          <DeleteModal
+            deleteRecord={() => this.deleteSite(this.props.site.id)}
             isOpen={this.state.confirmDeleteModalOpen}
             closeModal={() => this.closeDeleteModal()}
           />
