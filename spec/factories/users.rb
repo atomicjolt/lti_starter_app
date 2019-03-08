@@ -3,6 +3,7 @@ FactoryBot.define do
     name { FactoryBot.generate(:name) }
     email { FactoryBot.generate(:email) }
     password { FactoryBot.generate(:password) }
+    lti_user_id { FactoryBot.generate(:uuid) }
     after(:build, &:confirm)
     after(:create) do |user|
       FactoryBot.create(:authentication, user_id: user.id, provider_url: FactoryBot.generate(:domain))
