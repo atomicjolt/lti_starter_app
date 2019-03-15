@@ -17,6 +17,7 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
       app_inst_json["lti_config_xml"] = app_inst.lti_config_xml
       app_inst_json["canvas_token_preview"] = app_inst.canvas_token_preview
       app_inst_json["authentications"] = authentications
+      app_inst_json["request_stats"] = request_stats(app_inst.tenant)
       app_inst_json.delete("encrypted_canvas_token")
       app_inst_json.delete("encrypted_canvas_token_salt")
       app_inst_json.delete("encrypted_canvas_token_iv")
@@ -95,6 +96,39 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
     application_instance.delete("encrypted_canvas_token_iv")
     application_instance["authentications"] = authentications
     render json: application_instance
+  end
+
+  def request_stats(tenant)
+    # Total Requests
+    day_1_requests, day_7_requests, day_30_requests =
+      RequestLog.total_requests(tenant)
+
+    # Unique Users
+    day_1_users, day_7_users, day_30_users =
+      RequestLog.total_unique_users(tenant)
+
+    # LTI Launches
+    day_1_launches, day_7_launches, day_30_launches =
+      RequestLog.total_lti_launches(tenant)
+
+    # Errors
+    day_1_errors, day_7_errors, day_30_errors =
+      RequestLog.total_errors(tenant)
+
+    {
+      day_1_requests: day_1_requests,
+      day_7_requests: day_7_requests,
+      day_30_requests: day_30_requests,
+      day_1_users: day_1_users,
+      day_7_users: day_7_users,
+      day_30_users: day_30_users,
+      day_1_launches: day_1_launches,
+      day_7_launches: day_7_launches,
+      day_30_launches: day_30_launches,
+      day_1_errors: day_1_errors,
+      day_7_errors: day_7_errors,
+      day_30_errors: day_30_errors,
+    }
   end
 
   def application_instance_params

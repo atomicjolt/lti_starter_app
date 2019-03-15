@@ -19,13 +19,16 @@ export default function List(props) {
       <thead>
         <tr>
           <th><span>LTI KEY</span></th>
-          <th><span>DOMAIN</span></th>
           <th><span>SETTINGS</span></th>
           <th><span>CONFIG XML</span></th>
           <th><span>ENABLED</span></th>
-          <th><span>TOKEN</span></th>
-          <th><span>AUTHENTICATIONS</span></th>
+          <th><span>AUTHS</span></th>
           <th><span>CREATED</span></th>
+          <th>________</th>
+          <th><span>REQUESTS</span></th>
+          <th><span>LTI LAUNCHES</span></th>
+          <th><span>USERS</span></th>
+          <th><span>ERRORS</span></th>
           <th />
         </tr>
       </thead>

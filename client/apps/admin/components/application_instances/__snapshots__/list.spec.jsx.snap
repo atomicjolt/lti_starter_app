@@ -50,11 +50,6 @@ ShallowWrapper {
             </th>
             <th>
               <span>
-                DOMAIN
-              </span>
-            </th>
-            <th>
-              <span>
                 SETTINGS
               </span>
             </th>
@@ -70,17 +65,35 @@ ShallowWrapper {
             </th>
             <th>
               <span>
-                TOKEN
-              </span>
-            </th>
-            <th>
-              <span>
-                AUTHENTICATIONS
+                AUTHS
               </span>
             </th>
             <th>
               <span>
                 CREATED
+              </span>
+            </th>
+            <th>
+              ________
+            </th>
+            <th>
+              <span>
+                REQUESTS
+              </span>
+            </th>
+            <th>
+              <span>
+                LTI LAUNCHES
+              </span>
+            </th>
+            <th>
+              <span>
+                USERS
+              </span>
+            </th>
+            <th>
+              <span>
+                ERRORS
               </span>
             </th>
             <th />
@@ -128,11 +141,6 @@ ShallowWrapper {
             </th>
             <th>
               <span>
-                DOMAIN
-              </span>
-            </th>
-            <th>
-              <span>
                 SETTINGS
               </span>
             </th>
@@ -148,17 +156,35 @@ ShallowWrapper {
             </th>
             <th>
               <span>
-                TOKEN
-              </span>
-            </th>
-            <th>
-              <span>
-                AUTHENTICATIONS
+                AUTHS
               </span>
             </th>
             <th>
               <span>
                 CREATED
+              </span>
+            </th>
+            <th>
+              ________
+            </th>
+            <th>
+              <span>
+                REQUESTS
+              </span>
+            </th>
+            <th>
+              <span>
+                LTI LAUNCHES
+              </span>
+            </th>
+            <th>
+              <span>
+                USERS
+              </span>
+            </th>
+            <th>
+              <span>
+                ERRORS
               </span>
             </th>
             <th />
@@ -178,11 +204,6 @@ ShallowWrapper {
               </th>,
               <th>
                 <span>
-                  DOMAIN
-                </span>
-              </th>,
-              <th>
-                <span>
                   SETTINGS
                 </span>
               </th>,
@@ -198,17 +219,35 @@ ShallowWrapper {
               </th>,
               <th>
                 <span>
-                  TOKEN
-                </span>
-              </th>,
-              <th>
-                <span>
-                  AUTHENTICATIONS
+                  AUTHS
                 </span>
               </th>,
               <th>
                 <span>
                   CREATED
+                </span>
+              </th>,
+              <th>
+                ________
+              </th>,
+              <th>
+                <span>
+                  REQUESTS
+                </span>
+              </th>,
+              <th>
+                <span>
+                  LTI LAUNCHES
+                </span>
+              </th>,
+              <th>
+                <span>
+                  USERS
+                </span>
+              </th>,
+              <th>
+                <span>
+                  ERRORS
                 </span>
               </th>,
               <th />,
@@ -235,29 +274,6 @@ ShallowWrapper {
                 },
                 "ref": null,
                 "rendered": "LTI KEY",
-                "type": "span",
-              },
-              "type": "th",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": <span>
-                  DOMAIN
-                </span>,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "DOMAIN",
-                },
-                "ref": null,
-                "rendered": "DOMAIN",
                 "type": "span",
               },
               "type": "th",
@@ -337,7 +353,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": <span>
-                  TOKEN
+                  AUTHS
                 </span>,
               },
               "ref": null,
@@ -346,33 +362,10 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "children": "TOKEN",
+                  "children": "AUTHS",
                 },
                 "ref": null,
-                "rendered": "TOKEN",
-                "type": "span",
-              },
-              "type": "th",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": <span>
-                  AUTHENTICATIONS
-                </span>,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "AUTHENTICATIONS",
-                },
-                "ref": null,
-                "rendered": "AUTHENTICATIONS",
+                "rendered": "AUTHS",
                 "type": "span",
               },
               "type": "th",
@@ -396,6 +389,109 @@ ShallowWrapper {
                 },
                 "ref": null,
                 "rendered": "CREATED",
+                "type": "span",
+              },
+              "type": "th",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "________",
+              },
+              "ref": null,
+              "rendered": "________",
+              "type": "th",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <span>
+                  REQUESTS
+                </span>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "REQUESTS",
+                },
+                "ref": null,
+                "rendered": "REQUESTS",
+                "type": "span",
+              },
+              "type": "th",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <span>
+                  LTI LAUNCHES
+                </span>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "LTI LAUNCHES",
+                },
+                "ref": null,
+                "rendered": "LTI LAUNCHES",
+                "type": "span",
+              },
+              "type": "th",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <span>
+                  USERS
+                </span>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "USERS",
+                },
+                "ref": null,
+                "rendered": "USERS",
+                "type": "span",
+              },
+              "type": "th",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <span>
+                  ERRORS
+                </span>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "ERRORS",
+                },
+                "ref": null,
+                "rendered": "ERRORS",
                 "type": "span",
               },
               "type": "th",
@@ -494,11 +590,6 @@ ShallowWrapper {
               </th>
               <th>
                 <span>
-                  DOMAIN
-                </span>
-              </th>
-              <th>
-                <span>
                   SETTINGS
                 </span>
               </th>
@@ -514,17 +605,35 @@ ShallowWrapper {
               </th>
               <th>
                 <span>
-                  TOKEN
-                </span>
-              </th>
-              <th>
-                <span>
-                  AUTHENTICATIONS
+                  AUTHS
                 </span>
               </th>
               <th>
                 <span>
                   CREATED
+                </span>
+              </th>
+              <th>
+                ________
+              </th>
+              <th>
+                <span>
+                  REQUESTS
+                </span>
+              </th>
+              <th>
+                <span>
+                  LTI LAUNCHES
+                </span>
+              </th>
+              <th>
+                <span>
+                  USERS
+                </span>
+              </th>
+              <th>
+                <span>
+                  ERRORS
                 </span>
               </th>
               <th />
@@ -572,11 +681,6 @@ ShallowWrapper {
               </th>
               <th>
                 <span>
-                  DOMAIN
-                </span>
-              </th>
-              <th>
-                <span>
                   SETTINGS
                 </span>
               </th>
@@ -592,17 +696,35 @@ ShallowWrapper {
               </th>
               <th>
                 <span>
-                  TOKEN
-                </span>
-              </th>
-              <th>
-                <span>
-                  AUTHENTICATIONS
+                  AUTHS
                 </span>
               </th>
               <th>
                 <span>
                   CREATED
+                </span>
+              </th>
+              <th>
+                ________
+              </th>
+              <th>
+                <span>
+                  REQUESTS
+                </span>
+              </th>
+              <th>
+                <span>
+                  LTI LAUNCHES
+                </span>
+              </th>
+              <th>
+                <span>
+                  USERS
+                </span>
+              </th>
+              <th>
+                <span>
+                  ERRORS
                 </span>
               </th>
               <th />
@@ -622,11 +744,6 @@ ShallowWrapper {
                 </th>,
                 <th>
                   <span>
-                    DOMAIN
-                  </span>
-                </th>,
-                <th>
-                  <span>
                     SETTINGS
                   </span>
                 </th>,
@@ -642,17 +759,35 @@ ShallowWrapper {
                 </th>,
                 <th>
                   <span>
-                    TOKEN
-                  </span>
-                </th>,
-                <th>
-                  <span>
-                    AUTHENTICATIONS
+                    AUTHS
                   </span>
                 </th>,
                 <th>
                   <span>
                     CREATED
+                  </span>
+                </th>,
+                <th>
+                  ________
+                </th>,
+                <th>
+                  <span>
+                    REQUESTS
+                  </span>
+                </th>,
+                <th>
+                  <span>
+                    LTI LAUNCHES
+                  </span>
+                </th>,
+                <th>
+                  <span>
+                    USERS
+                  </span>
+                </th>,
+                <th>
+                  <span>
+                    ERRORS
                   </span>
                 </th>,
                 <th />,
@@ -679,29 +814,6 @@ ShallowWrapper {
                   },
                   "ref": null,
                   "rendered": "LTI KEY",
-                  "type": "span",
-                },
-                "type": "th",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": <span>
-                    DOMAIN
-                  </span>,
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "DOMAIN",
-                  },
-                  "ref": null,
-                  "rendered": "DOMAIN",
                   "type": "span",
                 },
                 "type": "th",
@@ -781,7 +893,7 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "children": <span>
-                    TOKEN
+                    AUTHS
                   </span>,
                 },
                 "ref": null,
@@ -790,33 +902,10 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "host",
                   "props": Object {
-                    "children": "TOKEN",
+                    "children": "AUTHS",
                   },
                   "ref": null,
-                  "rendered": "TOKEN",
-                  "type": "span",
-                },
-                "type": "th",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": <span>
-                    AUTHENTICATIONS
-                  </span>,
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "AUTHENTICATIONS",
-                  },
-                  "ref": null,
-                  "rendered": "AUTHENTICATIONS",
+                  "rendered": "AUTHS",
                   "type": "span",
                 },
                 "type": "th",
@@ -840,6 +929,109 @@ ShallowWrapper {
                   },
                   "ref": null,
                   "rendered": "CREATED",
+                  "type": "span",
+                },
+                "type": "th",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "________",
+                },
+                "ref": null,
+                "rendered": "________",
+                "type": "th",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <span>
+                    REQUESTS
+                  </span>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "REQUESTS",
+                  },
+                  "ref": null,
+                  "rendered": "REQUESTS",
+                  "type": "span",
+                },
+                "type": "th",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <span>
+                    LTI LAUNCHES
+                  </span>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "LTI LAUNCHES",
+                  },
+                  "ref": null,
+                  "rendered": "LTI LAUNCHES",
+                  "type": "span",
+                },
+                "type": "th",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <span>
+                    USERS
+                  </span>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "USERS",
+                  },
+                  "ref": null,
+                  "rendered": "USERS",
+                  "type": "span",
+                },
+                "type": "th",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <span>
+                    ERRORS
+                  </span>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "ERRORS",
+                  },
+                  "ref": null,
+                  "rendered": "ERRORS",
                   "type": "span",
                 },
                 "type": "th",
