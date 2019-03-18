@@ -133,6 +133,31 @@ RSpec.describe RequestLog, type: :model do
         expect(day_30_users).to eq(3)
       end
 
+      it "should return all unique user counts grouped" do
+        FactoryBot.create(
+          :request_log,
+          created_at: Time.now - 3.days,
+          tenant: @tenant,
+          user_id: "2",
+          lti_launch: true,
+          error: false,
+        )
+        FactoryBot.create(
+          :request_log,
+          created_at: Time.now - 20.days,
+          tenant: @tenant,
+          user_id: "3",
+          lti_launch: true,
+          error: false,
+        )
+        day_1_users_grouped, day_7_users_grouped, day_30_users_grouped =
+          RequestLog.total_unique_users_grouped(@tenant)
+
+        expect(day_1_users_grouped[@tenant]).to eq(1)
+        expect(day_7_users_grouped[@tenant]).to eq(2)
+        expect(day_30_users_grouped[@tenant]).to eq(3)
+      end
+
       it "should return total lti launches counts" do
         FactoryBot.create(
           :request_log,
