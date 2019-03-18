@@ -92,6 +92,22 @@ RSpec.describe RequestLog, type: :model do
         expect(day_30_requests).to eq(3)
       end
 
+      it "should return the requests grouped by tenant" do
+        FactoryBot.create(
+          :request_log,
+          created_at: Time.now - 20.days,
+          tenant: @tenant,
+          lti_launch: true,
+          error: false,
+        )
+        day_1_requests_grouped, day_7_requests_grouped, day_30_requests_grouped =
+          RequestLog.total_requests_grouped(RequestLog.all.pluck(:tenant).uniq)
+
+        expect(day_1_requests_grouped[@tenant]).to eq(2)
+        expect(day_7_requests_grouped[@tenant]).to eq(2)
+        expect(day_30_requests_grouped[@tenant]).to eq(3)
+      end
+
       it "should return all unique user counts" do
         FactoryBot.create(
           :request_log,
@@ -142,6 +158,31 @@ RSpec.describe RequestLog, type: :model do
         expect(day_30_launches).to eq(1)
       end
 
+      it "should return total lti launches counts grouped" do
+        FactoryBot.create(
+          :request_log,
+          created_at: Time.now - 3.days,
+          tenant: @tenant,
+          user_id: "2",
+          lti_launch: true,
+          error: false,
+        )
+        FactoryBot.create(
+          :request_log,
+          created_at: Time.now - 20.days,
+          tenant: @tenant,
+          user_id: "3",
+          lti_launch: false,
+          error: false,
+        )
+        day_1_launches_grouped, day_7_launches_grouped, day_30_launches_grouped =
+          RequestLog.total_lti_launches_grouped(@tenant)
+
+        expect(day_1_launches_grouped[@tenant]).to eq(nil)
+        expect(day_7_launches_grouped[@tenant]).to eq(1)
+        expect(day_30_launches_grouped[@tenant]).to eq(1)
+      end
+
       it "should return total errors counts" do
         FactoryBot.create(
           :request_log,
@@ -165,6 +206,31 @@ RSpec.describe RequestLog, type: :model do
         expect(day_1_errors).to eq(0)
         expect(day_7_errors).to eq(0)
         expect(day_30_errors).to eq(1)
+      end
+
+      it "should return total errors counts grouped" do
+        FactoryBot.create(
+          :request_log,
+          created_at: Time.now - 3.days,
+          tenant: @tenant,
+          user_id: "2",
+          lti_launch: true,
+          error: false,
+        )
+        FactoryBot.create(
+          :request_log,
+          created_at: Time.now - 20.days,
+          tenant: @tenant,
+          user_id: "3",
+          lti_launch: false,
+          error: true,
+        )
+        day_1_errors_grouped, day_7_errors_grouped, day_30_errors_grouped =
+          RequestLog.total_errors_grouped(@tenant)
+
+        expect(day_1_errors_grouped[@tenant]).to eq(nil)
+        expect(day_7_errors_grouped[@tenant]).to eq(nil)
+        expect(day_30_errors_grouped[@tenant]).to eq(1)
       end
     end
   end

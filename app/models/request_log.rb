@@ -23,6 +23,26 @@ class RequestLog < ApplicationRecord
     [day_1_requests, day_7_requests, day_30_requests]
   end
 
+  def self.total_requests_grouped(tenants)
+    day_1_requests_grouped = RequestLog.
+      for_day.
+      for_tenant(tenants).
+      group(:tenant).
+      count
+    day_7_requests_grouped = RequestLog.
+      for_week.
+      for_tenant(tenants).
+      group(:tenant).
+      count
+    day_30_requests_grouped = RequestLog.
+      for_month.
+      for_tenant(tenants).
+      group(:tenant).
+      count
+
+    [day_1_requests_grouped, day_7_requests_grouped, day_30_requests_grouped]
+  end
+
   def self.total_unique_users(tenant)
     day_1_users = RequestLog.
       for_day.
@@ -66,6 +86,29 @@ class RequestLog < ApplicationRecord
     [day_1_launches, day_7_launches, day_30_launches]
   end
 
+  def self.total_lti_launches_grouped(tenants)
+    day_1_launches_grouped = RequestLog.
+      for_day.
+      for_tenant(tenants).
+      group(:tenant).
+      lti_launches.
+      count
+    day_7_launches_grouped = RequestLog.
+      for_week.
+      for_tenant(tenants).
+      group(:tenant).
+      lti_launches.
+      count
+    day_30_launches_grouped = RequestLog.
+      for_month.
+      for_tenant(tenants).
+      group(:tenant).
+      lti_launches.
+      count
+
+    [day_1_launches_grouped, day_7_launches_grouped, day_30_launches_grouped]
+  end
+
   def self.total_errors(tenant)
     day_1_errors = RequestLog.
       for_day.
@@ -84,5 +127,28 @@ class RequestLog < ApplicationRecord
       count
 
     [day_1_errors, day_7_errors, day_30_errors]
+  end
+
+  def self.total_errors_grouped(tenants)
+    day_1_errors_grouped = RequestLog.
+      for_day.
+      for_tenant(tenants).
+      group(:tenant).
+      errors.
+      count
+    day_7_errors_grouped = RequestLog.
+      for_week.
+      for_tenant(tenants).
+      group(:tenant).
+      errors.
+      count
+    day_30_errors_grouped = RequestLog.
+      for_month.
+      for_tenant(tenants).
+      group(:tenant).
+      errors.
+      count
+
+    [day_1_errors_grouped, day_7_errors_grouped, day_30_errors_grouped]
   end
 end
