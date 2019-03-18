@@ -11,10 +11,12 @@ class RequestLog < ApplicationRecord
       for_day.
       for_tenant(tenant).
       count
+
     day_7_requests = RequestLog.
       for_week.
       for_tenant(tenant).
       count
+
     day_30_requests = RequestLog.
       for_month.
       for_tenant(tenant).
@@ -29,11 +31,13 @@ class RequestLog < ApplicationRecord
       for_tenant(tenants).
       group(:tenant).
       count
+
     day_7_requests_grouped = RequestLog.
       for_week.
       for_tenant(tenants).
       group(:tenant).
       count
+
     day_30_requests_grouped = RequestLog.
       for_month.
       for_tenant(tenants).
@@ -50,12 +54,14 @@ class RequestLog < ApplicationRecord
       group(:user_id).
       count.
       length
+
     day_7_users = RequestLog.
       for_week.
       for_tenant(tenant).
       group(:user_id).
       count.
       length
+
     day_30_users = RequestLog.
       for_month.
       for_tenant(tenant).
@@ -79,6 +85,7 @@ class RequestLog < ApplicationRecord
       ).
       group(:tenant).
       map { |log| [log.tenant, log.count] }
+
     day_7_users_grouped = RequestLog.
       select(:tenant).
       select("count(*)").
@@ -91,6 +98,7 @@ class RequestLog < ApplicationRecord
       ).
       group(:tenant).
       map { |log| [log.tenant, log.count] }
+
     day_30_users_grouped = RequestLog.
       select(:tenant).
       select("count(*)").
@@ -113,11 +121,13 @@ class RequestLog < ApplicationRecord
       for_tenant(tenant).
       lti_launches.
       count
+
     day_7_launches = RequestLog.
       for_week.
       for_tenant(tenant).
       lti_launches.
       count
+
     day_30_launches = RequestLog.
       for_month.
       for_tenant(tenant).
@@ -134,12 +144,14 @@ class RequestLog < ApplicationRecord
       group(:tenant).
       lti_launches.
       count
+
     day_7_launches_grouped = RequestLog.
       for_week.
       for_tenant(tenants).
       group(:tenant).
       lti_launches.
       count
+
     day_30_launches_grouped = RequestLog.
       for_month.
       for_tenant(tenants).
@@ -156,11 +168,13 @@ class RequestLog < ApplicationRecord
       for_tenant(tenant).
       errors.
       count
+
     day_7_errors = RequestLog.
       for_week.
       for_tenant(tenant).
       errors.
       count
+
     day_30_errors = RequestLog.
       for_month.
       for_tenant(tenant).
@@ -177,12 +191,14 @@ class RequestLog < ApplicationRecord
       group(:tenant).
       errors.
       count
+
     day_7_errors_grouped = RequestLog.
       for_week.
       for_tenant(tenants).
       group(:tenant).
       errors.
       count
+
     day_30_errors_grouped = RequestLog.
       for_month.
       for_tenant(tenants).
