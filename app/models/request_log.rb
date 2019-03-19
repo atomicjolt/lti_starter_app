@@ -74,8 +74,7 @@ class RequestLog < ApplicationRecord
 
   def self.total_unique_users_grouped(tenants)
     day_1_users_grouped = RequestLog.
-      select(:tenant).
-      select("count(*)").
+      select(:tenant, "count(*)").
       from(
         RequestLog.
         for_day.
@@ -87,8 +86,7 @@ class RequestLog < ApplicationRecord
       map { |log| [log.tenant, log.count] }
 
     day_7_users_grouped = RequestLog.
-      select(:tenant).
-      select("count(*)").
+      select(:tenant, "count(*)").
       from(
         RequestLog.
         for_week.
@@ -100,8 +98,7 @@ class RequestLog < ApplicationRecord
       map { |log| [log.tenant, log.count] }
 
     day_30_users_grouped = RequestLog.
-      select(:tenant).
-      select("count(*)").
+      select(:tenant, "count(*)").
       from(
         RequestLog.
         for_month.
