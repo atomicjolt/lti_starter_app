@@ -102,4 +102,16 @@ FactoryBot.define do
   sequence :context_id do |n|
     "123aba321_#{n}"
   end
+
+  sequence :user_id do |n|
+    n
+  end
+
+  sequence :is_lti_launch do
+    [true, true, true, true, true, false].sample
+  end
+
+  sequence :is_error do
+    [true, false, false, false, false, false].sample
+  end
 end
