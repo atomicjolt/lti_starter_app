@@ -11,12 +11,14 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
     @application_instances = @application_instances.
       by_oldest.
       paginate(page: params[:page], per_page: 30)
+    set_requests
     application_instances = @application_instances.map do |app_inst|
       authentications = get_authentications(app_inst)
       app_inst_json = app_inst.as_json(include: :site)
       app_inst_json["lti_config_xml"] = app_inst.lti_config_xml
       app_inst_json["canvas_token_preview"] = app_inst.canvas_token_preview
       app_inst_json["authentications"] = authentications
+      app_inst_json["request_stats"] = request_stats(app_inst.tenant)
       app_inst_json.delete("encrypted_canvas_token")
       app_inst_json.delete("encrypted_canvas_token_salt")
       app_inst_json.delete("encrypted_canvas_token_iv")
@@ -95,6 +97,83 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
     application_instance.delete("encrypted_canvas_token_iv")
     application_instance["authentications"] = authentications
     render json: application_instance
+  end
+
+  def set_requests
+    tenants = @application_instances.pluck(:tenant)
+    @day_1_requests_grouped, @day_7_requests_grouped, @day_30_requests_grouped =
+      RequestLog.total_requests_grouped(tenants)
+    @day_1_launches_grouped, @day_7_launches_grouped, @day_30_launches_grouped =
+      RequestLog.total_lti_launches_grouped(tenants)
+    @day_1_errors_grouped, @day_7_errors_grouped, @day_30_errors_grouped =
+      RequestLog.total_errors_grouped(tenants)
+    @day_1_users_grouped, @day_7_users_grouped, @day_30_users_grouped =
+      RequestLog.total_unique_users_grouped(tenants)
+  end
+
+  def request_stats(tenant)
+    {
+      day_1_requests: day_1_requests_grouped(tenant),
+      day_7_requests: day_7_requests_grouped(tenant),
+      day_30_requests: day_30_requests_grouped(tenant),
+      day_1_users: day_1_users_grouped(tenant),
+      day_7_users: day_7_users_grouped(tenant),
+      day_30_users: day_30_users_grouped(tenant),
+      day_1_launches: day_1_launches_grouped(tenant),
+      day_7_launches: day_7_launches_grouped(tenant),
+      day_30_launches: day_30_launches_grouped(tenant),
+      day_1_errors: day_1_errors_grouped(tenant),
+      day_7_errors: day_7_errors_grouped(tenant),
+      day_30_errors: day_30_errors_grouped(tenant),
+    }
+  end
+
+  def day_1_requests_grouped(tenant)
+    @day_1_requests_grouped[tenant.to_s] || 0
+  end
+
+  def day_7_requests_grouped(tenant)
+    @day_7_requests_grouped[tenant.to_s] || 0
+  end
+
+  def day_30_requests_grouped(tenant)
+    @day_30_requests_grouped[tenant.to_s] || 0
+  end
+
+  def day_1_users_grouped(tenant)
+    @day_1_users_grouped[tenant.to_s] || 0
+  end
+
+  def day_7_users_grouped(tenant)
+    @day_7_users_grouped[tenant.to_s] || 0
+  end
+
+  def day_30_users_grouped(tenant)
+    @day_30_users_grouped[tenant.to_s] || 0
+  end
+
+  def day_1_launches_grouped(tenant)
+    @day_1_launches_grouped[tenant.to_s] || 0
+  end
+
+  def day_7_launches_grouped(tenant)
+    @day_7_launches_grouped[tenant.to_s] || 0
+  end
+
+  def day_30_launches_grouped(tenant)
+    @day_30_launches_grouped[tenant.to_s] || 0
+  end
+
+  def day_1_errors_grouped(tenant)
+    @day_1_errors_grouped[tenant.to_s] || 0
+  end
+
+  def day_7_errors_grouped(tenant)
+    @day_7_errors_grouped[tenant.to_s] || 0
+  end
+
+  def day_30_errors_grouped(tenant)
+    @day_30_errors_grouped[tenant.to_s] || 0
   end
 
   def application_instance_params

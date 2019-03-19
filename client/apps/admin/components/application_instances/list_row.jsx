@@ -164,7 +164,6 @@ export default class ListRow extends React.Component {
           </Link>
           <div>{_.replace(applicationInstance.site.url, 'https://', '')}</div>
         </td>
-        <td><span>{applicationInstance.domain}</span></td>
         <td>
           <button
             style={styles.buttonIcon}
@@ -198,12 +197,34 @@ export default class ListRow extends React.Component {
             }
           </button>
         </td>
-        <td>
-          {applicationInstance.canvas_token_preview}
-        </td>
         { this.renderAuthentications() }
         <td>
           {createdAt.toLocaleDateString()} {createdAt.toLocaleTimeString()}
+        </td>
+        <td>
+          <div>1 day</div>
+          <div>7 days</div>
+          <div>30 days</div>
+        </td>
+        <td>
+          <div>{applicationInstance.request_stats.day_1_requests}</div>
+          <div>{applicationInstance.request_stats.day_7_requests}</div>
+          <div>{applicationInstance.request_stats.day_30_requests}</div>
+        </td>
+        <td>
+          <div>{applicationInstance.request_stats.day_1_launches}</div>
+          <div>{applicationInstance.request_stats.day_7_launches}</div>
+          <div>{applicationInstance.request_stats.day_30_launches}</div>
+        </td>
+        <td>
+          <div>{applicationInstance.request_stats.day_1_users}</div>
+          <div>{applicationInstance.request_stats.day_7_users}</div>
+          <div>{applicationInstance.request_stats.day_30_users}</div>
+        </td>
+        <td>
+          <div>{applicationInstance.request_stats.day_1_errors}</div>
+          <div>{applicationInstance.request_stats.day_7_errors}</div>
+          <div>{applicationInstance.request_stats.day_30_errors}</div>
         </td>
         <td>
           <button
