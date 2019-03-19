@@ -107,7 +107,9 @@ RSpec.describe RequestLog, type: :model do
         expect(day_7_requests_grouped[@tenant]).to eq(2)
         expect(day_30_requests_grouped[@tenant]).to eq(3)
       end
+    end
 
+    describe "total_unique_users" do
       it "should return all unique user counts" do
         FactoryBot.create(
           :request_log,
@@ -157,7 +159,9 @@ RSpec.describe RequestLog, type: :model do
         expect(day_7_users_grouped[@tenant]).to eq(2)
         expect(day_30_users_grouped[@tenant]).to eq(3)
       end
+    end
 
+    describe "total_lti_launches" do
       it "should return total lti launches counts" do
         FactoryBot.create(
           :request_log,
@@ -207,7 +211,9 @@ RSpec.describe RequestLog, type: :model do
         expect(day_7_launches_grouped[@tenant]).to eq(1)
         expect(day_30_launches_grouped[@tenant]).to eq(1)
       end
+    end
 
+    describe "total_errors" do
       it "should return total errors counts" do
         FactoryBot.create(
           :request_log,
