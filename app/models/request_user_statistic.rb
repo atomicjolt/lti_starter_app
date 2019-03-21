@@ -41,8 +41,8 @@ class RequestUserStatistic < ApplicationRecord
         RequestUserStatistic.
         for_day.
         for_tenant(tenants).
-        group(:tenant, :user_id).
-        select(:tenant),
+        select(:tenant, :user_id).
+        distinct,
       ).
       group(:tenant).
       map { |log| [log.tenant, log.count] }
@@ -53,8 +53,8 @@ class RequestUserStatistic < ApplicationRecord
         RequestUserStatistic.
         for_week.
         for_tenant(tenants).
-        group(:tenant, :user_id).
-        select(:tenant),
+        select(:tenant, :user_id).
+        distinct,
       ).
       group(:tenant).
       map { |log| [log.tenant, log.count] }
@@ -65,8 +65,8 @@ class RequestUserStatistic < ApplicationRecord
         RequestUserStatistic.
         for_month.
         for_tenant(tenants).
-        group(:tenant, :user_id).
-        select(:tenant),
+        select(:tenant, :user_id).
+        distinct,
       ).
       group(:tenant).
       map { |log| [log.tenant, log.count] }
