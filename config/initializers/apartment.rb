@@ -23,7 +23,6 @@ Apartment.configure do |config|
     BundleInstance
     ApplicationBundle
     ImsExport
-    RequestLog
     RequestStatistic
     RequestUserStatistic
   }
