@@ -15,41 +15,48 @@ class RequestsLogger
     lti_launch = request.path == "/lti_launches" ? 1 : 0
     error = @status.to_s.match?(/^5/) ? 1 : 0
 
+    request_binds = [
+      [nil, current_hour],
+      [nil, tenant],
+      [nil, lti_launch],
+      [nil, error],
+    ]
+    user_binds = [
+      [nil, current_hour],
+      [nil, tenant],
+      [nil, user_id],
+    ]
+
     ActiveRecord::Base.connection.exec_query(
-      request_statistics_sql(
-        current_hour,
-        tenant,
-        lti_launch,
-        error,
-      ),
+      request_statistics_sql,
+      "SQL",
+      request_binds,
     )
     ActiveRecord::Base.connection.exec_query(
-      request_user_statistics_sql(
-        current_hour,
-        tenant,
-        user_id,
-      ),
+      request_user_statistics_sql,
+      "SQL",
+      user_binds,
     )
 
     [@status, @headers, @response]
   end
 
-  def request_statistics_sql(truncated_time, tenant, lti_launch, error)
+  def request_statistics_sql
     <<-SQL
       INSERT INTO "public"."request_statistics" ("truncated_time", "tenant", "number_of_hits", "number_of_lti_launches", "number_of_errors")
-      VALUES ('#{truncated_time}', #{ActiveRecord::Base.connection.quote(tenant)}, 1, #{lti_launch}, #{error})
+      VALUES ($1, $2, 1, $3, $4)
       ON CONFLICT ("truncated_time", "tenant")
       DO UPDATE SET
         number_of_hits = "public"."request_statistics"."number_of_hits" + 1,
-        number_of_lti_launches = "public"."request_statistics"."number_of_lti_launches" + #{lti_launch},
-        number_of_errors = "public"."request_statistics"."number_of_errors" + #{error}
+        number_of_lti_launches = "public"."request_statistics"."number_of_lti_launches" + $3,
+        number_of_errors = "public"."request_statistics"."number_of_errors" + $4
     SQL
   end
 
-  def request_user_statistics_sql(truncated_time, tenant, user_id)
+  def request_user_statistics_sql
     <<-SQL
       INSERT INTO "public"."request_user_statistics" ("truncated_time", "tenant", "user_id")
-      VALUES ('#{truncated_time}', #{ActiveRecord::Base.connection.quote(tenant)}, #{user_id})
+      VALUES ($1, $2, $3)
       ON CONFLICT ("truncated_time", "tenant", "user_id")
       DO NOTHING
     SQL
