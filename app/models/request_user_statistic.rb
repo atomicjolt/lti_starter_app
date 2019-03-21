@@ -1,9 +1,12 @@
 class RequestUserStatistic < ApplicationRecord
   self.primary_keys = :truncated_time, :tenant, :user_id
 
-  scope :for_day, ->(date = Time.zone.now) { where(truncated_time: [date.beginning_of_day..date.end_of_day]) }
-  scope :for_week, ->(date = Time.zone.now) { where(truncated_time: [(date.beginning_of_day - 7.days)..date.end_of_day]) }
-  scope :for_month, ->(date = Time.zone.now) { where(truncated_time: [(date.beginning_of_day - 30.days)..date.end_of_day]) }
+  scope :for_day,
+        ->(date = Time.zone.now) { where(truncated_time: [date.beginning_of_day..date.end_of_day]) }
+  scope :for_week,
+        ->(date = Time.zone.now) { where(truncated_time: [(date.beginning_of_day - 7.days)..date.end_of_day]) }
+  scope :for_month,
+        ->(date = Time.zone.now) { where(truncated_time: [(date.beginning_of_day - 30.days)..date.end_of_day]) }
   scope :for_tenant, ->(tenant) { where(tenant: tenant) }
 
   def self.total_unique_users(tenant)
