@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190313033308) do
+ActiveRecord::Schema.define(version: 20190320012453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -177,6 +177,20 @@ ActiveRecord::Schema.define(version: 20190313033308) do
     t.datetime "updated_at", null: false
     t.index ["created_at", "tenant", "user_id"], name: "index_request_logs_on_created_at_and_tenant_and_user_id"
     t.index ["request_id"], name: "index_request_logs_on_request_id", unique: true
+  end
+
+  create_table "request_statistics", primary_key: ["truncated_time", "tenant"], force: :cascade do |t|
+    t.datetime "truncated_time", null: false
+    t.string "tenant", null: false
+    t.integer "number_of_hits", default: 1
+    t.integer "number_of_lti_launches", default: 0
+    t.integer "number_of_errors", default: 0
+  end
+
+  create_table "request_user_statistics", primary_key: ["truncated_time", "tenant", "user_id"], force: :cascade do |t|
+    t.datetime "truncated_time", null: false
+    t.string "tenant", null: false
+    t.bigint "user_id", null: false
   end
 
   create_table "roles", force: :cascade do |t|

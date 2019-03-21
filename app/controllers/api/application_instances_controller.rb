@@ -102,13 +102,13 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   def set_requests
     tenants = @application_instances.pluck(:tenant)
     @day_1_requests_grouped, @day_7_requests_grouped, @day_30_requests_grouped =
-      RequestLog.total_requests_grouped(tenants)
+      RequestStatistic.total_requests_grouped(tenants)
     @day_1_launches_grouped, @day_7_launches_grouped, @day_30_launches_grouped =
-      RequestLog.total_lti_launches_grouped(tenants)
+      RequestStatistic.total_lti_launches_grouped(tenants)
     @day_1_errors_grouped, @day_7_errors_grouped, @day_30_errors_grouped =
-      RequestLog.total_errors_grouped(tenants)
+      RequestStatistic.total_errors_grouped(tenants)
     @day_1_users_grouped, @day_7_users_grouped, @day_30_users_grouped =
-      RequestLog.total_unique_users_grouped(tenants)
+      RequestUserStatistic.total_unique_users_grouped(tenants)
   end
 
   def request_stats(tenant)

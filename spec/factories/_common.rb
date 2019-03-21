@@ -107,6 +107,22 @@ FactoryBot.define do
     n
   end
 
+  sequence :truncated_time do |n|
+    Time.zone.now - n.hours
+  end
+
+  sequence :number_of_hits do |n|
+    (n % 50) * 100
+  end
+
+  sequence :number_of_lti_launches do |n|
+    (n % 30) * 100
+  end
+
+  sequence :number_of_errors do |n|
+    (n % 10) * 100
+  end
+
   sequence :is_lti_launch do
     [true, true, true, true, true, false].sample
   end
