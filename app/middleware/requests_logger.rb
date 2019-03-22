@@ -11,7 +11,11 @@ class RequestsLogger
     current_hour = Time.zone.now.beginning_of_hour
     tenant = Apartment::Tenant.current
     warden_session = request.session["warden.user.user.key"]
-    user_id = warden_session[0][0] if warden_session
+    user_id = if warden_session
+                warden_session[0][0]
+              else
+                0
+              end
     lti_launch = request.path == "/lti_launches" ? 1 : 0
     error = @status.to_s.match?(/^5/) ? 1 : 0
 
