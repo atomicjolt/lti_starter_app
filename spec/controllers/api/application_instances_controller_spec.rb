@@ -155,14 +155,35 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
     end
 
     describe "DEL destroy" do
+      before do
+        @params = {
+          application_id: @application.id,
+          id: @application_instance.id,
+        }
+      end
+
       it "Deletes the application instance" do
-        delete :destroy,
-               params: {
-                 application_id: @application.id,
-                 id: @application_instance.id,
-               },
-               format: :json
-        expect(response).to have_http_status(200)
+        delete :destroy, params: @params, format: :json
+        ai = ApplicationInstance.find_by(id: @application_instance.id)
+        expect(ai).to be(nil)
+      end
+
+      it "Deletes the tenant" do
+        delete :destroy, params: @params, format: :json
+        expect do
+          Apartment::Tenant.switch!(@application_instance.tenant)
+        end.to raise_error(Apartment::TenantNotFound)
+      end
+
+      it "Deletes the request statistics" do
+        tenant = @application_instance.tenant
+        FactoryBot.create(:request_statistic, tenant: tenant)
+        FactoryBot.create(:request_user_statistic, tenant: tenant)
+        delete :destroy, params: @params, format: :json
+        request_statistics_count = RequestStatistic.where(tenant: tenant).count
+        request_user_statistics_count = RequestUserStatistic.where(tenant: tenant).count
+        expect(request_statistics_count).to eq(0)
+        expect(request_user_statistics_count).to eq(0)
       end
     end
   end

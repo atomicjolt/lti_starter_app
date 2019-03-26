@@ -45,7 +45,11 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   end
 
   def destroy
+    tenant = @application_instance.tenant
     @application_instance.destroy
+    Apartment::Tenant.drop(tenant)
+    RequestStatistic.where(tenant: tenant).delete_all
+    RequestUserStatistic.where(tenant: tenant).delete_all
     render json: { head: :ok }
   end
 
