@@ -45,6 +45,8 @@ export class Index extends React.Component {
     this.state = {
       modalOpen: false,
       currentPage: null,
+      column: 'created_at',
+      direction: 'desc',
     };
   }
 
@@ -67,18 +69,38 @@ export class Index extends React.Component {
   componentWillMount() {
     const {
       currentPage,
+      column,
+      direction,
     } = this.state;
 
-    this.props.getApplicationInstances(this.props.params.applicationId, currentPage);
+    this.props.getApplicationInstances(
+      this.props.params.applicationId,
+      currentPage,
+      column,
+      direction,
+    );
   }
 
   componentDidUpdate(prevProps, prevState) {
     const {
       currentPage,
+      column,
+      direction,
     } = this.state;
 
-    if (prevState.currentPage !== currentPage) {
-      this.props.getApplicationInstances(this.props.params.applicationId, currentPage);
+    const propsChanged = (
+      prevState.currentPage !== currentPage ||
+      prevState.column !== column ||
+      prevState.direction !== direction
+    );
+
+    if (propsChanged) {
+      this.props.getApplicationInstances(
+        this.props.params.applicationId,
+        currentPage,
+        column,
+        direction,
+      );
     }
   }
 
@@ -86,8 +108,20 @@ export class Index extends React.Component {
     this.setState({ currentPage: change.selected + 1 });
   }
 
+  setSort(column, direction) {
+    this.setState({
+      column,
+      direction,
+    });
+  }
+
   render() {
     const { application } = this;
+
+    const {
+      column:currentColumn,
+      direction:currentDirection,
+    } = this.state;
 
     return (
       <div>
@@ -108,6 +142,9 @@ export class Index extends React.Component {
             deleteApplicationInstance={this.props.deleteApplicationInstance}
             disableApplicationInstance={this.props.disableApplicationInstance}
             canvasOauthURL={this.props.canvasOauthURL}
+            setSort={(column, direction) => this.setSort(column, direction)}
+            currentColumn={currentColumn}
+            currentDirection={currentDirection}
           />
           <Pagination
             setPage={change => this.setPage(change)}

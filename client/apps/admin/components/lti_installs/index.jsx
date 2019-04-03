@@ -16,8 +16,12 @@ import InstallPane from './install_pane';
 function select(state, props) {
   const instanceId = props.params.applicationInstanceId;
 
+  const applicationInstance = _.find(state.applicationInstances.applicationInstances, ai => (
+    `${ai.id}` === instanceId
+  ));
+
   return {
-    applicationInstance: state.applicationInstances.applicationInstances[instanceId],
+    applicationInstance,
     applications: state.applications,
     accounts: state.accounts.accounts,
     rootAccount: _.find(state.accounts.accounts, { parent_account_id: null }),

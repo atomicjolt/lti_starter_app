@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { Constants as ApplicationInstancesConstants } from '../actions/application_instances';
 
 const initialState = {
-  applicationInstances: {},
+  applicationInstances: [],
   totalPages: 1,
 };
 
@@ -19,7 +19,7 @@ export default function instances(state = initialState, action) {
         const instanceClone = _.cloneDeep(instance);
         instanceClone.config = JSON.stringify(instance.config);
         instanceClone.lti_config = JSON.stringify(instance.lti_config);
-        newState.applicationInstances[instance.id] = instanceClone;
+        newState.applicationInstances.push(instanceClone);
       });
       newState.totalPages = totalPages;
       return newState;
@@ -33,13 +33,18 @@ export default function instances(state = initialState, action) {
       const instanceClone = _.cloneDeep(action.payload);
       instanceClone.config = JSON.stringify(action.payload.config);
       instanceClone.lti_config = JSON.stringify(action.payload.lti_config);
-      newState.applicationInstances[action.payload.id] = instanceClone;
+      _.remove(newState.applicationInstances, ai => (
+        `${ai.id}` === action.payload.id
+      ));
+      newState.applicationInstances.push(instanceClone);
       return newState;
     }
 
     case ApplicationInstancesConstants.DELETE_APPLICATION_INSTANCE_DONE: {
       const newState = _.cloneDeep(state);
-      delete newState.applicationInstances[action.original.applicationInstanceId];
+      _.remove(newState.applicationInstances, ai => (
+        `${ai.id}` === action.original.applicationInstanceId
+      ));
       return newState;
     }
 
