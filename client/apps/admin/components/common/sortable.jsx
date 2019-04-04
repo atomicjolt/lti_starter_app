@@ -10,18 +10,12 @@ export default function Sortable(props) {
     setSort,
   } = props;
 
-  const styles = {
-    clicker: {
-      cursor: 'pointer',
-    },
-  };
-
   const direction = column === currentColumn && currentDirection === 'asc' ? 'desc' : 'asc';
   let icon = currentDirection === 'asc' ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
   icon = column === currentColumn ? icon : '';
 
   return (
-    <th style={styles.clicker} onClick={() => setSort(column, direction)}>
+    <th className="sortable-header" onClick={() => setSort(column, direction)}>
       <span>
         {title}
         <i className="material-icons">
