@@ -12,20 +12,11 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
       order(sort_column.to_sym => sort_direction.to_sym).
       paginate(page: params[:page], per_page: 30)
     set_requests
-    application_instances = @application_instances.map do |app_inst|
-      authentications = get_authentications(app_inst)
-      app_inst_json = app_inst.as_json(include: :site)
-      app_inst_json["lti_config_xml"] = app_inst.lti_config_xml
-      app_inst_json["canvas_token_preview"] = app_inst.canvas_token_preview
-      app_inst_json["authentications"] = authentications
-      app_inst_json["request_stats"] = request_stats(app_inst.tenant)
-      app_inst_json.delete("encrypted_canvas_token")
-      app_inst_json.delete("encrypted_canvas_token_salt")
-      app_inst_json.delete("encrypted_canvas_token_iv")
-      app_inst_json
+    application_instances_json = @application_instances.map do |application_instance|
+      json_for(application_instance)
     end
     render json: {
-      application_instances: application_instances,
+      application_instances: application_instances_json,
       total_pages: @application_instances.total_pages,
     }
   end
@@ -107,15 +98,22 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   end
 
   def respond_with_json
-    authentications = get_authentications(@application_instance)
-    application_instance = @application_instance.as_json(include: :site)
-    application_instance["lti_config_xml"] = @application_instance.lti_config_xml
-    application_instance["canvas_token_preview"] = @application_instance.canvas_token_preview
-    application_instance.delete("encrypted_canvas_token")
-    application_instance.delete("encrypted_canvas_token_salt")
-    application_instance.delete("encrypted_canvas_token_iv")
-    application_instance["authentications"] = authentications
-    render json: application_instance
+    @application_instances = [@application_instance]
+    set_requests
+    render json: json_for(@application_instance)
+  end
+
+  def json_for(application_instance)
+    authentications = get_authentications(application_instance)
+    json = application_instance.as_json(include: :site)
+    json["lti_config_xml"] = application_instance.lti_config_xml
+    json["canvas_token_preview"] = application_instance.canvas_token_preview
+    json.delete("encrypted_canvas_token")
+    json.delete("encrypted_canvas_token_salt")
+    json.delete("encrypted_canvas_token_iv")
+    json["authentications"] = authentications
+    json["request_stats"] = request_stats(application_instance.tenant)
+    json
   end
 
   def set_requests
