@@ -255,8 +255,8 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "column": "lti_key",
-                "currentColumn": undefined,
-                "currentDirection": undefined,
+                "currentSortColumn": undefined,
+                "currentSortDirection": undefined,
                 "setSort": undefined,
                 "title": "LTI KEY",
               },
@@ -362,8 +362,8 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "column": "created_at",
-                "currentColumn": undefined,
-                "currentDirection": undefined,
+                "currentSortColumn": undefined,
+                "currentSortDirection": undefined,
                 "setSort": undefined,
                 "title": "CREATED",
               },
@@ -773,8 +773,8 @@ ShallowWrapper {
                 "nodeType": "function",
                 "props": Object {
                   "column": "lti_key",
-                  "currentColumn": undefined,
-                  "currentDirection": undefined,
+                  "currentSortColumn": undefined,
+                  "currentSortDirection": undefined,
                   "setSort": undefined,
                   "title": "LTI KEY",
                 },
@@ -880,8 +880,8 @@ ShallowWrapper {
                 "nodeType": "function",
                 "props": Object {
                   "column": "created_at",
-                  "currentColumn": undefined,
-                  "currentDirection": undefined,
+                  "currentSortColumn": undefined,
+                  "currentSortDirection": undefined,
                   "setSort": undefined,
                   "title": "CREATED",
                 },

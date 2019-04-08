@@ -5,14 +5,14 @@ export default function Sortable(props) {
   const {
     title,
     column,
-    currentColumn,
-    currentDirection,
+    currentSortColumn,
+    currentSortDirection,
     setSort,
   } = props;
 
-  const direction = column === currentColumn && currentDirection === 'asc' ? 'desc' : 'asc';
-  let icon = currentDirection === 'asc' ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
-  icon = column === currentColumn ? icon : '';
+  const direction = column === currentSortColumn && currentSortDirection === 'asc' ? 'desc' : 'asc';
+  let icon = currentSortDirection === 'asc' ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
+  icon = column === currentSortColumn ? icon : '';
 
   return (
     <th className="sortable-header" onClick={() => setSort(column, direction)}>
@@ -29,7 +29,7 @@ export default function Sortable(props) {
 Sortable.propTypes = {
   title: PropTypes.string.isRequired,
   column: PropTypes.string.isRequired,
-  currentColumn: PropTypes.string.isRequired,
-  currentDirection: PropTypes.string.isRequired,
+  currentSortColumn: PropTypes.string.isRequired,
+  currentSortDirection: PropTypes.string.isRequired,
   setSort: PropTypes.func.isRequired,
 };

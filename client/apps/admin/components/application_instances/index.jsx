@@ -45,8 +45,8 @@ export class Index extends React.Component {
     this.state = {
       modalOpen: false,
       currentPage: null,
-      column: 'created_at',
-      direction: 'desc',
+      sortColumn: 'created_at',
+      sortDirection: 'desc',
     };
   }
 
@@ -69,37 +69,37 @@ export class Index extends React.Component {
   componentWillMount() {
     const {
       currentPage,
-      column,
-      direction,
+      sortColumn,
+      sortDirection,
     } = this.state;
 
     this.props.getApplicationInstances(
       this.props.params.applicationId,
       currentPage,
-      column,
-      direction,
+      sortColumn,
+      sortDirection,
     );
   }
 
   componentDidUpdate(prevProps, prevState) {
     const {
       currentPage,
-      column,
-      direction,
+      sortColumn,
+      sortDirection,
     } = this.state;
 
     const propsChanged = (
       prevState.currentPage !== currentPage ||
-      prevState.column !== column ||
-      prevState.direction !== direction
+      prevState.sortColumn !== sortColumn ||
+      prevState.sortDirection !== sortDirection
     );
 
     if (propsChanged) {
       this.props.getApplicationInstances(
         this.props.params.applicationId,
         currentPage,
-        column,
-        direction,
+        sortColumn,
+        sortDirection,
       );
     }
   }
@@ -108,10 +108,10 @@ export class Index extends React.Component {
     this.setState({ currentPage: change.selected + 1 });
   }
 
-  setSort(column, direction) {
+  setSort(sortColumn, sortDirection) {
     this.setState({
-      column,
-      direction,
+      sortColumn,
+      sortDirection,
     });
   }
 
@@ -119,8 +119,8 @@ export class Index extends React.Component {
     const { application } = this;
 
     const {
-      column:currentColumn,
-      direction:currentDirection,
+      sortColumn:currentSortColumn,
+      sortDirection:currentSortDirection,
     } = this.state;
 
     return (
@@ -142,9 +142,9 @@ export class Index extends React.Component {
             deleteApplicationInstance={this.props.deleteApplicationInstance}
             disableApplicationInstance={this.props.disableApplicationInstance}
             canvasOauthURL={this.props.canvasOauthURL}
-            setSort={(column, direction) => this.setSort(column, direction)}
-            currentColumn={currentColumn}
-            currentDirection={currentDirection}
+            setSort={(sortColumn, sortDirection) => this.setSort(sortColumn, sortDirection)}
+            currentSortColumn={currentSortColumn}
+            currentSortDirection={currentSortDirection}
           />
           <Pagination
             setPage={change => this.setPage(change)}

@@ -14,8 +14,8 @@ export default function List(props) {
     canvasOauthURL,
     disableApplicationInstance,
     setSort,
-    currentColumn,
-    currentDirection,
+    currentSortColumn,
+    currentSortDirection,
   } = props;
 
   return (
@@ -25,8 +25,8 @@ export default function List(props) {
           <Sortable
             title="LTI KEY"
             column="lti_key"
-            currentColumn={currentColumn}
-            currentDirection={currentDirection}
+            currentSortColumn={currentSortColumn}
+            currentSortDirection={currentSortDirection}
             setSort={setSort}
           />
           <th><span>SETTINGS</span></th>
@@ -36,8 +36,8 @@ export default function List(props) {
           <Sortable
             title="CREATED"
             column="created_at"
-            currentColumn={currentColumn}
-            currentDirection={currentDirection}
+            currentSortColumn={currentSortColumn}
+            currentSortDirection={currentSortDirection}
             setSort={setSort}
           />
           <th>________</th>
