@@ -25,8 +25,8 @@ export default function List(props) {
           <Sortable
             title="LTI KEY"
             column="lti_key"
-            currentSortColumn={currentSortColumn}
-            currentSortDirection={currentSortDirection}
+            currentColumn={currentSortColumn}
+            currentDirection={currentSortDirection}
             setSort={setSort}
           />
           <th><span>SETTINGS</span></th>
@@ -36,8 +36,8 @@ export default function List(props) {
           <Sortable
             title="CREATED"
             column="created_at"
-            currentSortColumn={currentSortColumn}
-            currentSortDirection={currentSortDirection}
+            currentColumn={currentSortColumn}
+            currentDirection={currentSortDirection}
             setSort={setSort}
           />
           <th>________</th>
