@@ -9,7 +9,7 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
 
   def index
     @application_instances = @application_instances.
-      by_oldest.
+      order(sort_column.to_sym => sort_direction.to_sym).
       paginate(page: params[:page], per_page: 30)
     set_requests
     application_instances = @application_instances.map do |app_inst|
@@ -68,6 +68,21 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   end
 
   private
+
+  def sortable_columns
+    [
+      "created_at",
+      "lti_key",
+    ]
+  end
+
+  def sort_column
+    sortable_columns.include?(params[:column]) ? params[:column] : "created_at"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+  end
 
   def get_authentications(application_instance_instance)
     Apartment::Tenant.switch(application_instance_instance.tenant) do

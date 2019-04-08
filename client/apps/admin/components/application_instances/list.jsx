@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import ListRow from './list_row';
+import Sortable from '../common/sortable';
 
 export default function List(props) {
   const {
@@ -11,19 +12,34 @@ export default function List(props) {
     saveApplicationInstance,
     deleteApplicationInstance,
     canvasOauthURL,
-    disableApplicationInstance
+    disableApplicationInstance,
+    setSort,
+    currentSortColumn,
+    currentSortDirection,
   } = props;
 
   return (
     <table className="c-table c-table--instances">
       <thead>
         <tr>
-          <th><span>LTI KEY</span></th>
+          <Sortable
+            title="LTI KEY"
+            column="lti_key"
+            currentColumn={currentSortColumn}
+            currentDirection={currentSortDirection}
+            setSort={setSort}
+          />
           <th><span>SETTINGS</span></th>
           <th><span>CONFIG XML</span></th>
           <th><span>ENABLED</span></th>
           <th><span>AUTHS</span></th>
-          <th><span>CREATED</span></th>
+          <Sortable
+            title="CREATED"
+            column="created_at"
+            currentColumn={currentSortColumn}
+            currentDirection={currentSortDirection}
+            setSort={setSort}
+          />
           <th>________</th>
           <th><span>REQUESTS</span></th>
           <th><span>LTI LAUNCHES</span></th>

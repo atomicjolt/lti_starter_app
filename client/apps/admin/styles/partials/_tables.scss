@@ -193,6 +193,13 @@
   }
 }
 
+.sortable-header {
+  &:hover {
+    background-color: $lighter-gray;
+    cursor: pointer;
+  }
+}
+
   .pagination{
     position: relative;
     @include center(horizontal);

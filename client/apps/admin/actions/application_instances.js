@@ -18,13 +18,15 @@ const requests = [
 
 export const Constants = wrapper(actions, requests);
 
-export function getApplicationInstances(applicationId, page) {
+export function getApplicationInstances(applicationId, page, column, direction) {
   return {
     type: Constants.GET_APPLICATION_INSTANCES,
     method: Network.GET,
     url: `/api/applications/${applicationId}/application_instances`,
     params: {
       page,
+      column,
+      direction,
     }
   };
 }

@@ -64,9 +64,32 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
         ai2 = create(:application_instance, application: app, created_at: 2.week.ago)
         ai3 = create(:application_instance, application: app, created_at: 1.day.ago)
         ai4 = create(:application_instance, application: app, created_at: 3.days.ago)
-        get :index, params: { application_id: app.id }, format: :json
+        params = {
+          application_id: app.id,
+          column: :created_at,
+          direction: :asc,
+        }
+        get :index, params: params, format: :json
         result = JSON.parse(response.body)
         expected_instance_ids = [ai2.id, ai1.id, ai4.id, ai3.id]
+        returned_instance_ids = result["application_instances"].map { |ai| ai["id"] }
+        expect(returned_instance_ids).to eq(expected_instance_ids)
+      end
+
+      it "renders all application instances by lti_key" do
+        app = create(:application)
+        ai1 = create(:application_instance, application: app, lti_key: "c")
+        ai2 = create(:application_instance, application: app, lti_key: "g")
+        ai3 = create(:application_instance, application: app, lti_key: "a")
+        ai4 = create(:application_instance, application: app, lti_key: "z")
+        params = {
+          application_id: app.id,
+          column: :lti_key,
+          direction: :asc,
+        }
+        get :index, params: params, format: :json
+        result = JSON.parse(response.body)
+        expected_instance_ids = [ai3.id, ai1.id, ai2.id, ai4.id]
         returned_instance_ids = result["application_instances"].map { |ai| ai["id"] }
         expect(returned_instance_ids).to eq(expected_instance_ids)
       end
