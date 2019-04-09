@@ -83,4 +83,7 @@ List.propTypes = {
   deleteApplicationInstance: PropTypes.func.isRequired,
   canvasOauthURL: PropTypes.string.isRequired,
   disableApplicationInstance: PropTypes.func.isRequired,
+  currentSortColumn: PropTypes.string.isRequired,
+  currentSortDirection: PropTypes.string.isRequired,
+  setSort: PropTypes.func.isRequired,
 };
