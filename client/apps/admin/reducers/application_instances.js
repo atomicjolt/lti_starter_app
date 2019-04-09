@@ -34,7 +34,7 @@ export default function instances(state = initialState, action) {
       instanceClone.config = JSON.stringify(action.payload.config);
       instanceClone.lti_config = JSON.stringify(action.payload.lti_config);
       _.remove(newState.applicationInstances, ai => (
-        `${ai.id}` === action.payload.id
+        ai.id === action.payload.id
       ));
       newState.applicationInstances.push(instanceClone);
       return newState;
@@ -43,7 +43,7 @@ export default function instances(state = initialState, action) {
     case ApplicationInstancesConstants.DELETE_APPLICATION_INSTANCE_DONE: {
       const newState = _.cloneDeep(state);
       _.remove(newState.applicationInstances, ai => (
-        `${ai.id}` === action.original.applicationInstanceId
+        ai.id === action.original.applicationInstanceId
       ));
       return newState;
     }
