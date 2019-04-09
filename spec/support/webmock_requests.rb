@@ -67,10 +67,7 @@ RSpec.configure do |config|
         status: 200,
         body: canvas_courses,
         headers: canvas_headers(
-          "link" => %{<https://next-courses.instructure.com/api/v1/courses.json?opaqueA>; rel="current",
-                <https://next-courses.instructure.com/api/v1/courses.json?opaqueB>; rel="next",
-                <https://next-courses.instructure.com/api/v1/courses.json?opaqueC>; rel="first",
-                <https://next-courses.instructure.com/api/v1/courses.json?opaqueD>; rel="last"},
+          "link" => %{<https://next-courses.instructure.com/api/v1/courses.json?opaqueA>; rel="current", <https://next-courses.instructure.com/api/v1/courses.json?opaqueB>; rel="next", <https://next-courses.instructure.com/api/v1/courses.json?opaqueC>; rel="first", <https://next-courses.instructure.com/api/v1/courses.json?opaqueD>; rel="last"},
         ),
       )
 
@@ -88,10 +85,7 @@ RSpec.configure do |config|
         status: 200,
         body: canvas_students,
         headers: canvas_headers(
-          "link" => %{<https://atomicjolt.instructure.com/api/v1/courses/26/users?include%5B%5D=avatar_url&enrollment_type%5B%5D=student&enrollment_type%5B%5D=observer&page=1&per_page=100>;
-            rel="current",<https://atomicjolt.instructure.com/api/v1/courses/26/users?include%5B%5D=avatar_url&enrollment_type%5B%5D=student&enrollment_type%5B%5D=observer&page=1&per_page=100>;
-            rel="first",<https://atomicjolt.instructure.com/api/v1/courses/26/users?include%5B%5D=avatar_url&enrollment_type%5B%5D=student&enrollment_type%5B%5D=observer&page=1&per_page=100>;
-            rel="last"},
+          "link" => %{<https://atomicjolt.instructure.com/api/v1/courses/26/users?include%5B%5D=avatar_url&enrollment_type%5B%5D=student&enrollment_type%5B%5D=observer&page=1&per_page=100>; rel="current",<https://atomicjolt.instructure.com/api/v1/courses/26/users?include%5B%5D=avatar_url&enrollment_type%5B%5D=student&enrollment_type%5B%5D=observer&page=1&per_page=100>; rel="first",<https://atomicjolt.instructure.com/api/v1/courses/26/users?include%5B%5D=avatar_url&enrollment_type%5B%5D=student&enrollment_type%5B%5D=observer&page=1&per_page=100>; rel="last"},
         ),
       )
 
@@ -120,10 +114,7 @@ RSpec.configure do |config|
         status: 200,
         body: canvas_students,
         headers: canvas_headers(
-          "link" => %{<https://atomicjolt.instructure.com/api/v1/sections/260/enrollments?include%5B%5D=avatar_url&type%5B%5D=StudentEnrollment&type%5B%5D=ObserverEnrollment&page=1&per_page=100>;
-            rel="current",<https://atomicjolt.instructure.com/api/v1/sections/260/enrollments?include%5B%5D=avatar_url&type%5B%5D=StudentEnrollment&type%5B%5D=ObserverEnrollment&page=1&per_page=100>;
-            rel="first",<https://atomicjolt.instructure.com/api/v1/sections/260/enrollments?include%5B%5D=avatar_url&type%5B%5D=StudentEnrollment&type%5B%5D=ObserverEnrollment&page=1&per_page=100>;
-            rel="last"},
+          "link" => %{<https://atomicjolt.instructure.com/api/v1/sections/260/enrollments?include%5B%5D=avatar_url&type%5B%5D=StudentEnrollment&type%5B%5D=ObserverEnrollment&page=1&per_page=100>; rel="current",<https://atomicjolt.instructure.com/api/v1/sections/260/enrollments?include%5B%5D=avatar_url&type%5B%5D=StudentEnrollment&type%5B%5D=ObserverEnrollment&page=1&per_page=100>; rel="first",<https://atomicjolt.instructure.com/api/v1/sections/260/enrollments?include%5B%5D=avatar_url&type%5B%5D=StudentEnrollment&type%5B%5D=ObserverEnrollment&page=1&per_page=100>; rel="last"},
         ),
       )
 
