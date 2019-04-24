@@ -138,6 +138,20 @@ module Concerns
       all_roles = lti_roles.split(",")
       # Only store roles that start with urn:lti:role to prevent using local roles
       roles = all_roles.select { |role| role.start_with?("urn:lti:") }
+
+      # Check to see if we’re dealing with Canvas and the LTI launch claims
+      # the user is "urn:lti:instrole:ims/lis/Administrator"
+      if params["ext_roles"].present? &&
+          params["roles"].present? &&
+          roles.include?("urn:lti:instrole:ims/lis/Administrator")
+        # Make sure that roles also includes “urn:lti:instrole:ims/lis/Administrator”
+        # so we know for certain that the user has that role in the current context
+        context_roles = params["roles"].split(",")
+        if !context_roles.include?("urn:lti:instrole:ims/lis/Administrator")
+          roles.delete("urn:lti:instrole:ims/lis/Administrator")
+        end
+      end
+
       roles.each do |role|
         user.add_to_role(role, params["context_id"])
       end
