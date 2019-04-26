@@ -16,7 +16,7 @@ class RequestsLogger
               else
                 0
               end
-    lti_launch = request.path == "/lti_launches" ? 1 : 0
+    lti_launch = request.path.match?(/^\/lti_launches/) ? 1 : 0
     error = @status.to_s.match?(/^5/) ? 1 : 0
 
     request_binds = [
