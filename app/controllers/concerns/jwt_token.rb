@@ -14,7 +14,8 @@ module Concerns
     def validate_token_with_secret(aud, secret, req = request)
       token = decoded_jwt_token(req, secret)
       raise InvalidTokenError if aud != token["aud"]
-    rescue JWT::DecodeError, InvalidTokenError
+    rescue JWT::DecodeError, InvalidTokenError => e
+      Rails.logger.error "JWT Error occured: #{e.inspect}"
       render json: { error: "Unauthorized: Invalid token." }, status: :unauthorized
     end
 
@@ -23,7 +24,8 @@ module Concerns
       raise InvalidTokenError if Rails.application.secrets.auth0_client_id != token["aud"]
       @user = User.find(token["user_id"])
       sign_in(@user, event: :authentication)
-    rescue JWT::DecodeError, InvalidTokenError
+    rescue JWT::DecodeError, InvalidTokenError => e
+      Rails.logger.error "JWT Error occured #{e.inspect}"
       render json: { error: "Unauthorized: Invalid token." }, status: :unauthorized
     end
 
@@ -32,11 +34,19 @@ module Concerns
     end
 
     def can_admin_course?(lms_course_id)
-      can_access_course?(lms_course_id) && lti_admin_or_instructor?
+      can_access_course?(lms_course_id) && lti_admin_or_instructor_or_allowed?
     end
 
     def lti_instructor?
       jwt_lti_roles_string.match(/urn:lti:role:ims\/lis\/Instructor/).present?
+    end
+
+    def lti_ta?
+      jwt_lti_roles_string.match(/urn:lti:role:ims\/lis\/TeachingAssistant/).present?
+    end
+
+    def lti_content_developer?
+      jwt_lti_roles_string.match(/urn:lti:role:ims\/lis\/ContentDeveloper/).present?
     end
 
     def lti_admin?
@@ -50,6 +60,10 @@ module Concerns
 
     def lti_admin_or_instructor?
       lti_instructor? || lti_admin?
+    end
+
+    def lti_admin_or_instructor_or_allowed?
+      lti_instructor? || lti_admin? || lti_ta? || lti_content_developer?
     end
 
     def jwt_context_id
@@ -69,6 +83,11 @@ module Concerns
 
     def jwt_lti_roles_string
       jwt_lti_roles.join(",")
+    end
+
+    def jwt_tool_consumer_instance_guid
+      token = decoded_jwt_token(request)
+      token["tool_consumer_instance_guid"]
     end
 
     protected
