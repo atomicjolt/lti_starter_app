@@ -2,12 +2,16 @@
 
 SUCCESS=true
 
-cd ./client && for dir in apps/*
+cd ./client
+for dir in apps/*
 do
-  cd "$dir"
+  pushd "$dir"
   yarn test || SUCCESS=false
-  cd ../..
+  popd
 done
-cd ./common && echo $dir && (yarn test --passWithNoTests || SUCCESS=false)
+
+cd ./common
+echo "common"
+yarn test --passWithNoTests || SUCCESS=false
 
 $SUCCESS
