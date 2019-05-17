@@ -2,11 +2,12 @@ module Integrations
 
   class CanvasApiSupport
 
-    def initialize(user, canvas_course, application_instance, prefer_user = false)
+    def initialize(user, canvas_course, application_instance, prefer_user = false, oauth_precedence = nil)
       @user = user
       @canvas_course = canvas_course
       @application_instance = application_instance
       @prefer_user = prefer_user
+      @oauth_precedence = oauth_precedence || application_instance&.oauth_precedence
     end
 
     def api
@@ -23,7 +24,7 @@ module Integrations
           return api
         end
       end
-      application_instance.oauth_precedence.each do |kind|
+      @oauth_precedence.each do |kind|
         if api = api_for(kind, application_instance, user, canvas_course)
           return api # Return the first authentication object we find
         end
