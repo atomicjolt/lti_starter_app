@@ -37,7 +37,7 @@ module Lti
         content_item_return_url: content_item_return_url,
         accept_multiple: false,
         accept_media_types: %w(image/* text/html application/vnd.ims.lti.v1.ltilink */*).join(","),
-        accept_presentation_document_targets: %w(embed frame iframe window).join(','),
+        accept_presentation_document_targets: %w(embed frame iframe window).join(","),
         accept_unsigned: true,
         auto_create: false,
       }
