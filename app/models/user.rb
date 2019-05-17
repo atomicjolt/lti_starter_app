@@ -6,8 +6,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :authentications, dependent: :destroy, inverse_of: :user
-  has_many :permissions
+  has_many :permissions, dependent: :destroy
   has_many :roles, through: :permissions
+
+  has_many :assignment_users, dependent: :destroy
+  has_many :assignments, through: :assignment_users
+  has_many :attempts, through: :assignment_users, dependent: :destroy
+  # has_many :items, dependent: :destroy
 
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 
@@ -15,6 +20,14 @@ class User < ApplicationRecord
 
   def display_name
     name || email
+  end
+
+  def first_name
+    display_name.split(" ").first
+  end
+
+  def last_name
+    display_name.split(" ").last
   end
 
   def self.create_on_tenant(application_instance, user)
@@ -148,7 +161,12 @@ class User < ApplicationRecord
   end
 
   def nil_or_context_roles(context_id = nil)
-    roles.where(permissions: { context_id: [context_id, nil] }).distinct
+    # This is sometimes called with different context ids for the same user
+    # object, so memoize them all
+    @context_roles ||= Hash.new do |h, key|
+      h[key] = roles.where(permissions: { context_id: [key, nil] }).distinct
+    end
+    @context_roles[context_id]
   end
 
   def role?(name, context_id = nil)
@@ -158,9 +176,12 @@ class User < ApplicationRecord
   def has_role?(context_id, *test_names)
     test_names = [test_names] unless test_names.is_a?(Array)
     test_names = test_names.map(&:downcase).flatten
-    @role_names = nil_or_context_roles(context_id).map(&:name).map(&:downcase) if @role_names.blank?
-    return false if @role_names.blank?
-    !(@role_names & test_names).empty?
+
+    role_names = nil_or_context_roles(context_id).map(&:name).map(&:downcase)
+
+    return false if role_names.blank?
+
+    !(role_names & test_names).empty?
   end
 
   def any_role?(*test_names)
@@ -178,6 +199,47 @@ class User < ApplicationRecord
 
   def admin?
     role?("administrator")
+  end
+
+  def lti_instructor?(context_id)
+    has_role?(
+      context_id,
+      LTI::Roles::INSTRUCTOR,
+    )
+  end
+
+  def lti_ta?(context_id)
+    has_role?(
+      context_id,
+      LTI::Roles::TA,
+    )
+  end
+
+  def lti_admin?(context_id)
+    has_role?(
+      context_id,
+      *LTI::Roles::ADMIN_ROLES,
+    )
+  end
+
+  def lti_content_developer?(context_id)
+    has_role?(
+      context_id,
+      LTI::Roles::CONTENT_DEVELOPER,
+    )
+  end
+
+  def lti_admin_or_instructor?(context_id)
+    lti_instructor?(context_id) || lti_admin?(context_id)
+  end
+
+  def can_author?(context_id, application_instance)
+    return true if lti_admin_or_instructor?(context_id)
+    roles = application_instance.get_config(:author_roles)
+    has_role?(
+      context_id,
+      *roles,
+    )
   end
 
   def can_edit?(user)

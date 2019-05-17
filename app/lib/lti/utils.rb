@@ -2,6 +2,31 @@ module Lti
 
   class Utils
 
+    # Removes extranous params that are part of a form submission
+    # but which are not part of the signed payload
+    def self.clean_non_lti_params(params)
+      params.delete("utf8")
+      params.delete("commit")
+      params.delete("authenticity_token")
+      params.delete("action")
+      params.delete("controller")
+      params.delete("id")
+      params.delete("submitted_access_code")
+    end
+
+    # Remove conflicting LTI params from a previous LTI launch that will be set
+    # in the parameters of a new LTI launch
+    def self.clean_lti_params(params)
+      params.delete("oauth_nonce")
+      params.delete("oauth_timestamp")
+      params.delete("oauth_signature_method")
+      params.delete("oauth_version")
+      params.delete("lti_message_type")
+      params.delete("lti_version")
+      params.delete("oauth_callback")
+      params.delete("oauth_signature")
+    end
+
     def self.lti_configs
       ApplicationInstance.find_each.map do |app_inst|
         if xml_config = app_inst.lti_config_xml
