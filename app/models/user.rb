@@ -9,11 +9,6 @@ class User < ApplicationRecord
   has_many :permissions, dependent: :destroy
   has_many :roles, through: :permissions
 
-  has_many :assignment_users, dependent: :destroy
-  has_many :assignments, through: :assignment_users
-  has_many :attempts, through: :assignment_users, dependent: :destroy
-  # has_many :items, dependent: :destroy
-
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 
   enum create_method: %i{sign_up oauth lti}
