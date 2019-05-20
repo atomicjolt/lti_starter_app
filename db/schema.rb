@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190320233646) do
+ActiveRecord::Schema.define(version: 20190518190335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,6 +127,20 @@ ActiveRecord::Schema.define(version: 20190320233646) do
     t.string "status", default: "processing"
     t.string "message", limit: 2048
     t.index ["token"], name: "index_ims_exports_on_token"
+  end
+
+  create_table "ims_imports", force: :cascade do |t|
+    t.string "status", default: "initialized", null: false
+    t.string "error_message"
+    t.text "error_trace"
+    t.string "export_token"
+    t.string "context_id", null: false
+    t.string "tci_guid", null: false
+    t.string "lms_course_id", null: false
+    t.string "source_context_id", null: false
+    t.string "source_tci_guid", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "lti_launches", force: :cascade do |t|

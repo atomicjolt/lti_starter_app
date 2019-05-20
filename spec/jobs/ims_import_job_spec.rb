@@ -3,8 +3,11 @@ require "rails_helper"
 RSpec.describe ImsImportJob, type: :job do
   subject { ImsImportJob }
 
+  let(:ims_import) { FactoryBot.create(:ims_import) }
+
   let(:data) do
     {
+      ims_import_id: ims_import.id,
       lti_launches: lti_launches,
       context_id: context_id,
       tool_consumer_instance_guid: tool_consumer_instance_guid,
@@ -40,6 +43,13 @@ RSpec.describe ImsImportJob, type: :job do
         subject.perform_now(data.to_json)
         subject.perform_now(data.to_json)
       end.to change(LtiLaunch, :count).by(1)
+    end
+  end
+
+  context "import status" do
+    it "finishes" do
+      subject.perform_now(data.to_json)
+      expect(ims_import.reload.status).to eq "finished"
     end
   end
 end
