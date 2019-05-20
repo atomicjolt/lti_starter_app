@@ -8,7 +8,17 @@ class Api::ImsImportsController < ApplicationController
                        lti_launches_params(data)[:lti_launches]
                      end
 
+      ims_import = ImsImport.create!(
+        export_token: params[:data][:export_token],
+        context_id: params[:context_id],
+        tci_guid: params[:tool_consumer_instance_guid],
+        lms_course_id: params[:custom_canvas_course_id],
+        source_context_id: params[:data][:context_id],
+        source_tci_guid: params[:data][:tool_consumer_instance_guid],
+      )
+
       data = {
+        ims_import_id: ims_import.id,
         lti_launches: lti_launches,
         context_id: params[:context_id],
         tool_consumer_instance_guid: params[:tool_consumer_instance_guid],

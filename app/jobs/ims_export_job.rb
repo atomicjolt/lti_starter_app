@@ -17,8 +17,10 @@ class ImsExportJob < ApplicationJob
     end
 
     payload = {
+      export_token: export.token,
       application_instance_id: application_instance.id,
       context_id: params[:context_id],
+      tool_consumer_instance_guid: params[:tool_consumer_instance_guid],
       lti_launches: lti_launches_payloads.compact,
     }
 

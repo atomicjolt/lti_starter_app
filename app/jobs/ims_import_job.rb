@@ -5,6 +5,8 @@ class ImsImportJob < ApplicationJob
 
   def perform(job_data)
     data = JSON.parse(job_data).with_indifferent_access
+    ims_import = ImsImport.find(data[:ims_import_id])
+    ims_import.update(status: "started")
 
     lti_launches = data[:lti_launches]
     context_id = data[:context_id]
@@ -21,5 +23,14 @@ class ImsImportJob < ApplicationJob
         lti_launch.save!
       end
     end
+
+    ims_import.update(status: "finished")
+  rescue StandardError => e
+    ims_import&.update(
+      status: "failed",
+      error_message: e.message,
+      error_trace: e.backtrace,
+    )
+    raise e
   end
 end

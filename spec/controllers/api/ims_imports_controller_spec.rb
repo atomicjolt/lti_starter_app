@@ -31,12 +31,13 @@ RSpec.describe Api::ImsImportsController, type: :controller do
     @import_params = {
       context_id: @import_context_id,
       data: {
+        tool_consumer_instance_guid: tool_consumer_instance_guid,
         context_id: initial_context_id,
         "lti_launches" => [
           { "token" => "dgqgRSCUGdkmmKMAC3Ma2nei", "config" => {"is_embedded" => "true", "iframe_height" => "510", "learnosity_activity_reference_id" => "Dynamic Content"}, "assignment" => {"embed_url" => nil, "is_embedded" => "true", "reference_id" => "Dynamic Content", "resource_title" => "Dynamic Content", "lms_assignment_override_id" => nil}, "context_id" => "3155b3a04eba69bc0e52b987d3ffc465156daded", "tool_consumer_instance_guid" => nil}, {"token" => "kcgmuAKNyRu55S1kT4XuY5ag", "config" => {"is_embedded" => "false", "iframe_height" => "510", "learnosity_activity_reference_id" => "Animals"}, "assignment" => {"embed_url" => nil, "is_embedded" => "false", "reference_id" => "Animals", "resource_title" => "Added via the connector", "$canvas_course_id" => "2114", "$canvas_assignment_id" => "19189", "lms_assignment_override_id" => nil}, "context_id" => "3155b3a04eba69bc0e52b987d3ffc465156daded", "tool_consumer_instance_guid" => nil}, {"token" => "jfvTHBDVW68y9auBLGihpq3G", "config" => {"is_embedded" => "true", "assignment_id" => "101", "iframe_height" => "510", "learnosity_activity_reference_id" => "Joseph Test"}, "assignment" => {"embed_url" => nil, "is_embedded" => "true", "reference_id" => "Joseph Test", "resource_title" => "Joseph Test", "$canvas_course_id" => "2114", "$canvas_assignment_id" => "$OBJECT_NOT_FOUND", "lms_assignment_override_id" => nil}, "context_id" => "3155b3a04eba69bc0e52b987d3ffc465156daded", "tool_consumer_instance_guid" => nil}, {"token" => "N4aDqFbQzQFrPhqzyZuEJErd", "config" => {"is_embedded" => "true", "assignment_id" => "102", "iframe_height" => "510", "learnosity_activity_reference_id" => "SETH"}, "assignment" => {"embed_url" => nil, "is_embedded" => "true", "reference_id" => "SETH", "resource_title" => "SETH", "$canvas_course_id" => "2114", "$canvas_assignment_id" => "19190", "lms_assignment_override_id" => nil}, "context_id" => "3155b3a04eba69bc0e52b987d3ffc465156daded", "tool_consumer_instance_guid" => nil }
         ],
         "application_instance_id" => "3",
-        "ims_export_id" => @ims_export.token,
+        "export_token" => @ims_export.token,
       },
       tool_consumer_instance_guid: tool_consumer_instance_guid,
       custom_canvas_course_id: "2123",
@@ -45,7 +46,7 @@ RSpec.describe Api::ImsImportsController, type: :controller do
 
   context "without jwt token" do
     it "should not be authorized" do
-      post :create, params: @import_params, format: :json
+      post :create, params: @import_params, as: :json
       expect(response).to have_http_status(:unauthorized)
     end
   end
@@ -70,7 +71,7 @@ RSpec.describe Api::ImsImportsController, type: :controller do
       context "background jobs" do
         it "enqueues processing" do
           expect do
-            post :create, params: @import_params, format: :json
+            post :create, params: @import_params, as: :json
           end.to have_enqueued_job(ImsImportJob)
         end
       end
@@ -80,7 +81,7 @@ RSpec.describe Api::ImsImportsController, type: :controller do
           import_params = @import_params.with_indifferent_access
           import_params[:data].delete(:lti_launches)
           expect do
-            post :create, params: import_params, format: :json
+            post :create, params: import_params, as: :json
           end.to have_enqueued_job(ImsImportJob)
         end
 
@@ -92,8 +93,20 @@ RSpec.describe Api::ImsImportsController, type: :controller do
             context_id: import_params[:context_id],
             tool_consumer_instance_guid: import_params[:tool_consumer_instance_guid],
           }
-          expect(ImsImportJob).to receive(:perform_later).with(data.to_json)
-          post :create, params: import_params, format: :json
+
+          # We assign the args to this external variable because failing
+          # expects inside the block just get caught by the controller's error
+          # handling.
+          received_args = nil
+          expect(ImsImportJob).to receive(:perform_later) do |args|
+            received_args = JSON.parse(args)
+          end
+
+          post :create, params: import_params, as: :json
+
+          expect(received_args).to be_present
+          expect(received_args.without("ims_import_id")).to eq data.as_json
+          expect(received_args["ims_import_id"]).to be_present
         end
       end
     end
