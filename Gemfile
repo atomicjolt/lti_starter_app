@@ -54,6 +54,13 @@ gem "will_paginate"
 # Application secrets checker
 gem "nuclear_secrets"
 
+# Caliper
+gem "rest-client"
+gem "uuid"
+git "https://github.com/IMSGlobal/caliper-ruby.git", branch: "develop" do
+  gem "ims_caliper"
+end
+
 group :development do
   # UI
   gem "autoprefixer-rails"

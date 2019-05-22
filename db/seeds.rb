@@ -101,6 +101,9 @@ applications = [
       custom_fields: {
         canvas_course_id: "$Canvas.course.id",
         canvas_api_domain: "$Canvas.api.domain",
+        customer_caliper_endpoint_url: "$Caliper.url",
+        canvas_course_section_ids: "$Canvas.course.sectionIds",
+        canvas_term_start_at: "$Canvas.term.startAt",,
       },
       course_navigation: {
         text: "LTI Starter App",

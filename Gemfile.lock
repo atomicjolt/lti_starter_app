@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/IMSGlobal/caliper-ruby.git
+  revision: 16256300ecdf13bd2438ffc166b1a93f240b9839
+  branch: develop
+  specs:
+    ims_caliper (1.1)
+
+GIT
   remote: https://github.com/alexpeattie/heroku_secrets.git
   revision: 717af8e0acf399bc88d2c8c1a7e230023942af0f
   specs:
@@ -96,6 +103,8 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
+    domain_name (0.5.20180417)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.2)
     dotenv-rails (2.7.2)
       dotenv (= 2.7.2)
@@ -134,6 +143,8 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     hashdiff (0.3.8)
     hashie (3.6.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     httparty (0.16.4)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -167,6 +178,8 @@ GEM
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.13)
+    macaddr (1.7.1)
+      systemu (~> 2.6.2)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     mail_view (2.0.4)
@@ -182,6 +195,7 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     nenv (0.3.0)
+    netrc (0.11.0)
     nio4r (2.3.1)
     nokogiri (1.10.2)
       mini_portile2 (~> 2.4.0)
@@ -268,6 +282,10 @@ GEM
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
+    rest-client (2.0.2)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rolify (5.2.0)
     rollbar (2.19.3)
       multi_json
@@ -338,6 +356,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    systemu (2.6.5)
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
@@ -345,7 +364,12 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.6)
     unicode-display_width (1.5.0)
+    uuid (2.3.9)
+      macaddr (~> 1.0)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -388,6 +412,7 @@ DEPENDENCIES
   httparty
   hub
   ims-lti (~> 2.1.5)
+  ims_caliper!
   jwt (~> 1.5.0)
   launchy
   listen
@@ -409,6 +434,7 @@ DEPENDENCIES
   rb-fchange
   rb-fsevent
   rb-inotify
+  rest-client
   rolify
   rollbar
   rspec-rails
@@ -422,10 +448,11 @@ DEPENDENCIES
   spring-watcher-listen
   tzinfo-data
   uglifier
+  uuid
   web-console
   webmock
   will_paginate
   yajl-ruby
 
 BUNDLED WITH
-   1.17.3
+   2.0.1
