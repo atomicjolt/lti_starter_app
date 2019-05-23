@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       post :index
       get :launch
       get :init
+      post :init
     end
     member do
       post :show
