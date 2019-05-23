@@ -23,7 +23,8 @@ gem "attr_encrypted"
 gem "cancancan"
 gem "devise"
 gem "ims-lti", "~> 2.1.5" # IMS LTI tool consumers and providers
-gem "jwt", "~> 1.5.0" # json web token
+gem "jwt"
+gem "json-jwt"
 gem "lms-api", "~>1.9.0"
 gem "omniauth"
 gem "omniauth-canvas", "~>1.0.2"

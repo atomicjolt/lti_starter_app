@@ -229,5 +229,6 @@ if Apartment::Tenant.current == "public"
 end
 
 ## Use this to update all the application instances
-# ApplicationInstance.for_tenant(Apartment::Tenant.current).find_each do |ai|
-# end
+ApplicationInstance.for_tenant(Apartment::Tenant.current).find_each do |ai|
+  Jwk.create!
+end

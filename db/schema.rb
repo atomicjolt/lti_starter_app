@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190518190335) do
+ActiveRecord::Schema.define(version: 20190523211911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20190518190335) do
     t.datetime "disabled_at"
     t.bigint "bundle_instance_id"
     t.boolean "anonymous", default: false
+    t.string "deployment_id"
     t.index ["application_id"], name: "index_application_instances_on_application_id"
     t.index ["lti_key"], name: "index_application_instances_on_lti_key"
     t.index ["site_id"], name: "index_application_instances_on_site_id"
@@ -141,6 +142,14 @@ ActiveRecord::Schema.define(version: 20190518190335) do
     t.string "source_tci_guid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "jwks", force: :cascade do |t|
+    t.string "kid"
+    t.string "pem"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["kid"], name: "index_jwks_on_kid"
   end
 
   create_table "lti_launches", force: :cascade do |t|

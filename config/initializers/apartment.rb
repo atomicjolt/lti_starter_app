@@ -102,14 +102,26 @@ PAYLOAD = 0
 HEADER = 1
 
 Rails.application.config.middleware.insert_before Warden::Manager, Apartment::Elevators::Generic, lambda { |request|
+
+  if token = request.params["id_token"]
+    decoded_token = JWT.decode(token, nil, false)
+    payload = decoded_token[PAYLOAD]
+    if deployment_id = payload["https://purl.imsglobal.org/spec/lti/claim/deployment_id"]
+      return ApplicationInstance.find_by(deployment_id: deployment_id)
+    end
+  end
+
   key = Lti::Request.oauth_consumer_key(request)
   host = request.host_with_port
   subdomain = host.split(".").first
+
   if subdomain == Application::AUTH
     Application::AUTH
   elsif subdomain == Application::ADMIN
     Application::ADMIN
   elsif application_instance = ApplicationInstance.find_by(lti_key: key)
+    application_instance.tenant
+  elsif application_instance = ApplicationInstance.find_by(domain: host)
     application_instance.tenant
   elsif request.path.start_with? "/assets/" # Only affects development env
     Application::ADMIN

@@ -9,6 +9,7 @@ module Concerns
     protected
 
     def do_lti
+    byebug
       if valid_lti_request?(current_application_instance.lti_secret)
         if user = user_from_lti
           # until the code to fix the valid lti request is up
