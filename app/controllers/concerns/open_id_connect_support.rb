@@ -26,7 +26,7 @@ module Concerns
     # This identifies the application i.e. Atomic Assessments and is setup in
     # the developer keys: https://atomicjolt.beta.instructure.com/accounts/1/developer_keys
     def client_id(iss)
-      return "43460000000000220" if iss.include?("instructure.com")
+      return Rails.application.secrets.canvas_lti_tool_id if iss.include?("instructure.com")
       return "1" if iss.include?("imsglobal.org")
     end
 

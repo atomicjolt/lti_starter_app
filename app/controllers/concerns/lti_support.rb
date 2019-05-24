@@ -1,3 +1,5 @@
+require "jwt"
+
 module Concerns
   module LtiSupport
     extend ActiveSupport::Concern
@@ -8,9 +10,27 @@ module Concerns
 
     protected
 
+    CANVAS_PUBLIC_LTI_KEYS_URL = "https://canvas.instructure.com/api/lti/security/jwks"
+
+    def jwk_loader
+      # TODO cache this
+      JSON.parse(HTTParty.get(CANVAS_PUBLIC_LTI_KEYS_URL).body)
+    end
+
     def do_lti
-    byebug
-      if valid_lti_request?(current_application_instance.lti_secret)
+      if token = params["id_token"]
+        begin
+          byebug
+          @lti_token = JWT.decode(token, nil, true, { algorithms: ["RS256"], jwks: jwk_loader})
+          byebug
+          t = 0
+          return
+        #rescue JWT::JWKError
+          # Handle problems with the provided JWKs
+        rescue JWT::DecodeError
+          # Handle other decode related issues e.g. no kid in header, no matching public key found etc.
+        end
+      elsif valid_lti_request?(current_application_instance.lti_secret)
         if user = user_from_lti
           # until the code to fix the valid lti request is up
           # then we will confirm emails here to use it on the course nav
