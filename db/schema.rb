@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190518190335) do
+ActiveRecord::Schema.define(version: 20190603162353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,6 +178,17 @@ ActiveRecord::Schema.define(version: 20190518190335) do
     t.index ["context_id"], name: "index_permissions_on_context_id"
     t.index ["role_id", "user_id", "context_id"], name: "index_permissions_on_role_id_and_user_id_and_context_id", unique: true
     t.index ["role_id", "user_id"], name: "index_permissions_on_role_id_and_user_id", unique: true, where: "(context_id IS NULL)"
+  end
+
+  create_table "que_jobs", primary_key: ["queue", "priority", "run_at", "job_id"], force: :cascade, comment: "3" do |t|
+    t.integer "priority", limit: 2, default: 100, null: false
+    t.datetime "run_at", default: -> { "now()" }, null: false
+    t.bigserial "job_id", null: false
+    t.text "job_class", null: false
+    t.json "args", default: [], null: false
+    t.integer "error_count", default: 0, null: false
+    t.text "last_error"
+    t.text "queue", default: "", null: false
   end
 
   create_table "request_statistics", primary_key: ["truncated_time", "tenant"], force: :cascade do |t|

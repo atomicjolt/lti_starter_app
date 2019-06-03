@@ -38,6 +38,10 @@ gem "yajl-ruby", require: "yajl"
 # server
 gem "puma"
 
+# Job worker
+gem "apartment-activejob-que"
+gem "que"
+
 # Errors
 gem "rollbar"
 
