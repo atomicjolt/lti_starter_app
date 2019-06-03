@@ -37,6 +37,8 @@ module ReactRailsStarterApp
     # Middleware that can restore state after an OAuth request
     config.middleware.insert_before 0, OauthStateMiddleware
 
+    config.active_job.queue_adapter = :que
+
     config.webpack = {
       use_manifest: false,
       asset_manifest: {},

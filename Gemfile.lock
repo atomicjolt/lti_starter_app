@@ -52,6 +52,9 @@ GEM
       parallel (>= 0.7.1)
       public_suffix (>= 2)
       rack (>= 1.3.6)
+    apartment-activejob-que (0.0.2)
+      activesupport
+      apartment
     arel (8.0.0)
     ast (2.4.0)
     attr_encrypted (3.1.0)
@@ -218,6 +221,7 @@ GEM
     psych (3.1.0)
     public_suffix (3.0.3)
     puma (3.12.1)
+    que (0.14.3)
     rack (2.0.7)
     rack-cors (1.0.3)
     rack-test (1.1.0)
@@ -370,6 +374,7 @@ PLATFORMS
 
 DEPENDENCIES
   apartment
+  apartment-activejob-que
   attr_encrypted
   autoprefixer-rails
   better_errors
@@ -399,6 +404,7 @@ DEPENDENCIES
   omniauth-canvas (~> 1.0.2)
   pg
   puma
+  que
   rack-cors
   rails (= 5.1.7)
   rails-controller-testing
