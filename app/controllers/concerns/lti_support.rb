@@ -11,21 +11,21 @@ module Concerns
     protected
 
     CANVAS_PUBLIC_LTI_KEYS_URL = "https://canvas.instructure.com/api/lti/security/jwks"
+    CANVAS_BETA_PUBLIC_LTI_KEYS_URL = "https://canvas.beta.instructure.com/api/lti/security/jwks"
 
     def jwk_loader
       # TODO cache this
-      JSON.parse(HTTParty.get(CANVAS_PUBLIC_LTI_KEYS_URL).body)
+      jwks = JSON.parse(HTTParty.get(CANVAS_BETA_PUBLIC_LTI_KEYS_URL).body).symbolize_keys
+      jwks[:keys].each { |jwk| jwk.symbolize_keys! }
+      jwks
     end
 
     def do_lti
       if token = params["id_token"]
         begin
-          byebug
           @lti_token = JWT.decode(token, nil, true, { algorithms: ["RS256"], jwks: jwk_loader})
-          byebug
-          t = 0
           return
-        #rescue JWT::JWKError
+        rescue JWT::JWKError
           # Handle problems with the provided JWKs
         rescue JWT::DecodeError
           # Handle other decode related issues e.g. no kid in header, no matching public key found etc.

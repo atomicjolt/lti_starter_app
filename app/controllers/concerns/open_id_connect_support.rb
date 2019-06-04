@@ -32,6 +32,7 @@ module Concerns
 
     def oidc_for(iss)
       return "https://canvas.instructure.com/api/lti/authorize_redirect" if iss.include?("instructure.com")
+      return "https://canvas.instructure.com/api/lti/authorize_redirect" if iss.include?("sakaicloud.com")
       return "https://lti-ri.imsglobal.org/platforms/159/authorizations/new" if iss.include?("imsglobal.org")
     end
 
