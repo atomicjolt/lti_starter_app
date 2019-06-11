@@ -15,9 +15,7 @@ module Concerns
 
     def jwk_loader
       # TODO cache this
-      jwks = JSON.parse(HTTParty.get(CANVAS_BETA_PUBLIC_LTI_KEYS_URL).body).symbolize_keys
-      jwks[:keys].each { |jwk| jwk.symbolize_keys! }
-      jwks
+      JSON.parse(HTTParty.get(CANVAS_BETA_PUBLIC_LTI_KEYS_URL).body).deep_symbolize_keys
     end
 
     def do_lti
