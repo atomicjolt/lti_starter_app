@@ -1,4 +1,4 @@
-class ApplicationInstance < ActiveRecord::Base
+class ApplicationInstance < ApplicationRecord
 
   serialize :config, HashSerializer
   serialize :lti_config, HashSerializer
