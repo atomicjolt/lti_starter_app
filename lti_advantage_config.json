@@ -1,5 +1,5 @@
 {
-   "title":"LTI Starter App",
+   "title":"LTI Advantage",
    "scopes":[
       "https://purl.imsglobal.org/spec/lti-ags/scope/lineitem",
       "https://purl.imsglobal.org/spec/lti-ags/scope/result.readonly",
@@ -13,7 +13,7 @@
          "tool_id":"helloworld",
          "settings":{
             "privacy_level":"private",
-            "text":"LTI Starter App",
+            "text":"LTI Advantage",
             "icon_url":"https://helloworld.atomicjolt.xyz/atomicjolt.png",
             "selection_width":500,
             "selection_height":500,
@@ -21,7 +21,7 @@
                {
                   "placement":"editor_button",
                   "target_link_uri":"https://helloworld.atomicjolt.xyz/lti/deep",
-                  "text":"LTI Starter App Deep Link",
+                  "text":"LTI Advantage Deep Link",
                   "enabled":true,
                   "icon_url":"https://helloworld.atomicjolt.xyz/atomicjolt.png",
                   "message_type":"LtiDeepLinkingRequest",
@@ -29,7 +29,7 @@
                }, {
                 "placement":"course_navigation",
                 "target_link_uri":"https://helloworld.atomicjolt.xyz/lti_launches",
-                "text":"LTI Starter App Course Navigation",
+                "text":"LTI Advantage Course Navigation",
                 "enabled":true,
                 "icon_url":"https://helloworld.atomicjolt.xyz/atomicjolt.png",
                 "message_type":"LtiResourceLinkRequest",
@@ -42,5 +42,5 @@
    "target_link_uri":"https://helloworld.atomicjolt.xyz/lti_launches",
    "oidc_initiation_url":"https://helloworld.atomicjolt.xyz/lti_launches/init",
    "public_jwk": {"kty":"RSA","e":"AQAB","n":"y6X1OfReTazBsdl__LSLr-f0o9obyzpSn31vgymm_7FjfUKEeXyXSH3xCe-qYax3A-8ls-3LzcaTec92Vq8EFNhYOEjmhaChFRsOUMPOvW06lnFT42LSA3eAoFsD4KaViNrwao7dQ9vMAj_ccGKvbVrcUdQkM3yHVOpeNV2Fi7Mw6SKLKvJyvDt7kguY77tJdRPCRc8M63OSzTLXktZyOuues7JqYpD6QvspJTLCCw-qhaURFh8Jg8qAqAlcUYLzRxLRbtH65gKJeHO8lksRBz9lIbftticltPRJXmibXM0hqAkqY9UwDLSoO0ihJ3UqCtFO6BpS3P0_jceMQnVD8Q","kid":"32DtBqez7V3HUyiHhmYMIOhLsHWsdnqIScM8o8lAN4w","use":"sig","alg":"RS256"},
-   "description":"LTI Starter App LTI Advantage"
+   "description":"LTI Advantage LTI Advantage"
 }
