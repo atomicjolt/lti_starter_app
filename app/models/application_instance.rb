@@ -8,6 +8,7 @@ class ApplicationInstance < ActiveRecord::Base
   belongs_to :bundle_instance
 
   has_many :authentications, dependent: :destroy, inverse_of: :application_instance
+  has_many :jwks
 
   validates :lti_key, presence: true, uniqueness: true
   validates :lti_secret, presence: true
@@ -37,7 +38,15 @@ class ApplicationInstance < ActiveRecord::Base
   scope :by_oldest, -> { order(created_at: :asc) }
   scope :by_latest, -> { order(updated_at: :desc) }
 
-  def lti_config_xml
+  def current_jwk
+    jwks.last || generate_jwk
+  end
+
+  def generate_jwk
+    jwks.create!
+  end
+
+  def lti_defaults
     domain = self.domain || Rails.application.secrets.application_main_domain
     config = lti_config.dup
     if config.present?
@@ -48,8 +57,18 @@ class ApplicationInstance < ActiveRecord::Base
       config[:import_url] ||= "https://#{domain}/api/ims_imports.json"
       config[:icon] ||= "https://#{domain}/#{config[:icon]}"
       config[:privacy_level] = "anonymous" if anonymous?
-      Lti::Config.xml(config)
     end
+    config
+  end
+
+  def lti_advantage_config_json
+    config = lti_defaults
+    LtiAdvantage::Config.json(current_jwk, config) if config
+  end
+
+  def lti_config_xml
+    config = lti_defaults
+    Lti::Config.xml(config) if config
   end
 
   def oauth_precedence

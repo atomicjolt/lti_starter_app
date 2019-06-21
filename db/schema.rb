@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190523211911) do
+ActiveRecord::Schema.define(version: 20190621033730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20190523211911) do
     t.string "key"
     t.string "oauth_precedence", default: "global,user,application_instance,course"
     t.boolean "anonymous", default: false
+    t.string "client_id"
     t.index ["key"], name: "index_applications_on_key"
   end
 
@@ -149,6 +150,8 @@ ActiveRecord::Schema.define(version: 20190523211911) do
     t.string "pem"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "application_instance_id"
+    t.index ["application_instance_id"], name: "index_jwks_on_application_instance_id"
     t.index ["kid"], name: "index_jwks_on_kid"
   end
 

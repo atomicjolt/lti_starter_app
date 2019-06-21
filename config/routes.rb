@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "relaunch_lti_tool" => "lti_launches#relaunch_lti_tool"
 
   resources :jwks
+  resource :lti_config
 
   resources :lti_launches do
     collection do

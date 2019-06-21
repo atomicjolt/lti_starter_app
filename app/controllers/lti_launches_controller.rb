@@ -12,6 +12,9 @@ class LtiLaunchesController < ApplicationController
     if current_application_instance.disabled_at
       render file: File.join(Rails.root, "public", "disabled.html")
     end
+
+    make_line_item(@lti_token)
+
     setup_lti_response
   end
 
@@ -58,4 +61,26 @@ class LtiLaunchesController < ApplicationController
     set_lti_launch_values
   end
 
+  def make_line_item(lti_token)
+    endpoint = lti_token["https://purl.imsglobal.org/spec/lti-ags/claim/endpoint"]["lineitems"]
+
+    headers = {
+      Authorization: "Bearer #{LtiAdvantage::Authorization.get_authorization(current_application_instance, lti_token)}",
+    }
+
+    body = {
+      scoreMaximum: 25,
+      label: "LTI Advantage Test",
+      resourceId: "asdf",
+    }
+
+    # "startDateTime": "2018-03-06T20:05:02Z"
+      # "endDateTime": "2018-04-06T22:05:03Z"
+
+    HTTParty.post(endpoint, body: body, headers: headers)
+  end
+
+
+
 end
+

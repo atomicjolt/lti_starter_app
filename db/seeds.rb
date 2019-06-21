@@ -74,6 +74,7 @@ applications = [
     name: "LTI Starter App",
     description: "LTI Starter App by Atomic Jolt",
     client_application_name: "hello_world",
+    client_id: "43460000000000180",
     # List Canvas API methods the app is allowed to use. A full list of constants can be found in canvas_urls
     canvas_api_permissions: {
       default: [],
@@ -232,3 +233,5 @@ end
 ApplicationInstance.for_tenant(Apartment::Tenant.current).find_each do |ai|
   Jwk.create!
 end
+
+# canvas_lti_tool_id: "43460000000000178"
