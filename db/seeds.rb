@@ -10,6 +10,12 @@ sites = [
     oauth_key: secrets.canvas_developer_id,
     oauth_secret: secrets.canvas_developer_key,
   },
+  {
+    url: "https://lti-ri.imsglobal.org",
+  },
+  {
+    url: "https://dev1.sakaicloud.com",
+  },
 ]
 
 # Each API endpoint must include a list of LTI and internal roles that are allowed to call the endpoint.
@@ -72,9 +78,8 @@ applications = [
   {
     key: Application::HELLOWORLD,
     name: "LTI Starter App",
-    description: "LTI Starter App by Atomic Jolt",
+    description: "LTI Starter App by Atomic Jolt.",
     client_application_name: "hello_world",
-    client_id: "43460000000000180",
     # List Canvas API methods the app is allowed to use. A full list of constants can be found in canvas_urls
     canvas_api_permissions: {
       default: [],
@@ -120,13 +125,41 @@ applications = [
       },
       content_migration: true,
     },
-    application_instances: [{
-      lti_secret: Rails.env.production? ? nil : secrets.hello_world_lti_secret,
-      site_url: secrets.canvas_url,
-      # This is only required if the app needs API access and doesn't want each user to do the oauth dance
-      canvas_token: secrets.canvas_token,
-    }],
-  },
+    application_instances: [
+      {
+        # Canvas
+        lti_secret: Rails.env.production? ? nil : secrets.hello_world_lti_secret,
+        site_url: secrets.canvas_url,
+        # This is only required if the app needs API access and doesn't want each user to do the oauth dance
+        canvas_token: secrets.canvas_token,
+        client_id: "43460000000000180",
+        deployment_id: "12400:a8a76fb8fbcc2d09787dafd28564e2ecdab51f11",
+        lti_jwks_url: LtiAdvantage::Definitions::CANVAS_PUBLIC_LTI_KEYS_URL,
+        lti_oidc_url: LtiAdvantage::Definitions::CANVAS_OIDC_URL,
+        lti_token_url: LtiAdvantage::Definitions::CANVAS_AUTH_TOKEN_URL,
+      },
+      {
+        # Sakai
+        lti_secret: Rails.env.production? ? nil : secrets.hello_world_lti_secret,
+        site_url: "https://dev1.sakaicloud.com",
+        client_id: "188e0350-bb5d-4009-95ec-5e4423f0822e",
+        deployment_id: "1",
+        lti_jwks_url: "https://dev1.sakaicloud.com/imsblis/lti13/keyset/18",
+        lti_oidc_url: "https://dev1.sakaicloud.com/imsoidc/lti13/oidc_auth",
+        lti_token_url: "https://dev1.sakaicloud.com/imsblis/lti13/token/18",
+      },
+      {
+        #IMS Global Reference application
+        lti_secret: Rails.env.production? ? nil : secrets.hello_world_lti_secret,
+        site_url: "https://lti-ri.imsglobal.org",
+        client_id: "ims-client-1000",
+        deployment_id: "deployment1",
+        lti_jwks_url: "https://lti-ri.imsglobal.org/platforms/275/platform_keys/269.json",
+        lti_oidc_url: "https://lti-ri.imsglobal.org/platforms/275/authorizations/new",
+        lti_token_url: "https://lti-ri.imsglobal.org/platforms/275/access_tokens",
+      }
+    ],
+  }
 ]
 
 def setup_application_instances(application, application_instances)
@@ -233,5 +266,3 @@ end
 ApplicationInstance.for_tenant(Apartment::Tenant.current).find_each do |ai|
   Jwk.create!
 end
-
-# canvas_lti_tool_id: "43460000000000178"

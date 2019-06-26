@@ -10,27 +10,11 @@ module Concerns
 
     protected
 
-    CANVAS_PUBLIC_LTI_KEYS_URL = "https://canvas.instructure.com/api/lti/security/jwks"
-    CANVAS_BETA_PUBLIC_LTI_KEYS_URL = "https://canvas.beta.instructure.com/api/lti/security/jwks"
-
-    def jwks_url
-      url = canvas_url
-      if url.include?("beta.instructure.com")
-        CANVAS_BETA_PUBLIC_LTI_KEYS_URL
-      elsif url.include?("instructure.com")
-        CANVAS_PUBLIC_LTI_KEYS_URL
-      end
-    end
-
-    def jwk_loader
-      # TODO cache this
-      JSON.parse(HTTParty.get(jwks_url).body).deep_symbolize_keys
-    end
-
     def do_lti
       if token = params["id_token"]
         begin
-          @lti_token, keys = JWT.decode(token, nil, true, { algorithms: ["RS256"], jwks: jwk_loader})
+          # TODO we should validate the state here as well
+          @lti_token = LtiAdvantage::Authorization.validate_token(current_application_instance, token)
           return
         rescue JWT::JWKError
           # Handle problems with the provided JWKs

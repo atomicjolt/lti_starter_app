@@ -12,7 +12,6 @@ class LtiLaunchesController < ApplicationController
     if current_application_instance.disabled_at
       render file: File.join(Rails.root, "public", "disabled.html")
     end
-
     make_line_item(@lti_token)
 
     setup_lti_response
@@ -62,10 +61,14 @@ class LtiLaunchesController < ApplicationController
   end
 
   def make_line_item(lti_token)
-    endpoint = lti_token["https://purl.imsglobal.org/spec/lti-ags/claim/endpoint"]["lineitems"]
+    endpoint = lti_token.dig("https://purl.imsglobal.org/spec/lti-ags/claim/endpoint", "lineitems")
+
+    return unless endpoint.present?
+
+    token = LtiAdvantage::Authorization.request_token(current_application_instance, lti_token)
 
     headers = {
-      Authorization: "Bearer #{LtiAdvantage::Authorization.get_authorization(current_application_instance, lti_token)}",
+      Authorization: "Bearer #{token["access_token"]}",
     }
 
     body = {
@@ -75,9 +78,11 @@ class LtiLaunchesController < ApplicationController
     }
 
     # "startDateTime": "2018-03-06T20:05:02Z"
-      # "endDateTime": "2018-04-06T22:05:03Z"
+    # "endDateTime": "2018-04-06T22:05:03Z"
 
-    HTTParty.post(endpoint, body: body, headers: headers)
+    result = HTTParty.post(endpoint, body: body, headers: headers)
+    byebug
+    result
   end
 
 
