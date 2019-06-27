@@ -135,7 +135,6 @@ applications = [
         client_id: "43460000000000180",
         deployment_id: "12400:a8a76fb8fbcc2d09787dafd28564e2ecdab51f11",
         lti_jwks_url: LtiAdvantage::Definitions::CANVAS_PUBLIC_LTI_KEYS_URL,
-        lti_oidc_url: LtiAdvantage::Definitions::CANVAS_OIDC_URL,
         lti_token_url: LtiAdvantage::Definitions::CANVAS_AUTH_TOKEN_URL,
       },
       {
@@ -145,7 +144,6 @@ applications = [
         client_id: "188e0350-bb5d-4009-95ec-5e4423f0822e",
         deployment_id: "1",
         lti_jwks_url: "https://dev1.sakaicloud.com/imsblis/lti13/keyset/18",
-        lti_oidc_url: "https://dev1.sakaicloud.com/imsoidc/lti13/oidc_auth",
         lti_token_url: "https://dev1.sakaicloud.com/imsblis/lti13/token/18",
       },
       {
@@ -155,7 +153,6 @@ applications = [
         client_id: "ims-client-1000",
         deployment_id: "deployment1",
         lti_jwks_url: "https://lti-ri.imsglobal.org/platforms/275/platform_keys/269.json",
-        lti_oidc_url: "https://lti-ri.imsglobal.org/platforms/275/authorizations/new",
         lti_token_url: "https://lti-ri.imsglobal.org/platforms/275/access_tokens",
       }
     ],

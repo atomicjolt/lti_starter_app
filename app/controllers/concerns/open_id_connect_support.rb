@@ -4,10 +4,9 @@ module Concerns
 
     protected
     def build_response(state, params, nonce)
-      # TODO this is a problem. The request doesn't contain any
-      # information to help us find the right application instance
-      # so we don't have the correct lti_oidc_url. Not sure what the IMS guys intend here
-      uri = URI.parse(current_application_instance.lti_oidc_url)
+      # The request doesn't contain any information to help us find the right application instance
+      # so we have to use predefined URLs
+      uri = URI.parse(LtiAdvantage::Definitions.oidc_url(params["iss"]))
       uri_params = Rack::Utils.parse_query(uri.query)
       auth_params = {
         response_type: "id_token",

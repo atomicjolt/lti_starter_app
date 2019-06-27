@@ -51,5 +51,17 @@ module LtiAdvantage
 
     CANVAS_BETA_PUBLIC_LTI_KEYS_URL = "https://canvas.beta.instructure.com/api/lti/security/jwks"
 
+    def self.oidc_url(iss)
+      case iss
+      when "https://canvas.instructure.com"
+        LtiAdvantage::Definitions::CANVAS_OIDC_URL
+      when "https://dev1.sakaicloud.com"
+        "https://dev1.sakaicloud.com/imsoidc/lti13/oidc_auth"
+      when "https://lti-ri.imsglobal.org"
+        "https://lti-ri.imsglobal.org/platforms/275/authorizations/new"
+      else
+        raise "Unable to find an OIDC platform URL from #{iss}"
+      end
+    end
   end
 end

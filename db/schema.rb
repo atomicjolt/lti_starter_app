@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20190625213433) do
     t.string "deployment_id"
     t.string "client_id"
     t.string "lti_jwks_url"
-    t.string "lti_oidc_url"
     t.string "lti_token_url"
     t.index ["application_id"], name: "index_application_instances_on_application_id"
     t.index ["client_id", "deployment_id"], name: "index_application_instances_on_client_id_and_deployment_id"
