@@ -8,7 +8,7 @@ class ApplicationInstance < ActiveRecord::Base
   belongs_to :bundle_instance
 
   has_many :authentications, dependent: :destroy, inverse_of: :application_instance
-  has_many :jwks
+  has_many :lti_deployments
 
   validates :lti_key, presence: true, uniqueness: true
   validates :lti_secret, presence: true
@@ -38,12 +38,15 @@ class ApplicationInstance < ActiveRecord::Base
   scope :by_oldest, -> { order(created_at: :asc) }
   scope :by_latest, -> { order(updated_at: :desc) }
 
-  def current_jwk
-    jwks.last || generate_jwk
-  end
-
-  def generate_jwk
-    jwks.create!
+  def self.by_client_and_deployment(client_id, deployment_id)
+    LtiInstall.joins(:applications).joins(:application_instances).joins(:lti_deployments)
+    if lti_install = LtiInstall.find_by(client_id: client_id)
+      application_instances = lti_install.application.application_instances
+        .joins(:lti_deployments)
+        .where("lti_deployments.deployment_id =?", deployment_id)
+      # There should only be one that matches
+      application_instances.first
+    end
   end
 
   def lti_defaults
@@ -63,7 +66,7 @@ class ApplicationInstance < ActiveRecord::Base
 
   def lti_advantage_config_json
     config = lti_defaults
-    LtiAdvantage::Config.json(current_jwk, config) if config
+    LtiAdvantage::Config.json(application.current_jwk, config) if config
   end
 
   def lti_config_xml

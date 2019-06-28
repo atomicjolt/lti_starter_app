@@ -8,7 +8,7 @@ module LtiAdvantage
       client_id = payload["aud"]
       deployment_id = payload["https://purl.imsglobal.org/spec/lti/claim/deployment_id"]
       if client_id && deployment_id
-        ApplicationInstance.where(client_id: client_id, deployment_id: deployment_id).first
+        ApplicationInstance.by_client_and_deployment(client_id, deployment_id)
       end
     end
 
@@ -17,9 +17,9 @@ module LtiAdvantage
       # Get the iss value from the original request during the oidc call.
       # Use that value to figure out which jwk we should use.
       decoded_token = JWT.decode(token, nil, false)
-      url = decoded_token.dig(0, "iss")
+      iss = decoded_token.dig(0, "iss")
       jwk_loader = ->(options) do
-        JSON.parse(HTTParty.get(application_instance.lti_jwks_url).body).deep_symbolize_keys
+        JSON.parse(HTTParty.get(application_instance.application.jwks_url(iss)).body).deep_symbolize_keys
       end
       lti_token, _keys = JWT.decode(token, nil, true, { algorithms: ["RS256"], jwks: jwk_loader})
       lti_token
@@ -28,14 +28,14 @@ module LtiAdvantage
     def self.client_assertion(application_instance, lti_token)
       payload = {
         iss: application_instance.lti_key, # A unique identifier for the entity that issued the JWT
-        sub: application_instance.client_id, # "client_id" of the OAuth Client
-        aud: application_instance.lti_token_url, # Authorization server identifier
+        sub: application_instance.application.client_id(lti_token["iss"]), # "client_id" of the OAuth Client
+        aud: application_instance.application.token_url(lti_token["iss"]), # Authorization server identifier
         iat: Time.now.to_i, # Timestamp for when the JWT was created
         exp: Time.now.to_i + 300, # Timestamp for when the JWT should be treated as having expired (after allowing a margin for clock skew)
         jti: SecureRandom.hex(10), # A unique (potentially reusable) identifier for the token
       }
 
-      jwk = application_instance.current_jwk
+      jwk = application_instance.application.current_jwk
       JWT.encode(payload, jwk.private_key, jwk.alg, kid: jwk.kid, typ: "JWT")
     end
 
@@ -47,7 +47,7 @@ module LtiAdvantage
         client_assertion: client_assertion(application_instance, lti_token)
       }
       # TODO should cache the authorizations
-      result = HTTParty.post(application_instance.lti_token_url, body: body)
+      result = HTTParty.post(application_instance.application.token_url(lti_token["iss"]), body: body)
       JSON.parse(result.body)
     end
   end

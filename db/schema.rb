@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190625213433) do
+ActiveRecord::Schema.define(version: 20190627224209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,12 +40,7 @@ ActiveRecord::Schema.define(version: 20190625213433) do
     t.datetime "disabled_at"
     t.bigint "bundle_instance_id"
     t.boolean "anonymous", default: false
-    t.string "deployment_id"
-    t.string "client_id"
-    t.string "lti_jwks_url"
-    t.string "lti_token_url"
     t.index ["application_id"], name: "index_application_instances_on_application_id"
-    t.index ["client_id", "deployment_id"], name: "index_application_instances_on_client_id_and_deployment_id"
     t.index ["lti_key"], name: "index_application_instances_on_lti_key"
     t.index ["site_id"], name: "index_application_instances_on_site_id"
   end
@@ -151,11 +146,36 @@ ActiveRecord::Schema.define(version: 20190625213433) do
   create_table "jwks", force: :cascade do |t|
     t.string "kid"
     t.string "pem"
+    t.bigint "application_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "application_instance_id"
-    t.index ["application_instance_id"], name: "index_jwks_on_application_instance_id"
+    t.index ["application_id"], name: "index_jwks_on_application_id"
     t.index ["kid"], name: "index_jwks_on_kid"
+  end
+
+  create_table "lti_deployments", force: :cascade do |t|
+    t.bigint "application_instance_id"
+    t.string "deployment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["application_instance_id"], name: "index_lti_deployments_on_application_instance_id"
+    t.index ["deployment_id", "application_instance_id"], name: "index_lti_deployments_on_d_id_and_ai_id", unique: true
+    t.index ["deployment_id"], name: "index_lti_deployments_on_deployment_id"
+  end
+
+  create_table "lti_installs", force: :cascade do |t|
+    t.string "iss"
+    t.bigint "application_id"
+    t.string "client_id"
+    t.string "jwks_url"
+    t.string "token_url"
+    t.string "oidc_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["application_id", "iss"], name: "index_lti_installs_on_application_id_and_iss"
+    t.index ["application_id"], name: "index_lti_installs_on_application_id"
+    t.index ["client_id"], name: "index_lti_installs_on_client_id", unique: true
+    t.index ["iss"], name: "index_lti_installs_on_iss"
   end
 
   create_table "lti_launches", force: :cascade do |t|

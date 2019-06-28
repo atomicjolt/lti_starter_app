@@ -75,7 +75,7 @@ module LtiAdvantage
            }
         ],
         "target_link_uri":"https://helloworld.atomicjolt.xyz/lti_launches",
-        "oidc_initiation_url":"https://helloworld.atomicjolt.xyz/lti_launches/init",
+        "oidc_initiation_url":"https://auth.atomicjolt.xyz/lti_launches/init",
         "public_jwk": jwk.to_json,
         "description":"LTI Advantage LTI Advantage",
       }.to_json

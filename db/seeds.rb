@@ -16,6 +16,9 @@ sites = [
   {
     url: "https://dev1.sakaicloud.com",
   },
+  {
+    url: "https://blackboard.com",
+  },
 ]
 
 # Each API endpoint must include a list of LTI and internal roles that are allowed to call the endpoint.
@@ -125,6 +128,41 @@ applications = [
       },
       content_migration: true,
     },
+    lti_installs: [
+      {
+        # Canvas
+        iss: "https://canvas.instructure.com",
+        client_id: "43460000000000180",
+        jwks_url: LtiAdvantage::Definitions::CANVAS_PUBLIC_LTI_KEYS_URL,
+        token_url: LtiAdvantage::Definitions::CANVAS_AUTH_TOKEN_URL,
+        oidc_url: LtiAdvantage::Definitions::CANVAS_OIDC_URL,
+      },
+      {
+        # Sakai
+        iss: "https://dev1.sakaicloud.com",
+        client_id: "188e0350-bb5d-4009-95ec-5e4423f0822e",
+        jwks_url: "https://dev1.sakaicloud.com/imsblis/lti13/keyset/18",
+        token_url: "https://dev1.sakaicloud.com/imsblis/lti13/token/18",
+        oidc_url: "https://dev1.sakaicloud.com/imsoidc/lti13/oidc_auth",
+      },
+      {
+        #IMS Global Reference application
+        iss: "https://lti-ri.imsglobal.org",
+        client_id: "ims-client-1000",
+        jwks_url: "https://lti-ri.imsglobal.org/platforms/275/platform_keys/269.json",
+        token_url: "https://lti-ri.imsglobal.org/platforms/275/access_tokens",
+        oidc_url: "https://lti-ri.imsglobal.org/platforms/275/authorizations/new",
+      },
+      {
+        # Blackboard
+        iss: "https://blackboard.com",
+        client_id: "1c81ada8-3fc4-4c09-aa2c-f7195dd019d9",
+        jwks_url: "https://developer.blackboard.com/api/v1/management/applications/1c81ada8-3fc4-4c09-aa2c-f7195dd019d9/jwks.json",
+        token_url: "https://developer.blackboard.com/api/v1/gateway/oauth2/jwttoken",
+        oidc_url: "https://blackboard.com/",
+      }
+    ],
+
     application_instances: [
       {
         # Canvas
@@ -132,29 +170,25 @@ applications = [
         site_url: secrets.canvas_url,
         # This is only required if the app needs API access and doesn't want each user to do the oauth dance
         canvas_token: secrets.canvas_token,
-        client_id: "43460000000000180",
-        deployment_id: "12400:a8a76fb8fbcc2d09787dafd28564e2ecdab51f11",
-        lti_jwks_url: LtiAdvantage::Definitions::CANVAS_PUBLIC_LTI_KEYS_URL,
-        lti_token_url: LtiAdvantage::Definitions::CANVAS_AUTH_TOKEN_URL,
+        lti_deployments: [
+          {
+            # Canvas
+            deployment_id: "12400:a8a76fb8fbcc2d09787dafd28564e2ecdab51f11",
+          },
+          {
+            # Blackboard
+            deployment_id: "91ed0d26-952a-4e6d-beb4-e2b2a5c6419d",
+          },
+          {
+            # Sakai
+            deployment_id: "1",
+          },
+          {
+            # IMS Global reference app
+            deployment_id: "deployment1",
+          }
+        ]
       },
-      {
-        # Sakai
-        lti_secret: Rails.env.production? ? nil : secrets.hello_world_lti_secret,
-        site_url: "https://dev1.sakaicloud.com",
-        client_id: "188e0350-bb5d-4009-95ec-5e4423f0822e",
-        deployment_id: "1",
-        lti_jwks_url: "https://dev1.sakaicloud.com/imsblis/lti13/keyset/18",
-        lti_token_url: "https://dev1.sakaicloud.com/imsblis/lti13/token/18",
-      },
-      {
-        #IMS Global Reference application
-        lti_secret: Rails.env.production? ? nil : secrets.hello_world_lti_secret,
-        site_url: "https://lti-ri.imsglobal.org",
-        client_id: "ims-client-1000",
-        deployment_id: "deployment1",
-        lti_jwks_url: "https://lti-ri.imsglobal.org/platforms/275/platform_keys/269.json",
-        lti_token_url: "https://lti-ri.imsglobal.org/platforms/275/access_tokens",
-      }
     ],
   }
 ]
@@ -165,6 +199,7 @@ def setup_application_instances(application, application_instances)
     site = Site.find_by(url: attrs.delete(:site_url))
     attrs = attrs.merge(site_id: site.id)
     share_instance = attrs.delete(:share_instance)
+    lti_deployment_attrs = attrs.delete(:lti_deployments)
 
     app_inst = application.application_instances.new(attrs)
     if application_instance = application.application_instances.find_by(lti_key: app_inst.key)
@@ -187,6 +222,16 @@ def setup_application_instances(application, application_instances)
     else
       puts "Creating new application instance for site: #{site.url}"
       application_instance = application.application_instances.create!(attrs)
+    end
+
+    if lti_deployment_attrs
+      lti_deployment_attrs.each do |lti_deployment_attrs|
+        if found = application_instance.lti_deployments.find_by(deployment_id: lti_deployment_attrs[:deployment_id])
+          found.update_attributes!(lti_deployment_attrs)
+        else
+          application_instance.lti_deployments.create!(lti_deployment_attrs)
+        end
+      end
     end
 
     # Check to see if the application instance needs to share a tenant with another
@@ -217,6 +262,7 @@ if Apartment::Tenant.current == "public"
   puts "*** Seeding Applications ***"
   applications.each do |attrs|
     application_instances = attrs.delete(:application_instances)
+    lti_installs_attrs = attrs.delete(:lti_installs)
     if application = Application.find_by(key: attrs[:key])
       puts "Updating application: #{application.name}"
       application.update_attributes!(attrs)
@@ -225,6 +271,16 @@ if Apartment::Tenant.current == "public"
       application = Application.create!(attrs)
     end
     setup_application_instances(application, application_instances)
+
+    if lti_installs_attrs
+      lti_installs_attrs.each do |lti_install_attrs|
+        if lti_install = application.lti_installs.find_by(client_id: lti_install_attrs[:client_id])
+          lti_install.update_attributes!(lti_install_attrs)
+        else
+          application.lti_installs.create!(lti_install_attrs)
+        end
+      end
+    end
   end
 
   bundles.each do |attrs|

@@ -9,6 +9,10 @@ class Application < ActiveRecord::Base
 
   has_many :application_bundles
   has_many :bundles, through: :application_bundles
+  has_many :jwks
+  has_many :lti_installs
+
+  after_create :generate_jwk
 
   # example store_accessor for default_config
   # This allows access to instance.default_config[:foo] like instance.foo
@@ -37,4 +41,37 @@ class Application < ActiveRecord::Base
     end
     application_instance
   end
+
+  def current_jwk
+    jwks.last || generate_jwk
+  end
+
+  def generate_jwk
+    jwks.create!
+  end
+
+  def oidc_url(iss)
+    lti_install_for(iss).oidc_url
+  end
+
+  def token_url(iss)
+    lti_install_for(iss).token_url
+  end
+
+  def jwks_url(iss)
+    lti_install_for(iss).jwks_url
+  end
+
+  def client_id(iss)
+    lti_install_for(iss).client_id
+  end
+
+  def lti_install_for(iss)
+    if lti_install = lti_installs.find_by(iss: iss)
+      lti_install
+    else
+      raise "Unable to matching LTI install for application #{name} and iss: #{iss}"
+    end
+  end
+
 end
