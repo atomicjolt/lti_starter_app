@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe ApplicationController, type: :controller do
   before do
-    @application_instance = FactoryBot.create(:application_instance)
+    setup_application_instance
     @launch_url = "http://test.host/anonymous" # url when posting to anonymous controller created below.
     allow(controller).to receive(:current_application_instance).and_return(@application_instance)
     allow(Application).to receive(:find_by).with(:lti_key).and_return(@application_instance)
