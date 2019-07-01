@@ -8,7 +8,7 @@ RSpec.describe Api::ImsExportsController, type: :controller do
   end
 
   before do
-    setup_application_and_instance
+    setup_application_instance
     @export_params = {
       tool_consumer_instance_guid: "thisisatoolconsumerguid",
       context_id: "thisisacontextid",

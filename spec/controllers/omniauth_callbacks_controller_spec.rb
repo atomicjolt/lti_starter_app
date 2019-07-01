@@ -10,10 +10,9 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
   end
 
   before do
+    setup_application_instance
     request.env["devise.mapping"] = Devise.mappings[:user] # If using Devise
     request.env["omniauth.strategy"] = MockStrategy.new
-    @app = FactoryBot.create(:application_instance)
-    allow(controller).to receive(:current_application_instance).and_return(@app)
   end
 
   describe "GET canvas" do

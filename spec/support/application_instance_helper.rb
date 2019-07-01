@@ -2,20 +2,35 @@ module ApplicationInstanceHelper
   def self.make_application_instance
     canvas_api_permissions = {
       default: [],
-      common: [],
-      LIST_ACCOUNTS: [
-        "urn:lti:sysrole:ims/lis/SysAdmin",
-        "urn:lti:sysrole:ims/lis/Administrator",
-        "urn:lti:instrole:ims/lis/Administrator",
-        "urn:lti:role:ims/lis/Instructor",
+      common: [
+        "administrator",
       ],
       LIST_YOUR_COURSES: [
+        "canvas_oauth_user",
+      ],
+      LIST_ACCOUNTS: [
+        "canvas_oauth_user",
         "urn:lti:sysrole:ims/lis/SysAdmin",
         "urn:lti:sysrole:ims/lis/Administrator",
         "urn:lti:instrole:ims/lis/Administrator",
         "urn:lti:role:ims/lis/Instructor",
-        "urn:lti:role:ims/lis/Learner",
       ],
+      LIST_ENROLLMENTS_COURSES: [
+        "urn:lti:sysrole:ims/lis/SysAdmin",
+        "urn:lti:sysrole:ims/lis/Administrator",
+        "urn:lti:instrole:ims/lis/Administrator",
+        "urn:lti:role:ims/lis/Instructor",
+      ],
+      GET_SUB_ACCOUNTS_OF_ACCOUNT: [
+        "canvas_oauth_user",
+      ],
+      CREATE_NEW_SUB_ACCOUNT: [],
+      UPDATE_ACCOUNT: [],
+      # CREATE_ASSIGNMENT: [],
+      # CREATE_ASSIGNMENT_OVERRIDE: [],
+      # EDIT_ASSIGNMENT: [],
+      # DELETE_ASSIGNMENT: [],
+      # LIST_ASSIGNMENTS: [],
     }
     application = FactoryBot.create(
       :application,
