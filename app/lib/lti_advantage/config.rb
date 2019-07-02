@@ -35,12 +35,7 @@ module LtiAdvantage
     def self.json(jwk, args = {})
       {
         "title":"LTI Advantage",
-        "scopes":[
-           "https://purl.imsglobal.org/spec/lti-ags/scope/lineitem",
-           "https://purl.imsglobal.org/spec/lti-ags/scope/result.readonly",
-           "https://purl.imsglobal.org/spec/lti-ags/scope/score",
-           "https://purl.imsglobal.org/spec/lti-nrps/scope/contextmembership.readonly"
-        ],
+        "scopes": LtiAdvantage::Definitions.scopes,
         "extensions":[
            {
               "platform":"canvas.instructure.com",
@@ -77,7 +72,7 @@ module LtiAdvantage
         "target_link_uri":"https://helloworld.atomicjolt.xyz/lti_launches",
         "oidc_initiation_url":"https://auth.atomicjolt.xyz/lti_launches/init",
         "public_jwk": jwk.to_json,
-        "description":"LTI Advantage LTI Advantage",
+        "description":"LTI Advantage starter application",
       }.to_json
     end
 
