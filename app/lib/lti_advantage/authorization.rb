@@ -6,9 +6,11 @@ module LtiAdvantage
       decoded_token = JWT.decode(token, nil, false)
       payload = decoded_token[PAYLOAD]
       client_id = payload["aud"]
+      iss = payload["iss"]
+      canvas_url = "https://#{URI.parse(payload[LtiAdvantage::Definitions::LAUNCH_PRESENTATION]["return_url"]).host}"
       deployment_id = payload[LtiAdvantage::Definitions::DEPLOYMENT_ID]
-      if client_id && deployment_id
-        ApplicationInstance.by_client_and_deployment(client_id, deployment_id)
+      if client_id && deployment_id && iss
+        ApplicationInstance.by_client_and_deployment(client_id, deployment_id, iss, canvas_url)
       end
     end
 
@@ -33,7 +35,7 @@ module LtiAdvantage
       # https://www.imsglobal.org/spec/security/v1p0/#using-json-web-tokens-with-oauth-2-0-client-credentials-grant
       client_id = application_instance.application.client_id(lti_token["iss"])
       payload = {
-        iss: "https://helloworld.atomicjolt.xyz", # A unique identifier for the entity that issued the JWT
+        iss: application_instance.lti_key, # A unique identifier for the entity that issued the JWT
         sub: client_id, # "client_id" of the OAuth Client
         aud: application_instance.token_url(lti_token["iss"]), # Authorization server identifier
         iat: Time.now.to_i, # Timestamp for when the JWT was created
@@ -50,7 +52,7 @@ module LtiAdvantage
       body = {
         grant_type: "client_credentials",
         client_assertion_type: "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
-        scope: LtiAdvantage::Definitions::scopes,
+        scope: LtiAdvantage::Definitions::scopes.join(" "),
         client_assertion: client_assertion(application_instance, lti_token)
       }
       headers = {

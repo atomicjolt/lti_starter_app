@@ -55,7 +55,7 @@ module LtiAdvantage
         AGS_SCOPE_RESULT,
         AGS_SCOPE_SCORE,
         NAMES_AND_ROLES_SCOPE
-      ].join(" ")
+      ]
     end
 
     CANVAS_PUBLIC_LTI_KEYS_URL = "https://canvas.instructure.com/api/lti/security/jwks"
@@ -63,6 +63,8 @@ module LtiAdvantage
     CANVAS_AUTH_TOKEN_URL = "https://canvas.instructure.com/login/oauth2/token"
 
     CANVAS_BETA_PUBLIC_LTI_KEYS_URL = "https://canvas.beta.instructure.com/api/lti/security/jwks"
+    CANVAS_BETA_AUTH_TOKEN_URL = "https://canvas.beta.instructure.com/login/oauth2/token"
+    CANVAS_BETA_OIDC_URL = "https://canvas.beta.instructure.com/api/lti/authorize_redirect"
 
   end
 end

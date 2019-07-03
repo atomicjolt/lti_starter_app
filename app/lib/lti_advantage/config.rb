@@ -35,15 +35,15 @@ module LtiAdvantage
     def self.json(jwk, args = {})
       {
         "title":"LTI Advantage",
-        "scopes": LtiAdvantage::Definitions.scopes,
+        "scopes": LtiAdvantage::Definitions::scopes,
         "extensions":[
            {
               "platform":"canvas.instructure.com",
               "domain":"https://helloworld.atomicjolt.xyz",
               "tool_id":"helloworld",
               "settings":{
-                 "privacy_level":"private",
-                 "text":"LTI Advantage",
+                 "privacy_level":"public",
+                 "text":"LTI Advantage Starter",
                  "icon_url":"https://helloworld.atomicjolt.xyz/atomicjolt.png",
                  "selection_width":500,
                  "selection_height":500,
@@ -55,24 +55,77 @@ module LtiAdvantage
                        "enabled":true,
                        "icon_url":"https://helloworld.atomicjolt.xyz/atomicjolt.png",
                        "message_type":"LtiDeepLinkingRequest",
-                       "canvas_icon_class":"icon-lti"
-                    }, {
+                       "canvas_icon_class":"icon-lti",
+                    },
+                    {
                      "placement":"course_navigation",
                      "target_link_uri":"https://helloworld.atomicjolt.xyz/lti_launches",
                      "text":"LTI Advantage Course Navigation",
                      "enabled":true,
                      "icon_url":"https://helloworld.atomicjolt.xyz/atomicjolt.png",
                      "message_type":"LtiResourceLinkRequest",
-                     "canvas_icon_class":"icon-lti"
+                     "canvas_icon_class":"icon-lti",
+                  },
+                  {
+                     "text":"IMS LTI RI",
+                     "enabled":true,
+                     "icon_url":"https://helloworld.atomicjolt.xyz/atomicjolt.png",
+                     "placement":"user_navigation",
+                     "message_type":"LtiResourceLinkRequest",
+                     "target_link_uri":"https://helloworld.atomicjolt.xyz/lti_launches"
+                  },
+                  {
+                     "text":"IMS LTI RI",
+                     "enabled":true,
+                     "icon_url":"https://helloworld.atomicjolt.xyz/atomicjolt.png",
+                     "placement":"migration_selection",
+                     "message_type":"LtiDeepLinkingRequest",
+                     "target_link_uri":"https://helloworld.atomicjolt.xyz/lti_launches"
+                  },
+                  {
+                     "text":"IMS LTI RI",
+                     "enabled":true,
+                     "icon_url":"https://helloworld.atomicjolt.xyz/atomicjolt.png",
+                     "placement":"link_selection",
+                     "message_type":"LtiDeepLinkingRequest",
+                     "target_link_uri":"https://helloworld.atomicjolt.xyz/lti_launches"
+                  },
+                  {
+                     "text":"IMS LTI RI",
+                     "enabled":true,
+                     "icon_url":"https://helloworld.atomicjolt.xyz/atomicjolt.png",
+                     "placement":"homework_submission",
+                     "message_type":"LtiDeepLinkingRequest",
+                     "target_link_uri":"https://helloworld.atomicjolt.xyz/lti_launches"
+                  },
+                  {
+                     "text":"IMS LTI RI",
+                     "enabled":true,
+                     "icon_url":"https://helloworld.atomicjolt.xyz/atomicjolt.png",
+                     "placement":"assignment_selection",
+                     "message_type":"LtiDeepLinkingRequest",
+                     "target_link_uri":"https://helloworld.atomicjolt.xyz/lti_launches"
+                  },
+                  {
+                     "text":"IMS LTI RI",
+                     "enabled":true,
+                     "icon_url":"https://helloworld.atomicjolt.xyz/atomicjolt.png",
+                     "placement":"account_navigation",
+                     "message_type":"LtiResourceLinkRequest",
+                     "target_link_uri":"https://helloworld.atomicjolt.xyz/lti_launches"
                   }
                  ]
               }
            }
         ],
         "target_link_uri":"https://helloworld.atomicjolt.xyz/lti_launches",
-        "oidc_initiation_url":"https://auth.atomicjolt.xyz/lti_launches/init",
+        "oidc_initiation_url":"https://helloworld.atomicjolt.xyz/lti_launches/init",
         "public_jwk": jwk.to_json,
         "description":"LTI Advantage starter application",
+        "custom_fields": {
+          "canvas_sis_id":"$Canvas.user.sisid",
+          "canvas_user_id":"$Canvas.user.id",
+        },
       }.to_json
     end
 

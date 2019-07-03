@@ -9,9 +9,10 @@ class CreateLtiInstalls < ActiveRecord::Migration[5.1]
       t.string :oidc_url
       t.timestamps
     end
-    add_index :lti_installs, :client_id, :unique => true
+    add_index :lti_installs, [:client_id, :iss], :unique => true
     add_index :lti_installs, :application_id
     add_index :lti_installs, :iss
+    add_index :lti_installs, :client_id
     add_index :lti_installs, [:application_id, :iss]
   end
 end

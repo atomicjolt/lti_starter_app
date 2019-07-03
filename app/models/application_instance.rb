@@ -38,20 +38,24 @@ class ApplicationInstance < ActiveRecord::Base
   scope :by_oldest, -> { order(created_at: :asc) }
   scope :by_latest, -> { order(updated_at: :desc) }
 
-  # TODO figure out if we want to create a new application instance if the deployment id isn't found
-  # Maybe a setting on the application would indicate if it's freely available, trial, or restricted
-  def self.by_client_and_deployment(client_id, deployment_id)
+  # Create a new application instance if the deployment id isn't found
+  # TODO add a setting on the application to indicate if it's freely available, trial, or restricted
+  def self.by_client_and_deployment(client_id, deployment_id, iss, canvas_url)
     LtiInstall.joins(:applications).joins(:application_instances).joins(:lti_deployments)
-    if lti_install = LtiInstall.find_by(client_id: client_id)
+    if lti_install = LtiInstall.find_by(client_id: client_id, iss: iss)
       application_instances = lti_install.application.application_instances
         .joins(:lti_deployments)
         .where("lti_deployments.deployment_id =?", deployment_id)
       # There should only be one that matches
-      if inst = application_instances.first
-        inst
+      if application_instance = application_instances.first
+        application_instance
       else
-        # TODO create or not create?
-        # lti_install.application.create_instance(site: nil, bundle_instance: nil, tenant: nil)
+        site = Site.find_by(url: canvas_url)
+        # Create a new application instance and lti_deployment
+        lti_key = "#{site.key}-#{lti_install.application.key}-#{deployment_id}"
+        application_instance = lti_install.application.create_instance(site: site, lti_key: lti_key)
+        application_instance.lti_deployments.create!(deployment_id: deployment_id)
+        application_instance
       end
     end
   end
@@ -102,7 +106,11 @@ class ApplicationInstance < ActiveRecord::Base
     # The Canvas token endpoint is customer specific. i.e. https://atomicjolt.instructure.com
     # We can get that value from the site associated with the application instance
     if url.include?("https://canvas.instructure.com")
-     url.gsub!("https://canvas.instructure.com", site.url)
+      url.gsub!("https://canvas.instructure.com", site.url)
+    end
+
+    if url.include?("https://canvas.beta.instructure.com")
+      url.gsub!("https://canvas.beta.instructure.com", site.url)
     end
 
     url

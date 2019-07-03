@@ -4,7 +4,7 @@ module LtiAdvantage
 
       def endpoint
         url = @lti_token.dig(LtiAdvantage::Definitions::NAMES_AND_ROLES_CLAIM, "context_memberships_url")
-        raise "Unable to access names and roles" unless url.present?
+        raise LtiAdvantage::Exceptions::NamesAndRolesError, "Unable to access names and roles" unless url.present?
         url
       end
 

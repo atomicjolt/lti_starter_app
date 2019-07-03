@@ -132,10 +132,18 @@ applications = [
       {
         # Canvas
         iss: "https://canvas.instructure.com",
-        client_id: "43460000000000181",
+        client_id: "43460000000000187",
         jwks_url: LtiAdvantage::Definitions::CANVAS_PUBLIC_LTI_KEYS_URL,
         token_url: LtiAdvantage::Definitions::CANVAS_AUTH_TOKEN_URL,
         oidc_url: LtiAdvantage::Definitions::CANVAS_OIDC_URL,
+      },
+      {
+        # Canvas Beta
+        iss: "https://canvas.beta.instructure.com",
+        client_id: "43460000000000187",
+        jwks_url: LtiAdvantage::Definitions::CANVAS_BETA_PUBLIC_LTI_KEYS_URL,
+        token_url: LtiAdvantage::Definitions::CANVAS_BETA_AUTH_TOKEN_URL,
+        oidc_url: LtiAdvantage::Definitions::CANVAS_BETA_OIDC_URL,
       },
       {
         # Sakai
@@ -171,10 +179,10 @@ applications = [
         # This is only required if the app needs API access and doesn't want each user to do the oauth dance
         canvas_token: secrets.canvas_token,
         lti_deployments: [
-          {
-            # Canvas
-            deployment_id: "12400:a8a76fb8fbcc2d09787dafd28564e2ecdab51f11",
-          },
+          # {
+          #   # Canvas
+          #   deployment_id: "12400:a8a76fb8fbcc2d09787dafd28564e2ecdab51f11",
+          # },
           {
             # Blackboard
             deployment_id: "91ed0d26-952a-4e6d-beb4-e2b2a5c6419d",
@@ -274,7 +282,10 @@ if Apartment::Tenant.current == "public"
 
     if lti_installs_attrs
       lti_installs_attrs.each do |lti_install_attrs|
-        if lti_install = application.lti_installs.find_by(client_id: lti_install_attrs[:client_id])
+        if lti_install = application.lti_installs.find_by(
+          iss: lti_install_attrs[:iss],
+          client_id: lti_install_attrs[:client_id],
+        )
           lti_install.update_attributes!(lti_install_attrs)
         else
           application.lti_installs.create!(lti_install_attrs)

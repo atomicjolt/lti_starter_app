@@ -27,6 +27,7 @@ Apartment.configure do |config|
     RequestUserStatistic
     LtiDeployment
     LtiInstall
+    Jwk
   }
 
   # In order to migrate all of your Tenants you need to provide a list of Tenant names to Apartment.

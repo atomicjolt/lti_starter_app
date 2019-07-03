@@ -7,7 +7,7 @@ module LtiAdvantage
 
       def endpoint
         url = @lti_token.dig(LtiAdvantage::Definitions::AGS_CLAIM, "lineitems")
-        raise "Unable to access line items" unless url.present?
+        raise LtiAdvantage::Exceptions:LineItemError, "Unable to access line items" unless url.present?
         url
       end
 
@@ -31,9 +31,7 @@ module LtiAdvantage
       # List line items
       # Canvas: https://canvas.beta.instructure.com/doc/api/line_items.html#method.lti/ims/line_items.index
       def list
-        result = HTTParty.get(endpoint, headers: headers)
-        byebug
-        result
+        HTTParty.get(endpoint, headers: headers)
       end
 
       # Get a specific line item
@@ -46,9 +44,7 @@ module LtiAdvantage
       # https://www.imsglobal.org/spec/lti-ags/v2p0/#creating-a-new-line-item
       # Canvas: https://canvas.beta.instructure.com/doc/api/line_items.html#method.lti/ims/line_items.create
       def create(attrs = nil)
-        result = HTTParty.post(endpoint, body: attrs, headers: headers)
-        byebug
-        result
+        HTTParty.post(endpoint, body: attrs, headers: headers)
       end
 
       def update(id, attrs)

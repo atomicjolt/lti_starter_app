@@ -31,10 +31,11 @@ class Application < ActiveRecord::Base
   AUTH = "auth".freeze
   HELLOWORLD = "helloworld".freeze
 
-  def create_instance(site: nil, bundle_instance: nil, tenant: nil)
+  def create_instance(site: nil, bundle_instance: nil, tenant: nil, lti_key: nil)
     application_instance = application_instances.find_or_create_by(
       site: site,
       bundle_instance: bundle_instance,
+      lti_key: lti_key,
     )
     if tenant.present?
       application_instance.update!(tenant: tenant)
@@ -70,7 +71,9 @@ class Application < ActiveRecord::Base
     if lti_install = lti_installs.find_by(iss: iss)
       lti_install
     else
-      raise "Unable to matching LTI install for application #{name} and iss: #{iss}"
+      byebug
+      raise LtiAdvantage::Exceptions::ConfigurationError,
+        "Unable to matching LTI install for application #{name} and iss: #{iss}. Check the lti_installs table to make sure there's an entry."
     end
   end
 

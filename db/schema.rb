@@ -174,7 +174,8 @@ ActiveRecord::Schema.define(version: 20190627224209) do
     t.datetime "updated_at", null: false
     t.index ["application_id", "iss"], name: "index_lti_installs_on_application_id_and_iss"
     t.index ["application_id"], name: "index_lti_installs_on_application_id"
-    t.index ["client_id"], name: "index_lti_installs_on_client_id", unique: true
+    t.index ["client_id", "iss"], name: "index_lti_installs_on_client_id_and_iss", unique: true
+    t.index ["client_id"], name: "index_lti_installs_on_client_id"
     t.index ["iss"], name: "index_lti_installs_on_iss"
   end
 
