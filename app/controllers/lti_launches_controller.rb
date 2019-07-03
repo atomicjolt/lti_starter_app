@@ -12,7 +12,17 @@ class LtiLaunchesController < ApplicationController
     if current_application_instance.disabled_at
       render file: File.join(Rails.root, "public", "disabled.html")
     end
-    make_line_item(@lti_token)
+
+    line_item = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token)
+    result = line_item.create(line_item.generate(
+      label: "test item",
+      max_score: 100,
+      resource_id: 1,
+      tag: "testtag",
+      resource_link_id: "1",
+    ))
+    line_items = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token).list
+    students = LtiAdvantage::Services::NamesAndRoles.new(current_application_instance, @lti_token).list
 
     setup_lti_response
   end
@@ -59,33 +69,6 @@ class LtiLaunchesController < ApplicationController
     end
     set_lti_launch_values
   end
-
-  def make_line_item(lti_token)
-    endpoint = lti_token.dig("https://purl.imsglobal.org/spec/lti-ags/claim/endpoint", "lineitems")
-
-    return unless endpoint.present?
-
-    token = LtiAdvantage::Authorization.request_token(current_application_instance, lti_token)
-
-    headers = {
-      Authorization: "Bearer #{token["access_token"]}",
-    }
-
-    body = {
-      scoreMaximum: 25,
-      label: "LTI Advantage Test",
-      resourceId: "asdf",
-    }
-
-    # "startDateTime": "2018-03-06T20:05:02Z"
-    # "endDateTime": "2018-04-06T22:05:03Z"
-
-    result = HTTParty.post(endpoint, body: body, headers: headers)
-    byebug
-    result
-  end
-
-
 
 end
 

@@ -38,6 +38,8 @@ class ApplicationInstance < ActiveRecord::Base
   scope :by_oldest, -> { order(created_at: :asc) }
   scope :by_latest, -> { order(updated_at: :desc) }
 
+  # TODO figure out if we want to create a new application instance if the deployment id isn't found
+  # Maybe a setting on the application would indicate if it's freely available, trial, or restricted
   def self.by_client_and_deployment(client_id, deployment_id)
     LtiInstall.joins(:applications).joins(:application_instances).joins(:lti_deployments)
     if lti_install = LtiInstall.find_by(client_id: client_id)
@@ -45,7 +47,12 @@ class ApplicationInstance < ActiveRecord::Base
         .joins(:lti_deployments)
         .where("lti_deployments.deployment_id =?", deployment_id)
       # There should only be one that matches
-      application_instances.first
+      if inst = application_instances.first
+        inst
+      else
+        # TODO create or not create?
+        # lti_install.application.create_instance(site: nil, bundle_instance: nil, tenant: nil)
+      end
     end
   end
 
@@ -87,6 +94,18 @@ class ApplicationInstance < ActiveRecord::Base
   def canvas_token_preview
     return nil if canvas_token.nil?
     "#{canvas_token.first(4)}...#{canvas_token.last(4)}"
+  end
+
+  def token_url(iss)
+    url = application.token_url(iss)
+
+    # The Canvas token endpoint is customer specific. i.e. https://atomicjolt.instructure.com
+    # We can get that value from the site associated with the application instance
+    if url.include?("https://canvas.instructure.com")
+     url.gsub!("https://canvas.instructure.com", site.url)
+    end
+
+    url
   end
 
   # if you add a new value to an application's default settings, it will not
