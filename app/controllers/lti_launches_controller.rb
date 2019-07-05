@@ -13,16 +13,19 @@ class LtiLaunchesController < ApplicationController
       render file: File.join(Rails.root, "public", "disabled.html")
     end
 
-    line_item = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token)
-    result = line_item.create(line_item.generate(
-      label: "test item",
-      max_score: 100,
-      resource_id: 1,
-      tag: "testtag",
-      resource_link_id: "1",
-    ))
-    line_items = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token).list
-    students = LtiAdvantage::Services::NamesAndRoles.new(current_application_instance, @lti_token).list
+    # Line item is currently available in production Canvas
+    # line_item = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token)
+    # result = line_item.create(line_item.generate(
+    #   label: "test item",
+    #   max_score: 100,
+    #   resource_id: 1,
+    #   tag: "testtag",
+    #   resource_link_id: "1",
+    # ))
+    # line_items = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token).list
+
+    names_and_roles_service = LtiAdvantage::Services::NamesAndRoles.new(current_application_instance, @lti_token)
+    @names_and_roles = names_and_roles_service.list if names_and_roles_service.valid?
 
     setup_lti_response
   end

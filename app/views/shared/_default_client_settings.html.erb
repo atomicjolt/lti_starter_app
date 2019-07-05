@@ -27,6 +27,10 @@
       settings[:lti_launch_config] = @lti_launch.config
     end
 
+    if @names_and_roles
+      settings[:names_and_roles] = @names_and_roles
+    end
+
     if @is_lti_launch
       settings[:oauth_consumer_key]                     = params[:oauth_consumer_key]
       settings[:lms_course_id]                          = params[:custom_canvas_course_id]

@@ -53,6 +53,20 @@ export class Home extends React.Component {
     });
   }
 
+  renderUsers() {
+    return this.props.settings.names_and_roles.members.map((nameAndRole) => {
+      return (
+        <li key={`name_and_role_${nameAndRole.user_id}`}>
+          <a target="_top" href={`${this.props.settings.canvas_url}/courses/${nameAndRole.id}`}>
+            {nameAndRole.user_id}
+          </a>
+          <p>Status: {nameAndRole.status}</p>
+          <p>Roles:{nameAndRole.roles.join(', ')}</p>
+        </li>
+      );
+    });
+  }
+
   renderContent() {
     const img = assets('./images/atomicjolt.jpg');
 
@@ -64,8 +78,14 @@ export class Home extends React.Component {
       <div>
         <img src={img} alt="Atomic Jolt Logo" />
         <hr />
+        <h2>Courses:</h2>
         <ul>
           { this.renderCourses() }
+        </ul>
+        <hr />
+        <h2>Users:</h2>
+        <ul style={{ textAlign: 'left' }}>
+          { this.renderUsers() }
         </ul>
       </div>
     );

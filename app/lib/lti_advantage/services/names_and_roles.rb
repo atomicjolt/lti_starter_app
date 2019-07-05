@@ -25,11 +25,10 @@ module LtiAdvantage
         result = HTTParty.get(
           url,
           headers: headers({
-            "Content-Type" => "application/vnd.ims.lti-nprs.v2.membershipcontainer+json",
+            "Content-Type" => "application/vnd.ims.lti-nrps.v2.membershipcontainer+json",
           })
         )
-        byebug
-        result
+        JSON.parse(result.body)
       end
     end
   end
