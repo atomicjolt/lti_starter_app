@@ -48,7 +48,7 @@ module ApplicationInstanceHelper
     )
   end
 
-  def get_application_instance
-    @application_instance ||= ApplicationInstance.find_by(lti_key: "global_test")
+  def global_application_instance
+    @global_application_instance ||= ApplicationInstance.find_by(lti_key: "global_test")
   end
 end
