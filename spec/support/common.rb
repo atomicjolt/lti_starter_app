@@ -87,3 +87,13 @@ def setup_application_and_instance
   @application_instance = FactoryBot.create(:application_instance, application: @application)
   allow(controller).to receive(:current_application_instance).and_return(@application_instance)
 end
+
+def setup_application_instance
+  @application_instance = global_application_instance
+  @application = @application_instance.application
+  @canvas_api_permissions = @application.canvas_api_permissions
+
+  if defined?(controller)
+    allow(controller).to receive(:current_application_instance).and_return(global_application_instance)
+  end
+end

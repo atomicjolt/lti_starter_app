@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe ApplicationController, type: :controller do
   before do
-    setup_application_and_instance
+    setup_application_instance
     # For authentication a JWT will be included in the Authorization header using the Bearer scheme,
     # it is signed using the shared secret for the tool and will include the stored consumer key in the
     # kid field of the token's header object.

@@ -4,8 +4,7 @@ RSpec.describe LtiLaunchesController, type: :controller do
   render_views
 
   before do
-    @app = FactoryBot.create(:application_instance)
-    allow(controller).to receive(:current_application_instance).and_return(@app)
+    setup_application_instance
   end
 
   describe "index" do
@@ -15,8 +14,8 @@ RSpec.describe LtiLaunchesController, type: :controller do
 
     it "sets up the user and logs them in" do
       params = lti_params(
-        @app.lti_key,
-        @app.lti_secret,
+        @application_instance.lti_key,
+        @application_instance.lti_secret,
         { "launch_url" => lti_launches_url, "roles" => "Learner" },
       )
       post :index, params: params
@@ -32,8 +31,8 @@ RSpec.describe LtiLaunchesController, type: :controller do
       context_id = SecureRandom.hex(15)
       @lti_launch = FactoryBot.create(:lti_launch, context_id: context_id)
       params = lti_params(
-        @app.lti_key,
-        @app.lti_secret,
+        @application_instance.lti_key,
+        @application_instance.lti_secret,
         {
           "launch_url" => lti_launch_url(@lti_launch.token),
           "roles" => "Learner",

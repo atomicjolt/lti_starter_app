@@ -7,11 +7,10 @@ describe ApplicationController, type: :controller do
   render_views
 
   before do
-    @app = FactoryBot.create(:application_instance)
+    setup_application_instance
     # url when posting to anonymous controller created below.
     @launch_url = "http://test.host/anonymous"
-    allow(controller).to receive(:current_application_instance).and_return(@app)
-    allow(Application).to receive(:find_by).with(:lti_key).and_return(@app)
+    allow(Application).to receive(:find_by).with(:lti_key).and_return(@application_instance)
   end
 
   describe "a user using Safari" do
@@ -52,13 +51,13 @@ describe ApplicationController, type: :controller do
     end
     it "should ask the user to obtain an API token" do
       params = lti_params(
-        @app.lti_key, @app.lti_secret,
+        @application_instance.lti_key, @application_instance.lti_secret,
         { "launch_url" => @launch_url, "roles" => "Instructor" }
       )
       post :index, params: params
       expect(response).to have_http_status(302)
       expect(response).to redirect_to(
-        user_canvas_omniauth_authorize_path(canvas_url: @app.site.url),
+        user_canvas_omniauth_authorize_path(canvas_url: @application_instance.site.url),
       )
     end
   end

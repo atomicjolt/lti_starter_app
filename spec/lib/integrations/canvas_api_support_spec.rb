@@ -2,9 +2,10 @@ require "rails_helper"
 
 describe Integrations::CanvasApiSupport do
   before do
+    setup_application_instance
     @user = FactoryBot.create(:user)
     @canvas_course = FactoryBot.create(:canvas_course)
-    @application_instance = FactoryBot.create(:application_instance, canvas_token: nil)
+    @application_instance.update(canvas_token: nil)
     @authentication = FactoryBot.create(
       :authentication,
       provider_url: UrlHelper.scheme_host_port(@application_instance.site.url),
@@ -30,8 +31,8 @@ describe Integrations::CanvasApiSupport do
     expect(@api_support.api).to be_present
   end
   it "should find an api using a global token" do
-    application_instance = FactoryBot.create(:application_instance, canvas_token: "afakecanvastoken")
-    @api_support = Integrations::CanvasApiSupport.new(@user, @canvas_course, application_instance)
+    @application_instance.update(canvas_token: "afakecanvastoken")
+    @api_support = Integrations::CanvasApiSupport.new(@user, @canvas_course, @application_instance)
     expect(@api_support.api).to be_present
   end
 end

@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Api::LtiLaunchesController, type: :controller do
   before do
     setup_lti_users
-    setup_application_and_instance
+    setup_application_instance
 
     @content_item = {
       "@context" => "http://purl.imsglobal.org/ctx/lti/v1/ContentItem",
