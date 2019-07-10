@@ -61,6 +61,8 @@ bundles = [
   },
 ]
 
+hello_lti_advantage_config = JSON.parse(File.read(File.join(Rails.root, "db", "lti_advantage_configs", "hello_world_lti_advantage_config.json")))
+
 # Add an LTI Application
 applications = [
   {
@@ -83,6 +85,7 @@ applications = [
     name: "LTI Starter App",
     description: "LTI Starter App by Atomic Jolt.",
     client_application_name: "hello_world",
+    lti_advantage_config: hello_lti_advantage_config,
     # List Canvas API methods the app is allowed to use. A full list of constants can be found in canvas_urls
     canvas_api_permissions: {
       default: [],
@@ -179,10 +182,18 @@ applications = [
         # This is only required if the app needs API access and doesn't want each user to do the oauth dance
         canvas_token: secrets.canvas_token,
         lti_deployments: [
-          # {
-          #   # Canvas
-          #   deployment_id: "12400:a8a76fb8fbcc2d09787dafd28564e2ecdab51f11",
-          # },
+          {
+            # Canvas
+            deployment_id: "12489:a8a76fb8fbcc2d09787dafd28564e2ecdab51f11",
+          },
+          {
+            # Canvas
+            deployment_id: "12509:a8a76fb8fbcc2d09787dafd28564e2ecdab51f11",
+          },
+          {
+            # Canvas
+            deployment_id: "12510:a8a76fb8fbcc2d09787dafd28564e2ecdab51f11",
+          },
           {
             # Blackboard
             deployment_id: "91ed0d26-952a-4e6d-beb4-e2b2a5c6419d",

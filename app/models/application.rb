@@ -2,6 +2,7 @@ class Application < ActiveRecord::Base
 
   serialize :default_config, HashSerializer
   serialize :lti_config, HashSerializer
+  serialize :lti_advantage_config, HashSerializer
   serialize :canvas_api_permissions, HashSerializer
 
   has_many :application_instances
@@ -41,6 +42,13 @@ class Application < ActiveRecord::Base
       application_instance.update!(tenant: tenant)
     end
     application_instance
+  end
+
+  def lti_advantage_config_json
+    domain = "#{key}.#{Rails.application.secrets.application_root_domain}"
+    config = lti_advantage_config
+    config[:public_jwk] = current_jwk.to_json
+    config.to_json.gsub("{domain}", domain)
   end
 
   def current_jwk

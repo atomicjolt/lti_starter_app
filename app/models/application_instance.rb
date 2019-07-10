@@ -8,7 +8,7 @@ class ApplicationInstance < ActiveRecord::Base
   belongs_to :bundle_instance
 
   has_many :authentications, dependent: :destroy, inverse_of: :application_instance
-  has_many :lti_deployments
+  has_many :lti_deployments, dependent: :destroy
 
   validates :lti_key, presence: true, uniqueness: true
   validates :lti_secret, presence: true
@@ -73,11 +73,6 @@ class ApplicationInstance < ActiveRecord::Base
       config[:privacy_level] = "anonymous" if anonymous?
     end
     config
-  end
-
-  def lti_advantage_config_json
-    config = lti_defaults
-    LtiAdvantage::Config.json(application.current_jwk, config) if config
   end
 
   def lti_config_xml
