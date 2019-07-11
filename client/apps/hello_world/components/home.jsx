@@ -53,7 +53,25 @@ export class Home extends React.Component {
     });
   }
 
+  renderLineItems() {
+    if (!this.props.settings.line_items) {
+      return null;
+    }
+    return this.props.settings.line_items.map((lineItem) => {
+      return (
+        <li key={`line_item${lineItem.id}`}>
+          <a href={lineItem.id}>
+            {lineItem.label} ({lineItem.scoreMaximum})
+          </a>
+        </li>
+      );
+    });
+  }
+
   renderUsers() {
+    if (!this.props.settings.names_and_roles) {
+      return null;
+    }
     return this.props.settings.names_and_roles.members.map((nameAndRole) => {
       return (
         <li key={`name_and_role_${nameAndRole.user_id}`}>
@@ -102,6 +120,10 @@ export class Home extends React.Component {
         <h2>Users:</h2>
         <ul style={{ textAlign: 'left' }}>
           { this.renderUsers() }
+        </ul>
+        <h2>Line items:</h2>
+        <ul style={{ textAlign: 'left' }}>
+          { this.renderLineItems() }
         </ul>
       </div>
     );
