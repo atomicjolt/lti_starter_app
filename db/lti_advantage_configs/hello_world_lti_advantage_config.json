@@ -21,7 +21,7 @@
         "placements": [
           {
             "placement": "editor_button",
-            "target_link_uri": "https://{domain}/lti/deep",
+            "target_link_uri": "https://{domain}/lti_launches",
             "text": "LTI Advantage Deep Link",
             "enabled": true,
             "icon_url": "https://{domain}/atomicjolt.png",
