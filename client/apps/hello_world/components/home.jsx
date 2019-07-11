@@ -59,8 +59,12 @@ export class Home extends React.Component {
         <li key={`name_and_role_${nameAndRole.user_id}`}>
           <a target="_top" href={`${this.props.settings.canvas_url}/courses/${nameAndRole.id}`}>
             {nameAndRole.user_id}
+            <img src={nameAndRole.picture} alt={nameAndRole.given_name} />
           </a>
+          <p>Name: {nameAndRole.name}</p>
+          <p>Email: {nameAndRole.email}</p>
           <p>Status: {nameAndRole.status}</p>
+          <p>User Id:{nameAndRole.user_id}</p>
           <p>Roles:{nameAndRole.roles.join(', ')}</p>
         </li>
       );
