@@ -15,6 +15,8 @@ module Concerns
         begin
           # TODO we should validate the state here as well
           @lti_token = LtiAdvantage::Authorization.validate_token(current_application_instance, token)
+          user = LtiAdvantage::User.new(@lti_token, current_application_instance).user
+          sign_in(user, event: :authentication)
           return
         rescue JWT::JWKError
           # Handle problems with the provided JWKs

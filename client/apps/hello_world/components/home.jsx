@@ -82,19 +82,24 @@ export class Home extends React.Component {
         <ul>
           { this.renderCourses() }
         </ul>
+      </div>
+    );
+  }
+
+  render() {
+    const content = displayCanvasAuth(
+      this.props.settings,
+      this.props.canvasReAuthorizationRequired) ||
+      this.renderContent();
+    return (
+      <div>
+        { content }
         <hr />
         <h2>Users:</h2>
         <ul style={{ textAlign: 'left' }}>
           { this.renderUsers() }
         </ul>
       </div>
-    );
-  }
-
-  render() {
-    return (
-      displayCanvasAuth(this.props.settings, this.props.canvasReAuthorizationRequired) ||
-        this.renderContent()
     );
   }
 
