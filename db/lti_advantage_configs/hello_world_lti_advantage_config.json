@@ -5,15 +5,15 @@
     "https://purl.imsglobal.org/spec/lti-ags/scope/result.readonly",
     "https://purl.imsglobal.org/spec/lti-ags/scope/score",
     "https://purl.imsglobal.org/spec/lti-nrps/scope/contextmembership.readonly",
-    "https://purl.imsglobal.org/spec/lti-ces/v1p0/scope/send"
+    "https://purl.imsglobal.org/spec/lti-ags/scope/lineitem.readonly"
   ],
   "extensions": [
     {
       "platform": "canvas.instructure.com",
       "domain": "https://{domain}",
       "tool_id": "helloworld",
+      "privacy_level": "public",
       "settings": {
-        "privacy_level": "public",
         "text": "LTI Advantage Starter",
         "icon_url": "https://{domain}/atomicjolt.png",
         "selection_width": 500,
