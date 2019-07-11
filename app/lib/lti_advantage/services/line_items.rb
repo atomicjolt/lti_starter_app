@@ -12,13 +12,13 @@ module LtiAdvantage
       end
 
       # Generate a default set of attributes
-      def generate(label:, max_score:, resource_id:, tag:, resource_link_id:)
+      def generate(label:, max_score:, resource_id: nil, tag: nil, resource_link_id: nil)
         {
           scoreMaximum: max_score,
           label: label,
-          resourceId: resource_id,
+          #resourceId: resource_id,
           tag: tag,
-          resourceLinkId: resource_link_id,
+          # resourceLinkId: resource_link_id,
           # "startDateTime": "2018-03-06T20:05:02Z",
           # "endDateTime": "2018-04-06T22:05:03Z",
           # "https://canvas.instructure.com/lti/submission_type": {
@@ -36,8 +36,8 @@ module LtiAdvantage
 
       # Get a specific line item
       # https://canvas.beta.instructure.com/doc/api/line_items.html#method.lti/ims/line_items.show
-      def show(id)
-        HTTParty.get("#{endpoint}/#{id}", headers: headers)
+      def show(line_item_url)
+        HTTParty.get(line_item_url, headers: headers)
       end
 
       # Create a line item
@@ -47,12 +47,12 @@ module LtiAdvantage
         HTTParty.post(endpoint, body: attrs, headers: headers)
       end
 
-      def update(id, attrs)
-        HTTParty.put("#{endpoint}/#{id}", headers: headers)
+      def update(line_item_url, attrs)
+        HTTParty.put(line_item_url, headers: headers)
       end
 
-      def delete(id)
-        HTTParty.delete("#{endpoint}/#{id}", headers: headers)
+      def delete(line_item_url)
+        HTTParty.delete(line_item_url, headers: headers)
       end
 
     end

@@ -14,15 +14,31 @@ class LtiLaunchesController < ApplicationController
     end
 
     # Line item is currently available in production Canvas
-    # line_item = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token)
-    # result = line_item.create(line_item.generate(
-    #   label: "test item",
-    #   max_score: 100,
-    #   resource_id: 1,
-    #   tag: "testtag",
-    #   resource_link_id: "1",
-    # ))
-    # line_items = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token).list
+    line_item = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token)
+    line_items = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token).list
+    @line_items = JSON.parse(line_items.body)
+
+    resource_id = 1
+    tag = "lti-advantage"
+    found = @line_items.find{ |li| li["tag"] == tag }
+    if found
+      result = line_item.update(
+        found["id"],
+        line_item.generate(
+          label: "LTI Advantage test item",
+          max_score: 10,
+          resource_id: resource_id,
+          tag: tag,
+        )
+      )
+    else
+      result = line_item.create(line_item.generate(
+        label: "LTI Advantage test item",
+        max_score: 10,
+        resource_id: resource_id,
+        tag: tag,
+      ))
+    end
 
     names_and_roles_service = LtiAdvantage::Services::NamesAndRoles.new(current_application_instance, @lti_token)
     @names_and_roles = names_and_roles_service.list if names_and_roles_service.valid?
