@@ -15,30 +15,40 @@ class LtiLaunchesController < ApplicationController
 
     # Line item is currently available in production Canvas
     line_item = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token)
-    line_items = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token).list
+    line_items = line_item.list
     @line_items = JSON.parse(line_items.body)
 
-    resource_id = 1
-    tag = "lti-advantage"
-    found = @line_items.find{ |li| li["tag"] == tag }
-    if found
-      result = line_item.update(
-        found["id"],
-        line_item.generate(
+    if ["200", "201"].include?(line_items.response.code)
+      resource_id = 1
+      tag = "lti-advantage"
+      found = @line_items.find{ |li| li["tag"] == tag }
+      if found
+        result = line_item.update(
+          found["id"],
+          line_item.generate(
+            label: "LTI Advantage test item",
+            max_score: 10,
+            resource_id: resource_id,
+            tag: tag,
+          )
+        )
+      else
+        result = line_item.create(line_item.generate(
           label: "LTI Advantage test item",
           max_score: 10,
           resource_id: resource_id,
           tag: tag,
-        )
-      )
+        ))
+      end
     else
-      result = line_item.create(line_item.generate(
-        label: "LTI Advantage test item",
-        max_score: 10,
-        resource_id: resource_id,
-        tag: tag,
-      ))
+      # There was an error and the line items API isn't available.
+      # For example the course might be closed.
     end
+
+    # Delete Line item
+    # @line_items.each do |li|
+    #   line_item.delete(li["id"])
+    # end
 
     names_and_roles_service = LtiAdvantage::Services::NamesAndRoles.new(current_application_instance, @lti_token)
     @names_and_roles = names_and_roles_service.list if names_and_roles_service.valid?

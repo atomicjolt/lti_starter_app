@@ -16,7 +16,7 @@ module LtiAdvantage
         {
           scoreMaximum: max_score,
           label: label,
-          #resourceId: resource_id,
+          resourceId: resource_id,
           tag: tag,
           # resourceLinkId: resource_link_id,
           # "startDateTime": "2018-03-06T20:05:02Z",

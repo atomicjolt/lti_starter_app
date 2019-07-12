@@ -53,10 +53,22 @@ export class Home extends React.Component {
     });
   }
 
+  renderErrors() {
+    return this.props.settings.line_items.errors.map((error) => {
+      return <li key={error.message}>{error.message}</li>;
+    });
+  }
+
   renderLineItems() {
-    if (!this.props.settings.line_items) {
-      return null;
+    if (this.props.settings.line_items.errors) {
+      return (
+        <div>
+          <h3>Errors:</h3>
+          <ul>{this.renderErrors()}</ul>
+        </div>
+      );
     }
+
     return this.props.settings.line_items.map((lineItem) => {
       return (
         <li key={`line_item${lineItem.id}`}>
@@ -79,7 +91,7 @@ export class Home extends React.Component {
             {nameAndRole.user_id}
             <img src={nameAndRole.picture} alt={nameAndRole.given_name} />
           </a>
-          <p>Name: {nameAndRole.name}</p>
+          <p>Name: {nameAndRole.name || 'Anonymous'}</p>
           <p>Email: {nameAndRole.email}</p>
           <p>Status: {nameAndRole.status}</p>
           <p>User Id:{nameAndRole.user_id}</p>
