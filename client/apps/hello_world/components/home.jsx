@@ -94,8 +94,24 @@ export class Home extends React.Component {
           <p>Name: {nameAndRole.name || 'Anonymous'}</p>
           <p>Email: {nameAndRole.email}</p>
           <p>Status: {nameAndRole.status}</p>
-          <p>User Id:{nameAndRole.user_id}</p>
+          <p>User Id:{nameAndRole.userId}</p>
           <p>Roles:{nameAndRole.roles.join(', ')}</p>
+        </li>
+      );
+    });
+  }
+
+  renderResults() {
+    if (!this.props.settings.line_item_results) {
+      return null;
+    }
+
+    return this.props.settings.line_item_results.map((result) => {
+      return (
+        <li key={`name_and_role_${result.id}`}>
+          <p>User: {result.userId}</p>
+          <p>Score: {result.resultScore}/{result.resultMaximum}</p>
+          <p>Comment: {result.comment}</p>
         </li>
       );
     });
@@ -136,6 +152,10 @@ export class Home extends React.Component {
         <h2>Line items:</h2>
         <ul style={{ textAlign: 'left' }}>
           { this.renderLineItems() }
+        </ul>
+        <h2>Results:</h2>
+        <ul style={{ textAlign: 'left' }}>
+          { this.renderResults() }
         </ul>
       </div>
     );

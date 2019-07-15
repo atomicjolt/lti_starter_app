@@ -16,9 +16,8 @@ class LtiLaunchesController < ApplicationController
     names_and_roles_example
     if line_item = line_item_example
       scores_example(line_item, @names_and_roles)
+      results_example(line_item)
     end
-
-    results_example
 
     setup_lti_response
   end
@@ -133,8 +132,10 @@ class LtiLaunchesController < ApplicationController
     end
   end
 
-  def results_example
-
+  def results_example(line_item)
+    results_service = LtiAdvantage::Services::Results.new(current_application_instance, @lti_token)
+    result = results_service.list(line_item["id"])
+    @line_item_results = JSON.parse(result)
   end
 
   def names_and_roles_example

@@ -1,5 +1,6 @@
 module LtiAdvantage
   module Services
+    # Canvas API docs https://canvas.instructure.com/doc/api/line_items.html
     class LineItems < LtiAdvantage::Services::Base
 
       def endpoint

@@ -35,6 +35,10 @@
       settings[:line_items] = @line_items
     end
 
+    if @line_item_results
+      settings[:line_item_results] = @line_item_results
+    end
+
     if @is_lti_launch
       settings[:oauth_consumer_key]                     = params[:oauth_consumer_key]
       settings[:lms_course_id]                          = params[:custom_canvas_course_id]
