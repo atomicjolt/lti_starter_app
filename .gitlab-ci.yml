@@ -1,0 +1,98 @@
+cache:
+  untracked: true
+  paths:
+    - vendor/ruby
+    - node_modules
+    - client/node_modules
+    - client/apps/admin/node_modules
+    - client/apps/hello_world/node_modules
+
+variables:
+  RAILS_ENV: test
+  POSTGRES_DB: nice_marmot
+
+linter:
+  image: atomicjolt/atomicjolt-ci:ruby-2.4.6--node-8.16.0--yarn-1.10.1
+  only:
+    - merge_requests
+  except:
+    - master
+  before_script:
+    - yarn
+    - ci/install-linter-deps.sh
+    - bundle install --path vendor
+    - "[[ ! -s \"$(git rev-parse --git-dir)/shallow\" ]] || git fetch --unshallow"
+  script:
+    - PRONTO_GITLAB_API_ENDPOINT=https://gitlab.com/api/v4/ bundle exec pronto run -r eslint_npm rubocop -f gitlab -c origin/master --exit-code
+
+rspec:
+  image: atomicjolt/atomicjolt-ci:ruby-2.4.6--node-8.16.0--yarn-1.10.1
+  only:
+    - master
+    - /.*\..*/
+    - merge_requests
+  services:
+    - postgres:9.5.0
+  before_script:
+    - cp config/secrets.example.yml config/secrets.yml
+    - cp config/ci.database.yml config/database.yml
+    - cp .env.example .env
+    - bundle install --path vendor
+    - bundle exec rails db:create
+    - bundle exec rails db:schema:load
+  script:
+    - bundle exec rspec
+
+jest:
+  image: atomicjolt/atomicjolt-ci:ruby-2.4.6--node-8.16.0--yarn-1.10.1
+  only:
+    - master
+    - /.*\..*/
+    - merge_requests
+  before_script:
+    - cp .env.example .env
+    - yarn
+  script:
+    - yarn test
+
+dependency_scanning:
+  image: docker:stable
+  tags:
+    - dind
+  only:
+    - master
+  variables:
+    DOCKER_DRIVER: overlay2
+  services:
+    - docker:stable-dind
+  script:
+    - export SP_VERSION=$(echo "$CI_SERVER_VERSION" | sed 's/^\([0-9]*\)\.\([0-9]*\).*/\1-\2-stable/')
+    - docker run
+        --env DEP_SCAN_DISABLE_REMOTE_CHECKS="${DEP_SCAN_DISABLE_REMOTE_CHECKS:-false}"
+        --volume "$PWD:/code"
+        --volume /var/run/docker.sock:/var/run/docker.sock
+        "registry.gitlab.com/gitlab-org/security-products/dependency-scanning:$SP_VERSION" /code
+  artifacts:
+    reports:
+      dependency_scanning: gl-dependency-scanning-report.json
+
+sast:
+  image: docker:stable
+  tags:
+    - dind
+  only:
+    - master
+  variables:
+    DOCKER_DRIVER: overlay2
+  services:
+    - docker:stable-dind
+  script:
+    - export SP_VERSION=$(echo "$CI_SERVER_VERSION" | sed 's/^\([0-9]*\)\.\([0-9]*\).*/\1-\2-stable/')
+    - docker run
+        --env SAST_CONFIDENCE_LEVEL="${SAST_CONFIDENCE_LEVEL:-3}"
+        --volume "$PWD:/code"
+        --volume /var/run/docker.sock:/var/run/docker.sock
+        "registry.gitlab.com/gitlab-org/security-products/sast:$SP_VERSION" /app/bin/run /code
+  artifacts:
+    reports:
+      sast: gl-sast-report.json

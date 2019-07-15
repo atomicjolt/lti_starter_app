@@ -3,6 +3,10 @@ require "rails_helper"
 RSpec.describe ImsExportJob, type: :job do
   include ActiveJob::TestHelper
 
+  before do
+    setup_application_instance
+  end
+
   after do
     clear_enqueued_jobs
   end
@@ -10,8 +14,6 @@ RSpec.describe ImsExportJob, type: :job do
   subject { ImsExportJob }
 
   let(:export) { create(:ims_export, payload: { lti_launches: [] }) }
-
-  let(:application_instance) { create(:application_instance) }
 
   let(:ims_export_params) do
     {
@@ -25,7 +27,7 @@ RSpec.describe ImsExportJob, type: :job do
 
   it "Collects the lti launches" do
     expect(export.payload["lti_launches"]).to_not include(lti_launch)
-    subject.perform_now(export, application_instance, ims_export_params.to_json)
+    subject.perform_now(export, @application_instance, ims_export_params.to_json)
     expect(export.payload["lti_launches"].count).to eq(1)
     ll = export.payload["lti_launches"].first
     expect(ll["token"]).to include(lti_launch.token)
@@ -33,7 +35,7 @@ RSpec.describe ImsExportJob, type: :job do
 
   it "Updates the status" do
     expect do
-      subject.perform_now(export, application_instance, ims_export_params.to_json)
+      subject.perform_now(export, @application_instance, ims_export_params.to_json)
     end.to change(export, :status).to(ImsExport::COMPLETED)
   end
 end

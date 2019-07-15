@@ -8,7 +8,7 @@ RSpec.describe Api::ImsImportsController, type: :controller do
   end
 
   before do
-    setup_application_and_instance
+    setup_application_instance
     tool_consumer_instance_guid = "4MRcxnx6vQbFXxhLb8005m5WXFM2Z2i8lQwhJ1QT:canvas-lms"
     initial_context_id = "a07291ea2fa1315059ed3bf0135a336d1eebe057"
     @import_context_id = "3155b3a04eba69bc0e52b987d3ffc465156daded"
