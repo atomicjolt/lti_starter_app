@@ -8,5 +8,8 @@ module LtiAdvantage
 
     class NamesAndRolesError < StandardError
     end
+
+    class ScoreError < StandardError
+    end
   end
 end

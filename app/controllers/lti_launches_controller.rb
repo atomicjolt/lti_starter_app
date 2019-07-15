@@ -13,45 +13,12 @@ class LtiLaunchesController < ApplicationController
       render file: File.join(Rails.root, "public", "disabled.html")
     end
 
-    # Line item is currently available in production Canvas
-    line_item = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token)
-    line_items = line_item.list
-    @line_items = JSON.parse(line_items.body)
-
-    if ["200", "201"].include?(line_items.response.code)
-      resource_id = 1
-      tag = "lti-advantage"
-      found = @line_items.find{ |li| li["tag"] == tag }
-      if found
-        result = line_item.update(
-          found["id"],
-          line_item.generate(
-            label: "LTI Advantage test item",
-            max_score: 10,
-            resource_id: resource_id,
-            tag: tag,
-          )
-        )
-      else
-        result = line_item.create(line_item.generate(
-          label: "LTI Advantage test item",
-          max_score: 10,
-          resource_id: resource_id,
-          tag: tag,
-        ))
-      end
-    else
-      # There was an error and the line items API isn't available.
-      # For example the course might be closed.
+    names_and_roles_example
+    if line_item = line_item_example
+      scores_example(line_item, @names_and_roles)
     end
 
-    # Delete Line item
-    # @line_items.each do |li|
-    #   line_item.delete(li["id"])
-    # end
-
-    names_and_roles_service = LtiAdvantage::Services::NamesAndRoles.new(current_application_instance, @lti_token)
-    @names_and_roles = names_and_roles_service.list if names_and_roles_service.valid?
+    results_example
 
     setup_lti_response
   end
@@ -97,6 +64,82 @@ class LtiLaunchesController < ApplicationController
       @canvas_auth_required = true
     end
     set_lti_launch_values
+  end
+
+  def line_item_example
+    # Line item is currently available in production Canvas
+    line_item = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token)
+    line_items = line_item.list
+    @line_items = JSON.parse(line_items.body)
+
+    resource_id = 1
+    tag = "lti-advantage"
+    external_tool_url = "https://#{current_application_instance.domain}/lti_launches"
+
+    delete_items = false
+
+    if ["200", "201"].include?(line_items.response.code)
+      if delete_items
+        # Delete Line items
+        @line_items.each do |li|
+          line_item.delete(li["id"])
+        end
+        found = false
+      else
+        found = @line_items.find{ |li| li["tag"] == tag }
+      end
+
+      line_item_attrs = line_item.generate(
+        label: "LTI Advantage test item #{Time.now.utc}",
+        max_score: 10,
+        resource_id: resource_id,
+        tag: tag,
+        start_date_time: Time.now.utc - 1.day,
+        end_date_time: Time.now.utc + 45.days,
+        external_tool_url: external_tool_url,
+      )
+
+      if found
+        result = line_item.update(found["id"], line_item_attrs)
+      else
+        result = line_item.create(line_item_attrs)
+      end
+      JSON.parse(result.body)
+    else
+      # There was an error and the line items API isn't available.
+      # For example the course might be closed. These errors will be
+      # rendered on the client
+    end
+  end
+
+  def scores_example(line_item, names_and_roles)
+    return unless names_and_roles.present?
+    score_service = LtiAdvantage::Services::Score.new(current_application_instance, @lti_token)
+    score_service.id = line_item["id"]
+    names_and_roles["members"].map do |name_role|
+      in_role = (name_role["roles"] & [LtiAdvantage::Definitions::STUDENT_SCOPE, LtiAdvantage::Definitions::LEARNER_SCOPE]).length > 0
+      if in_role && name_role["status"] == "Active"
+        score = score_service.generate(
+          user_id: name_role["user_id"],
+          score: 10,
+          max_score: line_item["scoreMaximum"],
+          comment: "Great job",
+          activity_progress: "Completed",
+          grading_progress: "FullyGraded",
+        )
+        result = score_service.send(score)
+        JSON.parse(result.body)
+      end
+    end
+  end
+
+  def results_example
+
+  end
+
+  def names_and_roles_example
+    names_and_roles_service = LtiAdvantage::Services::NamesAndRoles.new(current_application_instance, @lti_token)
+    @names_and_roles = names_and_roles_service.list if names_and_roles_service.valid?
   end
 
 end

@@ -2,30 +2,39 @@ module LtiAdvantage
   module Services
     class LineItems < LtiAdvantage::Services::Base
 
-      def valid?
-      end
-
       def endpoint
         url = @lti_token.dig(LtiAdvantage::Definitions::AGS_CLAIM, "lineitems")
         raise LtiAdvantage::Exceptions:LineItemError, "Unable to access line items" unless url.present?
         url
       end
 
-      # Generate a default set of attributes
-      def generate(label:, max_score:, resource_id: nil, tag: nil, resource_link_id: nil)
-        {
+      # Helper method to generate a default set of attributes
+      def generate(
+        label:,
+        max_score:,
+        start_date_time:,
+        end_date_time:,
+        resource_id: nil,
+        tag: nil,
+        resource_link_id: nil,
+        external_tool_url: nil
+      )
+        attrs = {
           scoreMaximum: max_score,
           label: label,
           resourceId: resource_id,
           tag: tag,
-          # resourceLinkId: resource_link_id,
-          # "startDateTime": "2018-03-06T20:05:02Z",
-          # "endDateTime": "2018-04-06T22:05:03Z",
-          # "https://canvas.instructure.com/lti/submission_type": {
-          #   "type": "external_tool",
-          #   "external_tool_url": "https://my.launch.url"
-          # }
+          startDateTime: start_date_time,
+          endDateTime: end_date_time,
         }
+        attrs["resourceLinkId"] = resource_link_id if resource_link_id
+        if external_tool_url
+          attrs["https://canvas.instructure.com/lti/submission_type"] = {
+            type: "external_tool",
+            external_tool_url: external_tool_url,
+          }
+        end
+        attrs
       end
 
       # List line items
