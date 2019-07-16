@@ -157,7 +157,7 @@ applications = [
         oidc_url: "https://dev1.sakaicloud.com/imsoidc/lti13/oidc_auth",
       },
       {
-        #IMS Global Reference application
+        # IMS Global Reference application
         iss: "https://lti-ri.imsglobal.org",
         client_id: "ims-client-1000",
         jwks_url: "https://lti-ri.imsglobal.org/platforms/275/platform_keys/269.json",
@@ -171,7 +171,7 @@ applications = [
         jwks_url: "https://developer.blackboard.com/api/v1/management/applications/1c81ada8-3fc4-4c09-aa2c-f7195dd019d9/jwks.json",
         token_url: "https://developer.blackboard.com/api/v1/gateway/oauth2/jwttoken",
         oidc_url: "https://blackboard.com/",
-      }
+      },
     ],
 
     application_instances: [
@@ -205,8 +205,8 @@ applications = [
           {
             # IMS Global reference app
             deployment_id: "deployment1",
-          }
-        ]
+          },
+        ],
       },
     ],
   }
@@ -243,13 +243,11 @@ def setup_application_instances(application, application_instances)
       application_instance = application.application_instances.create!(attrs)
     end
 
-    if lti_deployment_attrs
-      lti_deployment_attrs.each do |lti_deployment_attrs|
-        if found = application_instance.lti_deployments.find_by(deployment_id: lti_deployment_attrs[:deployment_id])
-          found.update_attributes!(lti_deployment_attrs)
-        else
-          application_instance.lti_deployments.create!(lti_deployment_attrs)
-        end
+    lti_deployment_attrs&.each do |lti_deployment_attrs|
+      if found = application_instance.lti_deployments.find_by(deployment_id: lti_deployment_attrs[:deployment_id])
+        found.update_attributes!(lti_deployment_attrs)
+      else
+        application_instance.lti_deployments.create!(lti_deployment_attrs)
       end
     end
 
@@ -291,18 +289,17 @@ if Apartment::Tenant.current == "public"
     end
     setup_application_instances(application, application_instances)
 
-    if lti_installs_attrs
-      lti_installs_attrs.each do |lti_install_attrs|
-        if lti_install = application.lti_installs.find_by(
-          iss: lti_install_attrs[:iss],
-          client_id: lti_install_attrs[:client_id],
-        )
-          lti_install.update_attributes!(lti_install_attrs)
-        else
-          application.lti_installs.create!(lti_install_attrs)
-        end
+    lti_installs_attrs&.each do |lti_install_attrs|
+      if lti_install = application.lti_installs.find_by(
+        iss: lti_install_attrs[:iss],
+        client_id: lti_install_attrs[:client_id],
+      )
+        lti_install.update_attributes!(lti_install_attrs)
+      else
+        application.lti_installs.create!(lti_install_attrs)
       end
     end
+
   end
 
   bundles.each do |attrs|
@@ -339,5 +336,6 @@ end
 
 ## Use this to update all the application instances
 ApplicationInstance.for_tenant(Apartment::Tenant.current).find_each do |ai|
+  puts "Creatd jwk for application instance: #{ai.lti_key}"
   Jwk.create!
 end

@@ -43,20 +43,23 @@ class ApplicationInstance < ApplicationRecord
   def self.by_client_and_deployment(client_id, deployment_id, iss, canvas_url)
     LtiInstall.joins(:applications).joins(:application_instances).joins(:lti_deployments)
     if lti_install = LtiInstall.find_by(client_id: client_id, iss: iss)
-      application_instances = lti_install.application.application_instances
-        .joins(:lti_deployments)
-        .where("lti_deployments.deployment_id =?", deployment_id)
+      application_instances = lti_install.application.application_instances.
+        joins(:lti_deployments).
+        where("lti_deployments.deployment_id =?", deployment_id)
+
       # There should only be one that matches
-      if application_instance = application_instances.first
-        application_instance
-      else
+      application_instance = application_instances.first
+
+      if application_instance.blank?
+        # Create a new application instance for the deployment id
         site = Site.find_by(url: canvas_url)
         # Create a new application instance and lti_deployment
         lti_key = "#{site.key}-#{lti_install.application.key}-#{deployment_id}"
         application_instance = lti_install.application.create_instance(site: site, lti_key: lti_key)
         application_instance.lti_deployments.create!(deployment_id: deployment_id)
-        application_instance
       end
+
+      application_instance
     end
   end
 
@@ -87,11 +90,13 @@ class ApplicationInstance < ApplicationRecord
   def key(application_key_override = nil)
     return lti_key if lti_key.present?
     return "" if site.blank? || application.blank?
+
     "#{site.key}-#{application_key_override || application.key}"
   end
 
   def canvas_token_preview
     return nil if canvas_token.nil?
+
     "#{canvas_token.first(4)}...#{canvas_token.last(4)}"
   end
 

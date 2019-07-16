@@ -58,7 +58,7 @@ module LtiAdvantage
       end
 
       def update(line_item_url, attrs)
-        HTTParty.put(line_item_url, headers: headers)
+        HTTParty.put(line_item_url, body: attrs, headers: headers)
       end
 
       def delete(line_item_url)

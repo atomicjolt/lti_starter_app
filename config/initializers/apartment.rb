@@ -105,7 +105,6 @@ PAYLOAD = 0
 HEADER = 1
 
 Rails.application.config.middleware.insert_before Warden::Manager, Apartment::Elevators::Generic, lambda { |request|
-
   if application_instance = LtiAdvantage::Authorization.application_instance_from_token(request.params["id_token"])
     return application_instance.tenant
   end

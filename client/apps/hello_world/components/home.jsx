@@ -135,8 +135,9 @@ export class Home extends React.Component {
   render() {
     const content = displayCanvasAuth(
       this.props.settings,
-      this.props.canvasReAuthorizationRequired) ||
-      this.renderContent();
+      this.props.canvasReAuthorizationRequired
+    ) || this.renderContent();
+
     return (
       <div>
         { content }

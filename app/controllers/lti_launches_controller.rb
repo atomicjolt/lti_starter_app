@@ -15,6 +15,7 @@ class LtiLaunchesController < ApplicationController
 
     if LtiAdvantage::Definitions.deep_link_launch?(@lti_token)
       # Handle deep link request
+
     else
       # Examples demonstrating LTI Advantage services
       names_and_roles_example

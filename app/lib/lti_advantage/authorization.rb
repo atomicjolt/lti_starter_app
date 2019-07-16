@@ -20,7 +20,7 @@ module LtiAdvantage
       # Use that value to figure out which jwk we should use.
       decoded_token = JWT.decode(token, nil, false)
       iss = decoded_token.dig(0, "iss")
-      jwk_loader = ->(options) do
+      jwk_loader = ->(_options) do
         JSON.parse(HTTParty.get(application_instance.application.jwks_url(iss)).body).deep_symbolize_keys
       end
       lti_token, _keys = JWT.decode(token, nil, true, { algorithms: ["RS256"], jwks: jwk_loader})
@@ -29,8 +29,8 @@ module LtiAdvantage
 
     def self.client_assertion(application_instance, lti_token)
       # https://www.imsglobal.org/spec/lti/v1p3/#token-endpoint-claim-and-services
-      # When requesting an access token, the client assertion JWT iss and sub must both be the OAuth 2 client_id of the tool as
-      # issued by the learning platform during registration.
+      # When requesting an access token, the client assertion JWT iss and sub must both be the
+      # OAuth 2 client_id of the tool as issued by the learning platform during registration.
       # Additional information:
       # https://www.imsglobal.org/spec/security/v1p0/#using-json-web-tokens-with-oauth-2-0-client-credentials-grant
       client_id = application_instance.application.client_id(lti_token["iss"])
@@ -39,7 +39,8 @@ module LtiAdvantage
         sub: client_id, # "client_id" of the OAuth Client
         aud: application_instance.token_url(lti_token["iss"]), # Authorization server identifier
         iat: Time.now.to_i, # Timestamp for when the JWT was created
-        exp: Time.now.to_i + 300, # Timestamp for when the JWT should be treated as having expired (after allowing a margin for clock skew)
+        exp: Time.now.to_i + 300, # Timestamp for when the JWT should be treated as having expired
+                                  # (after allowing a margin for clock skew)
         jti: SecureRandom.hex(10), # A unique (potentially reusable) identifier for the token
       }
       jwk = application_instance.application.current_jwk
@@ -53,7 +54,7 @@ module LtiAdvantage
         grant_type: "client_credentials",
         client_assertion_type: "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
         scope: LtiAdvantage::Definitions::scopes.join(" "),
-        client_assertion: client_assertion(application_instance, lti_token)
+        client_assertion: client_assertion(application_instance, lti_token),
       }
       headers = {
         "Content-Type" => "application/x-www-form-urlencoded",

@@ -10,7 +10,7 @@ module LtiAdvantage
       def headers(options = {})
         @token ||= LtiAdvantage::Authorization.request_token(@application_instance, @lti_token)
         {
-          "Authorization" => "Bearer #{@token["access_token"]}",
+          "Authorization" => "Bearer #{@token['access_token']}",
         }.merge(options)
       end
 
