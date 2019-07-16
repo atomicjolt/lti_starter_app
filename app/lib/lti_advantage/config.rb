@@ -31,7 +31,7 @@
 module LtiAdvantage
   class Config
     # Converts old lti into lti advantage
-    def self.lti_to_lti_advantage(jwk, domain, args = {})
+    def self.lti_to_lti_advantage(jwk, _domain, args = {})
       raise ::Exceptions::LtiConfigMissing, "Please provide an LTI launch url" if args[:launch_url].blank?
       raise ::Exceptions::LtiConfigMissing, "Please provide an LTI secure launch url" if args[:secure_launch_url].blank?
 
@@ -41,29 +41,29 @@ module LtiAdvantage
       end
 
       {
-         title: args[:title],
-         scopes: LtiAdvantage::Definitions::scopes,
-         extensions: [],
-         icon: icon(args),
-         target_link_uri: args[:launch_url],
-         oidc_initiation_url: "#{args[:launch_url]}/init",
-         public_jwk: jwk.to_json,
-         description: args[:description],
-         extensions: [
-            {
-               "platform": "canvas.instructure.com",
-               "domain": "https://{domain}",
-               "tool_id": "helloworld",
-               "settings": {
-                 "privacy_level": "public",
-                 "text": "LTI Advantage Starter",
-                 "icon_url": "https://{domain}/atomicjolt.png",
-                 "selection_width": 500,
-                 "selection_height": 500,
-                 "placements": placements,
-               }
-            }
-         ],
+        title: args[:title],
+        scopes: LtiAdvantage::Definitions::scopes,
+        extensions: [],
+        icon: icon(args),
+        target_link_uri: args[:launch_url],
+        oidc_initiation_url: "#{args[:launch_url]}/init",
+        public_jwk: jwk.to_json,
+        description: args[:description],
+        extensions: [
+          {
+            "platform": "canvas.instructure.com",
+            "domain": "https://{domain}",
+            "tool_id": "helloworld",
+            "settings": {
+              "privacy_level": "public",
+              "text": "LTI Advantage Starter",
+              "icon_url": "https://{domain}/atomicjolt.png",
+              "selection_width": 500,
+              "selection_height": 500,
+              "placements": placements,
+            },
+          },
+        ],
       }
     end
 
@@ -100,8 +100,6 @@ module LtiAdvantage
     def self.icon(args)
       if args[:icon].present?
         args[:icon].include?("http") ? args[:icon] : "https://#{args[:domain]}/#{args[:icon]}"
-      else
-        nil
       end
     end
 

@@ -19,8 +19,9 @@ module LtiAdvantage
 
     def name
       return "anonymous" if @application_instance.anonymous?
+
       @lti_token["name"] ||
-        "#{@lti_token["given_name"]} #{@lti_token["family_name"]}" ||
+        "#{@lti_token['given_name']} #{@lti_token['family_name']}" ||
         @lti_token["email"]
     end
 
@@ -83,12 +84,13 @@ module LtiAdvantage
     end
 
     def _domain_for_email
-      @lti_token.dig(LtiAdvantage::Definitions::CUSTOM_CLAIM, "canvas_api_domain") || Rails.application.secrets.application_main_domain
+      @lti_token.dig(LtiAdvantage::Definitions::CUSTOM_CLAIM, "canvas_api_domain") ||
+        Rails.application.secrets.application_main_domain
     end
 
     def _lti_provider
       UrlHelper.safe_host(
-        @lti_token.dig(LtiAdvantage::Definitions::LAUNCH_PRESENTATION, "return_url")
+        @lti_token.dig(LtiAdvantage::Definitions::LAUNCH_PRESENTATION, "return_url"),
       )
     end
 

@@ -209,7 +209,7 @@ applications = [
         ],
       },
     ],
-  }
+  },
 ]
 
 def setup_application_instances(application, application_instances)
@@ -243,11 +243,11 @@ def setup_application_instances(application, application_instances)
       application_instance = application.application_instances.create!(attrs)
     end
 
-    lti_deployment_attrs&.each do |lti_deployment_attrs|
-      if found = application_instance.lti_deployments.find_by(deployment_id: lti_deployment_attrs[:deployment_id])
-        found.update_attributes!(lti_deployment_attrs)
+    lti_deployment_attrs&.each do |lti_deployment_attr|
+      if found = application_instance.lti_deployments.find_by(deployment_id: lti_deployment_attr[:deployment_id])
+        found.update_attributes!(lti_deployment_attr)
       else
-        application_instance.lti_deployments.create!(lti_deployment_attrs)
+        application_instance.lti_deployments.create!(lti_deployment_attr)
       end
     end
 
@@ -299,7 +299,6 @@ if Apartment::Tenant.current == "public"
         application.lti_installs.create!(lti_install_attrs)
       end
     end
-
   end
 
   bundles.each do |attrs|

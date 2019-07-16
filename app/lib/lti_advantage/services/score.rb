@@ -8,7 +8,7 @@ module LtiAdvantage
       def endpoint
         if id.blank?
           raise ::LtiAdvantage::Exceptions::ScoreError,
-            "Invalid id or no id provided. Unable to access scores. id should be in the form of a url."
+                "Invalid id or no id provided. Unable to access scores. id should be in the form of a url."
         end
         "#{id}/scores"
       end
