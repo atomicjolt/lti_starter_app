@@ -3,6 +3,7 @@ module Concerns
     extend ActiveSupport::Concern
 
     protected
+
     def build_response(state, params, nonce)
       # The request doesn't contain any information to help us find the right application instance
       # so we have to use predefined URLs
@@ -18,7 +19,7 @@ module Concerns
         login_hint: params[:login_hint],
         prompt: "none",
         lti_message_hint: params[:lti_message_hint],
-        nonce: nonce
+        nonce: nonce,
       }.merge(uri_params)
       uri.fragment = uri.query = nil
       [uri.to_s, "?", auth_params.to_query].join

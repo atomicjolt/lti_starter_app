@@ -126,7 +126,9 @@ class LtiLaunchesController < ApplicationController
     score_service = LtiAdvantage::Services::Score.new(current_application_instance, @lti_token)
     score_service.id = line_item["id"]
     names_and_roles["members"].map do |name_role|
-      in_role = !(name_role["roles"] & [LtiAdvantage::Definitions::STUDENT_SCOPE, LtiAdvantage::Definitions::LEARNER_SCOPE]).empty?
+      in_role = !(name_role["roles"] &
+        [LtiAdvantage::Definitions::STUDENT_SCOPE, LtiAdvantage::Definitions::LEARNER_SCOPE]).empty?
+
       if in_role && name_role["status"] == "Active"
         score = score_service.generate(
           user_id: name_role["user_id"],
