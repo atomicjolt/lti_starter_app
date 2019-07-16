@@ -13,6 +13,7 @@ class LtiLaunchesController < ApplicationController
       render file: File.join(Rails.root, "public", "disabled.html")
     end
 
+    # Examples demonstrating LTI Advantage services
     names_and_roles_example
     if line_item = line_item_example
       scores_example(line_item, @names_and_roles)
@@ -65,8 +66,9 @@ class LtiLaunchesController < ApplicationController
     set_lti_launch_values
   end
 
+  # This method demonstrates create, delete and update of line items using
+  # LtiAdvantage::Services::LineItems
   def line_item_example
-    # Line item is currently available in production Canvas
     line_item = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token)
     line_items = line_item.list
     @line_items = JSON.parse(line_items.body)
@@ -111,6 +113,8 @@ class LtiLaunchesController < ApplicationController
     end
   end
 
+  # This example demonstrates writing scores back to the platform using the
+  # LtiAdvantage::Services::Score class
   def scores_example(line_item, names_and_roles)
     return unless names_and_roles.present?
     score_service = LtiAdvantage::Services::Score.new(current_application_instance, @lti_token)
@@ -132,16 +136,19 @@ class LtiLaunchesController < ApplicationController
     end
   end
 
+  # This example demonstrates reading scores from the platform using the
+  # LtiAdvantage::Services::Results class
   def results_example(line_item)
     results_service = LtiAdvantage::Services::Results.new(current_application_instance, @lti_token)
     result = results_service.list(line_item["id"])
     @line_item_results = JSON.parse(result)
   end
 
+  # This example demonstrates reading names and roles from the platform using the
+  # LtiAdvantage::Services::NamesAndRoles class
   def names_and_roles_example
     names_and_roles_service = LtiAdvantage::Services::NamesAndRoles.new(current_application_instance, @lti_token)
     @names_and_roles = names_and_roles_service.list if names_and_roles_service.valid?
   end
-
 end
 

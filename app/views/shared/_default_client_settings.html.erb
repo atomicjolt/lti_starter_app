@@ -27,14 +27,17 @@
       settings[:lti_launch_config] = @lti_launch.config
     end
 
+    # Example of LTI Advantage name and role service:
     if @names_and_roles
       settings[:names_and_roles] = @names_and_roles
     end
 
+    # Example of LTI Advantage line item service:
     if @line_items
       settings[:line_items] = @line_items
     end
 
+    # Example of LTI Advantage name and score service:
     if @line_item_results
       settings[:line_item_results] = @line_item_results
     end
