@@ -13,11 +13,15 @@ class LtiLaunchesController < ApplicationController
       render file: File.join(Rails.root, "public", "disabled.html")
     end
 
-    # Examples demonstrating LTI Advantage services
-    names_and_roles_example
-    if line_item = line_item_example
-      scores_example(line_item, @names_and_roles)
-      results_example(line_item)
+    if LtiAdvantage::Definitions.deep_link_launch?(@lti_token)
+      # Handle deep link request
+    else
+      # Examples demonstrating LTI Advantage services
+      names_and_roles_example
+      if line_item = line_item_example
+        scores_example(line_item, @names_and_roles)
+        results_example(line_item)
+      end
     end
 
     setup_lti_response

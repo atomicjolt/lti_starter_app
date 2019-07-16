@@ -66,5 +66,27 @@ module LtiAdvantage
     CANVAS_BETA_AUTH_TOKEN_URL = "https://canvas.beta.instructure.com/login/oauth2/token"
     CANVAS_BETA_OIDC_URL = "https://canvas.beta.instructure.com/api/lti/authorize_redirect"
 
+    def self.lms_url(payload)
+      if self.deep_link_launch?(payload)
+        "https://#{URI.parse(payload[LtiAdvantage::Definitions::DEEP_LINKING_CLAIM]["deep_link_return_url"]).host}"
+      else
+        "https://#{URI.parse(payload[LtiAdvantage::Definitions::LAUNCH_PRESENTATION]["return_url"]).host}"
+      end
+    end
+
+    def self.deep_link_launch?(jwt_body)
+      jwt_body[LtiAdvantage::Definitions::MESSAGE_TYPE] == "LtiDeepLinkingRequest"
+    end
+
+    def self.names_and_roles_launch?(jwt_body)
+      return false unless jwt_body[LtiAdvantage::Definitions::NAMES_AND_ROLES_CLAIM]
+      jwt_body[LtiAdvantage::Definitions::NAMES_AND_ROLES_CLAIM]["service_versions"] ==
+        LtiAdvantage::Definitions::NAMES_AND_ROLES_SERVICE_VERSIONS
+    end
+
+    def self.assignment_and_grades_launch?(jwt_body)
+      jwt_body[LtiAdvantage::Definitions::AGS_CLAIM]
+    end
+
   end
 end

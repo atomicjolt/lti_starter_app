@@ -7,10 +7,10 @@ module LtiAdvantage
       payload = decoded_token[PAYLOAD]
       client_id = payload["aud"]
       iss = payload["iss"]
-      canvas_url = "https://#{URI.parse(payload[LtiAdvantage::Definitions::LAUNCH_PRESENTATION]["return_url"]).host}"
       deployment_id = payload[LtiAdvantage::Definitions::DEPLOYMENT_ID]
       if client_id && deployment_id && iss
-        ApplicationInstance.by_client_and_deployment(client_id, deployment_id, iss, canvas_url)
+        lms_url = LtiAdvantage::Definitions.lms_url(payload)
+        ApplicationInstance.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
       end
     end
 

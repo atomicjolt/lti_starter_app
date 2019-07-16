@@ -5,7 +5,7 @@ module LtiAdvantage
 
       def endpoint
         url = @lti_token.dig(LtiAdvantage::Definitions::AGS_CLAIM, "lineitems")
-        raise LtiAdvantage::Exceptions:LineItemError, "Unable to access line items" unless url.present?
+        raise LtiAdvantage::Exceptions::LineItemError, "Unable to access line items" unless url.present?
         url
       end
 

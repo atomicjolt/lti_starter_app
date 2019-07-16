@@ -42,63 +42,61 @@ export class Home extends React.Component {
       return null;
     }
 
-    return this.props.courses.map((course) => {
-      return (
-        <li key={`course_${course.id}`}>
-          <a target="_top" href={`${this.props.settings.canvas_url}/courses/${course.id}`}>
-            {course.name}
-          </a>
-        </li>
-      );
-    });
+    return this.props.courses.map(course =>
+      <li key={`course_${course.id}`}>
+        <a target="_top" href={`${this.props.settings.canvas_url}/courses/${course.id}`}>
+          {course.name}
+        </a>
+      </li>
+    );
   }
 
-  renderErrors() {
-    return this.props.settings.line_items.errors.map((error) => {
-      return <li key={error.message}>{error.message}</li>;
-    });
+  renderLineItemErrors() {
+    return this.props.settings.line_items.errors.map(error =>
+      <li key={error.message}>{error.message}</li>
+    );
   }
 
   renderLineItems() {
+    if (!this.props.settings.line_items) {
+      return null;
+    }
+
     if (this.props.settings.line_items.errors) {
       return (
         <div>
           <h3>Errors:</h3>
-          <ul>{this.renderErrors()}</ul>
+          <ul>{this.renderLineItemErrors()}</ul>
         </div>
       );
     }
 
-    return this.props.settings.line_items.map((lineItem) => {
-      return (
-        <li key={`line_item${lineItem.id}`}>
-          <a href={lineItem.id}>
-            {lineItem.label} ({lineItem.scoreMaximum})
-          </a>
-        </li>
-      );
-    });
+    return this.props.settings.line_items.map(lineItem =>
+      <li key={`line_item${lineItem.id}`}>
+        <a href={lineItem.id}>
+          {lineItem.label} ({lineItem.scoreMaximum})
+        </a>
+      </li>
+    );
   }
 
   renderUsers() {
     if (!this.props.settings.names_and_roles) {
       return null;
     }
-    return this.props.settings.names_and_roles.members.map((nameAndRole) => {
-      return (
-        <li key={`name_and_role_${nameAndRole.user_id}`}>
-          <a target="_top" href={`${this.props.settings.canvas_url}/courses/${nameAndRole.id}`}>
-            {nameAndRole.user_id}
-            <img src={nameAndRole.picture} alt={nameAndRole.given_name} />
-          </a>
-          <p>Name: {nameAndRole.name || 'Anonymous'}</p>
-          <p>Email: {nameAndRole.email}</p>
-          <p>Status: {nameAndRole.status}</p>
-          <p>User Id:{nameAndRole.userId}</p>
-          <p>Roles:{nameAndRole.roles.join(', ')}</p>
-        </li>
-      );
-    });
+    return this.props.settings.names_and_roles.members.map(nameAndRole =>
+      <li key={`name_and_role_${nameAndRole.user_id}`}>
+        <a target="_top" href={`${this.props.settings.canvas_url}/courses/${nameAndRole.id}`}>
+          {nameAndRole.user_id}
+          <img src={nameAndRole.picture} alt={nameAndRole.given_name} />
+        </a>
+        <p>Name: {nameAndRole.name || 'Anonymous'}</p>
+        <p>Email: {nameAndRole.email}</p>
+        <p>Status: {nameAndRole.status}</p>
+        <p>User Id:{nameAndRole.userId}</p>
+        <p>Roles:{nameAndRole.roles.join(', ')}</p>
+      </li>
+    );
   }
 
   renderResults() {
@@ -106,15 +104,13 @@ export class Home extends React.Component {
       return null;
     }
 
-    return this.props.settings.line_item_results.map((result) => {
-      return (
-        <li key={`name_and_role_${result.id}`}>
-          <p>User: {result.userId}</p>
-          <p>Score: {result.resultScore}/{result.resultMaximum}</p>
-          <p>Comment: {result.comment}</p>
-        </li>
-      );
-    });
+    return this.props.settings.line_item_results.map(result =>
+      <li key={`name_and_role_${result.id}`}>
+        <p>User: {result.userId}</p>
+        <p>Score: {result.resultScore}/{result.resultMaximum}</p>
+        <p>Comment: {result.comment}</p>
+      </li>
+    );
   }
 
   renderContent() {
