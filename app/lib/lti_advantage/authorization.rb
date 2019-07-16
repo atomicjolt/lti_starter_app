@@ -3,6 +3,7 @@ module LtiAdvantage
 
     def self.application_instance_from_token(token)
       return unless token
+
       decoded_token = JWT.decode(token, nil, false)
       payload = decoded_token[PAYLOAD]
       client_id = payload["aud"]
@@ -23,7 +24,7 @@ module LtiAdvantage
       jwk_loader = ->(_options) do
         JSON.parse(HTTParty.get(application_instance.application.jwks_url(iss)).body).deep_symbolize_keys
       end
-      lti_token, _keys = JWT.decode(token, nil, true, { algorithms: ["RS256"], jwks: jwk_loader})
+      lti_token, _keys = JWT.decode(token, nil, true, { algorithms: ["RS256"], jwks: jwk_loader })
       lti_token
     end
 
@@ -40,7 +41,7 @@ module LtiAdvantage
         aud: application_instance.token_url(lti_token["iss"]), # Authorization server identifier
         iat: Time.now.to_i, # Timestamp for when the JWT was created
         exp: Time.now.to_i + 300, # Timestamp for when the JWT should be treated as having expired
-                                  # (after allowing a margin for clock skew)
+        # (after allowing a margin for clock skew)
         jti: SecureRandom.hex(10), # A unique (potentially reusable) identifier for the token
       }
       jwk = application_instance.application.current_jwk

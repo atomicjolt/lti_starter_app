@@ -79,9 +79,8 @@ class Application < ApplicationRecord
     if lti_install = lti_installs.find_by(iss: iss)
       lti_install
     else
-      byebug
       raise LtiAdvantage::Exceptions::ConfigurationError,
-        "Unable to matching LTI install for application #{name} and iss: #{iss}. Check the lti_installs table to make sure there's an entry."
+            "Unable to matching LTI install for application #{name} and iss: #{iss}. Check the lti_installs table to make sure there's an entry."
     end
   end
 

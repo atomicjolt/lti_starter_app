@@ -5,7 +5,6 @@ module LtiAdvantage
     DEPLOYMENT_ID = "https://purl.imsglobal.org/spec/lti/claim/deployment_id".freeze
     MESSAGE_TYPE = "https://purl.imsglobal.org/spec/lti/claim/message_type".freeze
 
-
     # Claims
     CONTEXT_CLAIM = "https://purl.imsglobal.org/spec/lti/claim/context".freeze
     RESOURCE_LINK_CLAIM = "https://purl.imsglobal.org/spec/lti/claim/resource_link".freeze
@@ -28,7 +27,7 @@ module LtiAdvantage
     CONTENT_ITEM_CLAIM = "https://purl.imsglobal.org/spec/lti-dl/claim/content_items".freeze
     NAMES_AND_ROLES_CLAIM = "https://purl.imsglobal.org/spec/lti-nrps/claim/namesroleservice".freeze
 
-    NAMES_AND_ROLES_SERVICE_VERSIONS = ["2.0"]
+    NAMES_AND_ROLES_SERVICE_VERSIONS = ["2.0"].freeze
 
     CALIPER_CLAIM = "https://purl.imsglobal.org/spec/lti-ces/claim/caliper-endpoint-service".freeze
 
@@ -54,7 +53,7 @@ module LtiAdvantage
         AGS_SCOPE_LINE_ITEM,
         AGS_SCOPE_RESULT,
         AGS_SCOPE_SCORE,
-        NAMES_AND_ROLES_SCOPE
+        NAMES_AND_ROLES_SCOPE,
       ]
     end
 
@@ -67,10 +66,10 @@ module LtiAdvantage
     CANVAS_BETA_OIDC_URL = "https://canvas.beta.instructure.com/api/lti/authorize_redirect".freeze
 
     def self.lms_url(payload)
-      if self.deep_link_launch?(payload)
-        "https://#{URI.parse(payload[LtiAdvantage::Definitions::DEEP_LINKING_CLAIM]["deep_link_return_url"]).host}"
+      if deep_link_launch?(payload)
+        "https://#{URI.parse(payload[LtiAdvantage::Definitions::DEEP_LINKING_CLAIM]['deep_link_return_url']).host}"
       else
-        "https://#{URI.parse(payload[LtiAdvantage::Definitions::LAUNCH_PRESENTATION]["return_url"]).host}"
+        "https://#{URI.parse(payload[LtiAdvantage::Definitions::LAUNCH_PRESENTATION]['return_url']).host}"
       end
     end
 
@@ -80,6 +79,7 @@ module LtiAdvantage
 
     def self.names_and_roles_launch?(jwt_body)
       return false unless jwt_body[LtiAdvantage::Definitions::NAMES_AND_ROLES_CLAIM]
+
       jwt_body[LtiAdvantage::Definitions::NAMES_AND_ROLES_CLAIM]["service_versions"] ==
         LtiAdvantage::Definitions::NAMES_AND_ROLES_SERVICE_VERSIONS
     end

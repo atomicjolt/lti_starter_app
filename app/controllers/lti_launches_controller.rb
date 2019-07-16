@@ -49,9 +49,9 @@ class LtiLaunchesController < ApplicationController
   def init
     nonce = SecureRandom.hex(10)
     state = AuthToken.issue_token({
-      state_nonce: nonce,
-      params: params.as_json
-    })
+                                    state_nonce: nonce,
+                                    params: params.as_json,
+                                  })
     url = build_response(state, params, nonce)
     request.cookies[:state] = state
     respond_to do |format|
@@ -92,7 +92,7 @@ class LtiLaunchesController < ApplicationController
         end
         found = false
       else
-        found = @line_items.find{ |li| li["tag"] == tag }
+        found = @line_items.detect { |li| li["tag"] == tag }
       end
 
       line_item_attrs = line_item.generate(
@@ -105,11 +105,11 @@ class LtiLaunchesController < ApplicationController
         external_tool_url: external_tool_url,
       )
 
-      if found
-        result = line_item.update(found["id"], line_item_attrs)
-      else
-        result = line_item.create(line_item_attrs)
-      end
+      result = if found
+                 line_item.update(found["id"], line_item_attrs)
+               else
+                 line_item.create(line_item_attrs)
+               end
       JSON.parse(result.body)
     else
       # There was an error and the line items API isn't available.
@@ -122,10 +122,11 @@ class LtiLaunchesController < ApplicationController
   # LtiAdvantage::Services::Score class
   def scores_example(line_item, names_and_roles)
     return unless names_and_roles.present?
+
     score_service = LtiAdvantage::Services::Score.new(current_application_instance, @lti_token)
     score_service.id = line_item["id"]
     names_and_roles["members"].map do |name_role|
-      in_role = (name_role["roles"] & [LtiAdvantage::Definitions::STUDENT_SCOPE, LtiAdvantage::Definitions::LEARNER_SCOPE]).length > 0
+      in_role = !(name_role["roles"] & [LtiAdvantage::Definitions::STUDENT_SCOPE, LtiAdvantage::Definitions::LEARNER_SCOPE]).empty?
       if in_role && name_role["status"] == "Active"
         score = score_service.generate(
           user_id: name_role["user_id"],
@@ -156,4 +157,3 @@ class LtiLaunchesController < ApplicationController
     @names_and_roles = names_and_roles_service.list if names_and_roles_service.valid?
   end
 end
-
