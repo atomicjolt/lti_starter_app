@@ -13,17 +13,7 @@ class LtiLaunchesController < ApplicationController
       render file: File.join(Rails.root, "public", "disabled.html")
     end
 
-    if LtiAdvantage::Definitions.deep_link_launch?(@lti_token)
-      # Handle deep link request
-
-    else
-      # Examples demonstrating LTI Advantage services
-      names_and_roles_example
-      if line_item = line_item_example
-        scores_example(line_item, @names_and_roles)
-        results_example(line_item)
-      end
-    end
+    lti_advantage_examples if @lti_token
 
     setup_lti_response
   end
@@ -69,6 +59,20 @@ class LtiLaunchesController < ApplicationController
       @canvas_auth_required = true
     end
     set_lti_launch_values
+  end
+
+  # Run a series of lti advantage examples
+  def lti_advantage_examples
+    if LtiAdvantage::Definitions.deep_link_launch?(@lti_token)
+      # Handle deep link request
+    else
+      # Examples demonstrating LTI Advantage services
+      names_and_roles_example
+      if line_item = line_item_example
+        scores_example(line_item, @names_and_roles)
+        results_example(line_item)
+      end
+    end
   end
 
   # This method demonstrates create, delete and update of line items using
