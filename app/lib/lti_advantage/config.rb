@@ -31,7 +31,7 @@
 module LtiAdvantage
   class Config
     # Converts old lti into lti advantage
-    def self.lti_to_lti_advantage(jwk, _domain, args = {})
+    def self.lti_to_lti_advantage(jwk, domain, args = {})
       raise ::Exceptions::LtiConfigMissing, "Please provide an LTI launch url" if args[:launch_url].blank?
       raise ::Exceptions::LtiConfigMissing, "Please provide an LTI secure launch url" if args[:secure_launch_url].blank?
 
@@ -43,282 +43,152 @@ module LtiAdvantage
       {
         title: args[:title],
         scopes: LtiAdvantage::Definitions::scopes,
-        extensions: [],
-        icon: icon(args),
+        icon: icon(domain, args),
         target_link_uri: args[:launch_url],
         oidc_initiation_url: "#{args[:launch_url]}/init",
         public_jwk: jwk.to_json,
         description: args[:description],
+        custom_fields: custom_fields_from_args(domain, args[:title], args),
         extensions: [
           {
             "platform": "canvas.instructure.com",
-            "domain": "https://{domain}",
+            "domain": "https://#{domain}",
             "tool_id": "helloworld",
             "settings": {
               "privacy_level": "public",
-              "text": "LTI Advantage Starter",
-              "icon_url": "https://{domain}/atomicjolt.png",
+              "text": args[:title],
+              "icon_url": "https://#{domain}/atomicjolt.png",
               "selection_width": 500,
               "selection_height": 500,
-              "placements": placements,
+              "placements": placements(domain, args[:title], args),
             },
           },
         ],
       }
     end
 
-    def placements
+    def self.placements(domain, text, args)
       conf = []
-      conf = custom_fields_from_args(conf, args)
-      conf = resource_selection_from_args(conf, args)
-      conf = course_navigation_from_args(conf, args)
-      conf = account_navigation_from_args(conf, args)
-      conf = editor_button_from_args(conf, args)
-      conf = assignment_selection_from_args(conf, args)
-      conf = link_selection_from_args(conf, args)
-      conf = user_navigation_from_args(conf, args)
-      conf = global_navigation_from_args(conf, args)
-      conf = post_grades_from_args(conf, args)
-      conf = assignment_configuration_from_args(conf, args)
-      conf = assignment_edit_from_args(conf, args)
-      conf = assignment_view_from_args(conf, args)
-      conf = assignment_menu_from_args(conf, args)
-      conf = collaboration_from_args(conf, args)
-      conf = course_home_sub_navigation_from_args(conf, args)
-      conf = course_settings_sub_navigation_from_args(conf, args)
-      conf = discussion_topic_menu_from_args(conf, args)
-      conf = file_menu_from_args(conf, args)
-      conf = homework_submission_from_args(conf, args)
-      conf = migration_selection_from_args(conf, args)
-      conf = module_menu_from_args(conf, args)
-      conf = quiz_menu_from_args(conf, args)
-      conf = tool_configuration_from_args(conf, args)
-      conf = wiki_page_menu_from_args(conf, args)
-      conf = content_migration_args(conf, args)
+      conf << placement_from_args(:resource_selection, domain, text, args)
+      conf << placement_from_args(:global_navigation, domain, text, args)
+      conf << placement_from_args(:user_navigation, domain, text, args)
+      conf << placement_from_args(:course_navigation, domain, text, args)
+      conf << placement_from_args(:account_navigation, domain, text, args)
+      conf << placement_from_args(:post_grades, domain, text, args)
+      conf << placement_from_args(:assignment_configuration, domain, text, args)
+      conf << placement_from_args(:assignment_edit, domain, text, args)
+      conf << placement_from_args(:assignment_menu, domain, text, args)
+      conf << placement_from_args(:collaboration, domain, text, args)
+      conf << placement_from_args(:course_home_sub_navigation, domain, text, args)
+      conf << placement_from_args(:course_settings_sub_navigation, domain, text, args)
+      conf << placement_from_args(:discussion_topic_menu, domain, text, args)
+      conf << placement_from_args(:file_menu, domain, text, args)
+      conf << placement_from_args(:homework_submission, domain, text, args)
+      conf << placement_from_args(:migration_selection, domain, text, args)
+      conf << placement_from_args(:quiz_menu, domain, text, args)
+      conf << placement_from_args(:tool_configuration, domain, text, args)
+      conf << editor_button_from_args(domain, text, args)
+      conf << assignment_selection_from_args(domain, text, args)
+      conf << link_selection_from_args(domain, text, args)
+      conf << assignment_view_from_args(domain, text, args)
+      conf << module_menu_from_args(domain, text, args)
+      conf << wiki_page_menu_from_args(domain, text, args)
+      conf << content_migration_args(domain, text, args)
+      conf.compact
     end
 
-    def self.icon(args)
+    def self.icon(domain, args)
       if args[:icon].present?
-        args[:icon].include?("http") ? args[:icon] : "https://#{args[:domain]}/#{args[:icon]}"
+        args[:icon].include?("http") ? args[:icon] : "https://#{domain}/#{args[:icon]}"
       end
     end
 
-    def self.custom_fields_from_args(config = {}, args = {})
+    def self.custom_fields_from_args(domain, text, args = {})
       custom_fields = {
         custom_canvas_api_domain: "$Canvas.api.domain",
       }
-      config["custom_fields"] = if args[:custom_fields].present?
-                                  custom_fields.merge(args[:custom_fields]).stringify_keys
-                                else
-                                  custom_fields.stringify_keys
-                                end
-      config
-    end
-
-    def self.resource_selection_from_args(config = {}, args = {})
-      if args[:resource_selection].present?
-        config["resource_selection"] = args[:resource_selection].stringify_keys
-        default_configs_from_args!(args, config, :resource_selection)
-        default_dimensions!(config, "resource_selection")
+      if args[:custom_fields].present?
+        custom_fields.merge(args[:custom_fields]).stringify_keys
+      else
+        custom_fields.stringify_keys
       end
-      config
     end
 
-    def self.global_navigation_from_args(config = {}, args = {})
-      if args[:global_navigation].present?
-        default_configs_from_args!(args, config, :global_navigation)
+    def self.placement_from_args(placement, domain, text, args = {})
+      if args[placement].present?
+        default_configs_from_args(args, domain, text, placement).merge(
+          args[:placement].stringify_keys
+        )
       end
-      config
     end
 
-    def self.user_navigation_from_args(config = {}, args = {})
-      if args[:user_navigation].present?
-        default_configs_from_args!(args, config, :user_navigation)
-      end
-      config
-    end
-
-    def self.course_navigation_from_args(config = {}, args = {})
-      if args[:course_navigation].present?
-        default_configs_from_args!(args, config, :course_navigation)
-      end
-      config
-    end
-
-    def self.account_navigation_from_args(config = {}, args = {})
-      if args[:account_navigation].present?
-        default_configs_from_args!(args, config, :account_navigation)
-      end
-      config
-    end
-
-    def self.post_grades_from_args(config = {}, args = {})
-      if args[:post_grades].present?
-        default_configs_from_args!(args, config, :post_grades)
-      end
-      config
-    end
-
-    def self.editor_button_from_args(config = {}, args = {})
+    def self.editor_button_from_args(domain, text, args = {})
       if args[:editor_button].present?
-        config["editor_button"] = args[:editor_button].stringify_keys
-        config["editor_button"]["icon_url"] = "https://#{args[:domain]}/#{args[:editor_button][:icon_url]}"
-        config["editor_button"].delete("icon")
-        selection_config_from_args!(args, config, "editor_button")
-        default_dimensions!(config, "editor_button")
+        config = args[:editor_button].stringify_keys
+        config["icon_url"] = "https://#{domain}/#{args[:editor_button][:icon_url]}"
+        config.delete("icon")
+        selection_config_from_args!(args, config, :editor_button)
       end
-      config
     end
 
-    def self.assignment_selection_from_args(config = {}, args = {})
+    def self.assignment_selection_from_args(domain, text, args = {})
       if args[:assignment_selection].present?
-        config["assignment_selection"] = args[:assignment_selection].stringify_keys
-        selection_config_from_args!(args, config, "assignment_selection")
-        default_dimensions!(config, "assignment_selection")
+        config = args[:assignment_selection].stringify_keys
+        selection_config_from_args!(args, config, :assignment_selection)
       end
-      config
     end
 
-    def self.link_selection_from_args(config = {}, args = {})
+    def self.link_selection_from_args(domain, text, args = {})
       if args[:link_selection].present?
-        config["link_selection"] = args[:link_selection].stringify_keys
-        selection_config_from_args!(args, config, "link_selection")
-        default_dimensions!(config, "link_selection")
+        config = args[:link_selection].stringify_keys
+        selection_config_from_args!(args, config, :link_selection)
       end
-      config
     end
 
-    def self.assignment_configuration_from_args(config = {}, args = {})
-      if args[:assignment_configuration].present?
-        default_configs_from_args!(args, config, :assignment_configuration)
-      end
-      config
-    end
-
-    def self.assignment_edit_from_args(config = {}, args = {})
-      if args[:assignment_edit].present?
-        assignment_configs_from_args!(args, config, :assignment_edit)
-      end
-      config
-    end
-
-    def self.assignment_view_from_args(config = {}, args = {})
+    def self.assignment_view_from_args(domain, text, args = {})
       if args[:assignment_view].present?
-        assignment_configs_from_args!(args, config, :assignment_view)
-        config[:assignment_view]["visibility"] ||= "admins"
+        config = default_configs_from_args(args, domain, text, :assignment_view)
+        config["visibility"] ||= "admins"
+        config
       end
-      config
     end
 
-    def self.assignment_menu_from_args(config = {}, args = {})
-      if args[:assignment_menu].present?
-        default_configs_from_args!(args, config, :assignment_menu)
-      end
-      config
-    end
-
-    def self.collaboration_from_args(config = {}, args = {})
-      if args[:collaboration].present?
-        default_configs_from_args!(args, config, :collaboration)
-      end
-      config
-    end
-
-    def self.course_home_sub_navigation_from_args(config = {}, args = {})
-      if args[:course_home_sub_navigation].present?
-        default_configs_from_args!(args, config, :course_home_sub_navigation)
-      end
-      config
-    end
-
-    def self.course_settings_sub_navigation_from_args(config = {}, args = {})
-      if args[:course_settings_sub_navigation].present?
-        default_configs_from_args!(args, config, :course_settings_sub_navigation)
-      end
-      config
-    end
-
-    def self.discussion_topic_menu_from_args(config = {}, args = {})
-      if args[:discussion_topic_menu].present?
-        default_configs_from_args!(args, config, :discussion_topic_menu)
-      end
-      config
-    end
-
-    def self.file_menu_from_args(config = {}, args = {})
-      if args[:file_menu].present?
-        default_configs_from_args!(args, config, :file_menu)
-      end
-      config
-    end
-
-    def self.homework_submission_from_args(config = {}, args = {})
-      if args[:homework_submission].present?
-        default_configs_from_args!(args, config, :homework_submission)
-      end
-      config
-    end
-
-    def self.migration_selection_from_args(config = {}, args = {})
-      if args[:migration_selection].present?
-        default_configs_from_args!(args, config, :migration_selection)
-      end
-      config
-    end
-
-    def self.module_menu_from_args(config = {}, args = {})
+    def self.module_menu_from_args(domain, text, args = {})
       if args[:module_menu].present?
         config["module_menu"] = args[:module_menu].stringify_keys
         if config["module_menu"]["message_type"].present?
-          selection_config_from_args!(args, config, "module_menu")
+          selection_config_from_args!(args, config, :module_menu)
         end
-        default_configs_from_args!(args, config, :module_menu)
+        default_configs_from_args(args, domain, text, :module_menu)
       end
-      config
     end
 
-    def self.quiz_menu_from_args(config = {}, args = {})
-      if args[:quiz_menu].present?
-        default_configs_from_args!(args, config, :quiz_menu)
-      end
-      config
-    end
-
-    def self.tool_configuration_from_args(config = {}, args = {})
-      if args[:tool_configuration].present?
-        default_configs_from_args!(args, config, :tool_configuration)
-      end
-      config
-    end
-
-    def self.wiki_page_menu_from_args(config = {}, args = {})
+    def self.wiki_page_menu_from_args(domain, text, args = {})
       if args[:wiki_page_menu].present?
-        config["wiki_page_menu"] = args[:wiki_page_menu].stringify_keys
-        if config["wiki_page_menu"]["message_type"].present?
-          selection_config_from_args!(args, config, "wiki_page_menu")
+        config = default_configs_from_args(args, domain, text, :wiki_page_menu).merge(
+          args[:wiki_page_menu].stringify_keys
+        )
+        if args[:wiki_page_menu][:message_type].present?
+          selection_config_from_args!(args, config, :wiki_page_menu)
+        else
+          config
         end
-        default_configs_from_args!(args, config, :wiki_page_menu)
       end
-      config
     end
 
-    def self.content_migration_args(config = {}, args = {})
+    def self.content_migration_args(domain, text, args = {})
       if args[:content_migration].present?
-        config[:content_migration] ||= {}
-        config[:content_migration]["export_start_url"] ||= args[:export_url]
-        config[:content_migration]["import_start_url"] ||= args[:import_url]
+        config = args[:content_migration] || {}
+        config["export_start_url"] ||= args[:export_url]
+        config["import_start_url"] ||= args[:import_url]
+        config
       end
-      config
     end
 
-    def self.default_dimensions!(config, key)
-      config[key]["selection_width"] ||= "892"
-      config[key]["selection_height"] ||= "800"
-    end
-
-    def self.selection_config_from_args!(args, config, key)
-      config[key]["message_type"] ||= "ContentItemSelectionRequest"
-      config[key]["url"] ||= args[:launch_url]
+    def self.selection_config_from_args!(args, config, placement)
+      config["placement"] = placement
+      config["message_type"] ||= "ContentItemSelectionRequest"
+      config["url"] ||= args[:launch_url]
       config
     end
 
@@ -328,13 +198,15 @@ module LtiAdvantage
       # launch_height and launch_width are optional. Include them in the LTI config to set to a specific value
     end
 
-    def self.default_configs_from_args!(args, config, key)
-      config[key] = args[key].stringify_keys
-      config[key]["url"] ||= args[:launch_url]
-      config[key]["default"] ||= "enabled"
-      config[key]["visibility"] ||= "admins"
+    def self.default_configs_from_args(args, domain, text, placement)
+      {
+        "placement": placement,
+        "text": text,
+        "enabled": true,
+        "icon_url": "https://{domain}/atomicjolt.png",
+        "message_type": "LtiResourceLinkRequest",
+        "target_link_uri": "https://{domain}/lti_launches"
+      }
     end
-
   end
-
 end
