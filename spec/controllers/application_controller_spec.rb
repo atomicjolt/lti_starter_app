@@ -10,6 +10,22 @@ RSpec.describe ApplicationController, type: :controller do
         request.params[:oauth_consumer_key] = @application_instance.lti_key
         expect(subject.send(:current_application_instance)).to eq(@application_instance)
       end
+      it "returns the current application instance using id_token" do
+        iss = "https://canvas.instructure.com"
+        @application_instance.application.lti_installs.create!(
+          iss: iss,
+          client_id: "1234",
+          jwks_url: LtiAdvantage::Definitions::CANVAS_PUBLIC_LTI_KEYS_URL,
+          token_url: LtiAdvantage::Definitions::CANVAS_AUTH_TOKEN_URL,
+          oidc_url: LtiAdvantage::Definitions::CANVAS_OIDC_URL,
+        )
+        lti_token = {
+          "iss" => iss
+        }
+        token = LtiAdvantage::Authorization.client_assertion(@application_instance, lti_token)
+        request.params["id_token"] = token
+        expect(subject.send(:current_application_instance)).to eq(@application_instance)
+      end
     end
 
     describe "#current_bundle_instance" do
