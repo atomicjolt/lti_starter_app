@@ -80,7 +80,7 @@ class ApplicationInstance < ApplicationRecord
 
   def lti_config_xml
     config = lti_defaults
-    Lti::Config.xml(config) if config
+    Lti::Config.xml(config) if config.present?
   end
 
   def oauth_precedence
