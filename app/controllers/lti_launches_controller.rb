@@ -99,19 +99,24 @@ class LtiLaunchesController < ApplicationController
         found = @line_items.detect { |li| li["tag"] == tag }
       end
 
-      line_item_attrs = line_item.generate(
-        label: "LTI Advantage test item #{Time.now.utc}",
-        max_score: 10,
-        resource_id: resource_id,
-        tag: tag,
-        start_date_time: Time.now.utc - 1.day,
-        end_date_time: Time.now.utc + 45.days,
-        external_tool_url: external_tool_url,
-      )
-
       result = if found
+                 line_item_attrs = {
+                   label: "LTI Advantage test item #{Time.now.utc}",
+                   scoreMaximum: 10,
+                   resourceId: resource_id,
+                   tag: tag,
+                 }
                  line_item.update(found["id"], line_item_attrs)
                else
+                 line_item_attrs = line_item.generate(
+                   label: "LTI Advantage test item #{Time.now.utc}",
+                   max_score: 10,
+                   resource_id: resource_id,
+                   tag: tag,
+                   start_date_time: Time.now.utc - 1.day,
+                   end_date_time: Time.now.utc + 45.days,
+                   external_tool_url: external_tool_url,
+                 )
                  line_item.create(line_item_attrs)
                end
       JSON.parse(result.body)

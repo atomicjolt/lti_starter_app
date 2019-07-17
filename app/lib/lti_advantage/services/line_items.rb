@@ -57,6 +57,8 @@ module LtiAdvantage
         HTTParty.post(endpoint, body: attrs, headers: headers)
       end
 
+      # Update a line item
+      # Canvas: https://canvas.beta.instructure.com/doc/api/line_items.html#method.lti/ims/line_items.update
       def update(line_item_url, attrs)
         HTTParty.put(line_item_url, body: attrs, headers: headers)
       end
