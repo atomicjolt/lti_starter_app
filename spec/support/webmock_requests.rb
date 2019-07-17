@@ -203,5 +203,16 @@ RSpec.configure do |config|
           headers: canvas_headers,
         )
     end
+
+    #
+    # LTI Advantage
+    #
+    stub_request(:get, "https://canvas.instructure.com/api/lti/security/jwks").
+      to_return(
+        status: 200,
+        body: "{\"keys\":[{\"kty\":\"RSA\",\"e\":\"AQAB\",\"n\":\"39iCdVXRJ944XEUlX6mpUj_eO8f7TRI7OWEXk7zeWPdUlKfm0RoDSnzX_fFIXLDfsf8o5j-sD2ACUtvXVrGHpJAPEzfn3SMdSzE6uGKw8rdTzV1E33vm0wujzbjVcitBsuLFw_7NMfQCDBXa9_v88q13PI2_abtkEDre-RD-Pa47qoz7UogiDqvjiipkDjAfNUDKlCEwqUQewPizxDrsqbXfz6AzcQNT_jAtBQ5SgjBlS0NfctTF7SAA7OyYthkWtK6mrgOeFfkAmHpRD7Kj7VAk26slH_JoZ99e8ioFwALjNt_J4JZsprhMF_FlFc7SNclwjwh9u3kCUSJePlpLPQ\",\"kid\":\"2019-05-01T00:00:00Z\",\"alg\":\"RS256\",\"use\":\"sig\"},{\"kty\":\"RSA\",\"e\":\"AQAB\",\"n\":\"us5Andg1Iuimpx4IzXkMleyARrbmnDjRo6u6zq2UdKT4n5rCKOyl35e1-iy4hOwQGdoqNW-Xdl0dqxUYN3jPqvIIQ1pXJLavPHTe6CcUaCNJnbEILjK4btY98Z4RoY3jpm3qzmPNFzy9sOKcJyqX4erk6l9NtU73SnWUnW3vTSI_N51C4zEJ131B7zO9JG-04F22ll0tmKITG9NaiUXdR3g5cs9eIvqeUYEXD6EkXD5RppXpa1XmnNd05cHboHKBIUbm4XjFxEE44li_opVhX22yc8xoFAR_8_jC3IM9IFpJtvSsVAtdwIJID27-dyfrQMzjtwyGKn4WKsdJATsPyQ\",\"kid\":\"2019-06-01T00:00:00Z\",\"alg\":\"RS256\",\"use\":\"sig\"},{\"kty\":\"RSA\",\"e\":\"AQAB\",\"n\":\"lHy3egF1J3kx2eS2eCrhIrrZCkIzpkJB89niiIXOLVt7wvzGhm7iyTsDA37zmovnFS6dFkgWk-kcQ_U4j7yA5LFadpskY8BKiz2utZTB8ZBzxgHM5geROXg9UgCxYylACEPpte4Pa6-7Mra3rI7SDfSh7xOHGj2PHWyxC1iZnC5iYTraRfs1ULxmURP0gtl-x6juIlURQBV7GRlaDiL7RS57WBjFZWj7p9_SiotJOnwSgTJO2p0_Yl_SYCaQPNlxircNzmrA7-KlCxkeWCPsaOfaEJFhlJ4d8FE8CKWqFnyG5qVknJ7TAPFPOcSDjW0SLbqPEbB2JFocfIczPXX6Cw\",\"kid\":\"2019-07-01T00:00:07Z\",\"alg\":\"RS256\",\"use\":\"sig\"}]}",
+        headers: canvas_headers,
+      )
+
   end
 end
