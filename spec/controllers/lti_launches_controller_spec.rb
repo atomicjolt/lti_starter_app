@@ -48,14 +48,7 @@ RSpec.describe LtiLaunchesController, type: :controller do
 
   describe "init" do
     before do
-      @iss = "https://canvas.instructure.com"
-      @application_instance.application.lti_installs.create!(
-        iss: @iss,
-        client_id: "43460000000000194",
-        jwks_url: LtiAdvantage::Definitions::CANVAS_PUBLIC_LTI_KEYS_URL,
-        token_url: LtiAdvantage::Definitions::CANVAS_AUTH_TOKEN_URL,
-        oidc_url: LtiAdvantage::Definitions::CANVAS_OIDC_URL,
-      )
+      setup_canvas_lti_advantage(application_instance: @application_instance)
       allow(controller).to receive(:current_application).and_return(@application)
     end
     it "get a url that will be redirected to as part of the Open Id Connect process" do

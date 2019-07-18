@@ -26,14 +26,7 @@ describe ApplicationController, type: :controller do
   describe "open id connect initialization" do
     before do
       request.env["CONTENT_TYPE"] = "application/x-www-form-urlencoded"
-      @iss = "https://canvas.instructure.com"
-      @application_instance.application.lti_installs.create!(
-        iss: @iss,
-        client_id: "43460000000000194",
-        jwks_url: LtiAdvantage::Definitions::CANVAS_PUBLIC_LTI_KEYS_URL,
-        token_url: LtiAdvantage::Definitions::CANVAS_AUTH_TOKEN_URL,
-        oidc_url: LtiAdvantage::Definitions::CANVAS_OIDC_URL,
-      )
+      setup_canvas_lti_advantage(application_instance: @application_instance)
     end
     it "get a url that will be redirected to as part of the Open Id Connect process" do
       params = {
