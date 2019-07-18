@@ -26,7 +26,7 @@ module LtiAdvantage
       def list(query = nil)
         url = endpoint
         url << "?query=#{query}" if query.present?
-        result = HTTParty.get(
+        HTTParty.get(
           url,
           headers: headers(
             {
@@ -34,7 +34,6 @@ module LtiAdvantage
             },
           ),
         )
-        JSON.parse(result.body)
       end
     end
   end
