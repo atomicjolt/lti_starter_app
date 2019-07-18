@@ -66,7 +66,6 @@ module LtiAdvantage
       def delete(line_item_url)
         HTTParty.delete(line_item_url, headers: headers)
       end
-
     end
   end
 end
