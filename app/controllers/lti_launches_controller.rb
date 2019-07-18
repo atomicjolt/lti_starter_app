@@ -80,6 +80,7 @@ class LtiLaunchesController < ApplicationController
   def line_item_example
     line_item = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token)
     line_items = line_item.list
+
     @line_items = JSON.parse(line_items.body)
 
     resource_id = 1
@@ -119,7 +120,12 @@ class LtiLaunchesController < ApplicationController
                  )
                  line_item.create(line_item_attrs)
                end
-      JSON.parse(result.body)
+      item = JSON.parse(result.body)
+
+      # Get a single item
+      show_item = line_item.show(item["id"])
+
+      item
     else
       # There was an error and the line items API isn't available.
       # For example the course might be closed. These errors will be
@@ -165,6 +171,6 @@ class LtiLaunchesController < ApplicationController
   # LtiAdvantage::Services::NamesAndRoles class
   def names_and_roles_example
     names_and_roles_service = LtiAdvantage::Services::NamesAndRoles.new(current_application_instance, @lti_token)
-    @names_and_roles = names_and_roles_service.list if names_and_roles_service.valid?
+    @names_and_roles = JSON.parse(names_and_roles_service.list.body) if names_and_roles_service.valid?
   end
 end
