@@ -21,9 +21,17 @@ module LtiAdvantage
       # Use that value to figure out which jwk we should use.
       decoded_token = JWT.decode(token, nil, false)
       iss = decoded_token.dig(0, "iss")
-      jwk_loader = ->(_options) do
-        JSON.parse(HTTParty.get(application_instance.application.jwks_url(iss)).body).deep_symbolize_keys
+      cache_key = "#{iss}_jwks"
+
+      jwk_loader = ->(options) do
+        jwks = Rails.cache.read(cache_key)
+        if options[:invalidate] || jwks.blank?
+          jwks = JSON.parse(HTTParty.get(application_instance.application.jwks_url(iss)).body).deep_symbolize_keys
+          Rails.cache.write(cache_key, jwks, :expires_in => 12.hours)
+        end
+        jwks
       end
+
       lti_token, _keys = JWT.decode(token, nil, true, { algorithms: ["RS256"], jwks: jwk_loader })
       lti_token
     end
