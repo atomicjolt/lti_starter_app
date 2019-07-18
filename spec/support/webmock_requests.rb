@@ -204,5 +204,27 @@ RSpec.configure do |config|
         )
     end
 
+    #
+    # LTI Advantage
+    #
+
+    # Request to get a token to make LTI service requests
+    stub_request(:post, %r|http[s]*://[a-zA-Z0-9]+\.[a-zA-Z0-9]+.*com/login/oauth2/token|).
+      to_return(
+        status: 200,
+        body: "{\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2NhbnZhcy5pbnN0cnVjdHVyZS5jb20iLCJzdWIiOiI0MzQ2MDAwMDAwMDAwMDE5NCIsImF1ZCI6Imh0dHBzOi8vYXRvbWljam9sdC5pbnN0cnVjdHVyZS5jb20vbG9naW4vb2F1dGgyL3Rva2VuIiwiaWF0IjoxNTYzNDgxNTg2LCJleHAiOjE1NjM0ODUxODYsImp0aSI6IjU0ZTRmNTVmLTk2NmUtNGNhOS1iNmM2LTYzNTY0YTA5ZDg5MiIsInNjb3BlcyI6Imh0dHBzOi8vcHVybC5pbXNnbG9iYWwub3JnL3NwZWMvbHRpLWFncy9zY29wZS9saW5laXRlbSBodHRwczovL3B1cmwuaW1zZ2xvYmFsLm9yZy9zcGVjL2x0aS1hZ3Mvc2NvcGUvcmVzdWx0LnJlYWRvbmx5IGh0dHBzOi8vcHVybC5pbXNnbG9iYWwub3JnL3NwZWMvbHRpLWFncy9zY29wZS9zY29yZSBodHRwczovL3B1cmwuaW1zZ2xvYmFsLm9yZy9zcGVjL2x0aS1ucnBzL3Njb3BlL2NvbnRleHRtZW1iZXJzaGlwLnJlYWRvbmx5In0.L1a4ZRPRjIPdMdaLFP8oatdxxJVNeyX7zQv9KHDIG8s\",\"token_type\":\"Bearer\",\"expires_in\":3600,\"scope\":\"https://purl.imsglobal.org/spec/lti-ags/scope/lineitem https://purl.imsglobal.org/spec/lti-ags/scope/result.readonly https://purl.imsglobal.org/spec/lti-ags/scope/score https://purl.imsglobal.org/spec/lti-nrps/scope/contextmembership.readonly\"}",
+      )
+
+
+    stub_request(:get, %r|http[s]*://[a-zA-Z0-9]+\.[a-zA-Z0-9]+.*com/api/lti/courses/[0-9]+/names_and_roles|).
+      with(
+        headers: {
+        'Authorization'=>'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2NhbnZhcy5pbnN0cnVjdHVyZS5jb20iLCJzdWIiOiI0MzQ2MDAwMDAwMDAwMDE5NCIsImF1ZCI6Imh0dHBzOi8vYXRvbWljam9sdC5pbnN0cnVjdHVyZS5jb20vbG9naW4vb2F1dGgyL3Rva2VuIiwiaWF0IjoxNTYzNDgxNTg2LCJleHAiOjE1NjM0ODUxODYsImp0aSI6IjU0ZTRmNTVmLTk2NmUtNGNhOS1iNmM2LTYzNTY0YTA5ZDg5MiIsInNjb3BlcyI6Imh0dHBzOi8vcHVybC5pbXNnbG9iYWwub3JnL3NwZWMvbHRpLWFncy9zY29wZS9saW5laXRlbSBodHRwczovL3B1cmwuaW1zZ2xvYmFsLm9yZy9zcGVjL2x0aS1hZ3Mvc2NvcGUvcmVzdWx0LnJlYWRvbmx5IGh0dHBzOi8vcHVybC5pbXNnbG9iYWwub3JnL3NwZWMvbHRpLWFncy9zY29wZS9zY29yZSBodHRwczovL3B1cmwuaW1zZ2xvYmFsLm9yZy9zcGVjL2x0aS1ucnBzL3Njb3BlL2NvbnRleHRtZW1iZXJzaGlwLnJlYWRvbmx5In0.L1a4ZRPRjIPdMdaLFP8oatdxxJVNeyX7zQv9KHDIG8s',
+        'Content-Type'=>'application/vnd.ims.lti-nrps.v2.membershipcontainer+json'
+        }).
+      to_return(
+        status: 200,
+        body: "{\"id\":\"https://atomicjolt.instructure.com/api/lti/courses/3334/names_and_roles\",\"context\":{\"id\":\"af9b5e18fe251409be18e77253d918dcf22d156e\",\"label\":\"Intro Geology\",\"title\":\"Introduction to Geology - Ball\"},\"members\":[{\"status\":\"Active\",\"user_id\":\"cfca15d8-2958-4647-a33e-a7c4b2ddab2c\",\"roles\":[\"http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor\"]},{\"status\":\"Active\",\"user_id\":\"7c119130-88a1-4bc0-9dac-d5dab2569c58\",\"roles\":[\"http://purl.imsglobal.org/vocab/lis/v2/membership#Learner\"]},{\"status\":\"Active\",\"user_id\":\"8e5f9e00-1dc1-4cd9-b321-5bec4c891fe2\",\"roles\":[\"http://purl.imsglobal.org/vocab/lis/v2/membership#Learner\"]},{\"status\":\"Active\",\"user_id\":\"abb134a1-58f1-42b2-84f7-78871b7ac6f6\",\"roles\":[\"http://purl.imsglobal.org/vocab/lis/v2/membership#Learner\"]},{\"status\":\"Active\",\"user_id\":\"2f4ade7b-29b2-4189-b338-e8ee036f15aa\",\"roles\":[\"http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor\"]}]}",
+      )
   end
 end

@@ -35,7 +35,7 @@ def setup_canvas_lti_advantage(
 end
 
 def stub_canvas_jwk(application)
-  stub_request(:get, "https://canvas.instructure.com/api/lti/security/jwks").
+  stub_request(:get, LtiAdvantage::Definitions::CANVAS_PUBLIC_LTI_KEYS_URL).
     to_return(
       status: 200,
       body: { keys: application.jwks.map(&:to_json) }.to_json,
