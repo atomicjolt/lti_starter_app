@@ -49,6 +49,12 @@ module LtiAdvantage
     end
 
     def self.request_token(application_instance, lti_token)
+      lti_user_id = lti_token["sub"]
+      cache_key = "#{lti_user_id}_authorization"
+
+      authorization = Rails.cache.read(cache_key)
+      return authorization if authorization.present?
+
       # Details here:
       # https://www.imsglobal.org/spec/security/v1p0/#using-json-web-tokens-with-oauth-2-0-client-credentials-grant
       body = {
@@ -60,9 +66,13 @@ module LtiAdvantage
       headers = {
         "Content-Type" => "application/x-www-form-urlencoded",
       }
-      # TODO should cache the authorizations
+
       result = HTTParty.post(application_instance.token_url(lti_token["iss"]), body: body, headers: headers)
-      JSON.parse(result.body)
+      authorization = JSON.parse(result.body)
+
+      Rails.cache.write(cache_key, authorization, :expires_in => authorization["expires_in"].to_i)
+
+      authorization
     end
   end
 end
