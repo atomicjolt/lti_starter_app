@@ -253,5 +253,12 @@ RSpec.configure do |config|
         body: nil,
       )
 
+    # Scores
+    stub_request(:post, %r|http[s]*://[a-zA-Z0-9]+\.[a-zA-Z0-9]+.*com/api/lti/courses/[0-9]+/line_items/[0-9]+/scores|).
+      to_return(
+        status: 200,
+        body: "{\"resultUrl\":\"https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/31/results/4\"}",
+      )
+
   end
 end
