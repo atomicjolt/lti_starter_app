@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe ApplicationController, type: :controller do
   before do
-    setup_application_instance
+    setup_application_instance(mock_helper: false)
   end
   describe "helper methods" do
     describe "#current_application_instance" do
