@@ -45,7 +45,7 @@ RSpec.describe Lti::Config do
 
     it "generates basic configuration with custom fields xml for an LTI tool" do
       custom_fields = {
-         canvas_user_id: "$Canvas.user.id",
+        canvas_user_id: "$Canvas.user.id",
       }
       args = @basic_config.merge({ custom_fields: custom_fields })
       xml = described_class.xml(args)

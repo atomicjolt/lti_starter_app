@@ -31,6 +31,7 @@
 module LtiAdvantage
   class Config
     # Converts old lti into lti advantage
+    # NOTE this is a work in progress and may not correctly convert all LTI configs.
     def self.lti_to_lti_advantage(jwk, domain, args = {})
       raise ::Exceptions::LtiConfigMissing, "Please provide an LTI launch url" if args[:launch_url].blank?
       raise ::Exceptions::LtiConfigMissing, "Please provide an LTI secure launch url" if args[:secure_launch_url].blank?
@@ -103,7 +104,7 @@ module LtiAdvantage
       end
     end
 
-    def self.custom_fields_from_args(domain, text, args = {})
+    def self.custom_fields_from_args(_domain, _text, args = {})
       custom_fields = {
         custom_canvas_api_domain: "$Canvas.api.domain",
       }
@@ -117,12 +118,12 @@ module LtiAdvantage
     def self.placement_from_args(placement, domain, text, args = {})
       if args[placement].present?
         default_configs_from_args(args, domain, text, placement).merge(
-          args[:placement].stringify_keys
+          args[:placement].stringify_keys,
         )
       end
     end
 
-    def self.editor_button_from_args(domain, text, args = {})
+    def self.editor_button_from_args(domain, _text, args = {})
       if args[:editor_button].present?
         config = args[:editor_button].stringify_keys
         config["icon_url"] = "https://#{domain}/#{args[:editor_button][:icon_url]}"
@@ -131,14 +132,14 @@ module LtiAdvantage
       end
     end
 
-    def self.assignment_selection_from_args(domain, text, args = {})
+    def self.assignment_selection_from_args(_domain, _text, args = {})
       if args[:assignment_selection].present?
         config = args[:assignment_selection].stringify_keys
         selection_config_from_args!(args, config, :assignment_selection)
       end
     end
 
-    def self.link_selection_from_args(domain, text, args = {})
+    def self.link_selection_from_args(_domain, _text, args = {})
       if args[:link_selection].present?
         config = args[:link_selection].stringify_keys
         selection_config_from_args!(args, config, :link_selection)
@@ -166,7 +167,7 @@ module LtiAdvantage
     def self.wiki_page_menu_from_args(domain, text, args = {})
       if args[:wiki_page_menu].present?
         config = default_configs_from_args(args, domain, text, :wiki_page_menu).merge(
-          args[:wiki_page_menu].stringify_keys
+          args[:wiki_page_menu].stringify_keys,
         )
         if args[:wiki_page_menu][:message_type].present?
           selection_config_from_args!(args, config, :wiki_page_menu)
@@ -176,7 +177,7 @@ module LtiAdvantage
       end
     end
 
-    def self.content_migration_args(domain, text, args = {})
+    def self.content_migration_args(_domain, _text, args = {})
       if args[:content_migration].present?
         config = args[:content_migration] || {}
         config["export_start_url"] ||= args[:export_url]
@@ -198,14 +199,14 @@ module LtiAdvantage
       # launch_height and launch_width are optional. Include them in the LTI config to set to a specific value
     end
 
-    def self.default_configs_from_args(args, domain, text, placement)
+    def self.default_configs_from_args(_args, _domain, text, placement)
       {
         "placement": placement,
         "text": text,
         "enabled": true,
         "icon_url": "https://{domain}/atomicjolt.png",
         "message_type": "LtiResourceLinkRequest",
-        "target_link_uri": "https://{domain}/lti_launches"
+        "target_link_uri": "https://{domain}/lti_launches",
       }
     end
   end

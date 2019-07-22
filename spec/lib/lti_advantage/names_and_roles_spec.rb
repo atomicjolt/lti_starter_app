@@ -18,7 +18,7 @@ RSpec.describe LtiAdvantage::Services::NamesAndRoles do
     it "lists users in the course and their roles" do
       names_and_roles_service = LtiAdvantage::Services::NamesAndRoles.new(@application_instance, @lti_token)
       names_and_roles = JSON.parse(names_and_roles_service.list.body)
-      expect(names_and_roles["members"].length > 0).to be true
+      expect(!names_and_roles["members"].empty?).to be true
     end
   end
 end

@@ -9,14 +9,14 @@ def canvas_headers(options = {})
     "content-type" => ["application/json; charset=utf-8"],
     "date" => ["Tue, 17 Mar 2015 20:58:42 GMT"],
     "etag" => ["\"c130ed4522ebea32d2649aff2e30fd3a\""],
-    "p3p"  => ["CP=\"None, see http://www.instructure.com/privacy-policy\""],
+    "p3p" => ["CP=\"None, see http://www.instructure.com/privacy-policy\""],
     "server" => ["Apache"],
     "set-cookie" => ["_csrf_token=9ATKDp5mkAhXm5DTVw54PeMj0FoKrA%2BUNQnFEfXgUs6eL4cl5hXEZwL5xoM%2FdhlS2xWAMT%2BHQs1iRLYkv9YTtg%3D%3D; path=/; secure", "canvas_session=LxC99e7zSpIBWuoSrxCHdg.xTKVNyuNeaLj864o1zvSA2YTzFQTPbQNpYoi2ktpSRSfjl0Q7CQe7W543_0So0FLILT3TkPbbGjcfoRGZNBhdWw8iOr7QRrIFwTHFdLNE7DWMRM4ZhX16kNxCI0_OD7g.iGFa_i2CresH7XxNz2ZwUksLtOk.VQiVgw; path=/; secure; HttpOnly"],
     "status" => ["200"],
     "vary" => ["Accept-Encoding"],
     "x-canvas-meta" => ["a=1;g=4MRcxnx6vQbFXxhLb8005m5WXFM2Z2i8lQwhJ1QT;s=4346;c=cluster35;z=us-east-1e;b=746692;m=746756;u=0.05;y=0.00;d=0.05;"],
     "x-canvas-user-id" => ["43460000000000001"],
-    "x-frame-options"  => ["SAMEORIGIN"],
+    "x-frame-options" => ["SAMEORIGIN"],
     "x-rack-cache" => ["miss"],
     "x-request-context-id" => ["51a34ee0-af16-0132-cb5f-12e99fa8d58a"],
     "x-runtime" => ["0.186145"],
@@ -259,6 +259,5 @@ RSpec.configure do |config|
         status: 200,
         body: "{\"resultUrl\":\"https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/31/results/4\"}",
       )
-
   end
 end

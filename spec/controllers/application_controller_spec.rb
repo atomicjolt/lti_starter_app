@@ -20,7 +20,7 @@ RSpec.describe ApplicationController, type: :controller do
           oidc_url: LtiAdvantage::Definitions::CANVAS_OIDC_URL,
         )
         lti_token = {
-          "iss" => iss
+          "iss" => iss,
         }
         token = LtiAdvantage::Authorization.client_assertion(@application_instance, lti_token)
         request.params["id_token"] = token
@@ -204,7 +204,6 @@ RSpec.describe ApplicationController, type: :controller do
           expect(result["message"]).to eq("An error occured when calling the Canvas API: ")
         end
       end
-
     end
   end
 end
