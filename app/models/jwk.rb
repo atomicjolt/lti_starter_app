@@ -1,5 +1,5 @@
 class Jwk < ApplicationRecord
-  belongs_to :application_instance
+  belongs_to :application
   before_create :generate_keys
 
   def generate_keys
