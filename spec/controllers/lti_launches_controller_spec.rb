@@ -12,14 +12,27 @@ RSpec.describe LtiLaunchesController, type: :controller do
       request.env["CONTENT_TYPE"] = "application/x-www-form-urlencoded"
     end
 
-    it "sets up the user and logs them in" do
-      params = lti_params(
-        @application_instance.lti_key,
-        @application_instance.lti_secret,
-        { "launch_url" => lti_launches_url, "roles" => "Learner" },
-      )
-      post :index, params: params
-      expect(response).to have_http_status(200)
+    context "lti launch" do
+      it "sets up the user and logs them in" do
+        params = lti_params(
+          @application_instance.lti_key,
+          @application_instance.lti_secret,
+          { "launch_url" => lti_launches_url, "roles" => "Learner" },
+        )
+        post :index, params: params
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context "lti advantage launch" do
+      before do
+        setup_canvas_lti_advantage(application_instance: @application_instance)
+        allow(controller).to receive(:current_application).and_return(@application)
+      end
+      it "does an lti advantage launch " do
+        post :index, params: @params
+        expect(response).to have_http_status(200)
+      end
     end
   end
 
