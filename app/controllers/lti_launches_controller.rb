@@ -38,10 +38,12 @@ class LtiLaunchesController < ApplicationController
   # Support Open ID connect flow for LTI 1.3
   def init
     nonce = SecureRandom.hex(10)
-    state = AuthToken.issue_token({
-                                    state_nonce: nonce,
-                                    params: params.as_json,
-                                  })
+    state = AuthToken.issue_token(
+      {
+        state_nonce: nonce,
+        params: params.as_json,
+      },
+    )
     url = build_response(state, params, nonce)
     request.cookies[:state] = state
     respond_to do |format|
@@ -65,6 +67,7 @@ class LtiLaunchesController < ApplicationController
   def lti_advantage_examples
     if LtiAdvantage::Definitions.deep_link_launch?(@lti_token)
       # Handle deep link request
+      @is_deep_link = true
     else
       # Examples demonstrating LTI Advantage services
       names_and_roles_example

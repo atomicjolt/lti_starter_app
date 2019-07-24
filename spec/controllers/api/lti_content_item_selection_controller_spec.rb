@@ -82,7 +82,7 @@ RSpec.describe Api::LtiContentItemSelectionController, type: :controller do
   end
 
   context "with jwt token" do
-    describe "GET index" do
+    describe "POST create" do
       it "gets html launch params" do
         request.headers["Authorization"] = @student_token
         post :create, params: @html_params, format: :json

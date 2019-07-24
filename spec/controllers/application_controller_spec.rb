@@ -22,7 +22,7 @@ RSpec.describe ApplicationController, type: :controller do
         lti_token = {
           "iss" => iss,
         }
-        token = LtiAdvantage::Authorization.client_assertion(@application_instance, lti_token)
+        token = LtiAdvantage::Authorization.client_assertion(@application_instance, lti_token["iss"])
         request.params["id_token"] = token
         expect(subject.send(:current_application_instance)).to eq(@application_instance)
       end

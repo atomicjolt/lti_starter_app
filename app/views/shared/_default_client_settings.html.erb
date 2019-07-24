@@ -42,6 +42,10 @@
       settings[:line_item_results] = @line_item_results
     end
 
+    if @is_deep_link
+      settings[:deep_link_settings] = @lti_token[LtiAdvantage::Definitions::DEEP_LINKING_CLAIM]
+    end
+
     if @is_lti_launch
       settings[:oauth_consumer_key]                     = params[:oauth_consumer_key]
       settings[:lms_course_id]                          = params[:custom_canvas_course_id]

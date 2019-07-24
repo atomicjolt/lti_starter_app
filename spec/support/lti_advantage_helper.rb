@@ -43,6 +43,18 @@ def stub_canvas_jwk(application)
     )
 end
 
+def setup_lti_advantage_users
+  @student = FactoryBot.create(:user)
+  @student.confirm
+  @student_token = AuthToken.issue_token(
+    {
+      user_id: @student.id,
+      iss: @iss,
+      deployment_id: @deployment_id,
+    }
+  )
+end
+
 def build_payload(client_id:, iss:, lti_user_id:, context_id:)
   exp = 24.hours.from_now
   nonce = SecureRandom.hex(10)

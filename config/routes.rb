@@ -57,6 +57,7 @@ Rails.application.routes.draw do
     resources :canvas_accounts, only: [:index]
     resources :sites
     resources :lti_content_item_selection, only: [:create]
+    resources :lti_deep_link_jwt, only: [:create]
     resources :lti_launches
 
     resources :ims_exports do

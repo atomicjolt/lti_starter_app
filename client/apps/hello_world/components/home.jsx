@@ -8,6 +8,7 @@ import { withSettings } from 'atomic-fuel/libs/components/settings';
 import { displayCanvasAuth } from '../../../common/components/common/canvas_auth';
 import assets from '../libs/assets';
 import Selector from './content_item_select/selector';
+import DeepLink from './deep_link';
 
 const select = state => ({
   courses: state.courses,
@@ -120,6 +121,14 @@ export class Home extends React.Component {
       return <Selector />;
     }
 
+    if (this.props.settings.deep_link_settings) {
+      return (
+        <DeepLink
+          deepLinkSettings={this.props.settings.deep_link_settings}
+        />
+      );
+    }
+
     return (
       <div>
         <img src={img} alt="Atomic Jolt Logo" />
@@ -132,15 +141,13 @@ export class Home extends React.Component {
     );
   }
 
-  render() {
-    const content = displayCanvasAuth(
-      this.props.settings,
-      this.props.canvasReAuthorizationRequired
-    ) || this.renderContent();
+  renderLtiAdvantageExamples() {
+    if (this.props.settings.deep_link_settings) {
+      return null;
+    }
 
     return (
       <div>
-        { content }
         <hr />
         <h2>Users:</h2>
         <ul style={{ textAlign: 'left' }}>
@@ -154,6 +161,21 @@ export class Home extends React.Component {
         <ul style={{ textAlign: 'left' }}>
           { this.renderResults() }
         </ul>
+      </div>
+    );
+  }
+
+  render() {
+    // const content = displayCanvasAuth(
+    //   this.props.settings,
+    //   this.props.canvasReAuthorizationRequired
+    // ) || this.renderContent();
+
+    const content = this.renderContent();
+    return (
+      <div>
+        { content }
+        { this.renderLtiAdvantageExamples() }
       </div>
     );
   }
