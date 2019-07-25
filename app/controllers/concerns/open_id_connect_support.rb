@@ -24,6 +24,5 @@ module Concerns
       uri.fragment = uri.query = nil
       [uri.to_s, "?", auth_params.to_query].join
     end
-
   end
 end

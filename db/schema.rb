@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190708174519) do
+ActiveRecord::Schema.define(version: 20190725201716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -204,6 +204,13 @@ ActiveRecord::Schema.define(version: 20190708174519) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["state"], name: "index_oauth_states_on_state"
+  end
+
+  create_table "open_id_states", force: :cascade do |t|
+    t.string "nonce"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nonce"], name: "index_open_id_states_on_nonce", unique: true
   end
 
   create_table "permissions", force: :cascade do |t|

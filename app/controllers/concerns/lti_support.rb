@@ -13,7 +13,9 @@ module Concerns
     def do_lti
       if token = params["id_token"]
         begin
-          # TODO we should validate the state here as well
+          # Validate the state by checking the database for the nonce
+          return user_not_authorized if !LtiAdvantage::OpenId.validate_open_id_state(params["state"])
+
           @lti_token = LtiAdvantage::Authorization.validate_token(current_application_instance, token)
           user = LtiAdvantage::User.new(@lti_token, current_application_instance).user
           sign_in(user, event: :authentication)

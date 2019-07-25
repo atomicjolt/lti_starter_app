@@ -29,8 +29,17 @@ def setup_canvas_lti_advantage(
     typ: "JWT",
   )
 
+  nonce = SecureRandom.hex(64)
+  OpenIdState.create!(nonce: nonce)
+  state = AuthToken.issue_token(
+    {
+      nonce: nonce,
+    },
+  )
+
   @params = {
     "id_token" => id_token,
+    "state" => state,
   }
 end
 

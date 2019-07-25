@@ -22,7 +22,7 @@ module AuthToken
     decode(token, secret, true)
   end
 
-  def self.decode(token, secret, validate = true)
+  def self.decode(token, secret = nil, validate = true)
     JWT.decode(
       token,
       secret || Rails.application.secrets.auth0_client_secret,
