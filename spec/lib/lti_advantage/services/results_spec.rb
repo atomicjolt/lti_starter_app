@@ -1,34 +1,26 @@
 require "rails_helper"
 
-RSpec.describe LtiAdvantage::Authorization do
+RSpec.describe LtiAdvantage::Services::Results do
   before do
     setup_application_instance
-    @platform_iss = "https://canvas.instructure.com"
-    setup_canvas_lti_advantage(
-      application_instance: @application_instance,
-      iss: @platform_iss
-    )
-    @line_item = {
-      "id" => "https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/25"
-    }
+    setup_canvas_lti_advantage(application_instance: @application_instance)
+    @lti_token = LtiAdvantage::Authorization.validate_token(@application_instance, @params["id_token"])
+    @results_service = LtiAdvantage::Services::Results.new(@application_instance, @lti_token)
+    @line_item_id = "https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/31"
   end
 
   describe "list" do
-    it "lists results" do
-      results_service = LtiAdvantage::Services::Results.new(@application_instance, @lti_token)
-      result = results_service.list(@line_item["id"])
-      line_item_results = JSON.parse(result)
-      expect(line_item_results).to be
+    it "lists results for the specified line item" do
+      results = JSON.parse(@results_service.list(@line_item_id).body)
+      expect(results.length > 0).to be true
     end
   end
 
   describe "show" do
-    it "gets a single result" do
-      results_service = LtiAdvantage::Services::Results.new(@application_instance, @lti_token)
-      result_id = 2
-      result = results_service.show(@line_item["id"], result_id)
-      line_item_result = JSON.parse(result)
-      expect(line_item_result).to be
+    it "gets specific result for the specified line item" do
+      result_id = ""
+      results = JSON.parse(@results_service.show(@line_item_id, result_id).body)
+      expect(results.length > 0).to be true
     end
   end
 end
