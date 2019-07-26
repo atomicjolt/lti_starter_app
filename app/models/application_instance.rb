@@ -40,7 +40,7 @@ class ApplicationInstance < ApplicationRecord
 
   # Create a new application instance if the deployment id isn't found
   # TODO add a setting on the application to indicate if it's freely available, trial, or restricted
-  def self.by_client_and_deployment(client_id, deployment_id, iss, canvas_url)
+  def self.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
     LtiInstall.joins(:applications).joins(:application_instances).joins(:lti_deployments)
     if lti_install = LtiInstall.find_by(client_id: client_id, iss: iss)
       application_instances = lti_install.application.application_instances.
@@ -52,7 +52,7 @@ class ApplicationInstance < ApplicationRecord
 
       if application_instance.blank?
         # Create a new application instance for the deployment id
-        site = Site.find_by(url: canvas_url)
+        site = Site.find_by(url: lms_url)
         # Create a new application instance and lti_deployment
         lti_key = "#{site.key}-#{lti_install.application.key}-#{deployment_id}"
         application_instance = lti_install.application.create_instance(site: site, lti_key: lti_key)
