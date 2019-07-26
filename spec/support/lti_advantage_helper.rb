@@ -10,6 +10,9 @@ def setup_canvas_lti_advantage(
   @context_id = "af9b5e18fe251409be18e77253d918dcf22d156e"
   @deployment_id = "12653:#{@context_id}"
 
+  application_instance.site.url = "https://atomicjolt.instructure.com"
+  application_instance.site.save!
+
   application_instance.application.lti_installs.create!(
     iss: @iss,
     client_id: @client_id,
@@ -18,16 +21,22 @@ def setup_canvas_lti_advantage(
     oidc_url: LtiAdvantage::Definitions::CANVAS_OIDC_URL,
   )
 
+  application_instance.lti_deployments.create!(
+    deployment_id: @deployment_id,
+  )
+
   jwk = application_instance.application.current_jwk
   stub_canvas_jwk(application_instance.application)
 
-  id_token = JWT.encode(
+  @id_token = JWT.encode(
     build_payload(client_id: @client_id, iss: @iss, lti_user_id: @lti_user_id, context_id: @context_id),
     jwk.private_key,
     jwk.alg,
     kid: jwk.kid,
     typ: "JWT",
   )
+
+  @lti_token = LtiAdvantage::Authorization.validate_token(@application_instance, @id_token)
 
   nonce = SecureRandom.hex(64)
   OpenIdState.create!(nonce: nonce)
@@ -38,7 +47,7 @@ def setup_canvas_lti_advantage(
   )
 
   @params = {
-    "id_token" => id_token,
+    "id_token" => @id_token,
     "state" => state,
   }
 end
