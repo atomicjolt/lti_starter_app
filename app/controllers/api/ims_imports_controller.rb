@@ -8,13 +8,22 @@ class Api::ImsImportsController < ApplicationController
                        lti_launches_params(data)[:lti_launches]
                      end
 
+      source_tci_guid = params[:data][:tool_consumer_instance_guid]
+
+      # For old exports the source tci_guid is missing so we try to look it up
+      if source_tci_guid.blank?
+        ims_export = ImsExport.find_by(token: data[:ims_export_id])
+        source_tci_guid = ims_export&.tool_consumer_instance_guid
+      end
+
       ims_import = ImsImport.create!(
-        export_token: params[:data][:export_token],
+        export_token: params[:data][:ims_export_id],
         context_id: params[:context_id],
         tci_guid: params[:tool_consumer_instance_guid],
         lms_course_id: params[:custom_canvas_course_id],
         source_context_id: params[:data][:context_id],
-        source_tci_guid: params[:data][:tool_consumer_instance_guid],
+        source_tci_guid: source_tci_guid,
+        payload: data,
       )
 
       data = {
