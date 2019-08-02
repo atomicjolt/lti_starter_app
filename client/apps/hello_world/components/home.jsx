@@ -166,12 +166,11 @@ export class Home extends React.Component {
   }
 
   render() {
-    // const content = displayCanvasAuth(
-    //   this.props.settings,
-    //   this.props.canvasReAuthorizationRequired
-    // ) || this.renderContent();
+    const content = displayCanvasAuth(
+      this.props.settings,
+      this.props.canvasReAuthorizationRequired
+    ) || this.renderContent();
 
-    const content = this.renderContent();
     return (
       <div>
         { content }
