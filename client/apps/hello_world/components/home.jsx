@@ -149,15 +149,15 @@ export class Home extends React.Component {
     return (
       <div>
         <hr />
-        <h2>Users:</h2>
+        <h3>Users (LTI Advantage names and roles example):</h3>
         <ul style={{ textAlign: 'left' }}>
           { this.renderUsers() }
         </ul>
-        <h2>Line items:</h2>
+        <h3>Line items (LTI Advantage line items example):</h3>
         <ul style={{ textAlign: 'left' }}>
           { this.renderLineItems() }
         </ul>
-        <h2>Results:</h2>
+        <h3>Results (LTI Advantage line item results example):</h3>
         <ul style={{ textAlign: 'left' }}>
           { this.renderResults() }
         </ul>

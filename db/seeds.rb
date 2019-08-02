@@ -102,6 +102,13 @@ applications = [
         "urn:lti:instrole:ims/lis/Administrator",
         "urn:lti:role:ims/lis/Instructor",
         "urn:lti:role:ims/lis/Learner",
+        # LTI 1.3 roles. NOTE these have all changed and any existing applications will need to be migrated to
+        # include the new roles
+        "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Administrator",
+        "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Instructor",
+        "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Student",
+        "http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor",
+        "http://purl.imsglobal.org/vocab/lis/v2/system/person#User",
       ],
     },
     default_config: {},

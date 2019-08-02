@@ -431,10 +431,10 @@ atomic-canvas@^1.2.0:
   dependencies:
     cli-highlight "^1.1.4"
 
-atomic-canvas@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/atomic-canvas/-/atomic-canvas-1.7.0.tgz#c34b3ad53ac776057b3f3afe33d7d162f18896a0"
-  integrity sha512-VNf/7p2U3bs7nkCNNYqREOsoS5wJNOW8p/9A1OKaJvHe1WUiRwyzLwUUD6ly2rmHamFzTTLn5HDS8KiLPFUcBw==
+atomic-canvas@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/atomic-canvas/-/atomic-canvas-1.8.0.tgz#1603f87e05565826f937ac3844a3b1886f507801"
+  integrity sha512-yMRhs7rTqVptyQYSIqInVZyZiOOsmfwZ9geXiD+xXmB+m4S4fp0q7FYAjva0DV7g6AWXG1uQPqPFy3VSgIAjGQ==
   dependencies:
     cli-highlight "^1.1.4"
 

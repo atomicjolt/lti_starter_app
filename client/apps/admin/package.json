@@ -6,7 +6,7 @@
     "watch": "jest --config=config/jest_config.json --watch"
   },
   "dependencies": {
-    "atomic-canvas": "^1.7.0",
+    "atomic-canvas": "^1.8.0",
     "atomic-fuel": "^2.7.0",
     "babel": "^6.23.0",
     "babel-polyfill": "^6.26.0",
