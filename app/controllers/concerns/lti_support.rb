@@ -193,7 +193,7 @@ module Concerns
     end
 
     def lms_user_id
-      params[:custom_canvas_user_id] || params[:user_id]
+      params[:custom_canvas_user_id]
     end
 
   end
