@@ -74,8 +74,8 @@ class LtiLaunchesController < ApplicationController
   # This method demonstrates create, delete and update of line items using
   # LtiAdvantage::Services::LineItems
   def line_item_example
-    line_item = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token)
-    line_items = line_item.list
+    line_item_service = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token)
+    line_items = line_item_service.list
 
     @line_items = JSON.parse(line_items.body)
 
@@ -89,7 +89,7 @@ class LtiLaunchesController < ApplicationController
       if delete_items
         # Delete Line items
         @line_items.each do |li|
-          line_item.delete(li["id"])
+          line_item_service.delete(li["id"])
         end
         found = false
       else
@@ -103,9 +103,9 @@ class LtiLaunchesController < ApplicationController
                    resourceId: resource_id,
                    tag: tag,
                  }
-                 line_item.update(found["id"], line_item_attrs)
+                 line_item_service.update(found["id"], line_item_attrs)
                else
-                 line_item_attrs = line_item.generate(
+                 line_item_attrs = line_item_service.generate(
                    label: "LTI Advantage test item #{Time.now.utc}",
                    max_score: 10,
                    resource_id: resource_id,
@@ -114,12 +114,12 @@ class LtiLaunchesController < ApplicationController
                    end_date_time: Time.now.utc + 45.days,
                    external_tool_url: external_tool_url,
                  )
-                 line_item.create(line_item_attrs)
+                 line_item_service.create(line_item_attrs)
                end
       item = JSON.parse(result.body)
 
       # Get a single item
-      show_item = line_item.show(item["id"])
+      show_item = line_item_service.show(item["id"])
 
       item
     else
