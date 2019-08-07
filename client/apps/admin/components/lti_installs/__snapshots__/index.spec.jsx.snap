@@ -77,6 +77,7 @@ ShallowWrapper {
           overlayClassName="c-modal__background"
           parentSelector={[Function]}
           portalClassName="ReactModalPortal"
+          role="dialog"
           shouldCloseOnEsc={true}
           shouldCloseOnOverlayClick={true}
           shouldFocusAfterRender={true}
@@ -188,6 +189,7 @@ ShallowWrapper {
           "overlayClassName": "c-modal__background",
           "parentSelector": [Function],
           "portalClassName": "ReactModalPortal",
+          "role": "dialog",
           "shouldCloseOnEsc": true,
           "shouldCloseOnOverlayClick": true,
           "shouldFocusAfterRender": true,
@@ -253,6 +255,7 @@ ShallowWrapper {
             overlayClassName="c-modal__background"
             parentSelector={[Function]}
             portalClassName="ReactModalPortal"
+            role="dialog"
             shouldCloseOnEsc={true}
             shouldCloseOnOverlayClick={true}
             shouldFocusAfterRender={true}
@@ -364,6 +367,7 @@ ShallowWrapper {
             "overlayClassName": "c-modal__background",
             "parentSelector": [Function],
             "portalClassName": "ReactModalPortal",
+            "role": "dialog",
             "shouldCloseOnEsc": true,
             "shouldCloseOnOverlayClick": true,
             "shouldFocusAfterRender": true,
