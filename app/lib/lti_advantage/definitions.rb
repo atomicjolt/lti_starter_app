@@ -65,12 +65,17 @@ module LtiAdvantage
     CANVAS_BETA_AUTH_TOKEN_URL = "https://canvas.beta.instructure.com/login/oauth2/token".freeze
     CANVAS_BETA_OIDC_URL = "https://canvas.beta.instructure.com/api/lti/authorize_redirect".freeze
 
+    def self.lms_host(payload)
+      host = if deep_link_launch?(payload)
+               payload.dig(LtiAdvantage::Definitions::DEEP_LINKING_CLAIM, "deep_link_return_url")
+             else
+               payload.dig(LtiAdvantage::Definitions::LAUNCH_PRESENTATION, "return_url")
+             end
+      UrlHelper.safe_host(host)
+    end
+
     def self.lms_url(payload)
-      if deep_link_launch?(payload)
-        "https://#{URI.parse(payload[LtiAdvantage::Definitions::DEEP_LINKING_CLAIM]['deep_link_return_url']).host}"
-      else
-        "https://#{URI.parse(payload[LtiAdvantage::Definitions::LAUNCH_PRESENTATION]['return_url']).host}"
-      end
+      "https://#{lms_host(payload)}"
     end
 
     def self.deep_link_launch?(jwt_body)

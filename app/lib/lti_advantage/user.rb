@@ -12,6 +12,9 @@ module LtiAdvantage
         user = _generate_new_lti_user
         _attempt_uniq_email(user)
       else
+        if user.lms_user_id.blank? && _lms_user_id.present?
+          user.lms_user_id = _lms_user_id
+        end
         _update_roles(user)
       end
       user
@@ -45,7 +48,7 @@ module LtiAdvantage
       user.password_confirmation = user.password
       user.lti_user_id = @lti_user_id
       user.lti_provider = _lti_provider
-      user.lms_user_id = @lti_token.dig(LtiAdvantage::Definitions::CUSTOM_CLAIM, "canvas_user_id")
+      user.lms_user_id = _lms_user_id
       user.create_method = ::User.create_methods[:lti]
 
       # store lti roles for the user
@@ -84,14 +87,17 @@ module LtiAdvantage
     end
 
     def _domain_for_email
+      _lti_provider ||
       @lti_token.dig(LtiAdvantage::Definitions::CUSTOM_CLAIM, "canvas_api_domain") ||
         Rails.application.secrets.application_main_domain
     end
 
+    def _lms_user_id
+      @lti_token.dig(LtiAdvantage::Definitions::CUSTOM_CLAIM, "canvas_user_id")
+    end
+
     def _lti_provider
-      UrlHelper.safe_host(
-        @lti_token.dig(LtiAdvantage::Definitions::LAUNCH_PRESENTATION, "return_url"),
-      )
+      LtiAdvantage::Definitions.lms_host(@lti_token)
     end
 
     def _context_id
