@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe ApplicationController, type: :controller do
   before do
     setup_application_instance(mock_helper: false)
+    setup_canvas_lti_advantage(application_instance: @application_instance)
   end
   describe "helper methods" do
     describe "#current_application_instance" do
@@ -11,19 +12,7 @@ RSpec.describe ApplicationController, type: :controller do
         expect(subject.send(:current_application_instance)).to eq(@application_instance)
       end
       it "returns the current application instance using id_token" do
-        iss = "https://canvas.instructure.com"
-        @application_instance.application.lti_installs.create!(
-          iss: iss,
-          client_id: "1234",
-          jwks_url: LtiAdvantage::Definitions::CANVAS_PUBLIC_LTI_KEYS_URL,
-          token_url: LtiAdvantage::Definitions::CANVAS_AUTH_TOKEN_URL,
-          oidc_url: LtiAdvantage::Definitions::CANVAS_OIDC_URL,
-        )
-        lti_token = {
-          "iss" => iss,
-        }
-        token = LtiAdvantage::Authorization.client_assertion(@application_instance, lti_token["iss"])
-        request.params["id_token"] = token
+        request.params["id_token"] = @id_token
         expect(subject.send(:current_application_instance)).to eq(@application_instance)
       end
     end
