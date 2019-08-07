@@ -12,7 +12,7 @@ RSpec.describe LtiAdvantage::Services::Results do
   describe "list" do
     it "lists results for the specified line item" do
       results = JSON.parse(@results_service.list(@line_item_id).body)
-      expect(results.length > 0).to be true
+      expect(results.empty?).to be false
     end
   end
 
@@ -20,7 +20,7 @@ RSpec.describe LtiAdvantage::Services::Results do
     it "gets specific result for the specified line item" do
       result_id = ""
       results = JSON.parse(@results_service.show(@line_item_id, result_id).body)
-      expect(results.length > 0).to be true
+      expect(results.empty?).to be false
     end
   end
 end

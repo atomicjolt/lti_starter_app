@@ -70,9 +70,11 @@ export class DeepLink extends React.Component {
         <ul>
           <li><button onClick={() => this.selectItem('html')}>Html Fragment</button></li>
         </ul>
-        <p>See <a href="https://www.imsglobal.org/spec/lti-dl/v2p0#content-item-types">
-          https://www.imsglobal.org/spec/lti-dl/v2p0#content-item-types</a> for examples
-          of item types that can be provided via deep linking.
+        <p>See
+          <a href="https://www.imsglobal.org/spec/lti-dl/v2p0#content-item-types">
+            https://www.imsglobal.org/spec/lti-dl/v2p0#content-item-types
+          </a>
+          for examples of item types that can be provided via deep linking.
         </p>
       </div>
     );

@@ -119,7 +119,7 @@ class LtiLaunchesController < ApplicationController
       item = JSON.parse(result.body)
 
       # Get a single item
-      show_item = line_item_service.show(item["id"])
+      line_item_service.show(item["id"])
 
       item
     else

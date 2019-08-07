@@ -13,6 +13,8 @@ RSpec.describe LtiAdvantage::Services::LineItems do
     it "lists users in the course and their roles" do
       line_items = @line_item.list
       parsed = JSON.parse(line_items.body)
+      byebug
+      expect(parse).to be
     end
   end
 
