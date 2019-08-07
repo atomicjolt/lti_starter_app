@@ -69,7 +69,7 @@ def setup_lti_advantage_users
       user_id: @student.id,
       iss: @iss,
       deployment_id: @deployment_id,
-    }
+    },
   )
 end
 

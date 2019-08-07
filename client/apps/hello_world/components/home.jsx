@@ -48,14 +48,12 @@ export class Home extends React.Component {
         <a target="_top" href={`${this.props.settings.canvas_url}/courses/${course.id}`}>
           {course.name}
         </a>
-      </li>
-    );
+      </li>);
   }
 
   renderLineItemErrors() {
     return this.props.settings.line_items.errors.map(error =>
-      <li key={error.message}>{error.message}</li>
-    );
+      <li key={error.message}>{error.message}</li>);
   }
 
   renderLineItems() {
@@ -77,8 +75,7 @@ export class Home extends React.Component {
         <a href={lineItem.id}>
           {lineItem.label} ({lineItem.scoreMaximum})
         </a>
-      </li>
-    );
+      </li>);
   }
 
   renderUsers() {
@@ -96,8 +93,7 @@ export class Home extends React.Component {
         <p>Status: {nameAndRole.status}</p>
         <p>User Id:{nameAndRole.userId}</p>
         <p>Roles:{nameAndRole.roles.join(', ')}</p>
-      </li>
-    );
+      </li>);
   }
 
   renderResults() {
@@ -110,8 +106,7 @@ export class Home extends React.Component {
         <p>User: {result.userId}</p>
         <p>Score: {result.resultScore}/{result.resultMaximum}</p>
         <p>Comment: {result.comment}</p>
-      </li>
-    );
+      </li>);
   }
 
   renderContent() {
