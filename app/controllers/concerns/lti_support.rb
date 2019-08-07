@@ -71,6 +71,10 @@ module Concerns
         user = _generate_new_lti_user(params)
         _attempt_uniq_email(user)
       else
+        if user.lms_user_id.blank? && lms_user_id.present?
+          user.lms_user_id = lms_user_id
+          user.save
+        end
         _update_roles(user, params)
       end
 
@@ -203,7 +207,7 @@ module Concerns
     end
 
     def lms_user_id
-      params[:custom_canvas_user_id] || params[:user_id]
+      params[:custom_canvas_user_id]
     end
 
   end
