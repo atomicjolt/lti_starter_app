@@ -13,14 +13,15 @@ RSpec.describe LtiAdvantage::Services::LineItems do
     it "lists users in the course and their roles" do
       line_items = @line_item.list
       parsed = JSON.parse(line_items.body)
-      byebug
-      expect(parse).to be
+      expect(parsed.empty?).to be false
     end
   end
 
   describe "show" do
     it "lists users in the course and their roles" do
       result = @line_item.show(@id)
+      parsed = JSON.parse(result.body)
+      expect(parsed["id"]).to eq "https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/31"
     end
   end
 
@@ -36,6 +37,8 @@ RSpec.describe LtiAdvantage::Services::LineItems do
         external_tool_url: "https://www.example.com/url",
       )
       result = @line_item.create(line_item_attrs)
+      parsed = JSON.parse(result.body)
+      expect(parsed["id"]).to eq "https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/29"
     end
   end
 
@@ -48,12 +51,15 @@ RSpec.describe LtiAdvantage::Services::LineItems do
         tag: "test",
       }
       result = @line_item.update(@id, line_item_attrs)
+      parsed = JSON.parse(result.body)
+      expect(parsed["id"]).to eq "https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/31"
     end
   end
 
   describe "delete" do
     it "lists users in the course and their roles" do
       result = @line_item.delete(@id)
+      expect(result.response.code).to eq "200"
     end
   end
 end
