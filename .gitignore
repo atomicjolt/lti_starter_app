@@ -64,7 +64,12 @@ rerun.txt
 /coverage/
 /spec/tmp
 
-# Because ben is weird
+# Becasue ben is weird
 /.idea/
-
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
 .vscode/
