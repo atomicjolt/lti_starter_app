@@ -121,7 +121,7 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
       end
     end
 
-    describe "GET create" do
+    describe "POST create" do
       it "creates a new application instances and returns json" do
         site = FactoryBot.create(:site)
         attrs = {
@@ -129,7 +129,7 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
           site_id: site.id,
         }
         post :create,
-             params: {
+            params: {
                application_id: @application.id,
                application_instance: attrs,
              },
