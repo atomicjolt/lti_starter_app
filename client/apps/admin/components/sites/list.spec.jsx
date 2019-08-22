@@ -21,6 +21,7 @@ describe('sites list', () => {
   beforeEach(() => {
     props = {
       sites,
+      deleteSite: () => {},
     };
     result = shallow(<List {...props} />);
   });
@@ -28,7 +29,11 @@ describe('sites list', () => {
   it('renders the list with header values', () => {
     const thead = result.find('thead');
     expect(thead.props().children).toEqual(
-      <tr><th><span>URL</span></th><th><span>SETTINGS</span></th><th><span>DELETE</span></th></tr>
+      <tr>
+<th><span>URL</span></th>
+<th><span>SETTINGS</span></th>
+<th><span>DELETE</span></th>
+</tr>
     );
   });
 

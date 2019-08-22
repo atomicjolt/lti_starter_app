@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Wrapper, Button, Menu, MenuItem } from 'react-aria-menubutton';
-import { Link } from 'react-router';
+import { Link } from 'react-router3';
 import assets from '../../libs/assets';
 import SubNav from '../common/sub_nav';
 
