@@ -1,77 +1,75 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { Link } from 'react-router3';
+import TestRenderer from 'react-test-renderer';
 import SubNav from './sub_nav';
 
+
+function findText(testRenderer, text) {
+  return JSON.stringify(testRenderer.toJSON()).indexOf(text) >= 0;
+}
+
 describe('sub nav', () => {
-  let result;
-  let props;
+  const alertText = '! Setup Required';
+  let testRenderer;
+  let testInstance;
+  let json;
 
   beforeEach(() => {
-    props = {
-      sites: {
-        1: {
-          id: 1,
-          oauth_key: 'akey',
-          oauth_secret: 'secret',
-        },
+    const sites = {
+      1: {
+        id: 1,
+        oauth_key: 'akey',
+        oauth_secret: 'secret',
       },
     };
-    result = shallow(<SubNav {...props} />);
+    testRenderer = TestRenderer.create(
+      <SubNav sites={sites} />
+    );
+    testInstance = testRenderer.root;
+    json = testRenderer.toJSON();
   });
 
   it('renders', () => {
-    expect(result).toBeDefined();
+    expect(testRenderer).toBeDefined();
+    expect(testInstance.findAllByType(Link).length).toEqual(2);
   });
 
   it('matches the snapshot', () => {
-    expect(result).toMatchSnapshot();
+    expect(json).toMatchSnapshot();
   });
 
   it('renders a warning appropriately with empty sites', () => {
-    expect(result.find('Link').last().props().children[1]).toBe(null);
-    props.sites = {};
-    result = shallow(<SubNav {...props} />);
-    expect(result.find('Link').length).toEqual(2);
-    const link = result.find('Link').last();
-    expect(link.props().children[1]).not.toBe(null);
-    expect(link.props().children[1]).toEqual(
-      <span className="c-alert c-alert--danger"> ! Setup Required</span>
+    testRenderer = TestRenderer.create(
+      <SubNav sites={{}} />
     );
+    expect(findText(testRenderer, alertText)).toBe(true);
   });
 
   it('renders a warning appropriately with empty oauth key', () => {
-    expect(result.find('Link').last().props().children[1]).toBe(null);
-    props.sites = {
+    const sites = {
       1: {
         id: 1,
         oauth_key: '',
         oauth_secret: 'secret',
       },
     };
-    result = shallow(<SubNav {...props} />);
-    expect(result.find('Link').length).toEqual(2);
-    const link = result.find('Link').last();
-    expect(link.props().children[1]).not.toBe(null);
-    expect(link.props().children[1]).toEqual(
-      <span className="c-alert c-alert--danger"> ! Setup Required</span>
+    testRenderer = TestRenderer.create(
+      <SubNav sites={sites} />
     );
+    expect(findText(testRenderer, alertText)).toBe(true);
   });
 
   it('renders a warning appropriately with empty oauth secret', () => {
-    expect(result.find('Link').last().props().children[1]).toBe(null);
-    props.sites = {
+    const sites = {
       1: {
         id: 1,
         oauth_key: 'akey',
         oauth_secret: '',
       },
     };
-    result = shallow(<SubNav {...props} />);
-    expect(result.find('Link').length).toEqual(2);
-    const link = result.find('Link').last();
-    expect(link.props().children[1]).not.toBe(null);
-    expect(link.props().children[1]).toEqual(
-      <span className="c-alert c-alert--danger"> ! Setup Required</span>
+    testRenderer = TestRenderer.create(
+      <SubNav sites={sites} />
     );
+    expect(findText(testRenderer, alertText)).toBe(true);
   });
 });

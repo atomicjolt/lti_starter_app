@@ -8,7 +8,7 @@
   "scripts": {
     "test": "jest --config package.json",
     "test_update": "jest -u --config package.json",
-    "test_debug": "node inspect jest --runInBand --config=config/jest_config.json || SUCCESS=false",
+    "test_debug": "node inspect jest --runInBand --config package.json || SUCCESS=false",
     "hot": "./bin/webpack-dev-server",
     "lint": "eslint client",
     "lint_fix": "eslint client --fix",
@@ -72,6 +72,7 @@
     "react-router3": "npm:react-router@3.2.3",
     "react-select": "^1.2.1",
     "redux": "4.0.4",
+    "resize-observer-polyfill": "^1.5.1",
     "superagent": "^5.1.0",
     "uuid": "^3.3.2"
   },

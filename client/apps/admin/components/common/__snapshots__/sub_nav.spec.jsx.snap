@@ -1,3 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`sub nav matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`sub nav matches the snapshot 1`] = `
+<div
+  className="c-subnav"
+>
+  <ul>
+    <li>
+      <a
+        onClick={[Function]}
+        style={Object {}}
+      >
+        LTI Tools
+      </a>
+    </li>
+    <li>
+      <a
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Sites
+      </a>
+    </li>
+  </ul>
+</div>
+`;
