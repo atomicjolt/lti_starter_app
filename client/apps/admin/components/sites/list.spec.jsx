@@ -30,10 +30,10 @@ describe('sites list', () => {
     const thead = result.find('thead');
     expect(thead.props().children).toEqual(
       <tr>
-<th><span>URL</span></th>
-<th><span>SETTINGS</span></th>
-<th><span>DELETE</span></th>
-</tr>
+        <th><span>URL</span></th>
+        <th><span>SETTINGS</span></th>
+        <th><span>DELETE</span></th>
+      </tr>
     );
   });
 

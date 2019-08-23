@@ -1,6 +1,6 @@
 module ApplicationInstanceHelper
 
-  GLOBAL_LTI_KEY = "global_test"
+  GLOBAL_LTI_KEY = "global_test".freeze
 
   def self.make_application_instance
     canvas_api_permissions = {
@@ -46,7 +46,7 @@ module ApplicationInstanceHelper
 
     bundle_instance = FactoryBot.create(
       :bundle_instance,
-      bundle: bundle
+      bundle: bundle,
     )
 
     FactoryBot.create(
