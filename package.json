@@ -20,9 +20,10 @@
     "url": "https://github.com/atomicjolt/lti_starter_app"
   },
   "keywords": [
-    "react",
-    "LMS",
+    "React",
     "Rails",
+    "Atomic Jolt",
+    "LMS",
     "LTI",
     "OAuth"
   ],
