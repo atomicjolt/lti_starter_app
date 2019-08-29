@@ -197,9 +197,9 @@ export default class ListRow extends React.Component {
         </td>
         { this.renderAuthentications() }
         <td>
-          {createdAt.toLocaleDateString()} 
-{' '}
-{createdAt.toLocaleTimeString()}
+          {createdAt.toLocaleDateString()}
+          {' '}
+          {createdAt.toLocaleTimeString()}
         </td>
         <td>
           <div>1 day</div>
