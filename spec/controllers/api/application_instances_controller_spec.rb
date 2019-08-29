@@ -129,11 +129,11 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
           site_id: site.id,
         }
         post :create,
-            params: {
-              application_id: @application.id,
-              application_instance: attrs,
-            },
-            format: :json
+          params: {
+            application_id: @application.id,
+            application_instance: attrs,
+          },
+          format: :json
         expect(response).to have_http_status(200)
       end
     end
