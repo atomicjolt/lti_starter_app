@@ -39,7 +39,7 @@ RSpec.describe Api::LtiLaunchesController, type: :controller do
           content_item: @content_item,
           content_item_return_url: "http://www.example.com/return",
         }, format: :json
-        expect(response).to be_successful?
+        expect(response).to have_http_status(200)
       end
 
       it "sets the lti launch with the correct config" do
