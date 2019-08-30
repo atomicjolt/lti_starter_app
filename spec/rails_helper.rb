@@ -64,6 +64,9 @@ RSpec.configure do |config|
       DatabaseCleaner.clean
     end
 
+    # compile js once before tests run
+    Webpacker.compile
+
     ApplicationInstanceHelper.make_application_instance
   end
 
