@@ -61,6 +61,9 @@ gem "will_paginate"
 # Javascript
 gem "webpacker"
 
+# Assets
+gem "sassc-rails"
+
 # Application secrets checker
 gem "nuclear_secrets"
 
@@ -68,7 +71,6 @@ group :development do
   # UI
   gem "autoprefixer-rails"
   gem "non-stupid-digest-assets" # also compile assets without digest (fixes font problem)
-  gem "sassc-rails"
   gem "uglifier"
 
   gem "better_errors"
