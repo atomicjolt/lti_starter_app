@@ -83,7 +83,12 @@ export default class ListRow extends React.Component {
   }
 
   checkAuthentication(e) {
-    if (!_.find(this.props.settings.user_canvas_domains, (canvasUrl) => canvasUrl === this.props.applicationInstance.site.url)) {
+    const found = _.find(
+      this.props.settings.user_canvas_domains,
+      (canvasUrl) => canvasUrl === this.props.applicationInstance.site.url
+    );
+
+    if (!found) {
       e.stopPropagation();
       e.preventDefault();
       this.settingsForm.submit();
