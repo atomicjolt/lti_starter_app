@@ -157,13 +157,12 @@ The React Rails Starter App uses React. All client side code can be found in the
 
 ```
 <% content_for :head do -%>
-  <%= webpack_styles_tag 'styles' %>
+  <%= stylesheet_pack_tag 'styles' %>
 <% end -%>
 
 <%= render 'shared/default_client_settings' %>
-<%= webpack_manifest_script %>
 <div id="main-app"></div>
-<%= webpack_bundle_tag 'app' %>
+<%= javascript_packs_with_chunks_tag "app, "data-turbolinks-track": "reload" %>
 ```
 
 ##### Custom Build Settings

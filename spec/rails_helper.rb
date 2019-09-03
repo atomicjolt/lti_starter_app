@@ -27,6 +27,7 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.extend ControllerMacros, type: :controller
   config.include ApplicationInstanceHelper
+  config.render_views
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -63,6 +64,9 @@ RSpec.configure do |config|
     ensure
       DatabaseCleaner.clean
     end
+
+    # compile js once before tests run
+    Webpacker.compile
 
     ApplicationInstanceHelper.make_application_instance
   end

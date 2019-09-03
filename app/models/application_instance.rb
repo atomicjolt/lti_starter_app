@@ -5,7 +5,7 @@ class ApplicationInstance < ApplicationRecord
 
   belongs_to :application, counter_cache: true
   belongs_to :site
-  belongs_to :bundle_instance
+  belongs_to :bundle_instance, required: false
 
   has_many :authentications, dependent: :destroy, inverse_of: :application_instance
 

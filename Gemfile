@@ -11,11 +11,14 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "5.1.7"
+gem "rails", "5.2.3"
+
+# Improve boot time
+gem "bootsnap", require: false
 
 # Database
 gem "apartment"
-gem "composite_primary_keys", "~> 10.0"
+gem "composite_primary_keys"
 gem "pg"
 
 # authentication, authorization, integrations
@@ -55,6 +58,12 @@ gem "rack-cors", require: "rack/cors"
 # Paging
 gem "will_paginate"
 
+# Javascript
+gem "webpacker"
+
+# Assets
+gem "sassc-rails"
+
 # Application secrets checker
 gem "nuclear_secrets"
 
@@ -62,7 +71,6 @@ group :development do
   # UI
   gem "autoprefixer-rails"
   gem "non-stupid-digest-assets" # also compile assets without digest (fixes font problem)
-  gem "sass-rails"
   gem "uglifier"
 
   gem "better_errors"
@@ -81,7 +89,7 @@ group :development do
   gem "spring"
   gem "spring-commands-rspec"
   gem "spring-watcher-listen"
-  gem "web-console"
+  gem "web-console", "~>3.7.0"
 end
 
 group :linter do

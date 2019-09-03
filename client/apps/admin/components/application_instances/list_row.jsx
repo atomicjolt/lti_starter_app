@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
+import { Link } from 'react-router3';
 import _ from 'lodash';
 
 import Modal from './modal';
@@ -83,9 +83,12 @@ export default class ListRow extends React.Component {
   }
 
   checkAuthentication(e) {
-    if (!_.find(this.props.settings.user_canvas_domains, canvasUrl =>
-      canvasUrl === this.props.applicationInstance.site.url
-    )) {
+    const found = _.find(
+      this.props.settings.user_canvas_domains,
+      (canvasUrl) => canvasUrl === this.props.applicationInstance.site.url
+    );
+
+    if (!found) {
       e.stopPropagation();
       e.preventDefault();
       this.settingsForm.submit();
@@ -95,8 +98,8 @@ export default class ListRow extends React.Component {
   renderAuthentications() {
     const styles = ListRow.getStyles();
     const { applicationInstance } = this.props;
-    const numberAuthentications = applicationInstance.authentications ?
-      applicationInstance.authentications.length : 0;
+    const numberAuthentications = applicationInstance.authentications
+      ? applicationInstance.authentications.length : 0;
 
     if (numberAuthentications <= 0) {
       return (
@@ -199,7 +202,9 @@ export default class ListRow extends React.Component {
         </td>
         { this.renderAuthentications() }
         <td>
-          {createdAt.toLocaleDateString()} {createdAt.toLocaleTimeString()}
+          {createdAt.toLocaleDateString()}
+          {' '}
+          {createdAt.toLocaleTimeString()}
         </td>
         <td>
           <div>1 day</div>

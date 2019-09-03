@@ -1,8 +1,6 @@
 require "rails_helper"
 
 RSpec.describe LtiLaunchesController, type: :controller do
-  render_views
-
   before do
     setup_application_instance
   end

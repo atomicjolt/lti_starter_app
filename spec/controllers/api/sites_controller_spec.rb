@@ -62,8 +62,8 @@ RSpec.describe Api::SitesController, type: :controller do
           get :index, format: :json
           expect(response).to have_http_status(200)
           sites = JSON.parse(response.body)
-          expect(sites.count).to be > 0
-          expect(sites[0]["url"]).to eq @application_instance.site.url
+          expect(sites.count).to eq Site.count
+          expect(sites.pluck("url")).to include @application_instance.site.url
         end
       end
     end

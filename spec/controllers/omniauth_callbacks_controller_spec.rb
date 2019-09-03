@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe OmniauthCallbacksController, type: :controller do
-  render_views
 
   class MockStrategy
     def name
