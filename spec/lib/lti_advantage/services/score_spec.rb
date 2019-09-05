@@ -20,7 +20,7 @@ RSpec.describe LtiAdvantage::Services::Score do
         grading_progress: "FullyGraded",
       )
       result = JSON.parse(@score_service.send(score))
-      expect(result["resultUrl"].length > 0).to be true
+      expect(result["resultUrl"].present?).to be true
     end
   end
 end

@@ -105,7 +105,7 @@ def build_payload(client_id:, iss:, lti_user_id:, context_id:)
     "azp": client_id,
     "https://purl.imsglobal.org/spec/lti/claim/deployment_id": @deployment_id,
     "exp": exp.to_i,
-    "iat": DateTime.now.to_i,
+    "iat": Time.now.to_i,
     "iss": iss,
     "nonce": nonce,
     "sub": lti_user_id,
