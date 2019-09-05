@@ -9,6 +9,7 @@ describe('sites list row', () => {
   beforeEach(() => {
     props = {
       site: { url: 'http://www.example.com' },
+      deleteSite: () => {},
     };
     result = shallow(<SiteRow {...props} />);
   });

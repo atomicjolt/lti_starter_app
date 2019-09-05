@@ -21,6 +21,9 @@ describe('application instances list', () => {
       deleteApplicationInstance: () => {},
       saveApplicationInstance: () => {},
       sites: { 1: { id: 1, url: 'http://www.example.com' } },
+      currentSortColumn: '',
+      currentSortDirection: '',
+      setSort: () => {},
     };
     result = shallow(<List {...props} />);
   });

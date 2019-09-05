@@ -4,8 +4,6 @@ USER_AGENT =
     freeze
 
 describe ApplicationController, type: :controller do
-  render_views
-
   before do
     setup_application_instance
     # url when posting to anonymous controller created below.

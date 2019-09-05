@@ -1,6 +1,6 @@
 // if you use jsx, you have to import React
 import React                          from 'react';
-import { Router, Route }              from 'react-router';
+import { Router, Route }              from 'react-router3';
 
 import appHistory                     from './history';
 import Index                          from './components/layout/index';

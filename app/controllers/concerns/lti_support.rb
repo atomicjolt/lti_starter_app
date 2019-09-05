@@ -56,7 +56,7 @@ module Concerns
 
       # Match on only lms_user_id. This happens when a user uses OAuth to create and
       # account before they ever do an LTI launch.
-      if user.blank?
+      if user.blank? && lms_user_id.present?
         if user = User.find_by(lms_user_id: lms_user_id)
           if user.lti_user_id != lti_user_id
             user.update!(lti_user_id: lti_user_id)

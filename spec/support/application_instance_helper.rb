@@ -1,4 +1,7 @@
 module ApplicationInstanceHelper
+
+  GLOBAL_LTI_KEY = "global_test".freeze
+
   def self.make_application_instance
     canvas_api_permissions = {
       default: [],
@@ -35,20 +38,29 @@ module ApplicationInstanceHelper
     application = FactoryBot.create(
       :application,
       canvas_api_permissions: canvas_api_permissions,
+      client_application_name: "hello_world",
     )
 
     default_config = {}
 
+    bundle = Bundle.find_or_create_by(key: GLOBAL_LTI_KEY)
+
+    bundle_instance = FactoryBot.create(
+      :bundle_instance,
+      bundle: bundle,
+    )
+
     FactoryBot.create(
       :application_instance,
       application: application,
-      lti_key: "global_test",
-      tenant: "global_test",
+      lti_key: GLOBAL_LTI_KEY,
+      tenant: GLOBAL_LTI_KEY,
       config: default_config,
+      bundle_instance: bundle_instance,
     )
   end
 
   def global_application_instance
-    @global_application_instance ||= ApplicationInstance.find_by(lti_key: "global_test")
+    @global_application_instance ||= ApplicationInstance.find_by(lti_key: GLOBAL_LTI_KEY)
   end
 end
