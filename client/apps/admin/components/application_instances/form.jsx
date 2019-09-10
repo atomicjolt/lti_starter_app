@@ -67,6 +67,8 @@ export default class Form extends React.Component {
       onSelect: () => this.props.newSite()
     });
 
+    const selectedOption = _.find(options, opt => opt.value === this.props.site_id);
+
     let erroneousConfigWarning = null;
     if (this.props.configParseError) {
       erroneousConfigWarning = (
@@ -89,13 +91,11 @@ export default class Form extends React.Component {
               <span>Canvas Url</span>
               <ReactSelect
                 options={options}
-                value={this.props.site_id}
+                value={selectedOption}
                 name="site_id"
                 placeholder="Select a Canvas Domain"
                 onChange={option => this.selectSite(option)}
-                searchable={false}
-                arrowRenderer={() => null}
-                clearable={false}
+                isClearable={false}
               />
             </div>
           </div>
