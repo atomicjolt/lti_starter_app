@@ -40,40 +40,13 @@ ShallowWrapper {
               <span>
                 Canvas Url
               </span>
-              <Select
-                arrowRenderer={[Function]}
-                autosize={true}
-                backspaceRemoves={true}
-                backspaceToRemoveMessage="Press backspace to remove {label}"
-                clearAllText="Clear all"
-                clearRenderer={[Function]}
-                clearValueText="Clear value"
-                clearable={false}
-                closeOnSelect={true}
-                deleteRemoves={true}
-                delimiter=","
-                disabled={false}
-                escapeClearsValue={true}
-                filterOptions={[Function]}
-                ignoreAccents={true}
-                ignoreCase={true}
-                inputProps={Object {}}
-                isLoading={false}
-                joinValues={false}
-                labelKey="label"
-                matchPos="any"
-                matchProp="any"
-                menuBuffer={0}
-                menuRenderer={[Function]}
-                multi={false}
+              <StateManager
+                defaultInputValue=""
+                defaultMenuIsOpen={false}
+                defaultValue={null}
+                isClearable={false}
                 name="site_id"
-                noResultsText="No results found"
-                onBlurResetsInput={true}
                 onChange={[Function]}
-                onCloseResetsInput={true}
-                onSelectResetsInput={true}
-                openOnClick={true}
-                optionComponent={[Function]}
                 options={
                   Array [
                     Object {
@@ -85,19 +58,7 @@ ShallowWrapper {
                     },
                   ]
                 }
-                pageSize={5}
                 placeholder="Select a Canvas Domain"
-                removeSelected={true}
-                required={false}
-                rtl={false}
-                scrollMenuIntoView={true}
-                searchable={false}
-                simpleValue={false}
-                tabSelectsValue={true}
-                trimFilter={true}
-                value="foo"
-                valueComponent={[Function]}
-                valueKey="value"
               />
             </div>
           </div>
@@ -264,40 +225,13 @@ ShallowWrapper {
                 <span>
                   Canvas Url
                 </span>
-                <Select
-                  arrowRenderer={[Function]}
-                  autosize={true}
-                  backspaceRemoves={true}
-                  backspaceToRemoveMessage="Press backspace to remove {label}"
-                  clearAllText="Clear all"
-                  clearRenderer={[Function]}
-                  clearValueText="Clear value"
-                  clearable={false}
-                  closeOnSelect={true}
-                  deleteRemoves={true}
-                  delimiter=","
-                  disabled={false}
-                  escapeClearsValue={true}
-                  filterOptions={[Function]}
-                  ignoreAccents={true}
-                  ignoreCase={true}
-                  inputProps={Object {}}
-                  isLoading={false}
-                  joinValues={false}
-                  labelKey="label"
-                  matchPos="any"
-                  matchProp="any"
-                  menuBuffer={0}
-                  menuRenderer={[Function]}
-                  multi={false}
+                <StateManager
+                  defaultInputValue=""
+                  defaultMenuIsOpen={false}
+                  defaultValue={null}
+                  isClearable={false}
                   name="site_id"
-                  noResultsText="No results found"
-                  onBlurResetsInput={true}
                   onChange={[Function]}
-                  onCloseResetsInput={true}
-                  onSelectResetsInput={true}
-                  openOnClick={true}
-                  optionComponent={[Function]}
                   options={
                     Array [
                       Object {
@@ -309,19 +243,7 @@ ShallowWrapper {
                       },
                     ]
                   }
-                  pageSize={5}
                   placeholder="Select a Canvas Domain"
-                  removeSelected={true}
-                  required={false}
-                  rtl={false}
-                  scrollMenuIntoView={true}
-                  searchable={false}
-                  simpleValue={false}
-                  tabSelectsValue={true}
-                  trimFilter={true}
-                  value="foo"
-                  valueComponent={[Function]}
-                  valueKey="value"
                 />
               </div>
             </div>,
@@ -470,40 +392,13 @@ ShallowWrapper {
                 <span>
                   Canvas Url
                 </span>
-                <Select
-                  arrowRenderer={[Function]}
-                  autosize={true}
-                  backspaceRemoves={true}
-                  backspaceToRemoveMessage="Press backspace to remove {label}"
-                  clearAllText="Clear all"
-                  clearRenderer={[Function]}
-                  clearValueText="Clear value"
-                  clearable={false}
-                  closeOnSelect={true}
-                  deleteRemoves={true}
-                  delimiter=","
-                  disabled={false}
-                  escapeClearsValue={true}
-                  filterOptions={[Function]}
-                  ignoreAccents={true}
-                  ignoreCase={true}
-                  inputProps={Object {}}
-                  isLoading={false}
-                  joinValues={false}
-                  labelKey="label"
-                  matchPos="any"
-                  matchProp="any"
-                  menuBuffer={0}
-                  menuRenderer={[Function]}
-                  multi={false}
+                <StateManager
+                  defaultInputValue=""
+                  defaultMenuIsOpen={false}
+                  defaultValue={null}
+                  isClearable={false}
                   name="site_id"
-                  noResultsText="No results found"
-                  onBlurResetsInput={true}
                   onChange={[Function]}
-                  onCloseResetsInput={true}
-                  onSelectResetsInput={true}
-                  openOnClick={true}
-                  optionComponent={[Function]}
                   options={
                     Array [
                       Object {
@@ -515,19 +410,7 @@ ShallowWrapper {
                       },
                     ]
                   }
-                  pageSize={5}
                   placeholder="Select a Canvas Domain"
-                  removeSelected={true}
-                  required={false}
-                  rtl={false}
-                  scrollMenuIntoView={true}
-                  searchable={false}
-                  simpleValue={false}
-                  tabSelectsValue={true}
-                  trimFilter={true}
-                  value="foo"
-                  valueComponent={[Function]}
-                  valueKey="value"
                 />
               </div>,
               "className": "o-grid__item u-half",
@@ -542,40 +425,13 @@ ShallowWrapper {
                   <span>
                     Canvas Url
                   </span>,
-                  <Select
-                    arrowRenderer={[Function]}
-                    autosize={true}
-                    backspaceRemoves={true}
-                    backspaceToRemoveMessage="Press backspace to remove {label}"
-                    clearAllText="Clear all"
-                    clearRenderer={[Function]}
-                    clearValueText="Clear value"
-                    clearable={false}
-                    closeOnSelect={true}
-                    deleteRemoves={true}
-                    delimiter=","
-                    disabled={false}
-                    escapeClearsValue={true}
-                    filterOptions={[Function]}
-                    ignoreAccents={true}
-                    ignoreCase={true}
-                    inputProps={Object {}}
-                    isLoading={false}
-                    joinValues={false}
-                    labelKey="label"
-                    matchPos="any"
-                    matchProp="any"
-                    menuBuffer={0}
-                    menuRenderer={[Function]}
-                    multi={false}
+                  <StateManager
+                    defaultInputValue=""
+                    defaultMenuIsOpen={false}
+                    defaultValue={null}
+                    isClearable={false}
                     name="site_id"
-                    noResultsText="No results found"
-                    onBlurResetsInput={true}
                     onChange={[Function]}
-                    onCloseResetsInput={true}
-                    onSelectResetsInput={true}
-                    openOnClick={true}
-                    optionComponent={[Function]}
                     options={
                       Array [
                         Object {
@@ -587,19 +443,7 @@ ShallowWrapper {
                         },
                       ]
                     }
-                    pageSize={5}
                     placeholder="Select a Canvas Domain"
-                    removeSelected={true}
-                    required={false}
-                    rtl={false}
-                    scrollMenuIntoView={true}
-                    searchable={false}
-                    simpleValue={false}
-                    tabSelectsValue={true}
-                    trimFilter={true}
-                    value="foo"
-                    valueComponent={[Function]}
-                    valueKey="value"
                   />,
                 ],
                 "className": "c-input",
@@ -622,39 +466,12 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "arrowRenderer": [Function],
-                    "autosize": true,
-                    "backspaceRemoves": true,
-                    "backspaceToRemoveMessage": "Press backspace to remove {label}",
-                    "clearAllText": "Clear all",
-                    "clearRenderer": [Function],
-                    "clearValueText": "Clear value",
-                    "clearable": false,
-                    "closeOnSelect": true,
-                    "deleteRemoves": true,
-                    "delimiter": ",",
-                    "disabled": false,
-                    "escapeClearsValue": true,
-                    "filterOptions": [Function],
-                    "ignoreAccents": true,
-                    "ignoreCase": true,
-                    "inputProps": Object {},
-                    "isLoading": false,
-                    "joinValues": false,
-                    "labelKey": "label",
-                    "matchPos": "any",
-                    "matchProp": "any",
-                    "menuBuffer": 0,
-                    "menuRenderer": [Function],
-                    "multi": false,
+                    "defaultInputValue": "",
+                    "defaultMenuIsOpen": false,
+                    "defaultValue": null,
+                    "isClearable": false,
                     "name": "site_id",
-                    "noResultsText": "No results found",
-                    "onBlurResetsInput": true,
                     "onChange": [Function],
-                    "onCloseResetsInput": true,
-                    "onSelectResetsInput": true,
-                    "openOnClick": true,
-                    "optionComponent": [Function],
                     "options": Array [
                       Object {
                         "label": <div>
@@ -664,19 +481,8 @@ ShallowWrapper {
                         "value": "new",
                       },
                     ],
-                    "pageSize": 5,
                     "placeholder": "Select a Canvas Domain",
-                    "removeSelected": true,
-                    "required": false,
-                    "rtl": false,
-                    "scrollMenuIntoView": true,
-                    "searchable": false,
-                    "simpleValue": false,
-                    "tabSelectsValue": true,
-                    "trimFilter": true,
-                    "value": "foo",
-                    "valueComponent": [Function],
-                    "valueKey": "value",
+                    "value": undefined,
                   },
                   "ref": null,
                   "rendered": null,
@@ -1054,40 +860,13 @@ ShallowWrapper {
                 <span>
                   Canvas Url
                 </span>
-                <Select
-                  arrowRenderer={[Function]}
-                  autosize={true}
-                  backspaceRemoves={true}
-                  backspaceToRemoveMessage="Press backspace to remove {label}"
-                  clearAllText="Clear all"
-                  clearRenderer={[Function]}
-                  clearValueText="Clear value"
-                  clearable={false}
-                  closeOnSelect={true}
-                  deleteRemoves={true}
-                  delimiter=","
-                  disabled={false}
-                  escapeClearsValue={true}
-                  filterOptions={[Function]}
-                  ignoreAccents={true}
-                  ignoreCase={true}
-                  inputProps={Object {}}
-                  isLoading={false}
-                  joinValues={false}
-                  labelKey="label"
-                  matchPos="any"
-                  matchProp="any"
-                  menuBuffer={0}
-                  menuRenderer={[Function]}
-                  multi={false}
+                <StateManager
+                  defaultInputValue=""
+                  defaultMenuIsOpen={false}
+                  defaultValue={null}
+                  isClearable={false}
                   name="site_id"
-                  noResultsText="No results found"
-                  onBlurResetsInput={true}
                   onChange={[Function]}
-                  onCloseResetsInput={true}
-                  onSelectResetsInput={true}
-                  openOnClick={true}
-                  optionComponent={[Function]}
                   options={
                     Array [
                       Object {
@@ -1099,19 +878,7 @@ ShallowWrapper {
                       },
                     ]
                   }
-                  pageSize={5}
                   placeholder="Select a Canvas Domain"
-                  removeSelected={true}
-                  required={false}
-                  rtl={false}
-                  scrollMenuIntoView={true}
-                  searchable={false}
-                  simpleValue={false}
-                  tabSelectsValue={true}
-                  trimFilter={true}
-                  value="foo"
-                  valueComponent={[Function]}
-                  valueKey="value"
                 />
               </div>
             </div>
@@ -1278,40 +1045,13 @@ ShallowWrapper {
                   <span>
                     Canvas Url
                   </span>
-                  <Select
-                    arrowRenderer={[Function]}
-                    autosize={true}
-                    backspaceRemoves={true}
-                    backspaceToRemoveMessage="Press backspace to remove {label}"
-                    clearAllText="Clear all"
-                    clearRenderer={[Function]}
-                    clearValueText="Clear value"
-                    clearable={false}
-                    closeOnSelect={true}
-                    deleteRemoves={true}
-                    delimiter=","
-                    disabled={false}
-                    escapeClearsValue={true}
-                    filterOptions={[Function]}
-                    ignoreAccents={true}
-                    ignoreCase={true}
-                    inputProps={Object {}}
-                    isLoading={false}
-                    joinValues={false}
-                    labelKey="label"
-                    matchPos="any"
-                    matchProp="any"
-                    menuBuffer={0}
-                    menuRenderer={[Function]}
-                    multi={false}
+                  <StateManager
+                    defaultInputValue=""
+                    defaultMenuIsOpen={false}
+                    defaultValue={null}
+                    isClearable={false}
                     name="site_id"
-                    noResultsText="No results found"
-                    onBlurResetsInput={true}
                     onChange={[Function]}
-                    onCloseResetsInput={true}
-                    onSelectResetsInput={true}
-                    openOnClick={true}
-                    optionComponent={[Function]}
                     options={
                       Array [
                         Object {
@@ -1323,19 +1063,7 @@ ShallowWrapper {
                         },
                       ]
                     }
-                    pageSize={5}
                     placeholder="Select a Canvas Domain"
-                    removeSelected={true}
-                    required={false}
-                    rtl={false}
-                    scrollMenuIntoView={true}
-                    searchable={false}
-                    simpleValue={false}
-                    tabSelectsValue={true}
-                    trimFilter={true}
-                    value="foo"
-                    valueComponent={[Function]}
-                    valueKey="value"
                   />
                 </div>
               </div>,
@@ -1484,40 +1212,13 @@ ShallowWrapper {
                   <span>
                     Canvas Url
                   </span>
-                  <Select
-                    arrowRenderer={[Function]}
-                    autosize={true}
-                    backspaceRemoves={true}
-                    backspaceToRemoveMessage="Press backspace to remove {label}"
-                    clearAllText="Clear all"
-                    clearRenderer={[Function]}
-                    clearValueText="Clear value"
-                    clearable={false}
-                    closeOnSelect={true}
-                    deleteRemoves={true}
-                    delimiter=","
-                    disabled={false}
-                    escapeClearsValue={true}
-                    filterOptions={[Function]}
-                    ignoreAccents={true}
-                    ignoreCase={true}
-                    inputProps={Object {}}
-                    isLoading={false}
-                    joinValues={false}
-                    labelKey="label"
-                    matchPos="any"
-                    matchProp="any"
-                    menuBuffer={0}
-                    menuRenderer={[Function]}
-                    multi={false}
+                  <StateManager
+                    defaultInputValue=""
+                    defaultMenuIsOpen={false}
+                    defaultValue={null}
+                    isClearable={false}
                     name="site_id"
-                    noResultsText="No results found"
-                    onBlurResetsInput={true}
                     onChange={[Function]}
-                    onCloseResetsInput={true}
-                    onSelectResetsInput={true}
-                    openOnClick={true}
-                    optionComponent={[Function]}
                     options={
                       Array [
                         Object {
@@ -1529,19 +1230,7 @@ ShallowWrapper {
                         },
                       ]
                     }
-                    pageSize={5}
                     placeholder="Select a Canvas Domain"
-                    removeSelected={true}
-                    required={false}
-                    rtl={false}
-                    scrollMenuIntoView={true}
-                    searchable={false}
-                    simpleValue={false}
-                    tabSelectsValue={true}
-                    trimFilter={true}
-                    value="foo"
-                    valueComponent={[Function]}
-                    valueKey="value"
                   />
                 </div>,
                 "className": "o-grid__item u-half",
@@ -1556,40 +1245,13 @@ ShallowWrapper {
                     <span>
                       Canvas Url
                     </span>,
-                    <Select
-                      arrowRenderer={[Function]}
-                      autosize={true}
-                      backspaceRemoves={true}
-                      backspaceToRemoveMessage="Press backspace to remove {label}"
-                      clearAllText="Clear all"
-                      clearRenderer={[Function]}
-                      clearValueText="Clear value"
-                      clearable={false}
-                      closeOnSelect={true}
-                      deleteRemoves={true}
-                      delimiter=","
-                      disabled={false}
-                      escapeClearsValue={true}
-                      filterOptions={[Function]}
-                      ignoreAccents={true}
-                      ignoreCase={true}
-                      inputProps={Object {}}
-                      isLoading={false}
-                      joinValues={false}
-                      labelKey="label"
-                      matchPos="any"
-                      matchProp="any"
-                      menuBuffer={0}
-                      menuRenderer={[Function]}
-                      multi={false}
+                    <StateManager
+                      defaultInputValue=""
+                      defaultMenuIsOpen={false}
+                      defaultValue={null}
+                      isClearable={false}
                       name="site_id"
-                      noResultsText="No results found"
-                      onBlurResetsInput={true}
                       onChange={[Function]}
-                      onCloseResetsInput={true}
-                      onSelectResetsInput={true}
-                      openOnClick={true}
-                      optionComponent={[Function]}
                       options={
                         Array [
                           Object {
@@ -1601,19 +1263,7 @@ ShallowWrapper {
                           },
                         ]
                       }
-                      pageSize={5}
                       placeholder="Select a Canvas Domain"
-                      removeSelected={true}
-                      required={false}
-                      rtl={false}
-                      scrollMenuIntoView={true}
-                      searchable={false}
-                      simpleValue={false}
-                      tabSelectsValue={true}
-                      trimFilter={true}
-                      value="foo"
-                      valueComponent={[Function]}
-                      valueKey="value"
                     />,
                   ],
                   "className": "c-input",
@@ -1636,39 +1286,12 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "class",
                     "props": Object {
-                      "arrowRenderer": [Function],
-                      "autosize": true,
-                      "backspaceRemoves": true,
-                      "backspaceToRemoveMessage": "Press backspace to remove {label}",
-                      "clearAllText": "Clear all",
-                      "clearRenderer": [Function],
-                      "clearValueText": "Clear value",
-                      "clearable": false,
-                      "closeOnSelect": true,
-                      "deleteRemoves": true,
-                      "delimiter": ",",
-                      "disabled": false,
-                      "escapeClearsValue": true,
-                      "filterOptions": [Function],
-                      "ignoreAccents": true,
-                      "ignoreCase": true,
-                      "inputProps": Object {},
-                      "isLoading": false,
-                      "joinValues": false,
-                      "labelKey": "label",
-                      "matchPos": "any",
-                      "matchProp": "any",
-                      "menuBuffer": 0,
-                      "menuRenderer": [Function],
-                      "multi": false,
+                      "defaultInputValue": "",
+                      "defaultMenuIsOpen": false,
+                      "defaultValue": null,
+                      "isClearable": false,
                       "name": "site_id",
-                      "noResultsText": "No results found",
-                      "onBlurResetsInput": true,
                       "onChange": [Function],
-                      "onCloseResetsInput": true,
-                      "onSelectResetsInput": true,
-                      "openOnClick": true,
-                      "optionComponent": [Function],
                       "options": Array [
                         Object {
                           "label": <div>
@@ -1678,19 +1301,8 @@ ShallowWrapper {
                           "value": "new",
                         },
                       ],
-                      "pageSize": 5,
                       "placeholder": "Select a Canvas Domain",
-                      "removeSelected": true,
-                      "required": false,
-                      "rtl": false,
-                      "scrollMenuIntoView": true,
-                      "searchable": false,
-                      "simpleValue": false,
-                      "tabSelectsValue": true,
-                      "trimFilter": true,
-                      "value": "foo",
-                      "valueComponent": [Function],
-                      "valueKey": "value",
+                      "value": undefined,
                     },
                     "ref": null,
                     "rendered": null,
