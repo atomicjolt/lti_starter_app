@@ -9,7 +9,6 @@ import { HttpLink } from 'apollo-link-http';
 import { ApolloLink } from 'apollo-link';
 import { withClientState } from 'apollo-link-state';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import { hot } from 'react-hot-loader';
 import { Router } from 'react-router';
 import { Route } from 'react-router-dom';
 import { Jwt } from 'atomic-fuel/libs/loaders/jwt';
@@ -43,8 +42,6 @@ class Root extends React.PureComponent {
     );
   }
 }
-
-export default hot(module)(Root);
 
 const inCacheMemory = new InMemoryCache();
 
