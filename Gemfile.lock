@@ -290,8 +290,7 @@ GEM
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
     rolify (5.2.0)
-    rollbar (2.19.3)
-      multi_json
+    rollbar (2.22.1)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)

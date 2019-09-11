@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_rollbar_scope
 
   helper_method :current_application_instance,
                 :current_bundle_instance,
@@ -34,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   def record_exception(exception)
-    Rollbar.error(exception)
+    Rollbar.error(exception) if current_application_instance.rollbar_enabled?
     Rails.logger.error "Unexpected exception during execution"
     Rails.logger.error "#{exception.class.name} (#{exception.message}):"
     Rails.logger.error "  #{exception.backtrace.join("\n  ")}"
@@ -106,6 +107,15 @@ class ApplicationController < ActionController::Base
       backtrace: exception.backtrace,
     }
     render_error 500, "An error occured when calling the Canvas API: #{exception.message}", json_options
+  end
+
+  def set_rollbar_scope
+    if !current_application_instance.rollbar_enabled?
+      Rollbar.configure { |config| config.enabled = false }
+    end
+    Rollbar.scope!(
+      tenant: Apartment::Tenant.current,
+    )
   end
 
   def canvas_url

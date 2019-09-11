@@ -155,6 +155,25 @@ ShallowWrapper {
           <div
             className="o-grid__item u-full"
           >
+            <Input
+              className="c-checkbox"
+              helperText="Indicates whether or not rollbar is enabled for this app instance"
+              inputProps={
+                Object {
+                  "checked": undefined,
+                  "id": "rollbar_enabled_input",
+                  "name": "rollbar_enabled",
+                  "onChange": [Function],
+                  "type": "checkbox",
+                  "value": "true",
+                }
+              }
+              labelText="Rollbar Enabled"
+            />
+          </div>
+          <div
+            className="o-grid__item u-full"
+          >
             <Textarea
               className="c-input"
               labelText="Custom Application Instance Configuration"
@@ -335,6 +354,25 @@ ShallowWrapper {
                   }
                 }
                 labelText="Anonymous"
+              />
+            </div>,
+            <div
+              className="o-grid__item u-full"
+            >
+              <Input
+                className="c-checkbox"
+                helperText="Indicates whether or not rollbar is enabled for this app instance"
+                inputProps={
+                  Object {
+                    "checked": undefined,
+                    "id": "rollbar_enabled_input",
+                    "name": "rollbar_enabled",
+                    "onChange": [Function],
+                    "type": "checkbox",
+                    "value": "true",
+                  }
+                }
+                labelText="Rollbar Enabled"
               />
             </div>,
             <div
@@ -718,6 +756,52 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
+              "children": <Input
+                className="c-checkbox"
+                helperText="Indicates whether or not rollbar is enabled for this app instance"
+                inputProps={
+                  Object {
+                    "checked": undefined,
+                    "id": "rollbar_enabled_input",
+                    "name": "rollbar_enabled",
+                    "onChange": [Function],
+                    "type": "checkbox",
+                    "value": "true",
+                  }
+                }
+                labelText="Rollbar Enabled"
+              />,
+              "className": "o-grid__item u-full",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "className": "c-checkbox",
+                "helperText": "Indicates whether or not rollbar is enabled for this app instance",
+                "inputProps": Object {
+                  "checked": undefined,
+                  "id": "rollbar_enabled_input",
+                  "name": "rollbar_enabled",
+                  "onChange": [Function],
+                  "type": "checkbox",
+                  "value": "true",
+                },
+                "labelText": "Rollbar Enabled",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
               "children": <Textarea
                 className="c-input"
                 labelText="Custom Application Instance Configuration"
@@ -975,6 +1059,25 @@ ShallowWrapper {
             <div
               className="o-grid__item u-full"
             >
+              <Input
+                className="c-checkbox"
+                helperText="Indicates whether or not rollbar is enabled for this app instance"
+                inputProps={
+                  Object {
+                    "checked": undefined,
+                    "id": "rollbar_enabled_input",
+                    "name": "rollbar_enabled",
+                    "onChange": [Function],
+                    "type": "checkbox",
+                    "value": "true",
+                  }
+                }
+                labelText="Rollbar Enabled"
+              />
+            </div>
+            <div
+              className="o-grid__item u-full"
+            >
               <Textarea
                 className="c-input"
                 labelText="Custom Application Instance Configuration"
@@ -1155,6 +1258,25 @@ ShallowWrapper {
                     }
                   }
                   labelText="Anonymous"
+                />
+              </div>,
+              <div
+                className="o-grid__item u-full"
+              >
+                <Input
+                  className="c-checkbox"
+                  helperText="Indicates whether or not rollbar is enabled for this app instance"
+                  inputProps={
+                    Object {
+                      "checked": undefined,
+                      "id": "rollbar_enabled_input",
+                      "name": "rollbar_enabled",
+                      "onChange": [Function],
+                      "type": "checkbox",
+                      "value": "true",
+                    }
+                  }
+                  labelText="Rollbar Enabled"
                 />
               </div>,
               <div
@@ -1526,6 +1648,52 @@ ShallowWrapper {
                     "value": "true",
                   },
                   "labelText": "Anonymous",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <Input
+                  className="c-checkbox"
+                  helperText="Indicates whether or not rollbar is enabled for this app instance"
+                  inputProps={
+                    Object {
+                      "checked": undefined,
+                      "id": "rollbar_enabled_input",
+                      "name": "rollbar_enabled",
+                      "onChange": [Function],
+                      "type": "checkbox",
+                      "value": "true",
+                    }
+                  }
+                  labelText="Rollbar Enabled"
+                />,
+                "className": "o-grid__item u-full",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "className": "c-checkbox",
+                  "helperText": "Indicates whether or not rollbar is enabled for this app instance",
+                  "inputProps": Object {
+                    "checked": undefined,
+                    "id": "rollbar_enabled_input",
+                    "name": "rollbar_enabled",
+                    "onChange": [Function],
+                    "type": "checkbox",
+                    "value": "true",
+                  },
+                  "labelText": "Rollbar Enabled",
                 },
                 "ref": null,
                 "rendered": null,
