@@ -39,6 +39,7 @@ export default class Form extends React.Component {
     ltiConfigParseError: PropTypes.string,
     canvas_token_preview: PropTypes.string,
     anonymous: PropTypes.bool,
+    rollbar_enabled: PropTypes.bool,
   };
 
   selectSite(option) {
@@ -165,6 +166,21 @@ export default class Form extends React.Component {
                 type: 'checkbox',
                 value: 'true',
                 checked: this.props.anonymous,
+                onChange
+              }}
+            />
+          </div>
+          <div className="o-grid__item u-full">
+            <Input
+              className="c-checkbox"
+              labelText="Rollbar Enabled"
+              helperText="Indicates whether or not rollbar is enabled for this app instance"
+              inputProps={{
+                id: 'rollbar_enabled_input',
+                name: 'rollbar_enabled',
+                type: 'checkbox',
+                value: 'true',
+                checked: this.props.rollbar_enabled,
                 onChange
               }}
             />
