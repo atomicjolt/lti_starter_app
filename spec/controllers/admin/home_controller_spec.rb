@@ -2,7 +2,6 @@ require "rails_helper"
 
 RSpec.describe Admin::HomeController, type: :controller do
   before do
-    @application = FactoryBot.create(:application)
     setup_application_instance
   end
 
