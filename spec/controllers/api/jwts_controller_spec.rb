@@ -5,6 +5,7 @@ RSpec.describe Api::JwtsController, type: :controller do
     @user = FactoryBot.create(:user)
     @user.confirm
     @user_token = AuthToken.issue_token({ user_id: @user.id })
+    setup_application_instance
   end
 
   context "as user" do
