@@ -12,6 +12,10 @@ describe ApplicationController, type: :controller do
     end
   end
 
+  before do
+    setup_application_instance
+  end
+
   context "no authorization header" do
     it "should not be authorized" do
       get :index, format: :json

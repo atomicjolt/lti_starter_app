@@ -12,6 +12,10 @@ describe ApplicationController, type: :controller do
   end
 
   describe "paging" do
+    before do
+      setup_application_instance
+    end
+
     it "should add paging to controller" do
       page = 1
       per_page = 1

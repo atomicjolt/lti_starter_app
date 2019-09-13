@@ -201,6 +201,7 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
       :lti_key,
       :disabled_at,
       :anonymous,
+      :rollbar_enabled,
       :domain,
     )
   end

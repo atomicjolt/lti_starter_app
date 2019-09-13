@@ -149,6 +149,7 @@ class ApplicationInstance < ApplicationRecord
     self.config = application.default_config if config.blank?
     self.lti_config = application.lti_config if lti_config.blank?
     self.anonymous = application.anonymous if anonymous.blank?
+    self.rollbar_enabled = application.rollbar_enabled if rollbar_enabled.blank?
   end
 
   # Danger! Whole databases will be lost with this method!
