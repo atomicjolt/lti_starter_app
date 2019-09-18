@@ -4,10 +4,16 @@ Rails.application.routes.draw do
   get "iframe_cookies_fix_redirect" => "lti_launches#iframe_cookies_fix_redirect"
   get "relaunch_lti_tool" => "lti_launches#relaunch_lti_tool"
 
+  resources :jwks
+  resources :public_keys
+  resource :lti_config
+
   resources :lti_launches do
     collection do
       post :index
       get :launch
+      get :init
+      post :init
     end
     member do
       post :show
@@ -51,6 +57,7 @@ Rails.application.routes.draw do
     resources :canvas_accounts, only: [:index]
     resources :sites
     resources :lti_content_item_selection, only: [:create]
+    resources :lti_deep_link_jwt, only: [:create]
     resources :lti_launches
 
     resources :ims_exports do

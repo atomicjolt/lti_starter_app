@@ -1,3 +1,5 @@
+require "jwt"
+
 module Concerns
   module LtiSupport
     extend ActiveSupport::Concern
@@ -9,7 +11,15 @@ module Concerns
     protected
 
     def do_lti
-      if valid_lti_request?(current_application_instance.lti_secret)
+      if token = params["id_token"]
+        # Validate the state by checking the database for the nonce
+        return user_not_authorized if !LtiAdvantage::OpenId.validate_open_id_state(params["state"])
+
+        @lti_token = LtiAdvantage::Authorization.validate_token(current_application_instance, token)
+        user = LtiAdvantage::User.new(@lti_token, current_application_instance).user
+        sign_in(user, event: :authentication)
+        return
+      elsif valid_lti_request?(current_application_instance.lti_secret)
         if user = user_from_lti
           # until the code to fix the valid lti request is up
           # then we will confirm emails here to use it on the course nav

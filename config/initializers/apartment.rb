@@ -25,6 +25,10 @@ Apartment.configure do |config|
     ImsExport
     RequestStatistic
     RequestUserStatistic
+    LtiDeployment
+    LtiInstall
+    Jwk
+    OpenIdState
   }
 
   # In order to migrate all of your Tenants you need to provide a list of Tenant names to Apartment.
@@ -102,14 +106,21 @@ PAYLOAD = 0
 HEADER = 1
 
 Rails.application.config.middleware.insert_before Warden::Manager, Apartment::Elevators::Generic, lambda { |request|
+  if application_instance = LtiAdvantage::Authorization.application_instance_from_token(request.params["id_token"])
+    return application_instance.tenant
+  end
+
   key = Lti::Request.oauth_consumer_key(request)
   host = request.host_with_port
   subdomain = host.split(".").first
+
   if subdomain == Application::AUTH
     Application::AUTH
   elsif subdomain == Application::ADMIN
     Application::ADMIN
   elsif application_instance = ApplicationInstance.find_by(lti_key: key)
+    application_instance.tenant
+  elsif application_instance = ApplicationInstance.find_by(domain: host)
     application_instance.tenant
   elsif request.path.start_with? "/assets/" # Only affects development env
     Application::ADMIN

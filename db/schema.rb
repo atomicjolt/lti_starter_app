@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190911015015) do
+ActiveRecord::Schema.define(version: 2019_09_11_015015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20190911015015) do
     t.string "key"
     t.string "oauth_precedence", default: "global,user,application_instance,course"
     t.boolean "anonymous", default: false
+    t.jsonb "lti_advantage_config", default: {}
     t.boolean "rollbar_enabled", default: true
     t.index ["key"], name: "index_applications_on_key"
   end
@@ -146,6 +147,42 @@ ActiveRecord::Schema.define(version: 20190911015015) do
     t.jsonb "payload"
   end
 
+  create_table "jwks", force: :cascade do |t|
+    t.string "kid"
+    t.string "pem"
+    t.bigint "application_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["application_id"], name: "index_jwks_on_application_id"
+    t.index ["kid"], name: "index_jwks_on_kid"
+  end
+
+  create_table "lti_deployments", force: :cascade do |t|
+    t.bigint "application_instance_id"
+    t.string "deployment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["application_instance_id"], name: "index_lti_deployments_on_application_instance_id"
+    t.index ["deployment_id", "application_instance_id"], name: "index_lti_deployments_on_d_id_and_ai_id", unique: true
+    t.index ["deployment_id"], name: "index_lti_deployments_on_deployment_id"
+  end
+
+  create_table "lti_installs", force: :cascade do |t|
+    t.string "iss"
+    t.bigint "application_id"
+    t.string "client_id"
+    t.string "jwks_url"
+    t.string "token_url"
+    t.string "oidc_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["application_id", "iss"], name: "index_lti_installs_on_application_id_and_iss"
+    t.index ["application_id"], name: "index_lti_installs_on_application_id"
+    t.index ["client_id", "iss"], name: "index_lti_installs_on_client_id_and_iss", unique: true
+    t.index ["client_id"], name: "index_lti_installs_on_client_id"
+    t.index ["iss"], name: "index_lti_installs_on_iss"
+  end
+
   create_table "lti_launches", force: :cascade do |t|
     t.jsonb "config"
     t.datetime "created_at", null: false
@@ -172,6 +209,13 @@ ActiveRecord::Schema.define(version: 20190911015015) do
     t.index ["state"], name: "index_oauth_states_on_state"
   end
 
+  create_table "open_id_states", force: :cascade do |t|
+    t.string "nonce"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nonce"], name: "index_open_id_states_on_nonce", unique: true
+  end
+
   create_table "permissions", force: :cascade do |t|
     t.bigint "role_id"
     t.bigint "user_id"
@@ -183,7 +227,7 @@ ActiveRecord::Schema.define(version: 20190911015015) do
     t.index ["role_id", "user_id"], name: "index_permissions_on_role_id_and_user_id", unique: true, where: "(context_id IS NULL)"
   end
 
-  create_table "que_jobs", primary_key: ["queue", "priority", "run_at", "job_id"], force: :cascade, comment: "3" do |t|
+  create_table "que_jobs", primary_key: ["queue", "priority", "run_at", "job_id"], comment: "3", force: :cascade do |t|
     t.integer "priority", limit: 2, default: 100, null: false
     t.datetime "run_at", default: -> { "now()" }, null: false
     t.bigserial "job_id", null: false

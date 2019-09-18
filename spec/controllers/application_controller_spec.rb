@@ -3,11 +3,16 @@ require "rails_helper"
 RSpec.describe ApplicationController, type: :controller do
   before do
     setup_application_instance(mock_helper: false)
+    setup_canvas_lti_advantage(application_instance: @application_instance)
   end
   describe "helper methods" do
     describe "#current_application_instance" do
       it "returns the current application instance" do
         request.params[:oauth_consumer_key] = @application_instance.lti_key
+        expect(subject.send(:current_application_instance)).to eq(@application_instance)
+      end
+      it "returns the current application instance using id_token" do
+        request.params["id_token"] = @id_token
         expect(subject.send(:current_application_instance)).to eq(@application_instance)
       end
     end
@@ -188,7 +193,6 @@ RSpec.describe ApplicationController, type: :controller do
           expect(result["message"]).to eq("An error occured when calling the Canvas API: ")
         end
       end
-
     end
   end
 end

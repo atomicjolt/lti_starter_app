@@ -138,6 +138,7 @@ class ApplicationController < ActionController::Base
 
   def current_application_instance
     @current_application_instance ||=
+      LtiAdvantage::Authorization.application_instance_from_token(request.params["id_token"]) ||
       ApplicationInstance.find_by(lti_key: Lti::Request.oauth_consumer_key(request)) ||
       ApplicationInstance.find_by(domain: request.host_with_port) ||
       ApplicationInstance.find_by(id: params[:application_instance_id])

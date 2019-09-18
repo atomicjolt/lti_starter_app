@@ -97,6 +97,9 @@ GEM
       safe_yaml (~> 1.0.0)
     crass (1.0.4)
     database_cleaner (1.7.0)
+    debase (0.2.3)
+      debase-ruby_core_source (>= 0.10.2)
+    debase-ruby_core_source (0.10.5)
     debug_inspector (0.0.3)
     devise (4.7.1)
       bcrypt (~> 3.0)
@@ -165,7 +168,7 @@ GEM
       activesupport (>= 4.2)
       aes_key_wrap
       bindata
-    jwt (1.5.6)
+    jwt (2.2.1)
     launchy (2.4.3)
       addressable (~> 2.3)
     listen (3.1.5)
@@ -332,6 +335,8 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
+    ruby-debug-ide (0.7.0)
+      rake (>= 0.8.1)
     ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
     rubyzip (1.2.3)
@@ -419,6 +424,7 @@ DEPENDENCIES
   capybara
   composite_primary_keys
   database_cleaner
+  debase
   devise
   dotenv-rails
   factory_bot_rails
@@ -428,7 +434,8 @@ DEPENDENCIES
   httparty
   hub
   ims-lti (~> 2.1.5)
-  jwt (~> 1.5.0)
+  json-jwt
+  jwt
   launchy
   listen
   lms-api (~> 1.9.0)
@@ -457,6 +464,7 @@ DEPENDENCIES
   rollbar
   rspec-rails
   rubocop
+  ruby-debug-ide
   sassc-rails
   selenium-webdriver
   sendgrid

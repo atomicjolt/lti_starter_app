@@ -2,6 +2,8 @@ require "jwt"
 
 module AuthToken
 
+  ALGORITHM = "HS512".freeze
+
   # More information on jwt available at
   # http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html#rfc.section.4.1.6
   def self.issue_token(payload, exp = 24.hours.from_now, secret = nil, aud = nil, header_fields = {})
@@ -11,7 +13,7 @@ module AuthToken
     JWT.encode(
       payload,
       secret || Rails.application.secrets.auth0_client_secret,
-      "HS512",
+      ALGORITHM,
       header_fields,
     )
   end
@@ -20,7 +22,12 @@ module AuthToken
     decode(token, secret, true)
   end
 
-  def self.decode(token, secret, validate = true)
-    JWT.decode(token, secret || Rails.application.secrets.auth0_client_secret, validate)
+  def self.decode(token, secret = nil, validate = true)
+    JWT.decode(
+      token,
+      secret || Rails.application.secrets.auth0_client_secret,
+      validate,
+      { algorithm: ALGORITHM },
+    )
   end
 end

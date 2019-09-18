@@ -74,7 +74,9 @@ class OauthStateMiddleware
     end
     # LTI apps will typically have the oauth_consumer_key available
     if site.blank?
-      application_instance = ApplicationInstance.find_by(lti_key: state_params["oauth_consumer_key"])
+      application_instance =
+        LtiAdvantage::Authorization.application_instance_from_token(state_params["id_token"]) ||
+        ApplicationInstance.find_by(lti_key: state_params["oauth_consumer_key"])
       site = application_instance.site
     end
     site

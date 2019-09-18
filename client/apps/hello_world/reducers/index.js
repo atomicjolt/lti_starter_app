@@ -6,6 +6,7 @@ import canvasErrors from 'atomic-canvas/libs/reducers/errors';
 import courses from 'atomic-canvas/libs/reducers/courses';
 import application from './application';
 import contentItemSelection from './content_item_selection';
+import deepLinkJwt from './deep_link_jwt';
 
 const rootReducer = combineReducers({
   settings,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   canvasErrors,
   courses,
   contentItemSelection,
+  deepLinkJwt,
 });
 
 export default rootReducer;

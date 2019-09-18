@@ -26,7 +26,8 @@ gem "attr_encrypted"
 gem "cancancan"
 gem "devise"
 gem "ims-lti", "~> 2.1.5" # IMS LTI tool consumers and providers
-gem "jwt", "~> 1.5.0" # json web token
+gem "json-jwt"
+gem "jwt"
 gem "lms-api", "~>1.9.0"
 gem "omniauth"
 gem "omniauth-canvas", "~>1.0.2"
@@ -101,12 +102,14 @@ end
 
 group :development, :test do
   gem "byebug", platform: :mri
+  gem "debase"
   gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "faker"
   gem "guard-rspec", require: false
   gem "rails-controller-testing"
   gem "rspec-rails"
+  gem "ruby-debug-ide"
 end
 
 group :test do

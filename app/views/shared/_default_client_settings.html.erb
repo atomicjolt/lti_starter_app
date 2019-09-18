@@ -27,7 +27,14 @@
       settings[:lti_launch_config] = @lti_launch.config
     end
 
-    if @is_lti_launch
+    # Adds LTI Advantage values to settings
+    @lti_advantage_examples.add_to_settings(settings) if @lti_advantage_examples.present?
+
+    if params["id_token"].present?
+      # LTI 1.3 Launch
+      settings[:id_token] = params["id_token"]
+    elsif @is_lti_launch
+      # LTI 1.0 - 1.2 Launch
       settings[:oauth_consumer_key]                     = params[:oauth_consumer_key]
       settings[:lms_course_id]                          = params[:custom_canvas_course_id]
       settings[:lti_provider]                           = lti_provider
