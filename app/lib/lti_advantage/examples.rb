@@ -1,8 +1,9 @@
 module LtiAdvantage
   class Examples
 
-    def initialize(lti_token)
+    def initialize(lti_token, application_instance)
       @lti_token = lti_token
+      @application_instance = application_instance
     end
 
     # Run a series of lti advantage examples
@@ -48,14 +49,14 @@ module LtiAdvantage
     # This method demonstrates create, delete and update of line items using
     # LtiAdvantage::Services::LineItems
     def line_item_example
-      line_item_service = LtiAdvantage::Services::LineItems.new(current_application_instance, @lti_token)
+      line_item_service = LtiAdvantage::Services::LineItems.new(@application_instance, @lti_token)
       line_items = line_item_service.list
 
       @line_items = JSON.parse(line_items.body)
 
       resource_id = 1
       tag = "lti-advantage"
-      external_tool_url = "https://#{current_application_instance.domain}/lti_launches"
+      external_tool_url = "https://#{@application_instance.domain}/lti_launches"
 
       delete_items = false
 
@@ -108,7 +109,7 @@ module LtiAdvantage
     def scores_example(line_item, names_and_roles)
       return unless names_and_roles.present?
 
-      score_service = LtiAdvantage::Services::Score.new(current_application_instance, @lti_token)
+      score_service = LtiAdvantage::Services::Score.new(@application_instance, @lti_token)
       score_service.id = line_item["id"]
       names_and_roles["members"].map do |name_role|
         in_role = !(name_role["roles"] &
@@ -132,7 +133,7 @@ module LtiAdvantage
     # This example demonstrates reading scores from the platform using the
     # LtiAdvantage::Services::Results class
     def results_example(line_item)
-      results_service = LtiAdvantage::Services::Results.new(current_application_instance, @lti_token)
+      results_service = LtiAdvantage::Services::Results.new(@application_instance, @lti_token)
       result = results_service.list(line_item["id"])
       @line_item_results = JSON.parse(result)
     end
@@ -140,7 +141,7 @@ module LtiAdvantage
     # This example demonstrates reading names and roles from the platform using the
     # LtiAdvantage::Services::NamesAndRoles class
     def names_and_roles_example
-      names_and_roles_service = LtiAdvantage::Services::NamesAndRoles.new(current_application_instance, @lti_token)
+      names_and_roles_service = LtiAdvantage::Services::NamesAndRoles.new(@application_instance, @lti_token)
       @names_and_roles = JSON.parse(names_and_roles_service.list.body) if names_and_roles_service.valid?
     end
   end

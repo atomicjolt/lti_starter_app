@@ -14,7 +14,10 @@ class LtiLaunchesController < ApplicationController
     end
 
     # LTI advantage example code
-    @lti_advantage_examples = LtiAdvantage::Examples.new(@lti_token).run if @lti_token
+    if @lti_token
+      @lti_advantage_examples = LtiAdvantage::Examples.new(@lti_token, current_application_instance)
+      @lti_advantage_examples.run
+    end
 
     setup_lti_response
   end
