@@ -43,7 +43,7 @@ module LtiAdvantage
 
       {
         title: args[:title],
-        scopes: LtiAdvantage::Definitions::scopes,
+        scopes: LtiAdvantage::Definitions.scopes,
         icon: icon(domain, args),
         target_link_uri: args[:launch_url],
         oidc_initiation_url: "#{args[:launch_url]}/init",

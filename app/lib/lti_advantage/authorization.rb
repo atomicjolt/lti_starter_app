@@ -71,7 +71,7 @@ module LtiAdvantage
       body = {
         grant_type: "client_credentials",
         client_assertion_type: "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
-        scope: LtiAdvantage::Definitions::scopes.join(" "),
+        scope: LtiAdvantage::Definitions.scopes.join(" "),
         client_assertion: client_assertion(application_instance, lti_token["iss"]),
       }
       headers = {

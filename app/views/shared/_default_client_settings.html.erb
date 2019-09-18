@@ -27,24 +27,8 @@
       settings[:lti_launch_config] = @lti_launch.config
     end
 
-    # Example of LTI Advantage name and role service:
-    if @names_and_roles
-      settings[:names_and_roles] = @names_and_roles
-    end
-
-    # Example of LTI Advantage line item service:
-    if @line_items
-      settings[:line_items] = @line_items
-    end
-
-    # Example of LTI Advantage name and score service:
-    if @line_item_results
-      settings[:line_item_results] = @line_item_results
-    end
-
-    if @is_deep_link
-      settings[:deep_link_settings] = @lti_token[LtiAdvantage::Definitions::DEEP_LINKING_CLAIM]
-    end
+    # Adds LTI Advantage values to settings
+    @lti_advantage_examples.add_to_settings(settings)
 
     if params["id_token"].present?
       # LTI 1.3 Launch
