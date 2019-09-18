@@ -6,7 +6,7 @@ RSpec.describe LtiAdvantage::Authorization do
     @platform_iss = "https://canvas.instructure.com"
     setup_canvas_lti_advantage(
       application_instance: @application_instance,
-      iss: @platform_iss
+      iss: @platform_iss,
     )
   end
 
