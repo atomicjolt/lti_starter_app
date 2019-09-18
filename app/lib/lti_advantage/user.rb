@@ -34,9 +34,8 @@ module LtiAdvantage
       else
         # If there isn't an email then we have to make one up. We use the user_id and instance guid
         email = @lti_token["email"]
-        email = "user-#{@lti_user_id}@#{_domain_for_email}" if email.blank? && @lti_user_id.present?
         # If there isn't an email then we have to make one up. We use the user_id and instance guid
-        email = "generated-#{lti_user_id}@#{_domain_for_email}" if email.blank?
+        email = "generated-user-#{@lti_user_id}@#{_domain_for_email}" if email.blank? && @lti_user_id.present?
         email
       end
     end
