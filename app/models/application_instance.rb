@@ -66,7 +66,7 @@ class ApplicationInstance < ApplicationRecord
     config = lti_config.dup
     if config.present?
       config[:launch_url] ||= launch_url
-      config[:secure_launch_url] ||= "https://#{get_domain}/lti_launches"
+      config[:secure_launch_url] ||= launch_url
       config[:domain] ||= get_domain
       config[:export_url] ||= "https://#{get_domain}/api/ims_exports.json"
       config[:import_url] ||= "https://#{get_domain}/api/ims_imports.json"
