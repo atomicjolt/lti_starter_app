@@ -63,15 +63,14 @@ class ApplicationInstance < ApplicationRecord
   end
 
   def lti_defaults
-    domain = self.domain || Rails.application.secrets.application_main_domain
     config = lti_config.dup
     if config.present?
-      config[:launch_url] ||= "https://#{domain}/lti_launches"
-      config[:secure_launch_url] ||= "https://#{domain}/lti_launches"
-      config[:domain] ||= domain
-      config[:export_url] ||= "https://#{domain}/api/ims_exports.json"
-      config[:import_url] ||= "https://#{domain}/api/ims_imports.json"
-      config[:icon] ||= "https://#{domain}/#{config[:icon]}"
+      config[:launch_url] ||= launch_url
+      config[:secure_launch_url] ||= launch_url
+      config[:domain] ||= get_domain
+      config[:export_url] ||= "https://#{get_domain}/api/ims_exports.json"
+      config[:import_url] ||= "https://#{get_domain}/api/ims_imports.json"
+      config[:icon] ||= "https://#{get_domain}/#{config[:icon]}"
       config[:privacy_level] = "anonymous" if anonymous?
     end
     config
@@ -80,6 +79,14 @@ class ApplicationInstance < ApplicationRecord
   def lti_config_xml
     config = lti_defaults
     Lti::Config.xml(config) if config.present?
+  end
+
+  def get_domain
+    domain || Rails.application.secrets.application_main_domain
+  end
+
+  def launch_url
+    "https://#{get_domain}/lti_launches"
   end
 
   def oauth_precedence
