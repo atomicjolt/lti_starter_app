@@ -237,6 +237,13 @@ class User < ApplicationRecord
     )
   end
 
+  def student_in_course?(context_id = nil)
+    has_role?(
+      context_id,
+      LTI::Roles::LEARNER,
+    )
+  end
+
   def can_edit?(user)
     return false if user.nil?
     id == user.id || user.admin?
