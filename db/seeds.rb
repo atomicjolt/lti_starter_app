@@ -342,6 +342,4 @@ end
 
 ## Use this to update all the application instances
 ApplicationInstance.for_tenant(Apartment::Tenant.current).find_each do |ai|
-  puts "Creatd jwk for application instance: #{ai.lti_key}"
-  Jwk.create!
 end
