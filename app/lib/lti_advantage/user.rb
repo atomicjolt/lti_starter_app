@@ -116,7 +116,7 @@ module LtiAdvantage
     def _attempt_uniq_email(user)
       count = 0 # don't go infinite
       while !safe_save_email(user) && count < 10
-        user.email = generate_email
+        user.email = _generate_email
         count = count + 1
       end
     end
