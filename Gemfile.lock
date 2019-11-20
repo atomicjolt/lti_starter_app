@@ -372,6 +372,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    strong_password (0.0.8)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     thor (0.20.3)
@@ -470,6 +471,7 @@ DEPENDENCIES
   spring-commands-rspec
   spring-watcher-listen
   sprockets (~> 3.7.2)
+  strong_password
   tzinfo-data
   uglifier
   web-console (~> 3.7.0)
@@ -479,4 +481,4 @@ DEPENDENCIES
   yajl-ruby
 
 BUNDLED WITH
-   2.0.1
+   1.17.3
