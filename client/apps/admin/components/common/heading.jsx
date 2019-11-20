@@ -9,6 +9,7 @@ import SubNav from '../common/sub_nav';
 const select = state => ({
   userName: state.settings.display_name,
   signOutUrl: state.settings.sign_out_url,
+  userEditUrl: state.settings.user_edit_url,
   sites: state.sites,
 });
 
@@ -48,6 +49,15 @@ export function Heading(props) {
           </Button>
           <Menu className="c-dropdown">
             <ul>
+              <li>
+                <MenuItem
+                  value={props.userEditUrl}
+                  text="Edit"
+                  className="c-menu-item"
+                >
+                  <a href={props.userEditUrl}><span>Edit</span></a>
+                </MenuItem>
+              </li>
               <li>
                 <MenuItem
                   value={props.signOutUrl}
