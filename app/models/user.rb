@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :roles, through: :permissions
 
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+  validates :password, password_strength: { use_dictionary: true }, allow_nil: true
 
   enum create_method: %i{sign_up oauth lti}
 
@@ -34,7 +35,7 @@ class User < ApplicationRecord
       user_dup.update_attributes(user.copy_attributes)
 
       if user_dup.password.blank?
-        user_dup.password = SecureRandom.hex(15)
+        user_dup.password = Devise.friendly_token(20)
         user_dup.password_confirmation = user_dup.password
       end
 

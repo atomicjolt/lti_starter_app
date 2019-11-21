@@ -23,8 +23,8 @@ FactoryBot.define do
     "user_#{n}@example.com"
   end
 
-  sequence :password do |n|
-    "password_#{n}"
+  sequence :password do
+    Devise.friendly_token(20)
   end
 
   sequence :title do |n|
