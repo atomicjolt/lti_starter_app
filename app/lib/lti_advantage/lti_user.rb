@@ -1,5 +1,5 @@
 module LtiAdvantage
-  class User
+  class LtiUser
     def initialize(lti_token, application_instance)
       @lti_token = lti_token
       @application_instance = application_instance
