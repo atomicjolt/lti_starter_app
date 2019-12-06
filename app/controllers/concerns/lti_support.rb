@@ -16,7 +16,7 @@ module Concerns
         return user_not_authorized if !LtiAdvantage::OpenId.validate_open_id_state(params["state"])
 
         @lti_token = LtiAdvantage::Authorization.validate_token(current_application_instance, token)
-        user = LtiAdvantage::User.new(@lti_token, current_application_instance).user
+        user = LtiAdvantage::LtiUser.new(@lti_token, current_application_instance).user
         sign_in(user, event: :authentication)
         return
       elsif valid_lti_request?(current_application_instance.lti_secret)
