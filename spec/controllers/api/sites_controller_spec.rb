@@ -71,7 +71,7 @@ RSpec.describe Api::SitesController, type: :controller do
     describe "POST create" do
       it "creates a new site" do
         post :create, params: { site: FactoryBot.attributes_for(:site) }, format: :json
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
@@ -79,7 +79,7 @@ RSpec.describe Api::SitesController, type: :controller do
       it "updates the site" do
         site = FactoryBot.create(:site)
         put :update, params: { id: site.id, site: { oauth_key: "12345" } }, format: :json
-        expect(response).to be_success
+        expect(response).to be_successful
         updated = JSON.parse(response.body)
         expect(updated["oauth_key"]).to eq("12345")
       end
@@ -89,7 +89,7 @@ RSpec.describe Api::SitesController, type: :controller do
       it "returns unauthorized" do
         site = FactoryBot.create(:site)
         delete :destroy, params: { id: site.id }, format: :json
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
   end
