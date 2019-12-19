@@ -91,6 +91,7 @@ Heading.propTypes = {
   backTo: PropTypes.string,
   userName: PropTypes.string,
   signOutUrl: PropTypes.string.isRequired,
+  userEditUrl: PropTypes.string,
   sites: PropTypes.shape({}).isRequired,
 };
 
