@@ -1,4 +1,4 @@
-const { environment } = require('@rails/webpacker');
+const { environment } = require('@rails/webpacker')
 
 const graphqlLoader = {
   test: /\.(graphql|gql)$/,
@@ -9,4 +9,4 @@ const graphqlLoader = {
 // Insert json loader at the end of list
 environment.loaders.append('graphql', graphqlLoader);
 
-module.exports = environment;
+module.exports = environment
