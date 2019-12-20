@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 module.exports = {
   plugins: [
     require('postcss-import'),
@@ -10,4 +9,4 @@ module.exports = {
       stage: 3
     })
   ]
-};
+}
