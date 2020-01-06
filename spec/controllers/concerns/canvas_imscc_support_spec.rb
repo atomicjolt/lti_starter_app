@@ -6,13 +6,11 @@ describe ApplicationController, type: :controller do
     # For authentication a JWT will be included in the Authorization header using the Bearer scheme,
     # it is signed using the shared secret for the tool and will include the stored consumer key in the
     # kid field of the token's header object.
-    payload = {}
-    @token = AuthToken.issue_token(
-      payload,
-      24.hours.from_now,
+    @token = JWT.encode(
+      { exp: 24.hours.from_now.to_i },
       @application_instance.lti_secret,
-      nil,
-      { kid: @application_instance.lti_key },
+      "HS256",
+      { typ: "JWT", alg: "HS256", kid: @application_instance.lti_key },
     )
   end
 
@@ -37,12 +35,11 @@ describe ApplicationController, type: :controller do
   end
 
   it "Returns unauthorized if the kid header value has a bad ltt key" do
-    bad_token = AuthToken.issue_token(
-      {},
-      24.hours.from_now,
+    bad_token = JWT.encode(
+      { exp: 24.hours.from_now.to_i },
       @application_instance.lti_secret,
-      nil,
-      { kid: "anybadltikey" },
+      "HS256",
+      { typ: "JWT", alg: "HS256", kid: "anybadltikey" },
     )
     request.headers["Authorization"] = bad_token
     post :create, params: {}, format: :json
@@ -52,12 +49,11 @@ describe ApplicationController, type: :controller do
   end
 
   it "Returns unauthorized if the token has the wrong signature" do
-    bad_token = AuthToken.issue_token(
-      {},
-      24.hours.from_now,
+    bad_token = JWT.encode(
+      { exp: 24.hours.from_now.to_i },
       "arandomsecretvalue",
-      nil,
-      { kid: @application_instance.lti_key },
+      "HS256",
+      { typ: "JWT", alg: "HS256", kid: @application_instance.lti_key },
     )
     request.headers["Authorization"] = "Bearer #{bad_token}"
     post :create, params: {}, format: :json

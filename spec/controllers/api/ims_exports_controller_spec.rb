@@ -27,13 +27,12 @@ RSpec.describe Api::ImsExportsController, type: :controller do
       # For authentication a JWT will be included in the Authorization header using the Bearer scheme,
       # it is signed using the shared secret for the tool and will include the stored consumer key in the
       # kid field of the token's header object.
-      payload = {}
-      @token = AuthToken.issue_token(
+      payload = { exp: 24.hours.from_now.to_i }
+      @token = JWT.encode(
         payload,
-        24.hours.from_now,
         @application_instance.lti_secret,
-        nil,
-        { kid: @application_instance.lti_key },
+        "HS256",
+        { typ: "JWT", alg: "HS256", kid: @application_instance.lti_key },
       )
       request.headers["Authorization"] = "Bearer #{@token}"
     end

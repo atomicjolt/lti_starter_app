@@ -18,16 +18,16 @@ module AuthToken
     )
   end
 
-  def self.valid?(token, secret = nil)
-    decode(token, secret, true)
+  def self.valid?(token, secret = nil, algorithm = ALGORITHM)
+    decode(token, secret, true, algorithm)
   end
 
-  def self.decode(token, secret = nil, validate = true)
+  def self.decode(token, secret = nil, validate = true, algorithm = ALGORITHM)
     JWT.decode(
       token,
       secret || Rails.application.secrets.auth0_client_secret,
       validate,
-      { algorithm: ALGORITHM },
+      { algorithm: algorithm },
     )
   end
 end
