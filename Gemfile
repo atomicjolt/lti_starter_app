@@ -102,6 +102,8 @@ group :linter do
   gem "pronto-eslint_npm", require: false
   gem "pronto-rubocop", require: false
   gem "rubocop"
+  gem "rubocop-performance"
+  gem "rubocop-rails"
 end
 
 group :development, :test do
