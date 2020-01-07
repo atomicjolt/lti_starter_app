@@ -1,3 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`lti installs sidebar should render sidebar matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`lti installs sidebar should render sidebar matches the snapshot 1`] = `
+<div
+  className="o-left"
+>
+  <div
+    className="c-tool"
+  >
+    <span>
+      <a
+        onClick={[Function]}
+      >
+        <i
+          className="i-settings"
+        />
+      </a>
+    </span>
+    <h4
+      className="c-tool__subtitle"
+    >
+      LTI Tool
+    </h4>
+    <h3
+      className="c-tool__title"
+    >
+      applicationName
+    </h3>
+  </div>
+  <div
+    className="c-tool"
+  >
+    <h4
+      className="c-tool__instance"
+    >
+      <a
+        href="www.atomicjolt.com"
+      >
+        www.atomicjolt.com
+      </a>
+    </h4>
+  </div>
+  <div
+    className="c-filters"
+  >
+    <h4
+      className="c-sidebar-subtitle"
+    >
+      Accounts
+    </h4>
+    <Accounts
+      accounts={
+        Object {
+          "1": Object {
+            "id": 1,
+            "name": "accountName",
+            "sub_accounts": Array [],
+          },
+        }
+      }
+      setAccountActive={[Function]}
+    />
+  </div>
+</div>
+`;

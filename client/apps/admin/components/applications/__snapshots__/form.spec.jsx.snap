@@ -1,3 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`applications form matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`applications form matches the snapshot 1`] = `
+<form>
+  <div
+    className="o-grid o-grid__modal-top"
+  >
+    <div
+      className="o-grid__item u-half"
+    >
+      <label
+        className="c-input"
+        htmlFor="description"
+      >
+        <span>
+          Description
+        </span>
+        <input
+          id="description"
+          name="description"
+          onChange={[Function]}
+          type="text"
+          value="SPEC_DESCRIPTION"
+        />
+      </label>
+    </div>
+    <div
+      className="o-grid__item u-half"
+    >
+      <label
+        className="c-input"
+        htmlFor="permissions"
+      >
+        <span>
+          Canvas API Permissions
+        </span>
+      </label>
+    </div>
+    <div
+      className="o-grid__item u-full"
+    >
+      <Textarea
+        className="c-input"
+        labelText="Default Config"
+        textareaProps={
+          Object {
+            "id": "application_default_config",
+            "name": "default_config",
+            "onChange": [Function],
+            "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+            "rows": 3,
+            "value": "{ \\"foo\\": \\"bar\\" }",
+          }
+        }
+        warning={null}
+      />
+    </div>
+  </div>
+  <button
+    className="c-btn c-btn--yellow"
+    onClick={[Function]}
+    type="button"
+  >
+    Save
+  </button>
+  <button
+    className="c-btn c-btn--gray--large u-m-right"
+    onClick={[Function]}
+    type="button"
+  >
+    Cancel
+  </button>
+</form>
+`;

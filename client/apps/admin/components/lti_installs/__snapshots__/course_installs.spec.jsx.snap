@@ -1,3 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`lti installs course install matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`lti installs course install matches the snapshot 1`] = `
+<table
+  className="c-table c-table--installs"
+>
+  <thead>
+    <tr>
+      <th>
+        <span>
+          Course Name
+        </span>
+      </th>
+      <th>
+        <div
+          className="c-checkbox--right-titlebar"
+        />
+      </th>
+    </tr>
+  </thead>
+  <tbody />
+</table>
+`;

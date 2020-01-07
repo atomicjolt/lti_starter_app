@@ -1,3 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render nested accounts and active matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`should render nested accounts and active matches the snapshot 1`] = `
+<li
+  className="c-filter__item"
+  key="account_1"
+>
+  <button
+    onClick={[Function]}
+  >
+    <i
+      className="i-dropdown"
+    />
+    account_name
+  </button>
+</li>
+`;

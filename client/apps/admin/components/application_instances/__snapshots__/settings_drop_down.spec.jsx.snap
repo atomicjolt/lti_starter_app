@@ -1,3 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`application instance modal renders a list with settings 1`] = `ShallowWrapper {}`;
+exports[`application instance modal renders a list with settings 1`] = `
+<ul
+  style={
+    Object {
+      "backgroundColor": "white",
+      "border": "1px solid black",
+      "borderRadius": "5px",
+      "display": "inline-block",
+      "fontSize": "2em",
+      "padding": "5px",
+      "position": "absolute",
+    }
+  }
+>
+  <li>
+    Settings
+  </li>
+  <li>
+    Other Settings
+  </li>
+  <li>
+    More Settings
+  </li>
+</ul>
+`;

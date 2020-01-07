@@ -1,3 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`warning matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`warning matches the snapshot 1`] = `
+<div
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  Warning! Bad JSON! 
+  bfcoder was here
+</div>
+`;

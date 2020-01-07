@@ -1,3 +1,203 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`application instance form matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`application instance form matches the snapshot 1`] = `
+<form>
+  <div
+    className="o-grid o-grid__modal-top"
+  >
+    <div
+      className="o-grid__item u-half"
+    >
+      <div
+        className="c-input"
+      >
+        <span>
+          Canvas Url
+        </span>
+        <StateManager
+          defaultInputValue=""
+          defaultMenuIsOpen={false}
+          defaultValue={null}
+          isClearable={false}
+          name="site_id"
+          onChange={[Function]}
+          options={
+            Array [
+              Object {
+                "label": <div>
+                  Add New
+                </div>,
+                "onSelect": [Function],
+                "value": "new",
+              },
+            ]
+          }
+          placeholder="Select a Canvas Domain"
+        />
+      </div>
+    </div>
+    <div
+      className="o-grid__item u-half"
+    >
+      <Input
+        className="c-input"
+        inputProps={
+          Object {
+            "id": "domain_input",
+            "name": "domain",
+            "onChange": [Function],
+            "type": "text",
+            "value": undefined,
+          }
+        }
+        labelText="LTI Tool Domain"
+      />
+    </div>
+    <div
+      className="o-grid__item u-half"
+    >
+      <Input
+        className="c-input"
+        inputProps={
+          Object {
+            "disabled": undefined,
+            "id": "lti_key_input",
+            "name": "lti_key",
+            "onChange": [Function],
+            "type": "text",
+            "value": undefined,
+          }
+        }
+        labelText="LTI Key"
+      />
+    </div>
+    <div
+      className="o-grid__item u-half"
+    >
+      <Input
+        className="c-input"
+        inputProps={
+          Object {
+            "id": "lti_secret_input",
+            "name": "lti_secret",
+            "onChange": [Function],
+            "type": "text",
+            "value": undefined,
+          }
+        }
+        labelText="LTI Secret"
+      />
+    </div>
+    <div
+      className="o-grid__item u-half"
+    >
+      <Input
+        className="c-input"
+        helperText="Current Canvas Token: undefined"
+        inputProps={
+          Object {
+            "id": "canvas_token_input",
+            "name": "canvas_token",
+            "onChange": [Function],
+            "placeholder": "",
+            "type": "text",
+            "value": "",
+          }
+        }
+        labelText="Canvas Token"
+      />
+    </div>
+    <div
+      className="o-grid__item u-full"
+    >
+      <Input
+        className="c-checkbox"
+        helperText="indicates whether or not user name and email is stored during LTI launch"
+        inputProps={
+          Object {
+            "checked": undefined,
+            "id": "anonymous_input",
+            "name": "anonymous",
+            "onChange": [Function],
+            "type": "checkbox",
+            "value": "true",
+          }
+        }
+        labelText="Anonymous"
+      />
+    </div>
+    <div
+      className="o-grid__item u-full"
+    >
+      <Input
+        className="c-checkbox"
+        helperText="Indicates whether or not rollbar is enabled for this app instance"
+        inputProps={
+          Object {
+            "checked": undefined,
+            "id": "rollbar_enabled_input",
+            "name": "rollbar_enabled",
+            "onChange": [Function],
+            "type": "checkbox",
+            "value": "true",
+          }
+        }
+        labelText="Rollbar Enabled"
+      />
+    </div>
+    <div
+      className="o-grid__item u-full"
+    >
+      <Textarea
+        className="c-input"
+        labelText="Custom Application Instance Configuration"
+        textareaProps={
+          Object {
+            "id": "application_instance_config",
+            "name": "config",
+            "onChange": [Function],
+            "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
+            "rows": 3,
+            "value": "{
+  \\"foo\\": \\"bar\\"
+}",
+          }
+        }
+        warning={null}
+      />
+    </div>
+    <div
+      className="o-grid__item u-full"
+    >
+      <Textarea
+        className="c-input"
+        labelText="LTI Configuration"
+        textareaProps={
+          Object {
+            "id": "application_instance_lti_config",
+            "name": "lti_config",
+            "onChange": [Function],
+            "rows": 8,
+            "value": "{}",
+          }
+        }
+        warning={null}
+      />
+    </div>
+  </div>
+  <button
+    className="c-btn c-btn--yellow"
+    onClick={[Function]}
+    type="button"
+  >
+    Save
+  </button>
+  <button
+    className="c-btn c-btn--gray--large u-m-right"
+    onClick={[Function]}
+    type="button"
+  >
+    Cancel
+  </button>
+</form>
+`;

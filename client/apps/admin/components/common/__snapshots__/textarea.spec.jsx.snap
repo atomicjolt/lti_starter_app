@@ -1,3 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`textarea matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`textarea matches the snapshot 1`] = `
+<label
+  className="imaclass"
+  htmlFor="IM AN ID"
+>
+  <span>
+    IMA LABEL
+  </span>
+  <textarea
+    cols={3}
+    disabled={false}
+    id="IM AN ID"
+    maxLength={1}
+    minLength={1}
+    name="the name"
+    onChange={[Function]}
+    placeholder="IMA PLACEHOLDER"
+    rows={2}
+    value="IM A VALUE"
+  />
+</label>
+`;

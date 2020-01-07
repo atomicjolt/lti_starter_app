@@ -1,3 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`input matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`input matches the snapshot 1`] = `
+<div
+  className="c-input--container"
+>
+  <label
+    className="imaclass"
+    htmlFor="IM AN ID"
+  >
+    <input
+      checked={true}
+      id="IM AN ID"
+      name="the name"
+      onChange={[Function]}
+      type="radio"
+      value="IM A VALUE"
+    />
+    <span>
+      IMA LABEL
+    </span>
+  </label>
+</div>
+`;

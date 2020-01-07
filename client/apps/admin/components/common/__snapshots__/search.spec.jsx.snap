@@ -1,3 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`common search matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`common search matches the snapshot 1`] = `
+<div
+  className="c-search c-search--small"
+>
+  <input
+    onChange={[Function]}
+    placeholder="Search..."
+    type="text"
+  />
+  <i
+    className="i-search"
+  />
+</div>
+`;
