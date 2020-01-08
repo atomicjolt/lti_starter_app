@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`the enabled component matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`the enabled component matches the snapshot 1`] = `
+<i
+  className="material-icons enabled"
+>
+  check_circle
+</i>
+`;

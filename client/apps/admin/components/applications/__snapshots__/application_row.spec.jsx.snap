@@ -1,3 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`applications application row matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`applications application row matches the snapshot 1`] = `
+<tr>
+  <td>
+    <Link
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="/applications/314159/application_instances"
+    >
+      SPECNAME
+    </Link>
+  </td>
+  <td>
+    <span>
+      1234
+    </span>
+  </td>
+  <td>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "border": "none",
+          "color": "grey",
+          "cursor": "pointer",
+          "fontSize": "1.5em",
+        }
+      }
+    >
+      <i
+        className="i-settings"
+      />
+    </button>
+    <Modal
+      application={
+        Object {
+          "application_instances_count": 1234,
+          "id": 314159,
+          "name": "SPECNAME",
+        }
+      }
+      closeModal={[Function]}
+      isOpen={false}
+      save={[Function]}
+    />
+  </td>
+</tr>
+`;

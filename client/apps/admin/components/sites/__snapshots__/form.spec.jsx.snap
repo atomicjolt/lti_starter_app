@@ -1,3 +1,79 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`site form matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`site form matches the snapshot 1`] = `
+<form>
+  <div
+    className="o-grid o-grid__modal-top"
+  >
+    <div
+      className="o-grid__item u-full"
+      key="url"
+    >
+      <Input
+        className="c-input"
+        inputProps={
+          Object {
+            "id": "site_url",
+            "name": "url",
+            "onChange": [Function],
+            "type": "text",
+            "value": "",
+          }
+        }
+        labelText="Canvas Domain"
+      />
+    </div>
+    <div
+      className="o-grid__item u-full"
+      key="oauth_key"
+    >
+      <Input
+        className="c-input"
+        inputProps={
+          Object {
+            "id": "site_oauth_key",
+            "name": "oauth_key",
+            "onChange": [Function],
+            "type": "text",
+            "value": "",
+          }
+        }
+        labelText="Canvas Developer ID"
+      />
+    </div>
+    <div
+      className="o-grid__item u-full"
+      key="oauth_secret"
+    >
+      <Input
+        className="c-input"
+        inputProps={
+          Object {
+            "id": "site_oauth_secret",
+            "name": "oauth_secret",
+            "onChange": [Function],
+            "type": "text",
+            "value": "",
+          }
+        }
+        labelText="Canvas Developer Key"
+      />
+    </div>
+  </div>
+  <button
+    className="c-btn c-btn--yellow"
+    onClick={[Function]}
+    type="button"
+  >
+    Create
+     Domain
+  </button>
+  <button
+    className="c-btn c-btn--gray--large u-m-right"
+    onClick={[Function]}
+    type="button"
+  >
+    Cancel
+  </button>
+</form>
+`;

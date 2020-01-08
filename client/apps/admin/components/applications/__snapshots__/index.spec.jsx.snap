@@ -1,3 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`applications index matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`applications index matches the snapshot 1`] = `
+<div>
+  <Connect(Heading) />
+  <div
+    className="o-contain o-contain--full"
+  >
+    <div
+      className="c-info"
+    >
+      <div
+        className="c-title"
+      >
+        <h1>
+          LTI Applications
+        </h1>
+      </div>
+    </div>
+    <table
+      className="c-table c-table--lti"
+    >
+      <thead>
+        <tr>
+          <th>
+            <span>
+              NAME
+            </span>
+          </th>
+          <th>
+            <span>
+              INSTANCES
+            </span>
+          </th>
+          <th>
+            <span>
+              SETTINGS
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <ApplicationRow
+          application={
+            Object {
+              "Power1": "Wall Crawling",
+              "Power2": "Spidey Sense",
+            }
+          }
+          key="Spiderman"
+          saveApplication={[Function]}
+        />
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

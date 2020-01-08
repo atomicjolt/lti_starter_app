@@ -1,3 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`lti installs course install row matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`lti installs course install row matches the snapshot 1`] = `
+<tr>
+  <td>
+    <div
+      className="c-table--inactive"
+    >
+      <a
+        href="example.com/courses/123/external_tools/12"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        courseName
+      </a>
+    </div>
+  </td>
+  <td>
+    <button
+      className="c-btn c-btn--gray"
+      onClick={[Function]}
+    >
+      Uninstall
+    </button>
+  </td>
+</tr>
+`;

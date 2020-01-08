@@ -1,3 +1,200 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`application instances list row matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`application instances list row matches the snapshot 1`] = `
+<tr>
+  <td>
+    <form
+      action="http://www.example.com"
+    >
+      <SettingsInputs
+        settings={
+          Object {
+            "lti_key": "lti-key",
+            "user_canvas_domains": Array [
+              "",
+            ],
+          }
+        }
+      />
+      <input
+        name="canvas_url"
+        type="hidden"
+        value="http://www.example.com"
+      />
+      <input
+        name="oauth_complete_url"
+        type="hidden"
+        value="http://localhost/#applications/23/application_instances/2/installs"
+      />
+    </form>
+    <Link
+      onClick={[Function]}
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="applications/23/application_instances/2/installs"
+    />
+    <div>
+      http://www.example.com
+    </div>
+  </td>
+  <td>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "border": "none",
+          "color": "grey",
+          "cursor": "pointer",
+          "fontSize": "1.5em",
+        }
+      }
+    >
+      <i
+        className="i-settings"
+      />
+    </button>
+  </td>
+  <td>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "border": "none",
+          "color": "grey",
+          "cursor": "pointer",
+          "fontSize": "1.5em",
+        }
+      }
+    >
+      <i
+        className="i-settings"
+      />
+    </button>
+    <ConfigXmlModal
+      applicationInstance={
+        Object {
+          "application_id": 23,
+          "authentications": Array [],
+          "id": 2,
+          "request_stats": Object {
+            "day_1_errors": 1,
+            "day_1_launches": 1,
+            "day_1_requests": 1,
+            "day_1_users": 1,
+            "day_30_errors": 1,
+            "day_30_launches": 1,
+            "day_30_requests": 1,
+            "day_30_users": 1,
+            "day_7_errors": 1,
+            "day_7_launches": 1,
+            "day_7_requests": 1,
+            "day_7_users": 1,
+          },
+          "site": Object {
+            "url": "http://www.example.com",
+          },
+        }
+      }
+      closeModal={[Function]}
+      isOpen={false}
+    />
+  </td>
+  <td>
+    <button
+      className="c-disable"
+      onClick={[Function]}
+    >
+      <Enabled />
+    </button>
+  </td>
+  <td>
+    0
+  </td>
+  <td>
+    Invalid Date
+     
+    Invalid Date
+  </td>
+  <td>
+    <div>
+      1 day
+    </div>
+    <div>
+      7 days
+    </div>
+    <div>
+      30 days
+    </div>
+  </td>
+  <td>
+    <div>
+      1
+    </div>
+    <div>
+      1
+    </div>
+    <div>
+      1
+    </div>
+  </td>
+  <td>
+    <div>
+      1
+    </div>
+    <div>
+      1
+    </div>
+    <div>
+      1
+    </div>
+  </td>
+  <td>
+    <div>
+      1
+    </div>
+    <div>
+      1
+    </div>
+    <div>
+      1
+    </div>
+  </td>
+  <td>
+    <div>
+      1
+    </div>
+    <div>
+      1
+    </div>
+    <div>
+      1
+    </div>
+  </td>
+  <td>
+    <button
+      className="c-delete"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "border": "none",
+          "color": "grey",
+          "cursor": "pointer",
+          "fontSize": "1.5em",
+        }
+      }
+    >
+      <i
+        className="i-delete"
+      />
+    </button>
+    <DeleteModal
+      closeModal={[Function]}
+      deleteRecord={[Function]}
+      isOpen={false}
+    />
+  </td>
+</tr>
+`;

@@ -1,3 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`sites index matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`sites index matches the snapshot 1`] = `
+<div>
+  <Connect(Heading) />
+  <div
+    className="o-contain o-contain--full"
+  >
+    <Connect(SiteModal)
+      closeModal={[Function]}
+      isOpen={false}
+    />
+    <Header
+      newSite={[Function]}
+      openSettings={[Function]}
+    />
+    <List
+      deleteSite={[Function]}
+      sites={
+        Object {
+          "1": Object {
+            "id": 1,
+            "url": "bfcoder.com",
+          },
+          "2": Object {
+            "id": 2,
+            "url": "atomicjolt.com",
+          },
+        }
+      }
+    />
+  </div>
+</div>
+`;

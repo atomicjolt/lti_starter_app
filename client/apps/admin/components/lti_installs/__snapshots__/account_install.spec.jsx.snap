@@ -1,3 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`lti installs account install with account present matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`lti installs account install with account present matches the snapshot 1`] = `
+<div
+  className="c-info"
+>
+  <div
+    className="c-title"
+  >
+    <h1>
+      123
+    </h1>
+    <h3>
+      accountName
+    </h3>
+  </div>
+  <button
+    className="c-btn c-btn--yellow"
+    onClick={[Function]}
+  >
+    Install Into Account
+  </button>
+</div>
+`;

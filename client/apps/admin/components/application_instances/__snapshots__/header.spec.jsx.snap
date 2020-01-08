@@ -1,3 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`application instances header matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`application instances header matches the snapshot 1`] = `
+<div
+  className="c-info"
+>
+  <div
+    className="c-title"
+  >
+    <h1>
+      test application
+       Instances
+    </h1>
+  </div>
+  <button
+    className="c-btn c-btn--yellow"
+    onClick={[Function]}
+  >
+    New Application Instance
+  </button>
+</div>
+`;

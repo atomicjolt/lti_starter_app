@@ -1,3 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`sites list matches the snapshot 1`] = `ShallowWrapper {}`;
+exports[`sites list matches the snapshot 1`] = `
+<table
+  className="c-table c-table--lti"
+>
+  <thead>
+    <tr>
+      <th>
+        <span>
+          URL
+        </span>
+      </th>
+      <th>
+        <span>
+          SETTINGS
+        </span>
+      </th>
+      <th>
+        <span>
+          DELETE
+        </span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <SiteRow
+      deleteSite={[Function]}
+      key="site_1"
+      site={
+        Object {
+          "id": 1,
+          "url": "bfcoder.com",
+        }
+      }
+    />
+    <SiteRow
+      deleteSite={[Function]}
+      key="site_2"
+      site={
+        Object {
+          "id": 2,
+          "url": "atomicjolt.com",
+        }
+      }
+    />
+  </tbody>
+</table>
+`;
