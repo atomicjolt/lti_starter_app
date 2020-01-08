@@ -97,11 +97,13 @@ group :development do
   gem "web-console", "~>3.7.0"
 end
 
-group :linter do
+group :development, :linter do
   gem "pronto"
   gem "pronto-eslint_npm", require: false
   gem "pronto-rubocop", require: false
   gem "rubocop"
+  gem "rubocop-performance"
+  gem "rubocop-rails"
 end
 
 group :development, :test do
