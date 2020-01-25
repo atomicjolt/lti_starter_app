@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_11_015015) do
+ActiveRecord::Schema.define(version: 2020_01_25_223051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,9 @@ ActiveRecord::Schema.define(version: 2019_09_11_015015) do
     t.bigint "bundle_instance_id"
     t.boolean "anonymous", default: false
     t.boolean "rollbar_enabled", default: true
+    t.string "oauth_key"
+    t.string "oauth_secret"
+    t.string "oauth_scope", default: [], array: true
     t.index ["application_id"], name: "index_application_instances_on_application_id"
     t.index ["lti_key"], name: "index_application_instances_on_lti_key"
     t.index ["site_id"], name: "index_application_instances_on_site_id"

@@ -17,6 +17,7 @@ class ApplicationInstance < ApplicationRecord
 
   before_validation :set_lti
   before_validation :set_domain
+  before_validation :compact_scopes
 
   before_validation on: [:update] do
     errors.add(:lti_key, "cannot be changed after creation") if lti_key_changed?
@@ -133,6 +134,14 @@ class ApplicationInstance < ApplicationRecord
     end
   end
 
+  def get_oauth_key
+    self.oauth_key || self.site&.oauth_key
+  end
+
+  def get_oauth_secret
+    self.oauth_secret || self.site&.oauth_secret
+  end
+
   private
 
   def set_lti
@@ -163,6 +172,10 @@ class ApplicationInstance < ApplicationRecord
   def destroy_schema
     Apartment::Tenant.drop tenant
   end
-  private :destroy_schema
 
+  def compact_scopes
+    oauth_scope.compact!
+  end
+
+  private :destroy_schema
 end
