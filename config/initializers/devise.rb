@@ -238,7 +238,7 @@ Devise.setup do |config|
       request.session["canvas_url"] ||
       "https://canvas.instructure.com"
 
-    application_instance = ApplicationInstance.find_by(lti_key: request.params["app_lti_key"])
+    application_instance = ApplicationInstance.find_by(lti_key: request.params["oauth_consumer_key"])
     next unless application_instance
 
     env["omniauth.strategy"].options[:client_id] = application_instance.get_oauth_key

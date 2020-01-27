@@ -160,7 +160,7 @@ export default class ListRow extends React.Component {
             />
             <input
               type="hidden"
-              name="app_lti_key"
+              name="oauth_consumer_key"
               value={applicationInstance.lti_key}
             />
           </form>
