@@ -27,7 +27,7 @@ exports[`application instances list row matches the snapshot 1`] = `
         value="http://localhost/#applications/23/application_instances/2/installs"
       />
       <input
-        name="app_lti_key"
+        name="oauth_consumer_key"
         type="hidden"
       />
     </form>
