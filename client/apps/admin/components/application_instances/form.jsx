@@ -143,6 +143,32 @@ export default class Form extends React.Component {
           <div className="o-grid__item u-half">
             <Input
               className="c-input"
+              labelText="Oauth Key"
+              inputProps={{
+                id: 'oauth_key_input',
+                name: 'oauth_key',
+                type: 'text',
+                value: this.props.oauth_key || '',
+                onChange
+              }}
+            />
+          </div>
+          <div className="o-grid__item u-half">
+            <Input
+              className="c-input"
+              labelText="Oauth Secret"
+              inputProps={{
+                id: 'oauth_secret_input',
+                name: 'oauth_secret',
+                type: 'text',
+                value: this.props.oauth_secret || '',
+                onChange
+              }}
+            />
+          </div>
+          <div className="o-grid__item u-half">
+            <Input
+              className="c-input"
               labelText="Canvas Token"
               helperText={`Current Canvas Token: ${this.props.canvas_token_preview}`}
               inputProps={{
@@ -212,6 +238,20 @@ export default class Form extends React.Component {
                 onChange: this.props.onChange,
               }}
               warning={erroneousLtiConfigWarning}
+            />
+          </div>
+          <div className="o-grid__item u-full">
+            <Textarea
+              warning="Updating scopes requires users to oauth again before taking effect"
+              className="c-input"
+              labelText="Oauth Scopes"
+              textareaProps={{
+                id: 'oauth_scopes_input',
+                name: 'oauth_scopes',
+                rows: 8,
+                value: (this.props.oauth_scopes || []).join('\n'),
+                onChange
+              }}
             />
           </div>
         </div>

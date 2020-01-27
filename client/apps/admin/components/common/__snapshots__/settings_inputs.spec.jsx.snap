@@ -3,11 +3,6 @@
 exports[`common search inputs matches the snapshot 1`] = `
 <div>
   <input
-    name="oauth_consumer_key"
-    type="hidden"
-    value="lti_key"
-  />
-  <input
     key="lti_key"
     name="lti_key"
     type="hidden"

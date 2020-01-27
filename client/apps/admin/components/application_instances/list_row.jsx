@@ -158,6 +158,11 @@ export default class ListRow extends React.Component {
               name="oauth_complete_url"
               value={`${window.location.protocol}//${window.location.host}${window.location.pathname}#${path}`}
             />
+            <input
+              type="hidden"
+              name="oauth_consumer_key"
+              value={applicationInstance.lti_key}
+            />
           </form>
           <Link
             onClick={(e) => { this.checkAuthentication(e); }}

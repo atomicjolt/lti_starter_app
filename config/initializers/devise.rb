@@ -239,12 +239,18 @@ Devise.setup do |config|
       "https://canvas.instructure.com"
 
     site = Site.find_by(url: url)
+    application_instance = ApplicationInstance.find_by(lti_key: request.params["oauth_consumer_key"])
     next unless site
+
+    env["omniauth.strategy"].options[:client_id] = application_instance&.oauth_key || site.oauth_key
+    env["omniauth.strategy"].options[:client_secret] = application_instance&.oauth_key || site.oauth_secret
+
+    if application_instance&.oauth_scopes.present?
+      env["omniauth.strategy"].options[:scope] = application_instance.oauth_scopes.join(',')
+    end
 
     custom_canvas_api_domain = request.params["custom_canvas_api_domain"]
     site_url = custom_canvas_api_domain.present? ? "https://#{custom_canvas_api_domain}" : site.url
-    env["omniauth.strategy"].options[:client_id] = site.oauth_key
-    env["omniauth.strategy"].options[:client_secret] = site.oauth_secret
     env["omniauth.strategy"].options[:client_options].site = site_url
   end
 

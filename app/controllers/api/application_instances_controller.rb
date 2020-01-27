@@ -203,6 +203,9 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
       :anonymous,
       :rollbar_enabled,
       :domain,
+      :oauth_key,
+      :oauth_secret,
+      oauth_scopes: [],
     )
   end
 

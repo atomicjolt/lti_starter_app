@@ -26,6 +26,10 @@ exports[`application instances list row matches the snapshot 1`] = `
         type="hidden"
         value="http://localhost/#applications/23/application_instances/2/installs"
       />
+      <input
+        name="oauth_consumer_key"
+        type="hidden"
+      />
     </form>
     <Link
       onClick={[Function]}
