@@ -242,8 +242,9 @@ export default class Form extends React.Component {
           </div>
           <div className="o-grid__item u-full">
             <Textarea
+              warning="Updating scopes requires users to oauth again before taking effect"
               className="c-input"
-              labelText="Oauth Scope"
+              labelText="Oauth Scopes"
               textareaProps={{
                 id: 'oauth_scopes_input',
                 name: 'oauth_scopes',
