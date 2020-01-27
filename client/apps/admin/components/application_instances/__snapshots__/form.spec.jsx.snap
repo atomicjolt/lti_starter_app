@@ -223,16 +223,17 @@ exports[`application instance form matches the snapshot 1`] = `
     >
       <Textarea
         className="c-input"
-        labelText="Oauth Scope"
+        labelText="Oauth Scopes"
         textareaProps={
           Object {
-            "id": "oauth_scope_input",
-            "name": "oauth_scope",
+            "id": "oauth_scopes_input",
+            "name": "oauth_scopes",
             "onChange": [Function],
             "rows": 8,
             "value": "",
           }
         }
+        warning="Updating scopes requires users to oauth again before taking effect"
       />
     </div>
   </div>
