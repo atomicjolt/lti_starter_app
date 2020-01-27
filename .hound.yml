@@ -13,3 +13,6 @@ eslint:
 scss:
   enabled: true
   config_file: .scss-lint.yml
+
+rubocop:
+  version: 0.75.0
