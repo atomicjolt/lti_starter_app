@@ -134,14 +134,6 @@ class ApplicationInstance < ApplicationRecord
     end
   end
 
-  def get_oauth_key
-    self.oauth_key || self.site&.oauth_key
-  end
-
-  def get_oauth_secret
-    self.oauth_secret || self.site&.oauth_secret
-  end
-
   private
 
   def set_lti
@@ -174,7 +166,7 @@ class ApplicationInstance < ApplicationRecord
   end
 
   def compact_scopes
-    oauth_scope.compact!
+    oauth_scopes.compact!
   end
 
   private :destroy_schema

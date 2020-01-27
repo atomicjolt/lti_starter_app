@@ -245,10 +245,10 @@ export default class Form extends React.Component {
               className="c-input"
               labelText="Oauth Scope"
               textareaProps={{
-                id: 'oauth_scope_input',
-                name: 'oauth_scope',
+                id: 'oauth_scopes_input',
+                name: 'oauth_scopes',
                 rows: 8,
-                value: (this.props.oauth_scope || []).join('\n'),
+                value: (this.props.oauth_scopes || []).join('\n'),
                 onChange
               }}
             />

@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_01_25_223051) do
     t.boolean "rollbar_enabled", default: true
     t.string "oauth_key"
     t.string "oauth_secret"
-    t.string "oauth_scope", default: [], array: true
+    t.string "oauth_scopes", default: [], array: true
     t.index ["application_id"], name: "index_application_instances_on_application_id"
     t.index ["lti_key"], name: "index_application_instances_on_lti_key"
     t.index ["site_id"], name: "index_application_instances_on_site_id"
