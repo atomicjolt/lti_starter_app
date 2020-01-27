@@ -164,10 +164,9 @@ class ApplicationInstance < ApplicationRecord
   def destroy_schema
     Apartment::Tenant.drop tenant
   end
+  private :destroy_schema
 
   def compact_scopes
     oauth_scopes.compact!
   end
-
-  private :destroy_schema
 end
