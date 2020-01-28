@@ -205,7 +205,7 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
       :domain,
       :oauth_key,
       :oauth_secret,
-      oauth_scopes: [],
+      :use_scoped_developer_key,
     )
   end
 

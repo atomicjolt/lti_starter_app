@@ -82,10 +82,12 @@ export default class Modal extends React.Component {
       return;
     }
 
-    if (e.target.name === 'oauth_scopes') {
+    if (e.target.name === 'use_scoped_developer_key') {
       const newApplicationInstance = _.cloneDeep(this.state.newApplicationInstance);
-      const scopes = e.target.value.split(/\r?\n/);
-      newApplicationInstance.oauth_scopes = scopes;
+      newApplicationInstance.use_scoped_developer_key = false;
+      if (e.target.checked) {
+        newApplicationInstance.use_scoped_developer_key = true;
+      }
       this.setState({ newApplicationInstance });
       return;
     }

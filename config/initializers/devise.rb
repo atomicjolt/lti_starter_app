@@ -243,10 +243,10 @@ Devise.setup do |config|
     next unless site
 
     env["omniauth.strategy"].options[:client_id] = application_instance&.oauth_key || site.oauth_key
-    env["omniauth.strategy"].options[:client_secret] = application_instance&.oauth_key || site.oauth_secret
+    env["omniauth.strategy"].options[:client_secret] = application_instance&.oauth_secret || site.oauth_secret
 
-    if application_instance&.oauth_scopes.present?
-      env["omniauth.strategy"].options[:scope] = application_instance.oauth_scopes.join(',')
+    if application_instance&.use_scoped_developer_key
+      env["omniauth.strategy"].options[:scope] = application_instance.application.oauth_scopes.join(' ')
     end
 
     custom_canvas_api_domain = request.params["custom_canvas_api_domain"]
