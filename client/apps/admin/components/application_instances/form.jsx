@@ -40,6 +40,7 @@ export default class Form extends React.Component {
     canvas_token_preview: PropTypes.string,
     anonymous: PropTypes.bool,
     rollbar_enabled: PropTypes.bool,
+    use_scoped_developer_key: PropTypes.bool,
   };
 
   selectSite(option) {
@@ -149,7 +150,7 @@ export default class Form extends React.Component {
                 name: 'oauth_key',
                 type: 'text',
                 value: this.props.oauth_key || '',
-                onChange
+                onChange,
               }}
             />
           </div>
@@ -162,7 +163,7 @@ export default class Form extends React.Component {
                 name: 'oauth_secret',
                 type: 'text',
                 value: this.props.oauth_secret || '',
-                onChange
+                onChange,
               }}
             />
           </div>
@@ -212,6 +213,21 @@ export default class Form extends React.Component {
             />
           </div>
           <div className="o-grid__item u-full">
+            <Input
+              helperText="Restricts the Canvas tokens generated during oauth to the minimum necessary for this application. This should only be used if the oauth key and secret are populated above and are for a scoped developer key."
+              className="c-checkbox"
+              labelText="Use Scoped Developer Key"
+              inputProps={{
+                id: 'use_scoped_developer_key_input',
+                name: 'use_scoped_developer_key',
+                type: 'checkbox',
+                value: 'true',
+                checked: this.props.use_scoped_developer_key,
+                onChange
+              }}
+            />
+          </div>
+          <div className="o-grid__item u-full">
             <Textarea
               className="c-input"
               labelText="Custom Application Instance Configuration"
@@ -238,20 +254,6 @@ export default class Form extends React.Component {
                 onChange: this.props.onChange,
               }}
               warning={erroneousLtiConfigWarning}
-            />
-          </div>
-          <div className="o-grid__item u-full">
-            <Textarea
-              warning="Updating scopes requires users to oauth again before taking effect"
-              className="c-input"
-              labelText="Oauth Scopes"
-              textareaProps={{
-                id: 'oauth_scopes_input',
-                name: 'oauth_scopes',
-                rows: 8,
-                value: (this.props.oauth_scopes || []).join('\n'),
-                onChange
-              }}
             />
           </div>
         </div>

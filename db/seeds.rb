@@ -216,6 +216,14 @@ applications = [
         ],
       },
     ],
+    oauth_scopes: [
+      "url:GET|/api/v1/courses",
+      "url:GET|/api/v1/courses/:id",
+      "url:GET|/api/v1/accounts",
+      "url:GET|/api/v1/accounts/:id",
+      # The omniauth-canvas gem gets the user info immediately after finishing oauth, so we need this scope
+      "url:GET|/api/v1/users/:user_id/profile",
+    ],
   },
 ]
 
