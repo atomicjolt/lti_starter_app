@@ -93,40 +93,6 @@ exports[`application instance form matches the snapshot 1`] = `
     >
       <Input
         className="c-input"
-        inputProps={
-          Object {
-            "id": "oauth_key_input",
-            "name": "oauth_key",
-            "onChange": [Function],
-            "type": "text",
-            "value": "",
-          }
-        }
-        labelText="Oauth Key"
-      />
-    </div>
-    <div
-      className="o-grid__item u-half"
-    >
-      <Input
-        className="c-input"
-        inputProps={
-          Object {
-            "id": "oauth_secret_input",
-            "name": "oauth_secret",
-            "onChange": [Function],
-            "type": "text",
-            "value": "",
-          }
-        }
-        labelText="Oauth Secret"
-      />
-    </div>
-    <div
-      className="o-grid__item u-half"
-    >
-      <Input
-        className="c-input"
         helperText="Current Canvas Token: undefined"
         inputProps={
           Object {
