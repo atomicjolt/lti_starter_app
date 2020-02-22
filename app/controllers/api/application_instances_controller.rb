@@ -203,8 +203,6 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
       :anonymous,
       :rollbar_enabled,
       :domain,
-      :oauth_key,
-      :oauth_secret,
       :use_scoped_developer_key,
     )
   end

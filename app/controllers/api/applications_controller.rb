@@ -18,7 +18,7 @@ class Api::ApplicationsController < Api::ApiApplicationController
   private
 
   def application_params
-    params.require(:application).permit(:name, :description)
+    params.require(:application).permit(:name, :description, :oauth_key, :oauth_secret)
   end
 
 end
