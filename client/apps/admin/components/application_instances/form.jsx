@@ -144,32 +144,6 @@ export default class Form extends React.Component {
           <div className="o-grid__item u-half">
             <Input
               className="c-input"
-              labelText="Oauth Key"
-              inputProps={{
-                id: 'oauth_key_input',
-                name: 'oauth_key',
-                type: 'text',
-                value: this.props.oauth_key || '',
-                onChange,
-              }}
-            />
-          </div>
-          <div className="o-grid__item u-half">
-            <Input
-              className="c-input"
-              labelText="Oauth Secret"
-              inputProps={{
-                id: 'oauth_secret_input',
-                name: 'oauth_secret',
-                type: 'text',
-                value: this.props.oauth_secret || '',
-                onChange,
-              }}
-            />
-          </div>
-          <div className="o-grid__item u-half">
-            <Input
-              className="c-input"
               labelText="Canvas Token"
               helperText={`Current Canvas Token: ${this.props.canvas_token_preview}`}
               inputProps={{

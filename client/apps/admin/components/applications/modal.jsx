@@ -11,6 +11,8 @@ export default class Modal extends React.Component {
       description: PropTypes.string,
       default_config: PropTypes.string,
       canvas_api_permissions: PropTypes.object,
+      oauth_key: PropTypes.string,
+      oauth_secret: PropTypes.string,
     }),
     isOpen: PropTypes.bool.isRequired,
     closeModal: PropTypes.func.isRequired,
@@ -60,6 +62,8 @@ export default class Modal extends React.Component {
         <h2 className="c-modal__title">{this.state.application.name} Settings</h2>
         <Form
           description={this.state.application.description}
+          oauthKey={this.state.application.oauth_key}
+          oauthSecret={this.state.application.oauth_secret}
           canvasApiPermissions={this.props.application.canvas_api_permissions}
           defaultConfig={this.state.application.default_config}
           configParseError={this.state.configParseError}
