@@ -49,7 +49,7 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
     url = UrlHelper.scheme_host_port(site.url)
     Apartment::Tenant.switch(@application_instance.tenant) do
       auth = @application_instance.authentications.find(params[:authentication_id])
-      api = Integrations::CanvasApiSupport.refreshable_auth(auth, url, site)
+      api = Integrations::CanvasApiSupport.refreshable_auth(auth, url, @application_instance)
       if accounts = api.proxy("LIST_ACCOUNTS", {}, {}, true)
         render json: accounts
       else
