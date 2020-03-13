@@ -35,7 +35,7 @@ class User < ApplicationRecord
       user_dup.update_attributes(user.copy_attributes)
 
       if user_dup.password.blank?
-        user_dup.password = Devise.friendly_token(20)
+        user_dup.password = Devise.friendly_token(72)
         user_dup.password_confirmation = user_dup.password
       end
 
