@@ -156,7 +156,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     kind = params[:action].titleize # Should give us Facebook, Twitter, Linked In, etc
     @user = User.new
     @user.skip_confirmation!
-    @user.password = Devise.friendly_token(20)
+    @user.password = Devise.friendly_token(72)
     @user.password_confirmation = @user.password
     @user.create_method = User.create_methods[:oauth]
     @user.lti_user_id = auth["extra"]["raw_info"]["lti_user_id"]
