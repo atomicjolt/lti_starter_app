@@ -71,9 +71,14 @@ module Concerns
         user = _generate_new_lti_user(params)
         _attempt_uniq_email(user)
       else
+        name = _generate_name(params)
+        user.name = name if user.name != name
         if user.lms_user_id.blank? && lms_user_id.present?
           user.lms_user_id = lms_user_id
-          user.save
+        end
+        if !user.save
+          error = user.errors.pluck(:messages).join(" ").to_s
+          # Rollbar.error("Unable to update user information during LTI launch. UserId: #{user.id}. Error: #{error}")
         end
         _update_roles(user, params)
       end
@@ -114,6 +119,11 @@ module Concerns
       end
     end
 
+    def _generate_name(params)
+      params[:lis_person_name_full].presence ||
+        "#{params[:lis_person_name_given]} #{params[:lis_person_name_family]}".strip
+    end
+
     def _generate_new_lti_user(params)
       lti_user_id = params[:user_id]
 
@@ -122,12 +132,7 @@ module Concerns
         email = generate_email
       else
         # Generate a name from the LTI params
-        name = if params[:lis_person_name_full].present?
-                 params[:lis_person_name_full]
-               else
-                 "#{params[:lis_person_name_given]} #{params[:lis_person_name_family]}"
-               end
-        name = name.strip
+        name = _generate_name(params)
         name = params[:roles] if name.blank? # If the name is blank then use their role
 
         email = _assemble_email
