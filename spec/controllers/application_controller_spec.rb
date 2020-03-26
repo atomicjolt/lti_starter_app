@@ -119,6 +119,24 @@ RSpec.describe ApplicationController, type: :controller do
         end
       end
 
+      describe "LMS::Canvas::RefreshToken500Exception" do
+        controller do
+          def index
+            raise LMS::Canvas::RefreshToken500Exception.new("Canvas returned a 500")
+          end
+        end
+        it "renders an error page" do
+          get :index
+          expect(response).to have_http_status(500)
+        end
+        it "renders error json" do
+          get :index, format: :json
+          expect(response).to have_http_status(500)
+          result = JSON.parse(response.body)
+          expect(result["message"]).to eq("Error while refreshing Canvas token: Canvas returned a 500.")
+        end
+      end
+
       describe "LMS::Canvas::RefreshTokenFailedException" do
         controller do
           def index

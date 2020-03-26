@@ -173,7 +173,7 @@ GEM
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    lms-api (1.9.0)
+    lms-api (1.15.0)
       activesupport (>= 3.0)
       httparty
     loofah (2.4.0)
@@ -443,7 +443,7 @@ DEPENDENCIES
   jwt
   launchy
   listen
-  lms-api (~> 1.9.0)
+  lms-api (~> 1.15.0)
   mail_view
   non-stupid-digest-assets
   nuclear_secrets
