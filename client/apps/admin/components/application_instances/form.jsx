@@ -40,6 +40,7 @@ export default class Form extends React.Component {
     canvas_token_preview: PropTypes.string,
     anonymous: PropTypes.bool,
     rollbar_enabled: PropTypes.bool,
+    use_scoped_developer_key: PropTypes.bool,
   };
 
   selectSite(option) {
@@ -181,6 +182,21 @@ export default class Form extends React.Component {
                 type: 'checkbox',
                 value: 'true',
                 checked: this.props.rollbar_enabled,
+                onChange
+              }}
+            />
+          </div>
+          <div className="o-grid__item u-full">
+            <Input
+              helperText="Restricts the Canvas tokens generated during oauth to the minimum necessary for this application. This should only be used if the oauth key and secret are populated above and are for a scoped developer key."
+              className="c-checkbox"
+              labelText="Use Scoped Developer Key"
+              inputProps={{
+                id: 'use_scoped_developer_key_input',
+                name: 'use_scoped_developer_key',
+                type: 'checkbox',
+                value: 'true',
+                checked: this.props.use_scoped_developer_key,
                 onChange
               }}
             />

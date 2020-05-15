@@ -65,6 +65,44 @@ module LtiAdvantage
     CANVAS_BETA_AUTH_TOKEN_URL = "https://canvas.beta.instructure.com/login/oauth2/token".freeze
     CANVAS_BETA_OIDC_URL = "https://canvas.beta.instructure.com/api/lti/authorize_redirect".freeze
 
+    # Roles
+    # Below are all the roles specified in the LTI 1.3 spec. (https://www.imsglobal.org/spec/lti/v1p3#role-vocabularies-0)
+    ## Core system roles
+    ADMINISTRATOR_SYSTEM_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/system/person#Administrator".freeze
+    NONE_SYSTEM_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/system/person#None".freeze
+    ## Non‑core system roles
+    ACCOUNT_ADMIN_SYSTEM_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/system/person#AccountAdmin".freeze
+    CREATOR_SYSTEM_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/system/person#Creator".freeze
+    SYS_ADMIN_SYSTEM_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/system/person#SysAdmin".freeze
+    SYS_SUPPORT_SYSTEM_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/system/person#SysSupport".freeze
+    USER_SYSTEM_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/system/person#User".freeze
+    ## Core institution roles
+    ADMINISTRATOR_INSTITUTION_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Administrator".freeze
+    FACULTY_INSTITUTION_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Faculty".freeze
+    GUEST_INSTITUTION_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Guest".freeze
+    NONE_INSTITUTION_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/institution/person#None".freeze
+    OTHER_INSTITUTION_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Other".freeze
+    STAFF_INSTITUTION_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Staff".freeze
+    STUDENT_INSTITUTION_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Student".freeze
+    ## Non‑core institution roles
+    ALUMNI_INSTITUTION_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Alumni".freeze
+    INSTRUCTOR_INSTITUTION_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Instructor".freeze
+    LEARNER_INSTITUTION_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Learner".freeze
+    MEMBER_INSTITUTION_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Member".freeze
+    MENTOR_INSTITUTION_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Mentor".freeze
+    OBSERVER_INSTITUTION_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Observer".freeze
+    PROSPECTIVE_STUDENT_INSTITUTION_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/institution/person#ProspectiveStudent".freeze
+    ## Core context roles
+    ADMINISTRATOR_CONTEXT_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/membership#Administrator".freeze
+    CONTENT_DEVELOPER_CONTEXT_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/membership#ContentDeveloper".freeze
+    INSTRUCTOR_CONTEXT_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor".freeze
+    LEARNER_CONTEXT_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner".freeze
+    MENTOR_CONTEXT_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor".freeze
+    ## Non‑core context roles
+    MANAGER_CONTEXT_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/membership#Manager".freeze
+    MEMBER_CONTEXT_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/membership#Member".freeze
+    OFFICER_CONTEXT_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/membership#Officer".freeze
+
     def self.lms_host(payload)
       host = if deep_link_launch?(payload)
                payload.dig(LtiAdvantage::Definitions::DEEP_LINKING_CLAIM, "deep_link_return_url")

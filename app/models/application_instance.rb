@@ -133,6 +133,14 @@ class ApplicationInstance < ApplicationRecord
     end
   end
 
+  def oauth_key
+    site.oauth_key.presence || application.oauth_key
+  end
+
+  def oauth_secret
+    site.oauth_secret.presence || application.oauth_secret
+  end
+
   private
 
   def set_lti
@@ -164,5 +172,4 @@ class ApplicationInstance < ApplicationRecord
     Apartment::Tenant.drop tenant
   end
   private :destroy_schema
-
 end

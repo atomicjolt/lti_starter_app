@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Textarea from '../common/textarea';
 import Warning from '../common/warning';
+import Input from '../common/input';
 
 export default function Form(props) {
   let erroneousConfigWarning = null;
@@ -25,6 +26,32 @@ export default function Form(props) {
               onChange={props.onChange}
             />
           </label>
+        </div>
+        <div className="o-grid__item u-half">
+          <Input
+            className="c-input"
+            labelText="Oauth Key"
+            inputProps={{
+              id: 'oauth_key_input',
+              name: 'oauth_key',
+              type: 'text',
+              value: props.oauthKey || '',
+              onChange: props.onChange,
+            }}
+          />
+        </div>
+        <div className="o-grid__item u-half">
+          <Input
+            className="c-input"
+            labelText="Oauth Secret"
+            inputProps={{
+              id: 'oauth_secret_input',
+              name: 'oauth_secret',
+              type: 'text',
+              value: props.oauthSecret || '',
+              onChange: props.onChange,
+            }}
+          />
         </div>
         <div className="o-grid__item u-half">
           <label htmlFor="permissions" className="c-input">
@@ -74,4 +101,6 @@ Form.propTypes = {
   defaultConfig: PropTypes.string,
   configParseError: PropTypes.string,
   canvasApiPermissions: PropTypes.object,
+  oauthKey: PropTypes.string,
+  oauthSecret: PropTypes.string,
 };

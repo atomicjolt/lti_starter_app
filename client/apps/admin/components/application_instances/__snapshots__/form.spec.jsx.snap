@@ -148,6 +148,25 @@ exports[`application instance form matches the snapshot 1`] = `
     <div
       className="o-grid__item u-full"
     >
+      <Input
+        className="c-checkbox"
+        helperText="Restricts the Canvas tokens generated during oauth to the minimum necessary for this application. This should only be used if the oauth key and secret are populated above and are for a scoped developer key."
+        inputProps={
+          Object {
+            "checked": undefined,
+            "id": "use_scoped_developer_key_input",
+            "name": "use_scoped_developer_key",
+            "onChange": [Function],
+            "type": "checkbox",
+            "value": "true",
+          }
+        }
+        labelText="Use Scoped Developer Key"
+      />
+    </div>
+    <div
+      className="o-grid__item u-full"
+    >
       <Textarea
         className="c-input"
         labelText="Custom Application Instance Configuration"

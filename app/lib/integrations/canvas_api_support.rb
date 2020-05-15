@@ -34,17 +34,16 @@ module Integrations
 
     def api_for(kind, application_instance, user, canvas_course)
       url = UrlHelper.scheme_host_port(application_instance.site.url)
-      site = application_instance.site
 
       case kind
       when "global"
         global_api(application_instance, url)
       when "user"
-        user_api(user, url, site)
+        user_api(user, url, application_instance)
       when "application_instance"
-        application_instance_api(application_instance, url, site)
+        application_instance_api(application_instance, url)
       when "course"
-        course_api(canvas_course, url, site)
+        course_api(canvas_course, url, application_instance)
       end
     end
 
@@ -67,34 +66,34 @@ module Integrations
     # account and figure out the correct token for that account
     # TODO When associating a token with an application instance
     # be sure to check that the token has complete access to the account
-    def application_instance_api(application_instance, url, site)
+    def application_instance_api(application_instance, url)
       return nil unless application_instance.present?
       if auth = application_instance.authentications.find_by(provider_url: url)
-        CanvasApiSupport.refreshable_auth(auth, url, site)
+        CanvasApiSupport.refreshable_auth(auth, url, application_instance)
       end
     end
 
     # Look for an auth object associated with the course. This
     # will have been obtained during the onboarding process
-    def course_api(course, url, site)
+    def course_api(course, url, application_instance)
       return nil unless course.present?
       if auth = course.authentications.find_by(provider_url: url)
-        CanvasApiSupport.refreshable_auth(auth, url, site)
+        CanvasApiSupport.refreshable_auth(auth, url, application_instance)
       end
     end
 
     # User specific authentication.
-    def user_api(user, url, site)
+    def user_api(user, url, application_instance)
       return nil unless user.present?
       if auth = user.authentications.find_by(provider_url: url)
-        CanvasApiSupport.refreshable_auth(auth, url, site)
+        CanvasApiSupport.refreshable_auth(auth, url, application_instance)
       end
     end
 
-    def self.refreshable_auth(auth, url, site)
+    def self.refreshable_auth(auth, url, application_instance)
       options = {
-        client_id: site.oauth_key,
-        client_secret: site.oauth_secret,
+        client_id: application_instance.oauth_key,
+        client_secret: application_instance.oauth_secret,
         redirect_uri: Rails.application.routes.url_helpers.user_canvas_omniauth_callback_url(
           host: CanvasApiSupport.oauth_host,
           protocol: "https",
