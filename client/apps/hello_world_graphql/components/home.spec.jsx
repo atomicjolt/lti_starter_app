@@ -21,9 +21,13 @@ const mocks = [
 
 describe('home', () => {
   it('should render loading state initially', () => {
+    const props = {
+      settings: {},
+    };
+
     const testRenderer = TestRenderer.create(
       <MockedProvider mocks={mocks} addTypename={false}>
-        <Home />
+        <Home {...props} />
       </MockedProvider>,
     );
 
@@ -33,10 +37,14 @@ describe('home', () => {
 
   it('renders the home component', async() => {
     let testRenderer;
+    const props = {
+      settings: {},
+    };
+
     await act(async() => {
       testRenderer = TestRenderer.create(
         <MockedProvider mocks={mocks} addTypename={false}>
-          <Home />
+          <Home {...props} />
         </MockedProvider>,
       );
     });

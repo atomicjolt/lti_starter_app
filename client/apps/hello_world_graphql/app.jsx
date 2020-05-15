@@ -73,7 +73,7 @@ if (!_.isEmpty(settings.api_url)) {
   links.push(authenticationLink);
 
   const httpLink = new HttpLink({
-    uri: `${settings.api_url}api/graphql`,
+    uri: `${settings.api_url}api/graphql_hello_world`,
   });
   links.push(httpLink);
 }
