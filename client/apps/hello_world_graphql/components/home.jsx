@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
+import { withSettings } from 'atomic-fuel/libs/components/settings';
 
 import DeepLink from './deep_link';
 
@@ -50,4 +51,4 @@ Home.propTypes = {
   }).isRequired,
 };
 
-export default Home;
+export default withSettings(Home);
