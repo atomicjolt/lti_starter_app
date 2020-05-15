@@ -46,6 +46,7 @@
     },
     "setupFilesAfterEnv": [
       "<rootDir>/client/testing/shim.js",
+      "<rootDir>/client/testing/setup_env.js",
       "<rootDir>/client/testing/setup_tests.js"
     ],
     "snapshotSerializers": [
