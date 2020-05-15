@@ -22,8 +22,13 @@ sites = [
 ]
 
 # Each API endpoint must include a list of LTI and internal roles that are allowed to call the endpoint.
+#
 # A list of possible roles is available in the IMS LTI specification:
 # https://www.imsglobal.org/specs/ltiv1p1p1/implementation-guide#toc-41
+# A list of LTI 1.3 roles can be found here:
+# https://www.imsglobal.org/spec/lti/v1p3#role-vocabularies-0
+# LTI 1.3 roles are also defined in LtiAdvantage::Definitions.
+#
 # If an endpoint does not list a role then the roles listed under "default" will be used.
 # Roles included in "common" will be merged into each API endpoint's roles.
 #
@@ -104,11 +109,11 @@ applications = [
         "urn:lti:role:ims/lis/Learner",
         # LTI 1.3 roles. NOTE these have all changed and any existing applications will need to be migrated to
         # include the new roles
-        "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Administrator",
-        "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Instructor",
-        "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Student",
-        "http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor",
-        "http://purl.imsglobal.org/vocab/lis/v2/system/person#User",
+        LtiAdvantage::Definitions::ADMINISTRATOR_INSTITUTION_ROLE,
+        LtiAdvantage::Definitions::INSTRUCTOR_INSTITUTION_ROLE,
+        LtiAdvantage::Definitions::STUDENT_INSTITUTION_ROLE,
+        LtiAdvantage::Definitions::INSTRUCTOR_CONTEXT_ROLE,
+        LtiAdvantage::Definitions::USER_SYSTEM_ROLE,
       ],
     },
     default_config: {},
