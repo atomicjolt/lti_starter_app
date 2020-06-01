@@ -118,79 +118,37 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
 
   def set_requests
     tenants = @application_instances.pluck(:tenant)
-    @day_1_requests_grouped, @day_7_requests_grouped, @day_30_requests_grouped =
-      RequestStatistic.total_requests_grouped(tenants)
-    @day_1_launches_grouped, @day_7_launches_grouped, @day_30_launches_grouped =
-      RequestStatistic.total_lti_launches_grouped(tenants)
-    @day_1_errors_grouped, @day_7_errors_grouped, @day_30_errors_grouped =
-      RequestStatistic.total_errors_grouped(tenants)
-    @day_1_users_grouped, @day_7_users_grouped, @day_30_users_grouped =
-      RequestUserStatistic.total_unique_users_grouped(tenants)
+    @stats = {
+      requests: RequestStatistic.total_requests_grouped(tenants),
+      launches: RequestStatistic.total_lti_launches_grouped(tenants),
+      errors: RequestStatistic.total_errors_grouped(tenants),
+      users: RequestUserStatistic.total_unique_users_grouped(tenants),
+    }
+  end
+
+  def stats(type, days_index, tenant)
+    @stats[type][days_index][tenant.to_s] || 0
   end
 
   def request_stats(tenant)
     {
-      day_1_requests: day_1_requests_grouped(tenant),
-      day_7_requests: day_7_requests_grouped(tenant),
-      day_30_requests: day_30_requests_grouped(tenant),
-      day_1_users: day_1_users_grouped(tenant),
-      day_7_users: day_7_users_grouped(tenant),
-      day_30_users: day_30_users_grouped(tenant),
-      day_1_launches: day_1_launches_grouped(tenant),
-      day_7_launches: day_7_launches_grouped(tenant),
-      day_30_launches: day_30_launches_grouped(tenant),
-      day_1_errors: day_1_errors_grouped(tenant),
-      day_7_errors: day_7_errors_grouped(tenant),
-      day_30_errors: day_30_errors_grouped(tenant),
+      day_1_requests: stats(:requests, 0, tenant),
+      day_7_requests: stats(:requests, 1, tenant),
+      day_30_requests: stats(:requests, 2, tenant),
+      day_365_requests: stats(:requests, 3, tenant),
+      day_1_users: stats(:users, 0, tenant),
+      day_7_users: stats(:users, 1, tenant),
+      day_30_users: stats(:users, 2, tenant),
+      day_365_users: stats(:users, 3, tenant),
+      day_1_launches: stats(:launches, 0, tenant),
+      day_7_launches: stats(:launches, 1, tenant),
+      day_30_launches: stats(:launches, 2, tenant),
+      day_365_launches: stats(:launches, 3, tenant),
+      day_1_errors: stats(:errors, 0, tenant),
+      day_7_errors: stats(:errors, 1, tenant),
+      day_30_errors: stats(:errors, 2, tenant),
+      day_365_errors: stats(:errors, 3, tenant),
     }
-  end
-
-  def day_1_requests_grouped(tenant)
-    @day_1_requests_grouped[tenant.to_s] || 0
-  end
-
-  def day_7_requests_grouped(tenant)
-    @day_7_requests_grouped[tenant.to_s] || 0
-  end
-
-  def day_30_requests_grouped(tenant)
-    @day_30_requests_grouped[tenant.to_s] || 0
-  end
-
-  def day_1_users_grouped(tenant)
-    @day_1_users_grouped[tenant.to_s] || 0
-  end
-
-  def day_7_users_grouped(tenant)
-    @day_7_users_grouped[tenant.to_s] || 0
-  end
-
-  def day_30_users_grouped(tenant)
-    @day_30_users_grouped[tenant.to_s] || 0
-  end
-
-  def day_1_launches_grouped(tenant)
-    @day_1_launches_grouped[tenant.to_s] || 0
-  end
-
-  def day_7_launches_grouped(tenant)
-    @day_7_launches_grouped[tenant.to_s] || 0
-  end
-
-  def day_30_launches_grouped(tenant)
-    @day_30_launches_grouped[tenant.to_s] || 0
-  end
-
-  def day_1_errors_grouped(tenant)
-    @day_1_errors_grouped[tenant.to_s] || 0
-  end
-
-  def day_7_errors_grouped(tenant)
-    @day_7_errors_grouped[tenant.to_s] || 0
-  end
-
-  def day_30_errors_grouped(tenant)
-    @day_30_errors_grouped[tenant.to_s] || 0
   end
 
   def application_instance_params

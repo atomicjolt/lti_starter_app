@@ -131,16 +131,8 @@ exports[`application instances list row matches the snapshot 1`] = `
     <div>
       30 days
     </div>
-  </td>
-  <td>
     <div>
-      1
-    </div>
-    <div>
-      1
-    </div>
-    <div>
-      1
+      1 year
     </div>
   </td>
   <td>
@@ -153,6 +145,7 @@ exports[`application instances list row matches the snapshot 1`] = `
     <div>
       1
     </div>
+    <div />
   </td>
   <td>
     <div>
@@ -164,6 +157,7 @@ exports[`application instances list row matches the snapshot 1`] = `
     <div>
       1
     </div>
+    <div />
   </td>
   <td>
     <div>
@@ -175,6 +169,19 @@ exports[`application instances list row matches the snapshot 1`] = `
     <div>
       1
     </div>
+    <div />
+  </td>
+  <td>
+    <div>
+      1
+    </div>
+    <div>
+      1
+    </div>
+    <div>
+      1
+    </div>
+    <div />
   </td>
   <td>
     <button
