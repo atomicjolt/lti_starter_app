@@ -1,14 +1,17 @@
 def setup_canvas_lti_advantage(
   application_instance:,
-  client_id: "43460000000000194",
+  client_id: rand(1..99999).to_s,
   iss: "https://canvas.instructure.com",
-  lti_user_id: "cfca15d8-2958-4647-a33e-a7c4b2ddab2c"
+  lti_user_id: SecureRandom.uuid,
+  context_id: SecureRandom.hex(15),
+  message_type: "LtiResourceLinkRequest"
 )
   @iss = iss
   @client_id = client_id
   @lti_user_id = lti_user_id
-  @context_id = "af9b5e18fe251409be18e77253d918dcf22d156e"
+  @context_id = context_id
   @deployment_id = "12653:#{@context_id}"
+  @message_type = message_type
 
   application_instance.site.url = "https://atomicjolt.instructure.com"
   application_instance.site.save!
@@ -29,7 +32,13 @@ def setup_canvas_lti_advantage(
   stub_canvas_jwk(application_instance.application)
 
   @id_token = JWT.encode(
-    build_payload(client_id: @client_id, iss: @iss, lti_user_id: @lti_user_id, context_id: @context_id),
+    build_payload(
+      client_id: @client_id,
+      iss: @iss,
+      lti_user_id: @lti_user_id,
+      context_id: @context_id,
+      message_type: @message_type,
+    ),
     jwk.private_key,
     jwk.alg,
     kid: jwk.kid,
@@ -69,16 +78,13 @@ def setup_lti_advantage_users
       user_id: @student.id,
       iss: @iss,
       deployment_id: @deployment_id,
+      context_id: @context_id,
     },
   )
 end
 
-def build_payload(client_id:, iss:, lti_user_id:, context_id:)
-  exp = 24.hours.from_now
-  nonce = SecureRandom.hex(10)
+def resource_link_claim
   {
-    "https://purl.imsglobal.org/spec/lti/claim/message_type": "LtiResourceLinkRequest",
-    "https://purl.imsglobal.org/spec/lti/claim/version": "1.3.0",
     "https://purl.imsglobal.org/spec/lti/claim/resource_link": {
       "id": "af9b5e18fe251409be18e77253d918dcf22d156e",
       "description": nil,
@@ -88,6 +94,32 @@ def build_payload(client_id:, iss:, lti_user_id:, context_id:)
         "errors": {},
       },
     },
+  }
+end
+
+def deep_link_settings_claim
+  {
+    "https://purl.imsglobal.org/spec/lti-dl/claim/deep_linking_settings": {
+      "deep_link_return_url": "https://atomicjolt.instructure.com/courses/3505/deep_linking_response?modal=true",
+      "accept_types": ["link", "file", "html", "ltiResourceLink", "image"],
+      "accept_presentation_document_targets": ["embed", "iframe", "window"],
+      "accept_media_types": "image/*,text/html,application/vnd.ims.lti.v1.ltilink,*/*",
+      "accept_multiple": true,
+      "auto_create": false,
+      "validation_context": nil,
+      "errors": {
+        "errors": {},
+      },
+    },
+  }
+end
+
+def build_payload(client_id:, iss:, lti_user_id:, context_id:, message_type:)
+  exp = 24.hours.from_now
+  nonce = SecureRandom.hex(10)
+  payload = {
+    "https://purl.imsglobal.org/spec/lti/claim/message_type": message_type,
+    "https://purl.imsglobal.org/spec/lti/claim/version": "1.3.0",
     "https://purl.imsglobal.org/spec/lti-ags/claim/endpoint": {
       "scope": [
         "https://purl.imsglobal.org/spec/lti-ags/scope/lineitem",
@@ -170,4 +202,9 @@ def build_payload(client_id:, iss:, lti_user_id:, context_id:)
       "errors": {},
     },
   }
+
+  payload.merge!(resource_link_claim) if @message_type == "LtiResourceLinkRequest"
+  payload.merge!(deep_link_settings_claim) if @message_type == "LtiDeepLinkingRequest"
+
+  payload
 end

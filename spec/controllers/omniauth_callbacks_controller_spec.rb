@@ -81,5 +81,72 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
 
       expect(response).to have_http_status 403
     end
+
+    context "when the request is an LTI Advantage resource link request" do
+      let(:lti_launch) { FactoryBot.create(:lti_launch) }
+
+      before do
+        setup_canvas_lti_advantage(application_instance: @application_instance)
+
+        user = FactoryBot.create :user_canvas
+        authentication = user.authentications.find_by(provider: "canvas")
+        canvas_opts = {
+          "uid" => authentication.uid,
+          "info" => {
+            "url" => authentication.provider_url,
+          },
+        }
+        request.env["omniauth.auth"] = get_canvas_omniauth(canvas_opts)
+
+        @response = get :canvas, params: {
+          canvas_url: @canvas_url,
+          id_token: @id_token,
+          lti_launch_config: lti_launch.config.to_json,
+        }
+      end
+
+      it "includes LTI launch config in client settings" do
+        expect(@response.body).to include("\"lti_launch_config\":#{lti_launch.config.to_json}")
+      end
+
+      it "includes the context ID in client settings" do
+        expect(@response.body).to include("\"context_id\":#{@context_id.to_json}")
+      end
+
+      it "includes the Canvas URL in client settings" do
+        expect(@response.body).to include("\"canvas_url\":#{@application_instance.site.url.to_json}")
+      end
+    end
+
+    context "when the request is an LTI Advantage deep linking request" do
+      let(:lti_launch) { FactoryBot.create(:lti_launch) }
+
+      before do
+        setup_canvas_lti_advantage(
+          application_instance: @application_instance,
+          message_type: "LtiDeepLinkingRequest",
+        )
+
+        user = FactoryBot.create :user_canvas
+        authentication = user.authentications.find_by(provider: "canvas")
+        canvas_opts = {
+          "uid" => authentication.uid,
+          "info" => {
+            "url" => authentication.provider_url,
+          },
+        }
+        request.env["omniauth.auth"] = get_canvas_omniauth(canvas_opts)
+
+        @response = get :canvas, params: {
+          canvas_url: @canvas_url,
+          id_token: @id_token,
+          lti_launch_config: lti_launch.config.to_json,
+        }
+      end
+
+      it "includes deep link settings in client settings" do
+        expect(@response.body).to include("deep_link_settings")
+      end
+    end
   end
 end
