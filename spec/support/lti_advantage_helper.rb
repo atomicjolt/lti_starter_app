@@ -83,12 +83,8 @@ def setup_lti_advantage_users
   )
 end
 
-def build_payload(client_id:, iss:, lti_user_id:, context_id:, message_type:)
-  exp = 24.hours.from_now
-  nonce = SecureRandom.hex(10)
+def resource_link_claim
   {
-    "https://purl.imsglobal.org/spec/lti/claim/message_type": "LtiResourceLinkRequest",
-    "https://purl.imsglobal.org/spec/lti/claim/version": "1.3.0",
     "https://purl.imsglobal.org/spec/lti/claim/resource_link": {
       "id": "af9b5e18fe251409be18e77253d918dcf22d156e",
       "description": nil,
@@ -98,6 +94,32 @@ def build_payload(client_id:, iss:, lti_user_id:, context_id:, message_type:)
         "errors": {},
       },
     },
+  }
+end
+
+def deep_link_settings_claim
+  {
+    "https://purl.imsglobal.org/spec/lti-dl/claim/deep_linking_settings": {
+      "deep_link_return_url": "https://atomicjolt.instructure.com/courses/3505/deep_linking_response?modal=true",
+      "accept_types": ["link", "file", "html", "ltiResourceLink", "image"],
+      "accept_presentation_document_targets": ["embed", "iframe", "window"],
+      "accept_media_types": "image/*,text/html,application/vnd.ims.lti.v1.ltilink,*/*",
+      "accept_multiple": true,
+      "auto_create": false,
+      "validation_context": nil,
+      "errors": {
+        "errors": {},
+      },
+    },
+  }
+end
+
+def build_payload(client_id:, iss:, lti_user_id:, context_id:, message_type:)
+  exp = 24.hours.from_now
+  nonce = SecureRandom.hex(10)
+  payload = {
+    "https://purl.imsglobal.org/spec/lti/claim/message_type": message_type,
+    "https://purl.imsglobal.org/spec/lti/claim/version": "1.3.0",
     "https://purl.imsglobal.org/spec/lti-ags/claim/endpoint": {
       "scope": [
         "https://purl.imsglobal.org/spec/lti-ags/scope/lineitem",
@@ -180,4 +202,9 @@ def build_payload(client_id:, iss:, lti_user_id:, context_id:, message_type:)
       "errors": {},
     },
   }
+
+  payload.merge!(resource_link_claim) if @message_type == "LtiResourceLinkRequest"
+  payload.merge!(deep_link_settings_claim) if @message_type == "LtiDeepLinkingRequest"
+
+  payload
 end

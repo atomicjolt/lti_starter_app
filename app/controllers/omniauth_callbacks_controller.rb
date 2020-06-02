@@ -28,6 +28,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to params["oauth_complete_url"]
     else
       set_lti_launch_values if params[:oauth_consumer_key].present?
+      set_lti_advantage_launch_values if params[:id_token].present?
       render "lti_launches/index", layout: "client"
     end
   end
