@@ -6,6 +6,7 @@ cache:
 
 variables:
   RAILS_ENV: test
+  RAILS_GROUPS: build
   POSTGRES_DB: nice_marmot
 
 linter:
