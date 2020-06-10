@@ -36,6 +36,7 @@ export function Index(props) {
           <thead>
             <tr>
               <th><span>NAME</span></th>
+              <th><span>LTI INSTALL KEYS</span></th>
               <th><span>INSTANCES</span></th>
               <th><span>SETTINGS</span></th>
             </tr>

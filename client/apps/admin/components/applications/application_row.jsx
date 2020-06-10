@@ -38,6 +38,9 @@ export default class ApplicationRow extends React.Component {
         <td>
           <Link to={`/applications/${this.props.application.id}/application_instances`}>{this.props.application.name}</Link>
         </td>
+        <td>
+          <Link to={`/applications/${this.props.application.id}/lti_install_keys`}>Manage Keys</Link>
+        </td>
         <td><span>{this.props.application.application_instances_count}</span></td>
         <td>
           <button
