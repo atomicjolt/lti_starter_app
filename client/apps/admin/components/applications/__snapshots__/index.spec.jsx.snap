@@ -29,6 +29,11 @@ exports[`applications index matches the snapshot 1`] = `
           </th>
           <th>
             <span>
+              LTI INSTALL KEYS
+            </span>
+          </th>
+          <th>
+            <span>
               INSTANCES
             </span>
           </th>
