@@ -13,7 +13,7 @@ const requests = [
   'SAVE_LTI_INSTALL_KEY',
 ];
 
-const translateLtiInstallKey = function (ltiInstallKey) {
+const translateLtiInstallKey = function(ltiInstallKey) {
   return {
     iss: ltiInstallKey.iss,
     client_id: ltiInstallKey.clientId,

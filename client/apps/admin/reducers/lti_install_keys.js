@@ -6,7 +6,7 @@ const initialState = {
   totalPages: 1,
 };
 
-const translateLtiInstallKey = function (ltiInstallKey) {
+const translateLtiInstallKey = function(ltiInstallKey) {
   return {
     id: ltiInstallKey.id,
     application_id: ltiInstallKey.application_id,
