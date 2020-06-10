@@ -32,8 +32,8 @@ describe('lti_install_keys reducer', () => {
         type: 'GET_LTI_INSTALL_KEYS_DONE',
         payload: { lti_install_keys: [{ client_id: `${clientId}`, id: payloadId }], total_pages: 1 }
       });
-      const ltiInstallKey = _.find(results.ltiInstallKeys, ai => (
-        `${ai.id}` === `${payloadId}`
+      const ltiInstallKey = _.find(results.ltiInstallKeys, ltiInstall => (
+        `${ltiInstall.id}` === `${payloadId}`
       ));
       expect(ltiInstallKey.clientId).toBe(`${clientId}`);
       expect(ltiInstallKey.id).toBe(payloadId);
@@ -41,7 +41,7 @@ describe('lti_install_keys reducer', () => {
   });
 
   describe('update payload/config files', () => {
-    it('makes a GET request for get application instance', () => {
+    it('makes a GET request for get lti install key', () => {
       const applicationId = 1;
       const ltiInstallKeyId = 2;
       const payloadId = 3;
@@ -56,8 +56,8 @@ describe('lti_install_keys reducer', () => {
         type: 'GET_LTI_INSTALL_KEY_DONE',
         payload: { id: payloadId }
       });
-      const ltiInstallKey = _.find(results.ltiInstallKeys, ai => (
-        `${ai.id}` === `${payloadId}`
+      const ltiInstallKey = _.find(results.ltiInstallKeys, ltiInstall => (
+        `${ltiInstall.id}` === `${payloadId}`
       ));
       expect(ltiInstallKey.id).toBe(payloadId);
     });
@@ -78,8 +78,8 @@ describe('lti_install_keys reducer', () => {
         type: 'DELETE_LTI_INSTALL_KEY_DONE',
         original: { ltiInstallKeyId }
       });
-      const ltiInstallKey = _.find(results.ltiInstallKeys, ai => (
-        `${ai.id}` === `${ltiInstallKeyId}`
+      const ltiInstallKey = _.find(results.ltiInstallKeys, ltiInstall => (
+        `${ltiInstall.id}` === `${ltiInstallKeyId}`
       ));
       expect(ltiInstallKey).not.toBeDefined();
     });

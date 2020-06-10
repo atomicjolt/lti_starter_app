@@ -52,10 +52,10 @@ RSpec.describe Api::LtiInstallKeysController, type: :controller do
 
       it "renders all lti install keys by oldest" do
         app = create(:application)
-        ai1 = create(:lti_install, application: app, created_at: 1.week.ago)
-        ai2 = create(:lti_install, application: app, created_at: 2.weeks.ago)
-        ai3 = create(:lti_install, application: app, created_at: 1.day.ago)
-        ai4 = create(:lti_install, application: app, created_at: 3.days.ago)
+        lti_install1 = create(:lti_install, application: app, created_at: 1.week.ago)
+        lti_install2 = create(:lti_install, application: app, created_at: 2.weeks.ago)
+        lti_install3 = create(:lti_install, application: app, created_at: 1.day.ago)
+        lti_install4 = create(:lti_install, application: app, created_at: 3.days.ago)
         params = {
           application_id: app.id,
           column: :created_at,
@@ -63,17 +63,17 @@ RSpec.describe Api::LtiInstallKeysController, type: :controller do
         }
         get :index, params: params, format: :json
         result = JSON.parse(response.body)
-        expected_instance_ids = [ai2.id, ai1.id, ai4.id, ai3.id]
-        returned_instance_ids = result["lti_install_keys"].map { |ai| ai["id"] }
-        expect(returned_instance_ids).to eq(expected_instance_ids)
+        expected_key_ids = [lti_install2.id, lti_install1.id, lti_install4.id, lti_install3.id]
+        returned_key_ids = result["lti_install_keys"].map { |lti_install| lti_install["id"] }
+        expect(returned_key_ids).to eq(expected_key_ids)
       end
 
       it "renders all lti install keys by client_id" do
         app = create(:application)
-        ai1 = create(:lti_install, application: app, client_id: "c")
-        ai2 = create(:lti_install, application: app, client_id: "g")
-        ai3 = create(:lti_install, application: app, client_id: "a")
-        ai4 = create(:lti_install, application: app, client_id: "z")
+        lti_install1 = create(:lti_install, application: app, client_id: "c")
+        lti_install2 = create(:lti_install, application: app, client_id: "g")
+        lti_install3 = create(:lti_install, application: app, client_id: "a")
+        lti_install4 = create(:lti_install, application: app, client_id: "z")
         params = {
           application_id: app.id,
           column: :client_id,
@@ -81,8 +81,8 @@ RSpec.describe Api::LtiInstallKeysController, type: :controller do
         }
         get :index, params: params, format: :json
         result = JSON.parse(response.body)
-        expected_key_ids = [ai3.id, ai1.id, ai2.id, ai4.id]
-        returned_key_ids = result["lti_install_keys"].map { |ai| ai["id"] }
+        expected_key_ids = [lti_install3.id, lti_install1.id, lti_install2.id, lti_install4.id]
+        returned_key_ids = result["lti_install_keys"].map { |lti_install| lti_install["id"] }
         expect(returned_key_ids).to eq(expected_key_ids)
       end
     end
@@ -109,7 +109,7 @@ RSpec.describe Api::LtiInstallKeysController, type: :controller do
     end
 
     describe "PUT update" do
-      it "Updates the application instance" do
+      it "Updates the lti install key" do
         params = {
           application_id: @application.id,
           id: @lti_install.id,
@@ -132,8 +132,8 @@ RSpec.describe Api::LtiInstallKeysController, type: :controller do
 
       it "Deletes the lti install" do
         delete :destroy, params: @params, format: :json
-        ai = LtiInstall.find_by(id: @lti_install.id)
-        expect(ai).to be(nil)
+        lti_install = LtiInstall.find_by(id: @lti_install.id)
+        expect(lti_install).to be(nil)
       end
     end
   end

@@ -61,8 +61,7 @@ class Api::LtiInstallKeysController < Api::ApiApplicationController
   end
 
   def json_for(lti_install)
-    json = lti_install.as_json
-    json
+    lti_install.as_json
   end
 
   def lti_install_params

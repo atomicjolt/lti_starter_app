@@ -6,6 +6,20 @@ const initialState = {
   totalPages: 1,
 };
 
+const translateLtiInstallKey = function (ltiInstallKey) {
+  return {
+    id: ltiInstallKey.id,
+    application_id: ltiInstallKey.application_id,
+    created_at: ltiInstallKey.created_at,
+    updated_at: ltiInstallKey.updated_at,
+    iss: ltiInstallKey.iss,
+    clientId: ltiInstallKey.client_id,
+    jwksUrl: ltiInstallKey.jwks_url,
+    oidcUrl: ltiInstallKey.oidc_url,
+    tokenUrl: ltiInstallKey.token_url,
+  };
+};
+
 export default (state = initialState, action) => {
   switch (action.type) {
 
@@ -16,19 +30,7 @@ export default (state = initialState, action) => {
         total_pages:totalPages,
       } = action.payload;
       _.forEach(ltiInstallKeys, (key) => {
-        const keyClone = _.cloneDeep(key);
-
-        keyClone.clientId = keyClone.client_id;
-        keyClone.jwksUrl = keyClone.jwks_url;
-        keyClone.tokenUrl = keyClone.token_url;
-        keyClone.oidcUrl = keyClone.oidc_url;
-
-        delete keyClone.client_id;
-        delete keyClone.jwks_url;
-        delete keyClone.token_url;
-        delete keyClone.oidc_url;
-
-        newState.ltiInstallKeys.push(keyClone);
+        newState.ltiInstallKeys.push(translateLtiInstallKey(key));
       });
       newState.totalPages = totalPages;
       return newState;
@@ -38,29 +40,18 @@ export default (state = initialState, action) => {
     case LtiInstallKeysConstants.SAVE_LTI_INSTALL_KEY_DONE:
     case LtiInstallKeysConstants.CREATE_LTI_INSTALL_KEY_DONE: {
       const newState = _.cloneDeep(state);
-      const keyClone = _.cloneDeep(action.payload);
 
-      keyClone.clientId = keyClone.client_id;
-      keyClone.jwksUrl = keyClone.jwks_url;
-      keyClone.tokenUrl = keyClone.token_url;
-      keyClone.oidcUrl = keyClone.oidc_url;
-
-      delete keyClone.client_id;
-      delete keyClone.jwks_url;
-      delete keyClone.token_url;
-      delete keyClone.oidc_url;
-
-      _.remove(newState.ltiInstallKeys, ai => (
-        ai.id === action.payload.id
+      _.remove(newState.ltiInstallKeys, ltiInstallKey => (
+        ltiInstallKey.id === action.payload.id
       ));
-      newState.ltiInstallKeys.push(keyClone);
+      newState.ltiInstallKeys.push(translateLtiInstallKey(action.payload));
       return newState;
     }
 
     case LtiInstallKeysConstants.DELETE_LTI_INSTALL_KEY_DONE: {
       const newState = _.cloneDeep(state);
-      _.remove(newState.ltiInstallKeys, ai => (
-        ai.id === action.original.ltiInstallKeyId
+      _.remove(newState.ltiInstallKeys, ltiInstallKey => (
+        ltiInstallKey.id === action.original.ltiInstallKeyId
       ));
       return newState;
     }
