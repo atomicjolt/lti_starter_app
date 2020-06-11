@@ -64,9 +64,6 @@ gem "will_paginate"
 # Javascript
 gem "webpacker"
 
-# Assets
-gem "sassc-rails"
-
 # Application secrets checker
 gem "nuclear_secrets"
 
@@ -103,12 +100,20 @@ group :development do
 end
 
 group :development, :linter do
-  gem "pronto"
-  gem "pronto-eslint_npm", require: false
-  gem "pronto-rubocop", require: false
   gem "rubocop"
   gem "rubocop-performance"
   gem "rubocop-rails"
+end
+
+group :development, :build, :ci do
+  # Assets
+  gem "sassc-rails"
+end
+
+group :ci do
+  gem "pronto", git: "https://github.com/prontolabs/pronto"
+  gem "pronto-eslint_npm", require: false
+  gem "pronto-rubocop", require: false
 end
 
 group :development, :test do
