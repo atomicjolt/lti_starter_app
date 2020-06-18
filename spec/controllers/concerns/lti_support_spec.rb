@@ -178,6 +178,27 @@ describe ApplicationController, type: :controller do
           end
         end
       end
+
+      context "user has invalid email" do
+        before do
+          @role = "urn:lti:role:ims/lis/Instructor"
+          @email = "bob@example"
+          @params = lti_params(
+            @application_instance.lti_key,
+            @application_instance.lti_secret,
+            {
+              "launch_url" => @launch_url,
+              "roles" => @role,
+              "lis_person_contact_email_primary" => @email,
+            },
+          )
+        end
+        it "creates a user and does the LTI launch" do
+          post :index, params: @params
+          expect(response).to have_http_status(200)
+          expect(response.body).to include("User: Atomic Jolt")
+        end
+      end
     end
 
     context "invalid LTI request" do
