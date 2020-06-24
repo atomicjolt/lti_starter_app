@@ -7,7 +7,7 @@ module Concerns
     def build_response(state, params, nonce)
       # The request doesn't contain any information to help us find the right application instance
       # so we have to use predefined URLs
-      uri = URI.parse(current_application.oidc_url(params["iss"]))
+      uri = URI.parse(current_application.oidc_url(params["iss"], params[:client_id]))
       uri_params = Rack::Utils.parse_query(uri.query)
       auth_params = {
         response_type: "id_token",
