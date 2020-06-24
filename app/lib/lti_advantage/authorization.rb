@@ -25,7 +25,11 @@ module LtiAdvantage
       jwk_loader = ->(options) do
         jwks = Rails.cache.read(cache_key)
         if options[:invalidate] || jwks.blank?
-          jwks = JSON.parse(HTTParty.get(application_instance.application.jwks_url(iss)).body).deep_symbolize_keys
+          lti_deployment = LtiDeployment.find_by(
+            deployment_id: decoded_token.dig(0, LtiAdvantage::Definitions::DEPLOYMENT_ID),
+          )
+          client_id = lti_deployment.lti_install.client_id
+          jwks = JSON.parse(HTTParty.get(application_instance.application.jwks_url(iss, client_id)).body).deep_symbolize_keys
           Rails.cache.write(cache_key, jwks, expires_in: 12.hours)
         end
         jwks
