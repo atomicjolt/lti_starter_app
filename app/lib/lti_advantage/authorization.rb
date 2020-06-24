@@ -82,7 +82,11 @@ module LtiAdvantage
         "Content-Type" => "application/x-www-form-urlencoded",
       }
 
-      result = HTTParty.post(application_instance.token_url(lti_token["iss"]), body: body, headers: headers)
+      lti_deployment = LtiDeployment.find_by(
+        deployment_id: lti_token[LtiAdvantage::Definitions::DEPLOYMENT_ID],
+      )
+      client_id = lti_deployment.lti_install.client_id
+      result = HTTParty.post(application_instance.token_url(lti_token["iss"], client_id), body: body, headers: headers)
       authorization = JSON.parse(result.body)
 
       Rails.cache.write(cache_key, authorization, expires_in: authorization["expires_in"].to_i)
