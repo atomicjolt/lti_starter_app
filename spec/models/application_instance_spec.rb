@@ -173,4 +173,60 @@ RSpec.describe ApplicationInstance, type: :model do
       end
     end
   end
+
+  describe ".by_client_and_deployment" do
+    context "when there is a matching LtiInstall" do
+      let(:client_id) { FactoryBot.generate(:client_id) }
+      let(:deployment_id) { FactoryBot.generate(:deployment_id) }
+      let(:iss) { "https://canvas.instructure.com" }
+      let(:lms_url) { FactoryBot.generate(:url) }
+
+      let!(:site) { FactoryBot.create(:site, url: lms_url) }
+      let!(:lti_install) { FactoryBot.create(:lti_install, iss: iss, client_id: client_id) }
+
+      context "when there isn't a matching ApplicationInstance" do
+        it "creates an ApplicationInstance" do
+          expect do
+            described_class.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+          end.to change(described_class, :count).from(1).to(2)
+        end
+
+        it "associates the ApplicationInstance with the correct site" do
+          application_instance = described_class.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+
+          expect(application_instance.site).to eq(site)
+        end
+
+        it "creates an LtiDeployment" do
+          expect do
+            described_class.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+          end.to change(LtiDeployment, :count).from(0).to(1)
+        end
+
+        it "associates the LtiDeployment with the correct ApplicationInstance" do
+          application_instance = described_class.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+
+          lti_deployment = LtiDeployment.last
+
+          expect(lti_deployment.application_instance).to eq(application_instance)
+        end
+
+        it "associates the LtiDeployment with the correct LtiInstall" do
+          described_class.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+
+          lti_deployment = LtiDeployment.last
+
+          expect(lti_deployment.lti_install).to eq(lti_install)
+        end
+
+        it "gives the LtiDeployment the correct deployment_id" do
+          described_class.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+
+          lti_deployment = LtiDeployment.last
+
+          expect(lti_deployment.deployment_id).to eq(deployment_id)
+        end
+      end
+    end
+  end
 end

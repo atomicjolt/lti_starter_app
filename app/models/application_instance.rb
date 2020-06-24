@@ -55,7 +55,11 @@ class ApplicationInstance < ApplicationRecord
         # Create a new application instance and lti_deployment
         lti_key = "#{site.key}-#{lti_install.application.key}-#{deployment_id}"
         application_instance = lti_install.application.create_instance(site: site, lti_key: lti_key)
-        application_instance.lti_deployments.create!(deployment_id: deployment_id)
+        LtiDeployment.create!(
+          application_instance: application_instance,
+          lti_install: lti_install,
+          deployment_id: deployment_id,
+        )
       end
 
       application_instance
