@@ -14,7 +14,7 @@ module LtiAdvantage
       end
     end
 
-    # Validates a token provided by and LTI consumer
+    # Validates a token provided by an LTI consumer
     def self.validate_token(application_instance, token)
       # Get the iss value from the original request during the oidc call.
       # Use that value to figure out which jwk we should use.
