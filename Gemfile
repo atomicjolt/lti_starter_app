@@ -105,7 +105,7 @@ group :development, :linter do
   gem "rubocop-rails"
 end
 
-group :development, :build, :ci do
+group :development, :build, :ci, :test do
   # Assets
   gem "sassc-rails"
 end
