@@ -173,4 +173,122 @@ RSpec.describe ApplicationInstance, type: :model do
       end
     end
   end
+
+  describe ".by_client_and_deployment" do
+    context "when there is a matching LtiInstall" do
+      let(:client_id) { FactoryBot.generate(:client_id) }
+      let(:deployment_id) { FactoryBot.generate(:deployment_id) }
+      let(:iss) { "https://canvas.instructure.com" }
+      let(:lms_url) { FactoryBot.generate(:url) }
+
+      let!(:site) { FactoryBot.create(:site, url: lms_url) }
+      let!(:lti_install) { FactoryBot.create(:lti_install, iss: iss, client_id: client_id) }
+
+      context "when there isn't a matching ApplicationInstance" do
+        it "creates an ApplicationInstance" do
+          expect do
+            described_class.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+          end.to change(described_class, :count).from(1).to(2)
+        end
+
+        it "associates the ApplicationInstance with the correct site" do
+          application_instance = described_class.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+
+          expect(application_instance.site).to eq(site)
+        end
+
+        it "creates an LtiDeployment" do
+          expect do
+            described_class.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+          end.to change(LtiDeployment, :count).from(0).to(1)
+        end
+
+        it "associates the LtiDeployment with the correct ApplicationInstance" do
+          application_instance = described_class.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+
+          lti_deployment = LtiDeployment.last
+
+          expect(lti_deployment.application_instance).to eq(application_instance)
+        end
+
+        it "associates the LtiDeployment with the correct LtiInstall" do
+          described_class.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+
+          lti_deployment = LtiDeployment.last
+
+          expect(lti_deployment.lti_install).to eq(lti_install)
+        end
+
+        it "gives the LtiDeployment the correct deployment_id" do
+          described_class.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+
+          lti_deployment = LtiDeployment.last
+
+          expect(lti_deployment.deployment_id).to eq(deployment_id)
+        end
+      end
+    end
+  end
+
+  describe "#token_url" do
+    let(:customer_canvas_url) { "https://customer.instructure.com" }
+    let(:site) { FactoryBot.create(:site, url: customer_canvas_url) }
+    let(:application_instance) { FactoryBot.create(:application_instance, site: site) }
+    let(:client_id) { FactoryBot.generate(:client_id) }
+
+    def create_lti_install(iss, token_url)
+      FactoryBot.create(
+        :lti_install,
+        application: application_instance.application,
+        iss: iss,
+        client_id: client_id,
+        token_url: token_url,
+      )
+    end
+
+    context "when the URL is not a Canvas URL" do
+      let(:iss) { "https://www.sakaii.com" }
+      let(:token_url) { "https://www.sakaii.com/login/oauth2/token" }
+
+      before do
+        create_lti_install(iss, token_url)
+      end
+
+      it "returns the token_url from the LtiInstall record" do
+        result = application_instance.token_url(iss, client_id)
+
+        expect(result).to eq(token_url)
+      end
+    end
+
+    context "when the URL is a Canvas URL" do
+      let(:iss) { "https://canvas.instructure.com" }
+      let(:token_url) { "https://canvas.instructure.com/login/oauth2/token" }
+
+      before do
+        create_lti_install(iss, token_url)
+      end
+
+      it "returns the customer specific token_url" do
+        result = application_instance.token_url(iss, client_id)
+
+        expect(result).to eq("#{customer_canvas_url}/login/oauth2/token")
+      end
+    end
+
+    context "when the URL is a Canvas Beta URL" do
+      let(:iss) { "https://canvas.instructure.com" }
+      let(:token_url) { "https://canvas.beta.instructure.com/login/oauth2/token" }
+
+      before do
+        create_lti_install(iss, token_url)
+      end
+
+      it "returns the customer specific token_url" do
+        result = application_instance.token_url(iss, client_id)
+
+        expect(result).to eq("#{customer_canvas_url}/login/oauth2/token")
+      end
+    end
+  end
 end

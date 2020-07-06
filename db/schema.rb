@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_26_194920) do
+ActiveRecord::Schema.define(version: 2020_06_24_153201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -166,9 +166,11 @@ ActiveRecord::Schema.define(version: 2020_02_26_194920) do
     t.string "deployment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "lti_install_id"
     t.index ["application_instance_id"], name: "index_lti_deployments_on_application_instance_id"
     t.index ["deployment_id", "application_instance_id"], name: "index_lti_deployments_on_d_id_and_ai_id", unique: true
     t.index ["deployment_id"], name: "index_lti_deployments_on_deployment_id"
+    t.index ["lti_install_id"], name: "index_lti_deployments_on_lti_install_id"
   end
 
   create_table "lti_installs", force: :cascade do |t|
@@ -301,4 +303,5 @@ ActiveRecord::Schema.define(version: 2020_02_26_194920) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "lti_deployments", "lti_installs"
 end

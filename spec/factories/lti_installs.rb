@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :lti_install do
-    client_id { generate(:lti_key) }
+    application
+    client_id { generate(:client_id) }
   end
 end

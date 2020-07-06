@@ -1,6 +1,6 @@
 def setup_canvas_lti_advantage(
   application_instance:,
-  client_id: rand(1..99999).to_s,
+  client_id: FactoryBot.generate(:client_id),
   iss: "https://canvas.instructure.com",
   lti_user_id: SecureRandom.uuid,
   context_id: SecureRandom.hex(15),
@@ -26,6 +26,7 @@ def setup_canvas_lti_advantage(
 
   application_instance.lti_deployments.create!(
     deployment_id: @deployment_id,
+    lti_install: application_instance.application.lti_installs.last,
   )
 
   jwk = application_instance.application.current_jwk

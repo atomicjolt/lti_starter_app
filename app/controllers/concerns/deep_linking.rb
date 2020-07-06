@@ -13,7 +13,8 @@ module Concerns
       host:
     )
       platform_iss = token["iss"]
-      client_id = application_instance.application.client_id(platform_iss)
+      lti_deployment = LtiDeployment.find_by(deployment_id: token["deployment_id"])
+      client_id = lti_deployment.lti_install.client_id
 
       payload = {
         iss: client_id, # A unique identifier for the entity that issued the JWT

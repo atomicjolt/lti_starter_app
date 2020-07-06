@@ -55,7 +55,11 @@ class ApplicationInstance < ApplicationRecord
         # Create a new application instance and lti_deployment
         lti_key = "#{site.key}-#{lti_install.application.key}-#{deployment_id}"
         application_instance = lti_install.application.create_instance(site: site, lti_key: lti_key)
-        application_instance.lti_deployments.create!(deployment_id: deployment_id)
+        LtiDeployment.create!(
+          application_instance: application_instance,
+          lti_install: lti_install,
+          deployment_id: deployment_id,
+        )
       end
 
       application_instance
@@ -106,8 +110,8 @@ class ApplicationInstance < ApplicationRecord
     "#{canvas_token.first(4)}...#{canvas_token.last(4)}"
   end
 
-  def token_url(iss)
-    url = application.token_url(iss)
+  def token_url(iss, client_id)
+    url = application.token_url(iss, client_id)
 
     # The Canvas token endpoint is customer specific. i.e. https://atomicjolt.instructure.com
     # We can get that value from the site associated with the application instance

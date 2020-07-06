@@ -59,24 +59,20 @@ class Application < ApplicationRecord
     jwks.create!
   end
 
-  def oidc_url(iss)
-    lti_install_for(iss).oidc_url
+  def oidc_url(iss, client_id)
+    lti_install_for(iss, client_id).oidc_url
   end
 
-  def token_url(iss)
-    lti_install_for(iss).token_url
+  def token_url(iss, client_id)
+    lti_install_for(iss, client_id).token_url
   end
 
-  def jwks_url(iss)
-    lti_install_for(iss).jwks_url
+  def jwks_url(iss, client_id)
+    lti_install_for(iss, client_id).jwks_url
   end
 
-  def client_id(iss)
-    lti_install_for(iss).client_id
-  end
-
-  def lti_install_for(iss)
-    if lti_install = lti_installs.find_by(iss: iss)
+  def lti_install_for(iss, client_id)
+    if lti_install = lti_installs.find_by(iss: iss, client_id: client_id)
       lti_install
     else
       raise LtiAdvantage::Exceptions::ConfigurationError,
