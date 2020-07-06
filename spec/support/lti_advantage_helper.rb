@@ -26,6 +26,7 @@ def setup_canvas_lti_advantage(
 
   application_instance.lti_deployments.create!(
     deployment_id: @deployment_id,
+    lti_install: application_instance.application.lti_installs.last,
   )
 
   jwk = application_instance.application.current_jwk
