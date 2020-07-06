@@ -110,8 +110,8 @@ class ApplicationInstance < ApplicationRecord
     "#{canvas_token.first(4)}...#{canvas_token.last(4)}"
   end
 
-  def token_url(iss)
-    url = application.token_url(iss)
+  def token_url(iss, client_id)
+    url = application.token_url(iss, client_id)
 
     # The Canvas token endpoint is customer specific. i.e. https://atomicjolt.instructure.com
     # We can get that value from the site associated with the application instance

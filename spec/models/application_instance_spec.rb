@@ -229,4 +229,66 @@ RSpec.describe ApplicationInstance, type: :model do
       end
     end
   end
+
+  describe "#token_url" do
+    let(:customer_canvas_url) { "https://customer.instructure.com" }
+    let(:site) { FactoryBot.create(:site, url: customer_canvas_url) }
+    let(:application_instance) { FactoryBot.create(:application_instance, site: site) }
+    let(:client_id) { FactoryBot.generate(:client_id) }
+
+    def create_lti_install(iss, token_url)
+      FactoryBot.create(
+        :lti_install,
+        application: application_instance.application,
+        iss: iss,
+        client_id: client_id,
+        token_url: token_url,
+      )
+    end
+
+    context "when the URL is not a Canvas URL" do
+      let(:iss) { "https://www.sakaii.com" }
+      let(:token_url) { "https://www.sakaii.com/login/oauth2/token" }
+
+      before do
+        create_lti_install(iss, token_url)
+      end
+
+      it "returns the token_url from the LtiInstall record" do
+        result = application_instance.token_url(iss, client_id)
+
+        expect(result).to eq(token_url)
+      end
+    end
+
+    context "when the URL is a Canvas URL" do
+      let(:iss) { "https://canvas.instructure.com" }
+      let(:token_url) { "https://canvas.instructure.com/login/oauth2/token" }
+
+      before do
+        create_lti_install(iss, token_url)
+      end
+
+      it "returns the customer specific token_url" do
+        result = application_instance.token_url(iss, client_id)
+
+        expect(result).to eq("#{customer_canvas_url}/login/oauth2/token")
+      end
+    end
+
+    context "when the URL is a Canvas Beta URL" do
+      let(:iss) { "https://canvas.instructure.com" }
+      let(:token_url) { "https://canvas.beta.instructure.com/login/oauth2/token" }
+
+      before do
+        create_lti_install(iss, token_url)
+      end
+
+      it "returns the customer specific token_url" do
+        result = application_instance.token_url(iss, client_id)
+
+        expect(result).to eq("#{customer_canvas_url}/login/oauth2/token")
+      end
+    end
+  end
 end
