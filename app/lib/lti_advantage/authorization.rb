@@ -54,11 +54,12 @@ module LtiAdvantage
       # https://www.imsglobal.org/spec/security/v1p0/#using-json-web-tokens-with-oauth-2-0-client-credentials-grant
 
       lti_deployment = LtiDeployment.find_by(deployment_id: lti_token[LtiAdvantage::Definitions::DEPLOYMENT_ID])
+      lti_install = lti_deployment.lti_install
 
       payload = {
         iss: application_instance.lti_key, # A unique identifier for the entity that issued the JWT
-        sub: lti_deployment.lti_install.client_id, # "client_id" of the OAuth Client
-        aud: lti_deployment.lti_install.token_url, # Authorization server identifier
+        sub: lti_install.client_id, # "client_id" of the OAuth Client
+        aud: application_instance.token_url(lti_token["iss"], lti_install.client_id), # Authorization server identifier
         iat: Time.now.to_i, # Timestamp for when the JWT was created
         exp: Time.now.to_i + 300, # Timestamp for when the JWT should be treated as having expired
         # (after allowing a margin for clock skew)
