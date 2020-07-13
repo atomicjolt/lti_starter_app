@@ -24,7 +24,7 @@ module LtiAdvantage
       # query parameter of 'rlid=49566-rkk96' will filter the memberships to just those which
       # have access to the resource link with ID '49566-rkk96'
       def list(query = nil)
-        url = endpoint
+        url = endpoint.dup
         url << "?#{query}" if query.present?
         HTTParty.get(
           url,
