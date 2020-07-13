@@ -30,6 +30,7 @@ gem "ims-lti", "~> 2.1.5" # IMS LTI tool consumers and providers
 gem "json-jwt"
 gem "jwt"
 gem "lms-api", "~>1.15.0"
+gem "lms-graphql-api", ">=0.5.3"
 gem "omniauth"
 gem "omniauth-canvas", "~>1.0.2"
 gem "rolify"
@@ -63,14 +64,15 @@ gem "will_paginate"
 # Javascript
 gem "webpacker"
 
-# Assets
-gem "sassc-rails"
-
 # Application secrets checker
 gem "nuclear_secrets"
 
 # This is only here because we are on ruby 2.4. When we upgrade ruby we can remove this
 gem "sprockets", "~>3.7.2"
+
+gem "graphql", "~>1.9.18" # TODO 1.10.x breaks the app. Need to figure out why
+gem "graphql-batch", "~> 0.3.9"
+gem "graphql-guard"
 
 group :development do
   # UI
@@ -98,12 +100,20 @@ group :development do
 end
 
 group :development, :linter do
-  gem "pronto"
-  gem "pronto-eslint_npm", require: false
-  gem "pronto-rubocop", require: false
   gem "rubocop"
   gem "rubocop-performance"
   gem "rubocop-rails"
+end
+
+group :development, :build, :ci, :test do
+  # Assets
+  gem "sassc-rails"
+end
+
+group :ci do
+  gem "pronto", git: "https://github.com/prontolabs/pronto"
+  gem "pronto-eslint_npm", require: false
+  gem "pronto-rubocop", require: false
 end
 
 group :development, :test do

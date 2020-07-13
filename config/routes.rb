@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post "api/graphql_hello_world", to: "api/graphql_hello_world#execute"
   root to: "home#index"
 
   get "iframe_cookies_fix_redirect" => "lti_launches#iframe_cookies_fix_redirect"
@@ -52,6 +53,7 @@ Rails.application.routes.draw do
           get :check_auth
         end
       end
+      resources :lti_install_keys
     end
 
     resources :canvas_accounts, only: [:index]

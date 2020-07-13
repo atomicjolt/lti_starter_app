@@ -12,6 +12,15 @@ exports[`applications application row matches the snapshot 1`] = `
     </Link>
   </td>
   <td>
+    <Link
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="/applications/314159/lti_install_keys"
+    >
+      Manage Keys
+    </Link>
+  </td>
+  <td>
     <span>
       1234
     </span>

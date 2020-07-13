@@ -23,6 +23,24 @@ export default class ListRow extends React.Component {
       }),
       id: PropTypes.number.isRequired,
       application_id: PropTypes.number.isRequired,
+      request_stats: PropTypes.shape({
+        day_1_requests: PropTypes.number,
+        day_7_requests: PropTypes.number,
+        day_30_requests: PropTypes.number,
+        day_365_requests: PropTypes.number,
+        day_1_launches: PropTypes.number,
+        day_7_launches: PropTypes.number,
+        day_30_launches: PropTypes.number,
+        day_365_launches: PropTypes.number,
+        day_1_users: PropTypes.number,
+        day_7_users: PropTypes.number,
+        day_30_users: PropTypes.number,
+        day_365_users: PropTypes.number,
+        day_1_errors: PropTypes.number,
+        day_7_errors: PropTypes.number,
+        day_30_errors: PropTypes.number,
+        day_365_errors: PropTypes.number,
+      }),
     }).isRequired,
     settings: PropTypes.shape({
       lti_key: PropTypes.string,
@@ -215,26 +233,31 @@ export default class ListRow extends React.Component {
           <div>1 day</div>
           <div>7 days</div>
           <div>30 days</div>
+          <div>1 year</div>
         </td>
         <td>
           <div>{applicationInstance.request_stats.day_1_requests}</div>
           <div>{applicationInstance.request_stats.day_7_requests}</div>
           <div>{applicationInstance.request_stats.day_30_requests}</div>
+          <div>{applicationInstance.request_stats.day_365_requests}</div>
         </td>
         <td>
           <div>{applicationInstance.request_stats.day_1_launches}</div>
           <div>{applicationInstance.request_stats.day_7_launches}</div>
           <div>{applicationInstance.request_stats.day_30_launches}</div>
+          <div>{applicationInstance.request_stats.day_365_launches}</div>
         </td>
         <td>
           <div>{applicationInstance.request_stats.day_1_users}</div>
           <div>{applicationInstance.request_stats.day_7_users}</div>
           <div>{applicationInstance.request_stats.day_30_users}</div>
+          <div>{applicationInstance.request_stats.day_365_users}</div>
         </td>
         <td>
           <div>{applicationInstance.request_stats.day_1_errors}</div>
           <div>{applicationInstance.request_stats.day_7_errors}</div>
           <div>{applicationInstance.request_stats.day_30_errors}</div>
+          <div>{applicationInstance.request_stats.day_365_errors}</div>
         </td>
         <td>
           <button

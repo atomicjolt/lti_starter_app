@@ -7,13 +7,13 @@ module Concerns
     def build_response(state, params, nonce)
       # The request doesn't contain any information to help us find the right application instance
       # so we have to use predefined URLs
-      uri = URI.parse(current_application.oidc_url(params["iss"]))
+      uri = URI.parse(current_application.oidc_url(params["iss"], params[:client_id]))
       uri_params = Rack::Utils.parse_query(uri.query)
       auth_params = {
         response_type: "id_token",
         redirect_uri: params[:target_link_uri],
         response_mode: "form_post",
-        client_id: current_application.client_id(params["iss"]),
+        client_id: params[:client_id],
         scope: "openid",
         state: state,
         login_hint: params[:login_hint],

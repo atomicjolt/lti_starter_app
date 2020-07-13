@@ -3,7 +3,7 @@ sudo: required
 dist: trusty
 
 env:
-  - CXX=g++-4.8
+  - CXX=g++-4.8 RAILS_GROUPS=build
 
 addons:
   postgresql: "9.5"

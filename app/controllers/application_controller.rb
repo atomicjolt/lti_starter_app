@@ -183,6 +183,18 @@ class ApplicationController < ActionController::Base
     @app_name = current_application_instance.application.client_application_name
   end
 
+  def set_lti_advantage_launch_values
+    @lti_token = LtiAdvantage::Authorization.validate_token(
+      current_application_instance,
+      params[:id_token],
+    )
+    @lti_launch_config = JSON.parse(params[:lti_launch_config]) if params[:lti_launch_config]
+    @is_deep_link = true if LtiAdvantage::Definitions.deep_link_launch?(@lti_token)
+    @app_name = current_application_instance.application.client_application_name
+    @title = current_application_instance.application.name
+    @description = current_application_instance.application.description
+  end
+
   def targeted_app_instance
     key = request.subdomains.first
     application = Application.find_by(key: key)

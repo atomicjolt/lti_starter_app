@@ -25,6 +25,12 @@
 
     if @lti_launch
       settings[:lti_launch_config] = @lti_launch.config
+    elsif @lti_launch_config
+      settings[:lti_launch_config] = @lti_launch_config
+    end
+
+    if @is_deep_link
+      settings[:deep_link_settings] = @lti_token[LtiAdvantage::Definitions::DEEP_LINKING_CLAIM]
     end
 
     # Adds LTI Advantage values to settings
@@ -33,6 +39,7 @@
     if params["id_token"].present?
       # LTI 1.3 Launch
       settings[:id_token] = params["id_token"]
+      settings[:context_id] = @lti_token.dig(LtiAdvantage::Definitions::CONTEXT_CLAIM)["id"]
     elsif @is_lti_launch
       # LTI 1.0 - 1.2 Launch
       settings[:oauth_consumer_key]                     = params[:oauth_consumer_key]

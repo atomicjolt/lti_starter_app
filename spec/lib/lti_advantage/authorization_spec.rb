@@ -27,7 +27,8 @@ RSpec.describe LtiAdvantage::Authorization do
 
   describe "client_assertion" do
     it "generates a token that can be passed to the platform to request and access token" do
-      jwt = LtiAdvantage::Authorization.client_assertion(@application_instance, @platform_iss)
+      decoded_token = LtiAdvantage::Authorization.validate_token(@application_instance, @id_token)
+      jwt = LtiAdvantage::Authorization.client_assertion(@application_instance, decoded_token)
       expect(jwt).to be
       decoded_token = JWT.decode(jwt, nil, false)[0]
       expect(decoded_token["iss"]).to eq @application_instance.lti_key

@@ -101,6 +101,9 @@ module Concerns
     rescue ActiveRecord::RecordInvalid => ex
       if ex.to_s == "Validation failed: Email has already been taken"
         false
+      elsif ex.to_s == "Validation failed: Email is invalid"
+        # If email is invalid, i.e. bob@example, then just generate a random email
+        false
       else
         raise ex
       end
