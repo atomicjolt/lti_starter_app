@@ -19,7 +19,7 @@ module LtiAdvantage
       # List names and roles
       # limit query param - see 'Limit query parameter' section of NRPS spec
       # to get differences - see 'Membership differences' section of NRPS spec
-      # query parameter of 'role=http%3A%2%2Fpurl.imsglobal.org%2Fvocab%2Flis%2Fv2%2Fmembership%23Learner'
+      # query parameter of 'role=http%3A%2F%2Fpurl.imsglobal.org%2Fvocab%2Flis%2Fv2%2Fmembership%23Learner'
       # will filter the memberships to just those which have a Learner role.
       # query parameter of 'rlid=49566-rkk96' will filter the memberships to just those which
       # have access to the resource link with ID '49566-rkk96'
