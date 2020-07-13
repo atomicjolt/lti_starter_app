@@ -25,7 +25,7 @@ module LtiAdvantage
       # have access to the resource link with ID '49566-rkk96'
       def list(query = nil)
         url = endpoint
-        url << "?query=#{query}" if query.present?
+        url << "?#{query}" if query.present?
         HTTParty.get(
           url,
           headers: headers(

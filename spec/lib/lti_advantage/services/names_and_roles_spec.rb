@@ -20,5 +20,18 @@ RSpec.describe LtiAdvantage::Services::NamesAndRoles do
       names_and_roles = JSON.parse(names_and_roles_service.list.body)
       expect(!names_and_roles["members"].empty?).to be true
     end
+
+    it "adds a valid query string when a query argument is given" do
+      allow(HTTParty).to receive(:get)
+      names_and_roles_service = LtiAdvantage::Services::NamesAndRoles.new(@application_instance, @lti_token)
+      query = { role: "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner" }.to_query
+
+      names_and_roles_service.list(query)
+
+      expect(HTTParty).to have_received(:get).with(
+        "#{@lti_token.dig(LtiAdvantage::Definitions::NAMES_AND_ROLES_CLAIM, 'context_memberships_url')}?#{query}",
+        anything,
+      )
+    end
   end
 end
