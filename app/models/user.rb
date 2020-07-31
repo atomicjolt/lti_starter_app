@@ -207,14 +207,14 @@ class User < ApplicationRecord
   def lti_instructor?(context_id)
     has_role?(
       context_id,
-      LTI::Roles::INSTRUCTOR,
+      *LTI::Roles::INSTRUCTOR_ROLES,
     )
   end
 
   def lti_ta?(context_id)
     has_role?(
       context_id,
-      LTI::Roles::TA,
+      *LTI::Roles::TA_ROLES,
     )
   end
 

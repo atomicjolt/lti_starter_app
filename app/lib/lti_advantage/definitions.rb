@@ -106,6 +106,8 @@ module LtiAdvantage
     MANAGER_CONTEXT_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/membership#Manager".freeze
     MEMBER_CONTEXT_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/membership#Member".freeze
     OFFICER_CONTEXT_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/membership#Officer".freeze
+    ## Sub context roles
+    TA_CONTEXT_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/membership/Instructor#TeachingAssistant".freeze
 
     def self.lms_host(payload)
       host = if deep_link_launch?(payload)

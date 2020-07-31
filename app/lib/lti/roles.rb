@@ -15,11 +15,23 @@ module LTI
     INST_ADMIN = "urn:lti:instrole:ims\/lis\/Administrator".freeze
     INST_INSTRUCTOR = "urn:lti:instrole:ims\/lis\/Instructor".freeze
 
+    INSTRUCTOR_ROLES = [
+      INSTRUCTOR,
+      LtiAdvantage::Definitions::INSTRUCTOR_CONTEXT_ROLE,
+    ].freeze
+
+    TA_ROLES = [
+      TA,
+      LtiAdvantage::Definitions::TA_CONTEXT_ROLE,
+    ].freeze
+
     ADMIN_ROLES = [
       ADMIN,
       SYS_SYSADMIN,
       SYS_ADMIN,
       INST_ADMIN,
+      LtiAdvantage::Definitions::ADMINISTRATOR_INSTITUTION_ROLE,
+      LtiAdvantage::Definitions::ADMINISTRATOR_CONTEXT_ROLE,
     ].freeze
 
     NON_STUDENT_ROLES = [
@@ -29,6 +41,8 @@ module LTI
       SYS_SYSADMIN,
       SYS_ADMIN,
       INST_ADMIN,
+      LtiAdvantage::Definitions::INSTRUCTOR_CONTEXT_ROLE,
+      LtiAdvantage::Definitions::TA_CONTEXT_ROLE,
     ].freeze
   end
 end
