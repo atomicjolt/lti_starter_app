@@ -44,11 +44,8 @@ module LtiAdvantage
           members = JSON.parse(names_and_roles_memberships.body)["members"]
 
           if members.present? && members.all? { |member| member["name"].nil? }
-            raise(
-              GraphQL::ExecutionError,
-              "Unable to fetch learner data. Your LTI key may be set to private.
-                Please set it to public to view reports.",
-            )
+            throw LtiAdvantage::Exceptions::NamesAndRolesError, "Unable to fetch learner data.
+            Your LTI key may be set to private. Please set it to public to view reports."
           end
         end
         names_and_roles_memberships
