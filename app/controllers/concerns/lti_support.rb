@@ -5,17 +5,17 @@ module Concerns
     extend ActiveSupport::Concern
 
     included do
-      helper_method :lti_provider
+      helper_method :lti_provider, :lti_advantage?
     end
 
     protected
 
     def do_lti
-      if token = params["id_token"]
+      if lti_advantage?
         # Validate the state by checking the database for the nonce
         return user_not_authorized if !LtiAdvantage::OpenId.validate_open_id_state(params["state"])
 
-        @lti_token = LtiAdvantage::Authorization.validate_token(current_application_instance, token)
+        set_lti_advantage_launch_values
         user = LtiAdvantage::LtiUser.new(@lti_token, current_application_instance).user
         sign_in(user, event: :authentication)
         return
@@ -29,6 +29,10 @@ module Concerns
         end
       end
       user_not_authorized
+    end
+
+    def lti_advantage?
+      params["id_token"].present?
     end
 
     def valid_lti_request?(lti_secret)
