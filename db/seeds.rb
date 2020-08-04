@@ -270,7 +270,7 @@ def setup_application_instances(application, application_instances)
       else
         lti_install = application_instance.application.lti_installs.find_by(iss: "https://canvas.instructure.com")
         application_instance.lti_deployments.create!(
-          lti_deployment_attr.merge(lti_install: lti_install)
+          lti_deployment_attr.merge(lti_install: lti_install),
         )
       end
     end
