@@ -26,14 +26,29 @@ module LtiAdvantage
       def list(query = nil)
         url = endpoint.dup
         url << "?#{query}" if query.present?
-        HTTParty.get(
-          url,
-          headers: headers(
-            {
-              "Content-Type" => "application/vnd.ims.lti-nrps.v2.membershipcontainer+json",
-            },
+
+        verify_received_learner_names(
+          HTTParty.get(
+            url,
+            headers: headers(
+              {
+                "Content-Type" => "application/vnd.ims.lti-nrps.v2.membershipcontainer+json",
+              },
+            ),
           ),
         )
+      end
+
+      def verify_received_learner_names(names_and_roles_memberships)
+        if names_and_roles_memberships.present?
+          members = JSON.parse(names_and_roles_memberships.body)["members"]
+
+          if members.present? && members.all? { |member| member["name"].nil? }
+            throw LtiAdvantage::Exceptions::NamesAndRolesError, "Unable to fetch learner data.
+            Your LTI key may be set to private. Please set it to public to view reports."
+          end
+        end
+        names_and_roles_memberships
       end
     end
   end
