@@ -10,12 +10,13 @@ module LtiAdvantage
     def launch_context
       # This is an array, I'm not sure what it means to have more than one
       # value. In courses and accounts there's only one value
-      context = context_data["type"][0]
-
-      case context
-      when LtiAdvantage::Definitions::COURSE_CONTEXT then "COURSE"
-      when LtiAdvantage::Definitions::ACCOUNT_CONTEXT then "ACCOUNT"
-      else "UNKNOWN"
+      contexts = context_data["type"] || []
+      if contexts.include? LtiAdvantage::Definitions::COURSE_CONTEXT
+        "COURSE"
+      elsif contexts.include? LtiAdvantage::Definitions::ACCOUNT_CONTEXT
+        "ACCOUNT"
+      else
+        "UNKNOWN"
       end
     end
 
@@ -24,7 +25,7 @@ module LtiAdvantage
     end
 
     def context_data
-      token[LtiAdvantage::Definitions::CONTEXT_CLAIM]
+      token[LtiAdvantage::Definitions::CONTEXT_CLAIM] || {}
     end
 
     def course_id
@@ -52,7 +53,7 @@ module LtiAdvantage
     # These values must be added to the developer key under "Custom Fields"
     # for example: canvas_course_id=$Canvas.course.id
     def custom_params
-      token[LtiAdvantage::Definitions::CUSTOM_CLAIM]
+      token[LtiAdvantage::Definitions::CUSTOM_CLAIM] || {}
     end
   end
 end
