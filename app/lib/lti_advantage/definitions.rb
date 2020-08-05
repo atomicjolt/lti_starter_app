@@ -47,6 +47,10 @@ module LtiAdvantage
     MENTOR_SCOPE = "http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor".freeze
     MENTOR_ROLE_SCOPE = "a62c52c02ba262003f5e".freeze
 
+    # Launch contexts
+    COURSE_CONTEXT = "http://purl.imsglobal.org/vocab/lis/v2/course#CourseOffering".freeze
+    ACCOUNT_CONTEXT = "Account".freeze
+
     # Specfies all available scopes.
     def self.scopes
       [
