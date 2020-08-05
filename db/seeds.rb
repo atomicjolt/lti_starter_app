@@ -268,7 +268,10 @@ def setup_application_instances(application, application_instances)
       if found = application_instance.lti_deployments.find_by(deployment_id: lti_deployment_attr[:deployment_id])
         found.update_attributes!(lti_deployment_attr)
       else
-        application_instance.lti_deployments.create!(lti_deployment_attr)
+        lti_install = application_instance.application.lti_installs.find_by(iss: "https://canvas.instructure.com")
+        application_instance.lti_deployments.create!(
+          lti_deployment_attr.merge(lti_install: lti_install),
+        )
       end
     end
 
@@ -308,7 +311,6 @@ if Apartment::Tenant.current == "public"
       puts "Creating application: #{attrs[:name]}"
       application = Application.create!(attrs)
     end
-    setup_application_instances(application, application_instances)
 
     lti_installs_attrs&.each do |lti_install_attrs|
       if lti_install = application.lti_installs.find_by(
@@ -320,6 +322,8 @@ if Apartment::Tenant.current == "public"
         application.lti_installs.create!(lti_install_attrs)
       end
     end
+
+    setup_application_instances(application, application_instances)
   end
 
   bundles.each do |attrs|

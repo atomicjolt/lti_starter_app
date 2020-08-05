@@ -179,6 +179,7 @@ class ApplicationController < ActionController::Base
       current_application_instance,
       params[:id_token],
     )
+    @lti_params = LtiAdvantage::Params.new(@lti_token)
     @lti_launch_config = JSON.parse(params[:lti_launch_config]) if params[:lti_launch_config]
     @is_deep_link = true if LtiAdvantage::Definitions.deep_link_launch?(@lti_token)
     @app_name = current_application_instance.application.client_application_name
