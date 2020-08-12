@@ -29,7 +29,7 @@ gem "strong_password"
 gem "ims-lti", "~> 2.1.5" # IMS LTI tool consumers and providers
 gem "json-jwt"
 gem "jwt"
-gem "lms-api", "~>1.12.0"
+gem "lms-api", "~>1.15.0"
 gem "lms-graphql-api", ">=0.5.3"
 gem "omniauth"
 gem "omniauth-canvas", "~>1.0.2"

@@ -68,6 +68,15 @@ class ApplicationController < ActionController::Base
     render_error 500, "Error while accessing Canvas: #{exception.message}.", { exception: exception }
   end
 
+  # Raised when Canvas returned a 500 when trying to refresh the token - this
+  # usually means Canvas is down or something is wrong with the config. Check
+  # the oauth key and secret.
+  rescue_from LMS::Canvas::RefreshToken500Exception, with: :handle_canvas_token_refresh_500
+  def handle_canvas_token_refresh_500(exception)
+    record_exception(exception)
+    render_error 500, "Error while refreshing Canvas token: #{exception.message}.", { exception: exception }
+  end
+
   # Raised when a new token cannot be retrieved using the refresh token
   rescue_from LMS::Canvas::RefreshTokenFailedException, with: :handle_canvas_token_expired
 
