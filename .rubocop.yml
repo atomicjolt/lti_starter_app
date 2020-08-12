@@ -176,9 +176,6 @@ Layout/EmptyLinesAroundModuleBody:
   Description: 'Do not allow extra lines around module body.'
   Enabled: false
 
-Style/BracesAroundHashParameters:
-  Enabled: false
-
 Naming/FileName:
   Description: 'Use snake_case for source file names.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#snake-case-files'
