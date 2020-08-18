@@ -15,5 +15,5 @@ scss:
   config_file: .scss-lint.yml
 
 rubocop:
-  version: 0.75.0
+  version: 0.88.0
   config_file: .rubocop.yml
