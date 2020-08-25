@@ -195,30 +195,6 @@ applications = [
         # This is only required if the app needs API access and doesn't want each user to do the oauth dance
         canvas_token: secrets.canvas_token,
         lti_deployments: [
-          #{
-          #  # Canvas
-          #  deployment_id: "12489:a8a76fb8fbcc2d09787dafd28564e2ecdab51f11",
-          #},
-          #{
-          #  # Canvas
-          #  deployment_id: "12509:a8a76fb8fbcc2d09787dafd28564e2ecdab51f11",
-          #},
-          #{
-          #  # Canvas
-          #  deployment_id: "12510:a8a76fb8fbcc2d09787dafd28564e2ecdab51f11",
-          #},
-          #{
-          #  # Blackboard
-          #  deployment_id: "91ed0d26-952a-4e6d-beb4-e2b2a5c6419d",
-          #},
-          #{
-          #  # Sakai
-          #  deployment_id: "1",
-          #},
-          #{
-          #  # IMS Global reference app
-          #  deployment_id: "deployment1",
-          #},
         ],
       },
     ],
