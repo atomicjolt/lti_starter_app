@@ -17,7 +17,7 @@ export const GET_WELCOME = gql`
 const Home = ({ settings }) => {
   const { loading, error, data } = useQuery(GET_WELCOME, {
     variables: {
-      name: "World",
+      name: 'World',
     },
   });
 
