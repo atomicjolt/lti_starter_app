@@ -89,7 +89,7 @@ applications = [
     key: Application::HELLOWORLD,
     name: "LTI Starter App",
     description: "LTI Starter App by Atomic Jolt.",
-    client_application_name: "hello_world",
+    client_application_name: "hello_world_graphql",
     lti_advantage_config: hello_lti_advantage_config,
     # List Canvas API methods the app is allowed to use. A full list of constants can be found in canvas_urls
     canvas_api_permissions: {
