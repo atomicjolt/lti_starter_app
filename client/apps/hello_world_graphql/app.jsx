@@ -52,9 +52,7 @@ const stateLink = withClientState({
   resolvers: {
     Mutation: {},
   },
-  defaults: {
-    welcomeMessage: 'Welcome to the GraphQL starter app'
-  }
+  defaults: {},
 });
 
 const links = [

@@ -1,10 +1,10 @@
 class Types::HelloWorldQueryType < Types::BaseObject
-  field :get_sample, Types::JournalActivityType, null: true do
-    description "Find a SomeModel by ID"
-    argument :id, ID, required: true
+  field :welcome_message, String, null: true do
+    description "Get the Hello World welcome message"
+    argument :name, String, required: true
   end
 
-  def get_journal_activity(id:)
-    SomeModel.find(id)
+  def welcome_message(name:)
+    "Hello #{name}!"
   end
 end

@@ -6,7 +6,7 @@ class Mutations::CreateLtiDeepLinkJwtMutation < Mutations::BaseMutation
   argument :type, String, required: true
 
   field :deep_link_jwt, String, null: false
-  field :errors, [Types::ErrorType], null: false
+  field :errors, [String], null: false
 
   def resolve(type:)
     params = {}
