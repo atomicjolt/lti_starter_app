@@ -23,9 +23,7 @@ module ReactRailsStarterApp
 
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
-    config.action_dispatch.default_headers = {
-      "X-Frame-Options" => "ALLOWALL",
-    }
+    config.action_dispatch.default_headers.delete("X-Frame-Options")
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
