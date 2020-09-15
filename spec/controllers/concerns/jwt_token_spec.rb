@@ -35,13 +35,23 @@ describe ApplicationController, type: :controller do
     before do
       @user = FactoryBot.create(:user)
       @user.confirm
-      @user_token = AuthToken.issue_token({ user_id: @user.id })
+      @user_token = AuthToken.issue_token(
+        {
+          application_instance_id: @application_instance.id,
+          user_id: @user.id,
+        },
+      )
       request.headers["Authorization"] = @user_token
     end
     it "should be authorized" do
       user = FactoryBot.create(:user)
       user.confirm
-      user_token = AuthToken.issue_token({ user_id: user.id })
+      user_token = AuthToken.issue_token(
+        {
+          application_instance_id: @application_instance.id,
+          user_id: @user.id,
+        },
+      )
       request.headers["Authorization"] = user_token
       get :index, format: :json
       expect(response).to have_http_status(:success)
@@ -52,13 +62,24 @@ describe ApplicationController, type: :controller do
     before do
       @user = FactoryBot.create(:user_canvas)
       @user.confirm
-      @user_token = AuthToken.issue_token({ user_id: @user.id, lti_roles: @user.roles.map(&:name) })
+      @user_token = AuthToken.issue_token(
+        {
+          application_instance_id: @application_instance.id,
+          user_id: @user.id,
+          lti_roles: @user.roles.map(&:name),
+        },
+      )
       request.headers["Authorization"] = "Bearer #{@user_token}"
     end
 
     it "should handle nil roles" do
       ## User factory does not include any roles
-      @user_token = AuthToken.issue_token({ user_id: @user.id })
+      @user_token = AuthToken.issue_token(
+        {
+          application_instance_id: @application_instance.id,
+          user_id: @user.id,
+        },
+      )
       request.headers["Authorization"] = "Bearer #{@user_token}"
       expect(controller.jwt_lti_roles_string).to eq("")
     end

@@ -8,6 +8,7 @@ module Concerns
       token = AuthToken.valid?(encoded_token(req), secret)
       raise InvalidTokenError, "Unable to decode jwt token" if token.blank?
       raise InvalidTokenError, "Invalid token payload" if token.empty?
+
       token[0]
     end
 
@@ -22,6 +23,8 @@ module Concerns
     def validate_token
       token = decoded_jwt_token(request)
       raise InvalidTokenError if Rails.application.secrets.auth0_client_id != token["aud"]
+      raise InvalidTokenError if current_application_instance.id != token["application_instance_id"]
+
       @user = User.find(token["user_id"])
       sign_in(@user, event: :authentication)
     rescue JWT::DecodeError, InvalidTokenError => e
@@ -95,8 +98,10 @@ module Concerns
     def encoded_token(req)
       header = req.headers["Authorization"] || req.headers[:authorization]
       raise InvalidTokenError, "No authorization header found" if header.nil?
+
       token = header.split(" ").last
       raise InvalidTokenError, "Invalid authorization header string" if token.nil?
+
       token
     end
 
