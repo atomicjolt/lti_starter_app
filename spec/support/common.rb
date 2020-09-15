@@ -1,21 +1,34 @@
 # Setup a user and an admin
 def setup_users
+  setup_application_instance
   @user = FactoryBot.create(:user)
   @user.confirm
-  @user_token = AuthToken.issue_token({ user_id: @user.id })
+  @user_token = AuthToken.issue_token(
+    {
+      application_instance_id: @application_instance.id,
+      user_id: @user.id,
+    },
+  )
 
   @admin = FactoryBot.create(:user)
   @admin.confirm
   @admin.add_to_role("administrator")
-  @admin_token = AuthToken.issue_token({ user_id: @admin.id })
+  @admin_token = AuthToken.issue_token(
+    {
+      application_instance_id: @application_instance.id,
+      user_id: @user.id,
+    },
+  )
 end
 
 # Sets up users in the 3 most common roles for lti launches
 def setup_lti_users
+  setup_application_instance
   @student = FactoryBot.create(:user)
   @student.confirm
   @student_token = AuthToken.issue_token(
     {
+      application_instance_id: @application_instance.id,
       user_id: @student.id,
       context_id: @lms_course_id,
       lti_roles: ["urn:lti:role:ims/lis/Learner"],
@@ -27,6 +40,7 @@ def setup_lti_users
   @instructor.confirm
   @instructor_token = AuthToken.issue_token(
     {
+      application_instance_id: @application_instance.id,
       user_id: @instructor.id,
       context_id: @lms_course_id,
       lti_roles: ["urn:lti:role:ims/lis/Instructor"],
@@ -39,6 +53,7 @@ def setup_lti_users
   @admin.add_to_role("administrator")
   @admin_token = AuthToken.issue_token(
     {
+      application_instance_id: @application_instance.id,
       user_id: @admin.id,
       context_id: @lms_course_id,
       lti_roles: ["urn:lti:role:ims/lis/Administrator"],

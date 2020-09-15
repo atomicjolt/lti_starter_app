@@ -72,10 +72,12 @@ def stub_canvas_jwk(application)
 end
 
 def setup_lti_advantage_users
+  setup_application_instance
   @student = FactoryBot.create(:user)
   @student.confirm
   @student_token = AuthToken.issue_token(
     {
+      application_instance_id: @application_instance.id,
       user_id: @student.id,
       iss: @iss,
       deployment_id: @deployment_id,
