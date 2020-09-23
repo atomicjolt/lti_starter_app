@@ -148,7 +148,7 @@ applications = [
       {
         # Canvas
         iss: "https://canvas.instructure.com",
-        client_id: "43460000000000194",
+        client_id: "43460000000000378",
         jwks_url: LtiAdvantage::Definitions::CANVAS_PUBLIC_LTI_KEYS_URL,
         token_url: LtiAdvantage::Definitions::CANVAS_AUTH_TOKEN_URL,
         oidc_url: LtiAdvantage::Definitions::CANVAS_OIDC_URL,
@@ -156,7 +156,7 @@ applications = [
       {
         # Canvas Beta
         iss: "https://canvas.beta.instructure.com",
-        client_id: "43460000000000194",
+        client_id: "43460000000000378",
         jwks_url: LtiAdvantage::Definitions::CANVAS_BETA_PUBLIC_LTI_KEYS_URL,
         token_url: LtiAdvantage::Definitions::CANVAS_BETA_AUTH_TOKEN_URL,
         oidc_url: LtiAdvantage::Definitions::CANVAS_BETA_OIDC_URL,
