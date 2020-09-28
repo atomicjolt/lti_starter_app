@@ -1,0 +1,24 @@
+<div class="c-login">
+  <div class="c-title">
+    <h1><%= link_to 'Users', users_path %></h1>
+  </div>
+
+  <%= form_for @user, url: submit_url, html: { class: "form-horizontal" } do |f| %>
+    <div class="field">
+      <%= f.label :email, class: "c-input" do %>
+        <span>Email</span>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= f.label :name, class: "c-input" do %>
+        <span>Name</span>
+        <%= f.text_field :name, autofocus: true %>
+      <% end %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Update", class:"c-btn c-btn--yellow" %>
+    </div>
+  <% end %>
+</div>

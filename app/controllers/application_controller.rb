@@ -15,6 +15,14 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def after_invite_path_for(_inviter, _invitee)
+    users_path
+  end
+
+  def after_accept_path_for(_resource)
+    admin_root_path
+  end
+
   def render_error(status, message, json_options = {})
     respond_to do |format|
       format.html { render file: "public/#{status}.html", status: status }
@@ -116,6 +124,15 @@ class ApplicationController < ActionController::Base
     Rollbar.scope!(
       tenant: Apartment::Tenant.current,
     )
+  end
+
+  # **********************************************
+  # Paging methods
+  #
+  def setup_will_paginate
+    @page = (params[:page] || 1).to_i
+    @page = 1 if @page < 1
+    @per_page = (params[:per_page] || (Rails.env.test? ? 1 : 40)).to_i
   end
 
   def canvas_url
