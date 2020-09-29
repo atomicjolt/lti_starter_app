@@ -53,6 +53,19 @@ exports[`common heading matches the snapshot 1`] = `
             <AriaMenuButtonMenuItem
               className="c-menu-item"
               tag="div"
+              text="Admin Users"
+            >
+              <a>
+                <span>
+                  Admin Users
+                </span>
+              </a>
+            </AriaMenuButtonMenuItem>
+          </li>
+          <li>
+            <AriaMenuButtonMenuItem
+              className="c-menu-item"
+              tag="div"
               text="Edit"
             >
               <a>
