@@ -23,10 +23,15 @@ FactoryBot.define do
 
     factory :user_canvas do
       lti_provider { "canvas" }
+      create_method { User.create_methods[:oauth] }
       after(:create) do |user|
         user.authentications << FactoryBot.create(:authentication_canvas)
         user.roles << FactoryBot.create(:role)
       end
+    end
+
+    factory :signed_up_user do
+      create_method { "sign_up" }
     end
   end
 end

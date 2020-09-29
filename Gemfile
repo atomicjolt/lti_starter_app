@@ -25,6 +25,7 @@ gem "pg"
 gem "attr_encrypted"
 gem "cancancan"
 gem "devise"
+gem "devise_invitable"
 gem "strong_password"
 gem "ims-lti", "~> 2.1.5" # IMS LTI tool consumers and providers
 gem "json-jwt"
