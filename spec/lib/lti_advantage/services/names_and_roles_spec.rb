@@ -57,7 +57,7 @@ RSpec.describe LtiAdvantage::Services::NamesAndRoles do
           names_and_roles_service.list
         end.to raise_exception(
           LtiAdvantage::Exceptions::NamesAndRolesError,
-          "Unable to fetch learner data. Your LTI key may be set to private. Please set it to public to view reports.",
+          "Unable to fetch user data. Your LTI key may be set to private. Please set it to public to view reports.",
         )
       end
     end
