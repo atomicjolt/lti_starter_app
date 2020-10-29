@@ -46,8 +46,7 @@ module LtiAdvantage
           if members.present? && members.all? { |member| member["name"].nil? }
             raise(
               LtiAdvantage::Exceptions::NamesAndRolesError,
-              "Unable to fetch user data. Your LTI key may be set to private. " \
-                "Please set it to public to view reports.",
+              "Unable to fetch user data. Your LTI key may be set to private.",
             )
           end
         end
