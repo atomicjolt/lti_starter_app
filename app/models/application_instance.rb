@@ -27,6 +27,7 @@ class ApplicationInstance < ApplicationRecord
   # Or instance.bar
   # If foo is not set in the config json, it will return nil
   # store_accessor :config, :foo, :bar
+  store_accessor :config, :custom_error_message
 
   attr_encrypted :canvas_token, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
 
