@@ -10,6 +10,7 @@ const select = state => ({
   userName: state.settings.display_name,
   signOutUrl: state.settings.sign_out_url,
   userEditUrl: state.settings.user_edit_url,
+  usersUrl: state.settings.users_url,
   sites: state.sites,
 });
 
@@ -49,6 +50,15 @@ export function Heading(props) {
           </Button>
           <Menu className="c-dropdown">
             <ul>
+              <li>
+                <MenuItem
+                  value={props.usersUrl}
+                  text="Admin Users"
+                  className="c-menu-item"
+                >
+                  <a href={props.usersUrl}><span>Admin Users</span></a>
+                </MenuItem>
+              </li>
               <li>
                 <MenuItem
                   value={props.userEditUrl}
@@ -92,6 +102,7 @@ Heading.propTypes = {
   userName: PropTypes.string,
   signOutUrl: PropTypes.string.isRequired,
   userEditUrl: PropTypes.string,
+  usersUrl: PropTypes.string,
   sites: PropTypes.shape({}).isRequired,
 };
 

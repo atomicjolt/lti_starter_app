@@ -27,7 +27,7 @@ module LtiAdvantage
         url = endpoint.dup
         url << "?#{query}" if query.present?
 
-        verify_received_learner_names(
+        verify_received_user_names(
           HTTParty.get(
             url,
             headers: headers(
@@ -39,13 +39,15 @@ module LtiAdvantage
         )
       end
 
-      def verify_received_learner_names(names_and_roles_memberships)
+      def verify_received_user_names(names_and_roles_memberships)
         if names_and_roles_memberships.present?
           members = JSON.parse(names_and_roles_memberships.body)["members"]
 
           if members.present? && members.all? { |member| member["name"].nil? }
-            throw LtiAdvantage::Exceptions::NamesAndRolesError, "Unable to fetch learner data.
-            Your LTI key may be set to private. Please set it to public to view reports."
+            raise(
+              LtiAdvantage::Exceptions::NamesAndRolesError,
+              "Unable to fetch user data. Your LTI key may be set to private.",
+            )
           end
         end
         names_and_roles_memberships

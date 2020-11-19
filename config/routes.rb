@@ -25,16 +25,17 @@ Rails.application.routes.draw do
     sessions: "sessions",
     registrations: "registrations",
     omniauth_callbacks: "omniauth_callbacks",
-  }
+  }, skip: [:registrations]
 
   as :user do
     get     "/auth/failure"         => "sessions#new"
     get     "users/auth/:provider"  => "users/omniauth_callbacks#passthru"
     get     "sign_in"               => "sessions#new"
     post    "sign_in"               => "sessions#create"
-    get     "sign_up"               => "devise/registrations#new"
     delete  "sign_out"              => "sessions#destroy"
     get     "sign_out"              => "sessions#destroy"
+    get "users/edit" => "devise/registrations#edit", as: "edit_user_registration"
+    put "users" => "devise/registrations#update", as: "user_registration"
   end
 
   resources :users
