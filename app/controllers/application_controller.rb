@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
   def render_error(status, message, json_options = {})
     respond_to do |format|
-      format.html { render file: "public/#{status}.html", status: status }
+      format.html { render template: "errors/#{status}", layout: "errors", status: status }
       format.json do
         render json: {
           message: message,
