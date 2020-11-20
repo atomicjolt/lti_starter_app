@@ -142,6 +142,10 @@ modify_files.each do |f|
     app_name.titleize
   end
 
+  gsub_file(f, "HelloWorld") do |_match|
+    app_name.titleize.gsub(" ", "")
+  end
+
   gsub_file(f, "Hello World") do |_match|
     app_name.titleize
   end
