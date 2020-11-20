@@ -153,6 +153,10 @@ modify_files.each do |f|
   gsub_file(f, "hello_world") do |_match|
     app_name.underscore
   end
+
+  gsub_file(f, "helloworld") do |_match|
+    app_name.underscore
+  end
 end
 
 def rename_file(f)
