@@ -155,10 +155,23 @@ modify_files.each do |f|
   end
 end
 
-# Rename files
-Dir.glob("#{@working_dir}/**/*").each do |f|
+def rename_file(f)
   if f.include?("hello_world")
     File.rename(f, f.gsub("hello_world", app_name.underscore))
+  end
+end
+
+# Rename dirs
+Dir.glob("#{@working_dir}/**/*").each do |f|
+  if File.directory?(f)
+    rename_file(f)
+  end
+end
+
+# Renname File
+Dir.glob("#{@working_dir}/**/*").each do |f|
+  unless File.directory?(f)
+    rename_file(f)
   end
 end
 
