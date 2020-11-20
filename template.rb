@@ -141,6 +141,25 @@ modify_files.each do |f|
   gsub_file(f, "LTI Starter App") do |_match|
     app_name.titleize
   end
+
+  gsub_file(f, "Hello World") do |_match|
+    app_name.titleize
+  end
+
+  gsub_file(f, "HELLOWORLD") do |_match|
+    app_name.underscore.capitalize
+  end
+
+  gsub_file(f, "hello_world") do |_match|
+    app_name.underscore
+  end
+end
+
+# Rename files
+Dir.glob("#{@working_dir}/**/*").each do |f|
+  if f.include?("hello_world")
+    File.rename(f, f.gsub("hello_world", app_name.underscore))
+  end
 end
 
 ###########################################################
