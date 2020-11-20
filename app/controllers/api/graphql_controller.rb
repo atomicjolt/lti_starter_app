@@ -39,7 +39,7 @@ class Api::GraphqlController < Api::ApiApplicationController
       current_host: request.host,
       canvas_api: canvas_api_proc,
     }
-    result = schema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    result = HelloWorldSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
   end
 
@@ -95,9 +95,5 @@ class Api::GraphqlController < Api::ApiApplicationController
     Rails.logger.error "  #{err.backtrace.join("\n  ")}"
     Rollbar.error(err) if current_application_instance.rollbar_enabled?
     render_error 500, "Internal error: #{err.message}"
-  end
-
-  def schema
-    raise "controller subclass must define a schema method!"
   end
 end
