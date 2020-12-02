@@ -1,23 +1,21 @@
-# LTI Starter App [![Build Status](https://travis-ci.org/atomicjolt/lti_starter_app.svg?branch=master)](https://travis-ci.org/atomicjolt/lti_starter_app) [![Coverage Status](https://coveralls.io/repos/github/atomicjolt/lti_starter_app/badge.svg?branch=master)](https://coveralls.io/github/atomicjolt/lti_starter_app?branch=master)
------------------------
+# LTI Starter App  [![Build Status](https://travis-ci.org/atomicjolt/lti_starter_app.svg?branch=master)](https://travis-ci.org/atomicjolt/lti_starter_app) [![Coverage Status](https://coveralls.io/repos/github/atomicjolt/lti_starter_app/badge.svg?branch=master)](https://coveralls.io/github/atomicjolt/lti_starter_app?branch=master)
+
 There are many starter kits that will help you get started with React and Redux.
 This is the one created by, maintained by and used by [Atomic Jolt](http://www.atomicjolt.com).
 Atomic Jolt uses this as application as a starting place for Ruby on Rails applications that
 utilize React.
 
+# Getting Started
 
+Build a new application using the LTI Starter App Rails application template:
 
-## Getting Started
-
-### Build a new application using the LTI Starter App Rails application template:
------------
 ```
 rails new my_app -m https://raw.githubusercontent.com/atomicjolt/lti_starter_app/master/template.rb
 ```
 
-### Prerequisites
+## Prerequisites
 -----------
-This application requires:
+### This application requires the following technologies:
 
 -   Ruby
 -   Rails ([Info / Installation](http://railsapps.github.io/installing-rails.html))
@@ -25,33 +23,35 @@ This application requires:
 -   NodeJS  ([Info / Installation](https://github.com/creationix/nvm))
 -   yarn ([Info / Installation](https://yarnpkg.com/lang/en/docs/install))
 
-#### Canvas Developer ID and Key
-You will need to [obtain a Developer ID and Key from an Account Admin for the instance of Canvas the tool will be installed in](#canvas_developer_key).
+### Canvas Developer ID and Key
+You will need to [obtain a Developer ID and Key from an Account Admin for the instance of Canvas the tool will be installed in](#obtain-a-canvas-developer-key).
 
-#### Default LTI Application
-You will also need to setup a default lti application and lti application instance. See the [sections below](#setup) for information on setting up the default account.
+### Default LTI Application
+You will also need to setup a default LTLI application and LTI application instance. See the [sections below](#setting-up-lti-starter-app) for information on setting up the default account.
 
 
 ## Running LTI Starter App
 
-After [setting up the LTI Starter App](#setup), start Rails and the webpack server:
+After [setting up the LTI Starter App](#setting-up-lti-starter-app), start Rails and the webpack server:
 ```
-  rails server
-  yarn hot
+  $ rails server
+  $ yarn hot
 ```
 
 
-## <a name="setup"></a>Setting up LTI Starter App
+## Setting up LTI Starter App
 
 ### File Modifications
 -----------
 
 #### Setup .env
 Rename `.env.example` to `.env` and configure it to your liking.
+The setup process and the application pulls environment variables from your current shell session, so you need to export your .env into your current shell using something like [autoenv](https://github.com/inishchith/autoenv) or [direnv](https://direnv.net/)
 
 Note: the App and Assets subdomains must be different.
 
-#### Modify application name
+
+#### Modify application name (*Note: if you started a new rails project with this as a template, this step should already be done*)
 1. Open application.rb and change `ltistarterapp` to the name you choose.
 2. Do a global search and replace for `lti_starter_app` and change it to the name you choose.
 3. Do a global search and replace for `ltistarterapp` (use only letters or numbers for this name. Special characters like '_' will result in errors).
@@ -65,10 +65,15 @@ DROPBOX_FOLDER=aj-dev/lti_starter_app
 ```
 
 ##### Setup script
-Run the setup script to configure your local nginx and to setup symlinks to your configuration files (database.yml, secrets.yml, etc)
+Run the setup script to configure your local nginx and to setup symlinks to your configuration files (database.yml, secrets.yml, etc).
 ```
 $ ./bin/setup
 ```
+Or, if you're on Linux:
+```
+$ ./bin/setup-linux
+```
+Depending on the system, this script may require superuser privileges.
 
 
 #### Secrets file
@@ -81,15 +86,19 @@ Open the files and change each entry to values that are relevant for your applic
 *These files should not be committed to your repository*
 
 
-### <a name="database"></a>Setting up the Database
+### Setting up the Database
 -----------
-Setup an admin user and the default lti application with:
+Setup an admin user and the default LTI application with:
 ```
 $ rake db:setup
 ```
 
-If you have setup .env and the secrets.yml file then the seeds file shouldn't need to be changed. However, if you need to customize the values in the database or add addition records to the database, open db/seeds.rb and configuration a default account for development and production. Here's a summary of the values and their purpose:
-
+If you have setup .env and the secrets.yml file then the seeds file shouldn't need to be changed. However, if you need to customize the values in the database or add additional records to the database, open `db/seeds.rb` and configure a default account for development and production. Here's a summary of the values and their purpose:
+<!--
+No mention of code / canvas_uri anywhere in seeds.rb
+Is this only specifiying the fields for adding application instances? Should specify
+Default account for what?
+ -->
 - **code:** Uniquely identifies the account. This is used for the subdomain when running
 applications on a single domain. By default this will be set to APP_SUBDOMAIN from the .env file.
 - **domain:** Custom domain name. By default this is set to application_main_domain from the secrets.yml file.
@@ -98,38 +107,59 @@ applications on a single domain. By default this will be set to APP_SUBDOMAIN fr
 - **lti_secret:** The shared secret for your LTI application. This will be provided to Canvas and will be used to sign the LTI request. Generate this value using `rake secret`. Alternatively if you leave this field empty an LTI secret will be automatically generated for the account.
 - **canvas_uri:** The URI of the Canvas institution to be associated with a specific account.
 
-### <a name="canvas_developer_key"></a>Obtain a Canvas Developer Key
+If you run into an error while installing the pg gem try including the path to pg_config. For an example see
+the command below. Be sure to use the correct version for the pg gem and the correct path to pg_config.
+
+```
+gem install pg -v '1.2.2' --source 'https://rubygems.org/' -- --with-pg-config=/path/to/pg_config
+```
+
+### Obtain a Canvas Developer Key
 -----------
-Only a Canvas Account Admin can create a developer key for your LTI Application. To create a key, go to Accounts, Developer Keys and enter the info described below below. Be sure to replace `ltistarterapp.atomicjolt.xyz` with your domain. (atomicjolt.xyz will only work for AtomicJolt employees). Also, note that 'ltistarterapp' is the subdomain specified in the .env file.
+Only a Canvas Account Admin can create a developer key for your LTI Application. To create a key, go to Accounts -> Developer Keys and create a new LTI key and enter the info described below below.
+
+Subsitute `ltistarterapp.atomicjolt.xyz` with your domain. (atomicjolt.xyz will only work for AtomicJolt employees). Also, note that `ltistarterapp` is the `APP_SUBDOMAIN` specified in the .env file.
 
 You will need an ID and secret for development and for production. The development URI will use atomicjolt.xyz while the production URI will use your domain (e.g. ltistarterapp.herokuapp.com).
 
-**Oauth2 Redirect URI:**
-https://ltistarterapp.atomicjolt.xyz/auth/[provider]/callback
 **Key Name:**
 Can be anything you choose (e.g. LTI Starter App)
 
-**Owner Email:***
+**Owner Email:**
 Address that will receive email about technical issues related to the tool.
 
-**Tool ID:**
-Unique ID for the tool (e.g. ltistarterapp)
+**Redirect URIs:**
+```
+https://ltistarterapp.atomicjolt.xyz/lti_launches
+https://ltistarterapp.atomicjolt.xyz/users/auth/[provider]/callback
+```
+`provider` here refers to the LTI tool provider that the app is to be installed in (i.e Canvas or Blackboard). So if the app was being installed in canvas the url would be `https://ltistarterapp.atomicjolt.xyz/users/auth/canvas/callback`
 
-**Redirect URI:**
-https://ltistarterapp.atomicjolt.xyz/users/auth/canvas/callback
-OR
-https://ltistarterapp.herokuapp.com/users/auth/canvas/callback
+**Title**: Can be anything you choose (e.g. LTI Starter App)
 
-**Icon URL:**
-https://ltistarterapp.atomicjolt.xyz/images/icon.png
-OR
-https://ltistarterapp.herokuapp.com/images/icon.png
+**Description**: Short description of what the key will be used for
 
-Once you press Save Key, a Developer ID and Key will be generated and displayed in the Details column of the Developer Keys table when you mouse over the row. Add these credentials to your .env file or `config/secrets.yml` file under CANVAS_DEVELOPER_ID and CANVAS_DEVELOPER_KEY (in .env) or `canvas_developer_id` and `canvas_developer_key` (in secrets.yml).
+**Target Link URI:**
+```
+https://ltistarterapp.atomicjolt.xyz/lti_launches
+```
+This will be the url used by the LMS when launching the LTI application
 
-## Development
+**OpenID Connect Initiation Url:**
+```
+https://ltistarterapp.atomicjolt.xyz/lti_launches/init
+```
 
-### Versions
+**JWK Method (Only for LTI Advantage Installs):** Public JWK
+
+Navigate to `https://ltistarterapp.atomicjolt.xyz/jwks.json` to get a list of JWK keys that are usable for development. Normally for production you would use a *Public JWK Url* to generate the keys as needed
+
+Once you press Save Key, a Developer ID and Key will be generated and displayed in the Details column of the Developer Keys table when you mouse over the row.
+Add these credentials under `CANVAS_DEVELOPER_ID` and `CANVAS_DEVELOPER_KEY` (in .env) or `canvas_developer_id` and `canvas_developer_key` (in secrets.yml).
+
+# Development Notes
+
+## Versions
 We follow some conservative rules:
 
   1. Use what’s packaged by Debian/Ubuntu, whenever possible, except for Gems and NPM packages.
@@ -144,96 +174,48 @@ The LTI Starter app makes working with the Canvas API simple. See [Canvas](Canva
 
 ## Admin Page
 
-There is an admin page where one can setup the tools located at `/admin`.
-In the settings for an Application Instance, Visibility can be configured to affect who can see the tool when it gets installed.
+There is an admin page where one can setup the tools located at `/admin`. The Admin email and password can be found in `config/secrets.yml`. In the settings for an Application Instance, Visibility can be configured to affect who can see the tool when it gets installed.
 
 ## Development Details
+------------
 
-#### Webpack
-Webpack is used to build the client side application. Configure the client application in client/config/settings.js
+### Webpack
+Webpack is used to build the client side application. Configure the client application in `config/webpacker.yml`
 
-#### React
-The React Rails Starter App uses React. All client side code can be found in the "client" directory. This project contains the code required to launch a React application. index.html.erb contains the following code which will launch a React application whose entry point is 'app.jsx'
+### React
+The React Rails Starter App uses React. All client side code can be found in the "client" directory. This project contains the code required to launch a React application. `app/views/lti_launches/index.html.erb` contains roughly the following code which will launch a React application whose entry point is 'app.jsx'
 
-```
+```erb
 <% content_for :head do -%>
   <%= stylesheet_pack_tag 'styles' %>
 <% end -%>
 
 <%= render 'shared/default_client_settings' %>
 <div id="main-app"></div>
-<%= javascript_packs_with_chunks_tag "app, "data-turbolinks-track": "reload" %>
+<%= javascript_packs_with_chunks_tag "app", "data-turbolinks-track": "reload" %>
 ```
 
-##### Custom Build Settings
------------
-Default build settings can be overridden by adding an options.json file to the application directory.
-
-###### Options:
------------
-* outName - Change the output directory for an application by specifying "outName" which will override the default name
-used when generating a path.
-* port - Hard code a port for the application to run. Typically, you won't need to set this value as the build process
-will calculate one for you.
-* onlyPack - If true don't generate html files. Instead, only run the webpack process and output the resulting files.
-* noClean - If true then don't delete files before starting a new build.
-* rootOutput - Dump the application directly into the root directory.
-
-Example options.json
-`
-{
-  "outName": "hello_world",
-  "port": 8080,
-  "onlyPack": true,
-  "noClean": false,
-  "rootOutput": false,
-  "codeSplittingOff": true, // Turn off code splitting
-  "extractCssOff": true     // Turn off css extraction
-}
-`
-
-By default app.jsx is used as the webpack entry point. This can be overriden in webpack.json. Change the buildSuffix,
-filename, chunkFilename and other settings:
-
-In webpack.json
-`
-{
-  "file": "app.js",         // The webpack entry. Default is app.jsx
-  "buildSuffix": ".js",     // Change the build suffix. Default is _bundle.js
-  "filename": "[name]",     // Change the output file name. Default is based on production/development
-  "chunkFilename": "[id]",  // Change the chunkFilename. Default is based on production/development
-}
-`
-
-#### Assets
+### Assets
 Any files added to the assets directory can be used by in code and assigned to a variable. This allows for referring to assets using dynamically generated strings. The assets will be built according to the rules specified in your webpack configuration. Typically, this means that in production the names will be changed to include a SHA.
 
-First importing the assets:
-  `import assets from '../libs/assets';`
-
-Then assign the assest to a variable:
-  `const img = assets("./images/atomicjolt.jpg");`
+```js
+import assets from '../libs/assets'; # First importing the assets
+const img = assets("./images/atomicjolt.jpg"); # Then assign an asset to a variable
+```
 
 The value can then be used when rendering:
-  `render(){
+```js
+render() {
     const img = assets("./images/atomicjolt.jpg");
-    return<div>
-    <img src={img} />
-    </div>;
-  }`
-
-#### Static
-Files added to the static directory will be copied directly into the build. These files will not be renamed.
-
-#### Check for updates
-Inside the client directory run:
-```
-yarn upgrade-interactive
+    return(
+      <div>
+        <img src={img} />
+      </div>
+    );
+  }
 ```
 
-#### Usage Guide
-
-#### Tenants
+### Tenants
 Each application instance maintains it's own database schema. The LTI starter app uses the Apartment gem and these
 are called "tenants". In some instances multiple application instances need to share the same tenant. It is possible
 to do this in the seeds when creating application instances. To use this include a value on the application instance
@@ -245,54 +227,50 @@ application instance it should share tenants with.
 -----------------------
 The following scripts are available for testing, building and deploying applications
 
+### **Yarn**
+-----------------------
+
 Run all tests:
   `yarn test`
 
-Generate coverage report:
-  `yarn coverage`
+Update Jest snapshots:
+  `yarn test_update`
+
+Run Jest in debug mode:
+  `yarn test_debug`
 
 Run webpack hot reload server:
   `yarn hot`
 
-Run reload server for a specific application:
-  `yarn hot [app name]`
-
-Serve production assets. Must run `yarn build` first:
-  `yarn live`
-
-Build development version including html pages:
-  `yarn build_dev`
-
-Only run the webpack build without generating html pages or subdirectories. This will output all results
-directly into the build/dev directory
-  `yarn build_dev_pack`
-
-Build for production:
-  `yarn build`
-
-Only run the webpack build without generating html pages or subdirectories. This will output all results
-directly into the build/prod directory
-  `yarn build_pack`
-
-After setting up .s3-website.json this will create a S3 bucket and set it as a website:
-  `yarn create`
-
-Release a production build to the S3 website bucket created by `yarn create`
-  `yarn release`
-
 Run a linter over the project:
   `yarn lint`
+
+Allow the linter to attempt to fix problems
+  `yarn lint_fix`
 
 Wipe out all node modules:
   `yarn nuke`
 
-
-#Deploy to S3:
+### **Rake Tasks**
 -----------------------
+Note: each of these tasks are ran with `bundle exec rake`
 
-## Deployment
+List all LTI tools
+  `lti:list_all`
 
-### Heroku
+Remove all LTI tool installs
+  `lti:destroy_all`
+
+Get basic LTI configuration for install LTI 1.3 applications:
+  `lti:configs`
+
+Remove old nonces from the DB:
+  `lti:clean`
+
+
+# Deployment
+
+## Heroku
 -----------
 
 Make sure you have signed up for a heroku account [Heroku](http://www.heroku.com). Then follow the instructions provided by Heroku to create your application.
@@ -307,7 +285,7 @@ Deploy to Heroku:
 $ git push heroku master
 ```
 
-### Other Services
+## Other Services
 -----------
 By default `config/unicorn.rb` is setup to deploy to Heroku. Open that file, comment out the Heroku section and uncomment the other configuration to setup unicorn for deployment to another service like AWS.
 
@@ -315,21 +293,10 @@ By default `config/unicorn.rb` is setup to deploy to Heroku. Open that file, com
 
 Atomic Jolt has built a number of applications based on this source.
 
-### Demo Arigato
+### [Demo Arigato](https://github.com/atomicjolt/demo_arigato)
 -----------
 This project was created for the Sales team at Instructure. It makes it simple to populate a sample Canvas course using values from Google Drive Spreadsheets.
 
-Source Code: [https://github.com/atomicjolt/demo_arigato](https://github.com/atomicjolt/demo_arigato)
-
-
-## Database
-
-This application uses PostgreSQL with ActiveRecord.
-
-If you run into an error while installing the pg gem try including the path to pg_config. For an example see
-the command below. Be sure to use the correct version for the pg gem and the correct path to pg_config.
-
-  `gem install pg -v '1.2.2' --source 'https://rubygems.org/' -- --with-pg-config=/Users/jbasdf/.asdf/installs/postgres/9.5.19/bin/pg_config`
 
 ## Tests
 
@@ -345,15 +312,8 @@ To run Ruby tests:
 $ rake spec
 ```
 
-To run Karma and Jasmine tests run:
+To run Jest tests:
 
 ```
 $ yarn test
 ```
-
-## TODO
-
-If an admin changes the developer key and secret then existing authentications are invalid. This will result in a 500 error. You will see the following in the log:
-LMS::Canvas::InvalidRequestException (Status: 400 Error:  ....
-
-To fix this remove all entries in the Authentications table. In the future we should detect an invalid api token and then remove the db record forcing a new OAuth dance.
