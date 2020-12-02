@@ -57,13 +57,13 @@ Note: the App and Assets subdomains must be different.
 
 #### Setup config files with bin/setup script (optional)
 
-##### Change bin/bootstrap
-In bin/bootstrap change the following line to point to a dropbox folder containing the correct config files for the project. For example:
+#### Change `bin/bootstrap`
+In `bin/bootstrap` change the following line to point to a dropbox folder containing the correct config files for the project. For example:
 ```
 DROPBOX_FOLDER=aj-dev/lti_starter_app
 ```
 
-##### Setup script
+#### Setup script
 Run the setup script to configure your local nginx and to setup symlinks to your configuration files (database.yml, secrets.yml, etc).
 ```
 $ ./bin/setup
@@ -71,6 +71,7 @@ $ ./bin/setup
 Or, if you're on Linux:
 ```
 $ ./bin/setup-linux
+$ ./bin/bootstrap
 ```
 Depending on the system, this script may require superuser privileges.
 
@@ -89,7 +90,7 @@ Open the files and change each entry to values that are relevant for your applic
 -----------
 Setup an admin user and the default LTI application with:
 ```
-$ rake db:setup
+$ bundle exec rake db:setup
 ```
 
 If you have setup .env and the secrets.yml file then the seeds file shouldn't need to be changed. However, if you need to customize the values in the database or add additional records to the database, open `db/seeds.rb` and configure a default account for development and production. Here's a summary of the values and their purpose:
@@ -153,8 +154,31 @@ https://ltistarterapp.atomicjolt.xyz/lti_launches/init
 
 Navigate to `https://ltistarterapp.atomicjolt.xyz/jwks.json` to get a list of JWK keys that are usable for development. Normally for production you would use a *Public JWK Url* to generate the keys as needed
 
+There are many more settings and options available to play around with when creating a key, but these are the nessecary ones when getting a basic app setup.
+
+Some of these other options are:
+- LTI Advantage Services - Various services that LTI Advantage compliant apps can utillize
+- Icon settings - Image to display in relation to your app
+- (Canvas) Custom Fields - Canvas can provide various extra data in an LTI launch
+- Account navigation - Where navigation to your app shows up
+
 Once you press Save Key, a Developer ID and Key will be generated and displayed in the Details column of the Developer Keys table when you mouse over the row.
 Add these credentials under `CANVAS_DEVELOPER_ID` and `CANVAS_DEVELOPER_KEY` (in .env) or `canvas_developer_id` and `canvas_developer_key` (in secrets.yml).
+
+# Installing The App
+Now that we've got the dev servers up and running and we've got a developer key we can go and get our app installed! This starter app supports both LTI 1.3 and LTI Advantage
+
+## LTI 1.3
+To install an LTI 1.3 application to to `Account / Course -> Settings -> Apps` and add a new app. There are serveral different ways that an app can be installed, we will be installing via XML, so select that in the Configuration Type dropdown.
+
+Now run this command:
+```
+$ bundle exec rake lti:configs
+```
+This will output the Consumer Key, Shared Secret, and XML Configuration of each LTI app in the project. Copy and paste those into the relevant fields and click the submit button. Now your app should be ready to go!
+
+## LTI Advantage
+Currenlty the only way to install an LTI advantage app (at least on Canvas) is by using the "By Client ID" Configuration type. Thankfully this is very easy as the Client ID is the ID in our `.env` called `CANVAS_DEVELOPER_ID`. Copy that info into the field and hit submit and the app should be installed.
 
 # Development Notes
 
