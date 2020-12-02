@@ -14,7 +14,6 @@ rails new my_app -m https://raw.githubusercontent.com/atomicjolt/lti_starter_app
 ```
 
 ## Prerequisites
------------
 ### This application requires the following technologies:
 
 -   Ruby
@@ -177,7 +176,6 @@ The LTI Starter app makes working with the Canvas API simple. See [Canvas](Canva
 There is an admin page where one can setup the tools located at `/admin`. The Admin email and password can be found in `config/secrets.yml`. In the settings for an Application Instance, Visibility can be configured to affect who can see the tool when it gets installed.
 
 ## Development Details
-------------
 
 ### Webpack
 Webpack is used to build the client side application. Configure the client application in `config/webpacker.yml`
@@ -223,8 +221,7 @@ being created in the seeds.rb file called "share_instance" and set it to the app
 application instance it should share tenants with.
 
 
-## Scripts:
------------------------
+## Scripts
 The following scripts are available for testing, building and deploying applications
 
 ### **Yarn**
@@ -271,7 +268,6 @@ Remove old nonces from the DB:
 # Deployment
 
 ## Heroku
------------
 
 Make sure you have signed up for a heroku account [Heroku](http://www.heroku.com). Then follow the instructions provided by Heroku to create your application.
 
@@ -286,7 +282,6 @@ $ git push heroku master
 ```
 
 ## Other Services
------------
 By default `config/unicorn.rb` is setup to deploy to Heroku. Open that file, comment out the Heroku section and uncomment the other configuration to setup unicorn for deployment to another service like AWS.
 
 ## Examples
