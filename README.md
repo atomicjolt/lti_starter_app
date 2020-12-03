@@ -55,6 +55,10 @@ Note: the App and Assets subdomains must be different.
 2. Do a global search and replace for `lti_starter_app` and change it to the name you choose.
 3. Do a global search and replace for `ltistarterapp` (use only letters or numbers for this name. Special characters like '_' will result in errors).
 
+#### Update webpack.yml
+1. Open `config/webpack.yml`
+2. Update `dev_server: { public: assets.atomicjolt.xyz }` to match the assets domain provided in the .env file
+
 #### Setup config files with bin/setup script (optional)
 
 #### Change `bin/bootstrap`
@@ -114,8 +118,17 @@ the command below. Be sure to use the correct version for the pg gem and the cor
 gem install pg -v '1.2.2' --source 'https://rubygems.org/' -- --with-pg-config=/path/to/pg_config
 ```
 
-### Obtain a Canvas Developer Key
------------
+### Running The App
+
+Now setup should be complete, startup the dev servers with these commands:
+```
+  $ rails server
+  $ yarn hot
+```
+Now you should be able to navigate to `ltistarterapp.atomicjolt.xyz` in the browser and see a basic LTI app.
+Currently the lists will be empty as it is not installed into an LMS, there are not LTI Advantage Services for it to read from
+
+## Obtain a Canvas Developer Key
 Only a Canvas Account Admin can create a developer key for your LTI Application. To create a key, go to Accounts -> Developer Keys and create a new LTI key and enter the info described below below.
 
 Subsitute `ltistarterapp.atomicjolt.xyz` with your domain. (atomicjolt.xyz will only work for AtomicJolt employees). Also, note that `ltistarterapp` is the `APP_SUBDOMAIN` specified in the .env file.

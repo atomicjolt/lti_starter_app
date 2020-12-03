@@ -151,7 +151,7 @@ modify_files.each do |f|
   end
 
   gsub_file(f, "HELLOWORLD") do |_match|
-    app_name.underscore.capitalize
+    app_name.underscore.upcase
   end
 
   gsub_file(f, "hello_world") do |_match|
@@ -159,7 +159,7 @@ modify_files.each do |f|
   end
 
   gsub_file(f, "helloworld") do |_match|
-    app_name.underscore
+    url_safe_name
   end
 end
 
