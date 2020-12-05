@@ -91,11 +91,10 @@ Open the files and change each entry to values that are relevant for your applic
 
 
 ### Setting up the Database
------------
 Setup an admin user and the default LTI application with:
 Note: The seeding process retrieves the `CANVAS_DEVELOPER_ID` from the the environment, so you will probably want to get a [Canvas developer key](#obtain-a-canvas-developer-key) before you setup the db
 ```
-$ bundle exec rake db:setup
+$ rake db:setup
 ```
 
 If you have setup .env and the secrets.yml file then the seeds file shouldn't need to be changed. However, if you need to customize the values in the database or add additional records to the database, open `db/seeds.rb` and configure a default account for development and production. Here's a summary of the values and their purpose:
@@ -183,7 +182,7 @@ To install an LTI 1.3 application to to `Account / Course -> Settings -> Apps` a
 
 Now run this command:
 ```
-$ bundle exec rake lti:configs
+$ rake lti:configs
 ```
 This will output the Consumer Key, Shared Secret, and XML Configuration of each LTI app in the project. Copy and paste those into the relevant fields and click the submit button. Now your app should be ready to go!
 
@@ -284,7 +283,7 @@ Wipe out all node modules:
 
 ### **Rake Tasks**
 -----------------------
-Note: each of these tasks are ran with `bundle exec rake`
+Note: each of these tasks are ran with `rake`
 
 List all LTI tools
   `lti:list_all`
