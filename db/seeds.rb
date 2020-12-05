@@ -148,7 +148,7 @@ applications = [
       {
         # Canvas
         iss: "https://canvas.instructure.com",
-        client_id: "43460000000000378",
+        client_id: secrets.canvas_developer_id,
         jwks_url: LtiAdvantage::Definitions::CANVAS_PUBLIC_LTI_KEYS_URL,
         token_url: LtiAdvantage::Definitions::CANVAS_AUTH_TOKEN_URL,
         oidc_url: LtiAdvantage::Definitions::CANVAS_OIDC_URL,
@@ -156,7 +156,7 @@ applications = [
       {
         # Canvas Beta
         iss: "https://canvas.beta.instructure.com",
-        client_id: "43460000000000378",
+        client_id: secrets.canvas_developer_id,
         jwks_url: LtiAdvantage::Definitions::CANVAS_BETA_PUBLIC_LTI_KEYS_URL,
         token_url: LtiAdvantage::Definitions::CANVAS_BETA_AUTH_TOKEN_URL,
         oidc_url: LtiAdvantage::Definitions::CANVAS_BETA_OIDC_URL,
@@ -194,8 +194,7 @@ applications = [
         site_url: secrets.canvas_url,
         # This is only required if the app needs API access and doesn't want each user to do the oauth dance
         canvas_token: secrets.canvas_token,
-        lti_deployments: [
-        ],
+        lti_deployments: [],
       },
     ],
     oauth_scopes: [

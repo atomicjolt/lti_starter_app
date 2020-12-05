@@ -93,16 +93,13 @@ Open the files and change each entry to values that are relevant for your applic
 ### Setting up the Database
 -----------
 Setup an admin user and the default LTI application with:
+Note: The seeding process retrieves the `CANVAS_DEVELOPER_ID` from the the environment, so you will probably want to get a [Canvas developer key](#obtain-a-canvas-developer-key) before you setup the db
 ```
 $ bundle exec rake db:setup
 ```
 
 If you have setup .env and the secrets.yml file then the seeds file shouldn't need to be changed. However, if you need to customize the values in the database or add additional records to the database, open `db/seeds.rb` and configure a default account for development and production. Here's a summary of the values and their purpose:
-<!--
-No mention of code / canvas_uri anywhere in seeds.rb
-Is this only specifiying the fields for adding application instances? Should specify
-Default account for what?
- -->
+
 - **code:** Uniquely identifies the account. This is used for the subdomain when running
 applications on a single domain. By default this will be set to APP_SUBDOMAIN from the .env file.
 - **domain:** Custom domain name. By default this is set to application_main_domain from the secrets.yml file.
