@@ -63,7 +63,7 @@ development:
     https: false
     # This path is setup in .env and requires that an entry be added to nginx
     # usually via bin/setup. NOTE be sure to update this value in each project
-    public: rsa-assets.atomicjolt.xyz
+    public: assets.atomicjolt.xyz
     # hot module reload requires additional setup in each client app
     hmr: false
     # 'inline' causes the brower to refresh when changes occur. This does not
@@ -76,10 +76,9 @@ development:
     use_local_ip: false
     quiet: false
     headers:
-      'Access-Control-Allow-Origin': '*'
+      "Access-Control-Allow-Origin": "*"
     watch_options:
-      ignored: '**/node_modules/**'
-
+      ignored: "**/node_modules/**"
 
 test:
   <<: *default

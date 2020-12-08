@@ -194,8 +194,7 @@ applications = [
         site_url: secrets.canvas_url,
         # This is only required if the app needs API access and doesn't want each user to do the oauth dance
         canvas_token: secrets.canvas_token,
-        lti_deployments: [
-        ],
+        lti_deployments: [],
       },
     ],
     oauth_scopes: [

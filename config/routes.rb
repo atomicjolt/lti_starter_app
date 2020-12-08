@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  post "api/graphql_hello_world", to: "api/graphql_hello_world#execute"
+  post "api/graphql", to: "api/graphql#execute"
   root to: "home#index"
 
   get "iframe_cookies_fix_redirect" => "lti_launches#iframe_cookies_fix_redirect"
