@@ -92,7 +92,6 @@ Open the files and change each entry to values that are relevant for your applic
 
 ### Setting up the Database
 Setup an admin user and the default LTI application with:
-Note: The seeding process retrieves the `CANVAS_DEVELOPER_ID` from the the environment, so you will probably want to get a [Canvas developer key](#obtain-a-canvas-developer-key) before you setup the db
 ```
 $ rake db:setup
 ```
@@ -172,7 +171,7 @@ Some of these other options are:
 - Account navigation - Where navigation to your app shows up
 
 Once you press Save Key, a Developer ID and Key will be generated and displayed in the Details column of the Developer Keys table when you mouse over the row.
-Add these credentials under `CANVAS_DEVELOPER_ID` and `CANVAS_DEVELOPER_KEY` (in .env) or `canvas_developer_id` and `canvas_developer_key` (in secrets.yml).
+Add these credentials under `CANVAS_DEVELOPER_ID` and `CANVAS_DEVELOPER_KEY` (in .env) or `canvas_developer_id` and `canvas_developer_key` (in secrets.yml). These will be used to preform the OAuth Dance with Canvas and obtain the user's auth token.
 
 # Installing The App
 Now that we've got the dev servers up and running and we've got a developer key we can go and get our app installed! This starter app supports both LTI 1.3 and LTI Advantage
@@ -187,7 +186,9 @@ $ rake lti:configs
 This will output the Consumer Key, Shared Secret, and XML Configuration of each LTI app in the project. Copy and paste those into the relevant fields and click the submit button. Now your app should be ready to go!
 
 ## LTI Advantage
-Currenlty the only way to install an LTI advantage app (at least on Canvas) is by using the "By Client ID" Configuration type. Thankfully this is very easy as the Client ID is the ID in our `.env` called `CANVAS_DEVELOPER_ID`. Copy that info into the field and hit submit and the app should be installed.
+Currenlty the only way to install an LTI advantage app (at least on Canvas) is by using the "By Client ID" Configuration type. Create a LTI Key with your required services. Copy the Client Id it provides and paste it as the value of `client_id` in `db/seeds.rb` for both the Canvas and Test Canvas instance. Seed the DB with this value.
+
+Got to `Account / Course -> Settings -> Apps` and add a new app. Select by Client Id in the Configuration Type dropdown. Paste in the key and hit submit. Canvas should ask you if you want to install an app with the app name you provided while creating the key. If this looks write, click submit. Your LTI Advantage app should now be installed.
 
 # Development Notes
 
