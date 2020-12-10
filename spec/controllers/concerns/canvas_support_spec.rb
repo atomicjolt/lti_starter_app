@@ -1,6 +1,10 @@
 require "rails_helper"
 
 describe ApplicationController, type: :controller do
+  before do
+    setup_application_instance
+  end
+
   describe "valid application instance api token" do
     before do
       admin_api_permissions = {
@@ -12,9 +16,7 @@ describe ApplicationController, type: :controller do
         common: [],
         LIST_ACCOUNTS: [],
       }
-      @application = FactoryBot.create(:application, canvas_api_permissions: admin_api_permissions)
-      @application_instance = FactoryBot.create(:application_instance, application: @application)
-      allow(controller).to receive(:current_application_instance).and_return(@application_instance)
+      @application_instance.application.update(canvas_api_permissions: admin_api_permissions)
 
       @user = FactoryBot.create(:user)
       allow(controller).to receive(:current_user).and_return(@user)
@@ -74,8 +76,7 @@ describe ApplicationController, type: :controller do
     end
 
     it "doesn't allow access to forbidden API endpoints when application instances doesn't have an API token" do
-      application_instance = FactoryBot.create(:application_instance, application: @application, canvas_token: nil)
-      allow(controller).to receive(:current_application_instance).and_return(application_instance)
+      @application_instance.update(canvas_token: nil)
       get :index, params: {
         lti_key: @application_instance.lti_key,
         lms_proxy_call_type: "LIST_ACCOUNTS_FOR_COURSE_ADMINS",
@@ -99,10 +100,8 @@ describe ApplicationController, type: :controller do
         common: [],
         LIST_ACCOUNTS: [],
       }
-      @application = FactoryBot.create(:application, canvas_api_permissions: canvas_api_permissions)
-
-      @application_instance = FactoryBot.create(:application_instance, canvas_token: nil, application: @application)
-      allow(controller).to receive(:current_application_instance).and_return(@application_instance)
+      @application_instance.application.update(canvas_api_permissions: canvas_api_permissions)
+      @application_instance.update(canvas_token: nil)
 
       @authentication = FactoryBot.create(
         :authentication,
@@ -151,16 +150,13 @@ describe ApplicationController, type: :controller do
           common: [],
           LIST_ACCOUNTS: [],
         }
-        application = FactoryBot.create(
-          :application,
+
+        @application_instance.application.update(
           canvas_api_permissions: canvas_api_permissions,
           oauth_precedence: "global,application_instance,course,user",
         )
-        @application_instance = FactoryBot.create(
-          :application_instance,
-          canvas_token: "afaketoken",
-          application: application,
-        )
+        @application_instance.update(canvas_token: "afaketoken")
+
         @authentication = FactoryBot.create(
           :authentication,
           provider_url: UrlHelper.scheme_host_port(@application_instance.site.url),
@@ -169,7 +165,6 @@ describe ApplicationController, type: :controller do
         @user.authentications << @authentication
         @application_instance.authentications << @authentication
         @application_instance.save!
-        allow(controller).to receive(:current_application_instance).and_return(@application_instance)
       end
       controller do
         include Concerns::CanvasSupport
@@ -201,10 +196,8 @@ describe ApplicationController, type: :controller do
         common: [],
         LIST_ACCOUNTS: ["canvas_oauth_user"],
       }
-      @application = FactoryBot.create(:application, canvas_api_permissions: canvas_api_permissions)
-
-      @application_instance = FactoryBot.create(:application_instance, canvas_token: nil, application: @application)
-      allow(controller).to receive(:current_application_instance).and_return(@application_instance)
+      @application_instance.application.update(canvas_api_permissions: canvas_api_permissions)
+      @application_instance.update(canvas_token: nil)
 
       @authentication = FactoryBot.create(
         :authentication,
@@ -265,10 +258,9 @@ describe ApplicationController, type: :controller do
         common: [],
         LIST_ACCOUNTS: [],
       }
-      @application = FactoryBot.create(:application, canvas_api_permissions: canvas_api_permissions)
 
-      @application_instance = FactoryBot.create(:application_instance, canvas_token: nil, application: @application)
-      allow(controller).to receive(:current_application_instance).and_return(@application_instance)
+      @application_instance.application.update(canvas_api_permissions: canvas_api_permissions)
+      @application_instance.update(canvas_token: nil)
 
       @authentication = FactoryBot.create(
         :authentication,
@@ -325,9 +317,9 @@ describe ApplicationController, type: :controller do
         common: [],
         LIST_ACCOUNTS: [],
       }
-      @application = FactoryBot.create(:application, canvas_api_permissions: canvas_api_permissions)
-      @application_instance = FactoryBot.create(:application_instance, canvas_token: nil, application: @application)
-      allow(controller).to receive(:current_application_instance).and_return(@application_instance)
+
+      @application_instance.application.update(canvas_api_permissions: canvas_api_permissions)
+      @application_instance.update(canvas_token: nil)
 
       @user_token = AuthToken.issue_token({ user_id: @user.id })
       @user_token_header = "Bearer #{@user_token}"

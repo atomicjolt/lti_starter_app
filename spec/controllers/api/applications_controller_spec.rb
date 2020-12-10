@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Api::ApplicationsController, type: :controller do
   before do
     setup_lti_users
-    setup_application_and_instance
+    setup_application_instance
   end
 
   context "no jwt" do

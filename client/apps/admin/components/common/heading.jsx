@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Wrapper, Button, Menu, MenuItem } from 'react-aria-menubutton';
-import { Link } from 'react-router';
+import { Link } from 'react-router3';
 import assets from '../../libs/assets';
 import SubNav from '../common/sub_nav';
 
 const select = state => ({
   userName: state.settings.display_name,
   signOutUrl: state.settings.sign_out_url,
+  userEditUrl: state.settings.user_edit_url,
+  usersUrl: state.settings.users_url,
   sites: state.sites,
 });
 
@@ -50,6 +52,24 @@ export function Heading(props) {
             <ul>
               <li>
                 <MenuItem
+                  value={props.usersUrl}
+                  text="Admin Users"
+                  className="c-menu-item"
+                >
+                  <a href={props.usersUrl}><span>Admin Users</span></a>
+                </MenuItem>
+              </li>
+              <li>
+                <MenuItem
+                  value={props.userEditUrl}
+                  text="Edit"
+                  className="c-menu-item"
+                >
+                  <a href={props.userEditUrl}><span>Edit</span></a>
+                </MenuItem>
+              </li>
+              <li>
+                <MenuItem
                   value={props.signOutUrl}
                   text="Logout"
                   className="c-menu-item"
@@ -81,6 +101,8 @@ Heading.propTypes = {
   backTo: PropTypes.string,
   userName: PropTypes.string,
   signOutUrl: PropTypes.string.isRequired,
+  userEditUrl: PropTypes.string,
+  usersUrl: PropTypes.string,
   sites: PropTypes.shape({}).isRequired,
 };
 

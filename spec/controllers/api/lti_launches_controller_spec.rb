@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Api::LtiLaunchesController, type: :controller do
   before do
     setup_lti_users
-    setup_application_and_instance
+    setup_application_instance
 
     @content_item = {
       "@context" => "http://purl.imsglobal.org/ctx/lti/v1/ContentItem",
@@ -39,7 +39,7 @@ RSpec.describe Api::LtiLaunchesController, type: :controller do
           content_item: @content_item,
           content_item_return_url: "http://www.example.com/return",
         }, format: :json
-        expect(response).to be_success
+        expect(response).to have_http_status(200)
       end
 
       it "sets the lti launch with the correct config" do

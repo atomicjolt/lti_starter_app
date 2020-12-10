@@ -5,5 +5,6 @@ FactoryBot.define do
     lti_secret { FactoryBot.generate(:password) }
     site
     canvas_token { FactoryBot.generate(:password) }
+    bundle_instance
   end
 end

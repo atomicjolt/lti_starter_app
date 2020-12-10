@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <h3>Users</h3>
+    <%= link_to "Add New User", new_user_invitation_path, class:"c-btn c-btn--yellow" %>
     <div class="column">
       <table class="table">
         <tbody>
@@ -11,6 +12,7 @@
           <% end %>
         </tbody>
       </table>
+      <%= will_paginate @users %>
     </div>
   </div>
 </div>

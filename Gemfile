@@ -11,20 +11,27 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "5.1.7"
+gem "rails", "5.2.4.4"
+
+# Improve boot time
+gem "bootsnap", require: false
 
 # Database
 gem "apartment"
-gem "composite_primary_keys", "~> 10.0"
+gem "composite_primary_keys"
 gem "pg"
 
 # authentication, authorization, integrations
 gem "attr_encrypted"
 gem "cancancan"
 gem "devise"
+gem "devise_invitable"
+gem "strong_password"
 gem "ims-lti", "~> 2.1.5" # IMS LTI tool consumers and providers
-gem "jwt", "~> 1.5.0" # json web token
-gem "lms-api", "~>1.9.0"
+gem "json-jwt"
+gem "jwt"
+gem "lms-api", "~>1.12.0"
+gem "lms-graphql-api", ">=0.5.3"
 gem "omniauth"
 gem "omniauth-canvas", "~>1.0.2"
 gem "rolify"
@@ -37,6 +44,10 @@ gem "yajl-ruby", require: "yajl"
 
 # server
 gem "puma"
+
+# Job worker
+gem "apartment-activejob-que"
+gem "que"
 
 # Errors
 gem "rollbar"
@@ -51,6 +62,9 @@ gem "rack-cors", require: "rack/cors"
 # Paging
 gem "will_paginate"
 
+# Javascript
+gem "webpacker"
+
 # Application secrets checker
 gem "nuclear_secrets"
 
@@ -61,11 +75,17 @@ git "https://github.com/IMSGlobal/caliper-ruby.git", branch: "develop" do
   gem "ims_caliper"
 end
 
+# This is only here because we are on ruby 2.4. When we upgrade ruby we can remove this
+gem "sprockets", "~>3.7.2"
+
+gem "graphql", "~>1.9.18" # TODO 1.10.x breaks the app. Need to figure out why
+gem "graphql-batch", "~> 0.3.9"
+gem "graphql-guard"
+
 group :development do
   # UI
   gem "autoprefixer-rails"
   gem "non-stupid-digest-assets" # also compile assets without digest (fixes font problem)
-  gem "sass-rails"
   gem "uglifier"
 
   gem "better_errors"
@@ -84,18 +104,36 @@ group :development do
   gem "spring"
   gem "spring-commands-rspec"
   gem "spring-watcher-listen"
-  gem "web-console"
+  gem "web-console", "~>3.7.0"
+end
+
+group :development, :linter do
+  gem "rubocop", "~> 0.88.0"
+  gem "rubocop-performance", "~> 1.7.1"
+  gem "rubocop-rails", "~> 2.7.1"
+end
+
+group :development, :build, :ci, :test do
+  # Assets
+  gem "sassc-rails"
+end
+
+group :ci do
+  gem "pronto", git: "https://github.com/prontolabs/pronto"
+  gem "pronto-eslint_npm", require: false
+  gem "pronto-rubocop", require: false
 end
 
 group :development, :test do
   gem "byebug", platform: :mri
+  gem "debase"
   gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "faker"
   gem "guard-rspec", require: false
   gem "rails-controller-testing"
   gem "rspec-rails"
-  gem "rubocop"
+  gem "ruby-debug-ide"
 end
 
 group :test do

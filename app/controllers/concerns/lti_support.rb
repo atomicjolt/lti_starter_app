@@ -1,15 +1,25 @@
+require "jwt"
+
 module Concerns
   module LtiSupport
     extend ActiveSupport::Concern
 
     included do
-      helper_method :lti_provider
+      helper_method :lti_provider, :lti_advantage?
     end
 
     protected
 
     def do_lti
-      if valid_lti_request?(current_application_instance.lti_secret)
+      if lti_advantage?
+        # Validate the state by checking the database for the nonce
+        return user_not_authorized if !LtiAdvantage::OpenId.validate_open_id_state(params["state"])
+
+        set_lti_advantage_launch_values
+        user = LtiAdvantage::LtiUser.new(@lti_token, current_application_instance).user
+        sign_in(user, event: :authentication)
+        return
+      elsif valid_lti_request?(current_application_instance.lti_secret)
         if user = user_from_lti
           # until the code to fix the valid lti request is up
           # then we will confirm emails here to use it on the course nav
@@ -19,6 +29,10 @@ module Concerns
         end
       end
       user_not_authorized
+    end
+
+    def lti_advantage?
+      params["id_token"].present?
     end
 
     def valid_lti_request?(lti_secret)
@@ -46,7 +60,7 @@ module Concerns
 
       # Match on only lms_user_id. This happens when a user uses OAuth to create and
       # account before they ever do an LTI launch.
-      if user.blank?
+      if user.blank? && lms_user_id.present?
         if user = User.find_by(lms_user_id: lms_user_id)
           if user.lti_user_id != lti_user_id
             user.update!(lti_user_id: lti_user_id)
@@ -61,6 +75,10 @@ module Concerns
         user = _generate_new_lti_user(params)
         _attempt_uniq_email(user)
       else
+        if user.lms_user_id.blank? && lms_user_id.present?
+          user.lms_user_id = lms_user_id
+          user.save
+        end
         _update_roles(user, params)
       end
 
@@ -86,6 +104,9 @@ module Concerns
       user.save!
     rescue ActiveRecord::RecordInvalid => ex
       if ex.to_s == "Validation failed: Email has already been taken"
+        false
+      elsif ex.to_s == "Validation failed: Email is invalid"
+        # If email is invalid, i.e. bob@example, then just generate a random email
         false
       else
         raise ex
@@ -193,7 +214,7 @@ module Concerns
     end
 
     def lms_user_id
-      params[:custom_canvas_user_id] || params[:user_id]
+      params[:custom_canvas_user_id]
     end
 
   end

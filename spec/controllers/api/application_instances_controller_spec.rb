@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Api::ApplicationInstancesController, type: :controller do
   before do
     setup_lti_users
-    setup_application_and_instance
+    setup_application_instance
   end
 
   context "no jwt" do
@@ -121,7 +121,7 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
       end
     end
 
-    describe "GET create" do
+    describe "POST create" do
       it "creates a new application instances and returns json" do
         site = FactoryBot.create(:site)
         attrs = {
@@ -129,11 +129,11 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
           site_id: site.id,
         }
         post :create,
-             params: {
-               application_id: @application.id,
-               application_instance: attrs,
-             },
-             format: :json
+          params: {
+            application_id: @application.id,
+            application_instance: attrs,
+          },
+          format: :json
         expect(response).to have_http_status(200)
       end
     end

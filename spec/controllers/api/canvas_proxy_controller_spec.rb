@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Api::CanvasProxyController, type: :controller do
   before do
     setup_lti_users
-    setup_application_and_instance
+    setup_application_instance
   end
 
   describe "proxy without authorization" do
@@ -18,7 +18,6 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
   context "as student" do
     describe "proxy" do
       before do
-        allow(controller).to receive(:current_application_instance).and_return(@application_instance)
         allow(Application).to receive(:find_by).with(:lti_key).and_return(@application_instance)
         request.headers["Authorization"] = @student_token
         allow(controller.request).to receive(:host).and_return("example.com")
@@ -103,7 +102,6 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
       end
       context "application instance allows user token" do
         before do
-          allow(controller).to receive(:current_application_instance).and_return(@application_instance)
           allow(Application).to receive(:find_by).with(:lti_key).and_return(@application_instance)
         end
         it "deletes the authentication and returns a status unauthorized" do
@@ -117,16 +115,10 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
       end
       context "application instance doesn't allow user token" do
         before do
-          @application = FactoryBot.create(
-            :application,
+          @application_instance.application.update(
             canvas_api_permissions: @canvas_api_permissions,
             oauth_precedence: "global,application_instance,course",
           )
-          @application_instance = FactoryBot.create(
-            :application_instance,
-            application: @application,
-          )
-          allow(controller).to receive(:current_application_instance).and_return(@application_instance)
           allow(Application).to receive(:find_by).with(:lti_key).and_return(@application_instance)
         end
         it "deletes the authentication and returns a status forbidden" do
@@ -142,7 +134,6 @@ RSpec.describe Api::CanvasProxyController, type: :controller do
 
     describe "proxy" do
       before do
-        allow(controller).to receive(:current_application_instance).and_return(@application_instance)
         allow(Application).to receive(:find_by).with(:lti_key).and_return(@application_instance)
         request.headers["Authorization"] = @admin_token
         allow(controller.request).to receive(:host).and_return("example.com")

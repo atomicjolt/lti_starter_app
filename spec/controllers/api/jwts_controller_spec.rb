@@ -2,9 +2,15 @@ require "rails_helper"
 
 RSpec.describe Api::JwtsController, type: :controller do
   before do
+    setup_application_instance
     @user = FactoryBot.create(:user)
     @user.confirm
-    @user_token = AuthToken.issue_token({ user_id: @user.id })
+    @user_token = AuthToken.issue_token(
+      {
+        application_instance_id: @application_instance.id,
+        user_id: @user.id,
+      },
+    )
   end
 
   context "as user" do

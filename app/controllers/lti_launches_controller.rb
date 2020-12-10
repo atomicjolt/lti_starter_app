@@ -1,17 +1,25 @@
 class LtiLaunchesController < ApplicationController
   include Concerns::CanvasSupport
   include Concerns::LtiSupport
+  include Concerns::OpenIdConnectSupport
 
   layout "client"
 
   skip_before_action :verify_authenticity_token
-  before_action :do_lti, except: [:launch]
+  before_action :do_lti, except: [:init, :launch]
   after_action :do_caliper
 
   def index
     if current_application_instance.disabled_at
       render file: File.join(Rails.root, "public", "disabled.html")
     end
+
+    # LTI advantage example code
+    if @lti_token
+      @lti_advantage_examples = LtiAdvantage::Examples.new(@lti_token, current_application_instance)
+      @lti_advantage_examples.run
+    end
+
     setup_lti_response
   end
 
@@ -30,6 +38,15 @@ class LtiLaunchesController < ApplicationController
         "roles" => "Learner",
       },
     )
+  end
+
+  # Support Open ID connect flow for LTI 1.3
+  def init
+    nonce = SecureRandom.hex(64)
+    url = build_response(LtiAdvantage::OpenId.state, params, nonce)
+    respond_to do |format|
+      format.html { redirect_to url }
+    end
   end
 
   private

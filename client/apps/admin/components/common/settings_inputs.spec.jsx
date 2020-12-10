@@ -37,17 +37,15 @@ describe('common search inputs', () => {
     expect(input.props().value).toBe(ltiKey);
   });
 
-  it('search input changes', () => {
-    const input = result.find('input').at(1);
-    expect(input).toBeDefined();
-    expect(input.props().type).toBe('hidden');
-    expect(input.props().value).toBe(ltiKey);
-  });
+  it('adds settings as params', () => {
+    const ltiKeyInput = result.find('input').first();
+    expect(ltiKeyInput).toBeDefined();
+    expect(ltiKeyInput.props().type).toBe('hidden');
+    expect(ltiKeyInput.props().value).toBe(ltiKey);
 
-  it('search input changes', () => {
-    const input = result.find('input').last();
-    expect(input).toBeDefined();
-    expect(input.props().type).toBe('hidden');
-    expect(input.props().value).toBe(ltiName);
+    const ltiNameInput = result.find('input').last();
+    expect(ltiNameInput).toBeDefined();
+    expect(ltiNameInput.props().type).toBe('hidden');
+    expect(ltiNameInput.props().value).toBe(ltiName);
   });
 });

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_rollbar_scope
 
   helper_method :current_application_instance,
                 :current_bundle_instance,
@@ -14,9 +15,17 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def after_invite_path_for(_inviter, _invitee)
+    users_path
+  end
+
+  def after_accept_path_for(_resource)
+    admin_root_path
+  end
+
   def render_error(status, message, json_options = {})
     respond_to do |format|
-      format.html { render file: "public/#{status}.html", status: status }
+      format.html { render template: "errors/#{status}", layout: "errors", status: status }
       format.json do
         render json: {
           message: message,
@@ -34,7 +43,7 @@ class ApplicationController < ActionController::Base
   end
 
   def record_exception(exception)
-    Rollbar.error(exception)
+    Rollbar.error(exception) if current_application_instance.rollbar_enabled?
     Rails.logger.error "Unexpected exception during execution"
     Rails.logger.error "#{exception.class.name} (#{exception.message}):"
     Rails.logger.error "  #{exception.backtrace.join("\n  ")}"
@@ -108,6 +117,24 @@ class ApplicationController < ActionController::Base
     render_error 500, "An error occured when calling the Canvas API: #{exception.message}", json_options
   end
 
+  def set_rollbar_scope
+    if !current_application_instance.rollbar_enabled?
+      Rollbar.configure { |config| config.enabled = false }
+    end
+    Rollbar.scope!(
+      tenant: Apartment::Tenant.current,
+    )
+  end
+
+  # **********************************************
+  # Paging methods
+  #
+  def setup_will_paginate
+    @page = (params[:page] || 1).to_i
+    @page = 1 if @page < 1
+    @per_page = (params[:per_page] || (Rails.env.test? ? 1 : 40)).to_i
+  end
+
   def canvas_url
     @canvas_url ||= session[:canvas_url] ||
       custom_canvas_api_domain ||
@@ -128,6 +155,7 @@ class ApplicationController < ActionController::Base
 
   def current_application_instance
     @current_application_instance ||=
+      LtiAdvantage::Authorization.application_instance_from_token(request.params["id_token"]) ||
       ApplicationInstance.find_by(lti_key: Lti::Request.oauth_consumer_key(request)) ||
       ApplicationInstance.find_by(domain: request.host_with_port) ||
       ApplicationInstance.find_by(id: params[:application_instance_id])
@@ -161,6 +189,19 @@ class ApplicationController < ActionController::Base
     @is_lti_launch = true
     @canvas_url = current_application_instance.site.url
     @app_name = current_application_instance.application.client_application_name
+  end
+
+  def set_lti_advantage_launch_values
+    @lti_token = LtiAdvantage::Authorization.validate_token(
+      current_application_instance,
+      params[:id_token],
+    )
+    @lti_params = LtiAdvantage::Params.new(@lti_token)
+    @lti_launch_config = JSON.parse(params[:lti_launch_config]) if params[:lti_launch_config]
+    @is_deep_link = true if LtiAdvantage::Definitions.deep_link_launch?(@lti_token)
+    @app_name = current_application_instance.application.client_application_name
+    @title = current_application_instance.application.name
+    @description = current_application_instance.application.description
   end
 
   def targeted_app_instance

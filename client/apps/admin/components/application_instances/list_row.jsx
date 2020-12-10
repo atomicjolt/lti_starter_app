@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
+import { Link } from 'react-router3';
 import _ from 'lodash';
 
 import Modal from './modal';
@@ -23,6 +23,24 @@ export default class ListRow extends React.Component {
       }),
       id: PropTypes.number.isRequired,
       application_id: PropTypes.number.isRequired,
+      request_stats: PropTypes.shape({
+        day_1_requests: PropTypes.number,
+        day_7_requests: PropTypes.number,
+        day_30_requests: PropTypes.number,
+        day_365_requests: PropTypes.number,
+        day_1_launches: PropTypes.number,
+        day_7_launches: PropTypes.number,
+        day_30_launches: PropTypes.number,
+        day_365_launches: PropTypes.number,
+        day_1_users: PropTypes.number,
+        day_7_users: PropTypes.number,
+        day_30_users: PropTypes.number,
+        day_365_users: PropTypes.number,
+        day_1_errors: PropTypes.number,
+        day_7_errors: PropTypes.number,
+        day_30_errors: PropTypes.number,
+        day_365_errors: PropTypes.number,
+      }),
     }).isRequired,
     settings: PropTypes.shape({
       lti_key: PropTypes.string,
@@ -83,9 +101,12 @@ export default class ListRow extends React.Component {
   }
 
   checkAuthentication(e) {
-    if (!_.find(this.props.settings.user_canvas_domains, canvasUrl =>
-      canvasUrl === this.props.applicationInstance.site.url
-    )) {
+    const found = _.find(
+      this.props.settings.user_canvas_domains,
+      (canvasUrl) => canvasUrl === this.props.applicationInstance.site.url
+    );
+
+    if (!found) {
       e.stopPropagation();
       e.preventDefault();
       this.settingsForm.submit();
@@ -95,8 +116,8 @@ export default class ListRow extends React.Component {
   renderAuthentications() {
     const styles = ListRow.getStyles();
     const { applicationInstance } = this.props;
-    const numberAuthentications = applicationInstance.authentications ?
-      applicationInstance.authentications.length : 0;
+    const numberAuthentications = applicationInstance.authentications
+      ? applicationInstance.authentications.length : 0;
 
     if (numberAuthentications <= 0) {
       return (
@@ -155,6 +176,11 @@ export default class ListRow extends React.Component {
               name="oauth_complete_url"
               value={`${window.location.protocol}//${window.location.host}${window.location.pathname}#${path}`}
             />
+            <input
+              type="hidden"
+              name="oauth_consumer_key"
+              value={applicationInstance.lti_key}
+            />
           </form>
           <Link
             onClick={(e) => { this.checkAuthentication(e); }}
@@ -199,32 +225,39 @@ export default class ListRow extends React.Component {
         </td>
         { this.renderAuthentications() }
         <td>
-          {createdAt.toLocaleDateString()} {createdAt.toLocaleTimeString()}
+          {createdAt.toLocaleDateString()}
+          {' '}
+          {createdAt.toLocaleTimeString()}
         </td>
         <td>
           <div>1 day</div>
           <div>7 days</div>
           <div>30 days</div>
+          <div>1 year</div>
         </td>
         <td>
           <div>{applicationInstance.request_stats.day_1_requests}</div>
           <div>{applicationInstance.request_stats.day_7_requests}</div>
           <div>{applicationInstance.request_stats.day_30_requests}</div>
+          <div>{applicationInstance.request_stats.day_365_requests}</div>
         </td>
         <td>
           <div>{applicationInstance.request_stats.day_1_launches}</div>
           <div>{applicationInstance.request_stats.day_7_launches}</div>
           <div>{applicationInstance.request_stats.day_30_launches}</div>
+          <div>{applicationInstance.request_stats.day_365_launches}</div>
         </td>
         <td>
           <div>{applicationInstance.request_stats.day_1_users}</div>
           <div>{applicationInstance.request_stats.day_7_users}</div>
           <div>{applicationInstance.request_stats.day_30_users}</div>
+          <div>{applicationInstance.request_stats.day_365_users}</div>
         </td>
         <td>
           <div>{applicationInstance.request_stats.day_1_errors}</div>
           <div>{applicationInstance.request_stats.day_7_errors}</div>
           <div>{applicationInstance.request_stats.day_30_errors}</div>
+          <div>{applicationInstance.request_stats.day_365_errors}</div>
         </td>
         <td>
           <button

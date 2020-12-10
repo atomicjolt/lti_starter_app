@@ -26,6 +26,8 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.extend ControllerMacros, type: :controller
+  config.include ApplicationInstanceHelper
+  config.render_views
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -51,6 +53,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.before(:suite) do
+    clean_tenants
     begin
       DatabaseCleaner.strategy = :transaction
       DatabaseCleaner.clean_with(:transaction)
@@ -61,6 +64,11 @@ RSpec.configure do |config|
     ensure
       DatabaseCleaner.clean
     end
+
+    # compile js once before tests run
+    Webpacker.compile
+
+    ApplicationInstanceHelper.make_application_instance
   end
 
   config.append_after(:each) do

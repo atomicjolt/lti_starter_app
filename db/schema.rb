@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190518190335) do
+ActiveRecord::Schema.define(version: 2020_09_14_195556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20190518190335) do
     t.datetime "disabled_at"
     t.bigint "bundle_instance_id"
     t.boolean "anonymous", default: false
+    t.boolean "rollbar_enabled", default: true
+    t.boolean "use_scoped_developer_key", default: false, null: false
     t.index ["application_id"], name: "index_application_instances_on_application_id"
     t.index ["lti_key"], name: "index_application_instances_on_lti_key"
     t.index ["site_id"], name: "index_application_instances_on_site_id"
@@ -59,6 +61,11 @@ ActiveRecord::Schema.define(version: 20190518190335) do
     t.string "key"
     t.string "oauth_precedence", default: "global,user,application_instance,course"
     t.boolean "anonymous", default: false
+    t.jsonb "lti_advantage_config", default: {}
+    t.boolean "rollbar_enabled", default: true
+    t.string "oauth_scopes", default: [], array: true
+    t.string "oauth_key"
+    t.string "oauth_secret"
     t.index ["key"], name: "index_applications_on_key"
   end
 
@@ -141,6 +148,45 @@ ActiveRecord::Schema.define(version: 20190518190335) do
     t.string "source_tci_guid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "payload"
+  end
+
+  create_table "jwks", force: :cascade do |t|
+    t.string "kid"
+    t.string "pem"
+    t.bigint "application_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["application_id"], name: "index_jwks_on_application_id"
+    t.index ["kid"], name: "index_jwks_on_kid"
+  end
+
+  create_table "lti_deployments", force: :cascade do |t|
+    t.bigint "application_instance_id"
+    t.string "deployment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "lti_install_id"
+    t.index ["application_instance_id"], name: "index_lti_deployments_on_application_instance_id"
+    t.index ["deployment_id", "application_instance_id"], name: "index_lti_deployments_on_d_id_and_ai_id", unique: true
+    t.index ["deployment_id"], name: "index_lti_deployments_on_deployment_id"
+    t.index ["lti_install_id"], name: "index_lti_deployments_on_lti_install_id"
+  end
+
+  create_table "lti_installs", force: :cascade do |t|
+    t.string "iss"
+    t.bigint "application_id"
+    t.string "client_id"
+    t.string "jwks_url"
+    t.string "token_url"
+    t.string "oidc_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["application_id", "iss"], name: "index_lti_installs_on_application_id_and_iss"
+    t.index ["application_id"], name: "index_lti_installs_on_application_id"
+    t.index ["client_id", "iss"], name: "index_lti_installs_on_client_id_and_iss", unique: true
+    t.index ["client_id"], name: "index_lti_installs_on_client_id"
+    t.index ["iss"], name: "index_lti_installs_on_iss"
   end
 
   create_table "lti_launches", force: :cascade do |t|
@@ -169,6 +215,13 @@ ActiveRecord::Schema.define(version: 20190518190335) do
     t.index ["state"], name: "index_oauth_states_on_state"
   end
 
+  create_table "open_id_states", force: :cascade do |t|
+    t.string "nonce"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nonce"], name: "index_open_id_states_on_nonce", unique: true
+  end
+
   create_table "permissions", force: :cascade do |t|
     t.bigint "role_id"
     t.bigint "user_id"
@@ -178,6 +231,17 @@ ActiveRecord::Schema.define(version: 20190518190335) do
     t.index ["context_id"], name: "index_permissions_on_context_id"
     t.index ["role_id", "user_id", "context_id"], name: "index_permissions_on_role_id_and_user_id_and_context_id", unique: true
     t.index ["role_id", "user_id"], name: "index_permissions_on_role_id_and_user_id", unique: true, where: "(context_id IS NULL)"
+  end
+
+  create_table "que_jobs", primary_key: ["queue", "priority", "run_at", "job_id"], comment: "3", force: :cascade do |t|
+    t.integer "priority", limit: 2, default: 100, null: false
+    t.datetime "run_at", default: -> { "now()" }, null: false
+    t.bigserial "job_id", null: false
+    t.text "job_class", null: false
+    t.json "args", default: [], null: false
+    t.integer "error_count", default: 0, null: false
+    t.text "last_error"
+    t.text "queue", default: "", null: false
   end
 
   create_table "request_statistics", primary_key: ["truncated_time", "tenant"], force: :cascade do |t|
@@ -233,10 +297,23 @@ ActiveRecord::Schema.define(version: 20190518190335) do
     t.string "lti_provider"
     t.string "lms_user_id"
     t.bigint "create_method", default: 0
+    t.string "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer "invitation_limit"
+    t.string "invited_by_type"
+    t.bigint "invited_by_id"
+    t.integer "invitations_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
+    t.index ["invitations_count"], name: "index_users_on_invitations_count"
+    t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
+    t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by_type_and_invited_by_id"
     t.index ["lms_user_id", "lti_user_id"], name: "index_users_on_lms_user_id_and_lti_user_id"
     t.index ["lti_user_id"], name: "index_users_on_lti_user_id", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "lti_deployments", "lti_installs"
 end

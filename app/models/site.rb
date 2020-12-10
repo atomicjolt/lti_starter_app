@@ -1,4 +1,4 @@
-class Site < ActiveRecord::Base
+class Site < ApplicationRecord
   has_many :application_instances
 
   validates :url, presence: true, uniqueness: true

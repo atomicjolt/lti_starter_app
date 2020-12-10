@@ -71,7 +71,7 @@ describe OauthStateMiddleware do
 
   context "using oauth_consumer_key from application instance" do
     before do
-      @application_instance = FactoryBot.create(:application_instance)
+      setup_application_instance
       @app_callback_url = "http://atomic.example.com"
       @payload = {
         oauth_consumer_key: @application_instance.lti_key,

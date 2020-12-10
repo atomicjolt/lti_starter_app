@@ -10,7 +10,7 @@ namespace :lti do
     Lti::Utils.lti_configs
   end
 
-  desc "Generate LTI test params. Call using: rake lti_test_params['lti_launch_url'] where lti_launch_url is the lti launch url"
+  desc "Generate LTI test params. Call using: rake lti_test_params['lti_launch_url']"
   task :test_params, [:lti_launch_url] => :environment do |_t, args|
     require File.join(File.dirname(__FILE__), "../../spec/support/lti.rb")
     url = args[:code] || "https://www.example.com/lti/launch"

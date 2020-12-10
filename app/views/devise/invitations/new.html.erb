@@ -1,0 +1,22 @@
+<div class="c-login">
+  <div class="c-title">
+    <h2><%= t "devise.invitations.new.header" %></h2>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <% resource.class.invite_key_fields.each do |field| -%>
+      <div class="field">
+        <%= f.label field, class: "c-input" do %>
+          <span><%= field %></span>
+          <%= f.text_field field %>
+        <% end %>
+      </div>
+    <% end -%>
+
+    <div class="actions">
+      <%= f.submit t("devise.invitations.new.submit_button"), class:"c-btn c-btn--yellow" %>
+    </div>
+  <% end %>
+</div>

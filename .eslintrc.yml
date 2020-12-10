@@ -1,7 +1,4 @@
 ---
-ecmaFeatures:
-  jsx: true
-  modules: true
 env:
   browser: true
   es6: true
@@ -23,7 +20,7 @@ globals:
   jasmine: false
   module: false
   jest: false
-  __DEV__: false
+  require: false
 rules:
   linebreak-style:
     - error
@@ -48,6 +45,12 @@ rules:
   react/jsx-wrap-multilines: 0
   react/sort-comp: 0
   jsx-a11y/no-static-element-interactions: 0
+  jsx-a11y/anchor-is-valid:
+  - error
+  - components:
+    - Link
+    specialLink:
+    - to
   no-underscore-dangle: 0
   space-before-function-paren:
     - 2
@@ -64,4 +67,4 @@ rules:
   import/no-named-as-default: 0
   react/prop-types: 0
   no-return-assign: 0
-
+  function-paren-newline: 0

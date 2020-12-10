@@ -1,5 +1,9 @@
+require: 
+  - rubocop-rails
+  - rubocop-performance
+
 AllCops:
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.5
   Exclude:
     - db/schema.rb
     - config/initializers/devise.rb
@@ -8,6 +12,7 @@ AllCops:
     - config/unicorn/*
     - db/migrate/*
     - spec/spec_helper.rb
+    - node_modules/**/*
 
 Naming/AccessorMethodName:
   Description: Check the naming of accessor methods for get_/set_.
@@ -57,6 +62,13 @@ Style/ClassAndModuleChildren:
   Description: 'Checks style of children classes and modules.'
   Enabled: false
   EnforcedStyle: nested
+
+Style/Sample:
+  Description: >-
+                  Use `sample` instead of `shuffle.first`,
+                  `shuffle.last`, and `shuffle[Fixnum]`.
+  Reference: 'https://github.com/JuanitoFatas/fast-ruby#arrayshufflefirst-vs-arraysample-code'
+  Enabled: false
 
 Metrics/ClassLength:
   Description: 'Avoid classes longer than 100 lines of code.'
@@ -165,9 +177,6 @@ Layout/EmptyLinesAroundModuleBody:
   Description: 'Do not allow extra lines around module body.'
   Enabled: false
 
-Style/BracesAroundHashParameters:
-  Enabled: false
-
 Naming/FileName:
   Description: 'Use snake_case for source file names.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#snake-case-files'
@@ -177,11 +186,6 @@ Style/FrozenStringLiteralComment:
   Description: >-
     Add the frozen_string_literal comment to the top of files
     to help transition from Ruby 2.3.0 to Ruby 3.0.
-  Enabled: false
-
-Style/FlipFlop:
-  Description: 'Checks for flip flops'
-  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-flip-flops'
   Enabled: false
 
 Style/FormatString:
@@ -232,16 +236,6 @@ Style/LineEndConcatenation:
                  line end.
   Enabled: false
 
-Metrics/LineLength:
-  Description: 'Limit lines to 120 characters.'
-  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#80-character-limits'
-  Max: 120
-  Enabled: true
-  Exclude:
-    - Gemfile
-    - spec/support/webmock_requests.rb
-    - lib/tasks/*.rake
-
 Metrics/MethodLength:
   Description: 'Avoid methods longer than 10 lines of code.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#short-methods'
@@ -251,6 +245,16 @@ Style/ModuleFunction:
   Description: 'Checks for usage of `extend self` in modules.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#module-function'
   Enabled: false
+
+Layout/LineLength:
+  Description: 'Limit lines to 120 characters.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#80-character-limits'
+  Max: 120
+  Enabled: true
+  Exclude:
+    - Gemfile
+    - spec/support/webmock_requests.rb
+    - lib/tasks/*.rake
 
 Layout/MultilineOperationIndentation:
   Description: >-
@@ -345,7 +349,7 @@ Style/PerlBackrefs:
 Naming/PredicateName:
   Description: 'Check the names of predicate methods.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#bool-methods-qmark'
-  NamePrefixBlacklist:
+  ForbiddenPrefixes:
     - is_
   Exclude:
     - spec/**/*
@@ -485,7 +489,7 @@ Lint/DeprecatedClassMethods:
   Description: 'Check for deprecated class method calls.'
   Enabled: false
 
-Lint/DuplicatedKey:
+Lint/DuplicateHashKey:
   Description: 'Check for duplicate keys in hash literals.'
   Enabled: false
 
@@ -497,11 +501,16 @@ Lint/ElseLayout:
   Description: 'Check for odd code arrangement in an else block.'
   Enabled: false
 
+Lint/FlipFlop:
+  Description: 'Checks for flip flops'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-flip-flops'
+  Enabled: false
+
 Lint/FormatParameterMismatch:
   Description: 'The number of parameters to format/sprint must match the fields.'
   Enabled: false
 
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Description: "Don't suppress exception."
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#dont-hide-exceptions'
   Enabled: false
@@ -587,13 +596,6 @@ Performance/ReverseEach:
   Reference: 'https://github.com/JuanitoFatas/fast-ruby#enumerablereverseeach-vs-enumerablereverse_each-code'
   Enabled: false
 
-Performance/Sample:
-  Description: >-
-                  Use `sample` instead of `shuffle.first`,
-                  `shuffle.last`, and `shuffle[Fixnum]`.
-  Reference: 'https://github.com/JuanitoFatas/fast-ruby#arrayshufflefirst-vs-arraysample-code'
-  Enabled: false
-
 Performance/Size:
   Description: >-
                   Use `size` instead of `count` for counting
@@ -656,3 +658,135 @@ Rails/TimeZone:
 Rails/Validation:
   Description: 'Use validates :attribute, hash of validations.'
   Enabled: false
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/DuplicateElsifCondition:
+  Enabled: true
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/AccessorGrouping:
+  Enabled: true
+
+Style/ArrayCoercion:
+  Enabled: true
+
+Style/BisectedAttrAccessor:
+  Enabled: true
+
+Style/CaseLikeIf:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
+
+Style/HashAsLastArrayItem:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashLikeCase:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/RedundantAssignment:
+  Enabled: true
+
+Style/RedundantFetchBlock:
+  Enabled: true
+
+Style/RedundantFileExtensionInRequire:
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+Style/RedundantRegexpEscape:
+  Enabled: true
+
+Style/SlicingWithRange:
+  Enabled: true
+
+Rails/ActiveRecordCallbacksOrder:
+  Enabled: true
+
+Rails/FindById:
+  Enabled: true
+
+Rails/Inquiry:
+  Enabled: true
+
+Rails/MailerName:
+  Enabled: true
+
+Rails/MatchRoute:
+  Enabled: true
+
+Rails/NegateInclude:
+  Enabled: true
+
+Rails/Pluck:
+  Enabled: true
+
+Rails/PluckInWhere:
+  Enabled: true
+
+Rails/RenderInline:
+  Enabled: true
+
+Rails/RenderPlainText:
+  Enabled: true
+
+Rails/ShortI18n:
+  Enabled: true
+
+Rails/WhereExists:
+  Enabled: true
+
+Performance/AncestorsInclude:
+  Enabled: true
+
+Performance/BigDecimalWithNumericArgument:
+  Enabled: true
+
+Performance/RedundantSortBlock:
+  Enabled: true
+
+Performance/RedundantStringChars:
+  Enabled: true
+
+Performance/ReverseFirst:
+  Enabled: true
+
+Performance/SortReverse:
+  Enabled: true
+
+Performance/Squeeze:
+  Enabled: true
+
+Performance/StringInclude:
+  Enabled: true
+
+Lint/SelfAssignment:
+  Enabled: true

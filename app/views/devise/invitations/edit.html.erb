@@ -1,0 +1,33 @@
+<div class="c-login">
+  <div class="c-title">
+    <h2><%= t "devise.invitations.edit.header" %></h2>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= f.hidden_field :invitation_token, readonly: true %>
+
+    <% if f.object.class.require_password_on_accepting %>
+      <div class="field">
+        <%= f.label :password, class: "c-input" do %>
+          <span>Password</span>
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+          <% end %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, class: "c-input" do %>
+          <span>Password confirmation</span>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit t("devise.invitations.edit.submit_button"), class:"c-btn c-btn--yellow" %>
+    </div>
+  <% end %>
+</div>

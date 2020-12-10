@@ -72,6 +72,26 @@ export default class Modal extends React.Component {
       return;
     }
 
+    if (e.target.name === 'rollbar_enabled') {
+      const newApplicationInstance = _.cloneDeep(this.state.newApplicationInstance);
+      newApplicationInstance.rollbar_enabled = false;
+      if (e.target.checked) {
+        newApplicationInstance.rollbar_enabled = true;
+      }
+      this.setState({ newApplicationInstance });
+      return;
+    }
+
+    if (e.target.name === 'use_scoped_developer_key') {
+      const newApplicationInstance = _.cloneDeep(this.state.newApplicationInstance);
+      newApplicationInstance.use_scoped_developer_key = false;
+      if (e.target.checked) {
+        newApplicationInstance.use_scoped_developer_key = true;
+      }
+      this.setState({ newApplicationInstance });
+      return;
+    }
+
     this.setState({
       newApplicationInstance: {
         ...this.state.newApplicationInstance,

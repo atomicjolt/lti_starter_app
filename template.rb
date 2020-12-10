@@ -18,7 +18,7 @@ repo = "https://github.com/atomicjolt/lti_starter_app.git"
 #
 def source_paths
   paths = Array(super) +
-    [File.expand_path(File.dirname(__FILE__))]
+    [__dir__]
   paths << @working_dir
   paths
 end
@@ -42,6 +42,7 @@ end
 
 def ask_with_default(question, color, default)
   return default unless $stdin.tty?
+
   question = (question.split("?") << " [#{default}]?").join
   answer = ask(question, color)
   answer.to_s.strip.empty? ? default : answer
@@ -95,19 +96,19 @@ end
 # .env
 #
 create_file ".env" do
-  <<-EOF
-APP_SUBDOMAIN=#{url_safe_name}
-APP_ROOT_DOMAIN=atomicjolt.xyz
-APP_PORT=#{rails_port}
-ASSETS_SUBDOMAIN=#{url_safe_name}assets
-ASSETS_PORT=#{assets_port}
-ASSETS_URL=https://#{url_safe_name}assets.atomicjolt.xyz
-APP_DEFAULT_CANVAS_URL=https://atomicjolt.instructure.com
+  <<~EOF
+    APP_SUBDOMAIN=#{url_safe_name}
+    APP_ROOT_DOMAIN=atomicjolt.xyz
+    APP_PORT=#{rails_port}
+    ASSETS_SUBDOMAIN=#{url_safe_name}assets
+    ASSETS_PORT=#{assets_port}
+    ASSETS_URL=https://#{url_safe_name}assets.atomicjolt.xyz
+    APP_DEFAULT_CANVAS_URL=https://atomicjolt.instructure.com
 
-# Get developer id and key from canvas
-CANVAS_DEVELOPER_ID=1234
-CANVAS_DEVELOPER_KEY=1234
-EOF
+    # Get developer id and key from canvas
+    CANVAS_DEVELOPER_ID=1234
+    CANVAS_DEVELOPER_KEY=1234
+  EOF
 end
 
 ###########################################################
@@ -115,7 +116,7 @@ end
 # Modify application name
 #
 allowed = [".rb", ".js", ".yml", ".erb", ".json", ".md", ".jsx", ".example"]
-modify_files = Dir.glob("#{@working_dir}/**/*").reject { |f| File.directory?(f) || !allowed.include?(File.extname(f)) }
+modify_files = Dir.glob("#{@working_dir}/**/*").reject { |f| File.directory?(f) || allowed.exclude?(File.extname(f)) }
 modify_files << ".env"
 modify_files << "Gemfile"
 modify_files << ".ruby-gemset"
@@ -141,6 +142,46 @@ modify_files.each do |f|
   gsub_file(f, "LTI Starter App") do |_match|
     app_name.titleize
   end
+
+  gsub_file(f, "HelloWorld") do |_match|
+    app_name.titleize.gsub(" ", "")
+  end
+
+  gsub_file(f, "Hello World") do |_match|
+    app_name.titleize
+  end
+
+  gsub_file(f, "HELLOWORLD") do |_match|
+    app_name.underscore.upcase
+  end
+
+  gsub_file(f, "hello_world") do |_match|
+    app_name.underscore
+  end
+
+  gsub_file(f, "helloworld") do |_match|
+    url_safe_name
+  end
+end
+
+def rename_file(f)
+  if f.include?("hello_world")
+    File.rename(f, f.gsub("hello_world", app_name.underscore))
+  end
+end
+
+# Rename dirs
+Dir.glob("#{@working_dir}/**/*").each do |f|
+  if File.directory?(f)
+    rename_file(f)
+  end
+end
+
+# Renname File
+Dir.glob("#{@working_dir}/**/*").each do |f|
+  unless File.directory?(f)
+    rename_file(f)
+  end
 end
 
 ###########################################################
@@ -158,11 +199,9 @@ begin
 
     run "gem install bundler"
     run "bundle install"
-
-  rescue => ex
-    puts "Unable to use gemset #{url_safe_name}: #{ex}"
+  rescue StandardError => e
+    puts "Unable to use gemset #{url_safe_name}: #{e}"
   end
-
 rescue LoadError
   puts "RVM gem is currently unavailable."
 end

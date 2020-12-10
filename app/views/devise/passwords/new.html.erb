@@ -3,19 +3,18 @@
     <h2>Forgot your password?</h2>
   </div>
 
-  <div>
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-      <%= devise_error_messages! %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-      <%= f.label :email, class: "c-input" do %>
-        <%= f.email_field :email, autofocus: true %>
-      <% end %>
-      
-      <div class="actions">
-        <%= f.submit "Send me reset password instructions", class:"c-btn c-btn--yellow"%>
-      </div>
+    <%= f.label :email, class: "c-input" do %>
+      <span>Email</span>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     <% end %>
-  </div>
+
+    <div class="actions">
+      <%= f.submit "Send me reset password instructions", class:"c-btn c-btn--yellow" %>
+    </div>
+  <% end %>
 
   <div class="links">
     <%= render "shared/links" %>

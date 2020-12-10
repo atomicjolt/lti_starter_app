@@ -1,4 +1,4 @@
-class Nonce < ActiveRecord::Base
+class Nonce < ApplicationRecord
 
   def self.valid?(nonce)
     create!(nonce: nonce)

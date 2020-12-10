@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
+import { Link } from 'react-router3';
 import Modal from './modal';
 
 export default class ApplicationRow extends React.Component {
@@ -37,6 +37,9 @@ export default class ApplicationRow extends React.Component {
       <tr>
         <td>
           <Link to={`/applications/${this.props.application.id}/application_instances`}>{this.props.application.name}</Link>
+        </td>
+        <td>
+          <Link to={`/applications/${this.props.application.id}/lti_install_keys`}>Manage Keys</Link>
         </td>
         <td><span>{this.props.application.application_instances_count}</span></td>
         <td>

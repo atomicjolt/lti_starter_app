@@ -1,308 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`sites index matches the snapshot 1`] = `
-ShallowWrapper {
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Index
-    sites={
-      Object {
-        "1": Object {
-          "id": 1,
-          "url": "bfcoder.com",
-        },
-        "2": Object {
-          "id": 2,
-          "url": "atomicjolt.com",
-        },
+<div>
+  <Connect(Heading) />
+  <div
+    className="o-contain o-contain--full"
+  >
+    <Connect(SiteModal)
+      closeModal={[Function]}
+      isOpen={false}
+    />
+    <Header
+      newSite={[Function]}
+      openSettings={[Function]}
+    />
+    <List
+      deleteSite={[Function]}
+      sites={
+        Object {
+          "1": Object {
+            "id": 1,
+            "url": "bfcoder.com",
+          },
+          "2": Object {
+            "id": 2,
+            "url": "atomicjolt.com",
+          },
+        }
       }
-    }
-  />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateError": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "host",
-    "props": Object {
-      "children": Array [
-        <Connect(Heading) />,
-        <div
-          className="o-contain o-contain--full"
-        >
-          <Connect(SiteModal)
-            closeModal={[Function]}
-            isOpen={false}
-          />
-          <Header
-            newSite={[Function]}
-            openSettings={[Function]}
-          />
-          <List
-            sites={
-              Object {
-                "1": Object {
-                  "id": 1,
-                  "url": "bfcoder.com",
-                },
-                "2": Object {
-                  "id": 2,
-                  "url": "atomicjolt.com",
-                },
-              }
-            }
-          />
-        </div>,
-      ],
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {},
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <Connect(SiteModal)
-              closeModal={[Function]}
-              isOpen={false}
-            />,
-            <Header
-              newSite={[Function]}
-              openSettings={[Function]}
-            />,
-            <List
-              sites={
-                Object {
-                  "1": Object {
-                    "id": 1,
-                    "url": "bfcoder.com",
-                  },
-                  "2": Object {
-                    "id": 2,
-                    "url": "atomicjolt.com",
-                  },
-                }
-              }
-            />,
-          ],
-          "className": "o-contain o-contain--full",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "closeModal": [Function],
-              "isOpen": false,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "newSite": [Function],
-              "openSettings": [Function],
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "deleteSite": undefined,
-              "sites": Object {
-                "1": Object {
-                  "id": 1,
-                  "url": "bfcoder.com",
-                },
-                "2": Object {
-                  "id": 2,
-                  "url": "atomicjolt.com",
-                },
-              },
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-        ],
-        "type": "div",
-      },
-    ],
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <Connect(Heading) />,
-          <div
-            className="o-contain o-contain--full"
-          >
-            <Connect(SiteModal)
-              closeModal={[Function]}
-              isOpen={false}
-            />
-            <Header
-              newSite={[Function]}
-              openSettings={[Function]}
-            />
-            <List
-              sites={
-                Object {
-                  "1": Object {
-                    "id": 1,
-                    "url": "bfcoder.com",
-                  },
-                  "2": Object {
-                    "id": 2,
-                    "url": "atomicjolt.com",
-                  },
-                }
-              }
-            />
-          </div>,
-        ],
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {},
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <Connect(SiteModal)
-                closeModal={[Function]}
-                isOpen={false}
-              />,
-              <Header
-                newSite={[Function]}
-                openSettings={[Function]}
-              />,
-              <List
-                sites={
-                  Object {
-                    "1": Object {
-                      "id": 1,
-                      "url": "bfcoder.com",
-                    },
-                    "2": Object {
-                      "id": 2,
-                      "url": "atomicjolt.com",
-                    },
-                  }
-                }
-              />,
-            ],
-            "className": "o-contain o-contain--full",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "closeModal": [Function],
-                "isOpen": false,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "newSite": [Function],
-                "openSettings": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "deleteSite": undefined,
-                "sites": Object {
-                  "1": Object {
-                    "id": 1,
-                    "url": "bfcoder.com",
-                  },
-                  "2": Object {
-                    "id": 2,
-                    "url": "atomicjolt.com",
-                  },
-                },
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-          ],
-          "type": "div",
-        },
-      ],
-      "type": "div",
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-        "lifecycles": Object {
-          "componentDidUpdate": Object {
-            "onSetState": true,
-          },
-          "getDerivedStateFromProps": true,
-          "getSnapshotBeforeUpdate": true,
-          "setState": Object {
-            "skipsComponentDidUpdateOnNullish": true,
-          },
-        },
-      },
-    },
-  },
-}
+    />
+  </div>
+</div>
 `;

@@ -1,0 +1,101 @@
+{
+  "title": "LTI Advantage",
+  "scopes": [
+    "https://purl.imsglobal.org/spec/lti-ags/scope/lineitem",
+    "https://purl.imsglobal.org/spec/lti-ags/scope/result.readonly",
+    "https://purl.imsglobal.org/spec/lti-ags/scope/score",
+    "https://purl.imsglobal.org/spec/lti-nrps/scope/contextmembership.readonly",
+    "https://purl.imsglobal.org/spec/lti-ags/scope/lineitem.readonly"
+  ],
+  "extensions": [
+    {
+      "platform": "canvas.instructure.com",
+      "domain": "https://{domain}",
+      "tool_id": "helloworld",
+      "privacy_level": "public",
+      "settings": {
+        "text": "LTI Advantage Starter",
+        "icon_url": "https://{domain}/atomicjolt.png",
+        "selection_width": 500,
+        "selection_height": 500,
+        "placements": [
+          {
+            "placement": "editor_button",
+            "target_link_uri": "https://{domain}/lti_launches",
+            "text": "LTI Advantage Deep Link",
+            "enabled": true,
+            "icon_url": "https://{domain}/atomicjolt.png",
+            "message_type": "LtiDeepLinkingRequest",
+            "canvas_icon_class": "icon-lti"
+          },
+          {
+            "placement": "course_navigation",
+            "target_link_uri": "https://{domain}/lti_launches",
+            "text": "LTI Advantage Course Navigation",
+            "enabled": true,
+            "icon_url": "https://{domain}/atomicjolt.png",
+            "message_type": "LtiResourceLinkRequest",
+            "canvas_icon_class": "icon-lti"
+          },
+          {
+            "placement": "user_navigation",
+            "text": "LTI Advantage",
+            "enabled": true,
+            "icon_url": "https://{domain}/atomicjolt.png",
+            "message_type": "LtiResourceLinkRequest",
+            "target_link_uri": "https://{domain}/lti_launches"
+          },
+          {
+            "placement": "migration_selection",
+            "text": "LTI Advantage",
+            "enabled": true,
+            "icon_url": "https://{domain}/atomicjolt.png",
+            "message_type": "LtiDeepLinkingRequest",
+            "target_link_uri": "https://{domain}/lti_launches"
+          },
+          {
+            "placement": "link_selection",
+            "text": "LTI Advantage",
+            "enabled": true,
+            "icon_url": "https://{domain}/atomicjolt.png",
+            "message_type": "LtiDeepLinkingRequest",
+            "target_link_uri": "https://{domain}/lti_launches"
+          },
+          {
+            "placement": "homework_submission",
+            "text": "LTI Advantage",
+            "enabled": true,
+            "icon_url": "https://{domain}/atomicjolt.png",
+            "message_type": "LtiDeepLinkingRequest",
+            "target_link_uri": "https://{domain}/lti_launches"
+          },
+          {
+            "placement": "assignment_selection",
+            "text": "LTI Advantage",
+            "enabled": true,
+            "icon_url": "https://{domain}/atomicjolt.png",
+            "message_type": "LtiDeepLinkingRequest",
+            "target_link_uri": "https://{domain}/lti_launches"
+          },
+          {
+            "placement": "account_navigation",
+            "text": "LTI Advantage",
+            "enabled": true,
+            "icon_url": "https://{domain}/atomicjolt.png",
+            "message_type": "LtiResourceLinkRequest",
+            "target_link_uri": "https://{domain}/lti_launches"
+          }
+        ]
+      }
+    }
+  ],
+  "target_link_uri": "https://{domain}/lti_launches",
+  "oidc_initiation_url": "https://{domain}/lti_launches/init",
+  "public_jwk": "",
+  "description": "LTI Advantage starter application",
+  "custom_fields": {
+    "canvas_sis_id": "$Canvas.user.sisid",
+    "canvas_user_id": "$Canvas.user.id",
+    "custom_canvas_api_domain": "$Canvas.api.domain"
+  }
+}

@@ -8,7 +8,7 @@ RSpec.describe Api::ImsImportsController, type: :controller do
   end
 
   before do
-    setup_application_and_instance
+    setup_application_instance
     tool_consumer_instance_guid = "4MRcxnx6vQbFXxhLb8005m5WXFM2Z2i8lQwhJ1QT:canvas-lms"
     initial_context_id = "a07291ea2fa1315059ed3bf0135a336d1eebe057"
     @import_context_id = "3155b3a04eba69bc0e52b987d3ffc465156daded"
@@ -56,13 +56,11 @@ RSpec.describe Api::ImsImportsController, type: :controller do
       # For authentication a JWT will be included in the Authorization header using the Bearer scheme,
       # it is signed using the shared secret for the tool and will include the stored consumer key in the
       # kid field of the token's header object.
-      payload = {}
-      @token = AuthToken.issue_token(
-        payload,
-        24.hours.from_now,
+      @token = JWT.encode(
+        { exp: 24.hours.from_now.to_i },
         @application_instance.lti_secret,
-        nil,
-        { kid: @application_instance.lti_key },
+        "HS256",
+        { typ: "JWT", alg: "HS256", kid: @application_instance.lti_key },
       )
       request.headers["Authorization"] = "Bearer #{@token}"
     end

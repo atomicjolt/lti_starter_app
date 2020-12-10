@@ -39,6 +39,8 @@ export default class Form extends React.Component {
     ltiConfigParseError: PropTypes.string,
     canvas_token_preview: PropTypes.string,
     anonymous: PropTypes.bool,
+    rollbar_enabled: PropTypes.bool,
+    use_scoped_developer_key: PropTypes.bool,
   };
 
   selectSite(option) {
@@ -67,6 +69,8 @@ export default class Form extends React.Component {
       onSelect: () => this.props.newSite()
     });
 
+    const selectedOption = _.find(options, opt => opt.value === this.props.site_id);
+
     let erroneousConfigWarning = null;
     if (this.props.configParseError) {
       erroneousConfigWarning = (
@@ -89,13 +93,11 @@ export default class Form extends React.Component {
               <span>Canvas Url</span>
               <ReactSelect
                 options={options}
-                value={this.props.site_id}
+                value={selectedOption}
                 name="site_id"
                 placeholder="Select a Canvas Domain"
                 onChange={option => this.selectSite(option)}
-                searchable={false}
-                arrowRenderer={() => null}
-                clearable={false}
+                isClearable={false}
               />
             </div>
           </div>
@@ -165,6 +167,36 @@ export default class Form extends React.Component {
                 type: 'checkbox',
                 value: 'true',
                 checked: this.props.anonymous,
+                onChange
+              }}
+            />
+          </div>
+          <div className="o-grid__item u-full">
+            <Input
+              className="c-checkbox"
+              labelText="Rollbar Enabled"
+              helperText="Indicates whether or not rollbar is enabled for this app instance"
+              inputProps={{
+                id: 'rollbar_enabled_input',
+                name: 'rollbar_enabled',
+                type: 'checkbox',
+                value: 'true',
+                checked: this.props.rollbar_enabled,
+                onChange
+              }}
+            />
+          </div>
+          <div className="o-grid__item u-full">
+            <Input
+              helperText="Restricts the Canvas tokens generated during oauth to the minimum necessary for this application. This should only be used if the oauth key and secret are populated above and are for a scoped developer key."
+              className="c-checkbox"
+              labelText="Use Scoped Developer Key"
+              inputProps={{
+                id: 'use_scoped_developer_key_input',
+                name: 'use_scoped_developer_key',
+                type: 'checkbox',
+                value: 'true',
+                checked: this.props.use_scoped_developer_key,
                 onChange
               }}
             />

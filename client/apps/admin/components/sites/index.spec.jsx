@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Index } from './index';
-import sites from '../../reducers/sites';
 
 jest.mock('../../libs/assets');
 describe('sites index', () => {
@@ -23,6 +22,7 @@ describe('sites index', () => {
   beforeEach(() => {
     props = {
       sites: sitesData,
+      deleteSite: () => {},
     };
     result = shallow(<Index {...props} />);
   });

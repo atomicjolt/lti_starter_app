@@ -28,6 +28,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to params["oauth_complete_url"]
     else
       set_lti_launch_values if params[:oauth_consumer_key].present?
+      set_lti_advantage_launch_values if params[:id_token].present?
       render "lti_launches/index", layout: "client"
     end
   end
@@ -156,7 +157,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     kind = params[:action].titleize # Should give us Facebook, Twitter, Linked In, etc
     @user = User.new
     @user.skip_confirmation!
-    @user.password = SecureRandom.hex(15)
+    @user.password = Devise.friendly_token(72)
     @user.password_confirmation = @user.password
     @user.create_method = User.create_methods[:oauth]
     @user.lti_user_id = auth["extra"]["raw_info"]["lti_user_id"]

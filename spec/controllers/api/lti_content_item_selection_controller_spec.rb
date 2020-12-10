@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Api::LtiContentItemSelectionController, type: :controller do
   before do
     setup_lti_users
-    setup_application_and_instance
+    setup_application_instance
 
     @content_item_return_url = "http://www.example.com/return_to_me"
     @content_item_url = "http://www.example.com/lti_launch"
@@ -82,7 +82,7 @@ RSpec.describe Api::LtiContentItemSelectionController, type: :controller do
   end
 
   context "with jwt token" do
-    describe "GET index" do
+    describe "POST create" do
       it "gets html launch params" do
         request.headers["Authorization"] = @student_token
         post :create, params: @html_params, format: :json

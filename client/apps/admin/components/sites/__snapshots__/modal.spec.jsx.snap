@@ -1,480 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`site modal matches the snapshot 1`] = `
-ShallowWrapper {
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <SiteModal
+<Modal
+  ariaHideApp={true}
+  bodyOpenClassName="ReactModal__Body--open"
+  className="c-modal c-modal--site is-open"
+  closeTimeoutMS={0}
+  contentLabel="Modal"
+  isOpen={true}
+  onRequestClose={[Function]}
+  overlayClassName="unused"
+  parentSelector={[Function]}
+  portalClassName="ReactModalPortal"
+  role="dialog"
+  shouldCloseOnEsc={true}
+  shouldCloseOnOverlayClick={true}
+  shouldFocusAfterRender={true}
+  shouldReturnFocusAfterClose={true}
+>
+  <h2
+    className="c-modal__title"
+  >
+    Update
+     Domain
+  </h2>
+  <h3
+    className="c-modal__subtext"
+  >
+    <div>
+      <div>
+        Use the redirect URI: 
+      </div>
+      <div>
+        <a
+          className="c-modal__subtext-link"
+          href="bfcoder.com/accounts/site_admin/developer_keys"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Get Canvas Developer Keys Here
+        </a>
+      </div>
+    </div>
+  </h3>
+  <h3
+    className="c-modal__subtext"
+  >
+    Url must begin with "https://"
+  </h3>
+  <SiteForm
     closeModal={[Function]}
-    createSite={[Function]}
-    isOpen={true}
-    settings={
-      Object {
-        "canvas_callback_url": "",
-        "lti_key": "",
-      }
-    }
-    site={
-      Object {
-        "id": 1,
-        "url": "bfcoder.com",
-      }
-    }
-    updateSite={[Function]}
-  />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateError": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "class",
-    "props": Object {
-      "ariaHideApp": true,
-      "bodyOpenClassName": "ReactModal__Body--open",
-      "children": Array [
-        <h2
-          className="c-modal__title"
-        >
-          Update
-           Domain
-        </h2>,
-        <h3
-          className="c-modal__subtext"
-        >
-          <div>
-            <div>
-              Use the redirect URI: 
-              
-            </div>
-            <div>
-              <a
-                className="c-modal__subtext-link"
-                href="bfcoder.com/accounts/site_admin/developer_keys"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                Get Canvas Developer Keys Here
-              </a>
-            </div>
-          </div>
-        </h3>,
-        <h3
-          className="c-modal__subtext"
-        >
-          Url must begin with "https://"
-        </h3>,
-        <SiteForm
-          closeModal={[Function]}
-          id={1}
-          isUpdate={true}
-          onChange={[Function]}
-          setupSite={[Function]}
-          url="bfcoder.com"
-        />,
-      ],
-      "className": "c-modal c-modal--site is-open",
-      "closeTimeoutMS": 0,
-      "contentLabel": "Modal",
-      "isOpen": true,
-      "onRequestClose": [Function],
-      "overlayClassName": "unused",
-      "parentSelector": [Function],
-      "portalClassName": "ReactModalPortal",
-      "shouldCloseOnEsc": true,
-      "shouldCloseOnOverlayClick": true,
-      "shouldFocusAfterRender": true,
-      "shouldReturnFocusAfterClose": true,
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Update",
-            " Domain",
-          ],
-          "className": "c-modal__title",
-        },
-        "ref": null,
-        "rendered": Array [
-          "Update",
-          " Domain",
-        ],
-        "type": "h2",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": <div>
-            <div>
-              Use the redirect URI: 
-              
-            </div>
-            <div>
-              <a
-                className="c-modal__subtext-link"
-                href="bfcoder.com/accounts/site_admin/developer_keys"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                Get Canvas Developer Keys Here
-              </a>
-            </div>
-          </div>,
-          "className": "c-modal__subtext",
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <div>
-                Use the redirect URI: 
-                
-              </div>,
-              <div>
-                <a
-                  className="c-modal__subtext-link"
-                  href="bfcoder.com/accounts/site_admin/developer_keys"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Get Canvas Developer Keys Here
-                </a>
-              </div>,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  "Use the redirect URI: ",
-                  "",
-                ],
-              },
-              "ref": null,
-              "rendered": Array [
-                "Use the redirect URI: ",
-                "",
-              ],
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": <a
-                  className="c-modal__subtext-link"
-                  href="bfcoder.com/accounts/site_admin/developer_keys"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Get Canvas Developer Keys Here
-                </a>,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "Get Canvas Developer Keys Here",
-                  "className": "c-modal__subtext-link",
-                  "href": "bfcoder.com/accounts/site_admin/developer_keys",
-                  "rel": "noopener noreferrer",
-                  "target": "_blank",
-                },
-                "ref": null,
-                "rendered": "Get Canvas Developer Keys Here",
-                "type": "a",
-              },
-              "type": "div",
-            },
-          ],
-          "type": "div",
-        },
-        "type": "h3",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "Url must begin with \\"https://\\"",
-          "className": "c-modal__subtext",
-        },
-        "ref": null,
-        "rendered": "Url must begin with \\"https://\\"",
-        "type": "h3",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {
-          "closeModal": [Function],
-          "id": 1,
-          "isUpdate": true,
-          "onChange": [Function],
-          "setupSite": [Function],
-          "url": "bfcoder.com",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-    ],
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "ariaHideApp": true,
-        "bodyOpenClassName": "ReactModal__Body--open",
-        "children": Array [
-          <h2
-            className="c-modal__title"
-          >
-            Update
-             Domain
-          </h2>,
-          <h3
-            className="c-modal__subtext"
-          >
-            <div>
-              <div>
-                Use the redirect URI: 
-                
-              </div>
-              <div>
-                <a
-                  className="c-modal__subtext-link"
-                  href="bfcoder.com/accounts/site_admin/developer_keys"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Get Canvas Developer Keys Here
-                </a>
-              </div>
-            </div>
-          </h3>,
-          <h3
-            className="c-modal__subtext"
-          >
-            Url must begin with "https://"
-          </h3>,
-          <SiteForm
-            closeModal={[Function]}
-            id={1}
-            isUpdate={true}
-            onChange={[Function]}
-            setupSite={[Function]}
-            url="bfcoder.com"
-          />,
-        ],
-        "className": "c-modal c-modal--site is-open",
-        "closeTimeoutMS": 0,
-        "contentLabel": "Modal",
-        "isOpen": true,
-        "onRequestClose": [Function],
-        "overlayClassName": "unused",
-        "parentSelector": [Function],
-        "portalClassName": "ReactModalPortal",
-        "shouldCloseOnEsc": true,
-        "shouldCloseOnOverlayClick": true,
-        "shouldFocusAfterRender": true,
-        "shouldReturnFocusAfterClose": true,
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Update",
-              " Domain",
-            ],
-            "className": "c-modal__title",
-          },
-          "ref": null,
-          "rendered": Array [
-            "Update",
-            " Domain",
-          ],
-          "type": "h2",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": <div>
-              <div>
-                Use the redirect URI: 
-                
-              </div>
-              <div>
-                <a
-                  className="c-modal__subtext-link"
-                  href="bfcoder.com/accounts/site_admin/developer_keys"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Get Canvas Developer Keys Here
-                </a>
-              </div>
-            </div>,
-            "className": "c-modal__subtext",
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <div>
-                  Use the redirect URI: 
-                  
-                </div>,
-                <div>
-                  <a
-                    className="c-modal__subtext-link"
-                    href="bfcoder.com/accounts/site_admin/developer_keys"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    Get Canvas Developer Keys Here
-                  </a>
-                </div>,
-              ],
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": Array [
-                    "Use the redirect URI: ",
-                    "",
-                  ],
-                },
-                "ref": null,
-                "rendered": Array [
-                  "Use the redirect URI: ",
-                  "",
-                ],
-                "type": "div",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": <a
-                    className="c-modal__subtext-link"
-                    href="bfcoder.com/accounts/site_admin/developer_keys"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    Get Canvas Developer Keys Here
-                  </a>,
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "Get Canvas Developer Keys Here",
-                    "className": "c-modal__subtext-link",
-                    "href": "bfcoder.com/accounts/site_admin/developer_keys",
-                    "rel": "noopener noreferrer",
-                    "target": "_blank",
-                  },
-                  "ref": null,
-                  "rendered": "Get Canvas Developer Keys Here",
-                  "type": "a",
-                },
-                "type": "div",
-              },
-            ],
-            "type": "div",
-          },
-          "type": "h3",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "Url must begin with \\"https://\\"",
-            "className": "c-modal__subtext",
-          },
-          "ref": null,
-          "rendered": "Url must begin with \\"https://\\"",
-          "type": "h3",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "closeModal": [Function],
-            "id": 1,
-            "isUpdate": true,
-            "onChange": [Function],
-            "setupSite": [Function],
-            "url": "bfcoder.com",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-      ],
-      "type": [Function],
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-        "lifecycles": Object {
-          "componentDidUpdate": Object {
-            "onSetState": true,
-          },
-          "getDerivedStateFromProps": true,
-          "getSnapshotBeforeUpdate": true,
-          "setState": Object {
-            "skipsComponentDidUpdateOnNullish": true,
-          },
-        },
-      },
-    },
-  },
-}
+    id={1}
+    isUpdate={true}
+    onChange={[Function]}
+    setupSite={[Function]}
+    url="bfcoder.com"
+  />
+</Modal>
 `;

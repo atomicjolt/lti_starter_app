@@ -2,7 +2,7 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :confirmable,
+  devise :database_authenticatable, :invitable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :authentications, dependent: :destroy, inverse_of: :user
@@ -10,8 +10,16 @@ class User < ApplicationRecord
   has_many :roles, through: :permissions
 
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+  validates :password, password_strength: { use_dictionary: true }, allow_nil: true
 
   enum create_method: %i{sign_up oauth lti}
+
+  scope :oauth_user, -> { where(create_method: create_methods[:oauth]) }
+  scope :sign_up_user, -> { where(create_method: create_methods[:sign_up]) }
+  scope :unconfirmed, -> { where(confirmed_at: nil) }
+  scope :with_role_id, ->(role_ids) { joins(:permissions).where(permissions: { role_id: role_ids }) }
+  scope :by_name, -> { order(:name) }
+  scope :by_email, -> { order(:email) }
 
   def display_name
     name || email
@@ -34,7 +42,7 @@ class User < ApplicationRecord
       user_dup.update_attributes(user.copy_attributes)
 
       if user_dup.password.blank?
-        user_dup.password = SecureRandom.hex(15)
+        user_dup.password = Devise.friendly_token(72)
         user_dup.password_confirmation = user_dup.password
       end
 
@@ -234,6 +242,13 @@ class User < ApplicationRecord
     has_role?(
       context_id,
       *roles,
+    )
+  end
+
+  def student_in_course?(context_id = nil)
+    has_role?(
+      context_id,
+      LTI::Roles::LEARNER,
     )
   end
 

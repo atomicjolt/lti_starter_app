@@ -26,3 +26,5 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
+
+<%= render "shared/rollbar" if current_application_instance.rollbar_enabled? %>
