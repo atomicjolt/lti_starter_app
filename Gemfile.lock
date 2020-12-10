@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/IMSGlobal/caliper-ruby.git
+  revision: 16256300ecdf13bd2438ffc166b1a93f240b9839
+  branch: develop
+  specs:
+    ims_caliper (1.1)
+
+GIT
   remote: https://github.com/alexpeattie/heroku_secrets.git
   revision: 717af8e0acf399bc88d2c8c1a7e230023942af0f
   specs:
@@ -122,6 +129,8 @@ GEM
       actionmailer (>= 5.0)
       devise (>= 4.6)
     diff-lcs (1.4.4)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
@@ -169,6 +178,9 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     hashdiff (1.0.1)
     hashie (4.1.0)
+    http-accept (1.7.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     httparty (0.18.1)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -203,6 +215,8 @@ GEM
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.2.7)
+    macaddr (1.7.2)
+      systemu (~> 2.6.5)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     mail_view (2.0.4)
@@ -222,6 +236,7 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     nenv (0.3.0)
+    netrc (0.11.0)
     nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
@@ -322,6 +337,11 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rexml (3.2.4)
     rolify (5.3.0)
     rollbar (2.27.0)
@@ -404,6 +424,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     strong_password (0.0.9)
+    systemu (2.6.5)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     thor (1.0.1)
@@ -413,7 +434,12 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.7)
     unicode-display_width (1.7.0)
+    uuid (2.3.9)
+      macaddr (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (3.7.0)
@@ -468,6 +494,7 @@ DEPENDENCIES
   httparty
   hub
   ims-lti (~> 2.1.5)
+  ims_caliper!
   json-jwt
   jwt
   launchy
@@ -495,6 +522,7 @@ DEPENDENCIES
   rb-fchange
   rb-fsevent
   rb-inotify
+  rest-client
   rolify
   rollbar
   rspec-rails
@@ -513,6 +541,7 @@ DEPENDENCIES
   strong_password
   tzinfo-data
   uglifier
+  uuid
   web-console (~> 3.7.0)
   webmock
   webpacker
@@ -520,4 +549,4 @@ DEPENDENCIES
   yajl-ruby
 
 BUNDLED WITH
-   1.17.3
+   2.1.4

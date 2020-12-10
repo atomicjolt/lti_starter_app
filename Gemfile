@@ -68,6 +68,13 @@ gem "webpacker"
 # Application secrets checker
 gem "nuclear_secrets"
 
+# Caliper
+gem "rest-client"
+gem "uuid"
+git "https://github.com/IMSGlobal/caliper-ruby.git", branch: "develop" do
+  gem "ims_caliper"
+end
+
 # This is only here because we are on ruby 2.4. When we upgrade ruby we can remove this
 gem "sprockets", "~>3.7.2"
 

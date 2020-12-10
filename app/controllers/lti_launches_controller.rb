@@ -7,6 +7,7 @@ class LtiLaunchesController < ApplicationController
 
   skip_before_action :verify_authenticity_token
   before_action :do_lti, except: [:init, :launch]
+  after_action :do_caliper
 
   def index
     if current_application_instance.disabled_at
@@ -58,6 +59,21 @@ class LtiLaunchesController < ApplicationController
       @canvas_auth_required = true
     end
     set_lti_launch_values
+  end
+
+  def do_caliper
+    events = Kaliper::LtiUtils.from_lti_1_2(
+      application_instance: current_application_instance,
+      user: current_user,
+      params: params,
+    )
+    options = Caliper::Options.new
+    sensor = Caliper::Sensor.new('https://www.atomicjolt.com/sensors/1', options)
+    requestor = Caliper::Request::HttpRequestor.new({
+      'host' => "http://learncaliper.herokuapp.com/api/consumer/events/1ebb1f70-5e82-0137-e4ac-4a8f9eeae0c8",
+      'auth_token' => "1ebb1f70-5e82-0137-e4ac-4a8f9eeae0c8",
+    })
+    requestor.send(sensor, events.tool_use_event)
   end
 
 end
