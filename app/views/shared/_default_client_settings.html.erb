@@ -43,6 +43,8 @@
       settings[:canvas_course_id] = @lti_params.course_id
       settings[:canvas_account_id] = @lti_params.account_id
       settings[:launch_context] = @lti_params.launch_context
+      settings[:tool_consumer_instance_guid] = @lti_params.tool_consumer_instance_guid
+      settings[:tool_consumer_instance_name] = @lti_params.tool_consumer_instance_name
     elsif @is_lti_launch
       # LTI 1.0 - 1.2 Launch
       settings[:oauth_consumer_key]                     = params[:oauth_consumer_key]
