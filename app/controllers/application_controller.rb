@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
   rescue_from Exception, with: :internal_error
   def internal_error(exception)
     record_exception(exception)
-    render_error 500, "Internal error: #{exception.message}"
+    raise exception
   end
 
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
