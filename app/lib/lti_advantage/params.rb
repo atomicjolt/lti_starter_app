@@ -28,6 +28,18 @@ module LtiAdvantage
       token[LtiAdvantage::Definitions::CONTEXT_CLAIM] || {}
     end
 
+    def tool_consumer_instance_guid
+      tool_platform_data["guid"]
+    end
+
+    def tool_consumer_instance_name
+      tool_platform_data["name"]
+    end
+
+    def tool_platform_data
+      token[LtiAdvantage::Definitions::TOOL_PLATFORM_CLAIM] || {}
+    end
+
     def course_id
       value = custom_params["canvas_course_id"]
       if value != "$Canvas.course.id"
