@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_14_195556) do
+ActiveRecord::Schema.define(version: 2020_12_28_173610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -161,16 +161,29 @@ ActiveRecord::Schema.define(version: 2020_09_14_195556) do
     t.index ["kid"], name: "index_jwks_on_kid"
   end
 
+  create_table "lti_contexts", force: :cascade do |t|
+    t.string "context_id", null: false
+    t.string "label"
+    t.string "title"
+    t.bigint "lti_deployment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["context_id", "lti_deployment_id"], name: "index_lti_contexts_on_context_id_and_lti_deployment_id", unique: true
+    t.index ["lti_deployment_id"], name: "index_lti_contexts_on_lti_deployment_id"
+  end
+
   create_table "lti_deployments", force: :cascade do |t|
     t.bigint "application_instance_id"
     t.string "deployment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "lti_install_id"
+    t.bigint "lti_platform_instance_id"
     t.index ["application_instance_id"], name: "index_lti_deployments_on_application_instance_id"
     t.index ["deployment_id", "application_instance_id"], name: "index_lti_deployments_on_d_id_and_ai_id", unique: true
     t.index ["deployment_id"], name: "index_lti_deployments_on_deployment_id"
     t.index ["lti_install_id"], name: "index_lti_deployments_on_lti_install_id"
+    t.index ["lti_platform_instance_id"], name: "index_lti_deployments_on_lti_platform_instance_id"
   end
 
   create_table "lti_installs", force: :cascade do |t|
@@ -196,8 +209,26 @@ ActiveRecord::Schema.define(version: 2020_09_14_195556) do
     t.string "token"
     t.string "context_id"
     t.string "tool_consumer_instance_guid"
+    t.string "resource_link_id"
+    t.string "tenant"
+    t.string "title"
+    t.boolean "is_configured", default: true
+    t.bigint "parent_id"
+    t.bigint "matching_ids", array: true
+    t.bigint "lti_context_id"
     t.index ["context_id"], name: "index_lti_launches_on_context_id"
-    t.index ["token", "context_id"], name: "index_lti_launches_on_token_and_context_id", unique: true
+    t.index ["lti_context_id"], name: "index_lti_launches_on_lti_context_id"
+    t.index ["token", "context_id", "resource_link_id", "tenant"], name: "index_lti_launches_on_launch", unique: true
+  end
+
+  create_table "lti_platform_instances", force: :cascade do |t|
+    t.string "guid", null: false
+    t.string "iss", null: false
+    t.string "name"
+    t.string "product_family_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guid", "iss"], name: "index_lti_platform_instances_on_guid_and_iss", unique: true
   end
 
   create_table "nonces", force: :cascade do |t|
@@ -315,5 +346,8 @@ ActiveRecord::Schema.define(version: 2020_09_14_195556) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "lti_contexts", "lti_deployments"
   add_foreign_key "lti_deployments", "lti_installs"
+  add_foreign_key "lti_deployments", "lti_platform_instances"
+  add_foreign_key "lti_launches", "lti_contexts"
 end

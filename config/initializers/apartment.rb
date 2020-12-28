@@ -25,8 +25,11 @@ Apartment.configure do |config|
     ImsExport
     RequestStatistic
     RequestUserStatistic
+    LtiPlatformInstance
     LtiDeployment
     LtiInstall
+    LtiContext
+    LtiLaunch
     Jwk
     OpenIdState
   }
