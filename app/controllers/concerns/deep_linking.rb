@@ -32,6 +32,7 @@ module Concerns
           jwt_context_id: jwt_context_id,
           jwt_tool_consumer_instance_guid: jwt_tool_consumer_instance_guid,
           host: host,
+          application_instance: application_instance,
         ),
       }
 
@@ -48,14 +49,32 @@ module Concerns
       params:,
       jwt_context_id:,
       jwt_tool_consumer_instance_guid:,
-      host:
+      host:,
+      application_instance:
     )
       out = []
 
       if params[:type] == "html"
         out << {
           "type" => "html",
-          "html" => "<h1>Atomic Jolt</h1>",
+          "html" => "<h1>#{params[:title] || 'Atomic Jolt'}</h1>",
+        }
+      elsif params[:type] == "ltiResourceLink"
+        lti_launch = LtiLaunch.create!(
+          tool_consumer_instance_guid: jwt_tool_consumer_instance_guid,
+          context_id: jwt_context_id,
+          application_instance_id: application_instance.id,
+          config: { title: params[:title] },
+        )
+        url = Rails.application.routes.url_helpers.lti_launch_url(
+          lti_launch,
+          protocol: "https",
+          host: host,
+        )
+        out << {
+          "type" => "ltiResourceLink",
+          "title" => "Atomic Jolt",
+          "url" => url,
         }
       end
 

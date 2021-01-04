@@ -17,7 +17,8 @@ describe ApplicationController, type: :controller do
                                       state_nonce: nonce,
                                       params: params.as_json,
                                     })
-      url = build_response(state, params, nonce)
+      redirect_url = "https://helloworld.atomicjolt.xyz/lti_launches"
+      url = build_response(state: state, params: params, nonce: nonce, redirect_uri: redirect_url)
       request.cookies[:state] = state
       render plain: "Url: #{url}"
     end

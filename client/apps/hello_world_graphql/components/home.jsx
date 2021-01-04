@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
+import { Redirect } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { withSettings } from 'atomic-fuel/libs/components/settings';
 
@@ -24,6 +25,10 @@ const Home = ({ settings }) => {
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
 
+  //if (!settings.lti_launch_config.title) {
+  //  return <Redirect to="/setup" />;
+  //}
+
   const img = assets('./images/atomicjolt.jpg');
 
   if (settings.deep_link_settings) {
@@ -36,6 +41,9 @@ const Home = ({ settings }) => {
 
   return (
     <div>
+      <h1>
+        { settings.lti_launch_config.title }
+      </h1>
       <img src={img} alt="Atomic Jolt Logo" />
       <p>
         {data.welcomeMessage}

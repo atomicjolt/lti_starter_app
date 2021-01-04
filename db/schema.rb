@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_28_173610) do
+ActiveRecord::Schema.define(version: 2020_12_18_143734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -209,16 +209,16 @@ ActiveRecord::Schema.define(version: 2020_12_28_173610) do
     t.string "token"
     t.string "context_id"
     t.string "tool_consumer_instance_guid"
-    t.string "resource_link_id"
-    t.string "tenant"
+    t.string "resource_link_id", default: "", null: false
     t.string "title"
     t.boolean "is_configured", default: true
     t.bigint "parent_id"
-    t.bigint "matching_ids", array: true
     t.bigint "lti_context_id"
+    t.bigint "application_instance_id"
+    t.index ["application_instance_id"], name: "index_lti_launches_on_application_instance_id"
     t.index ["context_id"], name: "index_lti_launches_on_context_id"
     t.index ["lti_context_id"], name: "index_lti_launches_on_lti_context_id"
-    t.index ["token", "context_id", "resource_link_id", "tenant"], name: "index_lti_launches_on_launch", unique: true
+    t.index ["token", "context_id", "resource_link_id", "application_instance_id"], name: "index_lti_launches_on_launch", unique: true
   end
 
   create_table "lti_platform_instances", force: :cascade do |t|
@@ -349,5 +349,6 @@ ActiveRecord::Schema.define(version: 2020_12_28_173610) do
   add_foreign_key "lti_contexts", "lti_deployments"
   add_foreign_key "lti_deployments", "lti_installs"
   add_foreign_key "lti_deployments", "lti_platform_instances"
+  add_foreign_key "lti_launches", "application_instances"
   add_foreign_key "lti_launches", "lti_contexts"
 end

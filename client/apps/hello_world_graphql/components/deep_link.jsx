@@ -11,9 +11,11 @@ export default function DeepLink(props) {
     deepLinkSettings,
   } = props;
 
+  const [title, setTitle] = React.useState('Title');
+
   const CREATE_DEEP_LINK_JWT = gql`
-    mutation createDeepLinkJwt($type: String!) {
-      createLtiDeepLinkJwt(type: $type) {
+    mutation createDeepLinkJwt($type: String!, $title: String!) {
+      createLtiDeepLinkJwt(type: $type, title: $title) {
         deepLinkJwt
       }
     }
@@ -37,20 +39,33 @@ export default function DeepLink(props) {
     );
   }
 
+  const selectItem = (type) => {
+    createLtiDeepLinkJwt({
+      variables: { type, title },
+    });
+  };
+    console.log(deepLinkSettings);
+
   return (
     <div>
-      <button
-        type="submit"
-        onClick={() => {
-          createLtiDeepLinkJwt({
-            variables: {
-              type: 'html',
-            },
-          });
-        }}
-      >
-        Save
-      </button>
+      <h2>Select an item to insert:</h2>
+      <label for="title">Title:</label>
+      <input type="text" value={title} name="title" onChange={(e) => setTitle(e.target.value)} />
+      <ul>
+        <li><button type="button" onClick={() => selectItem('html')}>Html Fragment</button></li>
+      </ul>
+      <ul>
+        <li>
+          <button type="submit" onClick={() => selectItem('ltiResourceLink')}>LTI Resource Link</button>
+        </li>
+      </ul>
+      <p>
+        See
+          <a target="_top" href="https://www.imsglobal.org/spec/lti-dl/v2p0#content-item-types">
+            https://www.imsglobal.org/spec/lti-dl/v2p0#content-item-types
+          </a>
+        for examples of item types that can be provided via deep linking.
+      </p>
     </div>
   );
 

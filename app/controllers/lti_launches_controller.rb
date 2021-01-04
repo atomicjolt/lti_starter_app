@@ -9,21 +9,42 @@ class LtiLaunchesController < ApplicationController
   before_action :do_lti, except: [:init, :launch]
 
   def index
+    # This is an LTI 1.2 launch with no launch token, or an LTI 1.3
+    # launch.
     if current_application_instance.disabled_at
       render file: File.join(Rails.root, "public", "disabled.html")
     end
 
-    # LTI advantage example code
     if @lti_token
-      @lti_advantage_examples = LtiAdvantage::Examples.new(@lti_token, current_application_instance)
-      @lti_advantage_examples.run
+      token = lti_advantage_launch_token
+      if token
+        @lti_launch = LtiLaunch.lti_advantage_launch(
+          token: token,
+          lti_token: @lti_token,
+          application_instance: current_application_instance
+        )
+
+        # LTI advantage example code
+        @lti_advantage_examples = LtiAdvantage::Examples.new(@lti_token, current_application_instance)
+        @lti_advantage_examples.run
+      end
     end
 
     setup_lti_response
   end
 
   def show
-    @lti_launch = LtiLaunch.find_by(token: params[:id], context_id: params[:context_id])
+    # This is an LTI 1.2 launch with the token as a path parameter
+    token = params[:id]
+    @lti_launch = LtiLaunch.launch(
+      token: token,
+      context_id: params[:context_id],
+      context_id_history: params[:canvas_context_id_history]&.split(","),
+      resource_link_id: params[:resource_link_id],
+      application_instance: current_application_instance,
+    )
+    return not_found("Unable to find LTI Launch with token: #{token}") if !@lti_launch
+
     setup_lti_response
     render :index
   end
@@ -42,7 +63,12 @@ class LtiLaunchesController < ApplicationController
   # Support Open ID connect flow for LTI 1.3
   def init
     nonce = SecureRandom.hex(64)
-    url = build_response(LtiAdvantage::OpenId.state, params, nonce)
+    url = build_response(
+      state: LtiAdvantage::OpenId.state,
+      params: params,
+      nonce: nonce,
+      redirect_uri: lti_launches_url
+    )
     respond_to do |format|
       format.html { redirect_to url }
     end
@@ -60,4 +86,13 @@ class LtiLaunchesController < ApplicationController
     set_lti_launch_values
   end
 
+  def lti_advantage_launch_token
+    # For LTI advantage, we use the target_link_uri claim to find the token
+    uri = URI.parse(@lti_token[LtiAdvantage::Definitions::TARGET_LINK_URI_CLAIM])
+    uri_params = Rack::Utils.parse_query(uri.query)
+
+    # Accept token as either query parameter or path parameter
+    uri_params[:lti_launch_token] ||
+      /^#{Regexp.quote(lti_launches_path)}\/(.+)$/.match(uri.path) { |m| m[1] }
+  end
 end

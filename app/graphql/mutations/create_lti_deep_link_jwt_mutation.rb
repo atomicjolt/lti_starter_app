@@ -4,13 +4,15 @@ class Mutations::CreateLtiDeepLinkJwtMutation < Mutations::BaseMutation
   null true
 
   argument :type, String, required: true
+  argument :title, String, required: false
 
   field :deep_link_jwt, String, null: false
   field :errors, [String], null: false
 
-  def resolve(type:)
+  def resolve(type:, title:)
     params = {}
     params[:type] = type
+    params[:title] = title
 
     deep_link_jwt = create_deep_link_jwt(
       application_instance: context[:current_application_instance],
