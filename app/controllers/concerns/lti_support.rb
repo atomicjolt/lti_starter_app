@@ -53,23 +53,33 @@ module Concerns
     end
 
     def user_from_lti
-      lti_user_id = params[:user_id]
+      # If the user is not logged in then params[:user_id] will be nil or empty string
+      if params[:user_id].present?
+        lti_user_id = params[:user_id]
 
-      # Match on both fields if possible
-      user = User.find_by(lms_user_id: lms_user_id, lti_user_id: lti_user_id)
+        # Match on both fields if possible
+        user = User.find_by(lms_user_id: lms_user_id, lti_user_id: lti_user_id)
 
-      # Match on only lms_user_id. This happens when a user uses OAuth to create and
-      # account before they ever do an LTI launch.
-      if user.blank? && lms_user_id.present?
-        if user = User.find_by(lms_user_id: lms_user_id)
-          if user.lti_user_id != lti_user_id
-            user.update!(lti_user_id: lti_user_id)
+        # Match on only lms_user_id. This happens when a user uses OAuth to create and
+        # account before they ever do an LTI launch.
+        if user.blank? && lms_user_id.present?
+          if user = User.find_by(lms_user_id: lms_user_id)
+            if user.lti_user_id != lti_user_id
+              user.update!(lti_user_id: lti_user_id)
+            end
+          end
+        end
+
+        # Match on only the lti_user_id. The lms_user_id can change but the lti_user_id
+        # should be stable
+        if user.blank?
+          # Find the user with just the lti_user_id
+          if user = User.find_by(lti_user_id: lti_user_id)
+            # Update the lms_user_id
+            user.update!(lms_user_id: lms_user_id)
           end
         end
       end
-
-      # Find the user with just the lti_user_id
-      user ||= User.find_by(lti_user_id: lti_user_id)
 
       if user.blank?
         user = _generate_new_lti_user(params)
