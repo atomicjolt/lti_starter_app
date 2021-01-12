@@ -5,6 +5,8 @@ module Exceptions
   end
   class InvalidImsccTokenError < StandardError
   end
+  class InvalidSecureTokenError < StandardError
+  end
   class FileMvException < StandardError
   end
   class CanvasApiTokenRequired < LMS::Canvas::CanvasException

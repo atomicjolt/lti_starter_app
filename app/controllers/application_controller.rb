@@ -202,6 +202,11 @@ class ApplicationController < ActionController::Base
     @app_name = current_application_instance.application.client_application_name
     @title = current_application_instance.application.name
     @description = current_application_instance.application.description
+
+    context_id = @lti_token[LtiAdvantage::Definitions::CONTEXT_CLAIM]["id"]
+    if current_user&.can_author?(context_id, current_application_instance)
+      @can_author = true
+    end
   end
 
   def targeted_app_instance

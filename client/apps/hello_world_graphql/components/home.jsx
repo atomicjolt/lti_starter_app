@@ -25,9 +25,9 @@ const Home = ({ settings }) => {
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
 
-  //if (!settings.lti_launch_config.title) {
-  //  return <Redirect to="/setup" />;
-  //}
+  if (!settings.lti_launch_is_configured) {
+    return <Redirect to="/setup" />;
+  }
 
   const img = assets('./images/atomicjolt.jpg');
 

@@ -24,8 +24,7 @@
     settings[:lms_user_id] = current_user.lms_user_id
 
     if @lti_launch
-      settings.merge!(@lti_launch.client_settings(@lti_token))
-      byebug
+      settings.merge!(@lti_launch.client_settings(@lti_token, @can_author))
     elsif @lti_launch_config
       settings[:lti_launch_config] = @lti_launch_config
     end

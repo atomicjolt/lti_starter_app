@@ -140,7 +140,7 @@ class LtiLaunch < ApplicationRecord
 
   def matching_launches(lti_token)
     context_id_history = LtiLaunch.decode_history(
-      lti_token.dig(LtiAdvantage::Definitions::CUSTOM_CLAIM, "context_id_history"),
+      lti_token.dig(LtiAdvantage::Definitions::CUSTOM_CLAIM, "canvas_context_id_history"),
     )
     resource_link_id_history = LtiLaunch.decode_history(
       lti_token.dig(LtiAdvantage::Definitions::CUSTOM_CLAIM, "resource_id_history"),
@@ -207,26 +207,27 @@ class LtiLaunch < ApplicationRecord
     []
   end
 
-  def client_settings(lti_token)
+  # Settings passed to client during launch
+  def client_settings(lti_token, can_author)
     settings = {}
     settings[:lti_launch_config] = config
+    settings[:lti_launch_id] = id
     settings[:lti_launch_is_configured] = is_configured
-    settings[:lti_launch_parent] = parent&.to_settings
-    if !is_configured
-      settings[:lti_launch_matching_launches] = matching_launches(lti_token).map(&:to_settings)
+    if !is_configured && can_author
+      settings[:lti_matching_launches] = matching_launches(lti_token).map(&:to_settings)
     end
     settings
   end
 
-  # Settings passed to client during launch
-  def to_settings
+  def to_settings(can_author = true)
     {
       id: id,
       token: token,
       resource_link_id: resource_link_id,
       title: title,
       config: config,
-      context: lti_context&.to_settings,
+      created_at: created_at,
+      context: lti_context&.to_settings(can_author),
     }
   end
 end
