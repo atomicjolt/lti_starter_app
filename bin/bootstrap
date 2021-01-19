@@ -7,14 +7,25 @@ DROPBOX_FOLDER=aj-dev/lti_starter_app
 # All config files for project
 files=("config/secrets.yml" "config/database.yml")
 
+force=false
+
+if [ "${1:-}" = "--force" ]
+then
+  force=true
+fi
+
 for file in "${files[@]}"
 do
-  if [ -e $file ]
+  if [ -e "$file" ] && [ "$force" = true ]
   then
-    rm $file
+    rm "$file"
   fi
-  mkdir -p $(dirname "${file}")
-  ln -s "$HOME/Dropbox/$DROPBOX_FOLDER/$file" $file
+  if [ ! -e "$file" ]
+  then
+    echo "Symlinking $file"
+    mkdir -p "$(dirname "${file}")"
+    ln -s "$HOME/Dropbox/$DROPBOX_FOLDER/$file" "$file"
+  fi
 done
 
 # project specific code or symlinks
