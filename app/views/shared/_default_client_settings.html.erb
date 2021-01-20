@@ -23,9 +23,7 @@
     settings[:lti_user_id] = current_user.lti_user_id
     settings[:lms_user_id] = current_user.lms_user_id
 
-    if @lti_launch
-      settings.merge!(@lti_launch.client_settings(@lti_token, @can_author))
-    elsif @lti_launch_config
+    if !@lti_launch
       settings[:lti_launch_config] = @lti_launch_config
     end
 
@@ -43,6 +41,9 @@
       settings[:canvas_course_id] = @lti_params.course_id
       settings[:canvas_account_id] = @lti_params.account_id
       settings[:launch_context] = @lti_params.launch_context
+      if @lti_launch
+        settings.merge!(@lti_launch.lti_advantage_client_settings(@lti_params, @can_author))
+      end
     elsif @is_lti_launch
       # LTI 1.0 - 1.2 Launch
       settings[:oauth_consumer_key]                     = params[:oauth_consumer_key]
@@ -101,6 +102,10 @@
         settings[:content_item_return_url] = params["content_item_return_url"]
 
         settings[:lti_launches_url] = lti_launches_url
+      end
+
+      if @lti_launch
+        settings.merge!(@lti_launch.lti_client_settings(params, @can_author))
       end
     end
   end

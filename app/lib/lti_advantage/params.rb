@@ -10,7 +10,7 @@ module LtiAdvantage
     def launch_context
       # This is an array, I'm not sure what it means to have more than one
       # value. In courses and accounts there's only one value
-      contexts = context_data["type"] || []
+      contexts = context_claim["type"] || []
       if contexts.include? LtiAdvantage::Definitions::COURSE_CONTEXT
         "COURSE"
       elsif contexts.include? LtiAdvantage::Definitions::ACCOUNT_CONTEXT
@@ -21,29 +21,65 @@ module LtiAdvantage
     end
 
     def context_id
-      context_data["id"]
+      context_claim["id"]
     end
 
-    def context_data
+    def context_label
+      context_claim["label"]
+    end
+
+    def context_title
+      context_claim["title"]
+    end
+
+    def context_claim
       token[LtiAdvantage::Definitions::CONTEXT_CLAIM] || {}
     end
 
+    def resource_link_id
+      resource_link_claim["id"]
+    end
+
+    def resource_link_title
+      resource_link_claim["title"]
+    end
+
+    def resource_link_claim
+      token[LtiAdvantage::Definitions::RESOURCE_LINK_CLAIM] || {}
+    end
+
+    def tool_platform_claim
+      token[LtiAdvantage::Definitions::TOOL_PLATFORM_CLAIM] || {}
+    end
+
+    def deployment_id
+      token[LtiAdvantage::Definitions::DEPLOYMENT_ID]
+    end
+
+    def resource_link_id_history
+      custom_claim["resource_link_id_history"]
+    end
+
+    def context_id_history
+      custom_claim["context_id_history"]
+    end
+
     def course_id
-      value = custom_params["canvas_course_id"]
+      value = custom_claim["canvas_course_id"]
       if value != "$Canvas.course.id"
         value
       end
     end
 
     def account_id
-      value = custom_params["canvas_account_id"]
+      value = custom_claim["canvas_account_id"]
       if value != "$Canvas.account.id"
         value
       end
     end
 
     def course_name
-      value = custom_params["canvas_course_name"]
+      value = custom_claim["canvas_course_name"]
       if value != "$Canvas.course.name"
         value
       end
@@ -52,7 +88,7 @@ module LtiAdvantage
     # This extracts the custom parameters from the jwt token from the lti launch
     # These values must be added to the developer key under "Custom Fields"
     # for example: canvas_course_id=$Canvas.course.id
-    def custom_params
+    def custom_claim
       token[LtiAdvantage::Definitions::CUSTOM_CLAIM] || {}
     end
   end

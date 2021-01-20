@@ -97,6 +97,6 @@
     "canvas_sis_id": "$Canvas.user.sisid",
     "canvas_user_id": "$Canvas.user.id",
     "custom_canvas_api_domain": "$Canvas.api.domain",
-    "canvas_context_id_history": "$Context.id.history"
+    "context_id_history": "$Context.id.history"
   }
 }

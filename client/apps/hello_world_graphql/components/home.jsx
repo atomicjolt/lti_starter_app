@@ -25,10 +25,6 @@ const Home = ({ settings }) => {
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
 
-  if (!settings.lti_launch_is_configured) {
-    return <Redirect to="/setup" />;
-  }
-
   const img = assets('./images/atomicjolt.jpg');
 
   if (settings.deep_link_settings) {
@@ -39,10 +35,14 @@ const Home = ({ settings }) => {
     );
   }
 
+  if (settings.lti_launch_is_configured === false) {
+    return <Redirect to="/setup" />;
+  }
+
   return (
     <div>
       <h1>
-        { settings.lti_launch_config.title }
+        { settings.lti_launch_config?.title }
       </h1>
       <img src={img} alt="Atomic Jolt Logo" />
       <p>

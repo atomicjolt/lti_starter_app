@@ -189,6 +189,10 @@ class ApplicationController < ActionController::Base
     @is_lti_launch = true
     @canvas_url = current_application_instance.site.url
     @app_name = current_application_instance.application.client_application_name
+    context_id = params[:context_id]
+    if current_user&.can_author?(context_id, current_application_instance)
+      @can_author = true
+    end
   end
 
   def set_lti_advantage_launch_values

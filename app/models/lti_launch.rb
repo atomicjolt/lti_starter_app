@@ -17,43 +17,42 @@ class LtiLaunch < ApplicationRecord
     lti_history.split(",").map { |id| URI.decode_www_form_component id }
   end
 
-  def self.lti_advantage_launch(token:, lti_token:, application_instance:)
-    context_claim = lti_token[LtiAdvantage::Definitions::CONTEXT_CLAIM]
-    resource_link_claim = lti_token[LtiAdvantage::Definitions::RESOURCE_LINK_CLAIM]
-    platform_claim = lti_token[LtiAdvantage::Definitions::TOOL_PLATFORM_CLAIM]
-    # context_id_history = LtiLaunch.decode_history(
-    #   lti_token.dig(LtiAdvantage::Definitions::CUSTOM_CLAIM, "context_id_history"),
-    # )
-    resource_link_id_history = decode_history(
-      lti_token.dig(LtiAdvantage::Definitions::CUSTOM_CLAIM, "resource_id_history"),
-    )
+  def self.lti_advantage_launch(token:, lti_params:, application_instance:)
+    resource_link_id_history = decode_history(lti_params.resource_link_id_history)
 
     lti_launch = launch(
       token: token,
-      context_id: context_claim["id"],
-      resource_link_id: resource_link_claim["id"],
+      context_id: lti_params.context_id,
+      resource_link_id: lti_params.resource_link_id,
       resource_link_id_history: resource_link_id_history,
       application_instance: application_instance,
     )
     return if !lti_launch
 
-    resource_title = resource_link_claim["title"]
+    resource_title = lti_params.resource_link_title
     lti_launch.update(title: resource_title) if resource_title
 
     # Update lti context
     if !lti_launch.lti_context
-      lti_deployment = LtiDeployment.find_by!(
-        deployment_id: lti_token[LtiAdvantage::Definitions::DEPLOYMENT_ID],
-      )
+      deployment_id = lti_params.deployment_id
+      lti_deployment = if deployment_id
+                         LtiDeployment.find_by!(
+                           deployment_id: lti_params.deployment_id
+                         )
+                       end
       lti_launch.lti_context = LtiContext.find_or_create_by(
-        context_id: context_claim["id"],
+        context_id: lti_params.context_id,
         lti_deployment_id: lti_deployment.id,
       )
       lti_launch.save
     end
-    lti_launch.lti_context.update(context_claim.slice("label", "title"))
+    lti_launch.lti_context.update(
+      label: lti_params.context_label,
+      title: lti_params.context_title,
+    )
 
     # Update lti platform instance
+    platform_claim = lti_params.tool_platform_claim
     if platform_claim
       lti_deployment = lti_launch.lti_context.lti_deployment
       if !lti_deployment.lti_platform_instance
@@ -61,10 +60,40 @@ class LtiLaunch < ApplicationRecord
           guid: platform_claim["guid"],
           iss: lti_deployment.lti_install.iss,
         )
-        lti_deployment.save
+        lti_deployment.lti_platform_instance.save
       end
       lti_deployment.lti_platform_instance.update(platform_claim.slice("name", "product_family_code"))
     end
+    lti_launch
+  end
+
+  def self.lti_launch(token:, params:, application_instance:)
+    context_id = params[:context_id]
+    resource_link_id = params[:resource_link_id]
+    resource_link_id_history = decode_history(
+      params[:resource_link_id_history]
+    )
+    lti_launch = launch(
+      token: token,
+      context_id: context_id,
+      resource_link_id: resource_link_id,
+      resource_link_id_history: resource_link_id_history,
+      application_instance: application_instance,
+    )
+    return if !lti_launch
+
+    resource_title = params[:resource_link_title]
+    lti_launch.update(title: resource_title) if resource_title
+
+    # Update lti context
+    if !lti_launch.lti_context
+      lti_launch.lti_context = LtiContext.find_or_create_by(
+        context_id: params[:context_id],
+        lti_deployment_id: nil,
+      )
+      lti_launch.save
+    end
+    lti_launch.lti_context.update(label: params[:context_title], title: params[:context_title])
     lti_launch
   end
 
@@ -138,13 +167,7 @@ class LtiLaunch < ApplicationRecord
     lti_launch
   end
 
-  def matching_launches(lti_token)
-    context_id_history = LtiLaunch.decode_history(
-      lti_token.dig(LtiAdvantage::Definitions::CUSTOM_CLAIM, "canvas_context_id_history"),
-    )
-    resource_link_id_history = LtiLaunch.decode_history(
-      lti_token.dig(LtiAdvantage::Definitions::CUSTOM_CLAIM, "resource_id_history"),
-    )
+  def matching_launches(resource_link_id_history:, context_id_history:)
     # Search for the same resource_link_id in a different application instance.
     lti_launches = LtiLaunch.where(
       token: token,
@@ -207,19 +230,40 @@ class LtiLaunch < ApplicationRecord
     []
   end
 
+  def lti_advantage_client_settings(lti_params, can_author)
+    client_settings(
+      resource_link_id_history: LtiLaunch.decode_history(lti_params.resource_link_id_history),
+      context_id_history: LtiLaunch.decode_history(lti_params.context_id_history),
+      can_author: can_author,
+    )
+  end
+
+  def lti_client_settings(params, can_author)
+    client_settings(
+      resource_link_id_history: LtiLaunch.decode_history(params[:custom_resource_link_id_history]),
+      context_id_history: LtiLaunch.decode_history(params[:custom_context_id_history]),
+      can_author: can_author,
+    )
+  end
+
   # Settings passed to client during launch
-  def client_settings(lti_token, can_author)
+  def client_settings(resource_link_id_history:, context_id_history:, can_author:)
     settings = {}
     settings[:lti_launch_config] = config
     settings[:lti_launch_id] = id
     settings[:lti_launch_is_configured] = is_configured
     if !is_configured && can_author
-      settings[:lti_matching_launches] = matching_launches(lti_token).map(&:to_settings)
+      settings[:lti_matching_launches] = matching_launches(
+        resource_link_id_history: resource_link_id_history,
+        context_id_history: context_id_history,
+      ).map(&:to_settings).compact
     end
     settings
   end
 
   def to_settings(can_author = true)
+    return nil if !lti_context
+
     {
       id: id,
       token: token,
@@ -227,7 +271,7 @@ class LtiLaunch < ApplicationRecord
       title: title,
       config: config,
       created_at: created_at,
-      context: lti_context&.to_settings(can_author),
+      context: lti_context.to_settings(can_author),
     }
   end
 end

@@ -16,12 +16,13 @@ class LtiLaunchesController < ApplicationController
     end
 
     if @lti_token
+      # LTI 1.3
       token = lti_advantage_launch_token
       if token
         @lti_launch = LtiLaunch.lti_advantage_launch(
           token: token,
-          lti_token: @lti_token,
-          application_instance: current_application_instance
+          lti_params: LtiAdvantage::Params.new(@lti_token),
+          application_instance: current_application_instance,
         )
 
         # LTI advantage example code
@@ -36,14 +37,11 @@ class LtiLaunchesController < ApplicationController
   def show
     # This is an LTI 1.2 launch with the token as a path parameter
     token = params[:id]
-    @lti_launch = LtiLaunch.launch(
+    @lti_launch = LtiLaunch.lti_launch(
       token: token,
-      context_id: params[:context_id],
-      context_id_history: params[:canvas_context_id_history]&.split(","),
-      resource_link_id: params[:resource_link_id],
+      params: params,
       application_instance: current_application_instance,
     )
-    return not_found("Unable to find LTI Launch with token: #{token}") if !@lti_launch
 
     setup_lti_response
     render :index

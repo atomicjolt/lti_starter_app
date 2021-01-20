@@ -126,6 +126,7 @@ applications = [
         canvas_course_id: "$Canvas.course.id",
         canvas_api_domain: "$Canvas.api.domain",
         canvas_user_id: "$Canvas.user.id",
+        context_id_history: "$Context.id.history",
       },
       course_navigation: {
         text: "LTI Starter App",

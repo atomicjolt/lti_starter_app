@@ -39,13 +39,14 @@ const Setup = ({ settings }) => {
     };
     copyLtiLaunch({ variables });
   };
-  const launchItems = settings.lti_matching_launches.map((ltiLaunch) => (
+  const launchItems = settings.lti_matching_launches?.map((ltiLaunch) => (
     <li key={ltiLaunch.id}>
       <div>
         {`Title: ${ltiLaunch.config.title}`}
       </div>
       <div>
-        {`Course: ${ltiLaunch.context.title} / ${ltiLaunch.context.platform_instance.name}`}
+        {ltiLaunch.context? `Course: ${ltiLaunch.context.title || ''}
+        / ${ltiLaunch.context.platform_instance?.name || ''}` : ''}
       </div>
       <div>
         {`Date created: ${ltiLaunch.created_at}`}
@@ -54,7 +55,7 @@ const Setup = ({ settings }) => {
     </li>
   ));
 
-  if (launchItems.length === 0) {
+  if (!launchItems || launchItems.length === 0) {
     return <h2>No matching item found.</h2>;
   }
 
