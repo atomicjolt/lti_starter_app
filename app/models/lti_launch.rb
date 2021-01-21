@@ -40,11 +40,15 @@ class LtiLaunch < ApplicationRecord
                            deployment_id: lti_params.deployment_id
                          )
                        end
-      lti_launch.lti_context = LtiContext.find_or_create_by(
-        context_id: lti_params.context_id,
-        lti_deployment_id: lti_deployment.id,
-      )
-      lti_launch.save
+      begin
+        lti_context = LtiContext.find_or_create_by(
+          context_id: lti_params.context_id,
+          lti_deployment: lti_deployment,
+        )
+      rescue ActiveRecord::RecordNotUnique
+        retry
+      end
+      lti_launch.update(lti_context: lti_context)
     end
     lti_launch.lti_context.update(
       label: lti_params.context_label,
@@ -56,11 +60,15 @@ class LtiLaunch < ApplicationRecord
     if platform_claim
       lti_deployment = lti_launch.lti_context.lti_deployment
       if !lti_deployment.lti_platform_instance
-        lti_deployment.lti_platform_instance = LtiPlatformInstance.find_or_create_by(
-          guid: platform_claim["guid"],
-          iss: lti_deployment.lti_install.iss,
-        )
-        lti_deployment.lti_platform_instance.save
+        begin
+          lti_platform_instance = LtiPlatformInstance.find_or_create_by(
+            guid: platform_claim["guid"],
+            iss: lti_deployment.lti_install.iss,
+          )
+        rescue ActiveRecord::RecordNotUnique
+          retry
+        end
+        lti_deployment.update(lti_platform_instance: lti_platform_instance)
       end
       lti_deployment.lti_platform_instance.update(platform_claim.slice("name", "product_family_code"))
     end
@@ -87,11 +95,15 @@ class LtiLaunch < ApplicationRecord
 
     # Update lti context
     if !lti_launch.lti_context
-      lti_launch.lti_context = LtiContext.find_or_create_by(
-        context_id: params[:context_id],
-        lti_deployment_id: nil,
-      )
-      lti_launch.save
+      begin
+        lti_context = LtiContext.find_or_create_by(
+          context_id: params[:context_id],
+          lti_deployment_id: nil,
+        )
+      rescue ActiveRecord::RecordNotUnique
+        retry
+      end
+      lti_launch.update(lti_context: lti_context)
     end
     lti_launch.lti_context.update(label: params[:context_title], title: params[:context_title])
     lti_launch

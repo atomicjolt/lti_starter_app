@@ -1,5 +1,5 @@
 class LtiContext < ApplicationRecord
-  belongs_to :lti_deployment
+  belongs_to :lti_deployment, optional: true
   has_secure_token :secure_token
 
   validates :context_id, presence: true, uniqueness: { scope: %i[lti_deployment_id] }
