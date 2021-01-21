@@ -32,7 +32,7 @@ rspec:
   services:
     - postgres:9.5.0
   before_script:
-    - cp config/secrets.example.yml config/secrets.yml
+    - cp config/secrets.yml.example config/secrets.yml
     - cp config/ci.database.yml config/database.yml
     - cp .env.example .env
     - yarn

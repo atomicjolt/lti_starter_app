@@ -81,9 +81,9 @@ Depending on the system, this script may require superuser privileges.
 
 
 #### Secrets file
-Rename `config/secrets.example.yml` to `config/secrets.yml` and rename `config/database.example.yml` to `config/database.yml`.
+Rename `config/secrets.yml.example` to `config/secrets.yml` and rename `config/database.yml.example` to `config/database.yml`.
 
-Note: If you ran ./bin/setup it calls to the ./bin/bootstrap script which symlinks the files located in the path that was specified as the DROPBOX_FOLDER. If the database.yml and secrets.yml are located in that location then you won't need to rename them from .example.yml.
+Note: If you ran ./bin/setup it calls to the ./bin/bootstrap script which symlinks the files located in the path that was specified as the DROPBOX_FOLDER. If the database.yml and secrets.yml are located in that location then you won't need to rename them from .yml.example.
 
 Open the files and change each entry to values that are relevant for your application.
 

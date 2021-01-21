@@ -76,7 +76,7 @@ git remote: "add upstream #{repo}"
 # Database.yml
 #
 inside "config" do
-  copy_file "database.example.yml", "database.yml"
+  copy_file "database.yml.example", "database.yml"
 end
 
 ###########################################################
@@ -84,7 +84,7 @@ end
 # secrets.yml
 #
 inside "config" do
-  copy_file "secrets.example.yml", "secrets.yml"
+  copy_file "secrets.yml.example", "secrets.yml"
 
   gsub_file("secrets.yml", "<Run rake secret to get a value to put here>") do |_match|
     SecureRandom.hex(64)
