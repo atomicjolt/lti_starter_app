@@ -34,7 +34,7 @@ Cannot load `Rails.application.database_configuration`:
 Could not load database configuration. No such file - ["config/database.yml"]
 
 ## Fix
-`cp config/database.example.yml config/database.yml`
+`cp config/database.yml.example config/database.yml`
 
 
 #4 Now that rake task is done, trying to run `git push heroku master`
