@@ -69,6 +69,8 @@ module LtiAdvantage
     CANVAS_BETA_AUTH_TOKEN_URL = "https://canvas.beta.instructure.com/login/oauth2/token".freeze
     CANVAS_BETA_OIDC_URL = "https://canvas.beta.instructure.com/api/lti/authorize_redirect".freeze
 
+    CANVAS_SUBMISSION_TYPE = "https://canvas.instructure.com/lti/submission_type".freeze
+
     # Roles
     # Below are all the roles specified in the LTI 1.3 spec. (https://www.imsglobal.org/spec/lti/v1p3#role-vocabularies-0)
     ## Core system roles

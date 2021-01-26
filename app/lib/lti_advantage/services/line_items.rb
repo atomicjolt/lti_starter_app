@@ -30,7 +30,7 @@ module LtiAdvantage
         }
         attrs["resourceLinkId"] = resource_link_id if resource_link_id
         if external_tool_url
-          attrs["https://canvas.instructure.com/lti/submission_type"] = {
+          attrs[LtiAdvantage::Definitions::CANVAS_SUBMISSION_TYPE] = {
             type: "external_tool",
             external_tool_url: external_tool_url,
           }
