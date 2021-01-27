@@ -24,8 +24,20 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user.save!
     @canvas_auth_required = false
 
-    if params["oauth_complete_url"].present?
-      redirect_to params["oauth_complete_url"]
+    oauth_complete_url = params["oauth_complete_url"]
+    if oauth_complete_url.present?
+      ai = current_application_instance
+      root_domain = Rails.application.secrets.application_root_domain
+      path = "applications/#{ai.application_id}/application_instances/#{ai.id}/installs"
+      expected_url = "https://#{Application::ADMIN}.#{root_domain}#{admin_root_path}##{path}"
+      if oauth_complete_url == expected_url
+        redirect_to oauth_complete_url
+      else
+        error = "Bad redirect uri."
+        Rails.logger.warn(error)
+        flash[:error] = format_oauth_error_message(error)
+        render "shared/_omniauth_error", status: :forbidden
+      end
     else
       set_lti_launch_values if params[:oauth_consumer_key].present?
       set_lti_advantage_launch_values if params[:id_token].present?
