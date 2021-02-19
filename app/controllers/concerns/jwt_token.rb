@@ -41,24 +41,22 @@ module Concerns
     end
 
     def lti_instructor?
-      jwt_lti_roles_string.match(/urn:lti:role:ims\/lis\/Instructor/).present?
+      jwt_lti_roles_string.include?("urn:lti:role:ims/lis/Instructor")
     end
 
     def lti_ta?
-      jwt_lti_roles_string.match(/urn:lti:role:ims\/lis\/TeachingAssistant/).present?
+      jwt_lti_roles_string.include?("urn:lti:role:ims/lis/TeachingAssistant")
     end
 
     def lti_content_developer?
-      jwt_lti_roles_string.match(/urn:lti:role:ims\/lis\/ContentDeveloper/).present?
+      jwt_lti_roles_string.include?("urn:lti:role:ims/lis/ContentDeveloper")
     end
 
     def lti_admin?
-      (
-        jwt_lti_roles_string.match(/urn:lti:role:ims\/lis\/Administrator/) ||
-        jwt_lti_roles_string.match(/urn:lti:instrole:ims\/lis\/Administrator/) ||
-        jwt_lti_roles_string.match(/urn:lti:sysrole:ims\/lis\/SysAdmin/) ||
-        jwt_lti_roles_string.match(/urn:lti:sysrole:ims\/lis\/Administrator/)
-      ).present?
+      jwt_lti_roles_string.include?("urn:lti:role:ims/lis/Administrator") ||
+        jwt_lti_roles_string.include?("urn:lti:instrole:ims/lis/Administrator") ||
+        jwt_lti_roles_string.include?("urn:lti:sysrole:ims/lis/SysAdmin") ||
+        jwt_lti_roles_string.include?("urn:lti:sysrole:ims/lis/Administrator")
     end
 
     def lti_admin_or_instructor?
