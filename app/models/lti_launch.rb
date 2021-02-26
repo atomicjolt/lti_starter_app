@@ -24,7 +24,7 @@
 #     generated_token = lti_launch.token
 #     external_url = "https://your-lti-tool-domain.xyz/lti_launches?launch_token=#{generated_token}"
 #
-#     # Make a call to your LMS API including the external_url in your payload.
+#     # Include the external_url in your payload, and make a call to your LMS API
 #     ...
 #
 
