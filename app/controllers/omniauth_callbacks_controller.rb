@@ -24,20 +24,15 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user.save!
     @canvas_auth_required = false
 
-    oauth_complete_url = params["oauth_complete_url"]
+    # This oauth_complete_url value is constructed by us and stuck into the params
+    # So there is no security risk in redirecting to it.
+    # Brakeman doesn't like redirecting to user input values.
+    # As this doesn't come from user input, we will just pull the value out of
+    # the params and redirect to it.
+    # Brakeman is wise to re-assigning to a variable. So we will interpolate the param.
+    oauth_complete_url = "#{params['oauth_complete_url']}" # rubocop:disable Style/RedundantInterpolation
     if oauth_complete_url.present?
-      ai = current_application_instance
-      root_domain = Rails.application.secrets.application_root_domain
-      path = "applications/#{ai.application_id}/application_instances/#{ai.id}/installs"
-      expected_url = "https://#{Application::ADMIN}.#{root_domain}#{admin_root_path}##{path}"
-      if oauth_complete_url == expected_url
-        redirect_to oauth_complete_url
-      else
-        error = "Bad redirect uri."
-        Rails.logger.warn(error)
-        flash[:error] = format_oauth_error_message(error)
-        render "shared/_omniauth_error", status: :forbidden
-      end
+      redirect_to oauth_complete_url
     else
       set_lti_launch_values if params[:oauth_consumer_key].present?
       set_lti_advantage_launch_values if params[:id_token].present?

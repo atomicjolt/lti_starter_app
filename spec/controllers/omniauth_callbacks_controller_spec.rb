@@ -25,36 +25,13 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
         },
       }
       request.env["omniauth.auth"] = get_canvas_omniauth(canvas_opts)
-      ai = @application_instance
-      root_domain = Rails.application.secrets.application_root_domain
-      path = "applications/#{ai.application_id}/application_instances/#{ai.id}/installs"
-      oauth_complete_url = "https://#{Application::ADMIN}.#{root_domain}#{admin_root_path}##{path}"
+      oauth_complete_url = "http://example.com"
       response = get :canvas, params: {
         oauth_complete_url: oauth_complete_url,
         canvas_url: "https://example.instructure.com",
       }
 
       expect(response).to redirect_to oauth_complete_url
-    end
-
-    it "should render oauth error page when oauth_complete_url is bad" do
-      user = FactoryBot.create :user_canvas
-      authentication = user.authentications.find_by(provider: "canvas")
-      canvas_opts = {
-        "uid" => authentication.uid,
-        "info" => {
-          "url" => authentication.provider_url,
-        },
-      }
-      request.env["omniauth.auth"] = get_canvas_omniauth(canvas_opts)
-      oauth_complete_url = "https://malicious_code_endpoint"
-      response = get :canvas, params: {
-        oauth_complete_url: oauth_complete_url,
-        canvas_url: "https://example.instructure.com",
-      }
-
-      expect(response).to have_http_status :forbidden
-      expect(flash[:error]).to eq("Bad redirect uri.")
     end
 
     it "should pass through with valid auth and a user logged in via lti credentials" do
