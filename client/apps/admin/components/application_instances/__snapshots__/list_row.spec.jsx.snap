@@ -22,9 +22,9 @@ exports[`application instances list row matches the snapshot 1`] = `
         value="http://www.example.com"
       />
       <input
-        name="oauth_complete_url"
+        name="admin_oauth_aii"
         type="hidden"
-        value="http://localhost/#applications/23/application_instances/2/installs"
+        value={2}
       />
       <input
         name="oauth_consumer_key"
