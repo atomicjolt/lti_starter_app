@@ -56,20 +56,4 @@ jest:
 
 include:
   - template: Dependency-Scanning.gitlab-ci.yml
-  - template: SAST.gitlab-ci.yml
-
-dependency_scanning:
-  tags:
-    - dind
-  rules:
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
-      when: always
-      allow_failure: true
-
-sast:
-  tags:
-    - dind
-  rules:
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
-      when: always
-      allow_failure: true
+  - template: Security/SAST.gitlab-ci.yml
