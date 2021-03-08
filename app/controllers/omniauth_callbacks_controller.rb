@@ -24,8 +24,15 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user.save!
     @canvas_auth_required = false
 
-    if params["oauth_complete_url"].present?
-      redirect_to params["oauth_complete_url"]
+    admin_oauth_aii = params["admin_oauth_aii"]
+    if admin_oauth_aii.present? && ai = application_instance(admin_oauth_aii)
+      # brakeman doesn't like redirecting based on user input.
+      # this finds an app instance by the id passed in to it and redirects to a
+      # predefined url.
+      root_domain = Rails.application.secrets.application_root_domain
+      path = "applications/#{ai.application_id}/application_instances/#{ai.id}/installs"
+      oauth_complete_url = "//#{Application::ADMIN}.#{root_domain}#{admin_root_path}##{path}"
+      redirect_to oauth_complete_url
     else
       set_lti_launch_values if params[:oauth_consumer_key].present?
       set_lti_advantage_launch_values if params[:id_token].present?
@@ -34,6 +41,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   protected
+
+  def application_instance(id)
+    ApplicationInstance.find(id)
+  end
 
   # This will ensure that a user previously logged in via LTI will
   # still be logged in after the OAuth Dance with Canvas

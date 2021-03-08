@@ -25,9 +25,12 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
         },
       }
       request.env["omniauth.auth"] = get_canvas_omniauth(canvas_opts)
-      oauth_complete_url = "http://example.com"
+      ai = @application_instance
+      root_domain = Rails.application.secrets.application_root_domain
+      path = "applications/#{ai.application_id}/application_instances/#{ai.id}/installs"
+      oauth_complete_url = "//#{Application::ADMIN}.#{root_domain}#{admin_root_path}##{path}"
       response = get :canvas, params: {
-        oauth_complete_url: oauth_complete_url,
+        admin_oauth_aii: ai.id,
         canvas_url: "https://example.instructure.com",
       }
 
