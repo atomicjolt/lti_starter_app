@@ -14,7 +14,6 @@
     settings[:users_url] = users_url
 
     # OAuth related params
-    settings[:app_callback_url]     = user_canvas_omniauth_callback_url
     settings[:canvas_oauth_url]     = user_canvas_omniauth_authorize_url(host: Integrations::CanvasApiSupport.oauth_host)
     settings[:canvas_callback_url]  = user_canvas_omniauth_callback_url(host: Integrations::CanvasApiSupport.oauth_host)
   end
