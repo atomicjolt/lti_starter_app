@@ -11,6 +11,12 @@
     settings[:user_canvas_domains] = current_user.authentications.pluck(:provider_url)
     settings[:sign_out_url]        = destroy_user_session_url
     settings[:user_edit_url] = edit_user_registration_url
+    settings[:journals_admin_url] = Rails.application.secrets.journals_admin_url
+    settings[:polls_admin_url] = Rails.application.secrets.polls_admin_url
+    settings[:discussions_admin_url] = Rails.application.secrets.discussions_admin_url
+    settings[:assessments_admin_url] = Rails.application.secrets.assessments_admin_url
+    settings[:search_admin_url] = Rails.application.secrets.search_admin_url
+    settings[:act_admin_url] = Rails.application.secrets.act_admin_url
     settings[:users_url] = users_url
 
     # OAuth related params

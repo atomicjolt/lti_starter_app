@@ -68,6 +68,7 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
           application_id: app.id,
           column: :created_at,
           direction: :asc,
+          show_paid: false,
         }
         get :index, params: params, format: :json
         result = JSON.parse(response.body)
@@ -86,6 +87,7 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
           application_id: app.id,
           column: :lti_key,
           direction: :asc,
+          show_paid: false,
         }
         get :index, params: params, format: :json
         result = JSON.parse(response.body)

@@ -8,6 +8,18 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   before_action :set_configs, only: [:create, :update]
 
   def index
+    @application_instances =
+      if show_paid
+        @application_instances.where.not(paid_at: nil)
+      else
+        @application_instances.where(paid_at: nil)
+      end
+
+    # Using lti_key for search until nickname is added to application_instance
+    if search
+      @application_instances = @application_instances.where("lti_key ilike ?", "%#{search}%")
+    end
+
     @application_instances = @application_instances.
       order(sort_column.to_sym => sort_direction.to_sym).
       paginate(page: params[:page], per_page: 30)
@@ -75,6 +87,14 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
 
+  def show_paid
+    params[:show_paid] == "true"
+  end
+
+  def search
+    params[:search]
+  end
+
   def get_authentications(application_instance_instance)
     Apartment::Tenant.switch(application_instance_instance.tenant) do
       application_instance_instance.authentications.map do |authentication|
@@ -113,6 +133,7 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
     json.delete("encrypted_canvas_token_iv")
     json["authentications"] = authentications
     json["request_stats"] = request_stats(application_instance.tenant)
+    json["free_trial_days_left"] = free_trial_days_left(application_instance)
     json
   end
 
@@ -123,6 +144,7 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
       launches: RequestStatistic.total_lti_launches_grouped(tenants),
       errors: RequestStatistic.total_errors_grouped(tenants),
       users: RequestUserStatistic.total_unique_users_grouped(tenants),
+      max_users_month: RequestUserStatistic.max_month_unique_users(tenants),
     }
   end
 
@@ -148,6 +170,7 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
       day_7_errors: stats(:errors, 1, tenant),
       day_30_errors: stats(:errors, 2, tenant),
       day_365_errors: stats(:errors, 3, tenant),
+      max_users_month: @stats[:max_users_month][tenant],
     }
   end
 
@@ -160,8 +183,10 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
       :disabled_at,
       :anonymous,
       :rollbar_enabled,
+      :paid_at,
       :domain,
       :use_scoped_developer_key,
+      :language,
     )
   end
 

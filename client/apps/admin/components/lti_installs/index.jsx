@@ -126,11 +126,10 @@ export class Index extends React.Component {
 
   render() {
     const applicationId = parseInt(this.props.params.applicationId, 10);
-    const backTo = `/applications/${this.props.params.applicationId}/application_instances`;
 
     return (
       <div style={{ height: '100%' }}>
-        <Heading backTo={backTo} />
+        <Heading />
         <div className="o-contain">
           <Sidebar
             currentAccount={this.state.currentAccount}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ListRow from './list_row';
+import Menu from '../common/menu';
 
 describe('application instances list row', () => {
   let props;
@@ -56,22 +57,22 @@ describe('application instances list row', () => {
 
   it('handles the opening of the modal', () => {
     expect(result.instance().state.modalOpen).toBeFalsy();
-    const btn = result.find('button').first();
-    btn.simulate('click');
+    const btn = result.find(Menu).dive().find('button');
+    btn.at(1).simulate('click');
     expect(result.instance().state.modalOpen).toBeTruthy();
   });
 
   it('handles the opening of the config modal', () => {
     expect(result.instance().state.modalConfigXmlOpen).toBeFalsy();
-    const btn = result.find('button');
-    btn.at(1).simulate('click');
+    const btn = result.find(Menu).dive().find('button');
+    btn.at(2).simulate('click');
     expect(result.instance().state.modalConfigXmlOpen).toBeTruthy();
   });
 
   it('handles the opening of the config modal', () => {
     expect(disabled).toBeFalsy();
-    const btn = result.find('button');
-    btn.at(2).simulate('click');
+    const btn = result.find(Menu).dive().find('button');
+    btn.at(3).simulate('click');
     expect(disabled).toBeTruthy();
   });
 });

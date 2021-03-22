@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap');
 @mixin display-flex {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -52,14 +51,16 @@
   }
 }
 
-@mixin semi-bold{
+@mixin regular{
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   font-weight: 500;
 }
-@mixin regular{
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
+@mixin semi-bold{
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-weight: 600;
 }
 @mixin bold{
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   font-weight: 700;
 }
 
@@ -127,16 +128,6 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-}
-
-@font-face {
-  font-family: 'lti-admin';
-  src:
-    url('fonts/lti-admin.ttf') format('truetype'),
-    url('fonts/lti-admin.woff') format('woff'),
-    url('fonts/lti-admin.svg') format('svg');
-  font-weight: normal;
-  font-style: normal;
 }
 
 [class^="i-"], [class*=" i-"] {

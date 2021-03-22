@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import Header from './header';
 import List from './list';
+import PaidTabs from './paid_tabs';
 import Modal from './modal';
 import Heading from '../common/heading';
 import Pagination from '../common/pagination';
@@ -45,8 +46,11 @@ export class Index extends React.Component {
     this.state = {
       modalOpen: false,
       currentPage: null,
-      sortColumn: 'created_at',
+      sortColumn: 'lti_key',
       sortDirection: 'desc',
+      showPaid: true,
+      search: '',
+      isSearchOpen: false,
     };
   }
 
@@ -71,6 +75,8 @@ export class Index extends React.Component {
       currentPage,
       sortColumn,
       sortDirection,
+      showPaid,
+      search,
     } = this.state;
 
     this.props.getApplicationInstances(
@@ -78,7 +84,21 @@ export class Index extends React.Component {
       currentPage,
       sortColumn,
       sortDirection,
+      showPaid.toString(),
+      search,
     );
+  }
+
+  componentDidMount() {
+    window.addEventListener('click', this.closeMenus);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('click', this.closeMenus);
+  }
+
+  closeMenus = () => {
+    window.dispatchEvent(new CustomEvent('close-menu'));
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -86,12 +106,16 @@ export class Index extends React.Component {
       currentPage,
       sortColumn,
       sortDirection,
+      showPaid,
+      search,
     } = this.state;
 
     const propsChanged = (
       prevState.currentPage !== currentPage ||
       prevState.sortColumn !== sortColumn ||
-      prevState.sortDirection !== sortDirection
+      prevState.sortDirection !== sortDirection ||
+      prevState.showPaid !== showPaid ||
+      prevState.search !== search
     );
 
     if (propsChanged) {
@@ -100,6 +124,8 @@ export class Index extends React.Component {
         currentPage,
         sortColumn,
         sortDirection,
+        showPaid.toString(),
+        search,
       );
     }
   }
@@ -115,23 +141,53 @@ export class Index extends React.Component {
     });
   }
 
+  toggleSearch= () => {
+    this.setState((state) => ({
+      isSearchOpen: !state.isSearchOpen
+    }));
+  }
+
+  searchChanged = _.debounce((search) => {
+    this.setState({ search });
+  }, 500);
+
+  resetSort() {
+    this.setState({
+      showPaid: true,
+      sortColumn: 'lti_key',
+      sortDirection: 'decs',
+    });
+  }
+
   render() {
     const { application } = this;
 
     const {
       sortColumn:currentSortColumn,
       sortDirection:currentSortDirection,
+      showPaid,
+      isSearchOpen
     } = this.state;
 
     return (
       <div>
-        <Heading backTo="/applications" />
+        <Heading
+          backTo="/applications"
+          application={application}
+        />
         <div className="o-contain o-contain--full">
           {this.newApplicationInstanceModal}
           <Header
             openSettings={() => {}}
             newApplicationInstance={() => this.setState({ modalOpen: true })}
             application={application}
+            applicationInstances={this.props.applicationInstances}
+          />
+          <PaidTabs
+            changeTab={(tab) => {
+              tab ? this.resetSort() : this.setState({ showPaid: tab });
+            }}
+            showPaid={showPaid}
           />
           <List
             applicationInstances={this.props.applicationInstances}
@@ -143,8 +199,12 @@ export class Index extends React.Component {
             disableApplicationInstance={this.props.disableApplicationInstance}
             canvasOauthURL={this.props.canvasOauthURL}
             setSort={(sortColumn, sortDirection) => this.setSort(sortColumn, sortDirection)}
+            searchChanged={(search) => this.searchChanged(search)}
             currentSortColumn={currentSortColumn}
             currentSortDirection={currentSortDirection}
+            showPaid={showPaid}
+            isSearchOpen={isSearchOpen}
+            toggleSearch={this.toggleSearch}
           />
           <Pagination
             setPage={change => this.setPage(change)}

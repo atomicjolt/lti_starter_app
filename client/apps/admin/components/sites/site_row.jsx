@@ -78,7 +78,7 @@ export default class SiteRow extends React.Component {
             style={styles.buttonIcon}
             onClick={() => this.setState({ siteModalOpen: true })}
           >
-            <i className="i-settings" />
+            <i className="material-icons">settings</i>
           </button>
           <SiteModal
             site={this.props.site}

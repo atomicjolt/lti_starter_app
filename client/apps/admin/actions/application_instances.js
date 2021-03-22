@@ -18,7 +18,7 @@ const requests = [
 
 export const Constants = wrapper(actions, requests);
 
-export function getApplicationInstances(applicationId, page, column, direction) {
+export function getApplicationInstances(applicationId, page, column, direction, showPaid, search) {
   return {
     type: Constants.GET_APPLICATION_INSTANCES,
     method: Network.GET,
@@ -27,6 +27,8 @@ export function getApplicationInstances(applicationId, page, column, direction) 
       page,
       column,
       direction,
+      show_paid: showPaid,
+      search,
     }
   };
 }

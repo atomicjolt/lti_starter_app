@@ -27,6 +27,12 @@ RSpec.describe RequestUserStatistic, type: :model do
       tenant: @tenant,
       user_id: 6,
     )
+    FactoryBot.create(
+      :request_user_statistic,
+      truncated_time: Time.zone.now - 2.years,
+      tenant: @tenant,
+      user_id: 2,
+    )
   end
 
   context "scopes" do
@@ -51,11 +57,66 @@ RSpec.describe RequestUserStatistic, type: :model do
       end
     end
 
+    describe "for_year" do
+      it "should return request logs for the year" do
+        request_user_statistics = RequestUserStatistic.for_year
+        expect(request_user_statistics.count).to eq(4)
+      end
+    end
+
     describe "for_tenant" do
       it "should return request logs for a given tenant" do
         FactoryBot.create(:request_user_statistic)
         request_user_statistics = RequestUserStatistic.for_tenant(@tenant)
-        expect(request_user_statistics.count).to eq(4)
+        expect(request_user_statistics.count).to eq(5)
+      end
+    end
+
+    describe "year_unique_users" do
+      it "should return the unique users from a year" do
+        year_unique_users = RequestUserStatistic.year_unique_users(@tenant)
+        expect(year_unique_users).to eq(2)
+      end
+    end
+
+    describe "max_monthly_unique_users" do
+      it "should return the max unique users for a month in the year for each tenant" do
+        FactoryBot.create(
+          :request_user_statistic,
+          truncated_time: Time.zone.now - 3.months,
+          tenant: @tenant,
+          user_id: 70,
+        )
+        FactoryBot.create(
+          :request_user_statistic,
+          truncated_time: Time.zone.now - 3.months,
+          tenant: @tenant,
+          user_id: 50,
+        )
+        FactoryBot.create(
+          :request_user_statistic,
+          truncated_time: Time.zone.now - 3.months,
+          tenant: @tenant,
+          user_id: 60,
+        )
+        FactoryBot.create(
+          :request_user_statistic,
+          truncated_time: Time.zone.now - 7.months,
+          tenant: "atomic",
+          user_id: 21,
+        )
+        FactoryBot.create(
+          :request_user_statistic,
+          truncated_time: Time.zone.now - 5.months,
+          tenant: "jolt",
+          user_id: 22,
+        )
+        tenants = [@tenant, "atomic", "jolt"]
+
+        max_month_unique_users = RequestUserStatistic.max_month_unique_users(tenants)
+        expect(max_month_unique_users["bfcoder"]).to eq(3)
+        expect(max_month_unique_users["atomic"]).to eq(1)
+        expect(max_month_unique_users["jolt"]).to eq(1)
       end
     end
 

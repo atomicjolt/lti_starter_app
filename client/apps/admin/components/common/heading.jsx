@@ -1,109 +1,138 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 import { connect } from 'react-redux';
-import { Wrapper, Button, Menu, MenuItem } from 'react-aria-menubutton';
 import { Link } from 'react-router3';
+import Menu from '../common/menu';
 import assets from '../../libs/assets';
 import SubNav from '../common/sub_nav';
 
 const select = state => ({
-  userName: state.settings.display_name,
   signOutUrl: state.settings.sign_out_url,
   userEditUrl: state.settings.user_edit_url,
   usersUrl: state.settings.users_url,
   sites: state.sites,
+  journalsAdminUrl: state.settings.journals_admin_url,
+  poolsAdminUrl: state.settings.polls_admin_url,
+  discussionsAdminUrl: state.settings.discussions_admin_url,
+  assessmentsAdminUrl: state.settings.assessments_admin_url,
+  searchAdminUrl: state.settings.search_admin_url,
+  actAdminUrl: state.settings.act_admin_url,
 });
 
-function handleSelection(value) {
-  window.location = value;
-}
-
 export function Heading(props) {
-  const img = assets('./images/atomicjolt.svg');
-
-  let back = null;
-  if (props.backTo) {
-    back = (
-      <button className="c-btn c-btn--back">
-        <Link to={props.backTo}>
-          <i className="i-back" />
-          Back
-        </Link>
-      </button>
-    );
-  }
+  const {
+    application,
+    journalsAdminUrl,
+    poolsAdminUrl,
+    discussionsAdminUrl,
+    assessmentsAdminUrl,
+    searchAdminUrl,
+    actAdminUrl,
+  } = props;
+  const img = assets('./images/aj-logo-emblem.svg');
+  const apps = [
+    {
+      displayName: 'Search',
+      title: 'Atomic Search',
+      link: searchAdminUrl,
+    },
+    {
+      displayName: 'Act',
+      title: 'Atomic Curriculum Tools',
+      link: actAdminUrl,
+    },
+    {
+      displayName: 'Assessments',
+      title: '',
+      link: assessmentsAdminUrl,
+    },
+    {
+      displayName: 'Polls',
+      title: '',
+      link: poolsAdminUrl,
+    },
+    {
+      displayName: 'Discussions',
+      title: '',
+      link: discussionsAdminUrl,
+    },
+    {
+      displayName: 'Journals',
+      title: '',
+      link: journalsAdminUrl,
+    },
+  ];
 
   return (
     <div>
       <header className="c-head">
-        <div className="c-back">
-          {back}
+        <div className="aj-flex">
+          <img className="c-head-img" src={img} alt="Atomic Jolt Logo" />
+          <nav className="c-head-nav">
+            { _.map(apps, (app, key) => (
+              <Link key={app.title + key} href={app.link} className="c-head-link" aria-selected={app.title === application?.name}>
+                {app.displayName}
+              </Link>
+            ))}
+          </nav>
         </div>
-        <img className="c-logo" src={img} alt="Atomic Jolt Logo" />
-        <Wrapper
-          className="c-user"
-          onSelection={handleSelection}
-        >
-          <Button className="c-username">
-            <span>{props.userName}</span>
-            <i className="i-dropdown" />
-          </Button>
-          <Menu className="c-dropdown">
-            <ul>
-              <li>
-                <MenuItem
-                  value={props.usersUrl}
-                  text="Admin Users"
-                  className="c-menu-item"
+        <div className="c-head-profile">
+          <Menu>
+            {(onClick, activeClass, isOpen, menuRef) => (
+              <div className={`aj-menu-contain aj-menu-space ${activeClass}`} ref={menuRef}>
+                <button
+                  className="aj-icon-btn"
+                  aria-label="Analytics Options"
+                  aria-haspopup="true"
+                  aria-expanded={isOpen ? 'true' : 'false'}
+                  onClick={onClick}
+                  type="button"
                 >
-                  <a href={props.usersUrl}><span>Admin Users</span></a>
-                </MenuItem>
-              </li>
-              <li>
-                <MenuItem
-                  value={props.userEditUrl}
-                  text="Edit"
-                  className="c-menu-item"
-                >
-                  <a href={props.userEditUrl}><span>Edit</span></a>
-                </MenuItem>
-              </li>
-              <li>
-                <MenuItem
-                  value={props.signOutUrl}
-                  text="Logout"
-                  className="c-menu-item"
-                >
-                  <a href={props.signOutUrl}><span>Logout</span></a>
-                </MenuItem>
-              </li>
-              <li>
-                <MenuItem
-                  value={`${props.signOutUrl}?destroy_authentications=true`}
-                  text="Delete"
-                  className="c-menu-item"
-                >
-                  <a href={`${props.signOutUrl}?destroy_authentications=true`}>
-                    <span>Delete Canvas Authentications and Sign Out</span>
-                  </a>
-                </MenuItem>
-              </li>
-            </ul>
+                  <i className="material-icons-outlined" aria-hidden="true">account_circle</i>
+                </button>
+                <ul className="aj-menu" role="menu">
+                  <li>
+                    <a href={props.usersUrl}><span>Admin Users</span></a>
+                  </li>
+                  <li>
+                    <a href={props.userEditUrl}><span>Update Profile</span></a>
+                  </li>
+                  <li>
+                    <a href={props.signOutUrl}><span>Logout</span></a>
+                  </li>
+                  <li>
+                    <a href={`${props.signOutUrl}?destroy_authentications=true`}>
+                      <span>Delete Canvas Authentications and Sign Out</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            )}
           </Menu>
-        </Wrapper>
+        </div>
       </header>
+      <div className="c-yellow-bar" />
       <SubNav sites={props.sites} />
     </div>
   );
 }
 
 Heading.propTypes = {
-  backTo: PropTypes.string,
-  userName: PropTypes.string,
   signOutUrl: PropTypes.string.isRequired,
   userEditUrl: PropTypes.string,
   usersUrl: PropTypes.string,
   sites: PropTypes.shape({}).isRequired,
+  application: PropTypes.shape({
+    name: PropTypes.string,
+  }),
+  applications: PropTypes.shape({}),
+  journalsAdminUrl: PropTypes.string,
+  assessmentsAdminUrl: PropTypes.string,
+  searchAdminUrl: PropTypes.string,
+  poolsAdminUrl: PropTypes.string,
+  discussionsAdminUrl: PropTypes.string,
+  actAdminUrl: PropTypes.string,
 };
 
 

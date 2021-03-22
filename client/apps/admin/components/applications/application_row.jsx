@@ -47,7 +47,7 @@ export default class ApplicationRow extends React.Component {
             style={styles.buttonIcon}
             onClick={() => this.setState({ modalOpen: true })}
           >
-            <i className="i-settings" />
+            <i className="material-icons">settings</i>
           </button>
           <Modal
             isOpen={this.state.modalOpen}

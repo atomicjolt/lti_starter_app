@@ -44,7 +44,7 @@ export default class Sidebar extends React.Component {
       return (
         <span>
           <a onClick={() => this.setState({ modalOpen: true })}>
-            <i className="i-settings" />
+            <i className="material-icons">settings</i>
           </a>
           { this.applicationInstanceModal }
         </span>

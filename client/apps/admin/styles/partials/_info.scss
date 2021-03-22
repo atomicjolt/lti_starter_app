@@ -1,5 +1,5 @@
 .c-info{
-  padding: 3rem 2rem;
+  padding: 3rem 0;
   @include display-flex;
   @include align-items(center);
 }
@@ -9,8 +9,7 @@
 
     h1{
       @include bold;
-      letter-spacing: 0.2rem;
-      color: $yellow;
+      color: $text-color;
       margin: 0;
       font-size: 3.4rem;
     }
