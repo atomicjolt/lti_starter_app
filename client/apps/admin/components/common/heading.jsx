@@ -71,7 +71,7 @@ export function Heading(props) {
           <img className="c-head-img" src={img} alt="Atomic Jolt Logo" />
           <nav className="c-head-nav">
             { _.map(apps, (app, key) => (
-              <Link key={app.title + key} href={app.link} className="c-head-link" aria-selected={app.title === application?.name}>
+              <Link key={app.title + key} href={app.link} className="c-head-link" aria-selected={app.title === application ? application.name : null}>
                 {app.displayName}
               </Link>
             ))}
