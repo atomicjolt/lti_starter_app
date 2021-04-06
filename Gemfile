@@ -112,7 +112,7 @@ group :development, :build, :ci, :test do
 end
 
 group :ci do
-  gem "pronto", git: "https://github.com/prontolabs/pronto"
+  gem "pronto"
   gem "pronto-eslint_npm", require: false
   gem "pronto-rubocop", require: false
 end
