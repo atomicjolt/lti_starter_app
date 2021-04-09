@@ -1,6 +1,6 @@
 class Api::LtiContentItemSelectionController < Api::ApiApplicationController
 
-  include Concerns::ContentItemSupport
+  include ContentItemSupport
   # ###########################################################
   # Used to generate a content item selection response
   def create

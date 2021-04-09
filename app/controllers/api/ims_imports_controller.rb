@@ -1,5 +1,5 @@
 class Api::ImsImportsController < ApplicationController
-  include Concerns::CanvasImsccSupport
+  include CanvasImsccSupport
 
   def create
     data = params[:data]

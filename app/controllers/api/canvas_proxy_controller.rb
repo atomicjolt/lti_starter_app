@@ -1,6 +1,6 @@
 class Api::CanvasProxyController < Api::ApiApplicationController
 
-  include Concerns::CanvasSupport
+  include CanvasSupport
 
   before_action :protect_canvas_api
 

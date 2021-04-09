@@ -13,7 +13,7 @@ describe ApplicationController, type: :controller do
 
   describe "a user using Safari" do
     controller do
-      include Concerns::IframeSupport
+      include IframeSupport
 
       before_action :check_for_iframes_problem
 
@@ -33,8 +33,8 @@ describe ApplicationController, type: :controller do
 
   context "as an instructor without an api token" do
     controller do
-      include Concerns::LtiSupport
-      include Concerns::IframeSupport
+      include LtiSupport
+      include IframeSupport
 
       skip_before_action :verify_authenticity_token
       before_action :do_lti

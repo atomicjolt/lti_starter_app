@@ -1,6 +1,6 @@
 class Api::LtiLaunchesController < Api::ApiApplicationController
 
-  include Concerns::ContentItemSupport
+  include ContentItemSupport
 
   load_and_authorize_resource :lti_launch
 

@@ -15,7 +15,7 @@ describe ApplicationController, type: :controller do
   end
 
   controller do
-    include Concerns::CanvasImsccSupport
+    include CanvasImsccSupport
     def create
       render json: { message: "all is well" }
     end
