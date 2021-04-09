@@ -207,28 +207,28 @@ class User < ApplicationRecord
   def lti_instructor?(context_id)
     has_role?(
       context_id,
-      LTI::Roles::INSTRUCTOR,
+      Lti::Roles::INSTRUCTOR,
     )
   end
 
   def lti_ta?(context_id)
     has_role?(
       context_id,
-      LTI::Roles::TA,
+      Lti::Roles::TA,
     )
   end
 
   def lti_admin?(context_id)
     has_role?(
       context_id,
-      *LTI::Roles::ADMIN_ROLES,
+      *Lti::Roles::ADMIN_ROLES,
     )
   end
 
   def lti_content_developer?(context_id)
     has_role?(
       context_id,
-      LTI::Roles::CONTENT_DEVELOPER,
+      Lti::Roles::CONTENT_DEVELOPER,
     )
   end
 
@@ -248,7 +248,7 @@ class User < ApplicationRecord
   def student_in_course?(context_id = nil)
     has_role?(
       context_id,
-      LTI::Roles::LEARNER,
+      Lti::Roles::LEARNER,
     )
   end
 
