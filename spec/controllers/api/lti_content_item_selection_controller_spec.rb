@@ -114,6 +114,6 @@ RSpec.describe Api::LtiContentItemSelectionController, type: :controller do
   end
 
   describe "includes JwtToken" do
-    it { expect(Api::LtiContentItemSelectionController.ancestors.include?(Concerns::JwtToken)).to eq(true) }
+    it { expect(Api::LtiContentItemSelectionController.ancestors.include?(JwtToken)).to eq(true) }
   end
 end
