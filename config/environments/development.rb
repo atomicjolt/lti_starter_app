@@ -99,4 +99,8 @@ Rails.application.configure do
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.middleware.use RequestsLogger
+
+  ENV["APP_SUBDOMAINS"].split(",").each do |subdomain|
+    config.hosts << "#{subdomain}.#{ENV['APP_ROOT_DOMAIN']}"
+  end
 end
