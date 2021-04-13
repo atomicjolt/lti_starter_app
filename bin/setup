@@ -19,7 +19,7 @@ set +a
 bin/bootstrap
 
 # Create config file for the app / site.
-cat > "/usr/local/etc/nginx/servers/${APP_SUBDOMAIN}.conf" <<-EOF
+cat > "$(brew --prefix)/etc/nginx/servers/${APP_SUBDOMAIN}.conf" <<-EOF
 server {
     listen *:443 ssl;
     server_name ${ASSETS_SUBDOMAIN}.atomicjolt.xyz;
@@ -88,7 +88,7 @@ then
   IFS=, SUBDOMAINS=($APP_SUBDOMAINS)
   for SUBDOMAIN in "${SUBDOMAINS[@]}"; do
 
-    cat >> "/usr/local/etc/nginx/servers/${APP_SUBDOMAIN}.conf" <<-EOFSINGLE
+    cat >> "$(brew --prefix)/etc/nginx/servers/${APP_SUBDOMAIN}.conf" <<-EOFSINGLE
 
 server {
 
