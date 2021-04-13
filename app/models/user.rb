@@ -39,7 +39,7 @@ class User < ApplicationRecord
       user_dup = User.find_or_initialize_by(
         lti_user_id: user.lti_user_id,
       )
-      user_dup.update_attributes(user.copy_attributes)
+      user_dup.update(user.copy_attributes)
 
       if user_dup.password.blank?
         user_dup.password = Devise.friendly_token(72)
@@ -139,7 +139,7 @@ class User < ApplicationRecord
           provider: attributes[:provider],
           provider_url: attributes[:provider_url],
         )
-      authentication.update_attributes!(attributes)
+      authentication.update!(attributes)
     else
       authentications.build(attributes)
     end
