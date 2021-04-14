@@ -71,16 +71,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
 
     flash.discard
-    if error = oauth_error_message
-      flash[:error] = format_oauth_error_message(error)
-      render "shared/_omniauth_error", status: :forbidden
-    elsif origin_url = request.env["omniauth.origin"]
-      query_params = redirect_params.to_h.to_query
-      redirect_to query_params.empty? ? origin_url : "#{origin_url}?#{query_params}"
-    else
-      flash[:error] = "An unknown OAuth error has occured"
-      render "shared/_omniauth_error", status: 403
-    end
+    flash[:error] = format_oauth_error_message(oauth_error_message)
+    render "shared/_omniauth_error", status: :forbidden
   end
 
   def oauth_error_message
@@ -101,7 +93,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def format_oauth_error_message(error)
-    if request.env["omniauth.strategy"].name == "canvas"
+    if request.env["omniauth.strategy"]&.name == "canvas"
       error
     else
       %{#{error} If this problem persists try signing up with a different service
