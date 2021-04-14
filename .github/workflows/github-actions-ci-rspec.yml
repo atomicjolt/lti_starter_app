@@ -15,6 +15,8 @@ jobs:
         image: postgres
         # Provide the password for postgres
         env:
+          RAILS_ENV: test
+          RAILS_GROUPS: build
           POSTGRES_DATABASE: postgres
           POSTGRES_USERNAME: postgres
           POSTGRES_PASSWORD: postgres
@@ -47,6 +49,8 @@ jobs:
       - name: Run tests
         run: bundle exec rspec
         env:
+          RAILS_ENV: test
+          RAILS_GROUPS: build
           # The hostname used to communicate with the PostgreSQL service container
           POSTGRES_HOST: postgres
           # The default PostgreSQL port
