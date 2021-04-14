@@ -3,9 +3,30 @@ name: rspec
 on: pull_request
 
 jobs:
-  test:
+  rspec-test:
 
     runs-on: ubuntu-latest
+
+    # Docker Hub image that `container-job` executes in
+    container: atomicjolt/atomicjolt-ci:ruby-2.5.7--node-10.18.0--yarn-1.10.1
+
+    # Service containers to run with `container-job`
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_DB: postgres
+          POSTGRES_USERNAME: postgres
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
     - uses: actions/checkout@v2
