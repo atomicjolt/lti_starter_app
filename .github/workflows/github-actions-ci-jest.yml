@@ -3,7 +3,7 @@ name: jest
 on: pull_request
 
 jobs:
-  test:
+  jest-test:
 
     runs-on: ubuntu-latest
 
