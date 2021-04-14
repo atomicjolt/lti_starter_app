@@ -66,13 +66,19 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # Check for OAuth errors
     return if request.env["omniauth.auth"].present?
 
-    origin_url = request.env["omniauth.origin"]
-    if origin_url.present?
+    if oauth_state = OauthState.find_by(state: request.params["state"])
+      oauth_state.destroy
+    end
+
+    flash.discard
+    if error = oauth_error_message
+      flash[:error] = format_oauth_error_message(error)
+      render "shared/_omniauth_error", status: :forbidden
+    elsif origin_url = request.env["omniauth.origin"]
       query_params = redirect_params.to_h.to_query
       redirect_to query_params.empty? ? origin_url : "#{origin_url}?#{query_params}"
     else
-      error = oauth_error_message
-      flash[:error] = format_oauth_error_message(error)
+      flash[:error] = "An unknown OAuth error has occured"
       render "shared/_omniauth_error", status: 403
     end
   end
@@ -87,7 +93,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if request.env["omniauth.strategy"].present? && request.env["omniauth.strategy"].name.present?
       %{
         There was a problem communicating with #{request.env['omniauth.strategy'].name.titleize}.
-        Error: #{error_type}
+        Error: #{error_type} - #{request.env['omniauth.error'].error_reason}
       }
     else
       "There was a problem communicating with the remote service. Error: #{error_type}"
