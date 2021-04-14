@@ -15,16 +15,10 @@ jobs:
         image: postgres
         # Provide the password for postgres
         env:
-          RAILS_ENV: test
-          RAILS_GROUPS: build
-          POSTGRES_DATABASE: postgres
-          POSTGRES_USERNAME: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_HOST: postgres
-          POSTGRES_PORT: 5432
-        ports:
-          # Maps tcp port 5432 on service container to the host
-          - 5432:5432
+          POSTGRES_DB: postgres_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: ""
+        ports: ["5432:5432"]
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -33,47 +27,47 @@ jobs:
           --health-retries 5
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.5
           bundler-cache: true
+
       - name: Install dependencies
         env:
           RAILS_ENV: test
           RAILS_GROUPS: build
         run: bundle install
+
       - name: Copy secrets config yml
         run: cp config/secrets.yml.example config/secrets.yml
+
       - name: Copy database config yml
         run: cp config/ci.database.yml config/database.yml
+
       - name: Copy .env
         run: cp .env.example .env
+
       - name: Create db
         env:
           RAILS_ENV: test
           RAILS_GROUPS: build
-          # The hostname used to communicate with the PostgreSQL service container
-          POSTGRES_HOST: postgres
-          # The default PostgreSQL port
-          POSTGRES_PORT: 5432
-        run: bundle exec rails db:create
+          PGHOST: localhost
+          PGUSER: postgres
+          PGDB: postgres_test
+        run: bin/rails db:create
+
       - name: Load db schema
         env:
           RAILS_ENV: test
           RAILS_GROUPS: build
-          # The hostname used to communicate with the PostgreSQL service container
-          POSTGRES_HOST: postgres
-          # The default PostgreSQL port
-          POSTGRES_PORT: 5432
-        run: bundle exec rails db:schema:load
+          PGHOST: localhost
+          PGUSER: postgres
+          PGDB: postgres_test
+        run: bin/rails db:schema:load
+
       - name: Run tests
-        run: bundle exec rspec
-        env:
-          RAILS_ENV: test
-          RAILS_GROUPS: build
-          # The hostname used to communicate with the PostgreSQL service container
-          POSTGRES_HOST: postgres
-          # The default PostgreSQL port
-          POSTGRES_PORT: 5432
+        run: bin/rspec

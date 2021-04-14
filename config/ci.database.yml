@@ -1,6 +1,5 @@
 test:
   adapter: postgresql
-  database: <%= ENV['POSTGRES_DATABASE'] %>
-  host: localhost
-  username: <%= ENV['POSTGRES_USERNAME'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  database: <%= ENV['PGDB'] %>
+  host: <%= ENV['PGHOST'] %>
+  username: <%= ENV['PGUSER'] %>
