@@ -1,9 +1,6 @@
 name: rspec
 
-on:
-  push:
-    branches: [ main ]
-  pull_request: true
+on: pull_request
 
 jobs:
   test:
