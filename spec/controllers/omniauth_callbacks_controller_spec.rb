@@ -8,6 +8,12 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
     end
   end
 
+  class MockError
+    def error_reason
+      "No soup for you!"
+    end
+  end
+
   before do
     setup_application_instance
     request.env["devise.mapping"] = Devise.mappings[:user] # If using Devise
@@ -60,26 +66,20 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
       expect(assigns(:is_lti_launch)).to eq true
     end
 
-    it "should redirect to origin without auth" do
+    it "should render oauth error page" do
       origin_url = "http://example.com"
       request.env["omniauth.origin"] = origin_url
-
-      response = get :canvas
-      expect(response).to redirect_to origin_url
-    end
-
-    it "should redirect with error params" do
-      origin_url = "http://example.com"
-      request.env["omniauth.origin"] = origin_url
+      request.env["omniauth.strategy"] = nil
       error_params = { error: "failure" }
       response = get :canvas, params: {
         canvas_url: "https://example.instructure.com",
       }.merge(error_params)
 
-      expect(response).to redirect_to "#{origin_url}?#{error_params.to_query}"
+      expect(response).to have_http_status 403
     end
 
     it "should render oauth error page when no origin is available" do
+      request.env["omniauth.error"] = MockError.new
       response = get :canvas
 
       expect(response).to have_http_status 403
