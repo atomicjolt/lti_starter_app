@@ -3,3 +3,4 @@ test:
   database: <%= ENV['PGDB'] %>
   host: <%= ENV['PGHOST'] %>
   username: <%= ENV['PGUSER'] %>
+  password: <%= ENV['PGPASSWORD'] %>
