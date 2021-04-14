@@ -35,6 +35,9 @@ jobs:
           ruby-version: 2.5
           bundler-cache: true
       - name: Install dependencies
+        env:
+          RAILS_ENV: test
+          RAILS_GROUPS: build
         run: bundle install
       - name: Copy secrets config yml
         run: cp config/secrets.yml.example config/secrets.yml
@@ -43,8 +46,14 @@ jobs:
       - name: Copy .env
         run: cp .env.example .env
       - name: Create db
+        env:
+          RAILS_ENV: test
+          RAILS_GROUPS: build
         run: bundle exec rails db:create
       - name: Load db schema
+        env:
+          RAILS_ENV: test
+          RAILS_GROUPS: build
         run: bundle exec rails db:schema:load
       - name: Run tests
         run: bundle exec rspec
