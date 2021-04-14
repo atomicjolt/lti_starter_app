@@ -3,8 +3,7 @@ name: rspec
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  pull_request: true
 
 jobs:
   test:
@@ -20,5 +19,14 @@ jobs:
         bundler-cache: true
     - name: Install dependencies
       run: bundle install
+    - name: Copy config yml
+      run: cp config/secrets.yml.example config/secrets.yml
+      run: cp config/ci.database.yml config/database.yml
+    - name: Copy .env
+      run: cp .env.example .env
+    - name: Create db
+      run: bundle exec rails db:create
+    - name: Load db schema
+      run: bundle exec rails db:schema:load
     - name: Run tests
       run: bundle exec rspec
