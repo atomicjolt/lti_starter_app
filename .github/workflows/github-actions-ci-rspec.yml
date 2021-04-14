@@ -66,8 +66,6 @@ jobs:
           RAILS_GROUPS: build
           PGHOST: localhost
           PGUSER: postgres
-          PGDB: postgres_test
-          PGPASSWORD: postgres
         run: bin/rails db:schema:load
 
       - name: Run tests

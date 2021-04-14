@@ -1,6 +1,6 @@
 test:
   adapter: postgresql
-  database: <%= ENV['PGDB'] %>
-  host: <%= ENV['PGHOST'] %>
-  username: <%= ENV['PGUSER'] %>
+  database: postgres_test
+  host: localhost
+  username: postgres
   password: postgres
