@@ -32,8 +32,6 @@ jobs:
         with:
           ruby-version: 2.5
           bundler-cache: true
-        env:
-          --env ImageOS=ubuntu-latest
       - name: Install dependencies
         run: bundle install
       - name: Copy secrets config yml
