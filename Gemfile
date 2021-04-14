@@ -11,13 +11,13 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "6.0.3.6"
+gem "rails", "6.1.3.1"
 
 # Improve boot time
 gem "bootsnap", require: false
 
 # Database
-gem "composite_primary_keys"
+gem "composite_primary_keys", git: "https://github.com/composite-primary-keys/composite_primary_keys.git" # unreleased rails 6.1 support
 gem "pg"
 gem "ros-apartment", require: "apartment"
 
@@ -113,7 +113,7 @@ end
 
 group :ci do
   gem "pronto"
-  gem "pronto-eslint_npm", require: false
+  gem "pronto-eslint", require: false
   gem "pronto-rubocop", require: false
 end
 
