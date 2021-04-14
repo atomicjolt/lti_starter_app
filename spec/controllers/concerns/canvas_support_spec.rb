@@ -29,7 +29,7 @@ describe ApplicationController, type: :controller do
     end
 
     controller do
-      include Concerns::CanvasSupport
+      include CanvasSupport
 
       before_action :protect_canvas_api
 
@@ -120,7 +120,7 @@ describe ApplicationController, type: :controller do
 
     describe "use application_instance.auth_precedence" do
       controller do
-        include Concerns::CanvasSupport
+        include CanvasSupport
 
         before_action :protect_canvas_api
 
@@ -167,7 +167,7 @@ describe ApplicationController, type: :controller do
         @application_instance.save!
       end
       controller do
-        include Concerns::CanvasSupport
+        include CanvasSupport
 
         before_action :protect_canvas_api
 
@@ -214,7 +214,7 @@ describe ApplicationController, type: :controller do
     end
 
     controller do
-      include Concerns::CanvasSupport
+      include CanvasSupport
 
       before_action :protect_canvas_api
 
@@ -277,7 +277,7 @@ describe ApplicationController, type: :controller do
       request.headers["Authorization"] = @user_token_header
     end
     controller do
-      include Concerns::CanvasSupport
+      include CanvasSupport
 
       before_action :protect_canvas_api
 
@@ -326,7 +326,7 @@ describe ApplicationController, type: :controller do
     end
 
     controller do
-      include Concerns::CanvasSupport
+      include CanvasSupport
 
       before_action :protect_canvas_api
 

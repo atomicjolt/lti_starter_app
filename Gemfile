@@ -11,15 +11,15 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "5.2.5"
+gem "rails", "6.0.3.6"
 
 # Improve boot time
 gem "bootsnap", require: false
 
 # Database
-gem "apartment"
 gem "composite_primary_keys"
 gem "pg"
+gem "ros-apartment", require: "apartment"
 
 # authentication, authorization, integrations
 gem "attr_encrypted"

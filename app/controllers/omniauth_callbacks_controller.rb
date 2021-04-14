@@ -1,5 +1,5 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  include Concerns::LtiSupport
+  include LtiSupport
 
   before_action :verify_oauth_response, except: [:passthru]
   before_action :login_canvas_lti_user

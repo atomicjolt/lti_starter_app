@@ -7,7 +7,7 @@ describe ApplicationController, type: :controller do
   end
 
   controller do
-    include Concerns::OpenIdConnectSupport
+    include OpenIdConnectSupport
 
     skip_before_action :verify_authenticity_token
 

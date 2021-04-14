@@ -1,5 +1,5 @@
 require_relative 'boot'
-require_relative "../app/lib/middleware/oauth_state_middleware"
+require_relative "../app/lib/oauth_state_middleware"
 
 require 'rails/all'
 
@@ -21,7 +21,7 @@ module ReactRailsStarterApp
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    config.autoload_paths << "#{config.root}/lib"
 
     config.action_dispatch.default_headers.delete("X-Frame-Options")
 
@@ -44,7 +44,7 @@ module ReactRailsStarterApp
     }
 
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.0
+    config.load_defaults 6.0
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

@@ -1,5 +1,5 @@
 class Mutations::CreateLtiDeepLinkJwtMutation < Mutations::BaseMutation
-  include Concerns::DeepLinking
+  include DeepLinking
 
   null true
 

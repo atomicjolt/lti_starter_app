@@ -1,6 +1,6 @@
 class Api::GraphqlController < Api::ApiApplicationController
 
-  include Concerns::CanvasSupport
+  include CanvasSupport
 
   # Defined in order of increasing specificity.
   rescue_from Exception, with: :internal_error
