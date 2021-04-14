@@ -173,8 +173,8 @@ export default class ListRow extends React.Component {
             />
             <input
               type="hidden"
-              name="oauth_complete_url"
-              value={`${window.location.protocol}//${window.location.host}${window.location.pathname}#${path}`}
+              name="admin_oauth_aii"
+              value={applicationInstance.id}
             />
             <input
               type="hidden"

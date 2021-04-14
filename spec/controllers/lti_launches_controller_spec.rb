@@ -27,9 +27,27 @@ RSpec.describe LtiLaunchesController, type: :controller do
         setup_canvas_lti_advantage(application_instance: @application_instance)
         allow(controller).to receive(:current_application).and_return(@application)
       end
+
       it "does an lti advantage launch " do
         post :index, params: @params
         expect(response).to have_http_status(200)
+      end
+
+      context "when launching an LtiLaunch that doesn't have a resource_link_id" do
+        it "updates the LtiLaunch with the resource_link_id" do
+          resource_link_id = SecureRandom.hex
+
+          setup_canvas_lti_advantage(
+            application_instance: @application_instance,
+            resource_link_id: resource_link_id,
+          )
+
+          lti_launch = FactoryBot.create(:lti_launch, context_id: @context_id)
+
+          post :index, params: @params.merge(lti_launch_token: lti_launch.token)
+
+          expect(lti_launch.reload.resource_link_id).to eq(resource_link_id)
+        end
       end
     end
   end
@@ -38,6 +56,7 @@ RSpec.describe LtiLaunchesController, type: :controller do
     before do
       request.env["CONTENT_TYPE"] = "application/x-www-form-urlencoded"
     end
+
     it "sets up the user, logs them and outputs the lti config to the client" do
       context_id = SecureRandom.hex(15)
       @lti_launch = FactoryBot.create(:lti_launch, context_id: context_id)
@@ -54,6 +73,27 @@ RSpec.describe LtiLaunchesController, type: :controller do
       post :show, params: { id: @lti_launch.token }.merge(params)
       expect(response).to have_http_status(200)
       expect(response.body).to include("lti_launch_config")
+    end
+
+    context "when the LtiLaunch doesn't have a resource_link_id" do
+      it "updates the LtiLaunch with the resource_link_id" do
+        context_id = SecureRandom.hex
+        resource_link_id = SecureRandom.hex
+        lti_launch = FactoryBot.create(:lti_launch, context_id: context_id)
+        params = lti_params(
+          @application_instance.lti_key,
+          @application_instance.lti_secret,
+          {
+            "launch_url" => lti_launch_url(lti_launch.token),
+            "context_id" => context_id,
+            "resource_link_id" => resource_link_id,
+          },
+        )
+
+        post :show, params: { id: lti_launch.token }.merge(params)
+
+        expect(lti_launch.reload.resource_link_id).to eq(resource_link_id)
+      end
     end
   end
 

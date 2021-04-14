@@ -32,6 +32,9 @@ class OauthStateMiddleware
   # to send the user back to their original subdomain.
   def redirect_original(request, state_params, site)
     response = Rack::Response.new
+    # Note that app_callback_url is added by OmniAuth.config.before_request_phase
+    # any value provided by a client will be overwritten in that method so that we
+    # don't use/trust values sent by the client
     return_url = state_params["app_callback_url"]
     query = query_string(request, SecureRandom.hex(64))
     return_url << "?"

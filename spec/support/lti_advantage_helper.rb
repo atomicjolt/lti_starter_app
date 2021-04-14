@@ -4,7 +4,8 @@ def setup_canvas_lti_advantage(
   iss: "https://canvas.instructure.com",
   lti_user_id: SecureRandom.uuid,
   context_id: SecureRandom.hex(15),
-  message_type: "LtiResourceLinkRequest"
+  message_type: "LtiResourceLinkRequest",
+  resource_link_id: SecureRandom.hex
 )
   @iss = iss
   @client_id = client_id
@@ -12,6 +13,7 @@ def setup_canvas_lti_advantage(
   @context_id = context_id
   @deployment_id = "12653:#{@context_id}"
   @message_type = message_type
+  @resource_link_id = resource_link_id
 
   application_instance.site.url = "https://atomicjolt.instructure.com"
   application_instance.site.save!
@@ -39,6 +41,7 @@ def setup_canvas_lti_advantage(
       lti_user_id: @lti_user_id,
       context_id: @context_id,
       message_type: @message_type,
+      resource_link_id: @resource_link_id,
     ),
     jwk.private_key,
     jwk.alg,
@@ -86,10 +89,10 @@ def setup_lti_advantage_users
   )
 end
 
-def resource_link_claim
+def resource_link_claim(id)
   {
     "https://purl.imsglobal.org/spec/lti/claim/resource_link": {
-      "id": "af9b5e18fe251409be18e77253d918dcf22d156e",
+      "id": id,
       "description": nil,
       "title": nil,
       "validation_context": nil,
@@ -117,7 +120,7 @@ def deep_link_settings_claim
   }
 end
 
-def build_payload(client_id:, iss:, lti_user_id:, context_id:, message_type:)
+def build_payload(client_id:, iss:, lti_user_id:, context_id:, message_type:, resource_link_id:)
   exp = 24.hours.from_now
   nonce = SecureRandom.hex(10)
   payload = {
@@ -206,7 +209,7 @@ def build_payload(client_id:, iss:, lti_user_id:, context_id:, message_type:)
     },
   }
 
-  payload.merge!(resource_link_claim) if @message_type == "LtiResourceLinkRequest"
+  payload.merge!(resource_link_claim(resource_link_id)) if @message_type == "LtiResourceLinkRequest"
   payload.merge!(deep_link_settings_claim) if @message_type == "LtiDeepLinkingRequest"
 
   payload

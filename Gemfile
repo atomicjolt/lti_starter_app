@@ -11,7 +11,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "5.2.4.4"
+gem "rails", "5.2.5"
 
 # Improve boot time
 gem "bootsnap", require: false
@@ -112,7 +112,7 @@ group :development, :build, :ci, :test do
 end
 
 group :ci do
-  gem "pronto", git: "https://github.com/prontolabs/pronto"
+  gem "pronto"
   gem "pronto-eslint_npm", require: false
   gem "pronto-rubocop", require: false
 end
