@@ -51,11 +51,19 @@ jobs:
         env:
           RAILS_ENV: test
           RAILS_GROUPS: build
+          # The hostname used to communicate with the PostgreSQL service container
+          POSTGRES_HOST: postgres
+          # The default PostgreSQL port
+          POSTGRES_PORT: 5432
         run: bundle exec rails db:create
       - name: Load db schema
         env:
           RAILS_ENV: test
           RAILS_GROUPS: build
+          # The hostname used to communicate with the PostgreSQL service container
+          POSTGRES_HOST: postgres
+          # The default PostgreSQL port
+          POSTGRES_PORT: 5432
         run: bundle exec rails db:schema:load
       - name: Run tests
         run: bundle exec rspec
