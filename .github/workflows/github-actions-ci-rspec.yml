@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     # Docker Hub image that `container-job` executes in
-    container: node:10.18-jessie
+    container: ruby:2.5.7-stretch
 
     # Service containers to run with `container-job`
     services:
@@ -29,23 +29,28 @@ jobs:
           --health-retries 5
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 2.5
-        bundler-cache: true
-    - name: Install dependencies
-      run: bundle install
-    - name: Copy secrets config yml
-      run: cp config/secrets.yml.example config/secrets.yml
-    - name: Copy database config yml
-      run: cp config/ci.database.yml config/database.yml
-    - name: Copy .env
-      run: cp .env.example .env
-    - name: Create db
-      run: bundle exec rails db:create
-    - name: Load db schema
-      run: bundle exec rails db:schema:load
-    - name: Run tests
-      run: bundle exec rspec
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.5
+          bundler-cache: true
+      - name: Install dependencies
+        run: bundle install
+      - name: Copy secrets config yml
+        run: cp config/secrets.yml.example config/secrets.yml
+      - name: Copy database config yml
+        run: cp config/ci.database.yml config/database.yml
+      - name: Copy .env
+        run: cp .env.example .env
+      - name: Create db
+        run: bundle exec rails db:create
+      - name: Load db schema
+        run: bundle exec rails db:schema:load
+      - name: Run tests
+        run: bundle exec rspec
+        env:
+          # The hostname used to communicate with the PostgreSQL service container
+          POSTGRES_HOST: postgres
+          # The default PostgreSQL port
+          POSTGRES_PORT: 5432
