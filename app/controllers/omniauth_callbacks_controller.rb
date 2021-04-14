@@ -84,9 +84,11 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         There was a problem communicating with #{request.env['omniauth.strategy'].name.titleize}.
         Error: #{error_type} - #{request.env['omniauth.error'].error_reason}
       }
-    else
+    elsif error_type.present?
       "There was a problem communicating with the remote service. Error: #{error_type}"
     end
+
+    nil
   end
 
   def format_oauth_error_message(error)
