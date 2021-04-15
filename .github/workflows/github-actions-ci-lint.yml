@@ -1,5 +1,9 @@
 name: linter
 
+on:
+  push:
+    branches: [ i_amDisabl_ed]
+
 jobs:
   test:
 
