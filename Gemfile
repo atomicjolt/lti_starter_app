@@ -102,7 +102,6 @@ end
 
 group :development, :linter do
   gem "rubocop", "~> 0.88.0"
-  gem "rubocop-discourse"
   gem "rubocop-performance", "~> 1.7.1"
   gem "rubocop-rails", "~> 2.7.1"
 end
