@@ -65,7 +65,5 @@ Rails.application.configure do
   routes.default_url_options = { host: "localhost" }
   config.action_mailer.default_url_options = { host: "localhost" }
 
-  config.log_level = :debug
-
   config.active_job.queue_adapter = :test
 end

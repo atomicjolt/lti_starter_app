@@ -24,7 +24,6 @@ class ApplicationController < ActionController::Base
   end
 
   def render_error(status, message, json_options = {})
-    current_application_instance.custom_error_message = message
     respond_to do |format|
       format.html { render template: "errors/#{status}", layout: "errors", status: status }
       format.json do
