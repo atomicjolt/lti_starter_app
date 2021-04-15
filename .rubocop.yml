@@ -13,6 +13,7 @@ AllCops:
     - db/migrate/*
     - spec/spec_helper.rb
     - node_modules/**/*
+    - vendor/**/*
 
 Naming/AccessorMethodName:
   Description: Check the naming of accessor methods for get_/set_.
