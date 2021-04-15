@@ -24,4 +24,4 @@ jobs:
         run: bundle install
 
       - name: Run linter
-        run: bundle exec rubocop --parallel
+        run: git diff --name-only origin/master | bundle exec xargs rubocop --force-exclusion --parallel
