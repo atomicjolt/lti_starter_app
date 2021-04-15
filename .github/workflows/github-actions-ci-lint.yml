@@ -1,6 +1,6 @@
 name: linter
 
-on: [push]
+on: pull_request
 
 jobs:
   test:
@@ -24,4 +24,4 @@ jobs:
         run: bundle install
 
       - name: Run linter
-        run: bundle exec rubocop
+        run: bundle exec rubocop --parallel

@@ -787,6 +787,3 @@ Performance/Squeeze:
 
 Performance/StringInclude:
   Enabled: true
-
-Lint/SelfAssignment:
-  Enabled: true
