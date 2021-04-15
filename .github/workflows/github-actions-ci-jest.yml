@@ -31,7 +31,7 @@ jobs:
             ${{ runner.OS }}-
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --pure-lockfile
 
       - name: Run tests
         run: yarn test
