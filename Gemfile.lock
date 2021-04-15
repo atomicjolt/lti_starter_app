@@ -390,12 +390,18 @@ GEM
       unicode-display_width (>= 1.4.0, < 2.0)
     rubocop-ast (0.8.0)
       parser (>= 2.7.1.5)
+    rubocop-discourse (2.3.2)
+      rubocop (>= 0.69.0)
+      rubocop-rspec (>= 1.39.0)
     rubocop-performance (1.7.1)
       rubocop (>= 0.82.0)
     rubocop-rails (2.7.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 0.87.0)
+    rubocop-rspec (1.44.1)
+      rubocop (~> 0.87)
+      rubocop-ast (>= 0.7.1)
     ruby-debug-ide (0.7.2)
       rake (>= 0.8.1)
     ruby-progressbar (1.11.0)
@@ -531,6 +537,7 @@ DEPENDENCIES
   ros-apartment
   rspec-rails
   rubocop (~> 0.88.0)
+  rubocop-discourse
   rubocop-performance (~> 1.7.1)
   rubocop-rails (~> 2.7.1)
   ruby-debug-ide
