@@ -20,7 +20,7 @@ linter:
     - bundle install --path vendor
     - "[[ ! -s \"$(git rev-parse --git-dir)/shallow\" ]] || git fetch --unshallow"
   script:
-    - PRONTO_GITLAB_API_ENDPOINT=https://gitlab.com/api/v4/ bundle exec pronto run -r eslint_npm rubocop -f gitlab_mr -c origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME --exit-code
+    - PRONTO_GITLAB_API_ENDPOINT=https://gitlab.com/api/v4/ bundle exec pronto run -r eslint rubocop -f gitlab_mr -c origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME --exit-code
 
 
 rspec:
