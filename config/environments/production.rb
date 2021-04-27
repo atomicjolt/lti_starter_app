@@ -139,7 +139,7 @@ Rails.application.configure do
 
   # ActionMailer Config
   config.action_mailer.default_url_options = {
-    host: "#{Application::ADMIN}.#{Rails.application.secrets.application_root_domain}",
+    host: Rails.application.secrets.mailer_default_url_host,
   }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
