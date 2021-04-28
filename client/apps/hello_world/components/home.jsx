@@ -10,12 +10,13 @@ import assets from '../libs/assets';
 import Selector from './content_item_select/selector';
 import DeepLink from './deep_link';
 
-const select = (state) => ({
+const select = state => ({
   courses: state.courses,
   canvasReAuthorizationRequired: state.canvasErrors.canvasReAuthorizationRequired,
 });
 
 export class Home extends React.Component {
+
   static propTypes = {
     settings: PropTypes.shape({
       canvas_auth_required: PropTypes.bool,
@@ -42,15 +43,17 @@ export class Home extends React.Component {
       return null;
     }
 
-    return this.props.courses.map((course) => <li key={`course_${course.id}`}>
-      <a target="_top" href={`${this.props.settings.canvas_url}/courses/${course.id}`}>
-        {course.name}
-      </a>
-    </li>);
+    return this.props.courses.map(course =>
+      <li key={`course_${course.id}`}>
+        <a target="_top" href={`${this.props.settings.canvas_url}/courses/${course.id}`}>
+          {course.name}
+        </a>
+      </li>);
   }
 
   renderLineItemErrors() {
-    return this.props.settings.line_items.errors.map((error) => <li key={error.message}>{error.message}</li>);
+    return this.props.settings.line_items.errors.map(error =>
+      <li key={error.message}>{error.message}</li>);
   }
 
   renderLineItems() {
