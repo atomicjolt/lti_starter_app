@@ -83,35 +83,19 @@ export class Home extends React.Component {
     if (!this.props.settings.names_and_roles) {
       return null;
     }
-    return this.props.settings.names_and_roles.members.map((nameAndRole) => <li key={`name_and_role_${nameAndRole.user_id}`}>
-      <a target="_top" href={`${this.props.settings.canvas_url}/courses/${nameAndRole.id}`}>
-        {nameAndRole.user_id}
-        <img src={nameAndRole.picture} alt={nameAndRole.given_name} />
-      </a>
-      <p>
-Name:
-        {' '}
-        {nameAndRole.name || 'Anonymous'}
-      </p>
-      <p>
-Email:
-        {' '}
-        {nameAndRole.email}
-      </p>
-      <p>
-Status:
-        {' '}
-        {nameAndRole.status}
-      </p>
-      <p>
-User Id:
-        {nameAndRole.userId}
-      </p>
-      <p>
-Roles:
-        {nameAndRole.roles.join(', ')}
-      </p>
-    </li>);
+
+    return this.props.settings.names_and_roles.members.map(nameAndRole =>
+      <li key={`name_and_role_${nameAndRole.user_id}`}>
+        <a target="_top" href={`${this.props.settings.canvas_url}/courses/${nameAndRole.id}`}>
+          {nameAndRole.user_id}
+          <img src={nameAndRole.picture} alt={nameAndRole.given_name} />
+        </a>
+        <p>Name: {nameAndRole.name || 'Anonymous'}</p>
+        <p>Email: {nameAndRole.email}</p>
+        <p>Status: {nameAndRole.status}</p>
+        <p>User Id:{nameAndRole.userId}</p>
+        <p>Roles:{nameAndRole.roles.join(', ')}</p>
+      </li>);
   }
 
   renderResults() {
@@ -119,25 +103,12 @@ Roles:
       return null;
     }
 
-    return this.props.settings.line_item_results.map((result) => <li key={`name_and_role_${result.id}`}>
-      <p>
-User:
-        {' '}
-        {result.userId}
-      </p>
-      <p>
-Score:
-        {' '}
-        {result.resultScore}
-/
-        {result.resultMaximum}
-      </p>
-      <p>
-Comment:
-        {' '}
-        {result.comment}
-      </p>
-    </li>);
+    return this.props.settings.line_item_results.map(result =>
+      <li key={`name_and_role_${result.id}`}>
+        <p>User: {result.userId}</p>
+        <p>Score: {result.resultScore}/{result.resultMaximum}</p>
+        <p>Comment: {result.comment}</p>
+      </li>);
   }
 
   renderContent() {
