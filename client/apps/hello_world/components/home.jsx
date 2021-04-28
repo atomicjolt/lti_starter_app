@@ -16,7 +16,6 @@ const select = (state) => ({
 });
 
 export class Home extends React.Component {
-
   static propTypes = {
     settings: PropTypes.shape({
       canvas_auth_required: PropTypes.bool,
@@ -68,22 +67,18 @@ export class Home extends React.Component {
       );
     }
 
-    return this.props.settings.line_items.map((lineItem) => <li key={`line_item${lineItem.id}`}>
-      <a href={lineItem.id}>
-        {lineItem.label}
-        {' '}
-(
-        {lineItem.scoreMaximum}
-)
-      </a>
-    </li>);
+    return this.props.settings.line_items.map(lineItem =>
+      <li key={`line_item${lineItem.id}`}>
+        <a href={lineItem.id}>
+          {lineItem.label} ({lineItem.scoreMaximum})
+        </a>
+      </li>);
   }
 
   renderUsers() {
     if (!this.props.settings.names_and_roles) {
       return null;
     }
-
     return this.props.settings.names_and_roles.members.map(nameAndRole =>
       <li key={`name_and_role_${nameAndRole.user_id}`}>
         <a target="_top" href={`${this.props.settings.canvas_url}/courses/${nameAndRole.id}`}>
