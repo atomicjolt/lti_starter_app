@@ -1,4 +1,6 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import TestRenderer, { act } from 'react-test-renderer';
 import { MockedProvider } from '@apollo/react-testing';
 import waitForExpect from 'wait-for-expect';
@@ -20,12 +22,18 @@ const mocks = [
   },
 ];
 
+const mockStore = configureStore([]);
+const store = mockStore({
+});
+
 describe('home', () => {
   it('should render loading state initially', () => {
     const testRenderer = TestRenderer.create(
-      <MockedProvider mocks={mocks} addTypename={false}>
-        <Home />
-      </MockedProvider>,
+      <Provider store={store}>
+        <MockedProvider mocks={mocks} addTypename={false}>
+          <Home />
+        </MockedProvider>
+      </Provider>,
     );
 
     const tree = testRenderer.toJSON();
@@ -36,9 +44,11 @@ describe('home', () => {
     let testRenderer;
     await act(async() => {
       testRenderer = TestRenderer.create(
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <Home />
-        </MockedProvider>,
+        <Provider store={store}>
+          <MockedProvider mocks={mocks} addTypename={false}>
+            <Home />
+          </MockedProvider>
+        </Provider>,
       );
     });
 
