@@ -28,6 +28,6 @@ RSpec.describe Api::LtiDeepLinkJwtController, type: :controller do
   end
 
   describe "includes JwtToken" do
-    it { expect(Api::LtiDeepLinkJwtController.ancestors.include?(Concerns::JwtToken)).to eq(true) }
+    it { expect(Api::LtiDeepLinkJwtController.ancestors.include?(JwtToken)).to eq(true) }
   end
 end

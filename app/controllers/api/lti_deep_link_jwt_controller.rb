@@ -1,5 +1,5 @@
 class Api::LtiDeepLinkJwtController < Api::ApiApplicationController
-  include Concerns::DeepLinking
+  include DeepLinking
 
   # ###########################################################
   # Used to sign a response to the platform

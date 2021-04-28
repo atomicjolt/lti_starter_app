@@ -18,7 +18,6 @@ NuclearSecrets.configure do |config|
     hello_world_lti_secret: String,
     admin_lti_secret: String,
     secret_key_base: String,
-    secret_token: String,
     deploy_env: String,
   }
 end

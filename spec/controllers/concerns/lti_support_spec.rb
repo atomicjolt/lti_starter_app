@@ -8,7 +8,7 @@ describe ApplicationController, type: :controller do
   end
 
   controller do
-    include Concerns::LtiSupport
+    include LtiSupport
 
     skip_before_action :verify_authenticity_token
     before_action :do_lti
