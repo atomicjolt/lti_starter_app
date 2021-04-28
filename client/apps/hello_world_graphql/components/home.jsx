@@ -17,8 +17,7 @@ export const GET_WELCOME = gql`
 `;
 
 const Home = ({ settings }) => {
-  const canvasReAuthorizationRequired = useSelector((state) => state.canvasErrors.canvasReAuthorizationRequired);
-
+  const authRequired = useSelector((state) => state.canvasErrors.canvasReAuthorizationRequired);
   const { loading, error, data } = useQuery(GET_WELCOME, {
     variables: {
       name: 'World',
@@ -48,7 +47,7 @@ const Home = ({ settings }) => {
         by
         <a href="http://www.atomicjolt.com">Atomic Jolt</a>
       </p>
-      { displayCanvasAuth(settings, canvasReAuthorizationRequired) }
+      { displayCanvasAuth(settings, authRequired) }
     </div>
   );
 
