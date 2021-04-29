@@ -24,6 +24,9 @@ const mocks = [
 
 const mockStore = configureStore([]);
 const store = mockStore({
+  canvasErrors: {
+    canvasReAuthorizationRequired: false,
+  },
 });
 
 describe('home', () => {
