@@ -4,6 +4,7 @@ import es6Promise from 'es6-promise';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
 import _ from 'lodash';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { ApolloClient } from 'apollo-client';
@@ -15,6 +16,7 @@ import { Router } from 'react-router';
 import { Route } from 'react-router-dom';
 import { Jwt } from 'atomic-fuel/libs/loaders/jwt';
 import settings from './settings';
+import configureStore from './store/configure_store';
 
 import appHistory from './history';
 import Index from './components/layout/index';
@@ -28,22 +30,23 @@ es6Promise.polyfill();
 const jwt = new Jwt(window.DEFAULT_JWT, window.DEFAULT_SETTINGS.api_url);
 jwt.enableRefresh();
 
-class Root extends React.PureComponent {
-  static propTypes = {
-    client: PropTypes.object,
-  };
-
-  render() {
-    const { client } = this.props;
-    return (
+function Root(props) {
+  const { client, store } = props;
+  return (
+    <Provider store={store}>
       <ApolloProvider client={client}>
         <Router history={appHistory}>
           <Route path="/" component={Index} />
         </Router>
       </ApolloProvider>
-    );
-  }
+    </Provider>
+  );
 }
+
+Root.propTypes = {
+  client: PropTypes.object.isRequired,
+  store: PropTypes.object.isRequired,
+};
 
 const inCacheMemory = new InMemoryCache();
 
@@ -84,7 +87,9 @@ const client = new ApolloClient({
 const mainApp =  document.getElementById('main-app');
 initResizeHandler(mainApp);
 
+const store = configureStore({ jwt: window.DEFAULT_JWT });
+
 ReactDOM.render(
-  <Root client={client} />,
+  <Root client={client} store={store} />,
   mainApp,
 );

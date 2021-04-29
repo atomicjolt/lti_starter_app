@@ -66,7 +66,8 @@ bundles = [
   },
 ]
 
-hello_lti_advantage_config = JSON.parse(File.read(File.join(Rails.root, "db", "lti_advantage_configs", "hello_world_lti_advantage_config.json")))
+file_path = Rails.root.join("db/lti_advantage_configs/hello_world_lti_advantage_config.json")
+hello_lti_advantage_config = JSON.parse(File.read(file_path))
 
 # Add an LTI Application
 applications = [
