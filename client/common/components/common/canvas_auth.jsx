@@ -15,8 +15,8 @@ export class CanvasAuth extends React.Component {
   };
 
   render() {
-    const authRequired = this.props.settings.canvas_auth_required ||
-      this.props.canvasReAuthorizationRequired;
+    const authRequired = this.props.settings.canvas_auth_required
+      || this.props.canvasReAuthorizationRequired;
     if (!authRequired) {
       return '';
     }
@@ -43,7 +43,7 @@ export class CanvasAuth extends React.Component {
     return (
       <div style={authStyle} className="c-main__contain c-text--center c-main__center">
         <h1 className="c-title--large">Authorize with Canvas</h1>
-        <p className="c-text">Please click the button below to authorization the application to work with Canvas.</p>
+        <p className="c-text">Please click the button below to authorize the application to work with Canvas.</p>
         <CanvasAuthentication
           buttonText={buttonText}
           buttonClassName="c-btn c-btn--blue"
@@ -61,8 +61,8 @@ export function displayCanvasAuth(
   autoSubmit = false,
   hideButton = false
 ) {
-  const authRequired = settings.canvas_auth_required ||
-      canvasReAuthorizationRequired;
+  const authRequired = settings.canvas_auth_required
+      || canvasReAuthorizationRequired;
 
   if (authRequired) {
     return (
