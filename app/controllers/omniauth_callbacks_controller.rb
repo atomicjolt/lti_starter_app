@@ -52,7 +52,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     return true if user_signed_in?
     auth = request.env["omniauth.auth"]
     if auth["provider"].downcase == "canvas" && lti_user_id = User.oauth_lti_user_id(auth)
-      if @user = User.find_by(lti_user_id: lti_user_id)
+      if @user = User.find_by(lti_user_id: lti_user_id) || User.find_by(legacy_lti_user_id: lti_user_id)
         sign_in_or_register("Canvas")
       end
     end
@@ -170,6 +170,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user.password_confirmation = @user.password
     @user.create_method = User.create_methods[:oauth]
     @user.lti_user_id = auth["extra"]["raw_info"]["lti_user_id"]
+    @user.legacy_lti_user_id = auth["extra"]["raw_info"]["lti_user_id"]
     @user.apply_oauth(auth)
     if kind == "Canvas"
       @user.add_to_role("canvas_oauth_user")
