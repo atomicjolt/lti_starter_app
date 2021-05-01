@@ -53,7 +53,9 @@ class LtiLaunchesController < ApplicationController
   # Support Open ID connect flow for LTI 1.3
   def init
     nonce = SecureRandom.hex(64)
-    url = build_response(LtiAdvantage::OpenId.state, params, nonce)
+    state = LtiAdvantage::OpenId.state
+    url = build_response(state, params, nonce)
+    cookies[:open_id_state] = state
     respond_to do |format|
       format.html { redirect_to url }
     end

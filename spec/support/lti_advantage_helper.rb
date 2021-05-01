@@ -11,12 +11,13 @@ def setup_canvas_lti_advantage(
   @client_id = client_id
   @lti_user_id = lti_user_id
   @context_id = context_id
-  @deployment_id = "12653:#{@context_id}"
+  @deployment_id = "#{SecureRandom.hex(5)}:#{@context_id}"
   @message_type = message_type
   @resource_link_id = resource_link_id
 
-  application_instance.site.url = "https://atomicjolt.instructure.com"
-  application_instance.site.save!
+  site = Site.find_or_create_by(url: "https://atomicjolt.instructure.com")
+  application_instance.site = site
+  application_instance.save!
 
   application_instance.application.lti_installs.create!(
     iss: @iss,
@@ -42,6 +43,7 @@ def setup_canvas_lti_advantage(
       context_id: @context_id,
       message_type: @message_type,
       resource_link_id: @resource_link_id,
+      deployment_id: @deployment_id
     ),
     jwk.private_key,
     jwk.alg,
@@ -49,7 +51,7 @@ def setup_canvas_lti_advantage(
     typ: "JWT",
   )
 
-  @lti_token = LtiAdvantage::Authorization.validate_token(@application_instance, @id_token)
+  @lti_token = LtiAdvantage::Authorization.validate_token(application_instance, @id_token)
 
   nonce = SecureRandom.hex(64)
   OpenIdState.create!(nonce: nonce)
@@ -120,7 +122,7 @@ def deep_link_settings_claim
   }
 end
 
-def build_payload(client_id:, iss:, lti_user_id:, context_id:, message_type:, resource_link_id:)
+def build_payload(client_id:, iss:, lti_user_id:, context_id:, message_type:, resource_link_id:, deployment_id:)
   exp = 24.hours.from_now
   nonce = SecureRandom.hex(10)
   payload = {
@@ -141,7 +143,7 @@ def build_payload(client_id:, iss:, lti_user_id:, context_id:, message_type:, re
     },
     "aud": client_id,
     "azp": client_id,
-    "https://purl.imsglobal.org/spec/lti/claim/deployment_id": @deployment_id,
+    "https://purl.imsglobal.org/spec/lti/claim/deployment_id": deployment_id,
     "exp": exp.to_i,
     "iat": Time.now.to_i,
     "iss": iss,
