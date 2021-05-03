@@ -10,7 +10,7 @@ variables:
   POSTGRES_DB: nice_marmot
 
 linter:
-  image: atomicjolt/atomicjolt-ci:ruby-2.5.7--node-10.18.0--yarn-1.10.1
+  image: atomicjolt/atomicjolt-ci:ruby-2.5.9-node-10.24.1-yarn-1.10.1
   only:
     - merge_requests
   except:
@@ -24,7 +24,7 @@ linter:
 
 
 rspec:
-  image: atomicjolt/atomicjolt-ci:ruby-2.5.7--node-10.18.0--yarn-1.10.1
+  image: atomicjolt/atomicjolt-ci:ruby-2.5.9-node-10.24.1-yarn-1.10.1
   only:
     - master
     - /.*\..*/
@@ -43,7 +43,7 @@ rspec:
     - bundle exec rspec
 
 jest:
-  image: atomicjolt/atomicjolt-ci:ruby-2.5.7--node-10.18.0--yarn-1.10.1
+  image: atomicjolt/atomicjolt-ci:ruby-2.5.9-node-10.24.1-yarn-1.10.1
   only:
     - master
     - /.*\..*/
