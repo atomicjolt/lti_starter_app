@@ -66,6 +66,25 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
       expect(assigns(:is_lti_launch)).to eq true
     end
 
+    it "should redirect to origin without auth" do
+      origin_url = "http://example.com"
+      request.env["omniauth.origin"] = origin_url
+
+      response = get :canvas
+      expect(response).to redirect_to origin_url
+    end
+
+    it "should redirect with error params" do
+      origin_url = "http://example.com"
+      request.env["omniauth.origin"] = origin_url
+      error_params = { error: "failure" }
+      response = get :canvas, params: {
+        canvas_url: "https://example.instructure.com",
+      }.merge(error_params)
+
+      expect(response).to redirect_to "#{origin_url}?#{error_params.to_query}"
+    end
+
     it "should render oauth error page" do
       origin_url = "http://example.com"
       request.env["omniauth.origin"] = origin_url

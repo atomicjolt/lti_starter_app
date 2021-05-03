@@ -85,7 +85,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if request.env["omniauth.strategy"].present? && request.env["omniauth.strategy"].name.present?
       %{
         There was a problem communicating with #{request.env['omniauth.strategy'].name.titleize}.
-        Error: #{error_type} - #{request.env['omniauth.error'].error_reason}
+        Error: #{error_type} - #{request.env['omniauth.error']&.error_reason}
       }
     else
       "There was a problem communicating with the remote service. Error: #{error_type}"
