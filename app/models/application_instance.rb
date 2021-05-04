@@ -48,10 +48,9 @@ class ApplicationInstance < ApplicationRecord
           lti_install: lti_install,
           deployment_id: deployment_id,
         )
-        return true
+        application_instance
       end
     end
-    false
   end
 
   # Create a new application instance if the deployment id isn't found
