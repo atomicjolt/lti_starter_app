@@ -4,12 +4,16 @@
     csrf_token: form_authenticity_token
   }
 
+  default_jwt = jwt_token(user_canvas_omniauth_callback_url)
 
   # OAuth related params
   settings[:canvas_oauth_url]     = user_canvas_omniauth_authorize_url(host: Integrations::CanvasApiSupport.oauth_host)
   settings[:canvas_callback_url]  = user_canvas_omniauth_callback_url(host: Integrations::CanvasApiSupport.oauth_host)
   settings[:oauth_consumer_key] = current_application_instance.lti_key
   settings[:canvas_auth_required] = @canvas_auth_required
+  if @canvas_auth_required
+    settings[:authorization] = default_jwt
+  end
   settings[:canvas_url] = canvas_url
   settings[:has_global_auth] = current_application_instance.canvas_token.present?
 
@@ -108,5 +112,5 @@
 %>
 <script type="text/javascript">
   window.DEFAULT_SETTINGS = <%= settings.to_json.html_safe %>;
-  window.DEFAULT_JWT = '<%= signed_in? ? jwt_token : "" %>';
+  window.DEFAULT_JWT = '<%= signed_in? ? default_jwt : "" %>';
 </script>

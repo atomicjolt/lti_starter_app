@@ -1,12 +1,16 @@
 module JwtHelper
 
-  def jwt_token
+  def jwt_token(app_callback_url = nil)
     return unless signed_in?
 
     attrs = {
       user_id: current_user.id,
       application_instance_id: current_application_instance.id,
     }
+
+    if app_callback_url
+      attrs[:app_callback_url] = app_callback_url
+    end
 
     # Only trust these values if the current request is an LTI launch
     if @lti_token

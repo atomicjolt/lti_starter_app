@@ -4,10 +4,15 @@ OmniAuth.config.before_request_phase do |env|
 
   # Inject app_callback_url here so we don't trust the client value
   payload = request.params.to_h
-  payload["app_callback_url"] = Rails.application.routes.url_helpers.user_canvas_omniauth_callback_url(
-    host: Integrations::CanvasApiSupport.oauth_host,
-    protocol: "https",
-  )
+
+  if payload["authorization"].present? && token = AuthToken.decode(payload["authorization"])
+    payload["app_callback_url"] = token[0]["app_callback_url"]
+  else
+    payload["app_callback_url"] = Rails.application.routes.url_helpers.user_canvas_omniauth_callback_url(
+      host: Integrations::CanvasApiSupport.oauth_host,
+      protocol: "https",
+    )
+  end
 
   OauthState.create!(state: state, payload: payload.to_json)
   env["omniauth.strategy"].options[:authorize_params].state = state
