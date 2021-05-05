@@ -7,11 +7,6 @@ OmniAuth.config.before_request_phase do |env|
 
   if payload["authorization"].present? && token = AuthToken.decode(payload["authorization"])
     payload["app_callback_url"] = token[0]["app_callback_url"]
-  else
-    payload["app_callback_url"] = Rails.application.routes.url_helpers.user_canvas_omniauth_callback_url(
-      host: Integrations::CanvasApiSupport.oauth_host,
-      protocol: "https",
-    )
   end
 
   OauthState.create!(state: state, payload: payload.to_json)
