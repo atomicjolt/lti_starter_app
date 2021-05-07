@@ -66,7 +66,8 @@ bundles = [
   },
 ]
 
-hello_lti_advantage_config = JSON.parse(File.read(File.join(Rails.root, "db", "lti_advantage_configs", "hello_world_lti_advantage_config.json")))
+file_path = Rails.root.join("db/lti_advantage_configs/hello_world_lti_advantage_config.json")
+hello_lti_advantage_config = JSON.parse(File.read(file_path))
 
 # Add an LTI Application
 applications = [
@@ -233,7 +234,7 @@ def setup_application_instances(application, application_instances)
         puts "- canvas_token is blank. Not updating value."
       end
 
-      application_instance.update_attributes!(attrs)
+      application_instance.update!(attrs)
     else
       puts "Creating new application instance for site: #{site.url}"
       application_instance = application.application_instances.create!(attrs)
@@ -241,7 +242,7 @@ def setup_application_instances(application, application_instances)
 
     lti_deployment_attrs&.each do |lti_deployment_attr|
       if found = application_instance.lti_deployments.find_by(deployment_id: lti_deployment_attr[:deployment_id])
-        found.update_attributes!(lti_deployment_attr)
+        found.update!(lti_deployment_attr)
       else
         lti_install = application_instance.application.lti_installs.find_by(iss: "https://canvas.instructure.com")
         application_instance.lti_deployments.create!(
@@ -268,7 +269,7 @@ if Apartment::Tenant.current == "public"
       puts "Updating site: #{site.url}"
       attrs.delete(:oauth_key) if attrs[:oauth_key].blank?
       attrs.delete(:oauth_secret) if attrs[:oauth_secret].blank?
-      site.update_attributes!(attrs)
+      site.update!(attrs)
     else
       puts "Creating site: #{attrs[:url]}"
       Site.create!(attrs)
@@ -281,7 +282,7 @@ if Apartment::Tenant.current == "public"
     lti_installs_attrs = attrs.delete(:lti_installs)
     if application = Application.find_by(key: attrs[:key])
       puts "Updating application: #{application.name}"
-      application.update_attributes!(attrs)
+      application.update!(attrs)
     else
       puts "Creating application: #{attrs[:name]}"
       application = Application.create!(attrs)
@@ -292,7 +293,7 @@ if Apartment::Tenant.current == "public"
         iss: lti_install_attrs[:iss],
         client_id: lti_install_attrs[:client_id],
       )
-        lti_install.update_attributes!(lti_install_attrs)
+        lti_install.update!(lti_install_attrs)
       else
         application.lti_installs.create!(lti_install_attrs)
       end

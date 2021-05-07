@@ -1,6 +1,6 @@
 class Api::ApplicationInstancesController < Api::ApiApplicationController
 
-  include Concerns::CanvasSupport
+  include CanvasSupport
 
   load_and_authorize_resource :application
   load_and_authorize_resource :application_instance, through: :application

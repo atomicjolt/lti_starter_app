@@ -1,5 +1,5 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  include Concerns::LtiSupport
+  include LtiSupport
 
   before_action :verify_oauth_response, except: [:passthru]
   before_action :login_canvas_lti_user
@@ -66,15 +66,13 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # Check for OAuth errors
     return if request.env["omniauth.auth"].present?
 
-    origin_url = request.env["omniauth.origin"]
-    if origin_url.present?
-      query_params = redirect_params.to_h.to_query
-      redirect_to query_params.empty? ? origin_url : "#{origin_url}?#{query_params}"
-    else
-      error = oauth_error_message
-      flash[:error] = format_oauth_error_message(error)
-      render "shared/_omniauth_error", status: 403
+    if oauth_state = OauthState.find_by(state: request.params["state"])
+      oauth_state.destroy
     end
+
+    flash.discard
+    flash[:error] = format_oauth_error_message(oauth_error_message)
+    render "shared/_omniauth_error", status: :forbidden
   end
 
   def oauth_error_message
@@ -87,7 +85,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if request.env["omniauth.strategy"].present? && request.env["omniauth.strategy"].name.present?
       %{
         There was a problem communicating with #{request.env['omniauth.strategy'].name.titleize}.
-        Error: #{error_type}
+        Error: #{error_type} - #{request.env['omniauth.error'].error_reason}
       }
     else
       "There was a problem communicating with the remote service. Error: #{error_type}"
@@ -95,7 +93,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def format_oauth_error_message(error)
-    if request.env["omniauth.strategy"].name == "canvas"
+    if request.env["omniauth.strategy"]&.name == "canvas"
       error
     else
       %{#{error} If this problem persists try signing up with a different service

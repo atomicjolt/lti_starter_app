@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe ApplicationController, type: :controller do
   controller do
-    include Concerns::Paging
+    include Paging
 
     respond_to :json
 

@@ -25,7 +25,7 @@ describe ApplicationController, type: :controller do
   end
 
   controller do
-    include Concerns::ContentItemSupport
+    include ContentItemSupport
 
     skip_before_action :verify_authenticity_token
 

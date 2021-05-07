@@ -1,4 +1,4 @@
-module LTI
+module Lti
   module Roles
     # Context level roles
     INSTRUCTOR = "urn:lti:role:ims\/lis\/Instructor".freeze

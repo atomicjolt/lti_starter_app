@@ -1,4 +1,4 @@
-require: 
+require:
   - rubocop-rails
   - rubocop-performance
 
@@ -13,6 +13,7 @@ AllCops:
     - db/migrate/*
     - spec/spec_helper.rb
     - node_modules/**/*
+    - vendor/**/*
 
 Naming/AccessorMethodName:
   Description: Check the naming of accessor methods for get_/set_.
@@ -786,7 +787,4 @@ Performance/Squeeze:
   Enabled: true
 
 Performance/StringInclude:
-  Enabled: true
-
-Lint/SelfAssignment:
   Enabled: true

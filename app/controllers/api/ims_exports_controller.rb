@@ -1,6 +1,6 @@
 class Api::ImsExportsController < ApplicationController
 
-  include Concerns::CanvasImsccSupport
+  include CanvasImsccSupport
 
   def show
     export = ImsExport.find_by(token: params[:id])

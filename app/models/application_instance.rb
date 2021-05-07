@@ -158,9 +158,12 @@ class ApplicationInstance < ApplicationRecord
     self.domain = domain || "#{application.key}.#{Rails.application.secrets.application_root_domain}"
   end
 
+  # Mirroring ros-apartment lib/apartment/tasks/task_helper.rb#create_tenant
   def create_schema
+    puts "Creating #{tenant} tenant"
     Apartment::Tenant.create tenant
-  rescue Apartment::TenantExists
+  rescue Apartment::TenantExists => e
+    puts "Tried to create already existing tenant: #{e}"
     # If the tenant already exists, then ignore the exception.
     # Just rescue and do nothing.
   end

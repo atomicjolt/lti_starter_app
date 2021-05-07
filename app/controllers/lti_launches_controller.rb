@@ -1,7 +1,7 @@
 class LtiLaunchesController < ApplicationController
-  include Concerns::CanvasSupport
-  include Concerns::LtiSupport
-  include Concerns::OpenIdConnectSupport
+  include CanvasSupport
+  include LtiSupport
+  include OpenIdConnectSupport
 
   layout "client"
 

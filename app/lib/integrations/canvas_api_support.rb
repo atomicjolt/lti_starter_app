@@ -95,7 +95,7 @@ module Integrations
         client_id: application_instance.oauth_key,
         client_secret: application_instance.oauth_secret,
         redirect_uri: Rails.application.routes.url_helpers.user_canvas_omniauth_callback_url(
-          host: CanvasApiSupport.oauth_host,
+          host: Integrations::CanvasApiSupport.oauth_host,
           protocol: "https",
         ),
         refresh_token: auth.refresh_token,
