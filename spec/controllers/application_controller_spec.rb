@@ -63,6 +63,19 @@ RSpec.describe ApplicationController, type: :controller do
       end
     end
 
+    describe "#free_trial_days_left" do
+      it "calculates the number of days left in the user's trial period" do
+        application = FactoryBot.create(:application)
+        application_instance = FactoryBot.create(
+          :application_instance,
+          trial_start_date: 20.days.ago,
+          trial_end_date: 10.days.after,
+          application: application,
+        )
+        expect(subject.send(:free_trial_days_left, application_instance)).to eq(10)
+      end
+    end
+
     describe "Exception handlers" do
       before do
         allow(controller).to receive(:current_application_instance).and_return(@application_instance)

@@ -213,4 +213,18 @@ class ApplicationController < ActionController::Base
       find_by(application_id: application.id)
   end
 
+  def free_trial_days_left(application_instance)
+    start_date = application_instance.trial_start_date || application_instance.created_at
+    trial_started_days_ago = (Time.current.to_i - start_date.to_i) / 1.day
+
+    return -1 if trial_started_days_ago < 0
+
+    end_date = application_instance.trial_end_date ||
+      application_instance.created_at + application_instance.application.free_trial_period.days
+
+    trial_days = (end_date.to_i - start_date.to_i) / 1.day
+
+    trial_days - trial_started_days_ago
+  end
+
 end
