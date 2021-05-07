@@ -216,7 +216,7 @@ RSpec.describe RequestStatistic, type: :model do
           number_of_errors: 200,
         )
         day_1_errors_grouped, day_7_errors_grouped, day_30_errors_grouped =
-          RequestStatistic.total_errors_grouped(@tenant)
+          RequestStatistic.total_errors_grouped(@tenant, [0, 7, 30])
 
         expect(day_1_errors_grouped[@tenant]).to eq(2)
         expect(day_7_errors_grouped[@tenant]).to eq(52)

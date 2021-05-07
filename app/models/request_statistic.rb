@@ -12,8 +12,8 @@ class RequestStatistic < ApplicationRecord
 
   scope :for_tenant, ->(tenant) { where(tenant: tenant) }
 
-  def self.total_requests(tenant)
-    [0, 7, 30].map do |days|
+  def self.total_requests(tenant, list_of_days = [0, 7, 30])
+    list_of_days.map do |days|
       RequestStatistic.
         for_n_days(days).
         for_tenant(tenant).
@@ -21,8 +21,8 @@ class RequestStatistic < ApplicationRecord
     end
   end
 
-  def self.total_requests_grouped(tenants)
-    [0, 7, 30, 365].map do |days|
+  def self.total_requests_grouped(tenants, list_of_days = [0, 7, 30, 365])
+    list_of_days.map do |days|
       RequestStatistic.
         for_n_days(days).
         for_tenant(tenants).
@@ -31,8 +31,8 @@ class RequestStatistic < ApplicationRecord
     end
   end
 
-  def self.total_lti_launches(tenant)
-    [0, 7, 30].map do |days|
+  def self.total_lti_launches(tenant, list_of_days = [0, 7, 30])
+    list_of_days.map do |days|
       RequestStatistic.
         for_n_days(days).
         for_tenant(tenant).
@@ -40,8 +40,8 @@ class RequestStatistic < ApplicationRecord
     end
   end
 
-  def self.total_lti_launches_grouped(tenants)
-    [0, 7, 30, 365].map do |days|
+  def self.total_lti_launches_grouped(tenants, list_of_days = [0, 7, 30, 365])
+    list_of_days.map do |days|
       RequestStatistic.
         for_n_days(days).
         for_tenant(tenants).
@@ -50,8 +50,8 @@ class RequestStatistic < ApplicationRecord
     end
   end
 
-  def self.total_errors(tenant)
-    [0, 7, 30].map do |days|
+  def self.total_errors(tenant, list_of_days = [0, 7, 30])
+    list_of_days.map do |days|
       RequestStatistic.
         for_n_days(days).
         for_tenant(tenant).
@@ -59,8 +59,8 @@ class RequestStatistic < ApplicationRecord
     end
   end
 
-  def self.total_errors_grouped(tenants)
-    [0, 7, 30, 365].map do |days|
+  def self.total_errors_grouped(tenants, list_of_days = [0, 7])
+    list_of_days.map do |days|
       RequestStatistic.
         for_n_days(days).
         for_tenant(tenants).

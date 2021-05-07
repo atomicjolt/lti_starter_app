@@ -95,7 +95,7 @@ RSpec.describe RequestUserStatistic, type: :model do
           user_id: 50,
         )
         day_1_users_grouped, day_7_users_grouped, day_30_users_grouped =
-          RequestUserStatistic.total_unique_users_grouped(@tenant)
+          RequestUserStatistic.total_unique_users_grouped(@tenant, [0, 7, 30])
 
         expect(day_1_users_grouped[@tenant]).to eq(1)
         expect(day_7_users_grouped[@tenant]).to eq(3)
