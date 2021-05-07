@@ -56,6 +56,9 @@
   border: #E3E1E0 solid 0.1rem;
   border-radius: 0 0.5rem 0.5rem 0.5rem;
   min-width: 102rem;
+  .loader-space{
+    padding: 4rem 0;
+  }
 }
 
 .c-table--installs{
@@ -291,6 +294,10 @@
     }
 
     &.is-expanded {
+      .aj-clear-button{
+        right: 2.4rem;
+        cursor: pointer
+      }
       .not-the-button {
         width: 20rem;
 

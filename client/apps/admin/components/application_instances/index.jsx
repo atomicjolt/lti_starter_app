@@ -19,6 +19,7 @@ const select = (state, props) => ({
   settings: state.settings,
   sites: state.sites,
   canvasOauthURL: state.settings.canvas_oauth_url,
+  loadingInstances: state.applicationInstances.loading
 });
 
 export class Index extends React.Component {
@@ -39,6 +40,7 @@ export class Index extends React.Component {
     canvasOauthURL: PropTypes.string.isRequired,
     disableApplicationInstance: PropTypes.func.isRequired,
     totalPages: PropTypes.number,
+    loadingInstances: PropTypes.bool,
   };
 
   constructor() {
@@ -46,8 +48,8 @@ export class Index extends React.Component {
     this.state = {
       modalOpen: false,
       currentPage: null,
-      sortColumn: 'lti_key',
-      sortDirection: 'desc',
+      sortColumn: 'nickname',
+      sortDirection: 'asc',
       showPaid: true,
       search: '',
       isSearchOpen: false,
@@ -154,8 +156,9 @@ export class Index extends React.Component {
   resetSort() {
     this.setState({
       showPaid: true,
-      sortColumn: 'lti_key',
-      sortDirection: 'decs',
+      sortColumn: 'nickname',
+      sortDirection: 'asc',
+      currentPage: 0,
     });
   }
 
@@ -185,7 +188,7 @@ export class Index extends React.Component {
           />
           <PaidTabs
             changeTab={(tab) => {
-              tab ? this.resetSort() : this.setState({ showPaid: tab });
+              tab ? this.resetSort() : this.setState({ showPaid: tab, sortDirection: 'asc' });
             }}
             showPaid={showPaid}
           />
@@ -205,6 +208,7 @@ export class Index extends React.Component {
             showPaid={showPaid}
             isSearchOpen={isSearchOpen}
             toggleSearch={this.toggleSearch}
+            loadingInstances={this.props.loadingInstances}
           />
           <Pagination
             setPage={change => this.setPage(change)}

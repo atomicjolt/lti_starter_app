@@ -4,6 +4,9 @@ import { Constants as ApplicationInstancesConstants } from '../actions/applicati
 const initialState = {
   applicationInstances: [],
   totalPages: 1,
+  loading: true,
+  loaded: false,
+  newApplicationInstance: {},
 };
 
 export default function instances(state = initialState, action) {
@@ -22,6 +25,7 @@ export default function instances(state = initialState, action) {
         newState.applicationInstances.push(instanceClone);
       });
       newState.totalPages = totalPages;
+      newState.loading = false;
       return newState;
     }
 
@@ -33,18 +37,38 @@ export default function instances(state = initialState, action) {
       const instanceClone = _.cloneDeep(action.payload);
       instanceClone.config = JSON.stringify(action.payload.config);
       instanceClone.lti_config = JSON.stringify(action.payload.lti_config);
-      _.remove(newState.applicationInstances, ai => (
+      _.remove(newState.applicationInstances, (ai) => (
         ai.id === action.payload.id
       ));
       newState.applicationInstances.push(instanceClone);
+      newState.loading = false;
+      newState.loaded = true;
       return newState;
     }
 
     case ApplicationInstancesConstants.DELETE_APPLICATION_INSTANCE_DONE: {
       const newState = _.cloneDeep(state);
-      _.remove(newState.applicationInstances, ai => (
+      _.remove(newState.applicationInstances, (ai) => (
         ai.id === action.original.applicationInstanceId
       ));
+      newState.loading = false;
+      return newState;
+    }
+
+    case ApplicationInstancesConstants.UPDATE_NEW_INSTANCE: {
+      const newState = _.cloneDeep(state);
+      newState.newApplicationInstance = action.newApplicationInstance;
+      return newState;
+    }
+
+    case ApplicationInstancesConstants.DISABLE_APPLICATION_INSTANCE:
+    case ApplicationInstancesConstants.GET_APPLICATION_INSTANCE:
+    case ApplicationInstancesConstants.SAVE_APPLICATION_INSTANCE:
+    case ApplicationInstancesConstants.DELETE_APPLICATION_INSTANCE:
+    case ApplicationInstancesConstants.GET_APPLICATION_INSTANCES:
+    case ApplicationInstancesConstants.CREATE_APPLICATION_INSTANCE: {
+      const newState = _.cloneDeep(state);
+      newState.loading = true;
       return newState;
     }
 

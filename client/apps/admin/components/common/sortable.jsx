@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 export default function Sortable(props) {
@@ -18,11 +18,35 @@ export default function Sortable(props) {
   let icon = currentDirection === 'asc' ? 'arrow_upward' : 'arrow_downward';
   icon = column === currentColumn ? icon : '';
   const selectedColumn = column === currentColumn;
+  const searchInput = useRef(null);
+  const [searchText, setSearchText] = useState('');
+
+  const clearSearch = () => {
+    searchChanged('');
+    setSearchText('');
+  };
+
+  const onSearchChange = (value) => {
+    searchChanged(value);
+    setSearchText(value);
+  };
+
+  const openSearch = () => {
+    if (!isSearchOpen) {
+      // Opening search
+      searchInput.current.focus();
+    } else {
+      // Closing search
+      clearSearch();
+    }
+    // toggles the bool isSearchOpen
+    toggleSearch();
+  };
 
   return (
     <th className="sortable-header">
       <div className="aj-flex">
-        <button className="aj-sort-btn" onClick={() => setSort(column, direction)}>
+        <button type="button" className="aj-sort-btn" onClick={() => setSort(column, direction)}>
           <span className={selectedColumn ? 'aj-flex selected' : 'aj-flex'}>
             {title}
             <i className="material-icons aj-icon-btn-sort">
@@ -33,9 +57,14 @@ export default function Sortable(props) {
         {canSearch && (
           <div className={`input input--search ${isSearchOpen ? 'is-expanded' : ''}`} id="container">
             <div className="not-the-button">
-              <input id="searchInput" onChange={({ target: { value } }) => searchChanged(value)} type="text" />
+              <input id="searchInput" value={searchText} ref={searchInput} onChange={({ target: { value } }) => onSearchChange(value)} type="text" />
             </div>
-            <button className="aj-search-button" type="button" onClick={toggleSearch}>
+            {isSearchOpen && (
+              <button className="aj-clear-button" type="button" onClick={clearSearch}>
+                <i className="material-icons" aria-hidden="true">close</i>
+              </button>
+            )}
+            <button className="aj-search-button" type="button" onClick={openSearch}>
               <i className="material-icons" aria-hidden="true">search</i>
             </button>
           </div>
