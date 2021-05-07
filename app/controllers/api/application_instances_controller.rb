@@ -1,6 +1,6 @@
 class Api::ApplicationInstancesController < Api::ApiApplicationController
 
-  include CanvasSupport
+  include Concerns::CanvasSupport
 
   load_and_authorize_resource :application
   load_and_authorize_resource :application_instance, through: :application
@@ -15,13 +15,20 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
         @application_instances.where(paid_at: nil)
       end
 
-    # Using lti_key for search until nickname is added to application_instance
     if search
-      @application_instances = @application_instances.where("lti_key ilike ?", "%#{search}%")
+      @application_instances = @application_instances.
+        where("nickname ilike ? or lti_key ilike ?", "%#{search}%", "%#{search}%")
     end
 
+    order_by =
+      if sort_column === "nickname"
+        "LOWER(#{sort_column}) #{sort_direction}"
+      else
+        { sort_column.to_sym => sort_direction.to_sym }
+      end
+
     @application_instances = @application_instances.
-      order(sort_column.to_sym => sort_direction.to_sym).
+      order(order_by).
       paginate(page: params[:page], per_page: 30)
     set_requests
     application_instances_json = @application_instances.map do |application_instance|
@@ -75,7 +82,8 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   def sortable_columns
     [
       "created_at",
-      "lti_key",
+      "trial_end_date",
+      "nickname",
     ]
   end
 
@@ -140,8 +148,6 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   def set_requests
     tenants = @application_instances.pluck(:tenant)
     @stats = {
-      requests: RequestStatistic.total_requests_grouped(tenants),
-      launches: RequestStatistic.total_lti_launches_grouped(tenants),
       errors: RequestStatistic.total_errors_grouped(tenants),
       users: RequestUserStatistic.total_unique_users_grouped(tenants),
       max_users_month: RequestUserStatistic.max_month_unique_users(tenants),
@@ -154,22 +160,9 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
 
   def request_stats(tenant)
     {
-      day_1_requests: stats(:requests, 0, tenant),
-      day_7_requests: stats(:requests, 1, tenant),
-      day_30_requests: stats(:requests, 2, tenant),
-      day_365_requests: stats(:requests, 3, tenant),
-      day_1_users: stats(:users, 0, tenant),
-      day_7_users: stats(:users, 1, tenant),
-      day_30_users: stats(:users, 2, tenant),
-      day_365_users: stats(:users, 3, tenant),
-      day_1_launches: stats(:launches, 0, tenant),
-      day_7_launches: stats(:launches, 1, tenant),
-      day_30_launches: stats(:launches, 2, tenant),
-      day_365_launches: stats(:launches, 3, tenant),
+      day_365_users: stats(:users, 0, tenant),
       day_1_errors: stats(:errors, 0, tenant),
       day_7_errors: stats(:errors, 1, tenant),
-      day_30_errors: stats(:errors, 2, tenant),
-      day_365_errors: stats(:errors, 3, tenant),
       max_users_month: @stats[:max_users_month][tenant],
     }
   end
@@ -187,6 +180,15 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
       :domain,
       :use_scoped_developer_key,
       :language,
+      :nickname,
+      :primary_contact,
+      :trial_notes,
+      :trial_users,
+      :trial_end_date,
+      :trial_start_date,
+      :license_notes,
+      :licensed_users,
+      :license_end_date,
     )
   end
 

@@ -120,6 +120,46 @@ RSpec.describe RequestUserStatistic, type: :model do
       end
     end
 
+    describe "monthly_unique_users" do
+      it "should return the unique users by month for the last year" do
+
+        FactoryBot.create(
+          :request_user_statistic,
+          truncated_time: Time.zone.now,
+          tenant: "atomic",
+          user_id: 70,
+        )
+        FactoryBot.create(
+          :request_user_statistic,
+          truncated_time: Time.zone.now,
+          tenant: "atomic",
+          user_id: 50,
+        )
+        FactoryBot.create(
+          :request_user_statistic,
+          truncated_time: Time.zone.now,
+          tenant: "atomic",
+          user_id: 60,
+        )
+        FactoryBot.create(
+          :request_user_statistic,
+          truncated_time: Time.zone.now - 7.months,
+          tenant: "atomic",
+          user_id: 21,
+        )
+        FactoryBot.create(
+          :request_user_statistic,
+          truncated_time: Time.zone.now - 5.months,
+          tenant: "jolt",
+          user_id: 22,
+        )
+        monthly_unique_users = RequestUserStatistic.monthly_unique_users(["atomic"])
+        expect(
+          monthly_unique_users.select { |unique| unique["month"].month === Time.now.month }[0]["user_count"],
+        ).to eq(3)
+      end
+    end
+
     describe "total_unique_users" do
       it "should return all unique user counts" do
         FactoryBot.create(
@@ -156,7 +196,7 @@ RSpec.describe RequestUserStatistic, type: :model do
           user_id: 50,
         )
         day_1_users_grouped, day_7_users_grouped, day_30_users_grouped =
-          RequestUserStatistic.total_unique_users_grouped(@tenant)
+          RequestUserStatistic.total_unique_users_grouped(@tenant, [0, 7, 30])
 
         expect(day_1_users_grouped[@tenant]).to eq(1)
         expect(day_7_users_grouped[@tenant]).to eq(3)
