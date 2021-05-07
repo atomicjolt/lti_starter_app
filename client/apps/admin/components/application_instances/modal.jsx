@@ -19,6 +19,7 @@ export default class Modal extends React.Component {
     }),
     application: PropTypes.shape({
       id: PropTypes.number,
+      supported_languages: PropTypes.array,
     }),
   };
 
@@ -77,6 +78,16 @@ export default class Modal extends React.Component {
       newApplicationInstance.rollbar_enabled = false;
       if (e.target.checked) {
         newApplicationInstance.rollbar_enabled = true;
+      }
+      this.setState({ newApplicationInstance });
+      return;
+    }
+
+    if (e.target.name === 'paid') {
+      const newApplicationInstance = _.cloneDeep(this.state.newApplicationInstance);
+      newApplicationInstance.paid_at = null;
+      if (e.target.checked) {
+        newApplicationInstance.paid_at = new Date().toUTCString();
       }
       this.setState({ newApplicationInstance });
       return;
@@ -143,6 +154,8 @@ export default class Modal extends React.Component {
           closeModal={() => this.closeModal()}
           newSite={() => this.newSite()}
           isUpdate={isUpdate}
+          applicationInstance={this.props.applicationInstance}
+          languagesSupported={this.props.application.supported_languages}
         />
         <SiteModal
           isOpen={this.state.siteModalOpen}

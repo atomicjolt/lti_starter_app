@@ -15,11 +15,20 @@ class ApplicationInstance < ApplicationRecord
   validates :site_id, presence: true
   validates :application_id, presence: true
 
+  validate :license_start_before_end
+  validate :trial_start_before_end
+
   before_validation :set_lti
   before_validation :set_domain
+  before_validation :set_nickname
 
   before_validation on: [:update] do
     errors.add(:lti_key, "cannot be changed after creation") if lti_key_changed?
+  end
+
+  before_validation on: [:create] do
+    self.trial_start_date = Time.now unless trial_start_date
+    self.trial_end_date = Time.now + application.free_trial_period.days unless trial_end_date
   end
 
   # example store_accessor for config
@@ -67,8 +76,9 @@ class ApplicationInstance < ApplicationRecord
     end
   end
 
-  def lti_defaults
+  def lti_defaults(config_options = {})
     config = lti_config.dup
+    config = config.merge(config_options) unless config_options.blank?
     if config.present?
       config[:launch_url] ||= launch_url
       config[:secure_launch_url] ||= launch_url
@@ -81,8 +91,8 @@ class ApplicationInstance < ApplicationRecord
     config
   end
 
-  def lti_config_xml
-    config = lti_defaults
+  def lti_config_xml(config_options = {})
+    config = lti_defaults(config_options)
     Lti::Config.xml(config) if config.present?
   end
 
@@ -99,6 +109,7 @@ class ApplicationInstance < ApplicationRecord
   end
 
   def key(application_key_override = nil)
+    return "#{site.key}-#{application_key_override}" if application_key_override.present?
     return lti_key if lti_key.present?
     return "" if site.blank? || application.blank?
 
@@ -148,22 +159,41 @@ class ApplicationInstance < ApplicationRecord
 
   private
 
+
+  def license_start_before_end
+    if paid_at && license_end_date
+      errors.add(:paid_at, "Start date is after end date") unless
+        paid_at <= license_end_date
+    end
+  end
+
+  def trial_start_before_end
+    if trial_start_date && trial_end_date
+      errors.add(:trial_start_date, "Start date is after end date") unless
+        trial_start_date <= trial_end_date
+    end
+  end
+
   def set_lti
     self.lti_key = lti_key || key
     self.lti_secret = ::SecureRandom::hex(64) if lti_secret.blank?
     self.tenant ||= lti_key
+    set_domain
+  end
+
+  def set_nickname
+    if !nickname
+      self.nickname = lti_key || "no nickname"
+    end
   end
 
   def set_domain
     self.domain = domain || "#{application.key}.#{Rails.application.secrets.application_root_domain}"
   end
 
-  # Mirroring ros-apartment lib/apartment/tasks/task_helper.rb#create_tenant
   def create_schema
-    puts "Creating #{tenant} tenant"
     Apartment::Tenant.create tenant
-  rescue Apartment::TenantExists => e
-    puts "Tried to create already existing tenant: #{e}"
+  rescue Apartment::TenantExists
     # If the tenant already exists, then ignore the exception.
     # Just rescue and do nothing.
   end
@@ -179,5 +209,6 @@ class ApplicationInstance < ApplicationRecord
   def destroy_schema
     Apartment::Tenant.drop tenant
   end
+
   private :destroy_schema
 end

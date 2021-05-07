@@ -1,19 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ListRow from './list_row';
-import Menu from '../common/menu';
 
 describe('application instances list row', () => {
   let props;
   let result;
-  let deleted;
-  let disabled;
 
   beforeEach(() => {
-    deleted = false;
-    disabled = false;
     props = {
-      delete: () => { deleted = true; },
       save: () => {},
       lti_key: 'lti-key',
       domain: 'www.example.com',
@@ -21,6 +15,7 @@ describe('application instances list row', () => {
       applicationInstance: {
         site: { url: 'http://www.example.com' },
         id: 2,
+        lti_key: 'lti-key',
         application_id: 23,
         authentications: [],
         request_stats: {
@@ -43,7 +38,6 @@ describe('application instances list row', () => {
         user_canvas_domains: [''],
       },
       canvasOauthURL: 'http://www.example.com',
-      disable: () => { disabled = true; },
     };
     result = shallow(<ListRow {...props} />);
   });
@@ -52,27 +46,4 @@ describe('application instances list row', () => {
     expect(result).toMatchSnapshot();
   });
 
-  // the following tests will break if the order of the buttopns is changed
-  // to remedy this a class would need to be added to each button
-
-  it('handles the opening of the modal', () => {
-    expect(result.instance().state.modalOpen).toBeFalsy();
-    const btn = result.find(Menu).dive().find('button');
-    btn.at(1).simulate('click');
-    expect(result.instance().state.modalOpen).toBeTruthy();
-  });
-
-  it('handles the opening of the config modal', () => {
-    expect(result.instance().state.modalConfigXmlOpen).toBeFalsy();
-    const btn = result.find(Menu).dive().find('button');
-    btn.at(2).simulate('click');
-    expect(result.instance().state.modalConfigXmlOpen).toBeTruthy();
-  });
-
-  it('handles the opening of the config modal', () => {
-    expect(disabled).toBeFalsy();
-    const btn = result.find(Menu).dive().find('button');
-    btn.at(3).simulate('click');
-    expect(disabled).toBeTruthy();
-  });
 });

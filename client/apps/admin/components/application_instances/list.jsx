@@ -16,6 +16,7 @@ export default function List(props) {
     isSearchOpen,
     toggleSearch,
     loadingInstances,
+    applicationInstances,
   } = props;
 
   const titles = [
@@ -36,7 +37,7 @@ export default function List(props) {
     <thead>
       <tr>
         {_.map(titles, (title, key) => {
-          if(title.sortName) {
+          if (title.sortName) {
             return (
               <Sortable
                 key={`${title.sortName}_${key}`}
@@ -82,7 +83,7 @@ export default function List(props) {
           {tableHeader()}
           <tbody>
             {
-              _.map(props.applicationInstances, (instance, key) => (
+              _.map(applicationInstances, (instance, key) => (
                 <ListRow
                   key={`instance_${key}`}
                   application={application}

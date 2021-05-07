@@ -29,8 +29,10 @@ exports[`sites list row matches the snapshot 1`] = `
       }
     >
       <i
-        className="i-settings"
-      />
+        className="material-icons"
+      >
+        settings
+      </i>
     </button>
     <Connect(SiteModal)
       closeModal={[Function]}

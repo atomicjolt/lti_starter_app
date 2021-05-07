@@ -14,6 +14,7 @@ const requests = [
   'DISABLE_APPLICATION_INSTANCE',
   'SAVE_APPLICATION_INSTANCE',
   'CHECK_APPLICATION_INSTANCE_AUTH',
+  'UPDATE_NEW_INSTANCE',
 ];
 
 export const Constants = wrapper(actions, requests);
@@ -30,6 +31,13 @@ export function getApplicationInstances(applicationId, page, column, direction, 
       show_paid: showPaid,
       search,
     }
+  };
+}
+
+export function updateNewInstance(newApplicationInstance) {
+  return {
+    type: Constants.UPDATE_NEW_INSTANCE,
+    newApplicationInstance
   };
 }
 

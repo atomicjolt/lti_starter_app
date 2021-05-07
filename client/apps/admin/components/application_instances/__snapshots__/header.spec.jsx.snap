@@ -13,10 +13,10 @@ exports[`application instances header matches the snapshot 1`] = `
     </h1>
   </div>
   <button
-    className="c-btn c-btn--yellow"
+    className="c-btn c-btn--border"
     onClick={[Function]}
   >
-    New Application Instance
+    New App Instance
   </button>
 </div>
 `;

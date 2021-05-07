@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_14_152648) do
+ActiveRecord::Schema.define(version: 2021_05_07_213652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,14 @@ ActiveRecord::Schema.define(version: 2021_04_14_152648) do
     t.boolean "anonymous", default: false
     t.boolean "rollbar_enabled", default: true
     t.boolean "use_scoped_developer_key", default: false, null: false
+    t.string "nickname"
+    t.string "primary_contact"
+    t.datetime "license_start_date"
+    t.datetime "licence_end_date"
+    t.datetime "trial_start_date"
+    t.datetime "trial_end_date"
+    t.text "license_notes"
+    t.text "trial_notes"
     t.index ["application_id"], name: "index_application_instances_on_application_id"
     t.index ["lti_key"], name: "index_application_instances_on_lti_key"
     t.index ["site_id"], name: "index_application_instances_on_site_id"

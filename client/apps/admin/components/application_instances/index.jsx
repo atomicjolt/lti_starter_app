@@ -169,8 +169,21 @@ export class Index extends React.Component {
       sortColumn:currentSortColumn,
       sortDirection:currentSortDirection,
       showPaid,
-      isSearchOpen
+      isSearchOpen,
+      currentPage,
     } = this.state;
+
+    const {
+      applicationInstances,
+      settings,
+      sites,
+      saveApplicationInstance,
+      deleteApplicationInstance,
+      disableApplicationInstance,
+      canvasOauthURL,
+      loadingInstances,
+      totalPages,
+    } = this.props;
 
     return (
       <div>
@@ -184,7 +197,7 @@ export class Index extends React.Component {
             openSettings={() => {}}
             newApplicationInstance={() => this.setState({ modalOpen: true })}
             application={application}
-            applicationInstances={this.props.applicationInstances}
+            applicationInstances={applicationInstances}
           />
           <PaidTabs
             changeTab={(tab) => {
@@ -193,14 +206,14 @@ export class Index extends React.Component {
             showPaid={showPaid}
           />
           <List
-            applicationInstances={this.props.applicationInstances}
-            settings={this.props.settings}
-            sites={this.props.sites}
+            applicationInstances={applicationInstances}
+            settings={settings}
+            sites={sites}
             application={application}
-            saveApplicationInstance={this.props.saveApplicationInstance}
-            deleteApplicationInstance={this.props.deleteApplicationInstance}
-            disableApplicationInstance={this.props.disableApplicationInstance}
-            canvasOauthURL={this.props.canvasOauthURL}
+            saveApplicationInstance={saveApplicationInstance}
+            deleteApplicationInstance={deleteApplicationInstance}
+            disableApplicationInstance={disableApplicationInstance}
+            canvasOauthURL={canvasOauthURL}
             setSort={(sortColumn, sortDirection) => this.setSort(sortColumn, sortDirection)}
             searchChanged={(search) => this.searchChanged(search)}
             currentSortColumn={currentSortColumn}
@@ -208,12 +221,12 @@ export class Index extends React.Component {
             showPaid={showPaid}
             isSearchOpen={isSearchOpen}
             toggleSearch={this.toggleSearch}
-            loadingInstances={this.props.loadingInstances}
+            loadingInstances={loadingInstances}
           />
           <Pagination
-            setPage={change => this.setPage(change)}
-            pageCount={this.props.totalPages}
-            currentPage={this.state.currentPage}
+            setPage={(change) => this.setPage(change)}
+            pageCount={totalPages}
+            currentPage={currentPage}
             disableInitialCallback
           />
         </div>
