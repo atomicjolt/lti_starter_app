@@ -40,7 +40,7 @@ export function GeneralSettings(props) {
 
 
   const [newApplicationInstance, setNewApplicationInstance] = useState(applicationInstance || {});
-  const [currentLanguage, setCurrentLanguage] = useState(applicationInstance?.language || 'english');
+  const [currentLanguage, setCurrentLanguage] = useState(applicationInstance ? applicationInstance.language : 'english');
   const [siteModalOpen, setSiteModalOpen] = useState(false);
 
   useEffect(() => {

@@ -40,7 +40,7 @@ export function Index(props) {
   const applicationInstance = _.filter(applicationInstances, (app) => (
     app.id === _.parseInt(params.applicationInstanceId)
   ))[0];
-  const backPath = `/applications/${application?.id}/application_instances`;
+  const backPath = `/applications/${application.id}/application_instances`;
 
   const renderLoading = () => (
     <div className="aj-loading-space-top">

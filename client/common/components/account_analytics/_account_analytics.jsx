@@ -24,7 +24,7 @@ function select(state, props) {
 export function AccountAnalytics(props) {
   const { loading, loaded, params, applicationInstances } = props;
 
-  const onAdminPanel = params?.applicationId && params?.applicationInstanceId;
+  const onAdminPanel = params.applicationId && params.applicationInstanceId;
 
   useEffect(() => {
     if (!loading && !loaded) {
