@@ -187,6 +187,7 @@ applications = [
         oidc_url: "https://blackboard.com/",
       },
     ],
+    
     application_instances: [
       {
         # Canvas
