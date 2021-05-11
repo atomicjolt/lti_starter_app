@@ -4,7 +4,14 @@
     csrf_token: form_authenticity_token
   }
 
-  default_jwt = jwt_token(user_canvas_omniauth_callback_url)
+  ai = current_application_instance
+  path = "applications/#{ai.application_id}/application_instances/#{ai.id}/installs"
+  oauth_complete_url = "#{admin_root_url}##{path}"
+
+  default_jwt = jwt_token(
+    app_callback_url: user_canvas_omniauth_callback_url,
+    oauth_complete_url: oauth_complete_url,
+  )
 
   if signed_in?
     settings[:user_id]             = current_user.id

@@ -173,11 +173,6 @@ export default class ListRow extends React.Component {
             />
             <input
               type="hidden"
-              name="admin_oauth_aii"
-              value={applicationInstance.id}
-            />
-            <input
-              type="hidden"
               name="oauth_consumer_key"
               value={applicationInstance.lti_key}
             />
