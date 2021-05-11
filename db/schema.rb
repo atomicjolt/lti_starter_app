@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_07_213652) do
+ActiveRecord::Schema.define(version: 2021_05_10_224259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2021_05_07_213652) do
     t.datetime "trial_end_date"
     t.text "license_notes"
     t.text "trial_notes"
+    t.datetime "paid_at"
     t.index ["application_id"], name: "index_application_instances_on_application_id"
     t.index ["lti_key"], name: "index_application_instances_on_lti_key"
     t.index ["site_id"], name: "index_application_instances_on_site_id"
@@ -102,6 +103,7 @@ ActiveRecord::Schema.define(version: 2021_05_07_213652) do
     t.string "oauth_scopes", default: [], array: true
     t.string "oauth_key"
     t.string "oauth_secret"
+    t.integer "free_trial_period", default: 30
     t.index ["key"], name: "index_applications_on_key"
   end
 

@@ -79,6 +79,7 @@ applications = [
     canvas_api_permissions: admin_api_permissions,
     kind: Application.kinds[:admin],
     default_config: {},
+    free_trial_period: 30,
     application_instances: [{
       lti_key: Application::ADMIN,
       lti_secret: Rails.env.production? ? nil : secrets.admin_lti_secret,
@@ -92,6 +93,7 @@ applications = [
     description: "LTI Starter App by Atomic Jolt.",
     client_application_name: "hello_world_graphql",
     lti_advantage_config: hello_lti_advantage_config,
+    free_trial_period: 30,
     # List Canvas API methods the app is allowed to use. A full list of constants can be found in canvas_urls
     canvas_api_permissions: {
       default: [],
