@@ -3,20 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { withSettings } from 'atomic-fuel/libs/components/settings';
-import { Trans } from 'react-i18next';
 import * as AccountAnalyticsActions from '../../actions/account_analytics';
 
 
 function select(state) {
-  const { accountAnalytics  } = state;
+  const { accountAnalytics } = state;
   return {
     lms_account_id: state.settings.lms_account_id,
-    months: accountAnalytics.stats.months,
     uniqueUsers: accountAnalytics.stats.uniqueUsers,
-    studentSearches: accountAnalytics.stats.studentSearches,
-    teacherSearches: accountAnalytics.stats.teacherSearches,
-    courseSearches: accountAnalytics.stats.courseSearches,
-    statsError: accountAnalytics.stats.error,
     shouldShowUniqueUsers: accountAnalytics.shouldShowUniqueUsers,
   };
 }
@@ -78,7 +72,7 @@ export class AccountReport extends React.Component {
         { _.map(sortedData, ({ type, data, show }, key) => {
           return(show && (
             <tr key={key}>
-              <th><Trans>{type}</Trans></th>
+              <th>{type}</th>
               {_.map((data), (value, index) => <td key={index}>{value}</td>)}
             </tr>
           ));
@@ -94,9 +88,6 @@ export class AccountReport extends React.Component {
   makeTableData() {
     const {
       uniqueUsers,
-      teacherSearches,
-      studentSearches,
-      courseSearches,
     } = this.props;
 
     return [
@@ -104,21 +95,6 @@ export class AccountReport extends React.Component {
         type: 'Unique Users',
         data: this.addMaxToData(uniqueUsers),
         show: this.props.shouldShowUniqueUsers,
-      },
-      {
-        type: 'Courses',
-        data: this.addMaxToData(courseSearches),
-        show: true,
-      },
-      {
-        type: 'Teacher Searches',
-        data: this.addMaxToData(teacherSearches),
-        show: true,
-      },
-      {
-        type: 'Student Searches',
-        data: this.addMaxToData(studentSearches),
-        show: true,
       },
     ];
 
@@ -137,12 +113,12 @@ export class AccountReport extends React.Component {
           <thead>
             <tr>
               <th className="aj-sort-header" onClick={() => this.setState({ sortColumn: null })}>
-                <Trans>Type</Trans>
+                Type
               </th>
               {_.map(_.concat('Max', months), (month, index) => (
                 <th className="aj-sort-header" key={index} onClick={() => this.setSortCol(index)}>
                   <div className="aj-flex">
-                    <Trans>{month}</Trans>
+                    {month}
                     <button className={`aj-btn--sort ${this.sortClassName(index)}`}>
                       <i className="material-icons">arrow_drop_up</i>
                       <i className="material-icons">arrow_drop_down</i>

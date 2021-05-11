@@ -5,11 +5,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import jwt from 'atomic-fuel/libs/loaders/jwt';
-import { I18nextProvider } from 'react-i18next';
 import { getInitialSettings } from 'atomic-fuel/libs/reducers/settings';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
-import i18n from '../../libs/i18n';
 import routes from './routes';
 import configureStore from './store/configure_store';
 
@@ -40,11 +38,9 @@ class Root extends React.PureComponent {
     const { store } = this.props;
     return (
       <Provider store={store}>
-        <I18nextProvider i18n={i18n}>
-          <div>
-            {routes}
-          </div>
-        </I18nextProvider>
+        <div>
+          {routes}
+        </div>
       </Provider>
     );
   }

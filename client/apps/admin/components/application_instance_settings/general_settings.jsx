@@ -175,7 +175,7 @@ export function GeneralSettings(props) {
     {
       labelText: 'Date created',
       props: {
-        name: 'nickname',
+        name: 'date_created',
         type: 'text',
         id: 'date_div',
         value: moment(newApplicationInstance.created_at).format('MM/DD/YY'),

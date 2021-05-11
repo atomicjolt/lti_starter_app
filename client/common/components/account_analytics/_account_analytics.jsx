@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import AccountReport from './account_report';
 import Graph from './account_graphs';
-import { getCatalystUserSearches } from '../../actions/account_analytics';
 import { getApplicationInstance } from '../../../apps/admin/actions/application_instances';
 
 import Loader from '../common/atomicjolt_loader';
@@ -28,7 +27,6 @@ export function AccountAnalytics(props) {
 
   useEffect(() => {
     if (!loading && !loaded) {
-      props.getCatalystUserSearches();
       if (onAdminPanel) {
         props.getApplicationInstance(params.applicationId, params.applicationInstanceId);
       }
@@ -59,7 +57,6 @@ export function AccountAnalytics(props) {
 }
 
 AccountAnalytics.propTypes = {
-  getCatalystUserSearches: PropTypes.func,
   getApplicationInstance: PropTypes.func,
   applicationInstances: PropTypes.array,
   loading: PropTypes.bool,
@@ -76,5 +73,5 @@ AccountAnalytics.propTypes = {
 
 export default connect(
   select,
-  { getCatalystUserSearches,  getApplicationInstance }
+  { getApplicationInstance }
 )(AccountAnalytics);

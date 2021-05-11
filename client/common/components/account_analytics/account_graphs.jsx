@@ -3,19 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import LineGraph from './line_graph';
-import i18n from '../../../libs/i18n';
 import * as AccountAnalyticsActions from '../../actions/account_analytics';
 
 function select(state) {
   const { accountAnalytics } = state;
   return {
     lms_account_id: state.settings.lms_account_id,
-    months: accountAnalytics.stats.months,
     uniqueUsers: accountAnalytics.stats.uniqueUsers,
-    studentSearches: accountAnalytics.stats.studentSearches,
-    teacherSearches: accountAnalytics.stats.teacherSearches,
-    courseSearches: accountAnalytics.stats.courseSearches,
-    statsError: accountAnalytics.stats.error,
     shouldShowUniqueUsers: accountAnalytics.shouldShowUniqueUsers,
   };
 }
@@ -25,12 +19,7 @@ export class Graph extends React.Component {
     getUniqueUsers: PropTypes.func,
     tenant: PropTypes.string,
     lms_account_id: PropTypes.string,
-    months: PropTypes.array,
     uniqueUsers: PropTypes.array,
-    studentSearches: PropTypes.array,
-    teacherSearches: PropTypes.array,
-    courseSearches: PropTypes.array,
-    statsError: PropTypes.string,
     shouldShowUniqueUsers: PropTypes.bool,
   };
 
@@ -108,7 +97,7 @@ export class Graph extends React.Component {
       return (show &&
         <LineGraph
           key={key}
-          plugins={this.getPlugins(i18n.t(title))}
+          plugins={this.getPlugins(title)}
           data={{ datasets, labels }}
           options={this.getOptions()}
         />
@@ -120,9 +109,6 @@ export class Graph extends React.Component {
 
     const {
       months,
-      teacherSearches,
-      studentSearches,
-      courseSearches,
       uniqueUsers,
       statsError,
     } = this.props;
@@ -132,17 +118,10 @@ export class Graph extends React.Component {
       return statsError;
     }
 
-    const translatedMonths = _.map(months, (month) => i18n.t(month));
+    const translatedMonths = _.map(months, (month) => month);
 
-    const userSearchesInfo = [
-      { label: i18n.t('Teacher Searches'), data: teacherSearches, lineColor: '#69E2FF', pointColor: '#01579B' },
-      { label: i18n.t('Student Searches'), data: studentSearches, lineColor: '#45E2A0', pointColor: '#008E5D' },
-    ];
-    const courseGraphInfo = [
-      { label: i18n.t('Course Searches'), data: courseSearches, lineColor: '#FFC069', pointColor: '#C17E02' }
-    ];
     const uniqueUsersInfo = [
-      { label: i18n.t('Unique Users'), data: uniqueUsers, lineColor: '#69E2FF', pointColor: '#01579B' }
+      { label: 'Unique Users', data: uniqueUsers, lineColor: '#69E2FF', pointColor: '#01579B' }
     ];
 
 
@@ -152,18 +131,6 @@ export class Graph extends React.Component {
         datasets: this.getDataSets(uniqueUsersInfo),
         title:'Unique Users',
         show: this.props.shouldShowUniqueUsers,
-      },
-      {
-        labels: translatedMonths,
-        datasets: this.getDataSets(courseGraphInfo),
-        title: 'Courses',
-        show: true,
-      },
-      {
-        labels: translatedMonths,
-        datasets: this.getDataSets(userSearchesInfo),
-        title:'Searches',
-        show: true,
       },
     ];
 
