@@ -21,6 +21,18 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
   end
 
   describe "GET canvas" do
+    before do
+      ai = @application_instance
+      path = "applications/#{ai.application_id}/application_instances/#{ai.id}/installs"
+      @oauth_complete_url = "#{admin_root_url}##{path}"
+
+      attrs = {
+        oauth_complete_url: @oauth_complete_url,
+      }
+
+      @token = AuthToken.issue_token(attrs)
+    end
+
     it "should pass through with valid auth" do
       user = FactoryBot.create :user_canvas
       authentication = user.authentications.find_by(provider: "canvas")
@@ -31,16 +43,13 @@ RSpec.describe OmniauthCallbacksController, type: :controller do
         },
       }
       request.env["omniauth.auth"] = get_canvas_omniauth(canvas_opts)
-      ai = @application_instance
-      root_domain = Rails.application.secrets.application_root_domain
-      path = "applications/#{ai.application_id}/application_instances/#{ai.id}/installs"
-      oauth_complete_url = "//#{Application::ADMIN}.#{root_domain}#{admin_root_path}##{path}"
+
       response = get :canvas, params: {
-        admin_oauth_aii: ai.id,
         canvas_url: "https://example.instructure.com",
+        authorization: @token,
       }
 
-      expect(response).to redirect_to oauth_complete_url
+      expect(response).to redirect_to @oauth_complete_url
     end
 
     it "should pass through with valid auth and a user logged in via lti credentials" do

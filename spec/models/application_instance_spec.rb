@@ -174,6 +174,34 @@ RSpec.describe ApplicationInstance, type: :model do
     end
   end
 
+  describe "match_application_instance" do
+    let(:client_id) { FactoryBot.generate(:client_id) }
+    let(:deployment_id) { FactoryBot.generate(:deployment_id) }
+    let(:iss) { "https://canvas.instructure.com" }
+    let(:lms_url) { FactoryBot.generate(:url) }
+    let!(:site) { FactoryBot.create(:site, url: lms_url) }
+    let!(:application) { FactoryBot.create(:application) }
+    let!(:lti_install) { FactoryBot.create(:lti_install, iss: iss, client_id: client_id, application: application) }
+    context "application instance already has an lti deployment" do
+      it "returns nil" do
+        application_instance = FactoryBot.create(:application_instance, application: application)
+        other_deployment_id = "other"
+        application_instance.lti_deployments.create!(lti_install: lti_install, deployment_id: other_deployment_id)
+        ret = described_class.match_application_instance(lti_install, deployment_id)
+        expect(ret).to eq(nil)
+      end
+    end
+    context "application instance does not have an lti deployment" do
+      it "returns the application instance" do
+        application_instance = FactoryBot.create(:application_instance, application: application)
+        ret = described_class.match_application_instance(lti_install, deployment_id)
+        expect(ret).to eq(application_instance)
+        lti_deployment = application_instance.lti_deployments.first
+        expect(lti_deployment.deployment_id).to eq(deployment_id)
+      end
+    end
+  end
+
   describe ".by_client_and_deployment" do
     context "when there is a matching LtiInstall" do
       let(:client_id) { FactoryBot.generate(:client_id) }

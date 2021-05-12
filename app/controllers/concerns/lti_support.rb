@@ -76,6 +76,7 @@ module LtiSupport
     else
       if user.lms_user_id.blank? && lms_user_id.present?
         user.lms_user_id = lms_user_id
+        user.legacy_lti_user_id = lti_user_id
         user.save
       end
       _update_roles(user, params)
@@ -144,6 +145,7 @@ module LtiSupport
     user.password = ::SecureRandom::hex(15)
     user.password_confirmation = user.password
     user.lti_user_id = lti_user_id
+    user.legacy_lti_user_id = lti_user_id
     user.lti_provider = lti_provider
     user.lms_user_id = lms_user_id
     user.create_method = User.create_methods[:lti]

@@ -39,6 +39,20 @@ class ApplicationInstance < ApplicationRecord
   scope :by_oldest, -> { order(created_at: :asc) }
   scope :by_latest, -> { order(updated_at: :desc) }
 
+  # Attempts to find an existing application instance that doesn't have a matching lti deployment
+  def self.match_application_instance(lti_install, deployment_id)
+    if application_instance = lti_install.application.application_instances.first
+      if application_instance.lti_deployments.count == 0
+        LtiDeployment.create!(
+          application_instance: application_instance,
+          lti_install: lti_install,
+          deployment_id: deployment_id,
+        )
+        application_instance
+      end
+    end
+  end
+
   # Create a new application instance if the deployment id isn't found
   # TODO add a setting on the application to indicate if it's freely available, trial, or restricted
   def self.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
@@ -48,9 +62,10 @@ class ApplicationInstance < ApplicationRecord
         where("lti_deployments.deployment_id =?", deployment_id)
 
       # There should only be one that matches
-      application_instance = application_instances.first
+      application_instance = application_instances.first ||
+        match_application_instance(lti_install, deployment_id)
 
-      if application_instance.blank?
+      if !application_instance
         # Create a new application instance for the deployment id
         site = Site.find_by(url: lms_url)
         # Create a new application instance and lti_deployment
