@@ -1,6 +1,4 @@
 class ImsImportJob < ApplicationJob
-  queue_as :ims_import
-
   retry_on StandardError, attempts: 16
 
   def perform(job_data)

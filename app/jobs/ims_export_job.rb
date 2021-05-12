@@ -1,6 +1,4 @@
 class ImsExportJob < ApplicationJob
-  queue_as :ims_export
-
   retry_on StandardError, attempts: 16
 
   def perform(
