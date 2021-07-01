@@ -149,8 +149,6 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
     tenants = @application_instances.pluck(:tenant)
     @stats = {
       errors: RequestStatistic.total_errors_grouped(tenants),
-      users: RequestUserStatistic.total_unique_users_grouped(tenants),
-      max_users_month: RequestUserStatistic.max_month_unique_users(tenants),
     }
   end
 
@@ -160,10 +158,8 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
 
   def request_stats(tenant)
     {
-      day_365_users: stats(:users, 0, tenant),
       day_1_errors: stats(:errors, 0, tenant),
       day_7_errors: stats(:errors, 1, tenant),
-      max_users_month: @stats[:max_users_month][tenant],
     }
   end
 

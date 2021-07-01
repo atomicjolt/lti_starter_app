@@ -29,8 +29,7 @@ export default function List(props) {
       sortName: 'Trial Ends',
       column: 'trial_end_date',
     }),
-    'Database Tenant', 'Canvas Domain', showPaid ? 'Licensed Users' : 'Potential Users',
-    'Highest Monthly Uniques', 'Uniques in Last 12mo', 'ERRORS',
+    'Database Tenant', 'Canvas Domain', showPaid ? 'Licensed Users' : 'Potential Users', 'ERRORS',
   ];
 
   const tableHeader = () => (

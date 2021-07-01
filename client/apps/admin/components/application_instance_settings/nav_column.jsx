@@ -34,6 +34,12 @@ export default function NavColumn(props) {
       route: `${path}/configuration`,
     },
     {
+      name: 'XML Config',
+      iconClass: 'far fa-cog',
+      selected: currentPath === `${path}/xmlConfig`,
+      route: `${path}/xmlConfig`,
+    },
+    {
       name: 'License Details',
       iconClass: 'far fa-file-invoice-dollar',
       selected: currentPath === `${path}/licenseDetails`,

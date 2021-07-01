@@ -13,6 +13,7 @@ import ApplicationInstanceSettings from './components/application_instance_setti
 import Analytics from '../../common/components/account_analytics/_account_analytics';
 import GeneralSettings from './components/application_instance_settings/general_settings';
 import Configuration from './components/application_instance_settings/configuration';
+import XmlConfig from './components/application_instance_settings/xml_config';
 import TrialDetails from './components/application_instance_settings/trial_details';
 import LicenseDetails from './components/application_instance_settings/license_details';
 
@@ -28,6 +29,7 @@ export default (
         <Route path="/applications/:applicationId/application_instances/:applicationInstanceId/settings/analytics" component={Analytics} />
         <Route path="/applications/:applicationId/application_instances/:applicationInstanceId/settings/generalSettings" component={GeneralSettings} />
         <Route path="/applications/:applicationId/application_instances/:applicationInstanceId/settings/configuration" component={Configuration} />
+        <Route path="/applications/:applicationId/application_instances/:applicationInstanceId/settings/xmlConfig" component={XmlConfig} />
         <Route path="/applications/:applicationId/application_instances/:applicationInstanceId/settings/trialDetails" component={TrialDetails} />
         <Route path="/applications/:applicationId/application_instances/:applicationInstanceId/settings/licenseDetails" component={LicenseDetails} />
       </Route>

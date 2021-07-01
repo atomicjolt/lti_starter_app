@@ -131,20 +131,6 @@ export function Configuration(props) {
           warning={erroneousLtiConfigWarning}
         />
       </div>
-      <div className="o-grid__item u-full">
-        <Textarea
-          className="c-input c-input--dark"
-          labelText="LTI Config XML"
-          textareaProps={{
-            id: 'application_instance_lti_config_xml',
-            name: 'lti_config_xml',
-            rows: 25,
-            readOnly: true,
-            value: applicationInstance.lti_config_xml || '',
-            onChange: () => {},
-          }}
-        />
-      </div>
     </div>
   );
 }

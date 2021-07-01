@@ -16,6 +16,7 @@ export default function Textarea(props) {
         cols={props.textareaProps.cols}
         rows={props.textareaProps.rows}
         onChange={props.textareaProps.onChange}
+        readOnly={props.textareaProps.readOnly}
       />
       {props.warning}
     </label>
@@ -35,6 +36,7 @@ Textarea.propTypes = {
     cols: PropTypes.number,
     rows: PropTypes.number,
     onChange: PropTypes.func,
+    readOnly: PropTypes.bool,
   }),
   warning: PropTypes.shape({}),
   className: PropTypes.string,

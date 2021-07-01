@@ -75,13 +75,8 @@ export default class ListRow extends React.Component {
           {_.replace(applicationInstance.site.url, 'https://', '')}
         </td>
         <td>
-          {showPaid ? applicationInstance.licensed_users : applicationInstance.trial_users}
-        </td>
-        <td>
-          {applicationInstance.request_stats.max_users_month || 0}
-        </td>
-        <td>
-          {applicationInstance.request_stats.day_365_users || 0}
+          {showPaid ? applicationInstance.licensed_users || 0
+            : applicationInstance.trial_users || 0}
         </td>
         <td>
           <a href={this.rollBarUrl} tarket="blank">
