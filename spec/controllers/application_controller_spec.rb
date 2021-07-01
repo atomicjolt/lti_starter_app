@@ -12,8 +12,10 @@ RSpec.describe ApplicationController, type: :controller do
         expect(subject.send(:current_application_instance)).to eq(@application_instance)
       end
       it "returns the current application instance using id_token" do
+        application_instance = FactoryBot.create(:application_instance)
+        params = setup_canvas_lti_advantage(application_instance: application_instance)
         request.params["id_token"] = @id_token
-        expect(subject.send(:current_application_instance)).to eq(@application_instance)
+        expect(subject.send(:current_application_instance)).to eq(application_instance)
       end
     end
 

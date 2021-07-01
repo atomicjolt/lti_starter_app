@@ -15,7 +15,11 @@ module LtiAdvantage
         if user.lms_user_id.blank? && _lms_user_id.present?
           user.lms_user_id = _lms_user_id
         end
+        if user.legacy_lti_user_id.blank?
+          user.legacy_lti_user_id = @lti_token[LtiAdvantage::Definitions::LTI11_LEGACY_USER_ID_CLAIM]
+        end
         _update_roles(user)
+        user.save!
       end
       user
     end
@@ -49,6 +53,7 @@ module LtiAdvantage
       user.lti_provider = _lti_provider
       user.lms_user_id = _lms_user_id
       user.create_method = ::User.create_methods[:lti]
+      user.legacy_lti_user_id = @lti_token[LtiAdvantage::Definitions::LTI11_LEGACY_USER_ID_CLAIM]
 
       # store lti roles for the user
       _add_roles(user)
