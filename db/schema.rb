@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_161432) do
+ActiveRecord::Schema.define(version: 2021_07_08_165530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2021_05_10_161432) do
     t.string "nickname"
     t.string "primary_contact"
     t.datetime "license_start_date"
-    t.datetime "licence_end_date"
+    t.datetime "license_end_date"
     t.datetime "trial_start_date"
     t.datetime "trial_end_date"
     t.text "license_notes"
