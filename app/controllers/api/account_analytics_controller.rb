@@ -22,7 +22,7 @@ class Api::AccountAnalyticsController < Api::ApiApplicationController
 
     Array.new(month_range) { |i| (end_month - i.month) }.each do |date|
       data[:months].push(Date::ABBR_MONTHNAMES[date.month])
-      unique_search = stats.select { |stat| Time.new(stat["month"]).month == (date.month) }[0]
+      unique_search = stats.select { |stat| stat["month"].to_datetime.month == (date.month) }[0]
       data[:unique_users].push(unique_search ? unique_search["user_count"] : 0)
     end
     data

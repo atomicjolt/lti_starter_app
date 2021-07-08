@@ -154,8 +154,9 @@ RSpec.describe RequestUserStatistic, type: :model do
           user_id: 22,
         )
         monthly_unique_users = RequestUserStatistic.monthly_unique_users(["atomic"])
+        byebug
         expect(
-          monthly_unique_users.select { |unique| unique["month"].month === Time.now.month }[0]["user_count"],
+          monthly_unique_users.select { |unique| unique["month"].to_datetime.month === Time.now.month }[0]["user_count"],
         ).to eq(3)
       end
     end
