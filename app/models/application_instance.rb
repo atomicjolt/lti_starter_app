@@ -176,9 +176,9 @@ class ApplicationInstance < ApplicationRecord
 
 
   def license_start_before_end
-    if paid_at && license_end_date
+    if paid_at && licence_end_date
       errors.add(:paid_at, "Start date is after end date") unless
-        paid_at <= license_end_date
+        paid_at <= licence_end_date
     end
   end
 
