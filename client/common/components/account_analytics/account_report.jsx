@@ -12,6 +12,7 @@ function select(state) {
     lms_account_id: state.settings.lms_account_id,
     uniqueUsers: accountAnalytics.stats.uniqueUsers,
     shouldShowUniqueUsers: accountAnalytics.shouldShowUniqueUsers,
+    months: accountAnalytics.stats.months
   };
 }
 

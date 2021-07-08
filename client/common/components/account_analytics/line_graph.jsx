@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
 
 export default function LineGraph(props) {
-  const { data, options, label, plugins } = props;
+  const {
+    data,
+    options,
+    label,
+    plugins
+  } = props;
 
   return (
     <div className="aj-flex">

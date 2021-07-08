@@ -4,7 +4,10 @@ import { Constants } from '../actions/account_analytics';
 const initialState = {
   stats: {
     uniqueUsers: [],
+    months: []
   },
+  loading: false,
+  loaded: false,
   shouldShowUniqueUsers: true,
 };
 
@@ -14,6 +17,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case Constants.GET_UNIQUE_USERS:
       newState = _.cloneDeep(state);
+      newState.loading = true;
       if (!action.isRoot) {
         newState.shouldShowUniqueUsers = false;
       }
@@ -27,6 +31,8 @@ export default (state = initialState, action) => {
         return newState;
       }
 
+      newState.loading = false;
+      newState.loaded = true;
       newState.stats.uniqueUsers = uniqueUsers;
       newState.stats.months = months;
       return newState;

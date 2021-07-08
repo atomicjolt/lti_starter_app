@@ -11,6 +11,7 @@ function select(state) {
     lms_account_id: state.settings.lms_account_id,
     uniqueUsers: accountAnalytics.stats.uniqueUsers,
     shouldShowUniqueUsers: accountAnalytics.shouldShowUniqueUsers,
+    months: accountAnalytics.stats.months
   };
 }
 
@@ -61,7 +62,7 @@ export class Graph extends React.Component {
       yAxes:[{
         ticks: {
           beginAtZero: true,
-          userCallback: label => (Math.floor(label) === label ? label : null),
+          userCallback: (label) => (Math.floor(label) === label ? label : null),
         },
         gridLines: {
           display: true
@@ -81,29 +82,16 @@ export class Graph extends React.Component {
   })
 
   getPlugins = (title) => ([{
-    afterDraw: chart => {
-      const { ctx } = chart.chart;
+    afterDraw: (chart) => {
+      const { ctx } = chart;
       ctx.save();
       ctx.textAlign = 'center';
       ctx.font = '14px Lato';
       ctx.fillStyle = '#333333';
-      ctx.fillText(title, chart.chart.width / 2, 20);
+      ctx.fillText(title, chart.width / 2, 20);
       ctx.restore();
     }
   }])
-
-  createLineGraphs = (data) => (
-    _.map(data, ({ datasets, labels, title, show }, key) => {
-      return (show &&
-        <LineGraph
-          key={key}
-          plugins={this.getPlugins(title)}
-          data={{ datasets, labels }}
-          options={this.getOptions()}
-        />
-      );
-    })
-  )
 
   render() {
 
@@ -114,7 +102,7 @@ export class Graph extends React.Component {
     } = this.props;
 
 
-    if(statsError) {
+    if (statsError) {
       return statsError;
     }
 
@@ -136,7 +124,16 @@ export class Graph extends React.Component {
 
     return (
       <div className="aj-flex aj-flex-graph">
-        {this.createLineGraphs(graphData)}
+        {_.map(graphData, ({ datasets, labels, title, show }, key) => {
+          return (show &&
+            <LineGraph
+              key={key}
+              plugins={this.getPlugins(title)}
+              data={{ datasets, labels }}
+              options={this.getOptions()}
+            />
+          );
+        })}
       </div>
     );
   }

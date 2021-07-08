@@ -9,11 +9,11 @@ import { getApplicationInstance } from '../../../apps/admin/actions/application_
 import Loader from '../common/atomicjolt_loader';
 
 function select(state, props) {
-  const { accountAnalytics } = state;
+  const { applicationInstances } = state;
   const { params } = props;
   return {
-    loaded: accountAnalytics.userSearchesLoaded,
-    loading: accountAnalytics.userSearchesLoading,
+    loaded: applicationInstances.loaded,
+    loading: applicationInstances.loading,
     applicationInstances: params ? _.filter(state.applicationInstances.applicationInstances,
       { application_id: parseInt(params.applicationId, 10) }) : [],
     applications: state.applications,
@@ -21,9 +21,14 @@ function select(state, props) {
 }
 
 export function AccountAnalytics(props) {
-  const { loading, loaded, params, applicationInstances } = props;
+  const {
+    loading,
+    loaded,
+    params,
+    applicationInstances
+  } = props;
 
-  const onAdminPanel = params.applicationId && params.applicationInstanceId;
+  const onAdminPanel = params.applicationId && !!params.applicationInstanceId;
 
   useEffect(() => {
     if (!loading && !loaded) {
@@ -31,12 +36,11 @@ export function AccountAnalytics(props) {
         props.getApplicationInstance(params.applicationId, params.applicationInstanceId);
       }
     }
-  }
-  , []);
+  }, []);
 
   let tenant = null;
 
-  if(onAdminPanel) {
+  if (onAdminPanel) {
     const applicationInstance = _.filter(applicationInstances, (app) => (
       app.id === _.parseInt(params.applicationInstanceId)
     ))[0];
@@ -45,13 +49,13 @@ export function AccountAnalytics(props) {
 
   return (
     <>
-      {loading || !loaded ?
-        <Loader /> :
-        <div>
-          <Graph tenant={tenant} />
-          <AccountReport tenant={tenant} />
-        </div>
-      }
+      {loading || !loaded
+        ? <Loader /> : (
+          <div>
+            <Graph tenant={tenant} />
+            <AccountReport tenant={tenant} />
+          </div>
+        )}
     </>
   );
 }

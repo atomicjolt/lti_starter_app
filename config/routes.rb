@@ -69,6 +69,7 @@ Rails.application.routes.draw do
       end
     end
     resources :ims_imports, only: [:create]
+    resources :account_analytics, only: [:index]
   end
 
   get "api/canvas" => "api/canvas_proxy#proxy"

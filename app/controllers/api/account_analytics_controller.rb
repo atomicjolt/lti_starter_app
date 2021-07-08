@@ -5,7 +5,7 @@ class Api::AccountAnalyticsController < Api::ApiApplicationController
     start_month = params["start_month"] || (Time.now - 1.year).beginning_of_month
     end_month = params["end_month"] || Time.now.end_of_month
 
-    tenants = Apartment::Tenant.current == "actadmin" ? [params["tenant"]] : [Apartment::Tenant.current]
+    tenants = [params["tenant"]] || [Apartment::Tenant.current]
 
     stats = RequestUserStatistic.monthly_unique_users(tenants, start_month, end_month)
     unique_data = create_unique_data(stats, start_month, end_month)
@@ -22,7 +22,7 @@ class Api::AccountAnalyticsController < Api::ApiApplicationController
 
     Array.new(month_range) { |i| (end_month - i.month) }.each do |date|
       data[:months].push(Date::ABBR_MONTHNAMES[date.month])
-      unique_search = stats.select { |stat| stat["month"].month == (date.month) }[0]
+      unique_search = stats.select { |stat| Time.new(stat["month"]).month == (date.month) }[0]
       data[:unique_users].push(unique_search ? unique_search["user_count"] : 0)
     end
     data
