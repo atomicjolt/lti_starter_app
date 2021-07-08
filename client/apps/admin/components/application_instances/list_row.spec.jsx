@@ -33,6 +33,9 @@ describe('application instances list row', () => {
           day_30_errors: 1,
         },
       },
+      application: {
+        id: 1
+      },
       settings: {
         lti_key: 'lti-key',
         user_canvas_domains: [''],

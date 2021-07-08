@@ -1,95 +1,81 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`application instances list matches the snapshot 1`] = `
-<table
-  className="c-table c-table--instances"
+<div
+  className="c-table-container"
 >
-  <thead>
-    <tr>
-      <Sortable
-        column="lti_key"
-        currentColumn=""
-        currentDirection=""
-        setSort={[Function]}
-        title="LTI KEY"
-      />
-      <th>
-        <span>
-          SETTINGS
-        </span>
-      </th>
-      <th>
-        <span>
-          CONFIG XML
-        </span>
-      </th>
-      <th>
-        <span>
-          ENABLED
-        </span>
-      </th>
-      <th>
-        <span>
-          AUTHS
-        </span>
-      </th>
-      <Sortable
-        column="created_at"
-        currentColumn=""
-        currentDirection=""
-        setSort={[Function]}
-        title="CREATED"
-      />
-      <th>
-        ________
-      </th>
-      <th>
-        <span>
-          REQUESTS
-        </span>
-      </th>
-      <th>
-        <span>
-          LTI LAUNCHES
-        </span>
-      </th>
-      <th>
-        <span>
-          USERS
-        </span>
-      </th>
-      <th>
-        <span>
-          ERRORS
-        </span>
-      </th>
-      <th />
-    </tr>
-  </thead>
-  <tbody>
-    <ListRow
-      application={Object {}}
-      applicationInstance={
-        Object {
-          "application_id": 7,
-          "id": 4,
+  <table
+    className="c-table c-table--instances"
+  >
+    <thead>
+      <tr>
+        <Sortable
+          canSearch={true}
+          column="nickname"
+          currentColumn=""
+          currentDirection=""
+          key="Name_0"
+          setSort={[Function]}
+          title="Name"
+        />
+        <Sortable
+          column="trial_end_date"
+          currentColumn=""
+          currentDirection=""
+          key="Trial Ends_1"
+          setSort={[Function]}
+          title="Trial Ends"
+        />
+        <th
+          key="Database Tenant_2"
+        >
+          <span
+            className="aj-flex"
+          >
+            Database Tenant
+          </span>
+        </th>
+        <th
+          key="Canvas Domain_3"
+        >
+          <span
+            className="aj-flex"
+          >
+            Canvas Domain
+          </span>
+        </th>
+        <th
+          key="Potential Users_4"
+        >
+          <span
+            className="aj-flex"
+          >
+            Potential Users
+          </span>
+        </th>
+        <th
+          key="ERRORS_5"
+        >
+          <span
+            className="aj-flex"
+          >
+            ERRORS
+          </span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <ListRow
+        application={Object {}}
+        applicationInstance={
+          Object {
+            "application_id": 7,
+            "id": 4,
+          }
         }
-      }
-      canvasOauthURL="https://example.com"
-      delete={[Function]}
-      disable={[Function]}
-      key="instance_0"
-      save={[Function]}
-      settings={Object {}}
-      sites={
-        Object {
-          "1": Object {
-            "id": 1,
-            "url": "http://www.example.com",
-          },
-        }
-      }
-    />
-  </tbody>
-</table>
+        key="instance_0"
+      />
+    </tbody>
+  </table>
+</div>
 `;

@@ -124,7 +124,6 @@ class ApplicationInstance < ApplicationRecord
   end
 
   def key(application_key_override = nil)
-    return "#{site.key}-#{application_key_override}" if application_key_override.present?
     return lti_key if lti_key.present?
     return "" if site.blank? || application.blank?
 
@@ -206,9 +205,12 @@ class ApplicationInstance < ApplicationRecord
     self.domain = domain || "#{application.key}.#{Rails.application.secrets.application_root_domain}"
   end
 
+  # Mirroring ros-apartment lib/apartment/tasks/task_helper.rb#create_tenant
   def create_schema
+    puts "Creating #{tenant} tenant"
     Apartment::Tenant.create tenant
-  rescue Apartment::TenantExists
+  rescue Apartment::TenantExists => e
+    puts "Tried to create already existing tenant: #{e}"
     # If the tenant already exists, then ignore the exception.
     # Just rescue and do nothing.
   end
@@ -224,6 +226,5 @@ class ApplicationInstance < ApplicationRecord
   def destroy_schema
     Apartment::Tenant.drop tenant
   end
-
   private :destroy_schema
 end
