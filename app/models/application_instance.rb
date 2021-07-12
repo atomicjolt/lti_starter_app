@@ -17,6 +17,7 @@ class ApplicationInstance < ApplicationRecord
 
   before_validation :set_lti
   before_validation :set_domain
+  before_validation :set_nickname
 
   before_validation on: [:update] do
     errors.add(:lti_key, "cannot be changed after creation") if lti_key_changed?
@@ -82,8 +83,9 @@ class ApplicationInstance < ApplicationRecord
     end
   end
 
-  def lti_defaults
+  def lti_defaults(config_options = {})
     config = lti_config.dup
+    config = config.merge(config_options) unless config_options.blank?
     if config.present?
       config[:launch_url] ||= launch_url
       config[:secure_launch_url] ||= launch_url
@@ -96,8 +98,8 @@ class ApplicationInstance < ApplicationRecord
     config
   end
 
-  def lti_config_xml
-    config = lti_defaults
+  def lti_config_xml(config_options = {})
+    config = lti_defaults(config_options)
     Lti::Config.xml(config) if config.present?
   end
 
@@ -167,6 +169,13 @@ class ApplicationInstance < ApplicationRecord
     self.lti_key = lti_key || key
     self.lti_secret = ::SecureRandom::hex(64) if lti_secret.blank?
     self.tenant ||= lti_key
+    set_domain
+  end
+
+  def set_nickname
+    if !nickname
+      self.nickname = lti_key || "no nickname"
+    end
   end
 
   def set_domain

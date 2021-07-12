@@ -1,0 +1,141 @@
+.aj-menu-contain{
+  position: relative;
+
+  &.is-active{
+    overflow: initial;
+
+    .aj-menu{
+      visibility: visible;
+      transform: scale(1);
+      opacity: 1;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+      li{
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+      }
+    }
+  }
+}
+
+.aj-menu-space {
+  padding-left: 1.2rem;
+}
+
+.aj-menu{
+  visibility: hidden;
+  position: absolute;
+  top: 100%;
+  right: .4rem;
+  background-color: $white;
+  border-radius: 0.3rem;
+  box-shadow: none;
+  z-index: 999;
+  margin: 0;
+  padding: 0.8rem 0;
+  transform: scale(0.5);
+  transform-origin: top right;
+  opacity: 0;
+  transition: all 0.1s ease-in;
+
+  li{
+    opacity: 0;
+    transform: translateX(1rem);
+    transition: all 0s ease-in;
+    list-style-type: none;
+  }
+  a, button, .flex-contain{
+    border: none;
+    background-color: $white;
+    padding: 0.8rem 2.4rem 0.8rem 1.6rem;
+    @include regular;
+    color: $text !important;
+    font-size: 1.4rem;
+    line-height: 1;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    min-height: 4rem;
+
+    i{
+      margin-right: 1.2rem;
+      color: $gray-7;
+      font-size: 2.4rem;
+    }
+
+    span{
+      line-height: 1;
+    }
+
+    &:hover, &:focus{
+      background-color: $blue-gray-E;
+      outline: none;
+    }
+    &:active{
+      background-color: $blue-gray-D;
+    }
+  }
+  .c-checkbox, .c-radio{
+
+    .checkmark{
+      background-color: $white;
+      padding: 0.9rem 2.4rem 1rem 4.4rem;
+      @include regular;
+      color: $gray10 !important;
+      display: block;
+      width: 100%;
+      white-space: nowrap;
+      cursor: pointer;
+
+      &:hover{
+        background: $gray1;
+      }
+    }
+
+    input[type="checkbox"] ~ span.checkmark:before{
+      top: 1rem;
+      left: 1.8rem;
+    }
+    input[type="checkbox"] ~ span.checkmark:after{
+      top: 1.1rem;
+      left: 2.3rem;
+    }
+    input[type="radio"] ~ span.checkmark:before{
+      top: 1rem;
+      left: 1.8rem;
+    }
+    input[type="radio"] ~ span.checkmark:after{
+      top: 1.4rem;
+      left: 2.2rem;
+    }
+  }
+
+  &.menu--top{
+    top: auto;
+    bottom: 100%;
+    transform-origin: bottom right;
+  }
+
+  &.menu--right{
+    right: auto;
+    left: 0;
+    transform-origin: top left;
+    li{
+      transform: translateX(-1rem);
+    }
+  }
+
+  .flex-contain{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    span {
+      margin-right: 1.6rem;
+    }
+  }
+}

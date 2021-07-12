@@ -3,87 +3,105 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import ListRow from './list_row';
 import Sortable from '../common/sortable';
+import Loader from '../../../../common/components/common/atomicjolt_loader';
 
 export default function List(props) {
   const {
     application,
-    settings,
-    sites,
-    saveApplicationInstance,
-    deleteApplicationInstance,
-    canvasOauthURL,
-    disableApplicationInstance,
     setSort,
     currentSortColumn,
     currentSortDirection,
+    searchChanged,
+    isSearchOpen,
+    toggleSearch,
+    loadingInstances,
+    applicationInstances,
   } = props;
 
+  const titles = [
+    {
+      sortName: 'Name',
+      column: 'nickname',
+      search: true,
+    },
+    'Database Tenant', 'Canvas Domain', 'ERRORS',
+  ];
+
+  const tableHeader = () => (
+    <thead>
+      <tr>
+        {_.map(titles, (title, key) => {
+          if (title.sortName) {
+            return (
+              <Sortable
+                key={`${title.sortName}_${key}`}
+                title={title.sortName}
+                column={title.column}
+                currentColumn={currentSortColumn}
+                currentDirection={currentSortDirection}
+                setSort={setSort}
+                canSearch={title.search}
+                searchChanged={searchChanged}
+                isSearchOpen={isSearchOpen}
+                toggleSearch={toggleSearch}
+              />
+            );
+          }
+          return (
+            <th key={`${title}_${key}`}>
+              <span className="aj-flex">
+                {title}
+              </span>
+            </th>
+          );
+        })}
+      </tr>
+    </thead>
+  );
+
+  const loader = () => (
+    <>
+      <table className="c-table c-table--instances">
+        {tableHeader()}
+      </table>
+      <div className="loader-space">
+        <Loader />
+      </div>
+    </>
+  );
+
   return (
-    <table className="c-table c-table--instances">
-      <thead>
-        <tr>
-          <Sortable
-            title="LTI KEY"
-            column="lti_key"
-            currentColumn={currentSortColumn}
-            currentDirection={currentSortDirection}
-            setSort={setSort}
-          />
-          <th><span>SETTINGS</span></th>
-          <th><span>CONFIG XML</span></th>
-          <th><span>ENABLED</span></th>
-          <th><span>AUTHS</span></th>
-          <Sortable
-            title="CREATED"
-            column="created_at"
-            currentColumn={currentSortColumn}
-            currentDirection={currentSortDirection}
-            setSort={setSort}
-          />
-          <th>________</th>
-          <th><span>REQUESTS</span></th>
-          <th><span>LTI LAUNCHES</span></th>
-          <th><span>USERS</span></th>
-          <th><span>ERRORS</span></th>
-          <th />
-        </tr>
-      </thead>
-      <tbody>
-        {
-          _.map(props.applicationInstances, (instance, key) => (
-            <ListRow
-              key={`instance_${key}`}
-              application={application}
-              applicationInstance={instance}
-              settings={settings}
-              sites={sites}
-              save={saveApplicationInstance}
-              delete={deleteApplicationInstance}
-              canvasOauthURL={canvasOauthURL}
-              disable={
-                () => {
-                  const disabledAt = instance.disabled_at ? null : new Date(Date.now());
-                  disableApplicationInstance(instance.application_id, instance.id, disabledAt);
-                }
-              }
-            />
-          ))
-        }
-      </tbody>
-    </table>
+    <div className="c-table-container">
+      {loadingInstances ? loader() : (
+        <table className="c-table c-table--instances">
+          {tableHeader()}
+          <tbody>
+            {
+              _.map(applicationInstances, (instance, key) => (
+                <ListRow
+                  key={`instance_${key}`}
+                  application={application}
+                  applicationInstance={instance}
+                />
+              ))
+            }
+          </tbody>
+        </table>
+      )}
+    </div>
   );
 }
 
 List.propTypes = {
   applicationInstances: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  settings: PropTypes.shape({}).isRequired,
-  sites: PropTypes.shape({}).isRequired,
-  application: PropTypes.shape({}),
-  saveApplicationInstance: PropTypes.func.isRequired,
-  deleteApplicationInstance: PropTypes.func.isRequired,
-  canvasOauthURL: PropTypes.string.isRequired,
-  disableApplicationInstance: PropTypes.func.isRequired,
+  application: PropTypes.shape({
+    key: PropTypes.string,
+  }),
   currentSortColumn: PropTypes.string.isRequired,
   currentSortDirection: PropTypes.string.isRequired,
   setSort: PropTypes.func.isRequired,
+  searchChanged: PropTypes.func,
+  toggleSearch: PropTypes.func,
+  isSearchOpen: PropTypes.bool,
+  loadingInstances: PropTypes.bool,
 };

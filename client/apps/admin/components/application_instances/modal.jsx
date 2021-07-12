@@ -19,6 +19,7 @@ export default class Modal extends React.Component {
     }),
     application: PropTypes.shape({
       id: PropTypes.number,
+      supported_languages: PropTypes.array,
     }),
   };
 
@@ -143,6 +144,8 @@ export default class Modal extends React.Component {
           closeModal={() => this.closeModal()}
           newSite={() => this.newSite()}
           isUpdate={isUpdate}
+          applicationInstance={this.props.applicationInstance}
+          languagesSupported={this.props.application.supported_languages}
         />
         <SiteModal
           isOpen={this.state.siteModalOpen}

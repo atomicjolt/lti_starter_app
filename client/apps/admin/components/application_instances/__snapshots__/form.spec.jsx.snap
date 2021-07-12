@@ -8,6 +8,40 @@ exports[`application instance form matches the snapshot 1`] = `
     <div
       className="o-grid__item u-half"
     >
+      <Input
+        className="c-input"
+        inputProps={
+          Object {
+            "id": "nickname_input",
+            "name": "nickname",
+            "onChange": [Function],
+            "type": "text",
+            "value": undefined,
+          }
+        }
+        labelText="Nickname"
+      />
+    </div>
+    <div
+      className="o-grid__item u-half"
+    >
+      <Input
+        className="c-input"
+        inputProps={
+          Object {
+            "id": "primary_contact_input",
+            "name": "primary_contact",
+            "onChange": [Function],
+            "type": "text",
+            "value": undefined,
+          }
+        }
+        labelText="Primary contact"
+      />
+    </div>
+    <div
+      className="o-grid__item u-half"
+    >
       <div
         className="c-input"
       >
@@ -112,7 +146,7 @@ exports[`application instance form matches the snapshot 1`] = `
     >
       <Input
         className="c-checkbox"
-        helperText="indicates whether or not user name and email is stored during LTI launch"
+        helperText="Indicates whether or not user name and email is stored during LTI launch"
         inputProps={
           Object {
             "checked": undefined,
@@ -163,6 +197,27 @@ exports[`application instance form matches the snapshot 1`] = `
         }
         labelText="Use Scoped Developer Key"
       />
+    </div>
+    <div
+      className="o-grid__item u-half"
+    >
+      <div
+        className="c-input c-input--container"
+      >
+        <span>
+          Language
+        </span>
+        <StateManager
+          defaultInputValue=""
+          defaultMenuIsOpen={false}
+          defaultValue={null}
+          isClearable={false}
+          name="language"
+          onChange={[Function]}
+          options={Array []}
+          placeholder="english"
+        />
+      </div>
     </div>
     <div
       className="o-grid__item u-full"

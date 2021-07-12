@@ -27,6 +27,24 @@
   }
 }
 
+.c-btn--border{
+  background: $white;
+  color: $text-color;
+  border:.1rem solid $active-gray;
+  border-radius: 0.5rem;
+  padding: 1.5rem 2.4rem;
+  height: auto;
+  line-height: normal;
+  font-size: 1.6rem;
+  &:hover{
+    background: $lightest-gray;
+  }
+  &:active{
+    background: $active-gray;
+    color: $white;
+  }
+}
+
 .c-btn--red{
   background: $red;
   color: $text-color;
@@ -79,6 +97,122 @@
   }
 }
 
+%icon-btn{
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+
+  i{
+    font-size: 2.4rem;
+    color: $gray-5;
+  }
+
+  &::before{
+    content: '';
+    position: absolute;
+    border-radius: 0.3rem;
+    left: 0.4rem;
+    top: 0.4rem;
+    background-color: none;
+    transition: background-color 0.1s ease;
+    z-index: -1;
+  }
+
+  &:hover, &:focus{
+    cursor: pointer;
+    outline: none;
+    &::before{
+      background-color: $blue-gray-E;
+    }
+  }
+  &:active{
+    i{
+      color: $white;
+    }
+    &::before{
+      background-color: $gray9;
+    }
+  }
+  &:disabled{
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+.aj-icon-btn{
+  @extend %icon-btn;
+  height: 4rem;
+  width: 4rem;
+  &::before{
+    height: 3.2rem;
+    width: 3.2rem;
+  }
+}
+
+.aj-icon-btn-sort{
+  background: $warm-gray-F;
+  color: #78716c;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  height: 4.8rem;
+  width: 4.8rem;
+  cursor: pointer;
+}
+
+.aj-sort-btn{
+  border: none;
+  background: $warm-gray-F;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  .selected{
+    color: #57534E;
+  }
+}
+
+.aj-search-button{
+  cursor: pointer;
+}
+
+.aj-icon-btn-profile{
+  background: $lightest-gray;
+  color: #78716c;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  height: 4.8rem;
+  width: 4.8rem;
+  &:hover, &:focus{
+    cursor: pointer;
+    outline: none;
+    background-color: $lighter-gray;
+
+  }
+  &:active{
+    background-color: $active-gray;
+    i{
+      color: $white;
+    }
+  }
+
+}
+
 .c-btn--back{
   padding: 0 0 0 3rem;
   color: $light-gray;
@@ -98,5 +232,51 @@
   }
   &:active{
     @include transform(scale(0.95));
+  }
+}
+
+.c-tab-btn {
+  @include semi-bold;
+  font-size: 1.4rem;
+  line-height: 3.5rem;
+  background: $white;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  @include transition(all 0.1s ease);
+  padding: 1rem 1.6rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: $warm-gray-7;
+  border-radius: 0.5rem 0.5rem 0 0;
+
+  &::after{
+    content: '';
+    opacity: 0;
+    position: absolute;
+    top: 5.1rem;
+    left: 0;
+    width: 100%;
+    border-radius: 0.3rem 0.3rem 0 0;
+    height: .4rem;
+    background: #57534E;
+  }
+
+  &:hover, &:focus-visible{
+    background-color: $warm-gray-F;
+    cursor: pointer;
+  }
+  &:active{
+    background-color: $warm-gray-E;
+  }
+  &.active{
+    color: $text-color;
+    &::after{
+      opacity: 1;
+    }
+  }
+  &:focus{
+    outline: none;
   }
 }

@@ -27,6 +27,15 @@ exports[`application instance modal match the snapshot 1`] = `
      Instance
   </h2>
   <Form
+    applicationInstance={
+      Object {
+        "config": "config string",
+        "id": 2,
+        "site": Object {
+          "id": 3,
+        },
+      }
+    }
     closeModal={[Function]}
     config="config string"
     id={2}

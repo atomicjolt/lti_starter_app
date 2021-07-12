@@ -41,7 +41,21 @@ export default class Form extends React.Component {
     anonymous: PropTypes.bool,
     rollbar_enabled: PropTypes.bool,
     use_scoped_developer_key: PropTypes.bool,
+    applicationInstance: PropTypes.shape({
+      language: PropTypes.string,
+    }),
+    languagesSupported: PropTypes.array,
+    nickname: PropTypes.string,
+    primary_contact: PropTypes.string,
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentLanguage: props.applicationInstance ? props.applicationInstance.language : 'english',
+    };
+  }
+
 
   selectSite(option) {
     if (_.isFunction(option.onSelect)) {
@@ -52,6 +66,19 @@ export default class Form extends React.Component {
       target: {
         value: option.value,
         name: 'site_id'
+      }
+    };
+
+    this.props.onChange(event);
+  }
+
+  selectLanguage(option) {
+    this.setState({ currentLanguage: option.label });
+
+    const event = {
+      target: {
+        value: option.label,
+        name: 'language'
       }
     };
 
@@ -71,6 +98,13 @@ export default class Form extends React.Component {
 
     const selectedOption = _.find(options, opt => opt.value === this.props.site_id);
 
+    const languages = _.map(this.props.languagesSupported, (label, value) => ({
+      label,
+      value,
+    }));
+
+    const selectedLanguage = _.find(languages, lang => lang.label === this.state.currentLanguage);
+
     let erroneousConfigWarning = null;
     if (this.props.configParseError) {
       erroneousConfigWarning = (
@@ -88,6 +122,32 @@ export default class Form extends React.Component {
     return (
       <form>
         <div className="o-grid o-grid__modal-top">
+          <div className="o-grid__item u-half">
+            <Input
+              className="c-input"
+              labelText="Nickname"
+              inputProps={{
+                id: 'nickname_input',
+                name: 'nickname',
+                type: 'text',
+                value: this.props.nickname,
+                onChange
+              }}
+            />
+          </div>
+          <div className="o-grid__item u-half">
+            <Input
+              className="c-input"
+              labelText="Primary contact"
+              inputProps={{
+                id: 'primary_contact_input',
+                name: 'primary_contact',
+                type: 'text',
+                value: this.props.primary_contact,
+                onChange
+              }}
+            />
+          </div>
           <div className="o-grid__item u-half">
             <div className="c-input">
               <span>Canvas Url</span>
@@ -160,7 +220,7 @@ export default class Form extends React.Component {
             <Input
               className="c-checkbox"
               labelText="Anonymous"
-              helperText="indicates whether or not user name and email is stored during LTI launch"
+              helperText="Indicates whether or not user name and email is stored during LTI launch"
               inputProps={{
                 id: 'anonymous_input',
                 name: 'anonymous',
@@ -200,6 +260,19 @@ export default class Form extends React.Component {
                 onChange
               }}
             />
+          </div>
+          <div className="o-grid__item u-half">
+            <div className="c-input c-input--container">
+              <span>Language</span>
+              <ReactSelect
+                options={languages}
+                value={selectedLanguage}
+                name="language"
+                placeholder={this.state.currentLanguage}
+                onChange={option => this.selectLanguage(option)}
+                isClearable={false}
+              />
+            </div>
           </div>
           <div className="o-grid__item u-full">
             <Textarea

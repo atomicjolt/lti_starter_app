@@ -18,6 +18,7 @@ const select = (state, props) => ({
   settings: state.settings,
   sites: state.sites,
   canvasOauthURL: state.settings.canvas_oauth_url,
+  loadingInstances: state.applicationInstances.loading
 });
 
 export class Index extends React.Component {
@@ -38,6 +39,7 @@ export class Index extends React.Component {
     canvasOauthURL: PropTypes.string.isRequired,
     disableApplicationInstance: PropTypes.func.isRequired,
     totalPages: PropTypes.number,
+    loadingInstances: PropTypes.bool,
   };
 
   constructor() {
@@ -45,8 +47,10 @@ export class Index extends React.Component {
     this.state = {
       modalOpen: false,
       currentPage: null,
-      sortColumn: 'created_at',
-      sortDirection: 'desc',
+      sortColumn: 'nickname',
+      sortDirection: 'asc',
+      search: '',
+      isSearchOpen: false,
     };
   }
 
@@ -71,6 +75,7 @@ export class Index extends React.Component {
       currentPage,
       sortColumn,
       sortDirection,
+      search,
     } = this.state;
 
     this.props.getApplicationInstances(
@@ -78,6 +83,7 @@ export class Index extends React.Component {
       currentPage,
       sortColumn,
       sortDirection,
+      search,
     );
   }
 
@@ -86,12 +92,14 @@ export class Index extends React.Component {
       currentPage,
       sortColumn,
       sortDirection,
+      search,
     } = this.state;
 
     const propsChanged = (
       prevState.currentPage !== currentPage ||
       prevState.sortColumn !== sortColumn ||
-      prevState.sortDirection !== sortDirection
+      prevState.sortDirection !== sortDirection ||
+      prevState.search !== search
     );
 
     if (propsChanged) {
@@ -100,6 +108,7 @@ export class Index extends React.Component {
         currentPage,
         sortColumn,
         sortDirection,
+        search,
       );
     }
   }
@@ -115,41 +124,81 @@ export class Index extends React.Component {
     });
   }
 
+  toggleSearch= () => {
+    this.setState((state) => ({
+      isSearchOpen: !state.isSearchOpen
+    }));
+  }
+
+  searchChanged = _.debounce((search) => {
+    this.setState({ search });
+  }, 500);
+
+  resetSort() {
+    this.setState({
+      sortColumn: 'nickname',
+      sortDirection: 'asc',
+      currentPage: 0,
+    });
+  }
+
   render() {
     const { application } = this;
 
     const {
       sortColumn:currentSortColumn,
       sortDirection:currentSortDirection,
+      isSearchOpen,
+      currentPage,
     } = this.state;
+
+    const {
+      applicationInstances,
+      settings,
+      sites,
+      saveApplicationInstance,
+      deleteApplicationInstance,
+      disableApplicationInstance,
+      canvasOauthURL,
+      loadingInstances,
+      totalPages,
+    } = this.props;
 
     return (
       <div>
-        <Heading backTo="/applications" />
+        <Heading
+          backTo="/applications"
+          application={application}
+        />
         <div className="o-contain o-contain--full">
           {this.newApplicationInstanceModal}
           <Header
             openSettings={() => {}}
             newApplicationInstance={() => this.setState({ modalOpen: true })}
             application={application}
+            applicationInstances={applicationInstances}
           />
           <List
-            applicationInstances={this.props.applicationInstances}
-            settings={this.props.settings}
-            sites={this.props.sites}
+            applicationInstances={applicationInstances}
+            settings={settings}
+            sites={sites}
             application={application}
-            saveApplicationInstance={this.props.saveApplicationInstance}
-            deleteApplicationInstance={this.props.deleteApplicationInstance}
-            disableApplicationInstance={this.props.disableApplicationInstance}
-            canvasOauthURL={this.props.canvasOauthURL}
+            saveApplicationInstance={saveApplicationInstance}
+            deleteApplicationInstance={deleteApplicationInstance}
+            disableApplicationInstance={disableApplicationInstance}
+            canvasOauthURL={canvasOauthURL}
             setSort={(sortColumn, sortDirection) => this.setSort(sortColumn, sortDirection)}
+            searchChanged={(search) => this.searchChanged(search)}
             currentSortColumn={currentSortColumn}
             currentSortDirection={currentSortDirection}
+            isSearchOpen={isSearchOpen}
+            toggleSearch={this.toggleSearch}
+            loadingInstances={loadingInstances}
           />
           <Pagination
-            setPage={change => this.setPage(change)}
-            pageCount={this.props.totalPages}
-            currentPage={this.state.currentPage}
+            setPage={(change) => this.setPage(change)}
+            pageCount={totalPages}
+            currentPage={currentPage}
             disableInitialCallback
           />
         </div>

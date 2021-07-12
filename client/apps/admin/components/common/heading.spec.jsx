@@ -21,17 +21,4 @@ describe('common heading', () => {
   it('matches the snapshot', () => {
     expect(result).toMatchSnapshot();
   });
-
-  describe('back button', () => {
-    it('renders back button', () => {
-      const button = result.find('button');
-      expect(button.length).toEqual(1);
-    });
-
-    it('renders no back button', () => {
-      props.backTo = '';
-      result = shallow(<Heading {...props} />);
-      expect(result.find('button').length).toEqual(0);
-    });
-  });
 });

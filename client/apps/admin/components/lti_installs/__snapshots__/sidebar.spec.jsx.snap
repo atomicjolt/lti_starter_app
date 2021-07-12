@@ -12,8 +12,10 @@ exports[`lti installs sidebar should render sidebar matches the snapshot 1`] = `
         onClick={[Function]}
       >
         <i
-          className="i-settings"
-        />
+          className="material-icons"
+        >
+          settings
+        </i>
       </a>
     </span>
     <h4

@@ -97,7 +97,7 @@ export default class ListRow extends React.Component {
             style={styles.buttonIcon}
             onClick={() => this.setState({ modalOpen: true })}
           >
-            <i className="i-settings" />
+            <i className="material-icons">settings</i>
           </button>
           { this.ltiInstallKeyModal }
         </td>
