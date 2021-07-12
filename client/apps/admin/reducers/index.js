@@ -14,6 +14,7 @@ import externalTools from './external_tools';
 import courses from './courses';
 import loadingCourses from './loading_courses';
 import authenticationChecks from './authentication_checks';
+import accountAnalytics from '../../../common/reducers/account_analytics';
 
 const rootReducer = combineReducers({
   settings,
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
   loadingCourses,
   errors,
   authenticationChecks,
+  accountAnalytics,
 });
 
 export default rootReducer;

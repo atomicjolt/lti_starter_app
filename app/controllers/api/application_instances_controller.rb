@@ -8,8 +8,21 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   before_action :set_configs, only: [:create, :update]
 
   def index
+
+    if search
+      @application_instances = @application_instances.
+        where("nickname ilike ? or lti_key ilike ?", "%#{search}%", "%#{search}%")
+    end
+
+    order_by =
+      if sort_column === "nickname"
+        "LOWER(#{sort_column}) #{sort_direction}"
+      else
+        { sort_column.to_sym => sort_direction.to_sym }
+      end
+
     @application_instances = @application_instances.
-      order(sort_column.to_sym => sort_direction.to_sym).
+      order(order_by).
       paginate(page: params[:page], per_page: 30)
     set_requests
     application_instances_json = @application_instances.map do |application_instance|
@@ -63,7 +76,7 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   def sortable_columns
     [
       "created_at",
-      "lti_key",
+      "nickname",
     ]
   end
 
@@ -73,6 +86,10 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+  end
+
+  def search
+    params[:search]
   end
 
   def get_authentications(application_instance_instance)
@@ -119,10 +136,7 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
   def set_requests
     tenants = @application_instances.pluck(:tenant)
     @stats = {
-      requests: RequestStatistic.total_requests_grouped(tenants),
-      launches: RequestStatistic.total_lti_launches_grouped(tenants),
       errors: RequestStatistic.total_errors_grouped(tenants),
-      users: RequestUserStatistic.total_unique_users_grouped(tenants),
     }
   end
 
@@ -132,22 +146,8 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
 
   def request_stats(tenant)
     {
-      day_1_requests: stats(:requests, 0, tenant),
-      day_7_requests: stats(:requests, 1, tenant),
-      day_30_requests: stats(:requests, 2, tenant),
-      day_365_requests: stats(:requests, 3, tenant),
-      day_1_users: stats(:users, 0, tenant),
-      day_7_users: stats(:users, 1, tenant),
-      day_30_users: stats(:users, 2, tenant),
-      day_365_users: stats(:users, 3, tenant),
-      day_1_launches: stats(:launches, 0, tenant),
-      day_7_launches: stats(:launches, 1, tenant),
-      day_30_launches: stats(:launches, 2, tenant),
-      day_365_launches: stats(:launches, 3, tenant),
       day_1_errors: stats(:errors, 0, tenant),
       day_7_errors: stats(:errors, 1, tenant),
-      day_30_errors: stats(:errors, 2, tenant),
-      day_365_errors: stats(:errors, 3, tenant),
     }
   end
 
@@ -162,6 +162,9 @@ class Api::ApplicationInstancesController < Api::ApiApplicationController
       :rollbar_enabled,
       :domain,
       :use_scoped_developer_key,
+      :language,
+      :nickname,
+      :primary_contact,
     )
   end
 

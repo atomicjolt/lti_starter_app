@@ -4,35 +4,98 @@
   width: 100%;
 }
 
+.aj-react-select{
+  font-size: 1.3rem;
+}
+
 .c-input{
   display: inline-block;
   width: 100%;
 
   & > span{
     display: block;
-    font-size: 1.2rem;
-    @include semi-bold;
-    letter-spacing: 0.1rem;
-    color: $subtext-color;
-    text-transform: uppercase;
+    font-size: 1.3rem;
+    color: $gray-3;
     margin-bottom: 0.2rem;
   }
   input{
     height: 3.5rem;
-    border: 0.1rem solid $gray;
+    border: 0.2rem solid $gray-C;
     padding: 0 1.5rem;
     font-size: 1.4rem;
     width: 100%;
+    border-radius: 0.5rem;
+  }
+  input:disabled{
+    border: none;
+    background-color: #F5F5F4;
   }
   textarea{
     width: 100%;
     min-height: 10rem;
     resize: none;
-    border: 0.1rem solid $light-gray;
+    border: 0.2rem solid $gray-C;
     outline: none;
     padding: 0.7rem 1rem;
     font-size: 1.4rem;
     color: $text-color;
+  }
+}
+
+.aj-settings-title{
+  padding: 3rem 0 3rem 2rem;
+  font-size: 2rem;
+  @include bold;
+  display: flex;
+}
+
+.aj-columns{
+  display: flex;
+}
+
+.aj-col-flex{
+  flex: 1;
+}
+
+.aj-item-padding{
+  padding: 0 2rem;
+}
+
+.aj-input--border{
+  input{
+    border: 0.2rem $gray-C solid;
+    border-radius: 0.5rem;
+  }
+  textarea{
+    border: 0.2rem $gray-C solid;
+    border-radius: 0.5rem;
+  }
+}
+
+.aj-small-input{
+  max-width: 21.6rem;
+}
+
+.aj-small-textarea{
+  max-width: 48rem;
+}
+
+.aj-flex-col{
+  display: flex;
+  flex-direction: column;
+}
+
+.c-input--dark{
+  & > span{
+    padding: 3.5rem 0;
+    @include bold;
+    font-size: 2rem;
+  }
+  textarea{
+    color: $warm-gray-E;
+    background-color: $gray10;
+    font-size: 1.6rem;
+    min-height: 20rem;
   }
 }
 

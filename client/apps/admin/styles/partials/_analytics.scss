@@ -1,0 +1,172 @@
+.aj-flex-graph{
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.aj-table-border{
+  border: 0.1rem solid $gray3;
+  border-radius: 0.3rem;
+  overflow: auto;
+}
+
+.aj-table--account-analytics {
+  width: 100%;
+  border-collapse: collapse;
+
+
+  caption {
+    @include bold;
+    font-size: 1.4rem;
+    color: $alt-text;
+  }
+
+  .aj-sort-header {
+    cursor: pointer;
+    &:hover, &:focus {
+      background-color: $gray1;
+    }
+
+    &:active {
+      background-color: #eaeaea;
+    }
+  }
+
+  th {
+    @include bold;
+    background: $lightest-gray;
+    border: 0.1rem solid $gray3;
+    height: 4rem;
+    font-size: 1.4rem;
+    color: $alt-text;
+    text-align: left;
+    vertical-align: middle;
+    padding: 0 1rem 0 1.2rem;
+
+    .aj-btn--sort {
+      border: none;
+      background: none;
+      width: 1.8rem;
+      height: 1.8rem;
+      position: relative;
+      padding: 0;
+      cursor: pointer;
+
+      i {
+        color: #ccc;
+        font-size: 2.4rem;
+        position: absolute;
+
+        &:first-of-type {
+          top: -6px;
+          left: -3px;
+        }
+        &:last-of-type {
+          bottom: -7px;
+          left: -3px;
+        }
+      }
+    }
+
+    .is-asc,
+    .is-desc {
+      color: #333333;
+    }
+    .is-asc {
+      i:last-of-type {
+        color: #333333;
+      }
+    }
+    .is-desc {
+      i:first-of-type {
+        color: #333333;
+      }
+    }
+  }
+
+  td {
+    @include regular;
+    font-size: 1.4rem;
+    height: 3rem;
+    padding: 1rem 4rem 1rem 1.2rem;
+    color: $text;
+    vertical-align: middle;
+    border: 0.1rem solid $gray3;
+  }
+
+  tbody tr:hover td {
+    background-color: $gray1;
+  }
+}
+
+.analytics-graph {
+  position: relative;
+  width: 100%;
+  margin: 1rem 1rem 2rem 1rem;
+  background: $lightest-gray;
+  border-radius: 0.5rem;
+
+  .aj-account-graph-background {
+    position: absolute;
+    left: 0.4rem;
+    right: 0.4rem;
+    bottom: 0.4rem;
+    top: 3rem;
+    background-color: $white;
+    z-index: 1;
+  }
+
+  .aj-account-graph {
+    position: relative;
+    height: 17rem;
+    width: 30rem;
+    z-index: 2;
+  }
+
+  table {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+
+    caption {
+      opacity: 0;
+      position: absolute;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    &:focus {
+      opacity: 1;
+      position: relative;
+      z-index: 1;
+      pointer-events: normal;
+
+      caption {
+        opacity: 1;
+        position: relative;
+        z-index: 1;
+        pointer-events: normal;
+      }
+    }
+  }
+}
+
+.analytics-container {
+  display: flex;
+  align-items: flex-start;
+  & > div {
+    flex: 1 0 25rem;
+  }
+  figure {
+    max-width: 80rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .analytics-container {
+    flex-flow: column wrap;
+    & > * {
+      width: 100%;
+    }
+  }
+}

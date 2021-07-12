@@ -39,8 +39,10 @@ exports[`applications application row matches the snapshot 1`] = `
       }
     >
       <i
-        className="i-settings"
-      />
+        className="material-icons"
+      >
+        settings
+      </i>
     </button>
     <Modal
       application={

@@ -1,12 +1,71 @@
 .c-head{
-  height: 6rem;
-  padding: 0 0 0 2rem;
-  background: $dark-gray;
+  height: 7.2rem;
+  padding: 0 0 0 2.4rem;
+  background: $white;
   @include display-flex;
   @include align-items(center);
   @include justify-content(space-between);
   position: relative;
   z-index: 800;
+  box-shadow: -0.3rem 0.1rem 0.3rem #00000041;
+}
+
+.c-yellow-bar{
+  background-color: $admin-yellow;
+  height: 0.8rem;
+}
+
+.c-head-nav{
+  display: flex;
+}
+
+.c-head-link{
+  padding: 0 1.6rem;
+  height: 7.2rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  @include semi-bold;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: $warm-gray-7;
+  &::before{
+    content: '';
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 0 0 0.3rem 0.3rem;
+    height: .4rem;
+    background: #57534E;
+  }
+  &:hover, &:focus-visible{
+    background-color: $warm-gray-F;
+    cursor: pointer;
+  }
+  &:focus-visible{
+    outline: #57534E solid 0.2rem;
+    outline-offset: -0.8rem;
+  }
+  &:active{
+    background-color: $warm-gray-E;
+  }
+  &[aria-selected=true]{
+    &::before{
+      opacity: 1;
+    }
+    color: $warm-gray-2;
+  }
+
+}
+
+.c-head-profile{
+  padding: 1.2rem 2.4rem;
+}
+
+.c-head-img{
+  padding-right: 1.8rem;
 }
 
 .c-back{

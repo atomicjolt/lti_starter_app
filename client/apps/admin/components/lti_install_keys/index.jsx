@@ -122,7 +122,7 @@ export class Index extends React.Component {
 
     return (
       <div>
-        <Heading backTo="/applications" />
+        <Heading />
         <div className="o-contain o-contain--full">
           {this.newLtiInstallKeyModal}
           <Header

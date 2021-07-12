@@ -12,6 +12,10 @@
 @import "partials/inputs";
 @import "partials/login";
 @import "partials/alerts";
+@import "partials/menu";
+@import "partials/loader";
+@import "partials/analytics";
 // ...
 
 // Third-party
+@import 'flatpickr/dist/themes/airbnb.css';

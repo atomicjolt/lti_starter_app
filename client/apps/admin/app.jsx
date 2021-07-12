@@ -22,6 +22,18 @@ class Root extends React.PureComponent {
     store: PropTypes.object.isRequired,
   };
 
+  componentDidMount() {
+    window.addEventListener('click', this.closeMenus);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('click', this.closeMenus);
+  }
+
+  closeMenus = () => {
+    window.dispatchEvent(new CustomEvent('close-menu'));
+  }
+
   render() {
     const { store } = this.props;
     return (

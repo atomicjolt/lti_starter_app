@@ -78,19 +78,19 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
 
       it "renders all application instances by lti_key" do
         app = create(:application)
-        ai1 = create(:application_instance, application: app, lti_key: "c")
-        ai2 = create(:application_instance, application: app, lti_key: "g")
-        ai3 = create(:application_instance, application: app, lti_key: "a")
-        ai4 = create(:application_instance, application: app, lti_key: "z")
+        ai1 = create(:application_instance, application: app, nickname: "banana")
+        ai2 = create(:application_instance, application: app, nickname: "Cat")
+        ai3 = create(:application_instance, application: app, nickname: "Apple")
+        ai4 = create(:application_instance, application: app, nickname: "dog")
         params = {
           application_id: app.id,
-          column: :lti_key,
+          column: :nickname,
           direction: :asc,
         }
         get :index, params: params, format: :json
         result = JSON.parse(response.body)
-        expected_instance_ids = [ai3.id, ai1.id, ai2.id, ai4.id]
-        returned_instance_ids = result["application_instances"].map { |ai| ai["id"] }
+        expected_instance_ids = [ai3.nickname, ai1.nickname, ai2.nickname, ai4.nickname]
+        returned_instance_ids = result["application_instances"].map { |ai| ai["nickname"] }
         expect(returned_instance_ids).to eq(expected_instance_ids)
       end
     end
@@ -159,11 +159,11 @@ RSpec.describe Api::ApplicationInstancesController, type: :controller do
               application_instance: {
                 lti_secret: "12345",
                 lti_config: {
-                  title: "LTI Starter App",
+                  title: "Nucleus",
                   privacy_level: "anonymous",
                   icon: "oauth_icon.png",
                   course_navigation: {
-                    text: "LTI Starter App",
+                    text: "Nucleus",
                     visibility: "public",
                   },
                 },

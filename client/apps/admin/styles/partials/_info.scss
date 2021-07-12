@@ -1,5 +1,5 @@
 .c-info{
-  padding: 3rem 2rem;
+  padding: 3rem 0;
   @include display-flex;
   @include align-items(center);
 }
@@ -9,8 +9,7 @@
 
     h1{
       @include bold;
-      letter-spacing: 0.2rem;
-      color: $yellow;
+      color: $text-color;
       margin: 0;
       font-size: 3.4rem;
     }
@@ -83,3 +82,143 @@
       font-size: 2rem;
     }
   }
+
+.aj-admin-container{
+  padding: 3.2rem 4.8rem;
+}
+
+.aj-icon{
+  padding-right: 1.2rem;
+  display: flex;
+  font-size: 1.8rem
+}
+
+.aj-header{
+
+  .back-btn{
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: $white;
+    cursor: pointer;
+    color: $active-gray;
+    font-size: 1.8rem;
+    padding-bottom: 1.2rem;
+  }
+
+  .header-row{
+    display: flex;
+    align-items: center;
+    padding-bottom: 3.2rem;
+  }
+
+  .space-between{
+    justify-content: space-between;
+  }
+
+  .info{
+    font-size: 1.4rem;
+    color: $active-gray;
+
+    .info-spacing{
+      padding-right: 4.8rem;
+    }
+  }
+
+  .flex-center{
+    display: flex;
+    align-items: center;
+  }
+
+  .save-btn{
+    border-radius: 0.5rem;
+    background-color: $admin-yellow;
+    box-shadow: 0px 1px 3px #00000080;
+    padding: 1.5rem 2.4rem;
+    border: none;
+    cursor: pointer;
+    margin-right: 2.4rem;
+  }
+
+  .title{
+    @include bold;
+    color: $text-color;
+    margin: 0;
+    font-size: 4rem;
+  }
+
+}
+
+.aj-settings-container{
+  border-radius: 0.5rem;
+  border: 1px solid $warm-gray-E;
+  display: flex;
+  min-width: 52rem;
+  .nav-col{
+    flex: 1;
+    background-color: $warm-gray-F;
+    padding: 1.6rem;
+    border-right: 1px solid $warm-gray-E;
+    .tabs{
+      display: flex;
+      align-items: center;
+      color: $warm-gray-7;
+      padding: 1.6rem;
+      border-radius: 0.5rem;
+      width: 100%;
+      border: none;
+      white-space: nowrap;
+      background-color: $warm-gray-F;
+      cursor: pointer;
+      .text{
+        font-size: 1.4rem;
+        margin: 0;
+      }
+      .icon{
+        padding-right: 1.6rem;
+        font-size: 2.2rem;
+      }
+      &:hover{
+        background-color: $gray-E;
+        &::before{
+          position: absolute;
+          content: '';
+          width: 0.3rem;
+          height: 5.4rem;
+          left: 4.6rem;
+          border-right: 0.5rem solid $hover-gray;
+          border-radius: 0.3rem;
+        }
+      }
+      &:active{
+        background-color: $white;
+      }
+
+    }
+    .active{
+      &:hover{
+        background-color: $white;
+        &::before{
+          border-right: 0.5rem solid $active-gray;
+        }
+      }
+      &::before{
+        position: absolute;
+        content: '';
+        width: 0.3rem;
+        height: 5.4rem;
+        left: 4.6rem;
+        border-right: 0.5rem solid $active-gray;
+        border-radius: 1rem;
+      }
+      background-color: $white;
+      color: $active-gray;
+      cursor: unset;
+    }
+  }
+  .display-page{
+    min-width: 33rem;
+    flex: 4;
+    padding: 1.6rem;
+  }
+}

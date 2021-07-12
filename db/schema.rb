@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 2021_05_10_161432) do
     t.boolean "anonymous", default: false
     t.boolean "rollbar_enabled", default: true
     t.boolean "use_scoped_developer_key", default: false, null: false
+    t.string "nickname"
+    t.string "primary_contact"
     t.index ["application_id"], name: "index_application_instances_on_application_id"
     t.index ["lti_key"], name: "index_application_instances_on_lti_key"
     t.index ["site_id"], name: "index_application_instances_on_site_id"
