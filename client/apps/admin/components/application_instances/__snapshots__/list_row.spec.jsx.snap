@@ -22,7 +22,7 @@ exports[`application instances list row matches the snapshot 1`] = `
   </td>
   <td>
     <a
-      href="https://rollbar.com/AtomicJolt/ACT/rql/?projects=120707&q=select%20*%0Afrom%20item_occurrence%0Awhere%20unix_timestamp()%20-%20timestamp%20between%200%20*%2060%20*%2060%20*%2024%20and%201%20*%2060%20*%2060%20*%2024%0Aand%20tenant%20%3D%20'lti-key'&graph_type=line"
+      href="https://rollbar.com///rql/?projects=&q=select%20*%0Afrom%20item_occurrence%0Awhere%20unix_timestamp()%20-%20timestamp%20between%200%20*%2060%20*%2060%20*%2024%20and%201%20*%2060%20*%2060%20*%2024%0Aand%20tenant%20%3D%20'lti-key'&graph_type=line"
       tarket="blank"
     >
       <div>

@@ -18,56 +18,12 @@ exports[`common heading matches the snapshot 1`] = `
         <Link
           aria-selected={null}
           className="c-head-link"
-          key="Atomic Search0"
+          href=""
+          key="Starter App0"
           onlyActiveOnIndex={false}
           style={Object {}}
         >
-          Search
-        </Link>
-        <Link
-          aria-selected={null}
-          className="c-head-link"
-          key="Atomic Curriculum Tools1"
-          onlyActiveOnIndex={false}
-          style={Object {}}
-        >
-          Act
-        </Link>
-        <Link
-          aria-selected={null}
-          className="c-head-link"
-          key="2"
-          onlyActiveOnIndex={false}
-          style={Object {}}
-        >
-          Assessments
-        </Link>
-        <Link
-          aria-selected={null}
-          className="c-head-link"
-          key="3"
-          onlyActiveOnIndex={false}
-          style={Object {}}
-        >
-          Polls
-        </Link>
-        <Link
-          aria-selected={null}
-          className="c-head-link"
-          key="4"
-          onlyActiveOnIndex={false}
-          style={Object {}}
-        >
-          Discussions
-        </Link>
-        <Link
-          aria-selected={null}
-          className="c-head-link"
-          key="5"
-          onlyActiveOnIndex={false}
-          style={Object {}}
-        >
-          Journals
+          Starter
         </Link>
       </nav>
     </div>
