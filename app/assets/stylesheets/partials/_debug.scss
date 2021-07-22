@@ -26,6 +26,7 @@
   position: absolute;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.897);
+  overflow-y: auto;
 
   &.hidden {
     display: none;
