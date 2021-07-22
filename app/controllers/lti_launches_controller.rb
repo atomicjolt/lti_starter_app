@@ -13,15 +13,7 @@ class LtiLaunchesController < ApplicationController
       render file: File.join(Rails.root, "public", "disabled.html")
     end
 
-    @debug_data = {
-      "Tenant Name" => Apartment::Tenant.current,
-      "App Name" => current_application.name,
-      "Client App" => current_application.client_application_name,
-      "LTI Key" => current_application_instance.lti_key,
-      "Domain" => current_application_instance.domain,
-      "Test" => "something long that will wrap onto the next line of stuff hi there :)",
-    }
-
+    debug_data
     if @lti_token
       # LTI advantage example code
       @lti_advantage_examples = LtiAdvantage::Examples.new(@lti_token, current_application_instance)
@@ -57,6 +49,17 @@ class LtiLaunchesController < ApplicationController
         "roles" => "Learner",
       },
     )
+  end
+
+  def debug_data
+    @debug_data = {
+      "Tenant Name" => Apartment::Tenant.current,
+      "App Name" => current_application.name,
+      "Client App" => current_application.client_application_name,
+      "LTI Key" => current_application_instance.lti_key,
+      "Domain" => current_application_instance.domain,
+      "Test" => "something long that will wrap onto the next line of stuff hi there :)",
+    }
   end
 
   # Support Open ID connect flow for LTI 1.3
