@@ -51,16 +51,6 @@ class LtiLaunchesController < ApplicationController
     )
   end
 
-  def debug_data
-    @debug_data = {
-      "Tenant Name" => Apartment::Tenant.current,
-      "App Name" => current_application&.name,
-      "Client App" => current_application&.client_application_name,
-      "LTI Key" => current_application_instance&.lti_key,
-      "Domain" => current_application_instance&.domain,
-    }
-  end
-
   # Support Open ID connect flow for LTI 1.3
   def init
     nonce = SecureRandom.hex(64)
@@ -73,6 +63,16 @@ class LtiLaunchesController < ApplicationController
   end
 
   private
+
+  def debug_data
+    @debug_data = {
+      "Tenant Name" => Apartment::Tenant.current,
+      "App Name" => current_application&.name,
+      "Client App" => current_application&.client_application_name,
+      "LTI Key" => current_application_instance&.lti_key,
+      "Domain" => current_application_instance&.domain,
+    }
+  end
 
   def setup_lti_response
     begin
