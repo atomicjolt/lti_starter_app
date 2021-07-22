@@ -1,0 +1,59 @@
+#aj-debug {
+  position: absolute;
+  color: rgb(224, 222, 222);
+  bottom: 10px;
+  right: 10px;
+  z-index: 10;
+  border-color: transparent;
+  background-color: rgba(0, 0, 0, 0.897);
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(32, 32, 32, 0.897);
+  }
+}
+
+.aj-debug-overlay {
+  z-index: 10;
+  color: rgb(224, 222, 222);
+  width: 400px;
+  height: 600px;
+  bottom: 10px;
+  right: 60px;
+  position: absolute;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.897);
+
+  &.hidden {
+    display: none;
+  }
+
+  &__content {
+    text-align: left;
+    padding: 10px;
+  }
+
+  &__item {
+    border-bottom: 1px solid rgb(58, 58, 58);
+
+    h4 {
+      font-weight: bold;
+      font-size: 15px;
+      display: inline-block;
+      margin-top: 8px;
+      margin-bottom: 5px;
+    }
+  }
+
+  &__missing {
+    text-align: center;
+    padding: 10px;
+  }
+
+  pre {
+    display: inline-block;
+  }
+}
