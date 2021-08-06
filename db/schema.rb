@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_161432) do
+ActiveRecord::Schema.define(version: 2021_08_06_204435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -228,6 +228,7 @@ ActiveRecord::Schema.define(version: 2021_05_10_161432) do
     t.string "tool_consumer_instance_guid"
     t.string "resource_link_id"
     t.index ["context_id"], name: "index_lti_launches_on_context_id"
+    t.index ["resource_link_id"], name: "index_lti_launches_on_resource_link_id"
     t.index ["token", "context_id"], name: "index_lti_launches_on_token_and_context_id", unique: true
   end
 
