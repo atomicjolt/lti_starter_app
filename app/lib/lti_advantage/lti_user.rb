@@ -8,6 +8,8 @@ module LtiAdvantage
 
     def user
       user = ::User.find_by(lti_user_id: @lti_user_id)
+      user = _migrate_lti_user if user.blank?
+
       if user.blank?
         user = _generate_new_lti_user
         _attempt_uniq_email(user)
@@ -42,6 +44,17 @@ module LtiAdvantage
         email = "generated-user-#{@lti_user_id}@#{_domain_for_email}" if email.blank? && @lti_user_id.present?
         email
       end
+    end
+
+    # If a LTI 1.1 install is being migrated to an Advantage install,
+    # pre-existing users won't be found correctly. So we swap out their
+    # lti id with their new lti_user_id before proceeding
+    def _migrate_lti_user
+      user = User.find_by(lti_user_id: @lti_token[LtiAdvantage::Definitions::LTI11_LEGACY_USER_ID_CLAIM])
+      if user
+        user.lti_user_id = @lti_user_id
+      end
+      user
     end
 
     def _generate_new_lti_user
