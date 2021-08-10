@@ -117,7 +117,9 @@ applications = [
         LtiAdvantage::Definitions::USER_SYSTEM_ROLE,
       ],
     },
-    default_config: {},
+    default_config: {
+      display_debug: false,
+    },
     lti_config: {
       title: "LTI Starter App",
       description: "The Atomic Jolt LTI Starter app",

@@ -1,4 +1,4 @@
-<% if Rails.application.secrets.display_debug.present? -%>
+<% if @current_application_instance.config['display_debug'] -%>
   <button id="aj-debug" title="Show Debug Information">
     <span class="material-icons">
     bug_report

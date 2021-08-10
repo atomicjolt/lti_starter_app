@@ -67,6 +67,7 @@ class LtiLaunchesController < ApplicationController
   def debug_data
     @debug_data = {
       "Tenant Name" => Apartment::Tenant.current,
+      "LTI Advantage" => !!@lti_token,
       "App Name" => current_application&.name,
       "Client App" => current_application&.client_application_name,
       "LTI Key" => current_application_instance&.lti_key,
