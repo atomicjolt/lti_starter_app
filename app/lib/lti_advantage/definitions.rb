@@ -109,6 +109,23 @@ module LtiAdvantage
     MEMBER_CONTEXT_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/membership#Member".freeze
     OFFICER_CONTEXT_ROLE = "http://purl.imsglobal.org/vocab/lis/v2/membership#Officer".freeze
 
+    ADMINISTRATOR_ROLES = [
+      ADMINISTRATOR_SYSTEM_ROLE,
+      ACCOUNT_ADMIN_SYSTEM_ROLE,
+      ADMINISTRATOR_INSTITUTION_ROLE,
+      ADMINISTRATOR_CONTEXT_ROLE,
+    ].freeze
+
+    INSTRUCTOR_ROLES = [
+      INSTRUCTOR_INSTITUTION_ROLE,
+      INSTRUCTOR_CONTEXT_ROLE,
+    ].freeze
+
+    STUDENT_ROLES = [
+      STUDENT_INSTITUTION_ROLE,
+      LEARNER_CONTEXT_ROLE,
+    ].freeze
+
     def self.lms_host(payload)
       host = if deep_link_launch?(payload)
                payload.dig(LtiAdvantage::Definitions::DEEP_LINKING_CLAIM, "deep_link_return_url")

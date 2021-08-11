@@ -208,6 +208,7 @@ class User < ApplicationRecord
     has_role?(
       context_id,
       Lti::Roles::INSTRUCTOR,
+      *LtiAdvantage::Definitions::INSTRUCTOR_ROLES,
     )
   end
 
@@ -222,6 +223,7 @@ class User < ApplicationRecord
     has_role?(
       context_id,
       *Lti::Roles::ADMIN_ROLES,
+      *LtiAdvantage::Definitions::ADMIN_ROLES,
     )
   end
 
@@ -229,6 +231,7 @@ class User < ApplicationRecord
     has_role?(
       context_id,
       Lti::Roles::CONTENT_DEVELOPER,
+      LtiAdvantage::Definitions::CONTENT_DEVELOPER_CONTEXT_ROLE,
     )
   end
 
@@ -249,6 +252,7 @@ class User < ApplicationRecord
     has_role?(
       context_id,
       Lti::Roles::LEARNER,
+      *LtiAdvantage::Definitions::STUDENT_ROLES,
     )
   end
 
