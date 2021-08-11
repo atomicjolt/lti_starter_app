@@ -1,0 +1,32 @@
+<% if current_application_instance&.config&.dig('display_debug') -%>
+  <button id="aj-debug" title="Show Debug Information">
+    <span class="material-icons">
+    bug_report
+    </span>
+  </button>
+  <div class="aj-debug-overlay hidden">
+    <h3>Debug Info</h3>
+    <% if @debug_data -%>
+    <div class="aj-debug-overlay__content">
+      <% @debug_data.each do |key, value|%>
+        <div class="aj-debug-overlay__item">
+          <h4><%= key %></h4> -
+          <span><%= value %></span>
+        </div>
+      <% end %>
+    </div>
+    <% else -%>
+    <div class="aj-debug-overlay__missing">
+      <div>No debug data defined</div>
+      <div>Add a <pre>@debug_data</pre> hash to the rendering context to see it's values populated here</div>
+    </div>
+    <% end %>
+  </div>
+  <script type="text/javascript">
+    const debug = document.getElementById("aj-debug");
+    debug.addEventListener("click", () => {
+      const overlay = document.getElementsByClassName("aj-debug-overlay")[0];
+      overlay.classList.toggle("hidden")
+    });
+  </script>
+<% end -%>
