@@ -11,5 +11,9 @@ module LtiAdvantage
 
     class ScoreError < StandardError
     end
+
+    class NoLTIDeployment < StandardError
+    end
+
   end
 end

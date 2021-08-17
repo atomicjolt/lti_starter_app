@@ -215,24 +215,24 @@ RSpec.describe ApplicationInstance, type: :model do
       context "when there isn't a matching ApplicationInstance" do
         it "creates an ApplicationInstance" do
           expect do
-            described_class.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+            described_class.by_client_and_deployment(client_id, deployment_id, iss)
           end.to change(described_class, :count).from(1).to(2)
         end
 
         it "associates the ApplicationInstance with the correct site" do
-          application_instance = described_class.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+          application_instance = described_class.by_client_and_deployment(client_id, deployment_id, iss)
 
           expect(application_instance.site).to eq(site)
         end
 
         it "creates an LtiDeployment" do
           expect do
-            described_class.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+            described_class.by_client_and_deployment(client_id, deployment_id, iss)
           end.to change(LtiDeployment, :count).from(0).to(1)
         end
 
         it "associates the LtiDeployment with the correct ApplicationInstance" do
-          application_instance = described_class.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+          application_instance = described_class.by_client_and_deployment(client_id, deployment_id, iss)
 
           lti_deployment = LtiDeployment.last
 
@@ -240,7 +240,7 @@ RSpec.describe ApplicationInstance, type: :model do
         end
 
         it "associates the LtiDeployment with the correct LtiInstall" do
-          described_class.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+          described_class.by_client_and_deployment(client_id, deployment_id, iss)
 
           lti_deployment = LtiDeployment.last
 
@@ -248,7 +248,7 @@ RSpec.describe ApplicationInstance, type: :model do
         end
 
         it "gives the LtiDeployment the correct deployment_id" do
-          described_class.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+          described_class.by_client_and_deployment(client_id, deployment_id, iss)
 
           lti_deployment = LtiDeployment.last
 

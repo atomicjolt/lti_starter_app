@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :set_rollbar_scope
 
   helper_method :current_application_instance,
+                :current_application,
                 :current_bundle_instance,
                 :current_canvas_course,
                 :canvas_url,
@@ -115,6 +116,12 @@ class ApplicationController < ActionController::Base
       backtrace: exception.backtrace,
     }
     render_error 500, "An error occured when calling the Canvas API: #{exception.message}", json_options
+  end
+
+  rescue_from LtiAdvantage::Exceptions::NoLTIDeployment, with: :handle_no_deployment
+  def handle_no_deployment
+    @token = params["id_token"]
+    render "lti_launches/set_deployment"
   end
 
   def set_rollbar_scope

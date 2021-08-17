@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get :launch
       get :init
       post :init
+      post :set_deployment
     end
     member do
       post :show
