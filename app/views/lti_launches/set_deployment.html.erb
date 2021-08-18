@@ -1,5 +1,4 @@
 Found an installation for <%= current_application.name %>.
-
 <%= form_with url: "/lti_launches/set_deployment", method: :post do |form| %>
   <%= form.hidden_field :use_existing, value: true %>
   <%= form.hidden_field :id_token, value: @token %>
