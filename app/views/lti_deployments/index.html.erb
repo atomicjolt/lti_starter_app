@@ -8,19 +8,17 @@
 
 <p class="aj-text">Do you want to use this existing installation? (recommended)</p>
 <%= form_with url: "/lti_deployments", class: "aj-form-center", method: :post do |form| %>
-  <%= form.hidden_field :use_existing, value: true %>
   <%= form.hidden_field :id_token, value: @token %>
   <%= form.submit "Use Existing", class: "aj-button" %>
 <% end %>
 
 
-  <%= form_with url: "/lti_deployments", class: "aj-subtext", method: :post do |form| %>
-    <%= form.hidden_field :use_existing, value: false %>
-    <%= form.hidden_field :id_token, value: @token %>
-    <p>In very rare instances you may need a new install. The data from this installation cannot
-      be merged with the existing installation later,
-      so proceed at your own risk. If you do need to create a new install
-      <%= form.submit "click here" %>.
-    </p>
-  <% end %>
-
+<%= form_with url: "/lti_deployments", class: "aj-subtext", method: :post do |form| %>
+  <%= form.hidden_field :id_token, value: @token %>
+  <%= form.hidden_field :make_new, value: true %>
+  <p>In very rare instances you may need a new install. The data from this installation cannot
+    be merged with the existing installation later,
+    so proceed at your own risk. If you do need to create a new install
+    <%= form.submit "click here" %>.
+  </p>
+<% end %>
