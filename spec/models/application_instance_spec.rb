@@ -210,13 +210,18 @@ RSpec.describe ApplicationInstance, type: :model do
       let(:lms_url) { FactoryBot.generate(:url) }
 
       let!(:site) { FactoryBot.create(:site, url: lms_url) }
-      let!(:lti_install) { FactoryBot.create(:lti_install, iss: iss, client_id: client_id) }
+      let(:application) { FactoryBot.create(:application) }
+      let!(:lti_install) { FactoryBot.create(:lti_install, iss: iss, client_id: client_id, application: application) }
 
       context "when there isn't a matching ApplicationInstance" do
-        it "creates an ApplicationInstance" do
+        before do
+          FactoryBot.create(:application_instance, application: application, site: site)
+        end
+
+        it "does not create a new ApplicationInstance" do
           expect do
             described_class.by_client_and_deployment(client_id, deployment_id, iss)
-          end.to change(described_class, :count).from(1).to(2)
+          end.to change(described_class, :count).by(0)
         end
 
         it "associates the ApplicationInstance with the correct site" do

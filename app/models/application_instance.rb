@@ -54,8 +54,7 @@ class ApplicationInstance < ApplicationRecord
     end
   end
 
-  # Create a new application instance if the deployment id isn't found
-  # TODO add a setting on the application to indicate if it's freely available, trial, or restricted
+  # Find application instance using values from the lti advantage token
   def self.by_client_and_deployment(client_id, deployment_id, iss)
     if lti_install = LtiInstall.find_by(client_id: client_id, iss: iss)
       application_instances = lti_install.application.application_instances.
