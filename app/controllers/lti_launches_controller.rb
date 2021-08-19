@@ -5,8 +5,8 @@ class LtiLaunchesController < ApplicationController
 
   layout "client"
 
-  skip_before_action :verify_authenticity_token, except: [:set_deployment]
-  before_action :do_lti, except: [:init, :launch, :set_deployment]
+  skip_before_action :verify_authenticity_token
+  before_action :do_lti, except: [:init, :launch]
 
   def index
     if current_application_instance.disabled_at
@@ -58,38 +58,6 @@ class LtiLaunchesController < ApplicationController
     cookies[:open_id_state] = state
     respond_to do |format|
       format.html { redirect_to url }
-    end
-  end
-
-  def set_deployment
-    application_instance = current_application_instance
-
-    token = params[:id_token]
-    decoded_token = JWT.decode(token, nil, false)
-    payload = decoded_token[PAYLOAD]
-
-    iss = payload["iss"]
-    lti_install = application_instance.application.lti_installs.find_by(iss: iss)
-
-    deployment_id = payload[LtiAdvantage::Definitions::DEPLOYMENT_ID]
-
-    lms_url = LtiAdvantage::Definitions.lms_url(payload)
-    site = Site.find_by(url: lms_url)
-
-    if params[:use_existing]
-      application_instance.lti_deployments.create!(
-        lti_install: lti_install,
-        deployment_id: deployment_id,
-      )
-    else
-      # Create a new application instance and lti_deployment
-      lti_key = "#{site.key}-#{lti_install.application.key}-#{deployment_id}"
-      application_instance = lti_install.application.create_instance(site: site, lti_key: lti_key)
-      LtiDeployment.create!(
-        application_instance: application_instance,
-        lti_install: lti_install,
-        deployment_id: deployment_id,
-      )
     end
   end
 

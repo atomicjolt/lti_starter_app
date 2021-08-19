@@ -121,7 +121,7 @@ class ApplicationController < ActionController::Base
   rescue_from LtiAdvantage::Exceptions::NoLTIDeployment, with: :handle_no_deployment
   def handle_no_deployment
     @token = params["id_token"]
-    render "lti_launches/set_deployment"
+    render "lti_deployments/index", layout: "application"
   end
 
   def set_rollbar_scope

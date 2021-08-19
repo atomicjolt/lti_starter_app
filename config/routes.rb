@@ -15,12 +15,13 @@ Rails.application.routes.draw do
       get :launch
       get :init
       post :init
-      post :set_deployment
     end
     member do
       post :show
     end
   end
+
+  resources :lti_deployments
 
   devise_for :users, controllers: {
     sessions: "sessions",
