@@ -223,7 +223,7 @@ class User < ApplicationRecord
     has_role?(
       context_id,
       *Lti::Roles::ADMIN_ROLES,
-      *LtiAdvantage::Definitions::ADMIN_ROLES,
+      *LtiAdvantage::Definitions::ADMINISTRATOR_ROLES,
     )
   end
 
