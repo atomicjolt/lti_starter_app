@@ -20,16 +20,11 @@ class LtiDeploymentsController < ApplicationController
       # Create a new application instance and lti_deployment
       lti_key = "#{site.key}-#{lti_install.application.key}-#{deployment_id}"
       application_instance = lti_install.application.create_instance(site: site, lti_key: lti_key)
-      LtiDeployment.create!(
-        application_instance: application_instance,
-        lti_install: lti_install,
-        deployment_id: deployment_id,
-      )
-    else
-      application_instance.lti_deployments.create!(
-        lti_install: lti_install,
-        deployment_id: deployment_id,
-      )
     end
+
+    application_instance.lti_deployments.create!(
+      lti_install: lti_install,
+      deployment_id: deployment_id,
+    )
   end
 end
