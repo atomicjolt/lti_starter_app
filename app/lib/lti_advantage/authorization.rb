@@ -9,8 +9,7 @@ module LtiAdvantage
       iss = payload["iss"]
       deployment_id = payload[LtiAdvantage::Definitions::DEPLOYMENT_ID]
       if client_id && deployment_id && iss
-        lms_url = LtiAdvantage::Definitions.lms_url(payload)
-        ApplicationInstance.by_client_and_deployment(client_id, deployment_id, iss, lms_url)
+        ApplicationInstance.by_client_and_deployment(client_id, deployment_id, iss)
       end
     end
 
@@ -25,9 +24,14 @@ module LtiAdvantage
       jwk_loader = ->(options) do
         jwks = Rails.cache.read(cache_key)
         if options[:invalidate] || jwks.blank?
+          deployment_id = decoded_token.dig(0, LtiAdvantage::Definitions::DEPLOYMENT_ID)
           lti_deployment = LtiDeployment.find_by(
-            deployment_id: decoded_token.dig(0, LtiAdvantage::Definitions::DEPLOYMENT_ID),
+            deployment_id: deployment_id,
           )
+          if lti_deployment.blank?
+            raise LtiAdvantage::Exceptions::NoLTIDeployment, "No LTI Deployment found with #{deployment_id}"
+          end
+
           client_id = lti_deployment.lti_install.client_id
           jwks = JSON.parse(
             HTTParty.get(application_instance.application.jwks_url(iss, client_id)).body,

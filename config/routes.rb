@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :lti_deployments
+
   devise_for :users, controllers: {
     sessions: "sessions",
     registrations: "registrations",

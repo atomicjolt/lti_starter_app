@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+
+.aj-title {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  justify-content: center;
+}
+.aj-title svg {
+  width: 24px;
+  fill: #555555;
+  margin-right: 8px;
+}
+.aj-title h1 {
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  color: #333333;
+  margin: 0;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.aj-text {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  color: #333333;
+  font-size: 16px;
+  max-width: 75ch;
+  margin: 16px 0 0;
+  text-align: center;
+}
+
+.aj-form-center {
+  display: flex;
+  justify-content: center
+}
+.aj-button {
+  font-family: "Lato", sans-serif;
+  background-color: #333333;
+  color: #ffffff;
+  border: none;
+  padding: 6px 12px;
+  margin-top: 32px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 3px;
+  transition: all 100ms ease;
+  display: inline-block;
+}
+.aj-button:hover {
+  background-color: #222222;
+  cursor: pointer;
+}
+.aj-button:active {
+  background-color: #111111;
+}
+
+.aj-subtext p {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  color: #444444;
+  font-size: 14px;
+  margin: 64px 0 0;
+  line-height: 1.5;
+  max-width: 75ch;
+  text-align: center;
+}
+
+.aj-subtext input[type="submit"] {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  display: inline;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  padding: 0;
+  color: #01579c;
+  font-size: 14px;
+  line-height: 1.5;
+}

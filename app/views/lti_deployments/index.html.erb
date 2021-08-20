@@ -1,0 +1,24 @@
+<div class="aj-title">
+  <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24">
+    <g><path d="M0,0h24v24H0V0z" fill="none"/></g>
+    <g><path d="M14,2H6C4.9,2,4.01,2.9,4.01,4L4,20c0,1.1,0.89,2,1.99,2H18c1.1,0,2-0.9,2-2V8L14,2z M18,20H6V4h7v5h5V20z M8.82,13.05 L7.4,14.46L10.94,18l5.66-5.66l-1.41-1.41l-4.24,4.24L8.82,13.05z"/></g>
+  </svg>
+  <h1>Found an existing installation for <%= current_application.name %></h1>
+</div>
+
+<p class="aj-text">Do you want to use this existing installation? (recommended)</p>
+<%= form_with url: "/lti_deployments", class: "aj-form-center", method: :post do |form| %>
+  <%= form.hidden_field :id_token, value: @token %>
+  <%= form.submit "Use Existing", class: "aj-button" %>
+<% end %>
+
+
+<%= form_with url: "/lti_deployments", class: "aj-subtext", method: :post do |form| %>
+  <%= form.hidden_field :id_token, value: @token %>
+  <%= form.hidden_field :make_new, value: true %>
+  <p>In very rare instances you may need a new install. The data from this installation cannot
+    be merged with the existing installation later,
+    so proceed at your own risk. If you do need to create a new install
+    <%= form.submit "click here" %>.
+  </p>
+<% end %>
