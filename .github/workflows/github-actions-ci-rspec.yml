@@ -7,6 +7,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        ruby-version: [2.5, 2.6, 2.7]
+
     # Service containers to run with `container-job`
     services:
       # Label used to access the service container
@@ -30,16 +34,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Ruby
+      - name: Set up Ruby ${{ matrix.ruby-version }}
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.5
+          ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
 
-      - name: Use Node.js 10.x
+      - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
-          node-version: 10.x
+          node-version: 14.x
 
       - name: Cache Node.js modules
         uses: actions/cache@v2
