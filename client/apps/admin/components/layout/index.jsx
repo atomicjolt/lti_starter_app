@@ -21,9 +21,12 @@ export class Index extends React.Component {
     children: '',
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.getApplications();
     this.props.getSites();
+  }
+
+  componentDidMount() {
     if (this.props.location.pathname === '/') {
       appHistory.replace('/applications');
     }
