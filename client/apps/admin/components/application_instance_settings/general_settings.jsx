@@ -230,7 +230,7 @@ export function GeneralSettings(props) {
       }
     },
     {
-      labelText: 'Store username and email during LTI launch',
+      labelText: 'Anonymous (Don\'t store username and email during LTI launch)',
       className: 'c-checkbox',
       props: {
         name: 'anonymous',

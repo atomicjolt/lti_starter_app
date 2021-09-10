@@ -72,6 +72,7 @@ export default function SettingsInputs(props) {
               className={input.className || `c-input aj-input--border ${inputClass}`}
               labelText={input.labelText}
               inputProps={input.props}
+              helperText={input.helperText}
             />
           );
         })}
