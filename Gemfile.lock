@@ -210,10 +210,10 @@ GEM
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    lms-api (1.12.1)
+    lms-api (1.19.0)
       activesupport (>= 3.0)
       httparty
-    lms-graphql-api (1.7.0)
+    lms-graphql-api (1.6.0)
       graphql (>= 1.8.2)
       lms-api (>= 1.5.0)
     loofah (2.9.1)
@@ -503,8 +503,8 @@ DEPENDENCIES
   jwt
   launchy
   listen
-  lms-api (~> 1.12.0)
-  lms-graphql-api (>= 0.5.3)
+  lms-api (~> 1.19.0)
+  lms-graphql-api (~> 1.6.0)
   mail_view
   non-stupid-digest-assets
   nuclear_secrets
@@ -552,4 +552,4 @@ DEPENDENCIES
   yajl-ruby
 
 BUNDLED WITH
-   1.17.3
+   2.1.4

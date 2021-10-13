@@ -26,15 +26,15 @@ gem "attr_encrypted"
 gem "cancancan"
 gem "devise"
 gem "devise_invitable"
-gem "strong_password"
 gem "ims-lti", "~> 2.1.5" # IMS LTI tool consumers and providers
 gem "json-jwt"
 gem "jwt"
-gem "lms-api", "~>1.12.0"
-gem "lms-graphql-api", ">=0.5.3"
+gem "lms-api", "~>1.19.0"
+gem "lms-graphql-api", "~>1.6.0"
 gem "omniauth"
 gem "omniauth-canvas", "~>1.0.2"
 gem "rolify"
+gem "strong_password"
 
 # Email
 gem "sendgrid"
