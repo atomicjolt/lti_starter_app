@@ -30,7 +30,7 @@ class Application < ApplicationRecord
 
   ADMIN = "admin".freeze
   AUTH = "auth".freeze
-  HELLOWORLD = "helloworld".freeze
+  HELLOWORLD = "hellolti".freeze
 
   def create_instance(site: nil, bundle_instance: nil, tenant: nil, lti_key: nil)
     application_instance = application_instances.find_or_create_by(

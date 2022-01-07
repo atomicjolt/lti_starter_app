@@ -226,25 +226,25 @@ RSpec.configure do |config|
     stub_request(:get, %r|http[s]*://[a-zA-Z0-9]+\.[a-zA-Z0-9]+.*com/api/lti/courses/[0-9]+/line_items|).
       to_return(
         status: 200,
-        body: "[{\"id\":\"https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/25\",\"scoreMaximum\":10.0,\"label\":\"LTI Advantage test item 2019-07-18 23:18:24 UTC\",\"resourceId\":\"1\",\"tag\":\"lti-advantage\",\"#{LtiAdvantage::Definitions::CANVAS_SUBMISSION_TYPE}\":{\"type\":\"external_tool\",\"external_tool_url\":\"https://helloworld.atomicjolt.xyz/lti_launches\"}},{\"id\":\"https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/24\",\"scoreMaximum\":10.0,\"label\":\"LTI Advantage test item 2019-07-18 23:18:24 UTC\",\"resourceLinkId\":\"7c358941-9b49-45fd-be81-c222284d38d7\"},{\"id\":\"https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/27\",\"scoreMaximum\":10.0,\"label\":\"LTI Advantage test item 2019-07-17 22:59:42 UTC\",\"resourceId\":\"1\",\"tag\":\"lti-advantage\",\"#{LtiAdvantage::Definitions::CANVAS_SUBMISSION_TYPE}\":{\"type\":\"external_tool\",\"external_tool_url\":\"https://helloworld.atomicjolt.xyz/lti_launches\"}},{\"id\":\"https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/26\",\"scoreMaximum\":10.0,\"label\":\"LTI Advantage test item 2019-07-17 22:59:42 UTC\",\"resourceLinkId\":\"29ddee58-1636-4436-a5de-8c643695708f\"}]",
+        body: "[{\"id\":\"https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/25\",\"scoreMaximum\":10.0,\"label\":\"LTI Advantage test item 2019-07-18 23:18:24 UTC\",\"resourceId\":\"1\",\"tag\":\"lti-advantage\",\"#{LtiAdvantage::Definitions::CANVAS_SUBMISSION_TYPE}\":{\"type\":\"external_tool\",\"external_tool_url\":\"https://hellolti.atomicjolt.xyz/lti_launches\"}},{\"id\":\"https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/24\",\"scoreMaximum\":10.0,\"label\":\"LTI Advantage test item 2019-07-18 23:18:24 UTC\",\"resourceLinkId\":\"7c358941-9b49-45fd-be81-c222284d38d7\"},{\"id\":\"https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/27\",\"scoreMaximum\":10.0,\"label\":\"LTI Advantage test item 2019-07-17 22:59:42 UTC\",\"resourceId\":\"1\",\"tag\":\"lti-advantage\",\"#{LtiAdvantage::Definitions::CANVAS_SUBMISSION_TYPE}\":{\"type\":\"external_tool\",\"external_tool_url\":\"https://hellolti.atomicjolt.xyz/lti_launches\"}},{\"id\":\"https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/26\",\"scoreMaximum\":10.0,\"label\":\"LTI Advantage test item 2019-07-17 22:59:42 UTC\",\"resourceLinkId\":\"29ddee58-1636-4436-a5de-8c643695708f\"}]",
       )
 
     stub_request(:get, %r|http[s]*://[a-zA-Z0-9]+\.[a-zA-Z0-9]+.*com/api/lti/courses/[0-9]+/line_items/[0-9]+|).
       to_return(
         status: 200,
-        body: "{\"id\":\"https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/31\",\"scoreMaximum\":10.0,\"label\":\"LTI Advantage test item 2019-07-18 23:46:09 UTC\",\"resourceId\":\"1\",\"tag\":\"lti-advantage\",\"#{LtiAdvantage::Definitions::CANVAS_SUBMISSION_TYPE}\":{\"type\":\"external_tool\",\"external_tool_url\":\"https://helloworld.atomicjolt.xyz/lti_launches\"}}",
+        body: "{\"id\":\"https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/31\",\"scoreMaximum\":10.0,\"label\":\"LTI Advantage test item 2019-07-18 23:46:09 UTC\",\"resourceId\":\"1\",\"tag\":\"lti-advantage\",\"#{LtiAdvantage::Definitions::CANVAS_SUBMISSION_TYPE}\":{\"type\":\"external_tool\",\"external_tool_url\":\"https://hellolti.atomicjolt.xyz/lti_launches\"}}",
       )
 
     stub_request(:post, %r|http[s]*://[a-zA-Z0-9]+\.[a-zA-Z0-9]+.*com/api/lti/courses/[0-9]+/line_items|).
       to_return(
         status: 200,
-        body: "{\"id\":\"https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/29\",\"scoreMaximum\":10.0,\"label\":\"LTI Advantage test item 2019-07-18 23:43:16 UTC\",\"resourceId\":\"1\",\"tag\":\"lti-advantage\",\"#{LtiAdvantage::Definitions::CANVAS_SUBMISSION_TYPE}\":{\"type\":\"external_tool\",\"external_tool_url\":\"https://helloworld.atomicjolt.xyz/lti_launches\"}}",
+        body: "{\"id\":\"https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/29\",\"scoreMaximum\":10.0,\"label\":\"LTI Advantage test item 2019-07-18 23:43:16 UTC\",\"resourceId\":\"1\",\"tag\":\"lti-advantage\",\"#{LtiAdvantage::Definitions::CANVAS_SUBMISSION_TYPE}\":{\"type\":\"external_tool\",\"external_tool_url\":\"https://hellolti.atomicjolt.xyz/lti_launches\"}}",
       )
 
     stub_request(:put, %r|http[s]*://[a-zA-Z0-9]+\.[a-zA-Z0-9]+.*com/api/lti/courses/[0-9]+/line_items/[0-9]+|).
       to_return(
         status: 200,
-        body: "{\"id\":\"https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/31\",\"scoreMaximum\":10.0,\"label\":\"LTI Advantage test item 2019-07-18 23:46:09 UTC\",\"resourceId\":\"1\",\"tag\":\"lti-advantage\",\"#{LtiAdvantage::Definitions::CANVAS_SUBMISSION_TYPE}\":{\"type\":\"external_tool\",\"external_tool_url\":\"https://helloworld.atomicjolt.xyz/lti_launches\"}}",
+        body: "{\"id\":\"https://atomicjolt.instructure.com/api/lti/courses/3334/line_items/31\",\"scoreMaximum\":10.0,\"label\":\"LTI Advantage test item 2019-07-18 23:46:09 UTC\",\"resourceId\":\"1\",\"tag\":\"lti-advantage\",\"#{LtiAdvantage::Definitions::CANVAS_SUBMISSION_TYPE}\":{\"type\":\"external_tool\",\"external_tool_url\":\"https://hellolti.atomicjolt.xyz/lti_launches\"}}",
       )
 
     stub_request(:delete, %r|http[s]*://[a-zA-Z0-9]+\.[a-zA-Z0-9]+.*com/api/lti/courses/[0-9]+/line_items/[0-9]+|).

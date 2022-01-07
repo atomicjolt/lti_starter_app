@@ -43,7 +43,7 @@ def setup_canvas_lti_advantage(
       context_id: @context_id,
       message_type: @message_type,
       resource_link_id: @resource_link_id,
-      deployment_id: @deployment_id
+      deployment_id: @deployment_id,
     ),
     jwk.private_key,
     jwk.alg,
@@ -149,7 +149,7 @@ def build_payload(client_id:, iss:, lti_user_id:, context_id:, message_type:, re
     "iss": iss,
     "nonce": nonce,
     "sub": lti_user_id,
-    "https://purl.imsglobal.org/spec/lti/claim/target_link_uri": "https://helloworld.atomicjolt.xyz/lti_launches",
+    "https://purl.imsglobal.org/spec/lti/claim/target_link_uri": "https://hellolti.atomicjolt.xyz/lti_launches",
     "https://purl.imsglobal.org/spec/lti/claim/context": {
       "id": context_id,
       "label": "Intro Geology",

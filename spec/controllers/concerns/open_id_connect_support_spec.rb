@@ -34,7 +34,7 @@ describe ApplicationController, type: :controller do
         "iss" => @iss,
         "client_id" => @client_id,
         "login_hint" => "0340cde37624c04979a6c3fdd0afc2479f8405ad",
-        "target_link_uri" => "https://helloworld.atomicjolt.xyz/lti_launches",
+        "target_link_uri" => "https://hellolti.atomicjolt.xyz/lti_launches",
         "lti_message_hint" => "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXJpZmllciI6IjI5M2NlNDI4MjM3ZTAyNTc5MDg3ZmVkOTU5M2EwYzFmMDVmYmNhOTZhNTU3YjQyYjNiOWJiZmIwNTE4MDM4NmQwYzA5NjdmM2FhZDdhYzczODc4Yjk1YjM4NWJmMDVhNDU4MTBmZGZmYzNiMThmZDA5ZWY5YjMyOTUzZjNiOWUwIiwiY2FudmFzX2RvbWFpbiI6ImF0b21pY2pvbHQuaW5zdHJ1Y3R1cmUuY29tIiwiY29udGV4dF90eXBlIjoiQ291cnNlIiwiY29udGV4dF9pZCI6NDM0NjAwMDAwMDAwMDMzMzQsImV4cCI6MTU2MzQwNzk5OX0.7y8ZqEz4zwGvaBUV8puXCIINxnCulRGRg58jExPAhTo",
         "controller" => "lti_launches",
         "action" => "init",

@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
   end
 
   def record_exception(exception)
-    Rollbar.error(exception) if current_application_instance.rollbar_enabled?
+    Rollbar.error(exception) if current_application_instance&.rollbar_enabled?
     Rails.logger.error "Unexpected exception during execution"
     Rails.logger.error "#{exception.class.name} (#{exception.message}):"
     Rails.logger.error "  #{exception.backtrace.join("\n  ")}"
@@ -125,7 +125,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_rollbar_scope
-    if !current_application_instance.rollbar_enabled?
+    if !current_application_instance&.rollbar_enabled?
       Rollbar.configure { |config| config.enabled = false }
     end
     Rollbar.scope!(

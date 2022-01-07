@@ -191,6 +191,14 @@ Currenlty the only way to install an LTI advantage app (at least on Canvas) is b
 Got to `Account / Course -> Settings -> Apps` and add a new app. Select by Client Id in the Configuration Type dropdown. Paste in the key and hit submit. Canvas should ask you if you want to install an app with the app name you provided while creating the key. If this looks write, click submit. Your LTI Advantage app should now be installed.
 
 # Development Notes
+Run a cloudflare tunnel to connect your dev machine to a remote LMS for testing.
+`cloudflared tunnel --hostname hellolti.atomicjolt.xyz --url localhost:3030 --name hellolti ----overwrite-dns, -f`
+
+List tunnels
+`cloudflared tunnel list`
+Dyanmic registration URL:
+
+https://lti.atomicjolt.xyz/lti_dynamic_registrations
 
 ## Versions
 We follow some conservative rules:
@@ -346,3 +354,4 @@ To run Jest tests:
 ```
 $ yarn test
 ```
+
