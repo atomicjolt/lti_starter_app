@@ -28,6 +28,63 @@ RSpec.describe LtiDynamicRegistrationsController, type: :controller do
 
       post :index, params: sakai_init
       expect(response).to have_http_status(200)
+
+      sites = Site.where(url: sakai_openid_configuration[:issuer])
+      expect(sites.length).to equal(1)
+
+      application_instances = ApplicationInstance.where(site_id: sites.first.id)
+      expect(application_instances.length).to equal(1)
+
+      client_id = sakai_platform_registration_response[:client_id]
+      lti_installs = LtiInstall.where(client_id: client_id)
+      expect(lti_installs.length).to equal(1)
+    end
+
+    it "handles multiple deployments for Sakai" do
+      stub_request(:get, SAKAI_OPENID_CONFIGURATION).
+        to_return(
+          status: 200,
+          body: sakai_openid_configuration.to_json,
+        )
+
+      stub_request(:post, SAKAI_REGISTRATION_ENDPOINT).
+        to_return(
+          status: 200,
+          body: sakai_platform_registration_response.to_json,
+        )
+
+      post :index, params: sakai_init
+      expect(response).to have_http_status(200)
+
+      sites = Site.where(url: sakai_openid_configuration[:issuer])
+      expect(sites.length).to equal(1)
+
+      application_instances = ApplicationInstance.where(site_id: sites.first.id)
+      expect(application_instances.length).to equal(1)
+
+      expect(application_instances.first.lti_deployments.length).to equal(1)
+
+      # Make a second post to test to ensure db entries aren't duplicated
+      stub_request(:post, SAKAI_REGISTRATION_ENDPOINT).
+        to_return(
+          status: 200,
+          body: sakai_platform_registration_response("2").to_json,
+        )
+
+      post :index, params: sakai_init
+      expect(response).to have_http_status(200)
+
+      sites = Site.where(url: sakai_openid_configuration[:issuer])
+      expect(sites.length).to equal(1)
+
+      application_instances = ApplicationInstance.where(site_id: sites.first.id)
+      expect(application_instances.length).to equal(1)
+
+      client_id = sakai_platform_registration_response[:client_id]
+      lti_installs = LtiInstall.where(client_id: client_id)
+      expect(lti_installs.length).to equal(1)
+
+      expect(application_instances.first.lti_deployments.length).to equal(2)
     end
 
     it "generates an LTI install for Moodle" do
@@ -94,7 +151,7 @@ def sakai_openid_configuration
   }
 end
 
-def sakai_platform_registration_response
+def sakai_platform_registration_response(deployment_id = "1")
   {
     "client_uri": "https://hellolti.atomicjolt.xyz/",
     "grant_types": ["implict", "client_credentials"],
@@ -113,7 +170,7 @@ def sakai_platform_registration_response
           "type": "LtiDeepLinkingRequest",
         },
       ],
-      "deployment_id": "1",
+      "deployment_id": deployment_id,
       "custom_parameters": {
         "canvas_user_timezone": "$Person.address.timezone",
         "canvas_course_id": "$Canvas.course.id",
