@@ -125,7 +125,7 @@ Rails.application.config.middleware.insert_before Warden::Manager, Apartment::El
   elsif request.path.start_with? "/assets/" # Only affects development env
     Application::ADMIN
   elsif request.path.start_with? "/lti_dynamic_registrations" # Only affects development env
-    Application::ADMIN
+    Application::AUTH
   else
     raise "Please specify a valid oauth_consumer_key or valid domain name for this request"
   end
