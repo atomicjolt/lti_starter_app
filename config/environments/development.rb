@@ -118,7 +118,5 @@ Rails.application.configure do
   # See https://stackoverflow.com/questions/53878453/upgraded-rails-to-6-getting-blocked-host-error
   # This removes whitelisting of domains allowed to front the application
   # config.hosts.clear
-  config.hosts << ".ngrok.io"
-  config.hosts << ".trycloudflare.com"
-  config.hosts << ".atomicjolt.xyz"
+  config.hosts << ".atomicjolt.win"
 end

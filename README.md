@@ -198,8 +198,6 @@ List tunnels
 `cloudflared tunnel list`
 Dyanmic registration URL:
 
-https://lti.atomicjolt.xyz/lti_dynamic_registrations
-
 ## Versions
 We follow some conservative rules:
 
