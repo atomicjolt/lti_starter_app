@@ -1,7 +1,6 @@
 module LtiAdvantage
   class Authorization
     def self.application_instance_from_token(token)
-      byebug
       return unless token
 
       decoded_token = JWT.decode(token, nil, false)
