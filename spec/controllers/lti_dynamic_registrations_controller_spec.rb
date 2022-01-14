@@ -153,19 +153,19 @@ end
 
 def sakai_platform_registration_response(deployment_id = "1")
   {
-    "client_uri": "https://hellolti.atomicjolt.xyz/",
+    "client_uri": "https://helloworld.atomicjolt.xyz/",
     "grant_types": ["implict", "client_credentials"],
     "application_type": "web",
-    "initiate_login_uri": "https://hellolti.atomicjolt.xyz/lti_launches/init",
-    "logo_uri": "https://hellolti.atomicjolt.xyz//atomicjolt.png",
+    "initiate_login_uri": "https://helloworld.atomicjolt.xyz/lti_launches/init",
+    "logo_uri": "https://helloworld.atomicjolt.xyz//atomicjolt.png",
     "https://purl.imsglobal.org/spec/lti-tool-configuration": {
-      "domain": "https://hellolti.atomicjolt.xyz/",
-      "target_link_uri": "https://hellolti.atomicjolt.xyz/lti_launches",
+      "domain": "https://helloworld.atomicjolt.xyz/",
+      "target_link_uri": "https://helloworld.atomicjolt.xyz/lti_launches",
       "claims": ["iss", "sub", "name", "given_name", "family_name"],
       "description": "LTI Starter App by Atomic Jolt.",
       "messages": [
         {
-          "target_link_uri": "https://hellolti.atomicjolt.xyz/lti_launches",
+          "target_link_uri": "https://helloworld.atomicjolt.xyz/lti_launches",
           "label": "LTI Starter App",
           "type": "LtiDeepLinkingRequest",
         },
@@ -185,11 +185,11 @@ def sakai_platform_registration_response(deployment_id = "1")
         "canvas_term_name": "$Canvas.term.name",
       },
     },
-    "redirect_uris": ["https://hellolti.atomicjolt.xyz/lti_launches"],
+    "redirect_uris": ["https://helloworld.atomicjolt.xyz/lti_launches"],
     "token_endpoint_auth_method": "private_key_jwt",
     "client_id": "5ad3e4e5-71d4-4c7e-9e38-4e4bea19c154",
     "scope": "https://purl.imsglobal.org/spec/lti-ags/scope/score",
-    "jwks_uri": "https://hellolti.atomicjolt.xyz/jwks.json",
+    "jwks_uri": "https://helloworld.atomicjolt.xyz/jwks.json",
     "tos_uri": "https://www.atomicjolt.com/tos",
     "client_name": "LTI Starter App",
     "contacts": ["support@atomicjolt.com"],
@@ -296,28 +296,28 @@ def moodle_platform_registration_response
   {
     "client_id": "MwX2PFUCgZCTjol",
     "response_types": ["id_token"],
-    "jwks_uri": "https://hellolti.atomicjolt.xyz/jwks.json",
-    "initiate_login_uri": "https://hellolti.atomicjolt.xyz/lti_launches/init",
+    "jwks_uri": "https://helloworld.atomicjolt.xyz/jwks.json",
+    "initiate_login_uri": "https://helloworld.atomicjolt.xyz/lti_launches/init",
     "grant_types": [
       "client_credentials",
       "implicit",
     ],
-    "redirect_uris": ["https://hellolti.atomicjolt.xyz/lti_launches"],
+    "redirect_uris": ["https://helloworld.atomicjolt.xyz/lti_launches"],
     "application_type": "web",
     "token_endpoint_auth_method": "private_key_jwt",
     "client_name": "LTI Starter App",
-    "logo_uri": "https://hellolti.atomicjolt.xyz//atomicjolt.png",
+    "logo_uri": "https://helloworld.atomicjolt.xyz//atomicjolt.png",
     "scope": "",
     "https://purl.imsglobal.org/spec/lti-tool-configuration": {
       "version": "1.3.0",
       "deployment_id": "2",
-      "target_link_uri": "https://hellolti.atomicjolt.xyz/lti_launches",
-      "domain": "hellolti.atomicjolt.xyz",
+      "target_link_uri": "https://helloworld.atomicjolt.xyz/lti_launches",
+      "domain": "helloworld.atomicjolt.xyz",
       "description": "LTI Starter App by Atomic Jolt.",
       "messages": [
         {
           "type": "LtiDeepLinkingRequest",
-          "target_link_uri": "https://hellolti.atomicjolt.xyz/lti_launches",
+          "target_link_uri": "https://helloworld.atomicjolt.xyz/lti_launches",
         },
       ],
       "custom_parameters": {

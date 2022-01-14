@@ -149,7 +149,7 @@ def build_payload(client_id:, iss:, lti_user_id:, context_id:, message_type:, re
     "iss": iss,
     "nonce": nonce,
     "sub": lti_user_id,
-    "https://purl.imsglobal.org/spec/lti/claim/target_link_uri": "https://hellolti.atomicjolt.xyz/lti_launches",
+    "https://purl.imsglobal.org/spec/lti/claim/target_link_uri": "https://helloworld.atomicjolt.xyz/lti_launches",
     "https://purl.imsglobal.org/spec/lti/claim/context": {
       "id": context_id,
       "label": "Intro Geology",

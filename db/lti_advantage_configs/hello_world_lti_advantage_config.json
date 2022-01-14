@@ -11,7 +11,7 @@
     {
       "platform": "canvas.instructure.com",
       "domain": "https://{domain}",
-      "tool_id": "hellolti",
+      "tool_id": "helloworld",
       "privacy_level": "public",
       "settings": {
         "text": "LTI Advantage Starter",

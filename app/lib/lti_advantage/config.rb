@@ -54,7 +54,7 @@ module LtiAdvantage
           {
             "platform": "canvas.instructure.com",
             "domain": "https://#{domain}",
-            "tool_id": "hellolti",
+            "tool_id": "helloworld",
             "settings": {
               "privacy_level": "public",
               "text": args[:title],

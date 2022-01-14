@@ -192,7 +192,7 @@ Got to `Account / Course -> Settings -> Apps` and add a new app. Select by Clien
 
 # Development Notes
 Run a cloudflare tunnel to connect your dev machine to a remote LMS for testing.
-`cloudflared tunnel --hostname hellolti.atomicjolt.win --url localhost:3030 --name hellolti ----overwrite-dns, -f`
+`cloudflared tunnel --hostname helloworld.atomicjolt.win --url localhost:3030 --name helloworld ----overwrite-dns, -f`
 
 List tunnels
 `cloudflared tunnel list`

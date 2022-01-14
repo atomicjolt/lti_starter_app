@@ -159,7 +159,7 @@ modify_files.each do |f|
     app_name.underscore
   end
 
-  gsub_file(f, "hellolti") do |_match|
+  gsub_file(f, "helloworld") do |_match|
     url_safe_name
   end
 end
