@@ -148,6 +148,10 @@ class ApplicationInstance < ApplicationRecord
     site.oauth_secret.presence || application.oauth_secret
   end
 
+  def self.admin
+    find_by(lti_key: Application::ADMIN)
+  end
+
   private
 
   def set_lti

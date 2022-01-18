@@ -7,6 +7,7 @@ class Application < ApplicationRecord
 
   has_many :application_instances
   validates :name, presence: true, uniqueness: true
+  validates :key, presence: true, uniqueness: true
 
   has_many :application_bundles
   has_many :bundles, through: :application_bundles
@@ -80,4 +81,7 @@ class Application < ApplicationRecord
     end
   end
 
+  def self.admin
+    Application.find_by(key: ADMIN)
+  end
 end

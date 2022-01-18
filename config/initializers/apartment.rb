@@ -116,7 +116,7 @@ Rails.application.config.middleware.insert_before Warden::Manager, Apartment::El
 
   if subdomain == Application::AUTH
     Application::AUTH
-  elsif subdomain == Application::ADMIN
+  elsif subdomain == Application::ADMIN || request.path.start_with?("/admin", "/users/sign_in")
     Application::ADMIN
   elsif application_instance = ApplicationInstance.find_by(lti_key: key)
     application_instance.tenant
