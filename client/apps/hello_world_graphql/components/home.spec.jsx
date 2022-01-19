@@ -31,13 +31,16 @@ const store = mockStore({
 
 describe('home', () => {
   it('should render loading state initially', () => {
-    const testRenderer = TestRenderer.create(
-      <Provider store={store}>
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <Home />
-        </MockedProvider>
-      </Provider>,
-    );
+    let testRenderer;
+    act(() => {
+      testRenderer = TestRenderer.create(
+        <Provider store={store}>
+          <MockedProvider mocks={mocks} addTypename={false}>
+            <Home />
+          </MockedProvider>
+        </Provider>,
+      );
+    });
 
     const tree = testRenderer.toJSON();
     expect(JSON.stringify(tree).indexOf('Hello World!') === -1).toBe(true);

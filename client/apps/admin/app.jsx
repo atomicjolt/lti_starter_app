@@ -18,10 +18,6 @@ import './styles/styles.scss';
 es6Promise.polyfill();
 
 class Root extends React.PureComponent {
-  static propTypes = {
-    store: PropTypes.object.isRequired,
-  };
-
   componentDidMount() {
     window.addEventListener('click', this.closeMenus);
   }
@@ -45,6 +41,10 @@ class Root extends React.PureComponent {
     );
   }
 }
+
+Root.propTypes = {
+  store: PropTypes.object.isRequired,
+};
 
 const settings = getInitialSettings(window.DEFAULT_SETTINGS);
 const store = configureStore({ settings, jwt: window.DEFAULT_JWT });
