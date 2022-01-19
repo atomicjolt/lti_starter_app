@@ -15,5 +15,10 @@ module LtiAdvantage
     class NoLTIDeployment < StandardError
     end
 
+    class InvalidIssuer < StandardError
+    end
+
+    class InvalidOIDCRegistrationEndpoint < StandardError
+    end
   end
 end

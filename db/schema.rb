@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_06_204435) do
+ActiveRecord::Schema.define(version: 2022_01_06_014956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -212,6 +212,7 @@ ActiveRecord::Schema.define(version: 2021_08_06_204435) do
     t.string "oidc_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "registration_client_uri"
     t.index ["application_id", "iss"], name: "index_lti_installs_on_application_id_and_iss"
     t.index ["application_id"], name: "index_lti_installs_on_application_id"
     t.index ["client_id", "iss"], name: "index_lti_installs_on_client_id_and_iss", unique: true

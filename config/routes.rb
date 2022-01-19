@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :public_keys
   resource :lti_config
 
+  resources :lti_dynamic_registrations
   resources :lti_launches do
     collection do
       post :index
