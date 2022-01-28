@@ -5,7 +5,7 @@ module JwtHelper
 
     attrs = {
       user_id: current_user.id,
-      application_instance_id: application_instance || current_application_instance.id,
+      application_instance_id: application_instance&.id || current_application_instance.id,
     }
 
     if app_callback_url
