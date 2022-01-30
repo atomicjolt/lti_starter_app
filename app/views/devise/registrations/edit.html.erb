@@ -3,7 +3,7 @@
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
   </div>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: user_registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field">
@@ -54,13 +54,8 @@
     </div>
   <% end %>
 
-  <div class="c-title">
-    <h3>Cancel my account</h3>
-  </div>
-
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"c-btn c-btn--yellow" %></p>
-
   <div class="links">
     <%= link_to "Back", :back %>
+    <%= link_to "mfa", user_mfa_index_path(current_user) %>
   </div>
 </div>

@@ -2,8 +2,14 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :invitable, :confirmable,
+  devise :invitable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+
+  devise :two_factor_authenticatable,
+         otp_secret_encryption_key: Rails.application.secrets.otp_secret_encryption_key
+
+  devise :two_factor_backupable, otp_backup_code_length: 32,
+         otp_number_of_backup_codes: 10
 
   has_many :authentications, dependent: :destroy, inverse_of: :user
   has_many :permissions, dependent: :destroy
