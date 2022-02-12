@@ -5,6 +5,7 @@ class MfaController < ApplicationController
     # Generate a new otp secret if it isn't enabled
     if !current_user.otp_required_for_login
       current_user.otp_secret = User.generate_otp_secret
+      @codes = current_user.generate_otp_backup_codes!
       current_user.save!
 
       issuer = "Atomic Jolt"

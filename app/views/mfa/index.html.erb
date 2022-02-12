@@ -9,6 +9,14 @@
   <div>
     <%= current_user.otp_secret %>
   </div>
+  <div>
+    Backup Codes
+    <% @codes.each do |code| %>
+      <div>
+        <%= code %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
 <br/>
