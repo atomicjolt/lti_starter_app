@@ -77,6 +77,44 @@ class User < ApplicationRecord
 
   ####################################################
   #
+  # OTP related methods
+  # https://web.archive.org/web/20210719115534/https://www.jamesridgway.co.uk/implementing-a-two-step-otp-u2f-login-workflow-with-rails-and-devise/
+  #
+
+  # Generate an OTP secret it it does not already exist
+  def generate_two_factor_secret_if_missing!
+    return unless otp_secret.nil?
+    update!(otp_secret: User.generate_otp_secret)
+  end
+
+  # Ensure that the user is prompted for their OTP when they login
+  def enable_two_factor!
+    update!(otp_required_for_login: true)
+  end
+
+  # Disable the use of OTP-based two-factor.
+  def disable_two_factor!
+    update!(
+        otp_required_for_login: false,
+        otp_secret: nil,
+        otp_backup_codes: nil)
+  end
+
+  # URI for OTP two-factor QR code
+  def two_factor_qr_code_uri
+    issuer = "Atomic Jolt"
+    label = "#{Rails.application.secrets.application_name} - #{email}"
+
+    otp_provisioning_uri(label, issuer: issuer)
+  end
+
+  # Determine if backup codes have been generated
+  def two_factor_backup_codes_generated?
+    otp_backup_codes.present?
+  end
+
+  ####################################################
+  #
   # Omniauth related methods
   #
   def self.for_auth(auth)

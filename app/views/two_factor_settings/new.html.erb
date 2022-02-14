@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Two Factor Authentication</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card-deck">
+        <div class="card">
+          <div class="card-header">
+            1. Scan QR Code
+          </div>
+          <div class="card-body">
+            <p>Please scan the below QR code using an OTP compatible app (such as Google Authenticator or Authy).</p>
+            <hr />
+            <p class="text-center">
+              <%= qr_code_as_svg(current_user.two_factor_qr_code_uri)%>
+            </p>
+            <hr />
+            <p class="text-center">
+              If you cannot scan, please enter the following code manually: <code><%= current_user.otp_secret%></code>
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            2. Confirm OTP Code
+          </div>
+          <div class="card-body">
+            <p>Please confirm that your authentication application is working by entering a generated code below.</p>
+            <%= form_for(:two_fa, url: two_factor_settings_path, method: :post) do |f| %>
+              <div class="field">
+                <%= f.label :code, class: "c-input" do %>
+                  <span>Code</span>
+                  <%= f.text_field :code %>
+                <% end %>
+              </div>
+              <div class="field">
+                <%= f.label :password, class: "c-input" do %>
+                  <span>Enter your current password</span>
+                  <%= f.password_field :password %>
+                <% end %>
+              </div>
+              <div class="actions">
+                <%= f.submit "Confirm and Enable Two Factor", class:"c-btn c-btn--yellow" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

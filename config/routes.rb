@@ -41,14 +41,9 @@ Rails.application.routes.draw do
     put "users" => "devise/registrations#update", as: "user_registration"
   end
 
-  resources :users do
-    resources :mfa, only: [] do
-      collection do
-        get :index
-        put :update
-      end
-    end
-  end
+  resource :two_factor_settings, except: [:index, :show]
+
+  resources :users
 
   namespace :admin do
     root to: "home#index"
