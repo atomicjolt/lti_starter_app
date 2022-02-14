@@ -13,11 +13,6 @@
       <%= f.password_field :password, autocomplete: "off" %>
     <% end %>
 
-    <%= f.label :otp_attempt, class: "c-input" do %>
-      <span>OTP Attempt</span>
-      <%= f.text_field :otp_attempt %>
-    <% end %>
-
     <% if devise_mapping.rememberable? -%>
       <%= f.label :remember_me, class: "c-checkbox" do %>
         <%= f.check_box :remember_me %>
