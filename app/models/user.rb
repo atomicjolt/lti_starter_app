@@ -95,9 +95,10 @@ class User < ApplicationRecord
   # Disable the use of OTP-based two-factor.
   def disable_two_factor!
     update!(
-        otp_required_for_login: false,
-        otp_secret: nil,
-        otp_backup_codes: nil)
+      otp_required_for_login: false,
+      otp_secret: nil,
+      otp_backup_codes: nil,
+    )
   end
 
   # URI for OTP two-factor QR code
