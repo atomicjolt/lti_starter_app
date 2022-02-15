@@ -1,5 +1,5 @@
 # Shamelessly taken and modified from
-# https://web.archive.org/web/20210719115534/https://www.jamesridgway.co.uk/implementing-a-two-step-otp-u2f-login-workflow-with-rails-and-devise/
+# https://web.archive.org/web/20220212020150/https://www.jamesridgway.co.uk/implementing-a-two-step-otp-u2f-login-workflow-with-rails-and-devise/
 
 class TwoFactorSettingsController < ApplicationController
   before_action :authenticate_user!
