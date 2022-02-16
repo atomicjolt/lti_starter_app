@@ -41,6 +41,8 @@ Rails.application.routes.draw do
     put "users" => "devise/registrations#update", as: "user_registration"
   end
 
+  resource :two_factor_settings, except: [:index, :show]
+
   resources :users
 
   namespace :admin do

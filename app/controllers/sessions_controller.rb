@@ -1,8 +1,12 @@
 class SessionsController < Devise::SessionsController
   # Require our abstraction for encoding/deconding JWT.
   require "auth_token"
+  include AuthenticateWithOtpTwoFactor
 
   respond_to :json
+
+  prepend_before_action :authenticate_with_otp_two_factor,
+                        if: -> { action_name == "create" && otp_two_factor_enabled? }
 
   def create
     # This is the default behavior from devise - view the sessions controller source:
