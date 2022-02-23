@@ -197,6 +197,8 @@ class ApplicationController < ActionController::Base
     @is_lti_launch = true
     @canvas_url = current_application_instance.site.url
     @app_name = current_application_instance.application.client_application_name
+    @launch_locale = params[:launch_presentation_locale]
+    set_i18n_locale
   end
 
   def set_lti_advantage_launch_values
@@ -210,6 +212,12 @@ class ApplicationController < ActionController::Base
     @app_name = current_application_instance.application.client_application_name
     @title = current_application_instance.application.name
     @description = current_application_instance.application.description
+  end
+
+  def set_i18n_locale
+    if locale = Localization.get_locale(@launch_locale) || Localization.get_default_locale(current_application_instance)
+      I18n.locale = locale
+    end
   end
 
   def targeted_app_instance
