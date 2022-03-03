@@ -347,3 +347,10 @@ end
 ## Use this to update all the application instances
 # ApplicationInstance.for_tenant(Apartment::Tenant.current).find_each do |ai|
 # end
+
+## Add default language to all aplications
+Application.all.each do |app|
+  config = app.default_config
+  config[:language] = "en-US"
+  app.update!(default_config: config)
+end

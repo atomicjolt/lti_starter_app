@@ -94,8 +94,6 @@ GEM
       rack (>= 0.9.0)
     bindata (2.4.10)
     bindex (0.8.1)
-    binding_of_caller (1.0.0)
-      debug_inspector (>= 0.0.1)
     bootsnap (1.7.3)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -110,8 +108,9 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    chunky_png (1.4.0)
     coderay (1.1.3)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.9)
     crack (0.4.5)
       rexml
     crass (1.0.6)
@@ -124,13 +123,18 @@ GEM
     debase (0.2.4.1)
       debase-ruby_core_source (>= 0.10.2)
     debase-ruby_core_source (0.10.12)
-    debug_inspector (1.1.0)
-    devise (4.7.3)
+    devise (4.8.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-two-factor (4.0.1)
+      activesupport (< 6.2)
+      attr_encrypted (>= 1.3, < 4, != 2)
+      devise (~> 4.0)
+      railties (< 6.2)
+      rotp (~> 6.0)
     devise_invitable (2.0.3)
       actionmailer (>= 5.0)
       devise (>= 4.6)
@@ -190,7 +194,7 @@ GEM
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
     hub (1.12.4)
-    i18n (1.8.10)
+    i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     ims-lti (2.1.6)
       addressable (~> 2.5, >= 2.5.1)
@@ -216,7 +220,7 @@ GEM
     lms-graphql-api (1.7.0)
       graphql (>= 1.8.2)
       lms-api (>= 1.5.0)
-    loofah (2.9.1)
+    loofah (2.13.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.2.8)
@@ -231,14 +235,14 @@ GEM
     mime-types-data (3.2021.0225)
     mini_mime (1.0.3)
     mini_portile2 (2.7.1)
-    minitest (5.14.4)
+    minitest (5.15.0)
     msgpack (1.4.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     nenv (0.3.0)
     nio4r (2.5.8)
-    nokogiri (1.13.0)
+    nokogiri (1.13.1)
       mini_portile2 (~> 2.7.0)
       racc (~> 1.4)
     non-stupid-digest-assets (1.0.9)
@@ -290,7 +294,7 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (4.0.6)
-    puma (5.5.1)
+    puma (5.6.2)
       nio4r (~> 2.0)
     que (0.14.3)
     racc (1.6.0)
@@ -323,7 +327,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.3.0)
+    rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
     rails_12factor (0.0.3)
       rails_serve_static_assets
@@ -340,7 +344,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 1.0)
     rainbow (3.0.0)
-    rake (13.0.3)
+    rake (13.0.6)
     rb-fchange (0.0.6)
       ffi
     rb-fsevent (0.10.4)
@@ -358,6 +362,11 @@ GEM
       parallel (< 2.0)
       public_suffix (>= 2.0.5, < 5.0)
       rack (>= 1.3.6, < 3.0)
+    rotp (6.2.0)
+    rqrcode (2.1.0)
+      chunky_png (~> 1.0)
+      rqrcode_core (~> 1.0)
+    rqrcode_core (1.2.0)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
       rspec-expectations (~> 3.10.0)
@@ -438,7 +447,7 @@ GEM
     strong_password (0.0.9)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
-    thor (1.1.0)
+    thor (1.2.1)
     tilt (2.0.10)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
@@ -468,7 +477,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yajl-ruby (1.4.1)
-    zeitwerk (2.4.2)
+    zeitwerk (2.5.3)
 
 PLATFORMS
   ruby
@@ -487,6 +496,7 @@ DEPENDENCIES
   database_cleaner
   debase
   devise
+  devise-two-factor
   devise_invitable
   dotenv-rails
   factory_bot_rails
@@ -529,6 +539,7 @@ DEPENDENCIES
   rolify
   rollbar
   ros-apartment
+  rqrcode (~> 2.1)
   rspec-rails
   rubocop (~> 0.88.0)
   rubocop-performance (~> 1.7.1)

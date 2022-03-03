@@ -2,8 +2,14 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :invitable, :confirmable,
+  devise :invitable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+
+  devise :two_factor_authenticatable,
+         otp_secret_encryption_key: Rails.application.secrets.otp_secret_encryption_key
+
+  devise :two_factor_backupable, otp_backup_code_length: 32,
+         otp_number_of_backup_codes: 10
 
   has_many :authentications, dependent: :destroy, inverse_of: :user
   has_many :permissions, dependent: :destroy
@@ -67,6 +73,45 @@ class User < ApplicationRecord
       "created_at",
       "updated_at",
     )
+  end
+
+  ####################################################
+  #
+  # OTP related methods
+  # https://web.archive.org/web/20210719115534/https://www.jamesridgway.co.uk/implementing-a-two-step-otp-u2f-login-workflow-with-rails-and-devise/
+  #
+
+  # Generate an OTP secret it it does not already exist
+  def generate_two_factor_secret_if_missing!
+    return unless otp_secret.nil?
+    update!(otp_secret: User.generate_otp_secret)
+  end
+
+  # Ensure that the user is prompted for their OTP when they login
+  def enable_two_factor!
+    update!(otp_required_for_login: true)
+  end
+
+  # Disable the use of OTP-based two-factor.
+  def disable_two_factor!
+    update!(
+      otp_required_for_login: false,
+      otp_secret: nil,
+      otp_backup_codes: nil,
+    )
+  end
+
+  # URI for OTP two-factor QR code
+  def two_factor_qr_code_uri
+    issuer = "Atomic Jolt"
+    label = "#{Rails.application.secrets.application_name} - #{email}"
+
+    otp_provisioning_uri(label, issuer: issuer)
+  end
+
+  # Determine if backup codes have been generated
+  def two_factor_backup_codes_generated?
+    otp_backup_codes.present?
   end
 
   ####################################################
