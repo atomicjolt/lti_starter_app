@@ -142,9 +142,7 @@ Rails.application.config.middleware.insert_before Warden::Manager, Apartment::El
     Application::ADMIN
   # elsif request.path.start_with?("/lti_dynamic_registrations", "/jwks.json", "/lti_config.json", "/lti_launches/init")
   #   Application::AUTH
-  elsif allowed_endpoint?(request)
-    # Do nothing. Use the global tenant
-  else
+  elsif !allowed_endpoint?(request)
     raise "Please specify a valid oauth_consumer_key or valid domain name for this request"
   end
 }
