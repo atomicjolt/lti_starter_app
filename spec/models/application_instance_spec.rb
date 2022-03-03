@@ -183,12 +183,12 @@ RSpec.describe ApplicationInstance, type: :model do
     let!(:application) { FactoryBot.create(:application) }
     let!(:lti_install) { FactoryBot.create(:lti_install, iss: iss, client_id: client_id, application: application) }
     context "application instance already has an lti deployment" do
-      it "returns nil" do
+      it "connects the lti deployment and returns the application instance" do
         application_instance = FactoryBot.create(:application_instance, application: application)
         other_deployment_id = "other"
         application_instance.lti_deployments.create!(lti_install: lti_install, deployment_id: other_deployment_id)
         ret = described_class.match_application_instance(lti_install, deployment_id)
-        expect(ret).to eq(nil)
+        expect(ret).to eq(application_instance)
       end
     end
     context "application instance does not have an lti deployment" do

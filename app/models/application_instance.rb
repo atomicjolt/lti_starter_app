@@ -43,14 +43,12 @@ class ApplicationInstance < ApplicationRecord
   # Attempts to find an existing application instance that doesn't have a matching lti deployment
   def self.match_application_instance(lti_install, deployment_id)
     if application_instance = lti_install.application.application_instances.first
-      if application_instance.lti_deployments.count == 0
-        LtiDeployment.create!(
-          application_instance: application_instance,
-          lti_install: lti_install,
-          deployment_id: deployment_id,
-        )
-        application_instance
-      end
+      LtiDeployment.find_or_create_by!(
+        application_instance: application_instance,
+        lti_install: lti_install,
+        deployment_id: deployment_id,
+      )
+      application_instance
     end
   end
 

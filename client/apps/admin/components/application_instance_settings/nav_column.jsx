@@ -28,6 +28,12 @@ export default function NavColumn(props) {
       route: `${path}/generalSettings`,
     },
     {
+      name: 'LTI Advantage',
+      iconClass: 'far fa-edit',
+      selected: currentPath === `${path}/ltiAdvantage`,
+      route: `${path}/ltiAdvantage`,
+    },
+    {
       name: 'Configuration',
       iconClass: 'far fa-cog',
       selected: currentPath === `${path}/configuration`,

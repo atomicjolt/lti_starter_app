@@ -194,6 +194,9 @@ Got to `Account / Course -> Settings -> Apps` and add a new app. Select by Clien
 Run a cloudflare tunnel to connect your dev machine to a remote LMS for testing.
 `cloudflared tunnel --hostname helloworld.atomicjolt.win --url localhost:3030 --name helloworld ----overwrite-dns, -f`
 
+For Admin
+`cloudflared tunnel --hostname admin.atomicjolt.win --url localhost:3030 --name admin ----overwrite-dns, -f`
+
 List tunnels
 `cloudflared tunnel list`
 Dyanmic registration URL:
