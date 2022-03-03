@@ -22,7 +22,10 @@ module JwtToken
   def validate_token
     token = decoded_jwt_token(request)
     raise InvalidTokenError if Rails.application.secrets.auth0_client_id != token["aud"]
-    raise InvalidTokenError if current_application_instance.id != token["application_instance_id"]
+
+    if current_application_instance
+      raise InvalidTokenError if current_application_instance.id != token["application_instance_id"]
+    end
 
     @user = User.find(token["user_id"])
     sign_in(@user, event: :authentication)

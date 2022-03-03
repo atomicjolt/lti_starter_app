@@ -1,46 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getApplications } from '../../actions/applications';
 import { getSites } from '../../actions/sites';
 import appHistory from '../../history';
-import Errors from './errors';
+import Errors from '../../../../common/components/common/errors';
 
-export class Index extends React.Component {
+export default function Index(props) {
+  const dispatch = useDispatch();
+  const { location, children } = props;
 
-  static propTypes = {
-    children: PropTypes.node,
-    getSites: PropTypes.func.isRequired,
-    getApplications: PropTypes.func.isRequired,
-    location: PropTypes.shape({
-      pathname: PropTypes.string,
-    }),
-  };
+  useEffect(() => {
+    dispatch(getApplications());
+    dispatch(getSites());
+  }, []);
 
-  static defaultProps = {
-    children: '',
-  }
-
-  componentWillMount() {
-    this.props.getApplications();
-    this.props.getSites();
-  }
-
-  componentDidMount() {
-    if (this.props.location.pathname === '/') {
+  useEffect(() => {
+    if (location.pathname === '/') {
       appHistory.replace('/applications');
     }
-  }
+  }, [location.pathname]);
 
-  render() {
-    return (
-      <div className="app-index">
-        <Errors />
-        {this.props.children}
-      </div>
-    );
-  }
-
+  return (
+    <div className="app-index">
+      <Errors />
+      {children}
+    </div>
+  );
 }
 
-export default connect(null, { getApplications, getSites })(Index);
+Index.defaultProps = {
+  children: '',
+};
+
+Index.propTypes = {
+  children: PropTypes.node,
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }),
+};

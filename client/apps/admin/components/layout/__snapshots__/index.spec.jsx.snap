@@ -4,7 +4,6 @@ exports[`layout index matches the snapshot 1`] = `
 <div
   className="app-index"
 >
-  <Connect(Errors) />
   <h1>
     hello
   </h1>

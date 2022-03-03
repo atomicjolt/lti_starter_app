@@ -62,6 +62,10 @@ Rails.application.routes.draw do
       resources :lti_install_keys
     end
 
+    resources :application_instances do
+      resources :lti_deployments
+    end
+
     resources :canvas_accounts, only: [:index]
     resources :sites
     resources :lti_content_item_selection, only: [:create]

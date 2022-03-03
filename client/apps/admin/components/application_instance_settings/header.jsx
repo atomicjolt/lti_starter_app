@@ -121,7 +121,7 @@ export function Header(props) {
           {nickname}
         </div>
         <div className="flex-center">
-          <button type="button" onClick={saveAppInstance} className="save-btn">
+          <button type="button" onClick={saveAppInstance} className="aj-btn">
             Save
           </button>
           {instanceMenu()}
