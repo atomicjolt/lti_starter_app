@@ -1,10 +1,10 @@
 {
-  "name": "react_rails_starter_app",
+  "name": "lti_starter_app",
   "version": "1.0.0",
   "description": "React Starter App with Rails. Uses webpacker.",
   "author": "atomicjolt",
   "license": "MIT",
-  "homepage": "https://github.com/atomicjolt/react_rails_starter_app",
+  "homepage": "https://github.com/atomicjolt/lti_starter_app",
   "scripts": {
     "test": "jest --config package.json",
     "test_update": "jest -u --config package.json",
