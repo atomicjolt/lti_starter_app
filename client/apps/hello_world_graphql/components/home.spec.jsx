@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import TestRenderer, { act } from 'react-test-renderer';
-import { MockedProvider } from '@apollo/react-testing';
+import { MockedProvider } from '@apollo/client/testing';
 import waitForExpect from 'wait-for-expect';
 import Home, { GET_WELCOME } from './home';
 

@@ -3,7 +3,7 @@ import React from 'react';
 import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
 import ContentItemSelectionForm from 'atomic-canvas/libs/lti/components/content_item_selection_form';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/client';
 
 export default function DeepLink(props) {
 

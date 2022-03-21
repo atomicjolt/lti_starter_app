@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import { withSettings } from 'atomic-fuel/libs/components/settings';
 import { useSelector } from 'react-redux';
 
