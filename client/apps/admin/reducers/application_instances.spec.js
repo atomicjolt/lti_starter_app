@@ -32,7 +32,7 @@ describe('application_instances reducer', () => {
         type: 'GET_APPLICATION_INSTANCES_DONE',
         payload: { application_instances: [{ config, id: payloadId }], total_pages: 1 }
       });
-      const applicationInstance = _.find(results.applicationInstances, ai => (
+      const applicationInstance = _.find(results.applicationInstances, (ai) => (
         `${ai.id}` === `${payloadId}`
       ));
       expect(applicationInstance.config).toBe(`${config}`);
@@ -57,7 +57,7 @@ describe('application_instances reducer', () => {
         type: 'GET_APPLICATION_INSTANCE_DONE',
         payload: { config, id: payloadId }
       });
-      const applicationInstance = _.find(results.applicationInstances, ai => (
+      const applicationInstance = _.find(results.applicationInstances, (ai) => (
         `${ai.id}` === `${payloadId}`
       ));
       expect(applicationInstance.config).toBe(`${config}`);
@@ -80,7 +80,7 @@ describe('application_instances reducer', () => {
         type: 'DELETE_APPLICATION_INSTANCE_DONE',
         original: { applicationInstanceId }
       });
-      const applicationInstance = _.find(results.applicationInstances, ai => (
+      const applicationInstance = _.find(results.applicationInstances, (ai) => (
         `${ai.id}` === `${applicationInstanceId}`
       ));
       expect(applicationInstance).not.toBeDefined();

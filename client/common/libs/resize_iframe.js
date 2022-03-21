@@ -11,12 +11,11 @@ function sendLtiIframeResize(height) {
 
 export default function initResizeHandler(el) {
   const observer = new ResizeObserver((resizeObservers) => {
-    const found = _.find(resizeObservers, re => re.target === el);
+    const found = _.find(resizeObservers, (re) => re.target === el);
     if (found) {
-      const height = found.contentRect.height;
+      const { height } = found.contentRect;
       sendLtiIframeResize(height);
     }
   });
   observer.observe(el);
 }
-
