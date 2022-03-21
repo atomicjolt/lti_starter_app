@@ -71,7 +71,7 @@
     "apollo-link": "^1.2.14",
     "apollo-link-http": "^1.5.17",
     "apollo-link-state": "^0.4.0",
-    "atomic-canvas": "^1.13.0",
+    "atomic-canvas": "^1.13.1",
     "atomic-fuel": "^4.15.1",
     "babel-loader": "^8.2.3",
     "babel-plugin-dynamic-import-node": "^2.3.3",

@@ -2852,10 +2852,10 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-atomic-canvas@^1.13.0:
-  version "1.13.0"
-  resolved "https://registry.yarnpkg.com/atomic-canvas/-/atomic-canvas-1.13.0.tgz#392ba866990d6dde834e81802d5bf70d930c220f"
-  integrity sha512-CvO1DRCT3PJyUylUSF31z6jdTfx84A3sJI6c/ks/c4pnjOkwHG9SkqxLnJfogE+rm83NaM08wCSB74gv3tDqUg==
+atomic-canvas@^1.13.1:
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/atomic-canvas/-/atomic-canvas-1.13.1.tgz#63fda93648bf07d69362ec5e3d5738e494b9b733"
+  integrity sha512-e3lmEFBekYNzYBei3diyrveAq/O1BKy/evH+ZBQzK0f6uLJCywJtp0tdNnEQCTtRBuyJnxa08yfrQoBEmoT3Ow==
   dependencies:
     cli-highlight "^2.1"
 
