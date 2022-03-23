@@ -1,9 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import List from './list';
 
 describe('application instances list', () => {
   let result;
+  let instance;
   let props;
 
   beforeEach(() => {
@@ -28,11 +29,12 @@ describe('application instances list', () => {
       currentSortDirection: '',
       setSort: () => {},
     };
-    result = shallow(<List {...props} />);
+    result = TestRenderer.create(<List {...props} />);
+    instance = result.root;
   });
 
   it('renders table tags', () => {
-    const thTags = result.find('th');
+    const thTags = instance.findByType('th');
     expect(thTags).toBeDefined();
     expect(thTags.length).toEqual(2);
   });

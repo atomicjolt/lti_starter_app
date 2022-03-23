@@ -1,9 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import Form from './form';
 
 describe('application instance form', () => {
   let result;
+  let instance;
   let props;
   let modalClosed = false;
   let saved;
@@ -20,7 +21,8 @@ describe('application instance form', () => {
       config: '{ "foo": "bar" }',
       ltiConfigParseError: '',
     };
-    result = shallow(<Form {...props} />);
+    result = TestRenderer.create(<Form {...props} />);
+    instance = result.root;
   });
 
   it('matches the snapshot', () => {
@@ -29,13 +31,13 @@ describe('application instance form', () => {
 
   it('handles the close modal event', () => {
     expect(modalClosed).toBeFalsy();
-    result.find('.c-btn--gray--large').simulate('click');
+    instance.findAllByType('button').find(b => b.children[0] === 'Cancel').props.onClick();
     expect(modalClosed).toBeTruthy();
   });
 
   it('handles the save event', () => {
     expect(saved).toBeFalsy();
-    result.find('.c-btn--yellow').simulate('click');
+    instance.findAllByType('button').find(b => b.children[0] === 'Save').props.onClick();
     expect(saved).toBeTruthy();
   });
 });

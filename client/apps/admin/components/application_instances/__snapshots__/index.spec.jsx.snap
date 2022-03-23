@@ -1,13 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`the index component matches the snapshot 1`] = `
-<div
-  style={
-    Object {
-      "height": "100%",
-    }
-  }
->
+exports[`application instances index matches the snapshot 1`] = `
+<div>
   <div>
     <header
       className="c-head"
@@ -126,62 +120,145 @@ exports[`the index component matches the snapshot 1`] = `
     </div>
   </div>
   <div
-    className="o-contain"
+    className="o-contain o-contain--full"
   >
     <div
-      className="o-left"
+      className="c-info"
     >
       <div
-        className="c-tool"
+        className="c-title"
       >
-        <h4
-          className="c-tool__subtitle"
-        >
-          LTI Tool
-        </h4>
-        <h3
-          className="c-tool__title"
-        >
-          n/a
-        </h3>
+        <h1>
+          App Name
+           Instances
+        </h1>
       </div>
-      <div
-        className="c-tool"
+      <button
+        className="c-btn c-btn--border"
+        onClick={[Function]}
       >
-        <h4
-          className="c-tool__instance"
-        >
-          <a
-            href=""
-          >
-            
-          </a>
-        </h4>
-      </div>
-      <div
-        className="c-filters"
-      >
-        <h4
-          className="c-sidebar-subtitle"
-        >
-          Accounts
-        </h4>
-        <ul
-          className="c-filter-list"
-        >
-          <li
-            className="c-filter__item"
-          >
-            <button
-              onClick={[Function]}
-            />
-          </li>
-        </ul>
-      </div>
+        New App Instance
+      </button>
     </div>
-    <div
-      className="o-right"
-    />
+    <ul
+      className="pagination"
+    >
+      <li
+        className="previous disabled"
+      >
+        <a
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          Prev
+        </a>
+      </li>
+      <li
+        className="selected"
+      >
+        <a
+          aria-current="page"
+          aria-label="Page 1 is your current page"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          1
+        </a>
+      </li>
+      <li>
+        <a
+          aria-current={null}
+          aria-label="Page 2"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          2
+        </a>
+      </li>
+      <li>
+        <a
+          aria-current={null}
+          aria-label="Page 3"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          3
+        </a>
+      </li>
+      <li>
+        <a
+          aria-current={null}
+          aria-label="Page 4"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          4
+        </a>
+      </li>
+      <li>
+        <a
+          aria-current={null}
+          aria-label="Page 5"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          5
+        </a>
+      </li>
+      <li>
+        <a
+          aria-current={null}
+          aria-label="Page 6"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          6
+        </a>
+      </li>
+      <li
+        className="break"
+      >
+        ...
+      </li>
+      <li>
+        <a
+          aria-current={null}
+          aria-label="Page 10"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          10
+        </a>
+      </li>
+      <li
+        className="next"
+      >
+        <a
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          Next
+        </a>
+      </li>
+    </ul>
   </div>
 </div>
 `;

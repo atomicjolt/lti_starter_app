@@ -3,13 +3,12 @@
 exports[`application instances list row matches the snapshot 1`] = `
 <tr>
   <td>
-    <Link
-      onlyActiveOnIndex={false}
+    <a
+      onClick={[Function]}
       style={Object {}}
-      to="/applications/1/application_instances/2/settings"
     >
       No Nickname
-    </Link>
+    </a>
     <div>
       Unknown User
     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import { SiteModal } from './modal';
 
 describe('site modal', () => {
@@ -23,7 +23,7 @@ describe('site modal', () => {
         canvas_callback_url: '',
       },
     };
-    result = shallow(<SiteModal {...props} />);
+    result = TestRenderer.create(<SiteModal {...props} />);
   });
 
   it('matches the snapshot', () => {

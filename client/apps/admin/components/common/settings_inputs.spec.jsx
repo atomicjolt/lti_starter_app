@@ -1,9 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import SettingsInputs from './settings_inputs';
 
 describe('common search inputs', () => {
   let result;
+  let instance;
   let props;
   const ltiKey = 'lti_key';
   const ltiName = 'ltiName';
@@ -15,7 +16,8 @@ describe('common search inputs', () => {
         name: ltiName,
       },
     };
-    result = shallow(<SettingsInputs {...props} />);
+    result = TestRenderer.create(<SettingsInputs {...props} />);
+    instance = result.root;
   });
 
   it('renders', () => {
@@ -31,21 +33,21 @@ describe('common search inputs', () => {
   });
 
   it('has hidden input', () => {
-    const input = result.find('input').first();
+    const input = instance.findAllByType('input')[0];
     expect(input).toBeDefined();
-    expect(input.props().type).toBe('hidden');
-    expect(input.props().value).toBe(ltiKey);
+    expect(input.props.type).toBe('hidden');
+    expect(input.props.value).toBe(ltiKey);
   });
 
   it('adds settings as params', () => {
-    const ltiKeyInput = result.find('input').first();
+    const ltiKeyInput = instance.findAllByType('input')[0];
     expect(ltiKeyInput).toBeDefined();
-    expect(ltiKeyInput.props().type).toBe('hidden');
-    expect(ltiKeyInput.props().value).toBe(ltiKey);
+    expect(ltiKeyInput.props.type).toBe('hidden');
+    expect(ltiKeyInput.props.value).toBe(ltiKey);
 
-    const ltiNameInput = result.find('input').last();
+    const ltiNameInput = instance.findAllByType('input')[1];
     expect(ltiNameInput).toBeDefined();
-    expect(ltiNameInput.props().type).toBe('hidden');
-    expect(ltiNameInput.props().value).toBe(ltiName);
+    expect(ltiNameInput.props.type).toBe('hidden');
+    expect(ltiNameInput.props.value).toBe(ltiName);
   });
 });

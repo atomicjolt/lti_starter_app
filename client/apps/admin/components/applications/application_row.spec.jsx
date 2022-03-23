@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import ApplicationRow from './application_row';
 
 describe('applications application row', () => {
@@ -16,7 +16,7 @@ describe('applications application row', () => {
       saveApplication: () => {}
     };
 
-    result = shallow(<ApplicationRow {...props} />);
+    result = TestRenderer.create(<ApplicationRow {...props} />);
   });
 
   it('matches the snapshot', () => {
@@ -24,8 +24,8 @@ describe('applications application row', () => {
   });
 
   it('button is clicked', () => {
-    expect(result.instance().state.modalOpen).toBeFalsy();
-    result.find('button').simulate('click');
-    expect(result.instance().state.modalOpen).toBeTruthy();
+    expect(result.root.state.modalOpen).toBeFalsy();
+    instance.findByType('button').props.onClick();
+    expect(result.root.state.modalOpen).toBeTruthy();
   });
 });

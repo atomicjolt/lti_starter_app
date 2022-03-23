@@ -70,6 +70,10 @@ export default function List(props) {
     </>
   );
 
+  if (!application) {
+    return null;
+  }
+
   return (
     <div className="c-table-container">
       {loadingInstances ? loader() : (

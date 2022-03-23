@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import Input from './input';
 
 describe('input', () => {
@@ -21,7 +21,7 @@ describe('input', () => {
       className: 'imaclass',
       labelText: 'IMA LABEL',
     };
-    result = shallow(<Input {...props} />);
+    result = TestRenderer.create(<Input {...props} />);
   });
 
   it('matches the snapshot', () => {
@@ -30,7 +30,7 @@ describe('input', () => {
 
   it('handles the onChange function', () => {
     expect(changed).toBeFalsy();
-    result.find('input').simulate('change');
+    instance.findByType('input').simulate('change');
     expect(changed).toBeTruthy();
   });
 });

@@ -1,9 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import SubAccount from './sub_account';
 
 describe('should render nested accounts and active', () => {
   let result;
+  let instance;
   let clicked;
 
   beforeEach(() => {
@@ -30,7 +31,8 @@ describe('should render nested accounts and active', () => {
       setAccountActive: () => { clicked = true; },
       currentAccount: { id: 1 }
     };
-    result = shallow(<SubAccount {...props} />);
+    result = TestRenderer.create(<SubAccount {...props} />);
+    instance = result.root;
   });
 
   it('matches the snapshot', () => {
@@ -39,23 +41,23 @@ describe('should render nested accounts and active', () => {
 
   it('return correct amount of buttons', () => {
     result.setState({ open: true });
-    const buttons = result.find('button');
+    const buttons = instance.findByType('button');
     expect(buttons.length).toBe(1);
   });
 
   it('return render the dropdown', () => {
-    const button = result.find('button');
+    const button = instance.findByType('button');
     expect(button.props().children).toContain('account_name');
   });
 
   it('should not return the dropdown', () => {
-    const dropdown = result.find('.i-dropdown');
+    const dropdown = instance.findByType('.i-dropdown');
     expect(dropdown.length).toBe(1);
   });
 
   it('handles the button click', () => {
     expect(clicked).toBeFalsy();
-    result.find('button').simulate('click');
+    instance.findByType('button').props.onClick();
     expect(clicked).toBeTruthy();
   });
 });

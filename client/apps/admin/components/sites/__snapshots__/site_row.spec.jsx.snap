@@ -1,5 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`sites list row handles the first button onclick event 1`] = `
+<tr>
+  <td>
+    http://www.example.com
+    <span
+      className="c-alert c-alert--danger"
+      style={
+        Object {
+          "fontSize": "10px",
+        }
+      }
+    >
+      OAuth key and/or secret not configured
+    </span>
+  </td>
+  <td>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "border": "none",
+          "color": "grey",
+          "cursor": "pointer",
+          "fontSize": "1.5em",
+        }
+      }
+    >
+      <i
+        className="material-icons"
+      >
+        settings
+      </i>
+    </button>
+  </td>
+  <td>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "border": "none",
+          "color": "grey",
+          "cursor": "pointer",
+          "fontSize": "1.5em",
+        }
+      }
+    >
+      <i
+        className="i-delete"
+      />
+    </button>
+  </td>
+</tr>
+`;
+
 exports[`sites list row matches the snapshot 1`] = `
 <tr>
   <td>
@@ -34,15 +90,6 @@ exports[`sites list row matches the snapshot 1`] = `
         settings
       </i>
     </button>
-    <Connect(SiteModal)
-      closeModal={[Function]}
-      isOpen={false}
-      site={
-        Object {
-          "url": "http://www.example.com",
-        }
-      }
-    />
   </td>
   <td>
     <button
@@ -61,11 +108,6 @@ exports[`sites list row matches the snapshot 1`] = `
         className="i-delete"
       />
     </button>
-    <DeleteModal
-      closeModal={[Function]}
-      deleteRecord={[Function]}
-      isOpen={false}
-    />
   </td>
 </tr>
 `;

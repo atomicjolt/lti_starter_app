@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import Accounts from './accounts';
 
 describe('lti installs accounts', () => {
@@ -17,7 +17,7 @@ describe('lti installs accounts', () => {
       setAccountActive: () => {},
       currentAccount: null,
     };
-    result = shallow(<Accounts {...props} />);
+    result = TestRenderer.create(<Accounts {...props} />);
   });
 
   it('renders', () => {

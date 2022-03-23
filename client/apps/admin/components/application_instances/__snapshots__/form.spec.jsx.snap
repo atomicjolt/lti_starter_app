@@ -8,36 +8,46 @@ exports[`application instance form matches the snapshot 1`] = `
     <div
       className="o-grid__item u-half"
     >
-      <Input
-        className="c-input"
-        inputProps={
-          Object {
-            "id": "nickname_input",
-            "name": "nickname",
-            "onChange": [Function],
-            "type": "text",
-            "value": undefined,
-          }
-        }
-        labelText="Nickname"
-      />
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-input"
+          htmlFor="nickname_input"
+        >
+          <span>
+            Nickname
+          </span>
+          <input
+            id="nickname_input"
+            name="nickname"
+            onChange={[Function]}
+            type="text"
+          />
+        </label>
+      </div>
     </div>
     <div
       className="o-grid__item u-half"
     >
-      <Input
-        className="c-input"
-        inputProps={
-          Object {
-            "id": "primary_contact_input",
-            "name": "primary_contact",
-            "onChange": [Function],
-            "type": "text",
-            "value": undefined,
-          }
-        }
-        labelText="Primary contact"
-      />
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-input"
+          htmlFor="primary_contact_input"
+        >
+          <span>
+            Primary contact
+          </span>
+          <input
+            id="primary_contact_input"
+            name="primary_contact"
+            onChange={[Function]}
+            type="text"
+          />
+        </label>
+      </div>
     </div>
     <div
       className="o-grid__item u-half"
@@ -48,155 +58,294 @@ exports[`application instance form matches the snapshot 1`] = `
         <span>
           Canvas Url
         </span>
-        <StateManager
-          defaultInputValue=""
-          defaultMenuIsOpen={false}
-          defaultValue={null}
-          isClearable={false}
-          name="site_id"
-          onChange={[Function]}
-          options={
-            Array [
-              Object {
-                "label": <div>
-                  Add New
-                </div>,
-                "onSelect": [Function],
-                "value": "new",
-              },
-            ]
-          }
-          placeholder="Select a Canvas Domain"
-        />
+        <div
+          className=" css-2b097c-container"
+          onKeyDown={[Function]}
+        >
+          <div
+            className=" css-yk16xz-control"
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
+          >
+            <div
+              className=" css-1hwfws3"
+            >
+              <div
+                className=" css-1wa3eu0-placeholder"
+              >
+                Select a Canvas Domain
+              </div>
+              <div
+                className="css-b8ldur-Input"
+              >
+                <div
+                  className=""
+                  style={
+                    Object {
+                      "display": "inline-block",
+                    }
+                  }
+                >
+                  <input
+                    aria-autocomplete="list"
+                    autoCapitalize="none"
+                    autoComplete="off"
+                    autoCorrect="off"
+                    disabled={false}
+                    id="react-select-2-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    spellCheck="false"
+                    style={
+                      Object {
+                        "background": 0,
+                        "border": 0,
+                        "boxSizing": "content-box",
+                        "color": "inherit",
+                        "fontSize": "inherit",
+                        "label": "input",
+                        "opacity": 1,
+                        "outline": 0,
+                        "padding": 0,
+                        "width": "1px",
+                      }
+                    }
+                    tabIndex="0"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    style={
+                      Object {
+                        "height": 0,
+                        "left": 0,
+                        "overflow": "scroll",
+                        "position": "absolute",
+                        "top": 0,
+                        "visibility": "hidden",
+                        "whiteSpace": "pre",
+                      }
+                    }
+                  >
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className=" css-1hb7zxy-IndicatorsContainer"
+            >
+              <span
+                className=" css-1okebmr-indicatorSeparator"
+              />
+              <div
+                aria-hidden="true"
+                className=" css-tlfecz-indicatorContainer"
+                onMouseDown={[Function]}
+                onTouchEnd={[Function]}
+              >
+                <svg
+                  aria-hidden="true"
+                  className="css-6q0nyr-Svg"
+                  focusable="false"
+                  height={20}
+                  viewBox="0 0 20 20"
+                  width={20}
+                >
+                  <path
+                    d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <input
+            name="site_id"
+            type="hidden"
+            value=""
+          />
+        </div>
       </div>
     </div>
     <div
       className="o-grid__item u-half"
     >
-      <Input
-        className="c-input"
-        inputProps={
-          Object {
-            "id": "domain_input",
-            "name": "domain",
-            "onChange": [Function],
-            "type": "text",
-            "value": undefined,
-          }
-        }
-        labelText="LTI Tool Domain"
-      />
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-input"
+          htmlFor="domain_input"
+        >
+          <span>
+            LTI Tool Domain
+          </span>
+          <input
+            id="domain_input"
+            name="domain"
+            onChange={[Function]}
+            type="text"
+          />
+        </label>
+      </div>
     </div>
     <div
       className="o-grid__item u-half"
     >
-      <Input
-        className="c-input"
-        inputProps={
-          Object {
-            "disabled": undefined,
-            "id": "lti_key_input",
-            "name": "lti_key",
-            "onChange": [Function],
-            "type": "text",
-            "value": undefined,
-          }
-        }
-        labelText="LTI Key"
-      />
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-input"
+          htmlFor="lti_key_input"
+        >
+          <span>
+            LTI Key
+          </span>
+          <input
+            id="lti_key_input"
+            name="lti_key"
+            onChange={[Function]}
+            type="text"
+          />
+        </label>
+      </div>
     </div>
     <div
       className="o-grid__item u-half"
     >
-      <Input
-        className="c-input"
-        inputProps={
-          Object {
-            "id": "lti_secret_input",
-            "name": "lti_secret",
-            "onChange": [Function],
-            "type": "text",
-            "value": undefined,
-          }
-        }
-        labelText="LTI Secret"
-      />
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-input"
+          htmlFor="lti_secret_input"
+        >
+          <span>
+            LTI Secret
+          </span>
+          <input
+            id="lti_secret_input"
+            name="lti_secret"
+            onChange={[Function]}
+            type="text"
+          />
+        </label>
+      </div>
     </div>
     <div
       className="o-grid__item u-half"
     >
-      <Input
-        className="c-input"
-        helperText="Current Canvas Token: undefined"
-        inputProps={
-          Object {
-            "id": "canvas_token_input",
-            "name": "canvas_token",
-            "onChange": [Function],
-            "placeholder": "",
-            "type": "text",
-            "value": "",
-          }
-        }
-        labelText="Canvas Token"
-      />
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-input"
+          htmlFor="canvas_token_input"
+        >
+          <span>
+            Canvas Token
+          </span>
+          <input
+            id="canvas_token_input"
+            name="canvas_token"
+            onChange={[Function]}
+            placeholder=""
+            type="text"
+            value=""
+          />
+        </label>
+        <div
+          className="helper-text"
+        >
+          Current Canvas Token: undefined
+        </div>
+      </div>
     </div>
     <div
       className="o-grid__item u-full"
     >
-      <Input
-        className="c-checkbox"
-        helperText="Indicates whether or not user name and email is stored during LTI launch"
-        inputProps={
-          Object {
-            "checked": undefined,
-            "id": "anonymous_input",
-            "name": "anonymous",
-            "onChange": [Function],
-            "type": "checkbox",
-            "value": "true",
-          }
-        }
-        labelText="Anonymous"
-      />
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-checkbox"
+          htmlFor="anonymous_input"
+        >
+          <input
+            id="anonymous_input"
+            name="anonymous"
+            onChange={[Function]}
+            type="checkbox"
+            value="true"
+          />
+          <span>
+            Anonymous
+          </span>
+        </label>
+        <div
+          className="helper-text"
+        >
+          Indicates whether or not user name and email is stored during LTI launch
+        </div>
+      </div>
     </div>
     <div
       className="o-grid__item u-full"
     >
-      <Input
-        className="c-checkbox"
-        helperText="Indicates whether or not rollbar is enabled for this app instance"
-        inputProps={
-          Object {
-            "checked": undefined,
-            "id": "rollbar_enabled_input",
-            "name": "rollbar_enabled",
-            "onChange": [Function],
-            "type": "checkbox",
-            "value": "true",
-          }
-        }
-        labelText="Rollbar Enabled"
-      />
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-checkbox"
+          htmlFor="rollbar_enabled_input"
+        >
+          <input
+            id="rollbar_enabled_input"
+            name="rollbar_enabled"
+            onChange={[Function]}
+            type="checkbox"
+            value="true"
+          />
+          <span>
+            Rollbar Enabled
+          </span>
+        </label>
+        <div
+          className="helper-text"
+        >
+          Indicates whether or not rollbar is enabled for this app instance
+        </div>
+      </div>
     </div>
     <div
       className="o-grid__item u-full"
     >
-      <Input
-        className="c-checkbox"
-        helperText="Restricts the Canvas tokens generated during oauth to the minimum necessary for this application. This should only be used if the oauth key and secret are populated above and are for a scoped developer key."
-        inputProps={
-          Object {
-            "checked": undefined,
-            "id": "use_scoped_developer_key_input",
-            "name": "use_scoped_developer_key",
-            "onChange": [Function],
-            "type": "checkbox",
-            "value": "true",
-          }
-        }
-        labelText="Use Scoped Developer Key"
-      />
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-checkbox"
+          htmlFor="use_scoped_developer_key_input"
+        >
+          <input
+            id="use_scoped_developer_key_input"
+            name="use_scoped_developer_key"
+            onChange={[Function]}
+            type="checkbox"
+            value="true"
+          />
+          <span>
+            Use Scoped Developer Key
+          </span>
+        </label>
+        <div
+          className="helper-text"
+        >
+          Restricts the Canvas tokens generated during oauth to the minimum necessary for this application. This should only be used if the oauth key and secret are populated above and are for a scoped developer key.
+        </div>
+      </div>
     </div>
     <div
       className="o-grid__item u-half"
@@ -207,56 +356,156 @@ exports[`application instance form matches the snapshot 1`] = `
         <span>
           Language
         </span>
-        <StateManager
-          defaultInputValue=""
-          defaultMenuIsOpen={false}
-          defaultValue={null}
-          isClearable={false}
-          name="language"
-          onChange={[Function]}
-          options={Array []}
-          placeholder="english"
-        />
+        <div
+          className=" css-2b097c-container"
+          onKeyDown={[Function]}
+        >
+          <div
+            className=" css-yk16xz-control"
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
+          >
+            <div
+              className=" css-1hwfws3"
+            >
+              <div
+                className=" css-1wa3eu0-placeholder"
+              >
+                english
+              </div>
+              <div
+                className="css-b8ldur-Input"
+              >
+                <div
+                  className=""
+                  style={
+                    Object {
+                      "display": "inline-block",
+                    }
+                  }
+                >
+                  <input
+                    aria-autocomplete="list"
+                    autoCapitalize="none"
+                    autoComplete="off"
+                    autoCorrect="off"
+                    disabled={false}
+                    id="react-select-3-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    spellCheck="false"
+                    style={
+                      Object {
+                        "background": 0,
+                        "border": 0,
+                        "boxSizing": "content-box",
+                        "color": "inherit",
+                        "fontSize": "inherit",
+                        "label": "input",
+                        "opacity": 1,
+                        "outline": 0,
+                        "padding": 0,
+                        "width": "1px",
+                      }
+                    }
+                    tabIndex="0"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    style={
+                      Object {
+                        "height": 0,
+                        "left": 0,
+                        "overflow": "scroll",
+                        "position": "absolute",
+                        "top": 0,
+                        "visibility": "hidden",
+                        "whiteSpace": "pre",
+                      }
+                    }
+                  >
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className=" css-1hb7zxy-IndicatorsContainer"
+            >
+              <span
+                className=" css-1okebmr-indicatorSeparator"
+              />
+              <div
+                aria-hidden="true"
+                className=" css-tlfecz-indicatorContainer"
+                onMouseDown={[Function]}
+                onTouchEnd={[Function]}
+              >
+                <svg
+                  aria-hidden="true"
+                  className="css-6q0nyr-Svg"
+                  focusable="false"
+                  height={20}
+                  viewBox="0 0 20 20"
+                  width={20}
+                >
+                  <path
+                    d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <input
+            name="language"
+            type="hidden"
+            value=""
+          />
+        </div>
       </div>
     </div>
     <div
       className="o-grid__item u-full"
     >
-      <Textarea
+      <label
         className="c-input"
-        labelText="Custom Application Instance Configuration"
-        textareaProps={
-          Object {
-            "id": "application_instance_config",
-            "name": "config",
-            "onChange": [Function],
-            "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
-            "rows": 3,
-            "value": "{
+        htmlFor="application_instance_config"
+      >
+        <span>
+          Custom Application Instance Configuration
+        </span>
+        <textarea
+          id="application_instance_config"
+          name="config"
+          onChange={[Function]}
+          placeholder="ex: { \\"foo\\": \\"bar\\" }"
+          rows={3}
+          value="{
   \\"foo\\": \\"bar\\"
-}",
-          }
-        }
-        warning={null}
-      />
+}"
+        />
+      </label>
     </div>
     <div
       className="o-grid__item u-full"
     >
-      <Textarea
+      <label
         className="c-input"
-        labelText="LTI Configuration"
-        textareaProps={
-          Object {
-            "id": "application_instance_lti_config",
-            "name": "lti_config",
-            "onChange": [Function],
-            "rows": 8,
-            "value": "{}",
-          }
-        }
-        warning={null}
-      />
+        htmlFor="application_instance_lti_config"
+      >
+        <span>
+          LTI Configuration
+        </span>
+        <textarea
+          id="application_instance_lti_config"
+          name="lti_config"
+          onChange={[Function]}
+          rows={8}
+          value="{}"
+        />
+      </label>
     </div>
   </div>
   <button

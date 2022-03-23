@@ -1,6 +1,12 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+
 import Modal from './modal';
+
+const mockStore = configureStore([]);
+const store = mockStore({});
 
 describe('lti install key modal', () => {
 
@@ -31,18 +37,22 @@ describe('lti install key modal', () => {
         name
       }
     };
-    result = shallow(<Modal {...props} />);
+    result = TestRenderer.create(
+      <Provider store={store}>
+        <Modal {...props} />
+      </Provider>
+    );
   });
 
   it('handles the save function', () => {
     expect(saved).toBeFalsy();
-    result.instance().save();
+    result.root.save();
     expect(saved).toBeTruthy();
   });
 
   it('handles the close function', () => {
     expect(closed).toBeFalsy();
-    result.instance().closeModal();
+    result.root.closeModal();
     expect(closed).toBeTruthy();
   });
 });

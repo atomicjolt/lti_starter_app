@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import Search from './search';
 
 describe('common search', () => {
@@ -12,7 +12,7 @@ describe('common search', () => {
     props = {
       search: () => { search = true; },
     };
-    result = shallow(<Search {...props} />);
+    result = TestRenderer.create(<Search {...props} />);
   });
 
   it('matches the snapshot', () => {
@@ -20,7 +20,7 @@ describe('common search', () => {
   });
 
   it('has search input', () => {
-    const input = result.find('input');
+    const input = instance.findByType('input');
     expect(input).toBeDefined();
     expect(input.props().type).toBe('text');
     expect(input.props().placeholder).toBe('Search...');
@@ -28,7 +28,7 @@ describe('common search', () => {
 
   it('search input changes', () => {
     expect(search).toBeFalsy();
-    result.find('input').simulate('change', { target: { value: 'new value' } });
+    instance.findByType('input').simulate('change', { target: { value: 'new value' } });
     expect(search).toBeTruthy();
   });
 });

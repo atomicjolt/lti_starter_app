@@ -1,9 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import { InstallPane } from './install_pane';
 
 describe('install pane', () => {
   let result;
+  let instance;
   let props;
 
   jest.useFakeTimers();
@@ -20,18 +21,19 @@ describe('install pane', () => {
       onlyShowInstalled: false,
       onlyShowInstalledChanged: () => {},
     };
-    result = shallow(<InstallPane {...props} />);
+    result = TestRenderer.create(<InstallPane {...props} />);
+    instance = result.root;
   });
 
   it('renders the install pane with course installs for basic', () => {
-    const input = result.find('input');
-    expect(input.props().placeholder).toContain('Search...');
+    const input = instance.findByType('input');
+    expect(input.props.placeholder).toContain('Search...');
   });
 
   it('handles the input change', () => {
-    expect(result.instance().state.searchPrefix).toEqual('');
-    result.instance().updateSearchPrefix = jest.fn();
-    result.find('input').simulate('change', { target: { value: 'Changed' } });
-    expect(result.instance().updateSearchPrefix).toBeCalled();
+    expect(result.root.state.searchPrefix).toEqual('');
+    result.root.updateSearchPrefix = jest.fn();
+    instance.findByType('input').simulate('change', { target: { value: 'Changed' } });
+    expect(result.root.updateSearchPrefix).toBeCalled();
   });
 });

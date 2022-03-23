@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import Modal from './modal';
 
 describe('applications modal', () => {
@@ -19,7 +19,7 @@ describe('applications modal', () => {
       save: () => { saved = true; },
     };
 
-    result = shallow(<Modal {...props} />);
+    result = TestRenderer.create(<Modal {...props} />);
   });
 
   it('modal matches snapshot', () => {
@@ -28,7 +28,7 @@ describe('applications modal', () => {
 
   it('saves the application', () => {
     expect(saved).toBeFalsy();
-    result.instance().saveApplication();
+    result.root.saveApplication();
     expect(saved).toBeTruthy();
   });
 });

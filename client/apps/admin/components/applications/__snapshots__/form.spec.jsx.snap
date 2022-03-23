@@ -27,36 +27,48 @@ exports[`applications form matches the snapshot 1`] = `
     <div
       className="o-grid__item u-half"
     >
-      <Input
-        className="c-input"
-        inputProps={
-          Object {
-            "id": "oauth_key_input",
-            "name": "oauth_key",
-            "onChange": [Function],
-            "type": "text",
-            "value": "",
-          }
-        }
-        labelText="Oauth Key"
-      />
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-input"
+          htmlFor="oauth_key_input"
+        >
+          <span>
+            Oauth Key
+          </span>
+          <input
+            id="oauth_key_input"
+            name="oauth_key"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </label>
+      </div>
     </div>
     <div
       className="o-grid__item u-half"
     >
-      <Input
-        className="c-input"
-        inputProps={
-          Object {
-            "id": "oauth_secret_input",
-            "name": "oauth_secret",
-            "onChange": [Function],
-            "type": "text",
-            "value": "",
-          }
-        }
-        labelText="Oauth Secret"
-      />
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-input"
+          htmlFor="oauth_secret_input"
+        >
+          <span>
+            Oauth Secret
+          </span>
+          <input
+            id="oauth_secret_input"
+            name="oauth_secret"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </label>
+      </div>
     </div>
     <div
       className="o-grid__item u-half"
@@ -73,21 +85,22 @@ exports[`applications form matches the snapshot 1`] = `
     <div
       className="o-grid__item u-full"
     >
-      <Textarea
+      <label
         className="c-input"
-        labelText="Default Config"
-        textareaProps={
-          Object {
-            "id": "application_default_config",
-            "name": "default_config",
-            "onChange": [Function],
-            "placeholder": "ex: { \\"foo\\": \\"bar\\" }",
-            "rows": 3,
-            "value": "{ \\"foo\\": \\"bar\\" }",
-          }
-        }
-        warning={null}
-      />
+        htmlFor="application_default_config"
+      >
+        <span>
+          Default Config
+        </span>
+        <textarea
+          id="application_default_config"
+          name="default_config"
+          onChange={[Function]}
+          placeholder="ex: { \\"foo\\": \\"bar\\" }"
+          rows={3}
+          value="{ \\"foo\\": \\"bar\\" }"
+        />
+      </label>
     </div>
   </div>
   <button

@@ -1,48 +1,63 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Index } from './index';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+
+import TestRenderer from 'react-test-renderer';
+import Index from './index';
 
 jest.mock('../../libs/assets');
 
+const mockStore = configureStore([]);
+
+const applicationId = '123';
+const applicationInstanceId = '4847';
+
+const store = mockStore({
+  settings: {
+    sign_out_url: 'https://www.example.com',
+  },
+  applicationInstances: {
+    applicationInstances: [],
+  },
+  accounts: {
+    accounts: {
+      1234: {
+        id: 1234,
+        parent_account_id: null,
+      }
+    }
+  },
+  applications: {},
+  courses: [{}],
+  applicationInstance: {},
+  loadingCourses: {},
+  loadingAccounts: false,
+  sites: {},
+});
+
 describe('the index component', () => {
   let result;
-  let props;
-  let coursesRequested;
+  let instance;
 
   beforeEach(() => {
-    coursesRequested = false;
-    props = {
-      accounts: {},
-      rootAccount: {
-        id: 1234,
-      },
-      applications: {},
-      courses: [{}],
-      applicationInstance: {},
-      loadingCourses: {},
-      loadingAccounts: false,
-      getApplicationInstance: () => {},
-      canvasRequest: () => { coursesRequested = true; },
-      saveApplicationInstance: () => {},
-      params: {
-        applicationId: 'application id',
-        applicationInstanceId: 'application instance id',
-      },
-      sites: {},
-    };
-    result = shallow(<Index {...props} />);
+    result = TestRenderer.create(
+      <Provider store={store}>
+        <Index params={{
+          applicationId,
+          applicationInstanceId,
+        }}
+        />
+      </Provider>
+    );
+    instance = result.root;
   });
-
   it('matches the snapshot', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it('calls the canvasRequest props function', () => {
-    expect(coursesRequested).toBeTruthy();
-  });
-
   it('sets the active account', () => {
-    result.instance().componentWillReceiveProps();
-    expect(result.instance().state.currentAccount.id).toBe(1234);
+    const headings = instance.findAllByType('h3');
+    const accountHeading = headings.find((h) => h.props.children === 'Root');
+    expect(accountHeading).toBeDefined();
   });
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import AccountInstall from './account_install';
 
 describe('lti installs account install', () => {
@@ -29,7 +29,7 @@ describe('lti installs account install', () => {
         account,
       };
 
-      result = shallow(<AccountInstall {...props} />);
+      result = TestRenderer.create(<AccountInstall {...props} />);
     });
 
     it('renders', () => {
@@ -42,7 +42,7 @@ describe('lti installs account install', () => {
 
     it('handles the button click', () => {
       expect(clicked).toBeFalsy();
-      result.find('button').simulate('click');
+      instance.findByType('button').props.onClick();
       expect(clicked).toBeTruthy();
     });
   });
@@ -57,16 +57,16 @@ describe('lti installs account install', () => {
         accountInstalls,
       };
 
-      result = shallow(<AccountInstall {...props} />);
+      result = TestRenderer.create(<AccountInstall {...props} />);
     });
 
     it('renders a header h3', () => {
-      const h3 = result.find('h3');
+      const h3 = instance.findByType('h3');
       expect(h3.props().children).toBe('Root');
     });
 
     it('renders buttons', () => {
-      const accountButton = result.find('button');
+      const accountButton = instance.findByType('button');
       expect(accountButton.props().children).toBe('Install Into Account');
     });
   });

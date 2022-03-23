@@ -1,10 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import Sidebar from './sidebar';
 
 describe('lti installs sidebar', () => {
-
   let result;
+  let instance;
   const applicationName = 'applicationName';
 
   describe('should render sidebar', () => {
@@ -30,7 +30,8 @@ describe('lti installs sidebar', () => {
         setAccountActive: () => {},
         sites: {},
       };
-      result = shallow(<Sidebar {...props} />);
+      result = TestRenderer.create(<Sidebar {...props} />);
+      instance = result.root;
     });
 
     it('renders', () => {
@@ -46,15 +47,13 @@ describe('lti installs sidebar', () => {
     });
 
     it('return the title name', () => {
-      const title = result.find('.c-tool__title');
-      expect(title.props().children).toBe(applicationName);
+      const title = instance.findByProps({className: 'c-tool__title'});
+      expect(title.props.children).toBe(applicationName);
     });
 
     it('return the site url', () => {
-      const title = result.find('.c-tool__instance');
-      expect(title.props().children).toEqual(
-        <a href="www.atomicjolt.com">www.atomicjolt.com</a>
-      );
+      const title = instance.findByProps({className: 'c-tool__instance'});
+      expect(title.props.children.props.href).toEqual('www.atomicjolt.com');
     });
 
   });

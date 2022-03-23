@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import Header from './header';
 
 describe('application instances header', () => {
@@ -15,12 +15,12 @@ describe('application instances header', () => {
       },
       newLtiInstallKey: () => { newLtiKey = true; },
     };
-    result = shallow(<Header {...props} />);
+    result = TestRenderer.create(<Header {...props} />);
   });
 
   it('handles the onClick function', () => {
     expect(newLtiKey).toBeFalsy();
-    result.find('button').simulate('click');
+    instance.findByType('button').props.onClick();
     expect(newLtiKey).toBeTruthy();
   });
 });

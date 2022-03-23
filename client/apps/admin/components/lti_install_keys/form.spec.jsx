@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import Form from './form';
 
 describe('lti install key form', () => {
@@ -15,18 +15,18 @@ describe('lti install key form', () => {
       closeModal: () => { modalClosed = true; },
       save: () => { saved = true; },
     };
-    result = shallow(<Form {...props} />);
+    result = TestRenderer.create(<Form {...props} />);
   });
 
   it('handles the close modal event', () => {
     expect(modalClosed).toBeFalsy();
-    result.find('.c-btn--gray--large').simulate('click');
+    instance.findByType('.c-btn--gray--large').simulate('click');
     expect(modalClosed).toBeTruthy();
   });
 
   it('handles the save event', () => {
     expect(saved).toBeFalsy();
-    result.find('.c-btn--yellow').simulate('click');
+    instance.findByType('.c-btn--yellow').simulate('click');
     expect(saved).toBeTruthy();
   });
 });

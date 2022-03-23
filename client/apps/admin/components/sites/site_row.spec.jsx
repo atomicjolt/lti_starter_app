@@ -1,9 +1,18 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+
 import SiteRow from './site_row';
+
+const mockStore = configureStore([]);
+const store = mockStore({
+  settings: {},
+});
 
 describe('sites list row', () => {
   let result;
+  let instance;
   let props;
 
   beforeEach(() => {
@@ -11,7 +20,12 @@ describe('sites list row', () => {
       site: { url: 'http://www.example.com' },
       deleteSite: () => {},
     };
-    result = shallow(<SiteRow {...props} />);
+    result = TestRenderer.create(
+      <Provider store={store}>
+        <SiteRow {...props} />
+      </Provider>
+    );
+    instance = result.root;
   });
 
   it('matches the snapshot', () => {
@@ -19,15 +33,16 @@ describe('sites list row', () => {
   });
 
   it('handles the first button onclick event', () => {
-    expect(result.instance().state.siteModalOpen).toBeFalsy();
-    result.find('button').at(0).simulate('click');
-    expect(result.instance().state.siteModalOpen).toBeTruthy();
+    expect(result).toMatchSnapshot();
+    const buttons = instance.findAllByType('button');
+    buttons[0].props.onClick();
+    expect(result).toMatchSnapshot();
   });
 
   it('handles the second button onclick event', () => {
-    const button = result.find('button');
-    expect(result.instance().state.confirmDeleteModalOpen).toBeFalsy();
-    button.at(1).simulate('click');
-    expect(result.instance().state.confirmDeleteModalOpen).toBeTruthy();
+    const buttons = instance.findAllByType('button');
+    expect(result.root.state.confirmDeleteModalOpen).toBeFalsy();
+    buttons[1].props.onClick();
+    expect(result.root.state.confirmDeleteModalOpen).toBeTruthy();
   });
 });

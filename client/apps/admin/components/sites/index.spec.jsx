@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import { Index } from './index';
 
 jest.mock('../../libs/assets');
@@ -24,7 +24,7 @@ describe('sites index', () => {
       sites: sitesData,
       deleteSite: () => {},
     };
-    result = shallow(<Index {...props} />);
+    result = TestRenderer.create(<Index {...props} />);
   });
 
   it('renders', () => {

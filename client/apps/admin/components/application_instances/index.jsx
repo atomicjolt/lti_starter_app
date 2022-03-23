@@ -22,26 +22,6 @@ const select = (state, props) => ({
 });
 
 export class Index extends React.Component {
-  static propTypes = {
-    applicationInstances: PropTypes.arrayOf(PropTypes.shape({})),
-    getApplicationInstances: PropTypes.func.isRequired,
-    createApplicationInstance: PropTypes.func,
-    deleteApplicationInstance: PropTypes.func,
-    saveApplicationInstance: PropTypes.func,
-    sites: PropTypes.shape({}).isRequired,
-    applications: PropTypes.shape({}).isRequired,
-    params: PropTypes.shape({
-      applicationId: PropTypes.string.isRequired,
-    }).isRequired,
-    settings: PropTypes.shape({
-      canvas_callback_url: PropTypes.string.isRequired,
-    }).isRequired,
-    canvasOauthURL: PropTypes.string.isRequired,
-    disableApplicationInstance: PropTypes.func.isRequired,
-    totalPages: PropTypes.number,
-    loadingInstances: PropTypes.bool,
-  };
-
   constructor() {
     super();
     this.state = {
@@ -206,5 +186,25 @@ export class Index extends React.Component {
     );
   }
 }
+
+Index.propTypes = {
+  applicationInstances: PropTypes.arrayOf(PropTypes.shape({})),
+  getApplicationInstances: PropTypes.func.isRequired,
+  createApplicationInstance: PropTypes.func,
+  deleteApplicationInstance: PropTypes.func,
+  saveApplicationInstance: PropTypes.func,
+  sites: PropTypes.shape({}).isRequired,
+  applications: PropTypes.shape({}).isRequired,
+  params: PropTypes.shape({
+    applicationId: PropTypes.string.isRequired,
+  }).isRequired,
+  settings: PropTypes.shape({
+    canvas_callback_url: PropTypes.string.isRequired,
+  }).isRequired,
+  canvasOauthURL: PropTypes.string.isRequired,
+  disableApplicationInstance: PropTypes.func.isRequired,
+  totalPages: PropTypes.number,
+  loadingInstances: PropTypes.bool,
+};
 
 export default connect(select, ApplicationInstanceActions)(Index);

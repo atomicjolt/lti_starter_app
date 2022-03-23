@@ -1,9 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import Header from './header';
 
 describe('application instances header', () => {
   let result;
+  let instance;
   let props;
   let newInstance;
 
@@ -15,7 +16,8 @@ describe('application instances header', () => {
       },
       newApplicationInstance: () => { newInstance = true; },
     };
-    result = shallow(<Header {...props} />);
+    result = TestRenderer.create(<Header {...props} />);
+    instance = result.root;
   });
 
   it('matches the snapshot', () => {
@@ -24,7 +26,7 @@ describe('application instances header', () => {
 
   it('handles the onClick function', () => {
     expect(newInstance).toBeFalsy();
-    result.find('button').simulate('click');
+    instance.findByType('button').props.onClick();
     expect(newInstance).toBeTruthy();
   });
 });

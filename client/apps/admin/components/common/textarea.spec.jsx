@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import Textarea from './textarea';
 
 describe('textarea', () => {
@@ -25,7 +25,7 @@ describe('textarea', () => {
       className: 'imaclass',
       labelText: 'IMA LABEL',
     };
-    result = shallow(<Textarea {...props} />);
+    result = TestRenderer.create(<Textarea {...props} />);
   });
 
   it('matches the snapshot', () => {
@@ -34,7 +34,7 @@ describe('textarea', () => {
 
   it('handles the onChange event', () => {
     expect(changed).toBeFalsy();
-    result.find('textarea').simulate('change');
+    instance.findByType('textarea').simulate('change');
     expect(changed).toBeTruthy();
   });
 });

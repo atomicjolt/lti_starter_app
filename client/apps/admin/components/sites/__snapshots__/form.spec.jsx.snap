@@ -7,57 +7,72 @@ exports[`site form matches the snapshot 1`] = `
   >
     <div
       className="o-grid__item u-full"
-      key="url"
     >
-      <Input
-        className="c-input"
-        inputProps={
-          Object {
-            "id": "site_url",
-            "name": "url",
-            "onChange": [Function],
-            "type": "text",
-            "value": "",
-          }
-        }
-        labelText="Canvas Domain"
-      />
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-input"
+          htmlFor="site_url"
+        >
+          <span>
+            Canvas Domain
+          </span>
+          <input
+            id="site_url"
+            name="url"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </label>
+      </div>
     </div>
     <div
       className="o-grid__item u-full"
-      key="oauth_key"
     >
-      <Input
-        className="c-input"
-        inputProps={
-          Object {
-            "id": "site_oauth_key",
-            "name": "oauth_key",
-            "onChange": [Function],
-            "type": "text",
-            "value": "",
-          }
-        }
-        labelText="Canvas Developer ID"
-      />
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-input"
+          htmlFor="site_oauth_key"
+        >
+          <span>
+            Canvas Developer ID
+          </span>
+          <input
+            id="site_oauth_key"
+            name="oauth_key"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </label>
+      </div>
     </div>
     <div
       className="o-grid__item u-full"
-      key="oauth_secret"
     >
-      <Input
-        className="c-input"
-        inputProps={
-          Object {
-            "id": "site_oauth_secret",
-            "name": "oauth_secret",
-            "onChange": [Function],
-            "type": "text",
-            "value": "",
-          }
-        }
-        labelText="Canvas Developer Key"
-      />
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-input"
+          htmlFor="site_oauth_secret"
+        >
+          <span>
+            Canvas Developer Key
+          </span>
+          <input
+            id="site_oauth_secret"
+            name="oauth_secret"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </label>
+      </div>
     </div>
   </div>
   <button

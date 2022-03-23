@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import { Home } from './home';
 
 jest.mock('../libs/assets.js');
@@ -12,7 +12,7 @@ describe('home', () => {
         canvas_auth_required: false,
       },
     };
-    const result = shallow(<Home {...props} />);
+    const result = TestRenderer.create(<Home {...props} />);
     expect(result).toMatchSnapshot();
   });
 

@@ -50,17 +50,8 @@ exports[`lti installs sidebar should render sidebar matches the snapshot 1`] = `
     >
       Accounts
     </h4>
-    <Accounts
-      accounts={
-        Object {
-          "1": Object {
-            "id": 1,
-            "name": "accountName",
-            "sub_accounts": Array [],
-          },
-        }
-      }
-      setAccountActive={[Function]}
+    <ul
+      className="c-filter-list"
     />
   </div>
 </div>

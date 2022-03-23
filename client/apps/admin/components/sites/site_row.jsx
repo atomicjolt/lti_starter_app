@@ -5,16 +5,6 @@ import SiteModal from './modal';
 import DeleteModal from '../common/delete_modal';
 
 export default class SiteRow extends React.Component {
-
-  static propTypes = {
-    site: PropTypes.shape({
-      url: PropTypes.string,
-      oauth_key: PropTypes.string,
-      oauth_secret: PropTypes.string,
-    }).isRequired,
-    deleteSite: PropTypes.func.isRequired,
-  };
-
   static getStyles() {
     return {
       buttonIcon: {
@@ -104,3 +94,12 @@ export default class SiteRow extends React.Component {
   }
 
 }
+
+SiteRow.propTypes = {
+  site: PropTypes.shape({
+    url: PropTypes.string,
+    oauth_key: PropTypes.string,
+    oauth_secret: PropTypes.string,
+  }).isRequired,
+  deleteSite: PropTypes.func.isRequired,
+};

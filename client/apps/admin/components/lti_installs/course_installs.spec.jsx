@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import CourseInstalls from './course_installs';
 
 describe('lti installs course install', () => {
@@ -29,7 +29,7 @@ describe('lti installs course install', () => {
       courseName: 'courseName',
       courseId,
     };
-    result = shallow(<CourseInstalls {...props} />);
+    result = TestRenderer.create(<CourseInstalls {...props} />);
   });
 
   it('renders', () => {
@@ -45,14 +45,14 @@ describe('lti installs course install', () => {
   });
 
   it('renders buttons', () => {
-    const courseName = result.find('span');
+    const courseName = instance.findByType('span');
     expect(courseName.props().children).toBe('Course Name');
   });
 
   // Remove the checkbox so removing the test for now
   // it('handles the onChange for input', () => {
   //   expect(changed).toBeFalsy();
-  //   const input = result.find('input');
+  //   const input = instance.findByType('input');
   //   input.simulate('change');
   //   expect(changed).toBeTruthy();
   // });

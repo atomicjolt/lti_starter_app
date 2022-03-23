@@ -1,169 +1,152 @@
-import React from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
 import ReactModal from 'react-modal';
 import { listActiveCoursesInAccount } from 'atomic-canvas/libs/constants/accounts';
 import { listExternalToolsCourses, listExternalToolsAccounts } from 'atomic-canvas/libs/constants/external_tools';
 import { helperListAccounts } from 'atomic-canvas/libs/helper_constants';
 import canvasRequest from 'atomic-canvas/libs/action';
-import * as ApplicationInstanceActions from '../../actions/application_instances';
+import {
+  getApplicationInstance,
+} from '../../actions/application_instances';
 import Heading from '../common/heading';
 import Sidebar from './sidebar';
 import InstallPane from './install_pane';
 
+export default function Index(props) {
+  const dispatch = useDispatch();
+  const [currentAccount, setCurrentAccount] = useState(null);
+  const { params } = props;
+  const {
+    applicationId,
+    applicationInstanceId,
+  } = params;
 
-function select(state, props) {
-  const instanceId = props.params.applicationInstanceId;
+  const applicationInstances = useSelector(
+    (state) => state.applicationInstances.applicationInstances
+  );
+  const applicationInstance = _.find(applicationInstances, (ai) => `${ai.id}` === applicationInstanceId);
+  const applications = useSelector((state) => state.applications);
+  const accounts = useSelector((state) => state.accounts.accounts);
+  const loadingAccounts = useSelector((state) => state.accounts.loading);
+  const courses = useSelector((state) => _.sortBy(state.courses, (course) => course.name));
+  const loadingCourses = useSelector((state) => state.loadingCourses);
+  const sites = useSelector((state) => state.sites);
 
-  const applicationInstance = _.find(state.applicationInstances.applicationInstances, ai => (
-    `${ai.id}` === instanceId
-  ));
+  const rootAccount = _.find(accounts, { parent_account_id: null });
 
-  return {
-    applicationInstance,
-    applications: state.applications,
-    accounts: state.accounts.accounts,
-    rootAccount: _.find(state.accounts.accounts, { parent_account_id: null }),
-    loadingAccounts: state.accounts.loading,
-    courses: _.sortBy(state.courses, course => course.name),
-    userName: state.settings.display_name,
-    loadingCourses: state.loadingCourses,
-    sites: state.sites,
-  };
-}
+  const applicationIdParsed = parseInt(applicationId, 10);
 
-export class Index extends React.Component {
-  static propTypes = {
-    accounts: PropTypes.shape({}).isRequired,
-    rootAccount: PropTypes.shape({
-      id: PropTypes.number
-    }),
-    applications: PropTypes.shape({}).isRequired,
-    courses: PropTypes.arrayOf(PropTypes.shape({})),
-    applicationInstance: PropTypes.shape({}),
-    loadingCourses: PropTypes.shape({}),
-    loadingAccounts: PropTypes.bool,
-    getApplicationInstance: PropTypes.func.isRequired,
-    canvasRequest: PropTypes.func.isRequired,
-    saveApplicationInstance: PropTypes.func.isRequired,
-    params: PropTypes.shape({
-      applicationId: PropTypes.string,
-      applicationInstanceId: PropTypes.string,
-    }).isRequired,
-    sites: PropTypes.shape({}).isRequired,
-  };
-
-  constructor() {
-    super();
-    this.state = {
-      currentAccount: null,
-      onlyShowInstalled: false,
-    };
-  }
-
-  componentDidMount() {
-    this.props.canvasRequest(
-      helperListAccounts,
-      {},
-      null,
-      null,
-    );
-    this.props.getApplicationInstance(
-      this.props.params.applicationId,
-      this.props.params.applicationInstanceId
-    );
-  }
-
-  componentWillReceiveProps() {
-    if (_.isNull(this.state.currentAccount) && !_.isUndefined(this.props.rootAccount)) {
-      this.setAccountActive(this.props.rootAccount);
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    // TODO: this is making a mess
-    if (_.isEmpty(prevProps.accounts) && !_.isEmpty(this.props.accounts)) {
-      this.props.canvasRequest(
-        listExternalToolsAccounts,
-        { account_id: this.props.rootAccount.id },
+  function loadExternalTools(courseId) {
+    dispatch(
+      canvasRequest(
+        listExternalToolsCourses,
+        { course_id: courseId },
         null,
-        this.props.rootAccount
-      );
-    }
-
-    if (_.isEmpty(this.props.courses) && !_.isEmpty(this.props.accounts)) {
-      this.props.canvasRequest(
-        listActiveCoursesInAccount,
-        { account_id: this.props.rootAccount.id, per_page: 100 }
-      );
-    }
+        courseId,
+      )
+    );
   }
 
-  setAccountActive(account) {
+  const setAccountActive = useCallback((account) => {
     if (account.external_tools === undefined) {
-      this.props.canvasRequest(
-        listExternalToolsAccounts,
-        { account_id: account.id },
-        null,
-        account
+      dispatch(
+        canvasRequest(
+          listExternalToolsAccounts,
+          { account_id: account.id },
+          null,
+          account
+        )
       );
     }
+    setCurrentAccount(account);
+  }, [dispatch]);
 
-    this.setState({
-      currentAccount: account,
-    });
-  }
-
-  loadExternalTools(courseId) {
-    this.props.canvasRequest(
-      listExternalToolsCourses,
-      { course_id: courseId },
-      null,
-      courseId,
+  useEffect(() => {
+    dispatch(
+      canvasRequest(
+        helperListAccounts,
+        {},
+        null,
+        null,
+      )
     );
-  }
 
-  render() {
-    const applicationId = parseInt(this.props.params.applicationId, 10);
+    dispatch(
+      getApplicationInstance(
+        applicationId,
+        applicationInstanceId,
+      )
+    );
+  });
 
-    return (
-      <div style={{ height: '100%' }}>
-        <Heading />
-        <div className="o-contain">
-          <Sidebar
-            currentAccount={this.state.currentAccount}
-            accounts={this.props.accounts}
-            application={this.props.applications[applicationId]}
-            applicationInstance={this.props.applicationInstance}
-            canvasRequest={this.props.canvasRequest}
-            setAccountActive={account => this.setAccountActive(account)}
-            saveApplicationInstance={this.props.saveApplicationInstance}
-            sites={this.props.sites}
-          />
-          <InstallPane
-            canvasRequest={this.props.canvasRequest}
-            loadingCourses={this.props.loadingCourses}
-            applicationInstance={this.props.applicationInstance}
-            account={this.state.currentAccount}
-            loadExternalTools={courseId => this.loadExternalTools(courseId)}
-          />
-        </div>
-        <ReactModal
-          isOpen={this.props.loadingAccounts}
-          contentLabel="Modal"
-          overlayClassName="c-modal__background"
-          className="c-modal c-modal--site is-open c-modal--error loading"
-        >
-          <div className="c-loading-icon" />
-          &nbsp;&nbsp;&nbsp;Loading...
-        </ReactModal>
+  useEffect(() => {
+    if (_.isNull(currentAccount) && !_.isUndefined(rootAccount)) {
+      setAccountActive(rootAccount);
+    }
+  }, [currentAccount, rootAccount, setAccountActive]);
+
+  useEffect(() => {
+    if (!_.isEmpty(accounts)) {
+      dispatch(
+        canvasRequest(
+          listExternalToolsAccounts,
+          { account_id: rootAccount.id },
+          null,
+          rootAccount,
+        )
+      );
+    }
+  }, [accounts, rootAccount]);
+
+  useEffect(() => {
+    if (_.isEmpty(courses) && !_.isEmpty(accounts)) {
+      dispatch(
+        canvasRequest(
+          listActiveCoursesInAccount,
+          { account_id: rootAccount.id, per_page: 100 }
+        )
+      );
+    }
+  }, [courses, accounts]);
+
+  return (
+    <div style={{ height: '100%' }}>
+      <Heading />
+      <div className="o-contain">
+        <Sidebar
+          currentAccount={currentAccount}
+          accounts={accounts}
+          application={applications[applicationIdParsed]}
+          applicationInstance={applicationInstance}
+          setAccountActive={(account) => setAccountActive(account)}
+          sites={sites}
+        />
+        <InstallPane
+          canvasRequest={canvasRequest}
+          loadingCourses={loadingCourses}
+          applicationInstance={applicationInstance}
+          account={currentAccount}
+          loadExternalTools={(courseId) => loadExternalTools(courseId)}
+        />
       </div>
-    );
-  }
+      <ReactModal
+        isOpen={loadingAccounts}
+        contentLabel="Modal"
+        overlayClassName="c-modal__background"
+        className="c-modal c-modal--site is-open c-modal--error loading"
+      >
+        <div className="c-loading-icon" />
+        &nbsp;&nbsp;&nbsp;Loading...
+      </ReactModal>
+    </div>
+  );
 }
 
-export default connect(
-  select,
-  { canvasRequest, ...ApplicationInstanceActions }
-)(Index);
+Index.propTypes = {
+  params: PropTypes.shape({
+    applicationId: PropTypes.string,
+    applicationInstanceId: PropTypes.string,
+  }).isRequired,
+};

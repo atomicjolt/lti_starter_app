@@ -1,11 +1,18 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import { Index } from './index';
-import sites from '../../reducers/sites';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+
+const mockStore = configureStore([]);
+const store = mockStore({
+  settings: {
+    sign_out_url: 'https://www.example.com',
+  },
+});
 
 jest.mock('../../libs/assets');
 describe('application instances index', () => {
-
   let result;
   let props;
   let applicationInstances = false;
@@ -30,7 +37,15 @@ describe('application instances index', () => {
       disableApplicationInstance: () => {},
       totalPages: 10,
     };
-    result = shallow(<Index {...props} />);
+    result = TestRenderer.create(
+      <Provider store={store}>
+        <Index {...props} />
+      </Provider>
+    );
+  });
+
+  it('matches the snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
 
   it('loads the assessments', () => {

@@ -1,91 +1,104 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`config xml modal matches the snapshot 1`] = `
-<Modal
-  ariaHideApp={true}
-  bodyOpenClassName="ReactModal__Body--open"
-  className="c-modal c-modal--settings is-open"
-  closeTimeoutMS={0}
-  contentElement={[Function]}
-  contentLabel="Application Instances Modal"
-  isOpen={true}
-  onRequestClose={[Function]}
-  overlayClassName="c-modal__background"
-  overlayElement={[Function]}
-  parentSelector={[Function]}
-  portalClassName="ReactModalPortal"
-  preventScroll={false}
-  role="dialog"
-  shouldCloseOnEsc={true}
-  shouldCloseOnOverlayClick={true}
-  shouldFocusAfterRender={true}
-  shouldReturnFocusAfterClose={true}
+<div
+  className="ReactModal__Overlay c-modal__background"
+  onClick={[Function]}
+  onMouseDown={[Function]}
+  style={Object {}}
 >
-  <h2
-    className="c-modal__title"
-  >
-    Config XML for 
-    bfcoder
-     Instance
-  </h2>
   <div
-    className="o-grid__item u-half"
-  >
-    <Input
-      className="c-input"
-      inputProps={
-        Object {
-          "id": "lti_config_xml_lti_key",
-          "name": "lti_key",
-          "readOnly": true,
-          "type": "text",
-          "value": "something-special",
-        }
-      }
-      labelText="LTI Key"
-    />
-  </div>
-  <div
-    className="o-grid__item u-half"
-  >
-    <Input
-      className="c-input"
-      inputProps={
-        Object {
-          "id": "lti_config_xml_lti_secret",
-          "name": "lti_secret",
-          "readOnly": true,
-          "type": "text",
-          "value": "12345",
-        }
-      }
-      labelText="LTI Secret"
-    />
-  </div>
-  <div
-    className="o-grid__item u-full"
-  >
-    <Textarea
-      className="c-input"
-      labelText="LTI Config XML"
-      textareaProps={
-        Object {
-          "id": "application_instance_lti_config_xml",
-          "name": "lti_config_xml",
-          "onChange": [Function],
-          "readOnly": true,
-          "rows": 20,
-          "value": "IMA XML",
-        }
-      }
-    />
-  </div>
-  <button
-    className="c-btn c-btn--gray--large u-m-right"
+    aria-label="Application Instances Modal"
+    aria-modal={true}
+    className="ReactModal__Content c-modal c-modal--settings is-open"
     onClick={[Function]}
-    type="button"
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    role="dialog"
+    style={Object {}}
+    tabIndex="-1"
   >
-    Close
-  </button>
-</Modal>
+    <h2
+      className="c-modal__title"
+    >
+      Config XML for 
+      bfcoder
+       Instance
+    </h2>
+    <div
+      className="o-grid__item u-half"
+    >
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-input"
+          htmlFor="lti_config_xml_lti_key"
+        >
+          <span>
+            LTI Key
+          </span>
+          <input
+            id="lti_config_xml_lti_key"
+            name="lti_key"
+            readOnly={true}
+            type="text"
+            value="something-special"
+          />
+        </label>
+      </div>
+    </div>
+    <div
+      className="o-grid__item u-half"
+    >
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-input"
+          htmlFor="lti_config_xml_lti_secret"
+        >
+          <span>
+            LTI Secret
+          </span>
+          <input
+            id="lti_config_xml_lti_secret"
+            name="lti_secret"
+            readOnly={true}
+            type="text"
+            value="12345"
+          />
+        </label>
+      </div>
+    </div>
+    <div
+      className="o-grid__item u-full"
+    >
+      <label
+        className="c-input"
+        htmlFor="application_instance_lti_config_xml"
+      >
+        <span>
+          LTI Config XML
+        </span>
+        <textarea
+          id="application_instance_lti_config_xml"
+          name="lti_config_xml"
+          onChange={[Function]}
+          readOnly={true}
+          rows={20}
+          value="IMA XML"
+        />
+      </label>
+    </div>
+    <button
+      className="c-btn c-btn--gray--large u-m-right"
+      onClick={[Function]}
+      type="button"
+    >
+      Close
+    </button>
+  </div>
+</div>
 `;

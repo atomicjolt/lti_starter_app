@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import { Index } from './index';
 import sites from '../../reducers/sites';
 
@@ -21,7 +21,7 @@ describe('applications index', () => {
       }
     };
 
-    result = shallow(<Index {...props} />);
+    result = TestRenderer.create(<Index {...props} />);
   });
 
   it('matches the snapshot', () => {

@@ -6,23 +6,6 @@ import SiteModal from '../sites/modal';
 import ApplicationInstanceForm from './form';
 
 export default class Modal extends React.Component {
-  static propTypes = {
-    closeModal: PropTypes.func.isRequired,
-    sites: PropTypes.shape({}),
-    save: PropTypes.func.isRequired,
-    applicationInstance: PropTypes.shape({
-      id: PropTypes.number,
-      config: PropTypes.string,
-      site: PropTypes.shape({
-        id: PropTypes.number,
-      })
-    }),
-    application: PropTypes.shape({
-      id: PropTypes.number,
-      supported_languages: PropTypes.array,
-    }),
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -112,12 +95,12 @@ export default class Modal extends React.Component {
   }
 
   render() {
-    const application = this.props.application;
+    const { application } = this.props;
     const applicationName = application ? application.name : 'Application';
     let title = 'New';
     let siteId;
-    if (this.state.newApplicationInstance.site_id ||
-        (this.props.applicationInstance && this.props.applicationInstance.id)) {
+    if (this.state.newApplicationInstance.site_id
+        || (this.props.applicationInstance && this.props.applicationInstance.id)) {
       title = 'Update';
       siteId = this.state.newApplicationInstance.site_id || this.props.applicationInstance.site.id;
     }
@@ -132,7 +115,11 @@ export default class Modal extends React.Component {
         className="c-modal c-modal--settings is-open"
       >
         <h2 className="c-modal__title">
-          {title} {applicationName} Instance
+          {title}
+          {' '}
+          {applicationName}
+          {' '}
+          Instance
         </h2>
         <ApplicationInstanceForm
           {...this.state.newApplicationInstance}
@@ -155,3 +142,20 @@ export default class Modal extends React.Component {
     );
   }
 }
+
+Modal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  sites: PropTypes.shape({}),
+  save: PropTypes.func.isRequired,
+  applicationInstance: PropTypes.shape({
+    id: PropTypes.number,
+    config: PropTypes.string,
+    site: PropTypes.shape({
+      id: PropTypes.number,
+    })
+  }),
+  application: PropTypes.shape({
+    id: PropTypes.number,
+    supported_languages: PropTypes.array,
+  }),
+};

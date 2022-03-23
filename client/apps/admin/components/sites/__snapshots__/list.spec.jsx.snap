@@ -24,26 +24,112 @@ exports[`sites list matches the snapshot 1`] = `
     </tr>
   </thead>
   <tbody>
-    <SiteRow
-      deleteSite={[Function]}
-      key="site_1"
-      site={
-        Object {
-          "id": 1,
-          "url": "bfcoder.com",
-        }
-      }
-    />
-    <SiteRow
-      deleteSite={[Function]}
-      key="site_2"
-      site={
-        Object {
-          "id": 2,
-          "url": "atomicjolt.com",
-        }
-      }
-    />
+    <tr>
+      <td>
+        bfcoder.com
+        <span
+          className="c-alert c-alert--danger"
+          style={
+            Object {
+              "fontSize": "10px",
+            }
+          }
+        >
+          OAuth key and/or secret not configured
+        </span>
+      </td>
+      <td>
+        <button
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "transparent",
+              "border": "none",
+              "color": "grey",
+              "cursor": "pointer",
+              "fontSize": "1.5em",
+            }
+          }
+        >
+          <i
+            className="material-icons"
+          >
+            settings
+          </i>
+        </button>
+      </td>
+      <td>
+        <button
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "transparent",
+              "border": "none",
+              "color": "grey",
+              "cursor": "pointer",
+              "fontSize": "1.5em",
+            }
+          }
+        >
+          <i
+            className="i-delete"
+          />
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        atomicjolt.com
+        <span
+          className="c-alert c-alert--danger"
+          style={
+            Object {
+              "fontSize": "10px",
+            }
+          }
+        >
+          OAuth key and/or secret not configured
+        </span>
+      </td>
+      <td>
+        <button
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "transparent",
+              "border": "none",
+              "color": "grey",
+              "cursor": "pointer",
+              "fontSize": "1.5em",
+            }
+          }
+        >
+          <i
+            className="material-icons"
+          >
+            settings
+          </i>
+        </button>
+      </td>
+      <td>
+        <button
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "transparent",
+              "border": "none",
+              "color": "grey",
+              "cursor": "pointer",
+              "fontSize": "1.5em",
+            }
+          }
+        >
+          <i
+            className="i-delete"
+          />
+        </button>
+      </td>
+    </tr>
   </tbody>
 </table>
 `;

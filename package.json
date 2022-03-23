@@ -46,11 +46,7 @@
     },
     "setupFilesAfterEnv": [
       "<rootDir>/client/testing/shim.js",
-      "<rootDir>/client/testing/setup_env.js",
-      "<rootDir>/client/testing/setup_tests.js"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
+      "<rootDir>/client/testing/setup_env.js"
     ],
     "testEnvironment": "jsdom"
   },
@@ -87,10 +83,10 @@
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.34",
     "prop-types": "^15.8.1",
-    "react": "^16.12.0",
+    "react": "^17.0.2",
     "react-aria-menubutton": "^6.1.0",
     "react-chartjs-2": "^3.0.3",
-    "react-dom": "^16.12.0",
+    "react-dom": "^17.0.2",
     "react-flatpickr": "^3.10.9",
     "react-modal": "^3.14.4",
     "react-paginate": "^5.2.4",
@@ -113,9 +109,6 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",
     "babel-jest": "^27.5.1",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.6",
-    "enzyme-to-json": "^3.6.2",
     "eslint": "^8.11.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-babel": "^5.3.1",
@@ -127,7 +120,7 @@
     "jest": "^27.5.1",
     "jest-transform-graphql": "^2.1.0",
     "nock": "^11.7.2",
-    "react-test-renderer": "^16.12.0",
+    "react-test-renderer": "^17.0.2",
     "redux-mock-store": "^1.5.4",
     "wait-for-expect": "^3.0.2",
     "webpack-dev-server": "^3.10.1"

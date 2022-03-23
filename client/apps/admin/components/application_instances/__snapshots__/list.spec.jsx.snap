@@ -9,36 +9,72 @@ exports[`application instances list matches the snapshot 1`] = `
   >
     <thead>
       <tr>
-        <Sortable
-          canSearch={true}
-          column="nickname"
-          currentColumn=""
-          currentDirection=""
-          key="Name_0"
-          setSort={[Function]}
-          title="Name"
-        />
         <th
-          key="Database Tenant_1"
+          className="sortable-header"
         >
+          <div
+            className="aj-flex"
+          >
+            <button
+              className="aj-sort-btn"
+              onClick={[Function]}
+              type="button"
+            >
+              <span
+                className="aj-flex"
+              >
+                Name
+                <i
+                  className="material-icons aj-icon-btn-sort"
+                >
+                  
+                </i>
+              </span>
+            </button>
+            <div
+              className="input input--search "
+              id="container"
+            >
+              <div
+                className="not-the-button"
+              >
+                <input
+                  id="searchInput"
+                  onChange={[Function]}
+                  type="text"
+                  value=""
+                />
+              </div>
+              <button
+                className="aj-search-button"
+                onClick={[Function]}
+                type="button"
+              >
+                <i
+                  aria-hidden="true"
+                  className="material-icons"
+                >
+                  search
+                </i>
+              </button>
+            </div>
+          </div>
+        </th>
+        <th>
           <span
             className="aj-flex"
           >
             Database Tenant
           </span>
         </th>
-        <th
-          key="Canvas Domain_2"
-        >
+        <th>
           <span
             className="aj-flex"
           >
             Canvas Domain
           </span>
         </th>
-        <th
-          key="ERRORS_3"
-        >
+        <th>
           <span
             className="aj-flex"
           >
@@ -48,16 +84,36 @@ exports[`application instances list matches the snapshot 1`] = `
       </tr>
     </thead>
     <tbody>
-      <ListRow
-        application={Object {}}
-        applicationInstance={
-          Object {
-            "application_id": 7,
-            "id": 4,
-          }
-        }
-        key="instance_0"
-      />
+      <tr>
+        <td>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+          >
+            No Nickname
+          </a>
+          <div>
+            Unknown User
+          </div>
+        </td>
+        <td />
+        <td>
+          
+        </td>
+        <td>
+          <a
+            href="https://rollbar.com///rql/?projects=&q=select%20*%0Afrom%20item_occurrence%0Awhere%20unix_timestamp()%20-%20timestamp%20between%200%20*%2060%20*%2060%20*%2024%20and%201%20*%2060%20*%2060%20*%2024%0Aand%20tenant%20%3D%20'undefined'&graph_type=line"
+            tarket="blank"
+          >
+            <div>
+              d:
+            </div>
+            <div>
+              w:
+            </div>
+          </a>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

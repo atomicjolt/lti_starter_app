@@ -7,7 +7,6 @@ import CourseInstalls from './course_installs';
 import Pagination from '../common/pagination';
 
 const PAGE_SIZE = 10;
-const COURSE_TYPES = ['basic', 'course_navigation', 'wysiwyg_button'];
 
 function select(state) {
   return {
@@ -16,16 +15,6 @@ function select(state) {
 }
 
 export class InstallPane extends React.Component {
-  static propTypes = {
-    loadExternalTools: PropTypes.func,
-    applicationInstance : PropTypes.shape({}),
-    canvasRequest: PropTypes.func,
-    loadingCourses: PropTypes.shape({}),
-    account: PropTypes.shape({
-      installCount: PropTypes.number
-    }),
-  };
-
   constructor() {
     super();
     this.state = {
@@ -42,9 +31,9 @@ export class InstallPane extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if ((prevState.currentPage !== this.state.currentPage) ||
-       (prevProps.courses.length !== this.props.courses.length) ||
-       (prevState.searchPrefix !== this.state.searchPrefix)
+    if ((prevState.currentPage !== this.state.currentPage)
+      || (prevProps.courses?.length !== this.props.courses?.length)
+      || (prevState.searchPrefix !== this.state.searchPrefix)
     ) {
       this.loadExternalTools();
     }
@@ -56,10 +45,10 @@ export class InstallPane extends React.Component {
 
   filteredCourses(courses) {
     if (this.state.onlyShowInstalled) {
-      return _.filter(courses, course => (
+      return _.filter(courses, (course) => (
         _.find(
           course.external_tools,
-          tool => tool.consumer_key === this.props.applicationInstance.lti_key
+          (tool) => tool.consumer_key === this.props.applicationInstance.lti_key
         )
       ));
     }
@@ -68,7 +57,7 @@ export class InstallPane extends React.Component {
 
   searchedCourses() {
     const { courses } = this.props;
-    return _.filter(this.filteredCourses(courses), course => (
+    return _.filter(this.filteredCourses(courses), (course) => (
       _.includes(
         _.lowerCase(course.name),
         _.lowerCase(this.state.searchPrefix)
@@ -84,11 +73,11 @@ export class InstallPane extends React.Component {
       // Only show courses from the current account
       courses = _.filter(
         this.props.courses,
-        course => this.props.account.id === course.account_id
+        (course) => this.props.account?.id === course.account_id
       );
     }
 
-    return _.filter(this.filteredCourses(courses), course => (
+    return _.filter(this.filteredCourses(courses), (course) => (
       _.includes(
         _.lowerCase(course.name),
         _.lowerCase(this.state.searchPrefix)
@@ -100,8 +89,8 @@ export class InstallPane extends React.Component {
     return _.slice(
       searchedCourses,
       this.state.currentPage * PAGE_SIZE,
-     (this.state.currentPage * PAGE_SIZE) + PAGE_SIZE
-   );
+      (this.state.currentPage * PAGE_SIZE) + PAGE_SIZE
+    );
   }
 
   loadExternalTools() {
@@ -114,7 +103,7 @@ export class InstallPane extends React.Component {
 
   updateSearchPrefix = _.debounce((searchPrefix) => {
     this.setState({ searchPrefix, currentPage: 0 });
-  }, 150)
+  }, 150);
 
   render() {
     const searchedCourses =  this.isSearching() ? this.searchedCourses() : this.courses();
@@ -140,25 +129,25 @@ export class InstallPane extends React.Component {
             <input
               type="text"
               placeholder="Search..."
-              onChange={e => this.updateSearchPrefix(e.target.value)}
+              onChange={(e) => this.updateSearchPrefix(e.target.value)}
             />
             <i className="i-search" />
           </div>
           {
-            !_.isEmpty(this.props.loadingCourses) ?
-              <div className="c-modal--error loading">
+            !_.isEmpty(this.props.loadingCourses)
+              ? <div className="c-modal--error loading">
                 <div className="c-loading-icon" />
-              </div> : null
+                </div> : null
           }
           <CourseInstalls
             applicationInstance={applicationInstance}
             courses={this.pageCourses(searchedCourses)}
             loadingCourses={this.props.loadingCourses}
             canvasRequest={this.props.canvasRequest}
-            onlyShowInstalledChanged={e => this.setState({ onlyShowInstalled: e.target.checked })}
+            onlyShowInstalledChanged={(e) => this.setState({ onlyShowInstalled: e.target.checked })}
           />
           <Pagination
-            setPage={change => this.setState({ currentPage: change.selected })}
+            setPage={(change) => this.setState({ currentPage: change.selected })}
             pageCount={pageCount}
             currentPage={this.state.currentPage}
           />
@@ -173,5 +162,15 @@ export class InstallPane extends React.Component {
     );
   }
 }
+
+InstallPane.propTypes = {
+  loadExternalTools: PropTypes.func,
+  applicationInstance : PropTypes.shape({}),
+  canvasRequest: PropTypes.func,
+  loadingCourses: PropTypes.shape({}),
+  account: PropTypes.shape({
+    installCount: PropTypes.number
+  }),
+};
 
 export default connect(select, {})(InstallPane);
