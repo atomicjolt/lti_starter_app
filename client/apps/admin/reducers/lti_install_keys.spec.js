@@ -32,7 +32,7 @@ describe('lti_install_keys reducer', () => {
         type: 'GET_LTI_INSTALL_KEYS_DONE',
         payload: { lti_install_keys: [{ client_id: `${clientId}`, id: payloadId }], total_pages: 1 }
       });
-      const ltiInstallKey = _.find(results.ltiInstallKeys, ltiInstall => (
+      const ltiInstallKey = _.find(results.ltiInstallKeys, (ltiInstall) => (
         `${ltiInstall.id}` === `${payloadId}`
       ));
       expect(ltiInstallKey.clientId).toBe(`${clientId}`);
@@ -56,7 +56,7 @@ describe('lti_install_keys reducer', () => {
         type: 'GET_LTI_INSTALL_KEY_DONE',
         payload: { id: payloadId }
       });
-      const ltiInstallKey = _.find(results.ltiInstallKeys, ltiInstall => (
+      const ltiInstallKey = _.find(results.ltiInstallKeys, (ltiInstall) => (
         `${ltiInstall.id}` === `${payloadId}`
       ));
       expect(ltiInstallKey.id).toBe(payloadId);
@@ -78,7 +78,7 @@ describe('lti_install_keys reducer', () => {
         type: 'DELETE_LTI_INSTALL_KEY_DONE',
         original: { ltiInstallKeyId }
       });
-      const ltiInstallKey = _.find(results.ltiInstallKeys, ltiInstall => (
+      const ltiInstallKey = _.find(results.ltiInstallKeys, (ltiInstall) => (
         `${ltiInstall.id}` === `${ltiInstallKeyId}`
       ));
       expect(ltiInstallKey).not.toBeDefined();

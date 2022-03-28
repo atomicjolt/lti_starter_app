@@ -14,19 +14,19 @@ export async function initLocalization(components, language, defaultLanguage, i1
       interpolation: {
         escapeValue: false // react already safes from xss
       }
-    })
+    });
 
   const languages = [...new Set([language])];
   const promises = [];
-  languages.forEach(language => {
-    components.forEach(component => {
+  languages.forEach((lng) => {
+    components.forEach((component) => {
       promises.push(
-        import(`../../locales/${language}/${component}.json`).then(resource => {
-          i18n.addResourceBundle(language, 'translation', resource.default.translation, true, true);
-          i18n.addResourceBundle(language, 'locale', resource.default.locale, true, true);
-        }).catch(reason => false)  // Ignore loading errors, since we don't know if the languages exist on our end
-      )
-    })
+        import(`../../locales/${lng}/${component}.json`).then((resource) => {
+          i18n.addResourceBundle(lng, 'translation', resource.default.translation, true, true);
+          i18n.addResourceBundle(lng, 'locale', resource.default.locale, true, true);
+        }).catch((reason) => false) // Ignore loading errors, since we don't know if the languages exist on our end
+      );
+    });
   });
 
   document.getElementsByTagName('body')[0].style.direction = i18n.dir(i18n.language);

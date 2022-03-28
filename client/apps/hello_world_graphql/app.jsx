@@ -6,12 +6,13 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import _ from 'lodash';
-import { ApolloProvider } from '@apollo/react-hooks';
-import { ApolloClient } from 'apollo-client';
-import { HttpLink } from 'apollo-link-http';
-import { ApolloLink } from 'apollo-link';
-import { withClientState } from 'apollo-link-state';
-import { InMemoryCache } from 'apollo-cache-inmemory';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  HttpLink,
+  ApolloLink,
+} from '@apollo/client';
 import { Router } from 'react-router';
 import { Route } from 'react-router-dom';
 import { Jwt } from 'atomic-fuel/libs/loaders/jwt';
@@ -48,19 +49,7 @@ Root.propTypes = {
   store: PropTypes.object.isRequired,
 };
 
-const inCacheMemory = new InMemoryCache();
-
-const stateLink = withClientState({
-  cache: inCacheMemory,
-  resolvers: {
-    Mutation: {},
-  },
-  defaults: {},
-});
-
-const links = [
-  stateLink
-];
+const links = [];
 
 if (!_.isEmpty(settings.api_url)) {
   const authenticationLink = new ApolloLink((operation, forward) => {
@@ -81,7 +70,10 @@ if (!_.isEmpty(settings.api_url)) {
 
 const client = new ApolloClient({
   link: ApolloLink.from(links),
-  cache: inCacheMemory,
+  cache: new InMemoryCache(),
+  resolvers: {
+    Mutation: {},
+  },
 });
 
 const mainApp =  document.getElementById('main-app');
