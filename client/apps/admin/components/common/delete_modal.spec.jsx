@@ -11,13 +11,11 @@ describe('delete modal', () => {
 
   // https://medium.com/@amanverma.dev/mocking-create-portal-to-utilize-react-test-renderer-in-writing-snapshot-uts-c49773c88acd
   beforeAll(() => {
-    ReactDOM.createPortal = jest.fn((element, node) => {
-      return element
-    })
+    ReactDOM.createPortal = jest.fn((element, node) => element);
   });
 
   afterEach(() => {
-    ReactDOM.createPortal.mockClear()
+    ReactDOM.createPortal.mockClear();
   });
 
   beforeEach(() => {
@@ -33,28 +31,28 @@ describe('delete modal', () => {
 
   it('renders Yes button', () => {
     const buttons = instance.findAllByType('button');
-    const button = buttons.find(b => b.children[0] === 'Yes');
+    const button = buttons.find((b) => b.children[0] === 'Yes');
     expect(!!button).toBe(true);
   });
 
   it('handles the yes button click event', () => {
     expect(clicked).toBeFalsy();
     const buttons = instance.findAllByType('button');
-    const button = buttons.find(b => b.children[0] === 'Yes');
+    const button = buttons.find((b) => b.children[0] === 'Yes');
     button.props.onClick();
     expect(clicked).toBeTruthy();
   });
 
   it('renders Cancel button', () => {
     const buttons = instance.findAllByType('button');
-    const button = buttons.find(b => b.children[0] === 'Cancel');
+    const button = buttons.find((b) => b.children[0] === 'Cancel');
     expect(!!button).toBe(true);
   });
 
   it('handles the cancel button click event', () => {
     expect(clicked).toBeFalsy();
     const buttons = instance.findAllByType('button');
-    const button = buttons.find(b => b.children[0] === 'Cancel');
+    const button = buttons.find((b) => b.children[0] === 'Cancel');
     button.props.onClick();
     expect(clicked).toBeTruthy();
   });
