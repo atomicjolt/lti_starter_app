@@ -11,13 +11,13 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "6.1.3.1"
+gem "rails", "6.1.4"
 
 # Improve boot time
 gem "bootsnap", require: false
 
 # Database
-gem "composite_primary_keys", git: "https://github.com/composite-primary-keys/composite_primary_keys.git" # unreleased rails 6.1 support
+gem "composite_primary_keys", "~>13.0.3"
 gem "pg"
 gem "ros-apartment", require: "apartment"
 
@@ -54,9 +54,6 @@ gem "que"
 # Errors
 gem "rollbar"
 
-# Used for deploying to Heroku. Can be removed if not deploying to Heroku.
-gem "heroku_secrets", git: "https://github.com/alexpeattie/heroku_secrets.git"
-
 # API Related
 gem "httparty"
 gem "rack-cors", require: "rack/cors"
@@ -69,9 +66,6 @@ gem "webpacker"
 
 # Application secrets checker
 gem "nuclear_secrets"
-
-# This is only here because we are on ruby 2.4. When we upgrade ruby we can remove this
-gem "sprockets", "~>3.7.2"
 
 gem "graphql", "~>1.9.18" # TODO 1.10.x breaks the app. Need to figure out why
 gem "graphql-batch", "~> 0.3.9"
@@ -95,17 +89,13 @@ group :development do
   gem "rb-inotify", require: false
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem "listen"
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem "spring"
-  gem "spring-commands-rspec"
-  gem "spring-watcher-listen"
-  gem "web-console", "~>3.7.0"
+  gem "web-console"
 end
 
 group :development, :linter do
-  gem "rubocop", "~> 0.88.0"
-  gem "rubocop-performance", "~> 1.7.1"
-  gem "rubocop-rails", "~> 2.7.1"
+  gem "rubocop"
+  gem "rubocop-performance"
+  gem "rubocop-rails"
 end
 
 group :development, :build, :ci, :test do
@@ -138,10 +128,6 @@ group :test do
   gem "selenium-webdriver"
   gem "shoulda-matchers"
   gem "webmock"
-end
-
-group :production do
-  gem "rails_12factor"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

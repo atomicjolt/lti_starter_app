@@ -38,6 +38,9 @@ module ReactRailsStarterApp
     # Middleware that can restore state after an OAuth request
     config.middleware.insert_before 0, OauthStateMiddleware
 
+    ActiveRecord::Tasks::DatabaseTasks.structure_dump_flags = ['--clean', '--if-exists']
+    config.active_record.schema_format = :sql
+    config.active_record.dump_schemas = "public"
     config.active_job.queue_adapter = :que
 
     config.webpack = {
