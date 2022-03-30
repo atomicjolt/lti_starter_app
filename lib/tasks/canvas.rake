@@ -3,7 +3,7 @@
 namespace :canvas do
     desc "List application instances"
     task :application_instances_by_site, [:site_url] => :environment do |_t, args|
-      lti_keys_for_site = Site.find_by(url: args[:site_url]).application_instances
+      lti_keys_for_site = Site.find_by(url: args[:site_url]).application_instances.map { |ai| {application: ai.application.name, lti_key: ai.lti_key}}
       pp lti_keys_for_site
     end
 
