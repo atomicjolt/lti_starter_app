@@ -16,6 +16,7 @@ The LTI Starter App has been updated with all the latest Node packages and Rails
   babel-preset-es2015, core-js, chart.js, classnames, react-proxy-loader, uuid
 
 ### Notable Ruby Gem changes
+* que has been updated to 1.4.0
 * Removed packages
   heroku_secrets, sprockets, spring, spring-commands-rspec, spring-watcher-listen, web-console, rails_12factor
 
