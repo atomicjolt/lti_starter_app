@@ -58,7 +58,7 @@ class LtiLaunchesController < ApplicationController
     url = build_response(state, params, nonce)
     cookies[:open_id_state] = state
     respond_to do |format|
-      format.html { redirect_to url }
+      format.html { redirect_to(url, allow_other_host: true) }
     end
   end
 

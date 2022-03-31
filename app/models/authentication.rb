@@ -2,9 +2,45 @@ class Authentication < ApplicationRecord
 
   has_secure_token :id_token
 
-  attr_encrypted :token, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
-  attr_encrypted :secret, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
-  attr_encrypted :refresh_token, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
+  # NOTE these columns are temporary while we migrate away from attr_encrypted to the
+  # new Rails 7 encrypt
+  if column_names.include? "encrypted_token"
+    attr_encrypted :token, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
+  end
+
+  if column_names.include? "encrypted_token_2"
+    attr_encrypted :token_2, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
+  end
+
+  if column_names.include? "token"
+    encrypts :token
+  end
+
+  if column_names.include? "encrypted_secret"
+    attr_encrypted :secret, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
+  end
+
+  if column_names.include? "encrypted_secret_2"
+    attr_encrypted :secret_2, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
+  end
+
+  if column_names.include? "secret"
+    encrypts :secret
+  end
+
+  if column_names.include? "encrypted_refresh_token"
+    attr_encrypted :refresh_token, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
+  end
+
+  if column_names.include? "encrypted_refresh_token_2"
+    attr_encrypted :refresh_token_2, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
+  end
+
+  if column_names.include? "refresh_token"
+    encrypts :refresh_token
+  end
+  #### END
+
 
   belongs_to :user, inverse_of: :authentications
   belongs_to :application_instance, inverse_of: :authentications, required: false

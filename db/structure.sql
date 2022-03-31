@@ -182,14 +182,7 @@ DROP SCHEMA IF EXISTS public;
 -- Name: public; Type: SCHEMA; Schema: -; Owner: -
 --
 
--- CREATE SCHEMA public;
-
-
---
--- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON SCHEMA public IS 'standard public schema';
+CREATE SCHEMA public;
 
 
 --
@@ -241,13 +234,6 @@ END) <= 200)),
     CONSTRAINT valid_data CHECK (((jsonb_typeof(data) = 'object'::text) AND ((NOT (data ? 'tags'::text)) OR ((jsonb_typeof((data -> 'tags'::text)) = 'array'::text) AND (jsonb_array_length((data -> 'tags'::text)) <= 5) AND public.que_validate_tags((data -> 'tags'::text))))))
 )
 WITH (fillfactor='90');
-
-
---
--- Name: TABLE que_jobs; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON TABLE public.que_jobs IS '5';
 
 
 --
@@ -543,9 +529,6 @@ CREATE TABLE public.application_instances (
     application_id bigint,
     lti_key character varying,
     lti_secret character varying,
-    encrypted_canvas_token character varying,
-    encrypted_canvas_token_salt character varying,
-    encrypted_canvas_token_iv character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     domain character varying(2048),
@@ -559,7 +542,8 @@ CREATE TABLE public.application_instances (
     rollbar_enabled boolean DEFAULT true,
     use_scoped_developer_key boolean DEFAULT false NOT NULL,
     nickname character varying,
-    primary_contact character varying
+    primary_contact character varying,
+    canvas_token text
 );
 
 
@@ -655,19 +639,13 @@ CREATE TABLE public.authentications (
     provider_avatar character varying,
     username character varying,
     provider_url character varying(2048),
-    encrypted_token character varying,
-    encrypted_token_salt character varying,
-    encrypted_token_iv character varying,
-    encrypted_secret character varying,
-    encrypted_secret_salt character varying,
-    encrypted_secret_iv character varying,
-    encrypted_refresh_token character varying,
-    encrypted_refresh_token_salt character varying,
-    encrypted_refresh_token_iv character varying,
     id_token character varying,
     lti_user_id character varying,
     application_instance_id bigint,
-    canvas_course_id bigint
+    canvas_course_id bigint,
+    token text,
+    secret text,
+    refresh_token text
 );
 
 
@@ -2236,6 +2214,11 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220121162024'),
 ('20220121170405'),
 ('20220328234804'),
-('20220329023856');
+('20220329023856'),
+('20220331000624'),
+('20220331002406'),
+('20220331002906'),
+('20220331003145'),
+('20220331003859');
 
 
