@@ -31,17 +31,21 @@ class ApplicationInstance < ApplicationRecord
   store_accessor :config, :custom_error_message
 
   # NOTE these columns are temporary while we migrate away from attr_encrypted to the
-  # new Rails 7 encrypt
-  if column_names.include? "encrypted_canvas_token"
-    attr_encrypted :canvas_token, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
-  end
+  # new Rails 7 encrypt.
+  begin
+    if column_names.include? "encrypted_canvas_token"
+      attr_encrypted :canvas_token, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
+    end
 
-  if column_names.include? "encrypted_canvas_token_2"
-    attr_encrypted :canvas_token_2, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
-  end
+    if column_names.include? "encrypted_canvas_token_2"
+      attr_encrypted :canvas_token_2, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
+    end
 
-  if column_names.include? "canvas_token"
-    encrypts :canvas_token
+    if column_names.include? "canvas_token"
+      encrypts :canvas_token
+    end
+  rescue => ex
+    puts "Error setting up columns: #{ex}."
   end
   #### END
 
