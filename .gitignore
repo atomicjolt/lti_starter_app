@@ -77,3 +77,4 @@ yarn-debug.log*
 /config/credentials/test.key
 
 db/structure.sql
+/config/master.key

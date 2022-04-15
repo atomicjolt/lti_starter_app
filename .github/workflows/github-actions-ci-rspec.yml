@@ -95,7 +95,9 @@ jobs:
           RAILS_GROUPS: build
           PGHOST: localhost
           PGUSER: postgres
-        run: bin/rails db:encryption:init
+        run: bin/rails db:encryption:init | awk '/active_record_encryption:/{c=5}{c>0?c--:c=0}c' > config/credentials.yml
 
       - name: Run tests
         run: bin/rspec
+
+

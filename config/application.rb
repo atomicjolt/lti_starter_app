@@ -43,6 +43,9 @@ module LtiStarterApp
     config.active_record.dump_schemas = "public"
     config.active_job.queue_adapter = :que
 
+    # Store a reference to the encryption key in the encrypted message itself.
+    config.active_record.encryption.store_key_references = true
+
     config.webpack = {
       use_manifest: false,
       asset_manifest: {},
