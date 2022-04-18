@@ -53,6 +53,7 @@ jobs:
       - name: Install packages
         run: |
           yarn install --pure-lockfile
+          yarn global add eslint
 
       - name: Run Pronto
         run: |
