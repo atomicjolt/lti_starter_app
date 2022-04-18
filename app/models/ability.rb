@@ -1,6 +1,10 @@
 class Ability
   include CanCan::Ability
 
+  def linterShouldCatchThis
+
+  end
+
   def initialize(user, context_id = nil)
     # Define abilities for the passed in user here. For example:
     #
