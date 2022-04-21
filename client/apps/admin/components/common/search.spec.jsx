@@ -6,6 +6,7 @@ describe('common search', () => {
   let result;
   let search;
   let props;
+  let instance;
 
   beforeEach(() => {
     search = false;
@@ -13,6 +14,7 @@ describe('common search', () => {
       search: () => { search = true; },
     };
     result = TestRenderer.create(<Search {...props} />);
+    instance = result.root;
   });
 
   it('matches the snapshot', () => {

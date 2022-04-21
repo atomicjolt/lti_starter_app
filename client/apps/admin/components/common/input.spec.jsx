@@ -6,6 +6,7 @@ describe('input', () => {
   let result;
   let props;
   let changed;
+  let instance;
 
   beforeEach(() => {
     changed = false;
@@ -22,6 +23,7 @@ describe('input', () => {
       labelText: 'IMA LABEL',
     };
     result = TestRenderer.create(<Input {...props} />);
+    instance = result.root;
   });
 
   it('matches the snapshot', () => {

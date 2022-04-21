@@ -4,9 +4,9 @@ import CourseInstalls from './course_installs';
 
 describe('lti installs course install', () => {
   let result;
-  let changed = false;
   let props;
   const courseId = 123;
+  let instance;
 
   beforeEach(() => {
     props = {
@@ -30,6 +30,7 @@ describe('lti installs course install', () => {
       courseId,
     };
     result = TestRenderer.create(<CourseInstalls {...props} />);
+    instance = result.root;
   });
 
   it('renders', () => {

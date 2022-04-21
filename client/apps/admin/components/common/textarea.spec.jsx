@@ -6,6 +6,7 @@ describe('textarea', () => {
   let result;
   let props;
   let changed;
+  let instance;
 
   beforeEach(() => {
     changed = false;
@@ -26,6 +27,7 @@ describe('textarea', () => {
       labelText: 'IMA LABEL',
     };
     result = TestRenderer.create(<Textarea {...props} />);
+    instance = result.root;
   });
 
   it('matches the snapshot', () => {
