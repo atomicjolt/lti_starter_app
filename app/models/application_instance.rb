@@ -32,22 +32,9 @@ class ApplicationInstance < ApplicationRecord
 
   # NOTE these columns are temporary while we migrate away from attr_encrypted to the
   # new Rails 7 encrypt.
-  begin
-    if column_names.include? "encrypted_canvas_token"
-      attr_encrypted :canvas_token, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
-    end
-
-    if column_names.include? "encrypted_canvas_token_2"
-      attr_encrypted :canvas_token_2, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
-    end
-
-    if column_names.include? "canvas_token"
-      encrypts :canvas_token
-    end
-  rescue => ex
-    puts "Error setting up columns: #{ex}."
-  end
+    attr_encrypted :canvas_token_2, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
   #### END
+  encrypts :canvas_token
 
   after_commit :create_schema, on: :create
   before_create :create_config
