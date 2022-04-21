@@ -81,13 +81,15 @@ jobs:
           PGDB: postgres_test
         run: bin/rails db:create
 
-      - name: Load db schema
+      - name: Run migrations
         env:
           RAILS_ENV: test
           RAILS_GROUPS: build
           PGHOST: localhost
           PGUSER: postgres
-        run: bin/rails db:schema:load
+        run: bin/rails db:migrate
 
       - name: Run tests
         run: bin/rspec
+
+

@@ -11,18 +11,18 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "6.1.5"
+gem "rails", "7.0.2.3"
 
 # Improve boot time
 gem "bootsnap", require: false
 
 # Database
-gem "composite_primary_keys", "~>13.0.3"
+gem "composite_primary_keys"
 gem "pg"
 gem "ros-apartment", require: "apartment"
 
 # authentication, authorization, integrations
-gem "attr_encrypted"
+gem "attr_encrypted", github: "PagerTree/attr_encrypted", branch: "rails-7-0-support"
 gem "cancancan"
 gem "devise"
 gem "devise_invitable"
