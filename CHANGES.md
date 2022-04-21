@@ -18,7 +18,6 @@ Authentication
   :secret
   :refresh_token
 
-
 Run:
  `bin/rails db:encryption:init`
 
@@ -38,7 +37,20 @@ After running migrations run the following rake task to migrate the encrypted da
 The data can also be rolled back if needed:
 `bundle exec rake migrate:encrypted_down`
 
-After the data has been migrated the following migration can be added to remove the old columns
+## After migrating the encrypted data
+
+* After the data has been migrated remove the extra columns:
+ApplicationInstance
+  :canvas_token_2
+
+Authentication
+  :token_2
+  :secret_2
+  :refresh_token_2
+
+* migrate.rake can be removed
+
+* The following migration can be added to remove the old columns
 `class RemoveAttrEncryptedColumns < ActiveRecord::Migration[7.0]
   def up
     # ApplicationInstance
