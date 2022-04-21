@@ -18,6 +18,10 @@
         "icon_url": "https://{domain}/atomicjolt.png",
         "selection_width": 500,
         "selection_height": 500,
+        "content_migration": {
+          "export_start_url": "https://{domain}/api/ims_exports.json",
+          "import_start_url": "https://{domain}/api/ims_imports.json"
+        },
         "placements": [
           {
             "placement": "editor_button",

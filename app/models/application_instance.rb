@@ -30,7 +30,11 @@ class ApplicationInstance < ApplicationRecord
   # store_accessor :config, :foo, :bar
   store_accessor :config, :custom_error_message
 
-  attr_encrypted :canvas_token, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
+  # NOTE these columns are temporary while we migrate away from attr_encrypted to the
+  # new Rails 7 encrypt.
+    attr_encrypted :canvas_token_2, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
+  #### END
+  encrypts :canvas_token
 
   after_commit :create_schema, on: :create
   before_create :create_config
