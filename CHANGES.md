@@ -29,7 +29,10 @@ The output will look something like this:
   `
 Add the output to the Rails credentials files using edit:
  `rails credentials:edit --environment=development`
-** Be sure to set the value in development, test, and production
+
+** Be sure to set the value in development, test, and production. **
+NOTE: This is a change to the deployment and will require that the deployment process
+be updated to include these credentials
 
 After running migrations run the following rake task to migrate the encrypted data:
 `bundle exec rake migrate:encrypted_up`
