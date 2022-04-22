@@ -1,12 +1,11 @@
 FROM ruby:2.7.4-alpine3.14 as build-env
 
 # Build options:
-# --build-arg VERSION=4.0.4 --build-arg ROLLBAR_API_KEY=abc123
+# --build-arg VERSION=4.0.4
 
 # VERSION is the semantic version or GIT SHA
-# ROLLBAR_API_KEY is a rollbar key with post_server_item access
 
-# With no build args the build uses VERSION=latest and no rollbar upload
+# With no build args the build uses VERSION=latest
 
 ARG RAILS_ROOT=/app
 
@@ -49,13 +48,6 @@ RUN rm -rf node_modules client tmp/cache spec \
   && rm -rf /usr/local/bundle/cache/*.gem \
   && find /usr/local/bundle/gems/ -name "*.c" -delete \
   && find /usr/local/bundle/gems/ -name "*.o" -delete
-
-ARG ROLLBAR_API_KEY
-ENV ROLLBAR_API_KEY=${ROLLBAR_API_KEY}
-
-RUN sh bin/upload_source_maps.sh $VERSION \
-  && find public/packs -name "*.map*" | xargs /bin/rm
-
 
 ##############
 FROM ruby:2.7.4-alpine3.14
