@@ -1,0 +1,34 @@
+.card-deck {
+  .card + .card {
+    margin-top: 24px;
+  }
+}
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.card-header {
+  background-color: $lightest-gray;
+  padding: 12px 24px;
+  border-bottom: 1px solid $lighter-gray;
+
+  @include semi-bold;
+  font-size: 16px;
+  color: $dark-gray;
+}
+
+.card-body {
+  padding: 24px 24px 12px;
+
+  @include regular;
+  font-size: 16px;
+  color: $dark-gray;
+
+  & > * {
+    margin: 0 0 12px;
+  }
+}

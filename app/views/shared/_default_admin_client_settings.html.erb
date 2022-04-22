@@ -4,27 +4,27 @@
     csrf_token: form_authenticity_token
   }
 
-  ai = current_application_instance
+  ai = current_application_instance || ApplicationInstance.admin
   path = "applications/#{ai.application_id}/application_instances/#{ai.id}/installs"
   oauth_complete_url = "#{admin_root_url}##{path}"
 
   default_jwt = jwt_token(
     app_callback_url: user_canvas_omniauth_callback_url,
     oauth_complete_url: oauth_complete_url,
+    application_instance: ai,
   )
 
   if signed_in?
     settings[:user_id]             = current_user.id
     settings[:email]               = current_user.email
     settings[:display_name]        = current_user.display_name
-    settings[:lti_key]             = current_application_instance.lti_key
+    settings[:lti_key]             = ai.lti_key
     settings[:user_canvas_domains] = current_user.authentications.pluck(:provider_url)
     settings[:sign_out_url]        = destroy_user_session_url
     settings[:user_edit_url] = edit_user_registration_url
     settings[:users_url] = users_url
 
     # OAuth related params
-    settings[:authorization] = default_jwt
     settings[:canvas_oauth_url]     = user_canvas_omniauth_authorize_url(host: Integrations::CanvasApiSupport.oauth_host)
     settings[:canvas_callback_url]  = user_canvas_omniauth_callback_url(host: Integrations::CanvasApiSupport.oauth_host)
   end

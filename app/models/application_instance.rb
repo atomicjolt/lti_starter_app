@@ -30,7 +30,11 @@ class ApplicationInstance < ApplicationRecord
   # store_accessor :config, :foo, :bar
   store_accessor :config, :custom_error_message
 
-  attr_encrypted :canvas_token, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
+  # NOTE these columns are temporary while we migrate away from attr_encrypted to the
+  # new Rails 7 encrypt.
+    attr_encrypted :canvas_token_2, key: Rails.application.secrets.encryption_key, mode: :per_attribute_iv_and_salt
+  #### END
+  encrypts :canvas_token
 
   after_commit :create_schema, on: :create
   before_create :create_config
@@ -43,14 +47,12 @@ class ApplicationInstance < ApplicationRecord
   # Attempts to find an existing application instance that doesn't have a matching lti deployment
   def self.match_application_instance(lti_install, deployment_id)
     if application_instance = lti_install.application.application_instances.first
-      if application_instance.lti_deployments.count == 0
-        LtiDeployment.create!(
-          application_instance: application_instance,
-          lti_install: lti_install,
-          deployment_id: deployment_id,
-        )
-        application_instance
-      end
+      LtiDeployment.find_or_create_by!(
+        application_instance: application_instance,
+        lti_install: lti_install,
+        deployment_id: deployment_id,
+      )
+      application_instance
     end
   end
 
@@ -146,6 +148,10 @@ class ApplicationInstance < ApplicationRecord
 
   def oauth_secret
     site.oauth_secret.presence || application.oauth_secret
+  end
+
+  def self.admin
+    find_by(lti_key: Application::ADMIN)
   end
 
   private

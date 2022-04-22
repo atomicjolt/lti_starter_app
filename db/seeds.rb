@@ -151,6 +151,14 @@ applications = [
       {
         # Canvas
         iss: "https://canvas.instructure.com",
+        client_id: "43460000000000513",
+        jwks_url: LtiAdvantage::Definitions::CANVAS_PUBLIC_LTI_KEYS_URL,
+        token_url: LtiAdvantage::Definitions::CANVAS_AUTH_TOKEN_URL,
+        oidc_url: LtiAdvantage::Definitions::CANVAS_OIDC_URL,
+      },
+      {
+        # Canvas
+        iss: "https://canvas.instructure.com",
         client_id: "43460000000000378",
         jwks_url: LtiAdvantage::Definitions::CANVAS_PUBLIC_LTI_KEYS_URL,
         token_url: LtiAdvantage::Definitions::CANVAS_AUTH_TOKEN_URL,
@@ -339,3 +347,10 @@ end
 ## Use this to update all the application instances
 # ApplicationInstance.for_tenant(Apartment::Tenant.current).find_each do |ai|
 # end
+
+## Add default language to all aplications
+Application.all.each do |app|
+  config = app.default_config
+  config[:language] = "en-US"
+  app.update!(default_config: config)
+end

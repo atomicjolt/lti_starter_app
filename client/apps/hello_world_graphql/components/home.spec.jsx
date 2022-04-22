@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import TestRenderer, { act } from 'react-test-renderer';
-import { MockedProvider } from '@apollo/react-testing';
+import { MockedProvider } from '@apollo/client/testing';
 import waitForExpect from 'wait-for-expect';
 import Home, { GET_WELCOME } from './home';
 
@@ -31,13 +31,16 @@ const store = mockStore({
 
 describe('home', () => {
   it('should render loading state initially', () => {
-    const testRenderer = TestRenderer.create(
-      <Provider store={store}>
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <Home />
-        </MockedProvider>
-      </Provider>,
-    );
+    let testRenderer;
+    act(() => {
+      testRenderer = TestRenderer.create(
+        <Provider store={store}>
+          <MockedProvider mocks={mocks} addTypename={false}>
+            <Home />
+          </MockedProvider>
+        </Provider>,
+      );
+    });
 
     const tree = testRenderer.toJSON();
     expect(JSON.stringify(tree).indexOf('Hello World!') === -1).toBe(true);

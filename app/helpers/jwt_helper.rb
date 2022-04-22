@@ -1,11 +1,11 @@
 module JwtHelper
 
-  def jwt_token(app_callback_url: nil, oauth_complete_url: nil)
+  def jwt_token(app_callback_url: nil, oauth_complete_url: nil, application_instance: nil)
     return unless signed_in?
 
     attrs = {
       user_id: current_user.id,
-      application_instance_id: current_application_instance.id,
+      application_instance_id: application_instance&.id || current_application_instance.id,
     }
 
     if app_callback_url

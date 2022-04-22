@@ -51,6 +51,9 @@ module LtiAdvantage
     COURSE_CONTEXT = "http://purl.imsglobal.org/vocab/lis/v2/course#CourseOffering".freeze
     ACCOUNT_CONTEXT = "Account".freeze
 
+    # Configuration
+    TOOL_CONFIGURATION = "https://purl.imsglobal.org/spec/lti-tool-configuration".freeze
+
     # Specfies all available scopes.
     def self.scopes
       [

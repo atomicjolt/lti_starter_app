@@ -77,7 +77,7 @@ Apartment.configure do |config|
   # schema.rb, like materialized views etc. (only applies with use_schemas set to true).
   # (Note: this option doesn't use db/structure.sql, it creates SQL dump by executing pg_dump)
   #
-  # config.use_sql = false
+  config.use_sql = true
 
   # There are cases where you might want some schemas to always be in your search_path
   # e.g when using a PostgreSQL extension like hstore.
@@ -105,6 +105,20 @@ end
 PAYLOAD = 0
 HEADER = 1
 
+# These endpoints only use models that exist on the global tenant and so
+# they can use the default (global) tenant.
+def allowed_endpoint?(request)
+  request.path.start_with?(
+    "/lti_dynamic_registrations",
+    "/jwks.json",
+    "/lti_config.json",
+    "/lti_launches/init",
+    "/api/sites",
+    "/api/applications",
+    "/api/account_analytics",
+  )
+end
+
 Rails.application.config.middleware.insert_before Warden::Manager, Apartment::Elevators::Generic, lambda { |request|
   if application_instance = LtiAdvantage::Authorization.application_instance_from_token(request.params["id_token"])
     return application_instance.tenant
@@ -116,7 +130,7 @@ Rails.application.config.middleware.insert_before Warden::Manager, Apartment::El
 
   if subdomain == Application::AUTH
     Application::AUTH
-  elsif subdomain == Application::ADMIN
+  elsif subdomain == Application::ADMIN || request.path.start_with?("/admin", "/users/sign_in")
     Application::ADMIN
   elsif application_instance = ApplicationInstance.find_by(lti_key: key)
     application_instance.tenant
@@ -124,7 +138,11 @@ Rails.application.config.middleware.insert_before Warden::Manager, Apartment::El
     application_instance.tenant
   elsif request.path.start_with? "/assets/" # Only affects development env
     Application::ADMIN
-  else
+  elsif request.path == "/readiness"
+    Application::ADMIN
+  # elsif request.path.start_with?("/lti_dynamic_registrations", "/jwks.json", "/lti_config.json", "/lti_launches/init")
+  #   Application::AUTH
+  elsif !allowed_endpoint?(request)
     raise "Please specify a valid oauth_consumer_key or valid domain name for this request"
   end
 }

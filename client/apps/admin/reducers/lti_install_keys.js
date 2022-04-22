@@ -41,7 +41,7 @@ export default (state = initialState, action) => {
     case LtiInstallKeysConstants.CREATE_LTI_INSTALL_KEY_DONE: {
       const newState = _.cloneDeep(state);
 
-      _.remove(newState.ltiInstallKeys, ltiInstallKey => (
+      _.remove(newState.ltiInstallKeys, (ltiInstallKey) => (
         ltiInstallKey.id === action.payload.id
       ));
       newState.ltiInstallKeys.push(translateLtiInstallKey(action.payload));
@@ -50,7 +50,7 @@ export default (state = initialState, action) => {
 
     case LtiInstallKeysConstants.DELETE_LTI_INSTALL_KEY_DONE: {
       const newState = _.cloneDeep(state);
-      _.remove(newState.ltiInstallKeys, ltiInstallKey => (
+      _.remove(newState.ltiInstallKeys, (ltiInstallKey) => (
         ltiInstallKey.id === action.original.ltiInstallKeyId
       ));
       return newState;

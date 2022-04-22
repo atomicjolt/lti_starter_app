@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        ruby-version: [2.5, 2.6, 2.7]
+        ruby-version: [2.7]
 
     # Service containers to run with `container-job`
     services:
@@ -81,13 +81,15 @@ jobs:
           PGDB: postgres_test
         run: bin/rails db:create
 
-      - name: Load db schema
+      - name: Run migrations
         env:
           RAILS_ENV: test
           RAILS_GROUPS: build
           PGHOST: localhost
           PGUSER: postgres
-        run: bin/rails db:schema:load
+        run: bin/rails db:migrate
 
       - name: Run tests
         run: bin/rspec
+
+

@@ -15,15 +15,18 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+  # Enable server timing
+  config.server_timing = true
+
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
-  if Rails.root.join('tmp', 'caching-dev.txt').exist?
+  if Rails.root.join("tmp/caching-dev.txt").exist?
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+      "Cache-Control" => "public, max-age=#{2.days.to_i}"
     }
   else
     config.action_controller.perform_caching = false
@@ -68,10 +71,6 @@ Rails.application.configure do
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
 
-  # Use an evented file watcher to asynchronously detect changes in source code,
-  # routes, locales, etc. This feature depends on the listen gem.
-  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
@@ -80,12 +79,12 @@ Rails.application.configure do
   #
   config.generators do |g|
     g.test_framework :rspec,
-                     fixtures: true,
-                     view_specs: false,
-                     helper_specs: false,
-                     routing_specs: false,
-                     controller_specs: false,
-                     request_specs: false
+                    fixtures: true,
+                    view_specs: false,
+                    helper_specs: false,
+                    routing_specs: false,
+                    controller_specs: false,
+                    request_specs: false
     g.fixture_replacement :factory_bot, dir: "spec/factories"
   end
 
@@ -114,4 +113,9 @@ Rails.application.configure do
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.middleware.use RequestsLogger
+
+  # See https://stackoverflow.com/questions/53878453/upgraded-rails-to-6-getting-blocked-host-error
+  # This removes whitelisting of domains allowed to front the application
+  # config.hosts.clear
+  config.hosts << ".atomicjolt.win"
 end

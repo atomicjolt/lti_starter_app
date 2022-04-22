@@ -1,28 +1,30 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Index } from './index';
+import TestRenderer, { act } from 'react-test-renderer';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+
+import Index from './index';
+
+const mockStore = configureStore([]);
+const store = mockStore({});
 
 describe('layout index', () => {
   let result;
-
-  let getSites = false;
-  let getApplications = false;
-
-  let props;
-
+  const location = {
+    pathname: '/'
+  };
   const text = 'hello';
-  const children = <h1>{text}</h1>;
 
   beforeEach(() => {
-    props = {
-      children,
-      getApplications: () => { getApplications = true; },
-      getSites: () => { getSites = true; },
-      location: {
-        pathname: '/'
-      },
-    };
-    result = shallow(<Index {...props} />);
+    act(() => {
+      result = TestRenderer.create(
+        <Provider store={store}>
+          <Index location={location}>
+            <h1>{text}</h1>
+          </Index>
+        </Provider>
+      );
+    });
   });
 
   it('renders the index', () => {
@@ -33,12 +35,10 @@ describe('layout index', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it('Loads sites', () => {
-    result.instance().componentDidMount();
-    expect(getSites).toBe(true);
-  });
-
-  it('Loads applications', () => {
-    expect(getApplications).toBe(true);
+  it('Loads sites and applications', () => {
+    // Test that the store dispatched an action to get sites and applications
+    const actions = store.getActions();
+    expect(!!actions.find((a) => a.type === 'GET_APPLICATIONS')).toEqual(true);
+    expect(!!actions.find((a) => a.type === 'GET_SITES')).toEqual(true);
   });
 });

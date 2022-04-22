@@ -30,20 +30,11 @@ module LtiAdvantage
       return "anonymous" if @application_instance.anonymous?
 
       @lti_token["name"] ||
-        "#{@lti_token['given_name']} #{@lti_token['family_name']}" ||
-        @lti_token["email"]
+        "#{@lti_token['given_name']} #{@lti_token['family_name']}" || email
     end
 
     def email
-      if @application_instance.anonymous?
-        _generate_email
-      else
-        # If there isn't an email then we have to make one up. We use the user_id and instance guid
-        email = @lti_token["email"]
-        # If there isn't an email then we have to make one up. We use the user_id and instance guid
-        email = "generated-user-#{@lti_user_id}@#{_domain_for_email}" if email.blank? && @lti_user_id.present?
-        email
-      end
+      @email ||= _generate_email
     end
 
     # If a LTI 1.1 install is being migrated to an Advantage install,
@@ -100,7 +91,7 @@ module LtiAdvantage
     end
 
     def _generate_email
-      "generated-#{@lti_user_id}@#{_domain_for_email}"
+      "generated-#{@lti_user_id}-#{::SecureRandom::hex(10)}@#{_domain_for_email}"
     end
 
     def _domain_for_email
@@ -134,7 +125,7 @@ module LtiAdvantage
     def _attempt_uniq_email(user)
       count = 0 # don't go infinite
       while !safe_save_email(user) && count < 10
-        user.email = _generate_email
+        user.email = email
         count = count + 1
       end
     end

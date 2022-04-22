@@ -48,10 +48,7 @@ exports[`application instance form matches the snapshot 1`] = `
         <span>
           Canvas Url
         </span>
-        <StateManager
-          defaultInputValue=""
-          defaultMenuIsOpen={false}
-          defaultValue={null}
+        <ForwardRef
           isClearable={false}
           name="site_id"
           onChange={[Function]}
@@ -207,10 +204,7 @@ exports[`application instance form matches the snapshot 1`] = `
         <span>
           Language
         </span>
-        <StateManager
-          defaultInputValue=""
-          defaultMenuIsOpen={false}
-          defaultValue={null}
+        <ForwardRef
           isClearable={false}
           name="language"
           onChange={[Function]}

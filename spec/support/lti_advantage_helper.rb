@@ -43,7 +43,7 @@ def setup_canvas_lti_advantage(
       context_id: @context_id,
       message_type: @message_type,
       resource_link_id: @resource_link_id,
-      deployment_id: @deployment_id
+      deployment_id: @deployment_id,
     ),
     jwk.private_key,
     jwk.alg,

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :public_keys
   resource :lti_config
 
+  resources :lti_dynamic_registrations
   resources :lti_launches do
     collection do
       post :index
@@ -40,6 +41,8 @@ Rails.application.routes.draw do
     put "users" => "devise/registrations#update", as: "user_registration"
   end
 
+  resource :two_factor_settings, except: [:index, :show]
+
   resources :users
 
   namespace :admin do
@@ -57,6 +60,10 @@ Rails.application.routes.draw do
         end
       end
       resources :lti_install_keys
+    end
+
+    resources :application_instances do
+      resources :lti_deployments
     end
 
     resources :canvas_accounts, only: [:index]

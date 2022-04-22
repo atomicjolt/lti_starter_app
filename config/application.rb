@@ -7,10 +7,10 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module ReactRailsStarterApp
+module LtiStarterApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.1
+    config.load_defaults 7.0
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -28,17 +28,16 @@ module ReactRailsStarterApp
 
     config.action_dispatch.default_headers.delete("X-Frame-Options")
 
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins "*"
-        resource "*", headers: :any, methods: [:get, :post, :options]
-      end
-    end
-
     # Middleware that can restore state after an OAuth request
     config.middleware.insert_before 0, OauthStateMiddleware
 
+    ActiveRecord::Tasks::DatabaseTasks.structure_dump_flags = ['--clean', '--if-exists']
+    config.active_record.schema_format = :sql
+    config.active_record.dump_schemas = "public"
     config.active_job.queue_adapter = :que
+
+    # Store a reference to the encryption key in the encrypted message itself.
+    config.active_record.encryption.store_key_references = true
 
     config.webpack = {
       use_manifest: false,

@@ -72,3 +72,13 @@ rerun.txt
 yarn-debug.log*
 .yarn-integrity
 .vscode
+
+db/structure.sql
+
+# Ignore all credentials except the test credentials. The CI needs the test version to run the tests.
+/config/credentials/development.key
+/config/credentials/development.yml.enc
+/config/credentials/production.key
+/config/credentials/production.yml.enc
+/config/credentials.yml.enc
+/config/master.key
