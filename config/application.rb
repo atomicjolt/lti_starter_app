@@ -28,13 +28,6 @@ module LtiStarterApp
 
     config.action_dispatch.default_headers.delete("X-Frame-Options")
 
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins "*"
-        resource "*", headers: :any, methods: [:get, :post, :options]
-      end
-    end
-
     # Middleware that can restore state after an OAuth request
     config.middleware.insert_before 0, OauthStateMiddleware
 
