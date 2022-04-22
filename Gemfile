@@ -32,8 +32,8 @@ gem "strong_password"
 gem "ims-lti", "~> 2.1.5" # IMS LTI tool consumers and providers
 gem "json-jwt"
 gem "jwt"
-gem "lms-api", "~>1.12.0"
-gem "lms-graphql-api", ">=0.5.3"
+gem "lms-api", "~>1.23.0"
+gem "lms-graphql-api", "~>2.0.0"
 gem "omniauth"
 gem "omniauth-canvas", "~>1.0.2"
 gem "rolify"
@@ -56,7 +56,6 @@ gem "rollbar"
 
 # API Related
 gem "httparty"
-gem "rack-cors", require: "rack/cors"
 
 # Paging
 gem "will_paginate"
@@ -67,9 +66,9 @@ gem "webpacker"
 # Application secrets checker
 gem "nuclear_secrets"
 
-gem "graphql", "~>1.9.18" # TODO 1.10.x breaks the app. Need to figure out why
-gem "graphql-batch", "~> 0.3.9"
-gem "graphql-guard"
+gem "graphql", "~>1.13.0"
+gem "graphql-batch", "~>0.4.3"
+gem "graphql-guard", "~>2.0.0"
 
 group :development do
   # UI
