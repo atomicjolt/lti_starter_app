@@ -1,5 +1,12 @@
 FROM ruby:2.7.4-alpine3.14 as build-env
 
+# Build options:
+# --build-arg VERSION=4.0.4
+
+# VERSION is the semantic version or GIT SHA
+
+# With no build args the build uses VERSION=latest
+
 ARG RAILS_ROOT=/app
 
 WORKDIR $RAILS_ROOT
@@ -18,7 +25,7 @@ RUN apk update \
   && apk add --update --no-cache \
      build-base curl-dev git postgresql-dev \
      yaml-dev zlib-dev nodejs yarn cmake tzdata \
-     shared-mime-info sassc
+     shared-mime-info sassc curl
 
 COPY Gemfile* package.json yarn.lock ./
 COPY ./config/secrets.yml.example ./config/k8s/secrets.yml
@@ -29,9 +36,13 @@ RUN gem install bundler \
 
 RUN yarn install
 COPY . .
-RUN bin/rails assets:precompile
 
-RUN rm -rf node_modules tmp/cache spec \
+ARG VERSION=latest
+
+RUN printf 'APP_VERSION="%s".freeze\n' "$VERSION" > config/version.rb \
+  && bin/rails assets:precompile
+
+RUN rm -rf node_modules client tmp/cache spec \
   && bundle install --without test linter development ci build \
   && bundle clean --force \
   && rm -rf /usr/local/bundle/cache/*.gem \
@@ -52,12 +63,12 @@ ENV RAILS_SERVE_STATIC_FILES=1
 RUN apk update \
   && apk upgrade \
   && apk add --update --no-cache \
-     tzdata postgresql-client nodejs bash \
+     tzdata postgresql-client bash \
      shared-mime-info git \
   && addgroup -S app-user && adduser -S app-user -G app-user
 
-COPY --from=build-env $RAILS_ROOT $RAILS_ROOT
 COPY --from=build-env /usr/local/bundle /usr/local/bundle
+COPY --from=build-env $RAILS_ROOT $RAILS_ROOT
 
 RUN bundle install --without test linter development ci build \
   && mkdir -p tmp/pids \

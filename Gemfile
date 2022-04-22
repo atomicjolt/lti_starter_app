@@ -91,12 +91,6 @@ group :development do
   gem "web-console"
 end
 
-group :development, :linter do
-  gem "rubocop"
-  gem "rubocop-performance"
-  gem "rubocop-rails"
-end
-
 group :development, :build, :ci, :test do
   # Assets
   gem "sassc-rails"
@@ -118,6 +112,14 @@ group :development, :test do
   gem "rails-controller-testing"
   gem "rspec-rails"
   gem "ruby-debug-ide"
+end
+
+group :development, :test, :linter do
+  gem "reek"
+  gem "rubocop"
+  gem "rubocop-performance"
+  gem "rubocop-rails"
+  gem "rubocop-rspec"
 end
 
 group :test do

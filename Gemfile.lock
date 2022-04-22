@@ -212,6 +212,7 @@ GEM
       aes_key_wrap
       bindata
     jwt (2.3.0)
+    kwalify (0.7.2)
     launchy (2.5.0)
       addressable (~> 2.7)
     listen (3.7.1)
@@ -361,6 +362,10 @@ GEM
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    reek (6.1.1)
+      kwalify (~> 0.7.0)
+      parser (~> 3.1.0)
+      rainbow (>= 2.0, < 4.0)
     regexp_parser (2.3.0)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -417,6 +422,8 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
+    rubocop-rspec (2.10.0)
+      rubocop (~> 1.19)
     ruby-debug-ide (0.7.3)
       rake (>= 0.8.1)
     ruby-progressbar (1.11.0)
@@ -543,6 +550,7 @@ DEPENDENCIES
   rb-fchange
   rb-fsevent
   rb-inotify
+  reek
   rolify
   rollbar
   ros-apartment
@@ -551,6 +559,7 @@ DEPENDENCIES
   rubocop
   rubocop-performance
   rubocop-rails
+  rubocop-rspec
   ruby-debug-ide
   sassc-rails
   selenium-webdriver
