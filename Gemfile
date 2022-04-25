@@ -11,7 +11,10 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "7.0.2.3"
+gem "rails", "~> 7.0.2", ">= 7.0.2.3"
+
+# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+gem "sprockets-rails"
 
 # Improve boot time
 gem "bootsnap", require: false
@@ -62,9 +65,6 @@ gem "will_paginate"
 
 # Javascript
 gem "webpacker"
-
-# Application secrets checker
-gem "nuclear_secrets"
 
 gem "graphql", "~>1.13.0"
 gem "graphql-batch", "~>0.4.3"

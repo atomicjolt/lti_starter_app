@@ -29,6 +29,7 @@ RUN apk update \
 
 COPY Gemfile* package.json yarn.lock ./
 COPY ./config/secrets.yml.example ./config/k8s/secrets.yml
+COPY ./config/secrets.yml.example ./config/secrets.yml
 
 RUN gem install bundler \
   && bundle config frozen 1 \

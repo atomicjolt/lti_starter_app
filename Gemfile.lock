@@ -269,8 +269,6 @@ GEM
     notiffany (0.1.3)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    nuclear_secrets (1.0.5)
-      rails (>= 5.0.0)
     oauth2 (1.4.9)
       faraday (>= 0.17.3, < 3.0)
       jwt (>= 1.0, < 3.0)
@@ -533,7 +531,6 @@ DEPENDENCIES
   lms-graphql-api (~> 2.0.0)
   mail_view
   non-stupid-digest-assets
-  nuclear_secrets
   omniauth
   omniauth-canvas (~> 1.0.2)
   pg
@@ -542,7 +539,7 @@ DEPENDENCIES
   pronto-rubocop
   puma
   que
-  rails (= 7.0.2.3)
+  rails (~> 7.0.2, >= 7.0.2.3)
   rails-controller-testing
   rails_apps_pages
   rails_apps_testing
@@ -565,6 +562,7 @@ DEPENDENCIES
   selenium-webdriver
   sendgrid
   shoulda-matchers
+  sprockets-rails
   strong_password
   tzinfo-data
   uglifier
