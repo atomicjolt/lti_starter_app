@@ -44,5 +44,14 @@ module LtiStarterApp
       asset_manifest: {},
       common_manifest: {},
     }
+
+    # Any standard rails config files placed in config/k8s will override the corresponding files
+    # in config/. This allows us to use config/k8s as a secrets mount.
+    if Dir.exist?("config/k8s")
+      Dir.glob("config/k8s/*.{yml,key,yml.enc}") do |filename|
+        paths.add "config/#{File.basename(filename).split('.')[0]}", with: filename
+      end
+    end
+
   end
 end
