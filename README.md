@@ -44,7 +44,7 @@ After [setting up the LTI Starter App](#setting-up-lti-starter-app), start Rails
 2. Create a directory called 'secrets' and add a valid 'secrets.yml' and 'database.yml'
 
 3. Run the image:
-  `docker run -it --rm --mount "type=bind,source=./secrets,target=/app/config/k8s" lti-starter-app /bin/bash`
+  `docker run -it --mount "type=bind,source=./secrets,target=/app/config/k8s" lti-starter-app`
 
 ## Setting up LTI Starter App
 
