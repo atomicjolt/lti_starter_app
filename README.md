@@ -37,6 +37,14 @@ After [setting up the LTI Starter App](#setting-up-lti-starter-app), start Rails
   $ yarn hot
 ```
 
+### Docker
+1. Build the docker image:
+  `docker build . -t lti-starter-app`
+
+2. Create a directory called 'secrets' and add a valid 'secrets.yml' and 'database.yml'
+
+3. Run the image:
+  `docker run -it --rm --mount "type=bind,source=./secrets,target=/app/config/k8s" lti-starter-app /bin/bash`
 
 ## Setting up LTI Starter App
 
