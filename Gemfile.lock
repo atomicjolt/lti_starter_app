@@ -94,6 +94,7 @@ GEM
       debug_inspector (>= 0.0.1)
     bootsnap (1.11.1)
       msgpack (~> 1.2)
+    brakeman (5.2.2)
     builder (3.2.4)
     byebug (11.1.3)
     cancancan (3.3.0)
@@ -504,6 +505,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap
+  brakeman
   byebug
   cancancan
   capybara

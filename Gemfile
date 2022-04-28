@@ -115,6 +115,7 @@ group :development, :test do
 end
 
 group :development, :test, :linter do
+  gem "brakeman"
   gem "reek"
   gem "rubocop"
   gem "rubocop-performance"
