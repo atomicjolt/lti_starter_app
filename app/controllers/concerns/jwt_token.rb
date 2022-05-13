@@ -28,7 +28,7 @@ module JwtToken
     end
 
     @user = User.find(token["user_id"])
-    sign_in(@user, event: :authentication)
+    sign_in(@user, event: :authentication, store: false)
   rescue JWT::DecodeError, InvalidTokenError => e
     Rails.logger.error "JWT Error occured #{e.inspect}"
     render json: { error: "Unauthorized: Invalid token." }, status: :unauthorized
