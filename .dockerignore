@@ -1,0 +1,41 @@
+.git
+.cache
+.env*
+.bundle
+.irb-history
+.dockerignore
+Dockerfile
+config/secrets.yml
+config/database.yml
+vendor
+helm
+public/assets
+tmp
+.*history
+node_modules
+log/*
+tmp/*
+# avoid adding built files
+public/system
+public/assets
+build
+
+# git artifacts
+**.orig
+canvas.manifest
+**~
+
+# Test artifacts
+rerun.txt
+coverage
+spec/tmp
+
+.idea
+public/packs
+public/packs-test
+node_modules
+yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+.vscode
+.idea

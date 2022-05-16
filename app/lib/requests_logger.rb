@@ -19,16 +19,21 @@ class RequestsLogger
     lti_launch = request.path.match?(/^\/lti_launches/) ? 1 : 0
     error = @status.to_s.match?(/^5/) ? 1 : 0
 
+    time_type = ActiveModel::Type::Time.new
+    int_type = ActiveModel::Type::Integer.new limit: 4
+    big_int_type = ActiveModel::Type::BigInteger.new
+    str_type = ActiveModel::Type::String.new
+
     request_binds = [
-      [nil, current_hour],
-      [nil, tenant],
-      [nil, lti_launch],
-      [nil, error],
+      ActiveRecord::Relation::QueryAttribute.new("truncated_time", current_hour, time_type),
+      ActiveRecord::Relation::QueryAttribute.new("tenant", tenant, str_type),
+      ActiveRecord::Relation::QueryAttribute.new("number_of_lti_launches", lti_launch, int_type),
+      ActiveRecord::Relation::QueryAttribute.new("number_of_errors", error, int_type),
     ]
     user_binds = [
-      [nil, current_hour],
-      [nil, tenant],
-      [nil, user_id],
+      ActiveRecord::Relation::QueryAttribute.new("truncated_time", current_hour, time_type),
+      ActiveRecord::Relation::QueryAttribute.new("tenant", tenant, str_type),
+      ActiveRecord::Relation::QueryAttribute.new("user_id", user_id, big_int_type),
     ]
 
     ActiveRecord::Base.connection.exec_query(

@@ -11,7 +11,10 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "7.0.2.3"
+gem "rails", "~> 7.0.3"
+
+# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+gem "sprockets-rails"
 
 # Improve boot time
 gem "bootsnap", require: false
@@ -32,8 +35,8 @@ gem "strong_password"
 gem "ims-lti", "~> 2.1.5" # IMS LTI tool consumers and providers
 gem "json-jwt"
 gem "jwt"
-gem "lms-api", "~>1.12.0"
-gem "lms-graphql-api", ">=0.5.3"
+gem "lms-api", "~>1.23.0"
+gem "lms-graphql-api", "~>2.0.0"
 gem "omniauth"
 gem "omniauth-canvas", "~>1.0.2"
 gem "rolify"
@@ -56,7 +59,6 @@ gem "rollbar"
 
 # API Related
 gem "httparty"
-gem "rack-cors", require: "rack/cors"
 
 # Paging
 gem "will_paginate"
@@ -64,12 +66,9 @@ gem "will_paginate"
 # Javascript
 gem "webpacker"
 
-# Application secrets checker
-gem "nuclear_secrets"
-
-gem "graphql", "~>1.9.18" # TODO 1.10.x breaks the app. Need to figure out why
-gem "graphql-batch", "~> 0.3.9"
-gem "graphql-guard"
+gem "graphql", "~>1.13.0"
+gem "graphql-batch", "~>0.4.3"
+gem "graphql-guard", "~>2.0.0"
 
 group :development do
   # UI
@@ -90,12 +89,6 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem "listen"
   gem "web-console"
-end
-
-group :development, :linter do
-  gem "rubocop"
-  gem "rubocop-performance"
-  gem "rubocop-rails"
 end
 
 group :development, :build, :ci, :test do
@@ -119,6 +112,15 @@ group :development, :test do
   gem "rails-controller-testing"
   gem "rspec-rails"
   gem "ruby-debug-ide"
+end
+
+group :development, :test, :linter do
+  gem "brakeman"
+  gem "reek"
+  gem "rubocop"
+  gem "rubocop-performance"
+  gem "rubocop-rails"
+  gem "rubocop-rspec"
 end
 
 group :test do

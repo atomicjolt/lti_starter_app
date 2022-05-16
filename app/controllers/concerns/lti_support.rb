@@ -16,14 +16,14 @@ module LtiSupport
 
       set_lti_advantage_launch_values
       user = LtiAdvantage::LtiUser.new(@lti_token, current_application_instance).user
-      sign_in(user, event: :authentication)
+      sign_in(user, event: :authentication, store: false)
       return
     elsif valid_lti_request?(current_application_instance.lti_secret)
       if user = user_from_lti
         # until the code to fix the valid lti request is up
         # then we will confirm emails here to use it on the course nav
         user.confirm unless user.confirmed?
-        sign_in(user, event: :authentication)
+        sign_in(user, event: :authentication, store: false)
         return
       end
     end

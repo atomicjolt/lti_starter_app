@@ -40,6 +40,12 @@ class User < ApplicationRecord
   end
 
   def self.create_on_tenant(application_instance, user)
+    existing_user = Apartment::Tenant.switch(application_instance.tenant) do
+      User.find_by(email: user.email, lti_user_id: user.lti_user_id)
+    end
+
+    return existing_user if existing_user.present?
+
     user_permissions = user.permissions.load.includes(:role).load
     Apartment::Tenant.switch(application_instance.tenant) do
       user_dup = User.find_or_initialize_by(
