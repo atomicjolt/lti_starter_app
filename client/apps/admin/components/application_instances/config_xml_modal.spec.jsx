@@ -11,13 +11,11 @@ describe('config xml modal', () => {
 
   // https://medium.com/@amanverma.dev/mocking-create-portal-to-utilize-react-test-renderer-in-writing-snapshot-uts-c49773c88acd
   beforeAll(() => {
-    ReactDOM.createPortal = jest.fn((element, node) => {
-      return element
-    })
+    ReactDOM.createPortal = jest.fn((element, node) => element);
   });
 
   afterEach(() => {
-    ReactDOM.createPortal.mockClear()
+    ReactDOM.createPortal.mockClear();
   });
 
   beforeEach(() => {
