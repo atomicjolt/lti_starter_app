@@ -4,32 +4,39 @@ import CourseInstalls from './course_installs';
 
 describe('lti installs course install', () => {
   let result;
-  let props;
   const courseId = 123;
   let instance;
+  let changed;
+
+  const applicationInstance = {
+    name: 'application_name',
+    lti_key: 'lti_key',
+    lti_secret: 'lti_secret',
+    lti_config_xml: 'lti_config_xml',
+  };
+  const canvasRequest = () => {};
+  const onlyShowInstalledChanged = () => { changed = true; };
+  const loadingCourses = {
+    courseName: 'name',
+    courseId: 'id',
+  };
+  const courses = [];
+  const installedTool = {
+    id: 12,
+  };
+  const courseName = 'courseName';
 
   beforeEach(() => {
-    props = {
-      applicationInstance: {
-        name: 'application_name',
-        lti_key: 'lti_key',
-        lti_secret: 'lti_secret',
-        lti_config_xml: 'lti_config_xml',
-      },
-      canvasRequest: () => {},
-      onlyShowInstalledChanged: () => { changed = true; },
-      loadingCourses: {
-        courseName: 'name',
-        courseId: 'id',
-      },
-      courses: [],
-      installedTool: {
-        id: 12
-      },
-      courseName: 'courseName',
-      courseId,
-    };
-    result = TestRenderer.create(<CourseInstalls {...props} />);
+    result = TestRenderer.create(<CourseInstalls
+      applicationInstance={applicationInstance}
+      canvasRequest={canvasRequest}
+      onlyShowInstalledChanged={onlyShowInstalledChanged}
+      loadingCourses={loadingCourses}
+      courses={courses}
+      installedTool={installedTool}
+      courseName={courseName}
+      courseId={courseId}
+    />);
     instance = result.root;
   });
 
@@ -46,8 +53,8 @@ describe('lti installs course install', () => {
   });
 
   it('renders buttons', () => {
-    const courseName = instance.findByType('span');
-    expect(courseName.props().children).toBe('Course Name');
+    const courseNameSpan = instance.findByType('span');
+    expect(courseNameSpan.props.children).toBe('Course Name');
   });
 
   // Remove the checkbox so removing the test for now
