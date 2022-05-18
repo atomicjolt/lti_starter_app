@@ -4,26 +4,27 @@ import Header from './header';
 
 describe('sites header', () => {
   let result;
-  let props;
   let clicked;
+  let instance;
+
+  const newSite = () => {
+    clicked = true;
+  };
 
   beforeEach(() => {
     clicked = false;
-    props = {
-      newSite: () => { clicked = true; },
-    };
-
-    result = TestRenderer.create(<Header {...props} />);
+    result = TestRenderer.create(<Header newSite={newSite} />);
+    instance = result.root;
   });
 
   it('renders the header', () => {
     const h1 = instance.findByType('h1');
-    expect(h1.props().children).toContain('Sites');
+    expect(h1.props.children).toContain('Sites');
   });
 
   it('renders new site button', () => {
     const button = instance.findByType('button');
-    expect(button.props().children).toBe('New Site');
+    expect(button.props.children).toBe('New Site');
   });
 
   it('handles the onClick event', () => {

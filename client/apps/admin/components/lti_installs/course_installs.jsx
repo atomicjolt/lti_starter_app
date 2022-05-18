@@ -4,10 +4,15 @@ import _ from 'lodash';
 import CourseInstallRow from './course_install_row';
 
 export default function CourseInstalls(props) {
-  const courses = _.map(props.courses, (course) => {
+  const { courses } = props;
+  const { applicationInstance } = props;
+  const { canvasRequest } = props;
+  const { loadingCourses } = props;
+
+  const acourses = _.map(courses, (course) => {
     const installedTool = _.find(
       course.external_tools,
-      tool => tool.consumer_key === props.applicationInstance.lti_key
+      (tool) => tool.consumer_key === applicationInstance.lti_key
     );
 
     return (
@@ -16,8 +21,8 @@ export default function CourseInstalls(props) {
         courseName={course.name}
         courseId={course.id}
         installedTool={installedTool}
-        canvasRequest={props.canvasRequest}
-        applicationInstance={props.applicationInstance}
+        canvasRequest={canvasRequest}
+        applicationInstance={applicationInstance}
       />
     );
   });
@@ -29,7 +34,7 @@ export default function CourseInstalls(props) {
           <th><span>Course Name</span></th>
           <th>
             <div className="c-checkbox--right-titlebar">
-              {/*Removed for now. In order to show only the installs we have to load
+              {/* Removed for now. In order to show only the installs we have to load
                 the external tools for all courses which ends up being hundreds of API calls.
               <input
                 type="checkbox"
@@ -37,13 +42,13 @@ export default function CourseInstalls(props) {
                 name="onlyShowInstalled"
                 onChange={props.onlyShowInstalledChanged}
               />
-              <label htmlFor="onlyShowInstalled">Show only installed</label>*/}
+              <label htmlFor="onlyShowInstalled">Show only installed</label> */}
             </div>
           </th>
         </tr>
       </thead>
       <tbody>
-        {_.isEmpty(props.loadingCourses) ? courses : null}
+        {_.isEmpty(loadingCourses) ? acourses : null}
       </tbody>
     </table>
   );
@@ -53,5 +58,5 @@ CourseInstalls.propTypes = {
   courses: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   loadingCourses: PropTypes.shape({}),
   applicationInstance: PropTypes.shape({}),
-  onlyShowInstalledChanged: PropTypes.func.isRequired,
+  // onlyShowInstalledChanged: PropTypes.func.isRequired,
 };
