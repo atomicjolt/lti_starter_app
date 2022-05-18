@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
@@ -14,11 +14,19 @@ export default function SubAccount(props) {
   const [open, setOpen] = useState(false);
   const [hasToggled, setHasToggled] = useState(false);
 
-  const componentWillReceiveProps = (nextProps) => {
+  // // original
+  // const componentWillReceiveProps = (nextProps) => {
+  //   if (nextProps.currentAccount === nextProps.account && !hasToggled) {
+  //     setOpen(true);
+  //   }
+  // };
+
+  // not sure how to do this with the (nextProps)
+  useEffect((nextProps) => {
     if (nextProps.currentAccount === nextProps.account && !hasToggled) {
       setOpen(true);
     }
-  };
+  });
 
   const getChildrenAccounts = () => _(accounts)
     .filter({ parent_account_id: account.id })
