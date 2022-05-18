@@ -1,17 +1,11 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import TestRenderer from 'react-test-renderer';
-import ReactTestUtils from 'react-dom/test-utils';
+import ReactTestUtils, { act } from 'react-dom/test-utils';
 import Textarea from './textarea';
 
 describe('textarea', () => {
-  let result;
-  let changed;
-  let instance;
-
-  const onChange = () => {
-    changed = true;
-  };
-
+  const onChange = jest.fn();
   const textareaprops = {
     id: 'IM AN ID',
     value: 'IM A VALUE',
@@ -28,26 +22,33 @@ describe('textarea', () => {
   const className = 'imaclass';
   const labelText = 'IMA LABEL';
 
-  beforeEach(() => {
-    changed = false;
-    result = TestRenderer.create(<Textarea
+  it('matches the snapshot', () => {
+    const result = TestRenderer.create(<Textarea
       textareaProps={textareaprops}
       className={className}
       labelText={labelText}
     />);
-    instance = result.root;
-  });
-
-  it('matches the snapshot', () => {
     expect(result).toMatchSnapshot();
   });
 
   it('handles the onChange event', () => {
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    act(() => {
+      ReactDOM.render(
+        <Textarea
+          textareaProps={textareaprops}
+          className={className}
+          labelText={labelText}
+        />,
+        container
+      );
+    });
+    const textareas = document.getElementsByTagName('textarea');
+    expect(textareas.length).toEqual(1);
+    const textarea = textareas[0];
     const event = { target: { value: 'test onChange' } };
-    const textarea = instance.findByType('textarea');
-    expect(changed).toBeFalsy();
     ReactTestUtils.Simulate.change(textarea, event);
-    // instance.findByType('input').simulate('change'); // original way it was done in code
-    expect(changed).toBeTruthy();
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 });
