@@ -2,23 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function Textarea(props) {
+  const {
+    textareaProps,
+    className,
+    warning,
+    labelText
+  } = props;
+
   return (
-    <label htmlFor={props.textareaProps.id} className={props.className}>
-      <span>{props.labelText}</span>
+    <label htmlFor={textareaProps.id} className={className}>
+      <span>{labelText}</span>
       <textarea
-        id={props.textareaProps.id}
-        value={props.textareaProps.value}
-        disabled={props.textareaProps.disabled}
-        name={props.textareaProps.name}
-        placeholder={props.textareaProps.placeholder}
-        maxLength={props.textareaProps.maxLength}
-        minLength={props.textareaProps.minLength}
-        cols={props.textareaProps.cols}
-        rows={props.textareaProps.rows}
-        onChange={props.textareaProps.onChange}
-        readOnly={props.textareaProps.readOnly}
+        id={textareaProps.id}
+        value={textareaProps.value}
+        disabled={textareaProps.disabled}
+        name={textareaProps.name}
+        placeholder={textareaProps.placeholder}
+        maxLength={textareaProps.maxLength}
+        minLength={textareaProps.minLength}
+        cols={textareaProps.cols}
+        rows={textareaProps.rows}
+        onChange={textareaProps.onChange}
+        readOnly={textareaProps.readOnly}
       />
-      {props.warning}
+      {warning}
     </label>
   );
 }
