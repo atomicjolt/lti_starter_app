@@ -9,6 +9,7 @@ exports[`lti installs accounts matches the snapshot 1`] = `
   >
     <button
       onClick={[Function]}
+      type="button"
     >
       account_name
     </button>

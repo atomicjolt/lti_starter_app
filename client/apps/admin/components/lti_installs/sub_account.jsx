@@ -14,19 +14,11 @@ export default function SubAccount(props) {
   const [open, setOpen] = useState(false);
   const [hasToggled, setHasToggled] = useState(false);
 
-  // // original
-  // const componentWillReceiveProps = (nextProps) => {
-  //   if (nextProps.currentAccount === nextProps.account && !hasToggled) {
-  //     setOpen(true);
-  //   }
-  // };
-
-  // not sure how to do this with the (nextProps)
-  useEffect((nextProps) => {
-    if (nextProps.currentAccount === nextProps.account && !hasToggled) {
+  useEffect(() => {
+    if (currentAccount === account && !hasToggled) {
       setOpen(true);
     }
-  });
+  }, [currentAccount, account, hasToggled]);
 
   const getChildrenAccounts = () => _(accounts)
     .filter({ parent_account_id: account.id })
@@ -56,6 +48,7 @@ export default function SubAccount(props) {
       className={isActive ? 'c-filter__item is-active' : 'c-filter__item'}
     >
       <button
+        type="button"
         onClick={handleAccountClick}
       >
         { childrenAccounts.length ? <i className={open ? 'i-dropdown is-open' : 'i-dropdown'} /> : null }
@@ -67,3 +60,16 @@ export default function SubAccount(props) {
     </li>
   );
 }
+
+SubAccount.propTypes = {
+  accounts: PropTypes.shape({}).isRequired,
+  account: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+  }).isRequired,
+  isActive: PropTypes.bool,
+  currentAccount: PropTypes.shape({
+    id: PropTypes.number
+  }),
+  setAccountActive: PropTypes.func.isRequired,
+};

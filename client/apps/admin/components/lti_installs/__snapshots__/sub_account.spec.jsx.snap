@@ -6,6 +6,7 @@ exports[`should render nested accounts and active matches the snapshot 1`] = `
 >
   <button
     onClick={[Function]}
+    type="button"
   >
     <i
       className="i-dropdown"
