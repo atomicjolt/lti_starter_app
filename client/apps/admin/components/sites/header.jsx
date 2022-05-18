@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Header = (props) => {
+export default function Header(props) {
   const {
     newSite
   } = props;
@@ -16,10 +16,8 @@ const Header = (props) => {
       </button>
     </div>
   );
-};
+}
 
 Header.propTypes = {
   newSite: PropTypes.func.isRequired,
 };
-
-export default Header;
