@@ -1,63 +1,147 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`site modal matches the snapshot 1`] = `
-<Modal
-  ariaHideApp={true}
-  bodyOpenClassName="ReactModal__Body--open"
-  className="c-modal c-modal--site is-open"
-  closeTimeoutMS={0}
-  contentElement={[Function]}
-  contentLabel="Modal"
-  isOpen={true}
-  onRequestClose={[Function]}
-  overlayClassName="unused"
-  overlayElement={[Function]}
-  parentSelector={[Function]}
-  portalClassName="ReactModalPortal"
-  preventScroll={false}
-  role="dialog"
-  shouldCloseOnEsc={true}
-  shouldCloseOnOverlayClick={true}
-  shouldFocusAfterRender={true}
-  shouldReturnFocusAfterClose={true}
+<div
+  className="ReactModal__Overlay unused"
+  onClick={[Function]}
+  onMouseDown={[Function]}
+  style={Object {}}
 >
-  <h2
-    className="c-modal__title"
+  <div
+    aria-label="Modal"
+    aria-modal={true}
+    className="ReactModal__Content c-modal c-modal--site is-open"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    role="dialog"
+    style={Object {}}
+    tabIndex="-1"
   >
-    Update
-     Domain
-  </h2>
-  <h3
-    className="c-modal__subtext"
-  >
-    <div>
+    <h2
+      className="c-modal__title"
+    >
+      Update
+       
+      Domain
+    </h2>
+    <h3
+      className="c-modal__subtext"
+    >
       <div>
-        Use the redirect URI: 
+        <div>
+          Use the redirect URI:
+           
+          http://example.com
+        </div>
+        <div>
+          <a
+            className="c-modal__subtext-link"
+            href="bfcoder.com/accounts/site_admin/developer_keys"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Get Canvas Developer Keys Here
+          </a>
+        </div>
       </div>
-      <div>
-        <a
-          className="c-modal__subtext-link"
-          href="bfcoder.com/accounts/site_admin/developer_keys"
-          rel="noopener noreferrer"
-          target="_blank"
+    </h3>
+    <h3
+      className="c-modal__subtext"
+    >
+      Url must begin with "https://"
+    </h3>
+    <form>
+      <div
+        className="o-grid o-grid__modal-top"
+      >
+        <div
+          className="o-grid__item u-full"
         >
-          Get Canvas Developer Keys Here
-        </a>
+          <div
+            className="c-input--container"
+          >
+            <label
+              className="c-input"
+              htmlFor="site_url"
+            >
+              <span>
+                Canvas Domain
+              </span>
+              <input
+                id="site_url"
+                name="url"
+                onChange={[Function]}
+                type="text"
+                value="bfcoder.com"
+              />
+            </label>
+          </div>
+        </div>
+        <div
+          className="o-grid__item u-full"
+        >
+          <div
+            className="c-input--container"
+          >
+            <label
+              className="c-input"
+              htmlFor="site_oauth_key"
+            >
+              <span>
+                Canvas Developer ID
+              </span>
+              <input
+                id="site_oauth_key"
+                name="oauth_key"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />
+            </label>
+          </div>
+        </div>
+        <div
+          className="o-grid__item u-full"
+        >
+          <div
+            className="c-input--container"
+          >
+            <label
+              className="c-input"
+              htmlFor="site_oauth_secret"
+            >
+              <span>
+                Canvas Developer Key
+              </span>
+              <input
+                id="site_oauth_secret"
+                name="oauth_secret"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />
+            </label>
+          </div>
+        </div>
       </div>
-    </div>
-  </h3>
-  <h3
-    className="c-modal__subtext"
-  >
-    Url must begin with "https://"
-  </h3>
-  <SiteForm
-    closeModal={[Function]}
-    id={1}
-    isUpdate={true}
-    onChange={[Function]}
-    setupSite={[Function]}
-    url="bfcoder.com"
-  />
-</Modal>
+      <button
+        className="c-btn c-btn--yellow"
+        onClick={[Function]}
+        type="button"
+      >
+        Update
+         Domain
+      </button>
+      <button
+        className="c-btn c-btn--gray--large u-m-right"
+        onClick={[Function]}
+        type="button"
+      >
+        Cancel
+      </button>
+    </form>
+  </div>
+</div>
 `;
