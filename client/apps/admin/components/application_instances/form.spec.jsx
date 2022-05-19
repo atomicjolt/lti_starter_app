@@ -5,23 +5,30 @@ import Form from './form';
 describe('application instance form', () => {
   let result;
   let instance;
-  let props;
   let modalClosed = false;
   let saved;
 
+  const onChange = () => {};
+  const closeModal = () => { modalClosed = true; };
+  const save = () => { saved = true; };
+  const newSite = () => {};
+  const site_id = 'foo';
+  const sites = {};
+  const config = '{ "foo": "bar" }';
+  const ltiConfigParseError = '';
+
   beforeEach(() => {
     saved = false;
-    props = {
-      onChange: () => {},
-      closeModal: () => { modalClosed = true; },
-      save: () => { saved = true; },
-      newSite: () => {},
-      site_id: 'foo',
-      sites: {},
-      config: '{ "foo": "bar" }',
-      ltiConfigParseError: '',
-    };
-    result = TestRenderer.create(<Form {...props} />);
+    result = TestRenderer.create(<Form
+      onChange={onChange}
+      closeModal={closeModal}
+      save={save}
+      newSite={newSite}
+      site_id={site_id}
+      sites={sites}
+      config={config}
+      ltiConfigParseError={ltiConfigParseError}
+    />);
     instance = result.root;
   });
 
