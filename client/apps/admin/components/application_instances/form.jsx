@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import ReactSelect from 'react-select';
@@ -77,7 +77,7 @@ export default function Form(props) {
     onChange(event);
   };
 
-  const options = _.map(sites, site => ({
+  const options = _.map(sites, (site) => ({
     label: site.url,
     value: `${site.id}`
   })).concat({
@@ -86,14 +86,14 @@ export default function Form(props) {
     onSelect: () => newSite()
   });
 
-  const selectedOption = _.find(options, opt => opt.value === site_id);
+  const selectedOption = _.find(options, (opt) => opt.value === site_id);
 
   const languages = _.map(languagesSupported, (label, value) => ({
     label,
     value,
   }));
 
-  const selectedLanguage = _.find(languages, lang => lang.label === currentLanguage);
+  const selectedLanguage = _.find(languages, (lang) => lang.label === currentLanguage);
 
   let erroneousConfigWarning = null;
   if (configParseError) {
@@ -146,7 +146,7 @@ export default function Form(props) {
               value={selectedOption}
               name="site_id"
               placeholder="Select a Canvas Domain"
-              onChange={option => selectSite(option)}
+              onChange={(option) => selectSite(option)}
               isClearable={false}
             />
           </div>
@@ -259,7 +259,7 @@ export default function Form(props) {
               value={selectedLanguage}
               name="language"
               placeholder={currentLanguage}
-              onChange={option => selectLanguage(option)}
+              onChange={(option) => selectLanguage(option)}
               isClearable={false}
             />
           </div>
