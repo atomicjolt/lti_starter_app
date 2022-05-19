@@ -6,9 +6,17 @@ export default function Header(props) {
   return (
     <div className="c-info">
       <div className="c-title">
-        <h1>{application ? application.name : 'App Name'} Lti Install Keys</h1>
+        <h1>
+          {application ? application.name : 'App Name'}
+          {' '}
+          Lti Install Keys
+        </h1>
       </div>
-      <button className="c-btn c-btn--yellow" onClick={newLtiInstallKey}>
+      <button
+        type="button"
+        className="c-btn c-btn--yellow"
+        onClick={newLtiInstallKey}
+      >
         New Lti Install Key
       </button>
     </div>

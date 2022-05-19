@@ -4,18 +4,21 @@ import Header from './header';
 
 describe('application instances header', () => {
   let result;
-  let props;
   let newLtiKey;
+  let instance;
+
+  const application = {
+    name: 'test application',
+  };
+  const newLtiInstallKey = () => { newLtiKey = true; };
 
   beforeEach(() => {
     newLtiKey = false;
-    props = {
-      application: {
-        name: 'test application',
-      },
-      newLtiInstallKey: () => { newLtiKey = true; },
-    };
-    result = TestRenderer.create(<Header {...props} />);
+    result = TestRenderer.create(<Header
+      application={application}
+      newLtiInstallKey={newLtiInstallKey}
+    />);
+    instance = result.root;
   });
 
   it('handles the onClick function', () => {
