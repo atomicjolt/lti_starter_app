@@ -67,6 +67,7 @@ export default function CourseInstallRow(props) {
         <button
           className="c-btn c-btn--gray"
           onClick={() => installInCourse(installedTool, courseId)}
+          type="button"
         >
           {installText}
         </button>
