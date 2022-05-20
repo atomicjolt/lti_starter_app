@@ -7,18 +7,25 @@ import {
 } from 'atomic-canvas/libs/constants/external_tools';
 
 export default function AccountInstall(props) {
-  function install(applicationInstance, installedTool) {
+  const {
+    accountInstalls,
+    applicationInstance,
+    account,
+    canvasRequest,
+  } = props;
+
+  function install(installedTool) {
     if (installedTool) {
-      props.canvasRequest(
+      canvasRequest(
         deleteExternalToolAccounts,
-        { account_id: props.account.id, external_tool_id: installedTool.id },
+        { account_id: account.id, external_tool_id: installedTool.id },
         null,
-        props.account,
+        account,
       );
     } else {
-      props.canvasRequest(
+      canvasRequest(
         createExternalToolAccounts,
-        { account_id: props.account.id },
+        { account_id: account.id },
         {
           name          : applicationInstance.name,
           consumer_key  : applicationInstance.lti_key,
@@ -26,28 +33,31 @@ export default function AccountInstall(props) {
           config_type   : 'by_xml',
           config_xml    : applicationInstance.lti_config_xml
         },
-        props.account,
+        account,
       );
     }
   }
 
-  const externalTools = props.account && props.account.external_tools;
-  const installedTool = _.find(externalTools, tool => (
-    tool.consumer_key === props.applicationInstance.lti_key
+  const externalTools = account && account.external_tools;
+  const installedTool = _.find(externalTools, (tool) => (
+    tool.consumer_key === applicationInstance.lti_key
   ));
-  const accountName = props.account ? props.account.name : 'Root';
+  const accountName = account ? account.name : 'Root';
   const buttonText = installedTool ? 'Uninstall From Account' : 'Install Into Account';
 
   return (
     <div className="c-info">
       <div className="c-title">
-        <h1>{props.accountInstalls}</h1>
+        <h1>{accountInstalls}</h1>
         <h3>{accountName}</h3>
       </div>
       <button
         className="c-btn c-btn--yellow"
-        onClick={() => install(props.applicationInstance, installedTool)}
-      >{buttonText}</button>
+        onClick={() => install(applicationInstance, installedTool)}
+        type="button"
+      >
+        {buttonText}
+      </button>
     </div>
   );
 }
