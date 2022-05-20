@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lti install key form matches the snapshot 1`] = `
+<form>
+  <div
+    className="o-grid o-grid__modal-top"
+  >
+    <div
+      className="o-grid__item u-half"
+    >
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-input"
+          htmlFor="iss_input"
+        >
+          <span>
+            iss
+          </span>
+          <input
+            id="iss_input"
+            name="iss"
+            onChange={[Function]}
+            type="text"
+          />
+        </label>
+      </div>
+    </div>
+    <div
+      className="o-grid__item u-half"
+    >
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-input"
+          htmlFor="client_id_input"
+        >
+          <span>
+            client id
+          </span>
+          <input
+            id="client_id_input"
+            name="clientId"
+            onChange={[Function]}
+            type="text"
+          />
+        </label>
+      </div>
+    </div>
+    <div
+      className="o-grid__item u-half"
+    >
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-input"
+          htmlFor="jwks_url_input"
+        >
+          <span>
+            jwks url
+          </span>
+          <input
+            id="jwks_url_input"
+            name="jwksUrl"
+            onChange={[Function]}
+            type="text"
+          />
+        </label>
+      </div>
+    </div>
+    <div
+      className="o-grid__item u-half"
+    >
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-input"
+          htmlFor="token_url_input"
+        >
+          <span>
+            token url
+          </span>
+          <input
+            id="token_url_input"
+            name="tokenUrl"
+            onChange={[Function]}
+            type="text"
+          />
+        </label>
+      </div>
+    </div>
+    <div
+      className="o-grid__item u-half"
+    >
+      <div
+        className="c-input--container"
+      >
+        <label
+          className="c-input"
+          htmlFor="oidc_url_input"
+        >
+          <span>
+            oidc url
+          </span>
+          <input
+            id="oidc_url_input"
+            name="oidcUrl"
+            onChange={[Function]}
+            type="text"
+          />
+        </label>
+      </div>
+    </div>
+  </div>
+  <button
+    className="c-btn c-btn--yellow"
+    onClick={[Function]}
+    type="button"
+  >
+    Save
+  </button>
+  <button
+    className="c-btn c-btn--gray--large u-m-right"
+    onClick={[Function]}
+    type="button"
+  >
+    Cancel
+  </button>
+</form>
+`;
