@@ -73,7 +73,7 @@ describe('lti installs course install row', () => {
   it('renders link with external tool', () => {
     const link = instance.findByType('a');
     expect(link).toBeDefined();
-    const installLink = `example.com/courses/${props.courseId}/external_tools/${installedToolId}`;
+    const installLink = `example.com/courses/${courseId}/external_tools/${installedToolId}`;
     const found = _.includes(link.props.href, installLink);
     expect(found).toBe(true);
   });
