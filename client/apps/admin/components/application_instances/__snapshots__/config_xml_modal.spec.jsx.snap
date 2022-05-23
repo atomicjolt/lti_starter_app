@@ -22,9 +22,11 @@ exports[`config xml modal matches the snapshot 1`] = `
     <h2
       className="c-modal__title"
     >
-      Config XML for 
+      Config XML for
+       
       bfcoder
-       Instance
+       
+      Instance
     </h2>
     <div
       className="o-grid__item u-half"
@@ -42,7 +44,6 @@ exports[`config xml modal matches the snapshot 1`] = `
           <input
             id="lti_config_xml_lti_key"
             name="lti_key"
-            readOnly={true}
             type="text"
             value="something-special"
           />
@@ -65,7 +66,6 @@ exports[`config xml modal matches the snapshot 1`] = `
           <input
             id="lti_config_xml_lti_secret"
             name="lti_secret"
-            readOnly={true}
             type="text"
             value="12345"
           />
