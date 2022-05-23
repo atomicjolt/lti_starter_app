@@ -56,7 +56,7 @@ exports[`sites list row handles the first button onclick event 1`] = `
 </tr>
 `;
 
-exports[`sites list row matches the snapshot 1`] = `
+exports[`sites list row handles the first button onclick event 2`] = `
 <tr>
   <td>
     http://www.example.com
@@ -90,6 +90,148 @@ exports[`sites list row matches the snapshot 1`] = `
         settings
       </i>
     </button>
+    <div
+      className="ReactModal__Overlay unused"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      style={Object {}}
+    >
+      <div
+        aria-label="Modal"
+        aria-modal={true}
+        className="ReactModal__Content c-modal c-modal--site is-open"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        role="dialog"
+        style={Object {}}
+        tabIndex="-1"
+      >
+        <h2
+          className="c-modal__title"
+        >
+          New
+           
+          Domain
+        </h2>
+        <h3
+          className="c-modal__subtext"
+        >
+          <div>
+            <div>
+              Use the redirect URI:
+               
+            </div>
+            <div>
+              <a
+                className="c-modal__subtext-link"
+                href="http://www.example.com/accounts/site_admin/developer_keys"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Get Canvas Developer Keys Here
+              </a>
+            </div>
+          </div>
+        </h3>
+        <h3
+          className="c-modal__subtext"
+        >
+          Url must begin with "https://"
+        </h3>
+        <form>
+          <div
+            className="o-grid o-grid__modal-top"
+          >
+            <div
+              className="o-grid__item u-full"
+            >
+              <div
+                className="c-input--container"
+              >
+                <label
+                  className="c-input"
+                  htmlFor="site_url"
+                >
+                  <span>
+                    Canvas Domain
+                  </span>
+                  <input
+                    id="site_url"
+                    name="url"
+                    onChange={[Function]}
+                    type="text"
+                    value="http://www.example.com"
+                  />
+                </label>
+              </div>
+            </div>
+            <div
+              className="o-grid__item u-full"
+            >
+              <div
+                className="c-input--container"
+              >
+                <label
+                  className="c-input"
+                  htmlFor="site_oauth_key"
+                >
+                  <span>
+                    Canvas Developer ID
+                  </span>
+                  <input
+                    id="site_oauth_key"
+                    name="oauth_key"
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </label>
+              </div>
+            </div>
+            <div
+              className="o-grid__item u-full"
+            >
+              <div
+                className="c-input--container"
+              >
+                <label
+                  className="c-input"
+                  htmlFor="site_oauth_secret"
+                >
+                  <span>
+                    Canvas Developer Key
+                  </span>
+                  <input
+                    id="site_oauth_secret"
+                    name="oauth_secret"
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+          <button
+            className="c-btn c-btn--yellow"
+            onClick={[Function]}
+            type="button"
+          >
+            Create
+             Domain
+          </button>
+          <button
+            className="c-btn c-btn--gray--large u-m-right"
+            onClick={[Function]}
+            type="button"
+          >
+            Cancel
+          </button>
+        </form>
+      </div>
+    </div>
   </td>
   <td>
     <button
@@ -103,6 +245,64 @@ exports[`sites list row matches the snapshot 1`] = `
           "fontSize": "1.5em",
         }
       }
+    >
+      <i
+        className="i-delete"
+      />
+    </button>
+  </td>
+</tr>
+`;
+
+exports[`sites list row matches the snapshot 1`] = `
+<tr>
+  <td>
+    http://www.example.com
+    <span
+      className="c-alert c-alert--danger"
+      style={
+        Object {
+          "fontSize": "10px",
+        }
+      }
+    >
+      OAuth key and/or secret not configured
+    </span>
+  </td>
+  <td>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "border": "none",
+          "color": "grey",
+          "cursor": "pointer",
+          "fontSize": "1.5em",
+        }
+      }
+      type="button"
+    >
+      <i
+        className="material-icons"
+      >
+        settings
+      </i>
+    </button>
+  </td>
+  <td>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "border": "none",
+          "color": "grey",
+          "cursor": "pointer",
+          "fontSize": "1.5em",
+        }
+      }
+      type="button"
     >
       <i
         className="i-delete"

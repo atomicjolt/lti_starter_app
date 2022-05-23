@@ -1,8 +1,8 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import TestRenderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-
 import SiteRow from './site_row';
 
 const mockStore = configureStore([]);
@@ -13,16 +13,26 @@ const store = mockStore({
 describe('sites list row', () => {
   let result;
   let instance;
-  let props;
+
+  const site = { url: 'http://www.example.com' };
+  const deleteSite = () => {};
+
+  // https://medium.com/@amanverma.dev/mocking-create-portal-to-utilize-react-test-renderer-in-writing-snapshot-uts-c49773c88acd
+  beforeAll(() => {
+    ReactDOM.createPortal = jest.fn((element) => element);
+  });
+
+  afterEach(() => {
+    ReactDOM.createPortal.mockClear();
+  });
 
   beforeEach(() => {
-    props = {
-      site: { url: 'http://www.example.com' },
-      deleteSite: () => {},
-    };
     result = TestRenderer.create(
       <Provider store={store}>
-        <SiteRow {...props} />
+        <SiteRow
+          site={site}
+          deleteSite={deleteSite}
+        />
       </Provider>
     );
     instance = result.root;
@@ -40,9 +50,11 @@ describe('sites list row', () => {
   });
 
   it('handles the second button onclick event', () => {
-    const buttons = instance.findAllByType('button');
-    expect(result.root.state.confirmDeleteModalOpen).toBeFalsy();
+    let buttons = instance.findAllByType('button');
     buttons[1].props.onClick();
-    expect(result.root.state.confirmDeleteModalOpen).toBeTruthy();
+
+    buttons = instance.findAllByType('button');
+    const button = buttons.find((b) => b.children[0] === 'Cancel');
+    expect(button).toBeTruthy();
   });
 });
