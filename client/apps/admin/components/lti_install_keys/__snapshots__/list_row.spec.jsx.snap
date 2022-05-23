@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`application instances list row handles the opening of the modal 1`] = `
+<tr>
+  <td>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "border": "none",
+          "color": "grey",
+          "cursor": "pointer",
+          "fontSize": "1.5em",
+        }
+      }
+      type="button"
+    >
+      <i
+        className="material-icons"
+      >
+        settings
+      </i>
+    </button>
+  </td>
+  <td>
+    2
+  </td>
+  <td>
+    iss
+  </td>
+  <td>
+    lti-key
+  </td>
+  <td>
+    Invalid Date
+     
+    Invalid Date
+  </td>
+  <td>
+    <button
+      className="c-delete"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "border": "none",
+          "color": "grey",
+          "cursor": "pointer",
+          "fontSize": "1.5em",
+        }
+      }
+      type="button"
+    >
+      <i
+        className="i-delete"
+      />
+    </button>
+  </td>
+</tr>
+`;
+
+exports[`application instances list row handles the opening of the modal 2`] = `
+<tr>
+  <td>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "border": "none",
+          "color": "grey",
+          "cursor": "pointer",
+          "fontSize": "1.5em",
+        }
+      }
+      type="button"
+    >
+      <i
+        className="material-icons"
+      >
+        settings
+      </i>
+    </button>
+  </td>
+  <td>
+    2
+  </td>
+  <td>
+    iss
+  </td>
+  <td>
+    lti-key
+  </td>
+  <td>
+    Invalid Date
+     
+    Invalid Date
+  </td>
+  <td>
+    <button
+      className="c-delete"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "border": "none",
+          "color": "grey",
+          "cursor": "pointer",
+          "fontSize": "1.5em",
+        }
+      }
+      type="button"
+    >
+      <i
+        className="i-delete"
+      />
+    </button>
+  </td>
+</tr>
+`;
