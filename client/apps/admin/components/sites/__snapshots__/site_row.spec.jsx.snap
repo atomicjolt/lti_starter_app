@@ -27,6 +27,7 @@ exports[`sites list row handles the first button onclick event 1`] = `
           "fontSize": "1.5em",
         }
       }
+      type="button"
     >
       <i
         className="material-icons"
@@ -47,6 +48,7 @@ exports[`sites list row handles the first button onclick event 1`] = `
           "fontSize": "1.5em",
         }
       }
+      type="button"
     >
       <i
         className="i-delete"
@@ -83,6 +85,7 @@ exports[`sites list row handles the first button onclick event 2`] = `
           "fontSize": "1.5em",
         }
       }
+      type="button"
     >
       <i
         className="material-icons"
@@ -245,6 +248,7 @@ exports[`sites list row handles the first button onclick event 2`] = `
           "fontSize": "1.5em",
         }
       }
+      type="button"
     >
       <i
         className="i-delete"
