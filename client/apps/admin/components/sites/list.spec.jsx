@@ -2,7 +2,6 @@ import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-
 import List from './list';
 
 const mockStore = configureStore([]);
@@ -15,7 +14,6 @@ const store = mockStore({
 describe('sites list', () => {
   let result;
   let instance;
-  let props;
 
   const sites = {
     1: {
@@ -29,17 +27,22 @@ describe('sites list', () => {
     }
   };
 
+  const deleteSite = () => {};
+
   beforeEach(() => {
-    props = {
-      sites,
-      deleteSite: () => {},
-    };
     result = TestRenderer.create(
       <Provider store={store}>
-        <List {...props} />
+        <List
+          sites={sites}
+          deleteSite={deleteSite}
+        />
       </Provider>
     );
     instance = result.root;
+  });
+
+  it('matches the snapshot', () => {
+    expect(result).toMatchSnapshot();
   });
 
   it('renders the list with header values', () => {
@@ -51,9 +54,5 @@ describe('sites list', () => {
     expect(spans[0].props.children).toEqual('URL');
     expect(spans[1].props.children).toEqual('SETTINGS');
     expect(spans[2].props.children).toEqual('DELETE');
-  });
-
-  it('matches the snapshot', () => {
-    expect(result).toMatchSnapshot();
   });
 });

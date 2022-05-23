@@ -50,6 +50,7 @@ exports[`sites list matches the snapshot 1`] = `
               "fontSize": "1.5em",
             }
           }
+          type="button"
         >
           <i
             className="material-icons"
@@ -70,6 +71,7 @@ exports[`sites list matches the snapshot 1`] = `
               "fontSize": "1.5em",
             }
           }
+          type="button"
         >
           <i
             className="i-delete"
@@ -103,6 +105,7 @@ exports[`sites list matches the snapshot 1`] = `
               "fontSize": "1.5em",
             }
           }
+          type="button"
         >
           <i
             className="material-icons"
@@ -123,6 +126,7 @@ exports[`sites list matches the snapshot 1`] = `
               "fontSize": "1.5em",
             }
           }
+          type="button"
         >
           <i
             className="i-delete"
