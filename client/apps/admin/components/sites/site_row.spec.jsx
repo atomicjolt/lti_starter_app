@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestRenderer from 'react-test-renderer';
+import TestRenderer, { act } from 'react-test-renderer';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import SiteRow from './site_row';
@@ -45,13 +45,17 @@ describe('sites list row', () => {
   it('handles the first button onclick event', () => {
     expect(result).toMatchSnapshot();
     const buttons = instance.findAllByType('button');
-    buttons[0].props.onClick();
+    act(() => {
+      buttons[0].props.onClick();
+    });
     expect(result).toMatchSnapshot();
   });
 
   it('handles the second button onclick event', () => {
     let buttons = instance.findAllByType('button');
-    buttons[1].props.onClick();
+    act(() => {
+      buttons[1].props.onClick();
+    });
 
     buttons = instance.findAllByType('button');
     const button = buttons.find((b) => b.children[0] === 'Cancel');
