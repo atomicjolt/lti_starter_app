@@ -38,13 +38,13 @@ describe('application instance form', () => {
 
   it('handles the close modal event', () => {
     expect(modalClosed).toBeFalsy();
-    instance.findAllByType('button').find(b => b.children[0] === 'Cancel').props.onClick();
+    instance.findAllByType('button').find((b) => b.children[0] === 'Cancel').props.onClick();
     expect(modalClosed).toBeTruthy();
   });
 
   it('handles the save event', () => {
     expect(saved).toBeFalsy();
-    instance.findAllByType('button').find(b => b.children[0] === 'Save').props.onClick();
+    instance.findAllByType('button').find((b) => b.children[0] === 'Save').props.onClick();
     expect(saved).toBeTruthy();
   });
 });

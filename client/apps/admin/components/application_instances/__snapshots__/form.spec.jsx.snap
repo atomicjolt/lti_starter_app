@@ -246,7 +246,6 @@ exports[`application instance form matches the snapshot 1`] = `
             id="canvas_token_input"
             name="canvas_token"
             onChange={[Function]}
-            placeholder=""
             type="text"
             value=""
           />
