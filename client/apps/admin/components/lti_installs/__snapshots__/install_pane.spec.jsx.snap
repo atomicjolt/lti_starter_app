@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`install pane matches the snapshot 1`] = `
+<div
+  className="o-right"
+>
+  <div
+    className="c-info"
+  >
+    <div
+      className="c-title"
+    >
+      <h1>
+        0
+      </h1>
+      <h3 />
+    </div>
+    <button
+      className="c-btn c-btn--yellow"
+      onClick={[Function]}
+      type="button"
+    >
+      Install Into Account
+    </button>
+  </div>
+  <div>
+    <div
+      className="c-search c-search--small"
+    >
+      <input
+        onChange={[Function]}
+        placeholder="Search..."
+        type="text"
+      />
+      <i
+        className="i-search"
+      />
+    </div>
+    <table
+      className="c-table c-table--installs"
+    >
+      <thead>
+        <tr>
+          <th>
+            <span>
+              Course Name
+            </span>
+          </th>
+          <th>
+            <div
+              className="c-checkbox--right-titlebar"
+            />
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+    <ul
+      className="pagination"
+    >
+      <li
+        className="previous disabled"
+      >
+        <a
+          aria-disabled="true"
+          aria-label="Previous page"
+          className=" "
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          rel="prev"
+          role="button"
+          tabIndex="-1"
+        >
+          Prev
+        </a>
+      </li>
+      <li
+        className="next"
+      >
+        <a
+          aria-disabled="false"
+          aria-label="Next page"
+          className=""
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          rel="next"
+          role="button"
+          tabIndex="0"
+        >
+          Next
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
