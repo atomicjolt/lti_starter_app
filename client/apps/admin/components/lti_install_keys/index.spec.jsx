@@ -1,28 +1,38 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import { Index } from './index';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import Index from './index';
+
+const ltiInstallKeys = [{ ltiInstallKeys: {} }];
+const applications = {};
+const totalPages = 10;
+
+const mockStore = configureStore([]);
+const store = mockStore({
+  ltiInstallKeys,
+  applications,
+  totalPages,
+  settings: {
+    sign_out_url: 'https://www.example.com',
+  },
+});
 
 jest.mock('../../libs/assets');
 describe('application instances index', () => {
-
   let result;
-  let props;
-  let ltiInstallKeys = false;
+  const params = {
+    applicationId: 'id',
+  };
+  // const totalPages = 10;
 
   beforeEach(() => {
-    props = {
-      ltiInstallKeys: [{ ltiInstallKeys: {} }],
-      getLtiInstallKeys: () => { ltiInstallKeys = true; },
-      createLtiInstallKey: () => {},
-      saveLtiInstallKey: () => {},
-      deleteLtiInstallKey: () => {},
-      applications: {},
-      params: {
-        applicationId: 'id',
-      },
-      totalPages: 10,
-    };
-    result = TestRenderer.create(<Index {...props} />);
+    result = TestRenderer.create(
+      <Provider store={store}>
+        <Index
+          params={params}
+        />
+      </Provider>);
   });
 
   it('loads the lti install keys', () => {
