@@ -109,11 +109,6 @@ exports[`application instances index matches the snapshot 1`] = `
             style={Object {}}
           >
             Sites
-            <span
-              className="c-alert c-alert--danger"
-            >
-               ! Setup Required
-            </span>
           </a>
         </li>
       </ul>
@@ -129,7 +124,7 @@ exports[`application instances index matches the snapshot 1`] = `
         className="c-title"
       >
         <h1>
-          App Name
+          application
            Instances
         </h1>
       </div>
@@ -139,6 +134,91 @@ exports[`application instances index matches the snapshot 1`] = `
       >
         New App Instance
       </button>
+    </div>
+    <div
+      className="c-table-container"
+    >
+      <table
+        className="c-table c-table--instances"
+      >
+        <thead>
+          <tr>
+            <th
+              className="sortable-header"
+            >
+              <div
+                className="aj-flex"
+              >
+                <button
+                  className="aj-sort-btn"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <span
+                    className="aj-flex selected"
+                  >
+                    Name
+                    <i
+                      className="material-icons aj-icon-btn-sort"
+                    >
+                      arrow_upward
+                    </i>
+                  </span>
+                </button>
+                <div
+                  className="input input--search "
+                  id="container"
+                >
+                  <div
+                    className="not-the-button"
+                  >
+                    <input
+                      id="searchInput"
+                      onChange={[Function]}
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <button
+                    className="aj-search-button"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    <i
+                      aria-hidden="true"
+                      className="material-icons"
+                    >
+                      search
+                    </i>
+                  </button>
+                </div>
+              </div>
+            </th>
+            <th>
+              <span
+                className="aj-flex"
+              >
+                Database Tenant
+              </span>
+            </th>
+            <th>
+              <span
+                className="aj-flex"
+              >
+                Canvas Domain
+              </span>
+            </th>
+            <th>
+              <span
+                className="aj-flex"
+              >
+                ERRORS
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody />
+      </table>
     </div>
     <ul
       className="pagination"
@@ -157,94 +237,6 @@ exports[`application instances index matches the snapshot 1`] = `
           tabIndex="-1"
         >
           Prev
-        </a>
-      </li>
-      <li
-        className="selected"
-      >
-        <a
-          aria-current="page"
-          aria-label="Page 1 is your current page"
-          onClick={[Function]}
-          onKeyPress={[Function]}
-          rel="canonical"
-          role="button"
-          tabIndex="-1"
-        >
-          1
-        </a>
-      </li>
-      <li>
-        <a
-          aria-current={null}
-          aria-label="Page 2"
-          onClick={[Function]}
-          onKeyPress={[Function]}
-          rel="next"
-          role="button"
-          tabIndex="0"
-        >
-          2
-        </a>
-      </li>
-      <li>
-        <a
-          aria-current={null}
-          aria-label="Page 3"
-          onClick={[Function]}
-          onKeyPress={[Function]}
-          role="button"
-          tabIndex="0"
-        >
-          3
-        </a>
-      </li>
-      <li>
-        <a
-          aria-current={null}
-          aria-label="Page 4"
-          onClick={[Function]}
-          onKeyPress={[Function]}
-          role="button"
-          tabIndex="0"
-        >
-          4
-        </a>
-      </li>
-      <li>
-        <a
-          aria-current={null}
-          aria-label="Page 5"
-          onClick={[Function]}
-          onKeyPress={[Function]}
-          role="button"
-          tabIndex="0"
-        >
-          5
-        </a>
-      </li>
-      <li
-        className="break"
-      >
-        <a
-          onClick={[Function]}
-          onKeyPress={[Function]}
-          role="button"
-          tabIndex="0"
-        >
-          ...
-        </a>
-      </li>
-      <li>
-        <a
-          aria-current={null}
-          aria-label="Page 10"
-          onClick={[Function]}
-          onKeyPress={[Function]}
-          role="button"
-          tabIndex="0"
-        >
-          10
         </a>
       </li>
       <li
