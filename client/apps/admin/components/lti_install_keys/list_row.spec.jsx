@@ -1,5 +1,6 @@
 import React from 'react';
-import TestRenderer from 'react-test-renderer';
+import ReactDOM from 'react-dom';
+import TestRenderer, { act } from 'react-test-renderer';
 import ListRow from './list_row';
 
 describe('application instances list row', () => {
@@ -7,6 +8,14 @@ describe('application instances list row', () => {
   let result;
   let instance;
   let deleted;
+
+  beforeAll(() => {
+    ReactDOM.createPortal = jest.fn((element) => element);
+  });
+
+  afterEach(() => {
+    ReactDOM.createPortal.mockClear();
+  });
 
   beforeEach(() => {
     deleted = false;
@@ -32,17 +41,25 @@ describe('application instances list row', () => {
   // to remedy this a class would need to be added to each button
 
   it('handles the opening of the modal', () => {
-    expect(instance.state.modalOpen).toBeFalsy();
-    const btn = instance.findByType('button').first();
-    btn.props.onClick();
-    expect(result.root.state.modalOpen).toBeTruthy();
+    expect(result).toMatchSnapshot();
+    const buttons = instance.findAllByType('button');
+    act(() => {
+      buttons[0].props.onClick();
+    });
+
+    expect(result).toMatchSnapshot();
+    const h2 = instance.findAllByType('h2');
+    expect(h2.length).toBe(1);
   });
 
   it('handles deleting', () => {
-    expect(deleted).toBeFalsy();
-    expect(instance.state.confirmDeleteModalOpen).toBeFalsy();
-    const btn = instance.findByType('button').last();
-    btn.props.onClick();
-    expect(result.root.state.confirmDeleteModalOpen).toBeTruthy();
+    let buttons = instance.findAllByType('button');
+    act(() => {
+      buttons[1].props.onClick();
+    });
+
+    buttons = instance.findAllByType('button');
+    const button = buttons.find((b) => b.children[0] === 'Cancel');
+    expect(button).toBeTruthy();
   });
 });
