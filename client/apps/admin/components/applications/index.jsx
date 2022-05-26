@@ -1,25 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import _ from 'lodash';
 import { saveApplication } from '../../actions/applications';
 import Heading from '../common/heading';
 import ApplicationRow from './application_row';
 
-function select(state) {
-  return {
-    applications: state.applications,
-    userName: state.settings.display_name,
-  };
-}
+export default function Index() {
 
-export function Index(props) {
+  const applications = useSelector((state) => state.applications);
 
-  const applicationRows = _.map(props.applications, (application, index) => (
+  const applicationRows = _.map(applications, (application, index) => (
     <ApplicationRow
       key={index}
       application={application}
-      saveApplication={props.saveApplication}
+      saveApplication={saveApplication}
     />
   ));
 
@@ -51,8 +46,4 @@ export function Index(props) {
 }
 
 Index.propTypes = {
-  saveApplication: PropTypes.func.isRequired,
-  applications: PropTypes.shape({}).isRequired,
 };
-
-export default connect(select, { saveApplication })(Index);
