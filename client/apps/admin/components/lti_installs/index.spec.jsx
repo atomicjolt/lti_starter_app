@@ -1,15 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-
 import TestRenderer from 'react-test-renderer';
 import Index from './index';
 
 jest.mock('../../libs/assets');
-
 const mockStore = configureStore([]);
-
 const applicationId = '123';
 const applicationInstanceId = '4847';
 
@@ -32,11 +28,6 @@ const store = mockStore({
         parent_account_id: 1234,
         name: 'joe',
       },
-      3456: {
-        id: 3456,
-        parent_account_id: 1234,
-        name: 'bob',
-      }
     }
   },
   applications: {},
