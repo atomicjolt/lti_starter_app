@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
@@ -68,7 +69,6 @@ describe('the index component', () => {
 
   it('sets the active account', () => {
     const buttons = instance.findAllByType('button');
-    expect(buttons.length).toEqual(2);
     const button = buttons[1];
     const name = button.props.children[1];
     expect(name).toEqual('paul');
