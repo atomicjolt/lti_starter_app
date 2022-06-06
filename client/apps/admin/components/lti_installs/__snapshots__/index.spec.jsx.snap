@@ -175,7 +175,12 @@ exports[`the index component matches the snapshot 1`] = `
             <button
               onClick={[Function]}
               type="button"
-            />
+            >
+              <i
+                className="i-dropdown"
+              />
+              paul
+            </button>
           </li>
         </ul>
       </div>

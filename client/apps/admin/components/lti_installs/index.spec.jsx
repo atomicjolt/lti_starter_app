@@ -24,6 +24,17 @@ const store = mockStore({
       1234: {
         id: 1234,
         parent_account_id: null,
+        name: 'paul',
+      },
+      2345: {
+        id: 2345,
+        parent_account_id: 1234,
+        name: 'joe',
+      },
+      3456: {
+        id: 3456,
+        parent_account_id: 1234,
+        name: 'bob',
       }
     }
   },
@@ -56,8 +67,10 @@ describe('the index component', () => {
   });
 
   it('sets the active account', () => {
-    const headings = instance.findAllByType('h3');
-    const accountHeading = headings.find((h) => h.props.children === 'Root');
-    expect(accountHeading).toBeDefined();
+    const buttons = instance.findAllByType('button');
+    expect(buttons.length).toEqual(2);
+    const button = buttons[1];
+    const name = button.props.children[1];
+    expect(name).toEqual('paul');
   });
 });
