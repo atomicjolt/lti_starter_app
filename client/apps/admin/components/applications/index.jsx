@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import _ from 'lodash';
 import { saveApplication } from '../../actions/applications';
 import Heading from '../common/heading';
@@ -14,7 +13,7 @@ export default function Index() {
     <ApplicationRow
       key={index}
       application={application}
-      saveApplication={saveApplication}
+      saveApplication={(applicationToSave) => useDispatch(saveApplication(applicationToSave))}
     />
   ));
 
@@ -44,6 +43,3 @@ export default function Index() {
     </div>
   );
 }
-
-Index.propTypes = {
-};

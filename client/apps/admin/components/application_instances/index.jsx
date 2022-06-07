@@ -10,9 +10,6 @@ import Pagination from '../common/pagination';
 import {
   getApplicationInstances,
   createApplicationInstance,
-  deleteApplicationInstance,
-  saveApplicationInstance,
-  disableApplicationInstance
 } from '../../actions/application_instances';
 
 export default function Index(props) {
@@ -33,10 +30,7 @@ export default function Index(props) {
     { application_id: parseInt(params.applicationId, 10) }));
   const applications = useSelector((state) => state.applications);
   const totalPages = useSelector((state) => state.applicationInstances.totalPages);
-  // const userName = useSelector((state) => state.settings.display_name); // never used
-  const settings = useSelector((state) => state.settings);
   const sites = useSelector((state) => state.sites);
-  const canvasOauthURL = useSelector((state) => state.settings.canvas_oauth_url);
   const loadingInstances = useSelector((state) => state.applicationInstances.loading);
 
   const application = () => applications[params.applicationId];
@@ -63,33 +57,6 @@ export default function Index(props) {
     ));
   });
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   const {
-  //     currentPage,
-  //     sortColumn,
-  //     sortDirection,
-  //     search,
-  //   } = this.state;
-
-  //   const propsChanged = (
-  //     prevState.currentPage !== currentPage ||
-  //     prevState.sortColumn !== sortColumn ||
-  //     prevState.sortDirection !== sortDirection ||
-  //     prevState.search !== search
-  //   );
-
-  //   if (propsChanged) {
-  //     this.props.getApplicationInstances(
-  //       this.props.params.applicationId,
-  //       currentPage,
-  //       sortColumn,
-  //       sortDirection,
-  //       search,
-  //     );
-  //   }
-  // }
-
-  // are both these needed?
   useEffect(() => {
     dispatch(getApplicationInstances(
       params.applicationId,
@@ -117,13 +84,6 @@ export default function Index(props) {
     setSearch(searchTmp);
   }, 500);
 
-  // This function is never used
-  // const resetSort = () => {
-  //   setSortColumn('nickname');
-  //   setSortDirection('asc');
-  //   setCurrentPage(0);
-  // };
-
   return (
     <div>
       <Heading
@@ -140,13 +100,7 @@ export default function Index(props) {
         />
         <List
           applicationInstances={applicationInstances}
-          settings={settings} // not used
-          sites={sites} // not used
           application={application}
-          saveApplicationInstance={saveApplicationInstance} // not used
-          deleteApplicationInstance={deleteApplicationInstance} // not used
-          disableApplicationInstance={disableApplicationInstance} // not used
-          canvasOauthURL={canvasOauthURL} // not used
           setSort={(sortColumnTmp, sortDirectionTmp) => setSort(sortColumnTmp, sortDirectionTmp)}
           searchChanged={(searchTmp) => searchChanged(searchTmp)}
           currentSortColumn={sortColumn}

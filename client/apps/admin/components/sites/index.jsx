@@ -31,7 +31,7 @@ export default function Index() {
         />
         <List
           sites={sites}
-          deleteSite={dispatch(deleteSite())}
+          deleteSite={(siteId) => dispatch(deleteSite(siteId))}
         />
       </div>
     </div>

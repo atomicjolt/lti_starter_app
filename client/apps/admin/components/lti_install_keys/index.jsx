@@ -31,7 +31,7 @@ export default function Index(props) {
     if (modalOpen) {
       return <Modal
         closeModal={() => setModalOpen(false)}
-        save={createLtiInstallKey}
+        save={(id, newLtiInstallKey) => dispatch(createLtiInstallKey(id, newLtiInstallKey))}
         application={application}
       />;
     }
@@ -79,10 +79,10 @@ export default function Index(props) {
           ltiInstallKeys={ltiInstallKeys}
           application={application}
           saveLtiInstallKey={
-            saveLtiInstallKey
+            (id, newLtiInstallKey) => dispatch(saveLtiInstallKey(id, newLtiInstallKey))
           }
           deleteLtiInstallKey={
-            deleteLtiInstallKey
+            (appId, ltiInstallKeyId) => dispatch(deleteLtiInstallKey(appId, ltiInstallKeyId))
           }
           setSort={() => setSort(sortColumn, sortDirection)}
           currentSortColumn={sortColumn}
