@@ -124,7 +124,6 @@ exports[`application instances index matches the snapshot 1`] = `
         className="c-title"
       >
         <h1>
-          application
            Instances
         </h1>
       </div>

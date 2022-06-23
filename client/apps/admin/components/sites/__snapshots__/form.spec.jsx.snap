@@ -81,7 +81,8 @@ exports[`site form matches the snapshot 1`] = `
     type="button"
   >
     Create
-     Domain
+     
+    Domain
   </button>
   <button
     className="c-btn c-btn--gray--large u-m-right"

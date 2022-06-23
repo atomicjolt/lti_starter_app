@@ -23,6 +23,7 @@ exports[`lti install key form matches the snapshot 1`] = `
             name="iss"
             onChange={[Function]}
             type="text"
+            value=""
           />
         </label>
       </div>
@@ -45,6 +46,7 @@ exports[`lti install key form matches the snapshot 1`] = `
             name="clientId"
             onChange={[Function]}
             type="text"
+            value=""
           />
         </label>
       </div>
@@ -67,6 +69,7 @@ exports[`lti install key form matches the snapshot 1`] = `
             name="jwksUrl"
             onChange={[Function]}
             type="text"
+            value=""
           />
         </label>
       </div>
@@ -89,6 +92,7 @@ exports[`lti install key form matches the snapshot 1`] = `
             name="tokenUrl"
             onChange={[Function]}
             type="text"
+            value=""
           />
         </label>
       </div>
@@ -111,6 +115,7 @@ exports[`lti install key form matches the snapshot 1`] = `
             name="oidcUrl"
             onChange={[Function]}
             type="text"
+            value=""
           />
         </label>
       </div>
