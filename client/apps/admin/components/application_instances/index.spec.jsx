@@ -12,7 +12,7 @@ const store = mockStore({
   applicationInstances: {
     applicationInstances: [],
   },
-  applications: {},
+  applications: { id: 1 },
   loadingInstances: {},
   sites: { 1: { id: 1, oauth_key: 'akey', oauth_secret: 'secret' } },
   totalPages: 10,
@@ -43,6 +43,6 @@ describe('application instances index', () => {
   });
 
   it('loads the assessments', () => {
-    expect(instance.findByProps({ className: 'c-table-container' })).toBeDefined();
+    expect(instance.findByProps({ className: 'c-table c-table--instances' })).toBeDefined();
   });
 });
