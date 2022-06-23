@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import { Chart, registerables } from 'chart.js';
 import LineGraph from './line_graph';
 import * as AccountAnalyticsActions from '../../actions/account_analytics';
+
+Chart.register(...registerables);
 
 function select(state) {
   const { accountAnalytics } = state;
@@ -59,7 +62,7 @@ export class Graph extends React.Component {
     maintainAspectRatio: false,
     legend: { display: false },
     scales: {
-      yAxes:[{
+      yAxes:{
         ticks: {
           beginAtZero: true,
           userCallback: (label) => (Math.floor(label) === label ? label : null),
@@ -67,12 +70,12 @@ export class Graph extends React.Component {
         gridLines: {
           display: true
         }
-      }],
-      xAxes:[{
+      },
+      xAxes:{
         gridLines: {
           display: true
         },
-      }],
+      },
     },
     layout: {
       padding: {
