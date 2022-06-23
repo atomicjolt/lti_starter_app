@@ -20,23 +20,11 @@ export default function Index(props) {
   const [sortColumn, setSortColumn] = useState('created_at');
   const [sortDirection, setSortDirection] = useState('desc');
 
-  const ltiInstallKeys = useSelector((state) => state.ltiInstallKeys);
+  const { ltiInstallKeys, totalPages } = useSelector((state) => state.ltiInstallKeys);
   const applications = useSelector((state) => state.applications);
-  const totalPages = useSelector((state) => state.ltiInstallKeys.totalPages);
   const dispatch = useDispatch();
 
   const application = applications[params.applicationId];
-
-  const newLtiInstallKeyModal = () => {
-    if (modalOpen) {
-      return <Modal
-        closeModal={() => setModalOpen(false)}
-        save={(id, newLtiInstallKey) => dispatch(createLtiInstallKey(id, newLtiInstallKey))}
-        application={application}
-      />;
-    }
-    return null;
-  };
 
   useEffect(() => {
     dispatch(getLtiInstallKeys(
@@ -45,7 +33,7 @@ export default function Index(props) {
       sortColumn,
       sortDirection,
     ));
-  });
+  }, []);
 
   useEffect(() => {
     dispatch(getLtiInstallKeys(
@@ -60,16 +48,21 @@ export default function Index(props) {
     setCurrentPage(change.selected + 1);
   };
 
-  const setSort = () => {
-    setSortColumn(sortColumn);
-    setSortDirection(sortDirection);
+  const setSort = (sortColumnTmp, sortDirectionTmp) => {
+    setSortColumn(sortColumnTmp);
+    setSortDirection(sortDirectionTmp);
   };
 
   return (
     <div>
       <Heading />
       <div className="o-contain o-contain--full">
-        {newLtiInstallKeyModal}
+        <Modal
+          isOpen={modalOpen}
+          closeModal={() => setModalOpen(false)}
+          save={(id, newLtiInstallKey) => dispatch(createLtiInstallKey(id, newLtiInstallKey))}
+          application={application}
+        />
         <Header
           openSettings={() => {}}
           newLtiInstallKey={() => setModalOpen(true)}
@@ -84,7 +77,7 @@ export default function Index(props) {
           deleteLtiInstallKey={
             (appId, ltiInstallKeyId) => dispatch(deleteLtiInstallKey(appId, ltiInstallKeyId))
           }
-          setSort={() => setSort(sortColumn, sortDirection)}
+          setSort={(sortColumnTmp, sortDirectionTmp) => setSort(sortColumnTmp, sortDirectionTmp)}
           currentSortColumn={sortColumn}
           currentSortDirection={sortDirection}
         />
