@@ -25,7 +25,7 @@ export default function Form(props) {
               id: 'iss_input',
               name: 'iss',
               type: 'text',
-              value: iss,
+              value: iss || '',
               onChange
             }}
           />
@@ -38,7 +38,7 @@ export default function Form(props) {
               id: 'client_id_input',
               name: 'clientId',
               type: 'text',
-              value: clientId,
+              value: clientId || '',
               onChange
             }}
           />
@@ -51,7 +51,7 @@ export default function Form(props) {
               id: 'jwks_url_input',
               name: 'jwksUrl',
               type: 'text',
-              value: jwksUrl,
+              value: jwksUrl || '',
               onChange
             }}
           />
@@ -64,7 +64,7 @@ export default function Form(props) {
               id: 'token_url_input',
               name: 'tokenUrl',
               type: 'text',
-              value: tokenUrl,
+              value: tokenUrl || '',
               onChange
             }}
           />
@@ -77,7 +77,7 @@ export default function Form(props) {
               id: 'oidc_url_input',
               name: 'oidcUrl',
               type: 'text',
-              value: oidcUrl,
+              value: oidcUrl || '',
               onChange
             }}
           />
