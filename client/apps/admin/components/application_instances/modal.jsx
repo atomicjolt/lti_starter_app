@@ -7,6 +7,7 @@ import ApplicationInstanceForm from './form';
 
 export default function Modal(props) {
   const {
+    isOpen,
     closeModal: closeModalFct,
     sites,
     save: saveFct,
@@ -114,7 +115,7 @@ export default function Modal(props) {
 
   return (
     <ReactModal
-      isOpen
+      isOpen={isOpen}
       onRequestClose={() => closeModal()}
       contentLabel="Application Instances Modal"
       overlayClassName="c-modal__background"
@@ -128,7 +129,18 @@ export default function Modal(props) {
         Instance
       </h2>
       <ApplicationInstanceForm
-        {...newApplicationInstance}
+        config={newApplicationInstance.config}
+        domain={newApplicationInstance.domain}
+        lti_config={newApplicationInstance.lti_config}
+        lti_key={newApplicationInstance.lti_key}
+        lti_secret={newApplicationInstance.lti_secret}
+        ltiConfigParseError={newApplicationInstance.ltiConfigParseError}
+        canvas_token_preview={newApplicationInstance.canvas_token_preview}
+        anonymous={newApplicationInstance.anonymous}
+        rollbar_enabled={newApplicationInstance.rollbar_enabled}
+        use_scoped_developer_key={newApplicationInstance.use_scoped_developer_key}
+        nickname={newApplicationInstance.nickname}
+        primary_contact={newApplicationInstance.primary_contact}
         configParseError={configParseError}
         onChange={(e) => { newApplicationInstanceChange(e); }}
         save={() => save()}
@@ -138,7 +150,7 @@ export default function Modal(props) {
         newSite={() => newSite()}
         isUpdate={isUpdate}
         applicationInstance={applicationInstance}
-        languagesSupported={application.supported_languages}
+        languagesSupported={application.supported_languages || ['']}
       />
       <SiteModal
         isOpen={siteModalOpen}
