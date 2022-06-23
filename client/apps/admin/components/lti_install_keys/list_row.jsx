@@ -38,6 +38,7 @@ export default function ListRow(props) {
     if (modalOpen) {
 
       return <Modal
+        isOpen={modalOpen}
         closeModal={() => setModalOpen(false)}
         save={save}
         application={application}
