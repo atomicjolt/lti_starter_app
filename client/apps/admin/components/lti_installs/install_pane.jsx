@@ -10,7 +10,7 @@ const PAGE_SIZE = 10;
 
 export default function InstallPane(props) {
   const {
-    loadExternalTools: loadExternalToolsFct,
+    loadExternalTools: loadExternalToolsById,
     applicationInstance,
     canvasRequest,
     loadingCourses,
@@ -41,7 +41,7 @@ export default function InstallPane(props) {
     return courses;
   };
 
-  const coursesFct = () => {
+  const filterCourses = () => {
     let tmpCourses;
     if (onlyShowInstalled) {
       tmpCourses = courses;
@@ -62,9 +62,9 @@ export default function InstallPane(props) {
   };
 
   const loadExternalTools = () => {
-    _.each(pageCourses(coursesFct()), (course) => {
+    _.each(pageCourses(filterCourses()), (course) => {
       if (course.external_tools === undefined) {
-        loadExternalToolsFct(course.id);
+        loadExternalToolsById(course.id);
       }
     });
   };
@@ -95,7 +95,7 @@ export default function InstallPane(props) {
     setCurrentPage(0);
   }, 150);
 
-  const searchedCoursesVar =  isSearching() ? searchedCourses() : coursesFct();
+  const searchedCoursesVar =  isSearching() ? searchedCourses() : filterCourses();
   const pageCount = _.ceil(searchedCoursesVar.length / PAGE_SIZE);
   let accountInstall = null;
   let courseInstalls = null;

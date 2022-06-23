@@ -8,9 +8,9 @@ import ApplicationInstanceForm from './form';
 export default function Modal(props) {
   const {
     isOpen,
-    closeModal: closeModalFct,
+    closeModal: closeCurrentModal,
     sites,
-    save: saveFct,
+    save: saveApplicationInstance,
     applicationInstance,
     application,
   } = props;
@@ -33,7 +33,7 @@ export default function Modal(props) {
 
   const closeModal = () => {
     closeSiteModal();
-    closeModalFct();
+    closeCurrentModal();
   };
 
   const newApplicationInstanceChange = (e) => {
@@ -96,11 +96,11 @@ export default function Modal(props) {
   };
 
   const save = () => {
-    saveFct(
+    saveApplicationInstance(
       application.id,
       newApplicationInstance
     );
-    closeModalFct();
+    closeCurrentModal();
   };
 
   const applicationName = application ? application.name : 'Application';

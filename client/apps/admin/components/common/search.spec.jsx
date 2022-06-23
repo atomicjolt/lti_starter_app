@@ -6,16 +6,16 @@ import Search from './search';
 
 describe('common search', () => {
   let result;
-  let search;
+  let isSearch;
   let instance;
 
-  const searchFct = () => { search = true; };
+  const search = () => { isSearch = true; };
 
   beforeEach(() => {
-    search = false;
+    isSearch = false;
     result = TestRenderer.create(
       <Search
-        search={searchFct}
+        search={search}
       />);
     instance = result.root;
   });
@@ -32,13 +32,13 @@ describe('common search', () => {
   });
 
   it('search input changes', () => {
-    expect(search).toBeFalsy();
+    expect(isSearch).toBeFalsy();
     const container = document.createElement('div');
     document.body.appendChild(container);
     act(() => {
       ReactDOM.render(
         <Search
-          search={searchFct}
+          search={search}
         />,
         container
       );
@@ -48,7 +48,7 @@ describe('common search', () => {
     const input = inputs[0];
     const event = { target: { value: 'test onChange' } };
     ReactTestUtils.Simulate.change(input, event);
-    expect(search).toBeTruthy();
+    expect(isSearch).toBeTruthy();
     // expect(input.onChange).toHaveBeenCalledTimes(1);
   });
 });

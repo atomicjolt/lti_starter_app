@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // This component is currently unused, but one day, we may implement it, please leave it here
-export default function search(props) {
+export default function Search(props) {
   const {
-    search: searchFct,
+    search,
   } = props;
 
   return (
@@ -12,13 +12,13 @@ export default function search(props) {
       <input
         type="text"
         placeholder="Search..."
-        onChange={(e) => searchFct(e.target.value)}
+        onChange={(e) => search(e.target.value)}
       />
       <i className="i-search" />
     </div>
   );
 }
 
-search.propTypes = {
+Search.propTypes = {
   search: PropTypes.func.isRequired,
 };
