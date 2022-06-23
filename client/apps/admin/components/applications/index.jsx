@@ -6,6 +6,7 @@ import Heading from '../common/heading';
 import ApplicationRow from './application_row';
 
 export default function Index() {
+  const dispatch = useDispatch();
 
   const applications = useSelector((state) => state.applications);
 
@@ -13,7 +14,7 @@ export default function Index() {
     <ApplicationRow
       key={index}
       application={application}
-      saveApplication={(applicationToSave) => useDispatch(saveApplication(applicationToSave))}
+      saveApplication={(applicationToSave) => dispatch(saveApplication(applicationToSave))}
     />
   ));
 
