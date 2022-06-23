@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import ReactModal from 'react-modal';
@@ -16,14 +16,9 @@ export default function SiteModal(props) {
   } = props;
 
   const [site, setSite] = useState(siteProps || {});
-
   const settings = useSelector((state) => state.settings);
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    setSite(siteProps);
-  }, [site]);
 
   const hasUrlError = () => (
     site
@@ -102,7 +97,9 @@ export default function SiteModal(props) {
         onChange={(e) => siteChange(e)}
         setupSite={() => setupSite()}
         closeModal={() => closeModal()}
-        {...site}
+        oauth_key={site ? site.oauth_key : ''}
+        oauth_secret={site ? site.oauth_secret : ''}
+        url={site ? site.url : ''}
       />
     </ReactModal>
   );

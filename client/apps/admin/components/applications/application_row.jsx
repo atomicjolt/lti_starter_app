@@ -3,22 +3,22 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router3';
 import Modal from './modal';
 
+const getStyles = () => ({
+  buttonIcon: {
+    border: 'none',
+    backgroundColor: 'transparent',
+    color: 'grey',
+    fontSize: '1.5em',
+    cursor: 'pointer',
+  }
+});
+
 export default function ApplicationRow(props) {
   const [modalOpen, setModalOpen] = useState(false);
   const {
     application,
     saveApplication
   } = props;
-
-  const getStyles = () => ({
-    buttonIcon: {
-      border: 'none',
-      backgroundColor: 'transparent',
-      color: 'grey',
-      fontSize: '1.5em',
-      cursor: 'pointer',
-    }
-  });
 
   const styles = getStyles();
   return (

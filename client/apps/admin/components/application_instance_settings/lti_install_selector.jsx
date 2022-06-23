@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { , useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { getLtiInstallKeys } from '../../actions/lti_install_keys';
 import Sortable from '../common/sortable';
@@ -58,7 +58,7 @@ export default function LtiInstallSelector(props) {
   const ltiInstallKeys = ((state) => _.filter(state.ltiInstallKeys.ltiInstallKeys,
     { application_id: parseInt(applicationId, 10) })
   );
-  const totalPages = ((state) => state.ltiInstallKeys.totalPages);
+  const totalPages = useSelector((state) => state.ltiInstallKeys.totalPages);
 
   const dispatch = useDispatch();
 

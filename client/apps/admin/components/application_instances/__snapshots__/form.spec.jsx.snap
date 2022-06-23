@@ -23,6 +23,7 @@ exports[`application instance form matches the snapshot 1`] = `
             name="nickname"
             onChange={[Function]}
             type="text"
+            value=""
           />
         </label>
       </div>
@@ -45,6 +46,7 @@ exports[`application instance form matches the snapshot 1`] = `
             name="primary_contact"
             onChange={[Function]}
             type="text"
+            value=""
           />
         </label>
       </div>
@@ -181,6 +183,7 @@ exports[`application instance form matches the snapshot 1`] = `
             name="domain"
             onChange={[Function]}
             type="text"
+            value=""
           />
         </label>
       </div>
@@ -203,6 +206,7 @@ exports[`application instance form matches the snapshot 1`] = `
             name="lti_key"
             onChange={[Function]}
             type="text"
+            value=""
           />
         </label>
       </div>
@@ -225,6 +229,7 @@ exports[`application instance form matches the snapshot 1`] = `
             name="lti_secret"
             onChange={[Function]}
             type="text"
+            value=""
           />
         </label>
       </div>

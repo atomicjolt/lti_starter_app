@@ -5,6 +5,7 @@ import LtiInstallKeyForm from './form';
 
 export default function Modal(props) {
   const {
+    isOpen,
     closeModal,
     save,
     application,
@@ -19,7 +20,7 @@ export default function Modal(props) {
 
   return (
     <ReactModal
-      isOpen
+      isOpen={isOpen}
       onRequestClose={closeModal}
       contentLabel="Lti Install Key Modal"
       overlayClassName="c-modal__background"

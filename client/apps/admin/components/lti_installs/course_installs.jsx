@@ -9,7 +9,7 @@ export default function CourseInstalls(props) {
   const { canvasRequest } = props;
   const { loadingCourses } = props;
 
-  const acourses = _.map(courses, (course) => {
+  const installedCourses = _.map(courses, (course) => {
     const installedTool = _.find(
       course.external_tools,
       (tool) => tool.consumer_key === applicationInstance.lti_key
@@ -48,7 +48,7 @@ export default function CourseInstalls(props) {
         </tr>
       </thead>
       <tbody>
-        {_.isEmpty(loadingCourses) ? acourses : null}
+        {_.isEmpty(loadingCourses) ? installedCourses : null}
       </tbody>
     </table>
   );

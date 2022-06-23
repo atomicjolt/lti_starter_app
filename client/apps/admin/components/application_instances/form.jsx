@@ -26,25 +26,24 @@ export default function Form(props) {
     onChange,
     nickname,
     sites,
-    site_id,
+    site_id: siteId,
     languagesSupported,
     configParseError,
-    primary_contact,
+    primary_contact: primaryContact,
     domain,
     isUpdate,
     newSite,
     ltiConfigParseError,
-    lti_key,
-    lti_secret,
-    canvas_token_preview,
-    canvas_token,
+    lti_key: ltiKey,
+    lti_secret: ltiSecret,
+    canvas_token_preview: cavasTokenPreview,
     anonymous,
-    rollbar_enabled,
-    use_scoped_developer_key,
+    rollbar_enabled: rollbarEnabled,
+    use_scoped_developer_key: useScopedDeveloperKey,
     config,
     save,
     closeModal,
-    lti_config,
+    lti_config: ltiConfig,
   } = props;
 
   const [currentLanguage, setCurrentLanguage] = useState(applicationInstance ? applicationInstance.language : 'english');
@@ -86,7 +85,7 @@ export default function Form(props) {
     onSelect: () => newSite()
   });
 
-  const selectedOption = _.find(options, (opt) => opt.value === site_id);
+  const selectedOption = _.find(options, (opt) => opt.value === siteId);
 
   const languages = _.map(languagesSupported, (label, value) => ({
     label,
@@ -120,7 +119,7 @@ export default function Form(props) {
               id: 'nickname_input',
               name: 'nickname',
               type: 'text',
-              value: nickname,
+              value: nickname || '',
               onChange
             }}
           />
@@ -133,7 +132,7 @@ export default function Form(props) {
               id: 'primary_contact_input',
               name: 'primary_contact',
               type: 'text',
-              value: primary_contact,
+              value: primaryContact || '',
               onChange
             }}
           />
@@ -159,7 +158,7 @@ export default function Form(props) {
               id: 'domain_input',
               name: 'domain',
               type: 'text',
-              value: domain,
+              value: domain || '',
               onChange
             }}
           />
@@ -173,7 +172,7 @@ export default function Form(props) {
               name: 'lti_key',
               type: 'text',
               disabled: isUpdate,
-              value: lti_key,
+              value: ltiKey || '',
               onChange
             }}
           />
@@ -186,7 +185,7 @@ export default function Form(props) {
               id: 'lti_secret_input',
               name: 'lti_secret',
               type: 'text',
-              value: lti_secret,
+              value: ltiSecret || '',
               onChange
             }}
           />
@@ -195,13 +194,13 @@ export default function Form(props) {
           <Input
             className="c-input"
             labelText="Canvas Token"
-            helperText={`Current Canvas Token: ${canvas_token_preview}`}
+            helperText={`Current Canvas Token: ${cavasTokenPreview}`}
             inputProps={{
               id: 'canvas_token_input',
               name: 'canvas_token',
               type: 'text',
-              placeholder: canvas_token_preview ? 'Token Set!' : '',
-              value: canvas_token || '',
+              placeholder: cavasTokenPreview ? 'Token Set!' : '',
+              value: cavasTokenPreview || '',
               onChange
             }}
           />
@@ -231,7 +230,7 @@ export default function Form(props) {
               name: 'rollbar_enabled',
               type: 'checkbox',
               value: 'true',
-              checked: rollbar_enabled,
+              checked: rollbarEnabled,
               onChange
             }}
           />
@@ -246,7 +245,7 @@ export default function Form(props) {
               name: 'use_scoped_developer_key',
               type: 'checkbox',
               value: 'true',
-              checked: use_scoped_developer_key,
+              checked: useScopedDeveloperKey,
               onChange
             }}
           />
@@ -287,7 +286,7 @@ export default function Form(props) {
               id: 'application_instance_lti_config',
               name: 'lti_config',
               rows: 8,
-              value: prettyJSON(lti_config || '{}'),
+              value: prettyJSON(ltiConfig || '{}'),
               onChange,
             }}
             warning={erroneousLtiConfigWarning}

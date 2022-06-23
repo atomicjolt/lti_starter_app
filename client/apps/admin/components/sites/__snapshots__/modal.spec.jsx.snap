@@ -132,7 +132,8 @@ exports[`site modal matches the snapshot 1`] = `
         type="button"
       >
         Update
-         Domain
+         
+        Domain
       </button>
       <button
         className="c-btn c-btn--gray--large u-m-right"

@@ -79,7 +79,7 @@ export default function Index(props) {
         applicationInstanceId,
       )
     );
-  });
+  }, []);
 
   useEffect(() => {
     if (_.isNull(currentAccount) && !_.isUndefined(rootAccount)) {

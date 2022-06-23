@@ -33,29 +33,7 @@ export default function Index(props) {
   const sites = useSelector((state) => state.sites);
   const loadingInstances = useSelector((state) => state.applicationInstances.loading);
 
-  const application = () => applications[params.applicationId];
-
-  const newApplicationInstanceModal = () => {
-    if (modalOpen) {
-      return <Modal
-        closeModal={() => setModalOpen(false)}
-        sites={sites}
-        save={createApplicationInstance}
-        application={application}
-      />;
-    }
-    return null;
-  };
-
-  useEffect(() => {
-    dispatch(getApplicationInstances(
-      params.applicationId,
-      currentPage,
-      sortColumn,
-      sortDirection,
-      search
-    ));
-  });
+  const application = applications[params.applicationId];
 
   useEffect(() => {
     dispatch(getApplicationInstances(
@@ -91,7 +69,13 @@ export default function Index(props) {
         application={application}
       />
       <div className="o-contain o-contain--full">
-        {newApplicationInstanceModal}
+        <Modal
+          isOpen={modalOpen}
+          closeModal={() => setModalOpen(false)}
+          sites={sites}
+          save={createApplicationInstance}
+          application={application}
+        />
         <Header
           openSettings={() => {}}
           newApplicationInstance={() => setModalOpen(true)}
