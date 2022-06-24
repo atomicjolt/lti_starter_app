@@ -1,10 +1,11 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import Form from './form';
 import Textarea from '../common/textarea';
 
 describe('applications form', () => {
   let result;
+  let instance;
   let props;
   let didSave;
   let didClose;
@@ -21,7 +22,8 @@ describe('applications form', () => {
       configParseError: '',
     };
 
-    result = shallow(<Form {...props} />);
+    result = TestRenderer.create(<Form {...props} />);
+    instance = result.root;
   });
 
   it('matches the snapshot', () => {
@@ -30,27 +32,31 @@ describe('applications form', () => {
 
   it('did save', () => {
     expect(didSave).toBeFalsy();
-    result.find('.c-btn--yellow').simulate('click');
+    const buttons = instance.findAllByType('button');
+    const button = buttons.find(b => b.children[0] === 'Save');
+    button.props.onClick();
     expect(didSave).toBeTruthy();
   });
 
   it('close modal', () => {
     expect(didClose).toBeFalsy();
-    result.find('.c-btn--gray--large').simulate('click');
+    const buttons = instance.findAllByType('button');
+    const button = buttons.find(b => b.children[0] === 'Cancel');
+    button.props.onClick();
     expect(didClose).toBeTruthy();
   });
 
   it('renders default config', () => {
-    const input = result.find('input');
+    const inputs = instance.findAllByType('input');
+    const input = inputs.find(b => b.props.value === 'SPEC_DESCRIPTION');
     expect(input).toBeDefined();
-    expect(input.props().value).toEqual('SPEC_DESCRIPTION');
   });
 
   it('renders the warning', () => {
-    const textA = result.find(Textarea).first();
-    expect(textA.props().warning).toBe(null);
+    const textA = instance.findAllByType(Textarea)[0];
+    expect(textA.props.warning).toBe(null);
     props.configParseError = 'This is a warning';
-    result = shallow(<Form {...props} />);
+    result = TestRenderer.create(<Form {...props} />);
     expect.stringContaining(props.configParseError);
   });
 });

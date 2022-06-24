@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`application instances list matches the snapshot 1`] = `
+<table
+  className="c-table c-table--instances"
+>
+  <thead>
+    <tr>
+      <th />
+      <th
+        className="sortable-header"
+      >
+        <div
+          className="aj-flex"
+        >
+          <button
+            className="aj-sort-btn"
+            onClick={[Function]}
+            type="button"
+          >
+            <span
+              className="aj-flex"
+            >
+              ID
+              <i
+                className="material-icons aj-icon-btn-sort"
+              >
+                
+              </i>
+            </span>
+          </button>
+        </div>
+      </th>
+      <th
+        className="sortable-header"
+      >
+        <div
+          className="aj-flex"
+        >
+          <button
+            className="aj-sort-btn"
+            onClick={[Function]}
+            type="button"
+          >
+            <span
+              className="aj-flex"
+            >
+              ISS
+              <i
+                className="material-icons aj-icon-btn-sort"
+              >
+                
+              </i>
+            </span>
+          </button>
+        </div>
+      </th>
+      <th
+        className="sortable-header"
+      >
+        <div
+          className="aj-flex"
+        >
+          <button
+            className="aj-sort-btn"
+            onClick={[Function]}
+            type="button"
+          >
+            <span
+              className="aj-flex"
+            >
+              CLIENT ID
+              <i
+                className="material-icons aj-icon-btn-sort"
+              >
+                
+              </i>
+            </span>
+          </button>
+        </div>
+      </th>
+      <th
+        className="sortable-header"
+      >
+        <div
+          className="aj-flex"
+        >
+          <button
+            className="aj-sort-btn"
+            onClick={[Function]}
+            type="button"
+          >
+            <span
+              className="aj-flex"
+            >
+              CREATED
+              <i
+                className="material-icons aj-icon-btn-sort"
+              >
+                
+              </i>
+            </span>
+          </button>
+        </div>
+      </th>
+      <th />
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <button
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "transparent",
+              "border": "none",
+              "color": "grey",
+              "cursor": "pointer",
+              "fontSize": "1.5em",
+            }
+          }
+          type="button"
+        >
+          <i
+            className="material-icons"
+          >
+            settings
+          </i>
+        </button>
+      </td>
+      <td>
+        4
+      </td>
+      <td>
+        iss
+      </td>
+      <td>
+        lti-key
+      </td>
+      <td>
+        Invalid Date
+         
+        Invalid Date
+      </td>
+      <td>
+        <button
+          className="c-delete"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "transparent",
+              "border": "none",
+              "color": "grey",
+              "cursor": "pointer",
+              "fontSize": "1.5em",
+            }
+          }
+          type="button"
+        >
+          <i
+            className="i-delete"
+          />
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

@@ -1,157 +1,179 @@
 import _ from 'lodash';
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 import SiteModal from '../sites/modal';
 import ApplicationInstanceForm from './form';
 
-export default class Modal extends React.Component {
-  static propTypes = {
-    closeModal: PropTypes.func.isRequired,
-    sites: PropTypes.shape({}),
-    save: PropTypes.func.isRequired,
-    applicationInstance: PropTypes.shape({
-      id: PropTypes.number,
-      config: PropTypes.string,
-      site: PropTypes.shape({
-        id: PropTypes.number,
-      })
-    }),
-    application: PropTypes.shape({
-      id: PropTypes.number,
-      supported_languages: PropTypes.array,
-    }),
+export default function Modal(props) {
+  const {
+    isOpen,
+    closeModal: closeModalFct,
+    sites,
+    save: saveFct,
+    applicationInstance,
+    application,
+  } = props;
+
+  const [siteModalOpen, setSiteModalOpen] = useState(false);
+  const [
+    newApplicationInstance,
+    setNewApplicationInstance
+  ] = useState(applicationInstance || {});
+  const [configParseError, setConfigParseError] = useState(null);
+  const [ltiConfigParseError, setLtiConfigParseError] = useState(null);
+
+  const newSite = () => {
+    setSiteModalOpen(true);
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      siteModalOpen: false,
-      newApplicationInstance: props.applicationInstance || {}
-    };
-  }
+  const closeSiteModal = () => {
+    setSiteModalOpen(false);
+  };
 
-  newSite() {
-    this.setState({ siteModalOpen: true });
-  }
+  const closeModal = () => {
+    closeSiteModal();
+    closeModalFct();
+  };
 
-  closeSiteModal() {
-    this.setState({ siteModalOpen: false });
-  }
-
-  closeModal() {
-    this.closeSiteModal();
-    this.props.closeModal();
-  }
-
-  newApplicationInstanceChange(e) {
-    let configParseError = null;
+  const newApplicationInstanceChange = (e) => {
+    setConfigParseError(null);
     if (e.target.name === 'config') {
       try {
         JSON.parse(e.target.value || '{}');
       } catch (err) {
-        configParseError = err.toString();
+        setConfigParseError(err.toString());
       }
     }
 
-    let ltiConfigParseError = null;
+    setLtiConfigParseError(null);
     if (e.target.name === 'lti_config') {
       try {
         JSON.parse(e.target.value || '{}');
       } catch (err) {
-        ltiConfigParseError = err.toString();
+        setLtiConfigParseError(err.toString());
       }
     }
 
     if (e.target.name === 'anonymous') {
-      const newApplicationInstance = _.cloneDeep(this.state.newApplicationInstance);
-      newApplicationInstance.anonymous = false;
+      const tempNewApplicationInstance = _.cloneDeep(newApplicationInstance);
+      tempNewApplicationInstance.anonymous = false;
       if (e.target.checked) {
-        newApplicationInstance.anonymous = true;
+        tempNewApplicationInstance.anonymous = true;
       }
-      this.setState({ newApplicationInstance });
+      setNewApplicationInstance(tempNewApplicationInstance);
       return;
     }
 
     if (e.target.name === 'rollbar_enabled') {
-      const newApplicationInstance = _.cloneDeep(this.state.newApplicationInstance);
-      newApplicationInstance.rollbar_enabled = false;
+      const tempNewApplicationInstance = _.cloneDeep(newApplicationInstance);
+      tempNewApplicationInstance.rollbar_enabled = false;
       if (e.target.checked) {
-        newApplicationInstance.rollbar_enabled = true;
+        tempNewApplicationInstance.rollbar_enabled = true;
       }
-      this.setState({ newApplicationInstance });
+      setNewApplicationInstance(tempNewApplicationInstance);
       return;
     }
 
     if (e.target.name === 'use_scoped_developer_key') {
-      const newApplicationInstance = _.cloneDeep(this.state.newApplicationInstance);
-      newApplicationInstance.use_scoped_developer_key = false;
+      const tempNewApplicationInstance = _.cloneDeep(newApplicationInstance);
+      tempNewApplicationInstance.use_scoped_developer_key = false;
       if (e.target.checked) {
-        newApplicationInstance.use_scoped_developer_key = true;
+        tempNewApplicationInstance.use_scoped_developer_key = true;
       }
-      this.setState({ newApplicationInstance });
+      setNewApplicationInstance(tempNewApplicationInstance);
       return;
     }
 
-    this.setState({
-      newApplicationInstance: {
-        ...this.state.newApplicationInstance,
+    setNewApplicationInstance(
+      {
+        ...newApplicationInstance,
         [e.target.name]: e.target.value
-      },
-      configParseError,
-      ltiConfigParseError,
-    });
-  }
-
-  save() {
-    this.props.save(
-      this.props.application.id,
-      this.state.newApplicationInstance
+      }
     );
-    this.props.closeModal();
-  }
+    setConfigParseError(configParseError);
+    setLtiConfigParseError(ltiConfigParseError);
+  };
 
-  render() {
-    const application = this.props.application;
-    const applicationName = application ? application.name : 'Application';
-    let title = 'New';
-    let siteId;
-    if (this.state.newApplicationInstance.site_id ||
-        (this.props.applicationInstance && this.props.applicationInstance.id)) {
-      title = 'Update';
-      siteId = this.state.newApplicationInstance.site_id || this.props.applicationInstance.site.id;
-    }
-    const isUpdate = !!(this.props.applicationInstance && this.props.applicationInstance.id);
-
-    return (
-      <ReactModal
-        isOpen
-        onRequestClose={() => this.closeModal()}
-        contentLabel="Application Instances Modal"
-        overlayClassName="c-modal__background"
-        className="c-modal c-modal--settings is-open"
-      >
-        <h2 className="c-modal__title">
-          {title} {applicationName} Instance
-        </h2>
-        <ApplicationInstanceForm
-          {...this.state.newApplicationInstance}
-          configParseError={this.state.configParseError}
-          onChange={(e) => { this.newApplicationInstanceChange(e); }}
-          save={() => this.save()}
-          sites={this.props.sites}
-          site_id={`${siteId}`}
-          closeModal={() => this.closeModal()}
-          newSite={() => this.newSite()}
-          isUpdate={isUpdate}
-          applicationInstance={this.props.applicationInstance}
-          languagesSupported={this.props.application.supported_languages}
-        />
-        <SiteModal
-          isOpen={this.state.siteModalOpen}
-          closeModal={() => this.closeSiteModal()}
-        />
-      </ReactModal>
+  const save = () => {
+    saveFct(
+      application.id,
+      newApplicationInstance
     );
+    closeModalFct();
+  };
+
+  const applicationName = application ? application.name : 'Application';
+  let title = 'New';
+  let siteId;
+  if (newApplicationInstance.site_id
+      || (applicationInstance && applicationInstance.id)) {
+    title = 'Update';
+    siteId = newApplicationInstance.site_id || applicationInstance.site.id;
   }
+  const isUpdate = !!(applicationInstance && applicationInstance.id);
+
+  return (
+    <ReactModal
+      isOpen={isOpen}
+      onRequestClose={() => closeModal()}
+      contentLabel="Application Instances Modal"
+      overlayClassName="c-modal__background"
+      className="c-modal c-modal--settings is-open"
+    >
+      <h2 className="c-modal__title">
+        {title}
+        {' '}
+        {applicationName}
+        {' '}
+        Instance
+      </h2>
+      <ApplicationInstanceForm
+        config={newApplicationInstance.config}
+        domain={newApplicationInstance.domain}
+        lti_config={newApplicationInstance.lti_config}
+        lti_key={newApplicationInstance.lti_key}
+        lti_secret={newApplicationInstance.lti_secret}
+        ltiConfigParseError={newApplicationInstance.ltiConfigParseError}
+        canvas_token_preview={newApplicationInstance.canvas_token_preview}
+        anonymous={newApplicationInstance.anonymous}
+        rollbar_enabled={newApplicationInstance.rollbar_enabled}
+        use_scoped_developer_key={newApplicationInstance.use_scoped_developer_key}
+        nickname={newApplicationInstance.nickname}
+        primary_contact={newApplicationInstance.primary_contact}
+        configParseError={configParseError}
+        onChange={(e) => { newApplicationInstanceChange(e); }}
+        save={() => save()}
+        sites={sites}
+        site_id={`${siteId}`}
+        closeModal={() => closeModal()}
+        newSite={() => newSite()}
+        isUpdate={isUpdate}
+        applicationInstance={applicationInstance}
+        languagesSupported={application.supported_languages || ['']}
+      />
+      <SiteModal
+        isOpen={siteModalOpen}
+        closeModal={() => closeSiteModal()}
+      />
+    </ReactModal>
+  );
+
 }
+
+Modal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  sites: PropTypes.shape({}),
+  save: PropTypes.func.isRequired,
+  applicationInstance: PropTypes.shape({
+    id: PropTypes.number,
+    config: PropTypes.string,
+    site: PropTypes.shape({
+      id: PropTypes.number,
+    })
+  }),
+  application: PropTypes.shape({
+    id: PropTypes.number,
+    supported_languages: PropTypes.array,
+  }),
+};

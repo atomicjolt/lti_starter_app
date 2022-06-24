@@ -8,11 +8,11 @@ export const FIELDS = {
   url: 'Canvas Domain',
 };
 
-const SiteForm = (props) => {
+export default function SiteForm(props) {
   const {
     isUpdate,
-    oauth_key,
-    oauth_secret,
+    oauth_key: oauthKey,
+    oauth_secret: oauthSecret,
     url,
     onChange,
     setupSite,
@@ -43,17 +43,17 @@ const SiteForm = (props) => {
     <form>
       <div className="o-grid o-grid__modal-top">
         {inputTemplate(FIELDS.url, 'url', url)}
-        {inputTemplate(FIELDS.oauth_key, 'oauth_key', oauth_key)}
-        {inputTemplate(FIELDS.oauth_secret, 'oauth_secret', oauth_secret)}
+        {inputTemplate(FIELDS.oauth_key, 'oauth_key', oauthKey)}
+        {inputTemplate(FIELDS.oauth_secret, 'oauth_secret', oauthSecret)}
       </div>
-
-
       <button
         type="button"
         className="c-btn c-btn--yellow"
         onClick={setupSite}
       >
-        {buttonVerb} Domain
+        {buttonVerb}
+        {' '}
+        Domain
       </button>
       <button
         type="button"
@@ -64,7 +64,7 @@ const SiteForm = (props) => {
       </button>
     </form>
   );
-};
+}
 
 SiteForm.propTypes = {
   setupSite: PropTypes.func.isRequired,
@@ -75,5 +75,3 @@ SiteForm.propTypes = {
   oauth_secret: PropTypes.string,
   url: PropTypes.string,
 };
-
-export default SiteForm;

@@ -1,10 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import Disabled from './disabled';
 
 describe('the disabled component', () => {
   it('matches the snapshot', () => {
-    const result = shallow(<Disabled />);
+    const result = TestRenderer.create(<Disabled />);
     expect(result).toMatchSnapshot();
   });
 });

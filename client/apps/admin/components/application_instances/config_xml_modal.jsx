@@ -4,20 +4,30 @@ import ReactModal from 'react-modal';
 import Textarea from '../common/textarea';
 import Input from '../common/input';
 
-const ConfigXmlModal = (props) => {
-  const application = props.application;
+export default function ConfigXmlModal(props) {
+  const {
+    application,
+    applicationInstance,
+    closeModal,
+    isOpen,
+  } = props;
+
   const applicationName = application ? application.name : 'Application';
 
   return (
     <ReactModal
-      isOpen={props.isOpen}
-      onRequestClose={() => props.closeModal()}
+      isOpen={isOpen}
+      onRequestClose={() => closeModal()}
       contentLabel="Application Instances Modal"
       overlayClassName="c-modal__background"
       className="c-modal c-modal--settings is-open"
     >
       <h2 className="c-modal__title">
-        Config XML for {applicationName} Instance
+        Config XML for
+        {' '}
+        {applicationName}
+        {' '}
+        Instance
       </h2>
       <div className="o-grid__item u-half">
         <Input
@@ -28,7 +38,7 @@ const ConfigXmlModal = (props) => {
             name: 'lti_key',
             type: 'text',
             readOnly: true,
-            value: props.applicationInstance.lti_key,
+            value: applicationInstance.lti_key,
           }}
         />
       </div>
@@ -41,7 +51,7 @@ const ConfigXmlModal = (props) => {
             name: 'lti_secret',
             type: 'text',
             readOnly: true,
-            value: props.applicationInstance.lti_secret,
+            value: applicationInstance.lti_secret,
           }}
         />
       </div>
@@ -54,7 +64,7 @@ const ConfigXmlModal = (props) => {
             name: 'lti_config_xml',
             rows: 20,
             readOnly: true,
-            value: props.applicationInstance.lti_config_xml || '',
+            value: applicationInstance.lti_config_xml || '',
             onChange: () => {},
           }}
         />
@@ -62,13 +72,13 @@ const ConfigXmlModal = (props) => {
       <button
         type="button"
         className="c-btn c-btn--gray--large u-m-right"
-        onClick={() => props.closeModal()}
+        onClick={() => closeModal()}
       >
         Close
       </button>
     </ReactModal>
   );
-};
+}
 
 ConfigXmlModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
@@ -84,5 +94,3 @@ ConfigXmlModal.propTypes = {
     lti_secret: PropTypes.string,
   }),
 };
-
-export default ConfigXmlModal;

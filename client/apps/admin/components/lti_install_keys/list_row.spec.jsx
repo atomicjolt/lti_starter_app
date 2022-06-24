@@ -1,11 +1,21 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import ReactDOM from 'react-dom';
+import TestRenderer, { act } from 'react-test-renderer';
 import ListRow from './list_row';
 
 describe('application instances list row', () => {
   let props;
   let result;
+  let instance;
   let deleted;
+
+  beforeAll(() => {
+    ReactDOM.createPortal = jest.fn((element) => element);
+  });
+
+  afterEach(() => {
+    ReactDOM.createPortal.mockClear();
+  });
 
   beforeEach(() => {
     deleted = false;
@@ -23,24 +33,33 @@ describe('application instances list row', () => {
         created_at: 'created_at',
       },
     };
-    result = shallow(<ListRow {...props} />);
+    result = TestRenderer.create(<ListRow {...props} />);
+    instance = result.root;
   });
 
   // the following tests will break if the order of the buttons is changed
   // to remedy this a class would need to be added to each button
 
   it('handles the opening of the modal', () => {
-    expect(result.instance().state.modalOpen).toBeFalsy();
-    const btn = result.find('button').first();
-    btn.simulate('click');
-    expect(result.instance().state.modalOpen).toBeTruthy();
+    expect(result).toMatchSnapshot();
+    const buttons = instance.findAllByType('button');
+    act(() => {
+      buttons[0].props.onClick();
+    });
+
+    expect(result).toMatchSnapshot();
+    const h2 = instance.findAllByType('h2');
+    expect(h2.length).toBe(1);
   });
 
   it('handles deleting', () => {
-    expect(deleted).toBeFalsy();
-    expect(result.instance().state.confirmDeleteModalOpen).toBeFalsy();
-    const btn = result.find('button').last();
-    btn.simulate('click');
-    expect(result.instance().state.confirmDeleteModalOpen).toBeTruthy();
+    let buttons = instance.findAllByType('button');
+    act(() => {
+      buttons[1].props.onClick();
+    });
+
+    buttons = instance.findAllByType('button');
+    const button = buttons.find((b) => b.children[0] === 'Cancel');
+    expect(button).toBeTruthy();
   });
 });

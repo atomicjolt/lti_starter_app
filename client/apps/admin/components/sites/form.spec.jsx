@@ -1,9 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import Form from './form';
 
 describe('site form', () => {
   let result;
+  let instance;
   let props;
   let modalClosed;
 
@@ -15,7 +16,8 @@ describe('site form', () => {
       onChange: () => {},
       isUpdate: false,
     };
-    result = shallow(<Form {...props} />);
+    result = TestRenderer.create(<Form {...props} />);
+    instance = result.root;
   });
 
   it('renders the form', () => {
@@ -28,15 +30,18 @@ describe('site form', () => {
 
   it('handles the Domain onclick event', () => {
     expect(modalClosed).toBeFalsy();
-    result.find('.c-btn--yellow').simulate('click');
+    const buttons = instance.findAllByType('button');
+    const button = buttons.find(b => b.children[0] !== 'Cancel');
+    button.props.onClick();
     expect(modalClosed).toBeTruthy();
   });
 
   describe('close modal', () => {
     it('closes', () => {
       expect(modalClosed).toBeFalsy();
-      const button = result.find('.c-btn--gray--large');
-      button.simulate('click');
+      const buttons = instance.findAllByType('button');
+      const button = buttons.find(b => b.children[0] === 'Cancel');
+      button.props.onClick();
       expect(modalClosed).toBeTruthy();
     });
   });

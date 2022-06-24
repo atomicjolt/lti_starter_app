@@ -1,75 +1,75 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-export default class SubAccount extends React.Component {
-  static propTypes = {
-    accounts: PropTypes.shape({}),
-    account: PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-    }).isRequired,
-    isActive: PropTypes.bool,
-    currentAccount: PropTypes.shape({
-      id: PropTypes.number,
-    }),
-    setAccountActive: PropTypes.func.isRequired,
-  }
+export default function SubAccount(props) {
+  const {
+    accounts,
+    account,
+    isActive,
+    currentAccount,
+    setAccountActive
+  } = props;
 
-  constructor() {
-    super();
-    this.state = {
-      open: false,
-      hasToggled: false,
-    };
-  }
+  const [open, setOpen] = useState(false);
+  const [hasToggled, setHasToggled] = useState(false);
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.currentAccount === nextProps.account && !this.state.hasToggled) {
-      this.setState({ open: true });
+  useEffect(() => {
+    if (currentAccount === account && !hasToggled) {
+      setOpen(true);
     }
-  }
+  }, [currentAccount, account, hasToggled]);
 
-  getChildrenAccounts() {
-    return _(this.props.accounts)
-      .filter({ parent_account_id: this.props.account.id })
-      .sortBy('name')
-      .map(child => (
-        <SubAccount
-          key={`account_${child.id}`}
-          account={child}
-          setAccountActive={this.props.setAccountActive}
-          accounts={this.props.accounts}
-          currentAccount={this.props.currentAccount}
-          isActive={this.props.currentAccount && child.id === this.props.currentAccount.id}
-        />
-      ))
-      .value();
-  }
+  const getChildrenAccounts = () => _(accounts)
+    .filter({ parent_account_id: account.id })
+    .sortBy('name')
+    .map((child) => (
+      <SubAccount
+        key={`account_${child.id}`}
+        account={child}
+        setAccountActive={setAccountActive}
+        accounts={accounts}
+        currentAccount={currentAccount}
+        isActive={currentAccount && child.id === currentAccount.id}
+      />
+    ))
+    .value();
 
-  handleAccountClick() {
-    this.setState({
-      open: !this.state.open,
-      hasToggled: true,
-    });
-    this.props.setAccountActive(this.props.account);
-  }
+  const handleAccountClick = () => {
+    setOpen(!open);
+    setHasToggled(true);
+    setAccountActive(account);
+  };
 
-  render() {
-    const childrenAccounts = this.getChildrenAccounts();
-    return (
-      <li
-        key={`account_${this.props.account.id}`}
-        className={this.props.isActive ? 'c-filter__item is-active' : 'c-filter__item'}
+  const childrenAccounts = getChildrenAccounts();
+  return (
+    <li
+      key={`account_${account.id}`}
+      className={isActive ? 'c-filter__item is-active' : 'c-filter__item'}
+    >
+      <button
+        type="button"
+        onClick={handleAccountClick}
       >
-        <button onClick={() => this.handleAccountClick()}>
-          { childrenAccounts.length ? <i className={this.state.open ? 'i-dropdown is-open' : 'i-dropdown'} /> : null }
-          {this.props.account.name}
-        </button>
-        {
-          this.state.open ? <ul className="c-filter__dropdown">{childrenAccounts}</ul> : null
+        { childrenAccounts.length ? <i className={open ? 'i-dropdown is-open' : 'i-dropdown'} /> : null }
+        {account.name}
+      </button>
+      {
+          open ? <ul className="c-filter__dropdown">{childrenAccounts}</ul> : null
         }
-      </li>
-    );
-  }
+    </li>
+  );
 }
+
+SubAccount.propTypes = {
+  accounts: PropTypes.shape({}).isRequired,
+  account: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+  }).isRequired,
+  isActive: PropTypes.bool,
+  currentAccount: PropTypes.shape({
+    id: PropTypes.number
+  }),
+  setAccountActive: PropTypes.func.isRequired,
+};

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import Pagination from './pagination';
 
 describe('lti installs pagination', () => {
@@ -12,7 +12,7 @@ describe('lti installs pagination', () => {
       pageCount: 21,
       currentPage: 2
     };
-    result = shallow(<Pagination {...props} />);
+    result = TestRenderer.create(<Pagination {...props} />);
   });
 
   it('renders', () => {

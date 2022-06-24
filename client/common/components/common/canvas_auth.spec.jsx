@@ -1,6 +1,11 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import { CanvasAuth } from './canvas_auth';
+
+const mockStore = configureStore([]);
+const store = mockStore({});
 
 describe('Canvas Auth', () => {
   it('renders the reauthorization when reauthorization is required', () => {
@@ -15,11 +20,13 @@ describe('Canvas Auth', () => {
       errors: [],
       addError: () => {},
     };
-    const result = shallow(
-      <CanvasAuth {...props} />
+    const result = TestRenderer.create(
+      <Provider store={store}>
+        <CanvasAuth {...props} />
+      </Provider>
     );
-    const h1 = result.find('h1');
-    expect(h1.props().children).toContain('Authorize with Canvas');
+    const h1 = result.root.findByType('h1');
+    expect(h1.props.children).toContain('Authorize with Canvas');
   });
 
   it('renders an token error message when global auth is invalid', () => {
@@ -34,11 +41,13 @@ describe('Canvas Auth', () => {
       errors: [],
       addError: () => {},
     };
-    const result = shallow(
-      <CanvasAuth {...props} />
+    const result = TestRenderer.create(
+      <Provider store={store}>
+        <CanvasAuth {...props} />
+      </Provider>
     );
-    const h1 = result.find('h1');
-    expect(h1.props().children).toContain('Canvas API Error');
+    const h1 = result.root.findByType('h1');
+    expect(h1.props.children).toContain('Canvas API Error');
   });
 
   it('renders the authorization when authorization is required', () => {
@@ -53,11 +62,13 @@ describe('Canvas Auth', () => {
       errors: [],
       addError: () => {},
     };
-    const result = shallow(
-      <CanvasAuth {...props} />
+    const result = TestRenderer.create(
+      <Provider store={store}>
+        <CanvasAuth {...props} />
+      </Provider>
     );
-    const h1 = result.find('h1');
-    expect(h1.props().children).toContain('Authorize with Canvas');
+    const h1 = result.root.findByType('h1');
+    expect(h1.props.children).toContain('Authorize with Canvas');
   });
 
   it('renders nothing when no authorization is required', () => {
@@ -72,10 +83,12 @@ describe('Canvas Auth', () => {
       errors: [],
       addError: () => {},
     };
-    const result = shallow(
-      <CanvasAuth {...props} />
+    const result = TestRenderer.create(
+      <Provider store={store}>
+        <CanvasAuth {...props} />
+      </Provider>
     );
-    expect(result.html()).toEqual(null);
+    expect(result.toJSON()).toEqual('');
   });
 
 });

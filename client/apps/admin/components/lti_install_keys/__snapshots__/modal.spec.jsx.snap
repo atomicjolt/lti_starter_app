@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`applications modal modal matches snapshot 1`] = `
+exports[`lti install key modal matches the snapshot 1`] = `
 <div
   className="ReactModal__Overlay c-modal__background"
   onClick={[Function]}
@@ -8,7 +8,7 @@ exports[`applications modal modal matches snapshot 1`] = `
   style={Object {}}
 >
   <div
-    aria-label="Modal"
+    aria-label="Lti Install Key Modal"
     aria-modal={true}
     className="ReactModal__Content c-modal c-modal--settings is-open"
     onClick={[Function]}
@@ -22,9 +22,9 @@ exports[`applications modal modal matches snapshot 1`] = `
     <h2
       className="c-modal__title"
     >
-      SPEC_NAME
+      Update
        
-      Settings
+      Lti Install Key
     </h2>
     <form>
       <div
@@ -33,41 +33,22 @@ exports[`applications modal modal matches snapshot 1`] = `
         <div
           className="o-grid__item u-half"
         >
-          <label
-            className="c-input"
-            htmlFor="description"
-          >
-            <span>
-              Description
-            </span>
-            <input
-              id="description"
-              name="description"
-              onChange={[Function]}
-              type="text"
-              value="SPEC_STRING"
-            />
-          </label>
-        </div>
-        <div
-          className="o-grid__item u-half"
-        >
           <div
             className="c-input--container"
           >
             <label
               className="c-input"
-              htmlFor="oauth_key_input"
+              htmlFor="iss_input"
             >
               <span>
-                Oauth Key
+                iss
               </span>
               <input
-                id="oauth_key_input"
-                name="oauth_key"
+                id="iss_input"
+                name="iss"
                 onChange={[Function]}
                 type="text"
-                value=""
+                value="iss"
               />
             </label>
           </div>
@@ -80,17 +61,17 @@ exports[`applications modal modal matches snapshot 1`] = `
           >
             <label
               className="c-input"
-              htmlFor="oauth_secret_input"
+              htmlFor="client_id_input"
             >
               <span>
-                Oauth Secret
+                client id
               </span>
               <input
-                id="oauth_secret_input"
-                name="oauth_secret"
+                id="client_id_input"
+                name="clientId"
                 onChange={[Function]}
                 type="text"
-                value=""
+                value="lti-key"
               />
             </label>
           </div>
@@ -98,34 +79,71 @@ exports[`applications modal modal matches snapshot 1`] = `
         <div
           className="o-grid__item u-half"
         >
-          <label
-            className="c-input"
-            htmlFor="permissions"
+          <div
+            className="c-input--container"
           >
-            <span>
-              Canvas API Permissions
-            </span>
-          </label>
+            <label
+              className="c-input"
+              htmlFor="jwks_url_input"
+            >
+              <span>
+                jwks url
+              </span>
+              <input
+                id="jwks_url_input"
+                name="jwksUrl"
+                onChange={[Function]}
+                type="text"
+                value="jwksUrl"
+              />
+            </label>
+          </div>
         </div>
         <div
-          className="o-grid__item u-full"
+          className="o-grid__item u-half"
         >
-          <label
-            className="c-input"
-            htmlFor="application_default_config"
+          <div
+            className="c-input--container"
           >
-            <span>
-              Default Config
-            </span>
-            <textarea
-              id="application_default_config"
-              name="default_config"
-              onChange={[Function]}
-              placeholder="ex: { \\"foo\\": \\"bar\\" }"
-              rows={3}
-              value=""
-            />
-          </label>
+            <label
+              className="c-input"
+              htmlFor="token_url_input"
+            >
+              <span>
+                token url
+              </span>
+              <input
+                id="token_url_input"
+                name="tokenUrl"
+                onChange={[Function]}
+                type="text"
+                value="tokenUrl"
+              />
+            </label>
+          </div>
+        </div>
+        <div
+          className="o-grid__item u-half"
+        >
+          <div
+            className="c-input--container"
+          >
+            <label
+              className="c-input"
+              htmlFor="oidc_url_input"
+            >
+              <span>
+                oidc url
+              </span>
+              <input
+                id="oidc_url_input"
+                name="oidcUrl"
+                onChange={[Function]}
+                type="text"
+                value="oidcUrl"
+              />
+            </label>
+          </div>
         </div>
       </div>
       <button

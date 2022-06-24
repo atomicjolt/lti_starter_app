@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import { Heading } from './heading';
 
 jest.mock('../../libs/assets');
@@ -15,7 +15,7 @@ describe('common heading', () => {
       signOutUrl: 'https://www.example.com',
       sites,
     };
-    result = shallow(<Heading {...props} />);
+    result = TestRenderer.create(<Heading {...props} />);
   });
 
   it('matches the snapshot', () => {

@@ -3,13 +3,11 @@
 exports[`common search inputs matches the snapshot 1`] = `
 <div>
   <input
-    key="lti_key"
     name="lti_key"
     type="hidden"
     value="lti_key"
   />
   <input
-    key="name"
     name="name"
     type="hidden"
     value="ltiName"

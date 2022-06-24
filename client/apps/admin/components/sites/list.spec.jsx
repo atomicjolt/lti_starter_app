@@ -1,10 +1,19 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import List from './list';
+
+const mockStore = configureStore([]);
+const store = mockStore({
+  settings: {
+    canvas_callback_url: 'https://www.example.com',
+  },
+});
 
 describe('sites list', () => {
   let result;
-  let props;
+  let instance;
 
   const sites = {
     1: {
@@ -18,26 +27,32 @@ describe('sites list', () => {
     }
   };
 
-  beforeEach(() => {
-    props = {
-      sites,
-      deleteSite: () => {},
-    };
-    result = shallow(<List {...props} />);
-  });
+  const deleteSite = () => {};
 
-  it('renders the list with header values', () => {
-    const thead = result.find('thead');
-    expect(thead.props().children).toEqual(
-      <tr>
-        <th><span>URL</span></th>
-        <th><span>SETTINGS</span></th>
-        <th><span>DELETE</span></th>
-      </tr>
+  beforeEach(() => {
+    result = TestRenderer.create(
+      <Provider store={store}>
+        <List
+          sites={sites}
+          deleteSite={deleteSite}
+        />
+      </Provider>
     );
+    instance = result.root;
   });
 
   it('matches the snapshot', () => {
     expect(result).toMatchSnapshot();
+  });
+
+  it('renders the list with header values', () => {
+    const thead = instance.findByType('thead');
+    const headings = thead.props.children.props.children;
+    expect(headings.length).toEqual(3);
+    expect(headings[0].type).toEqual('th');
+    const spans = thead.findAllByType('span');
+    expect(spans[0].props.children).toEqual('URL');
+    expect(spans[1].props.children).toEqual('SETTINGS');
+    expect(spans[2].props.children).toEqual('DELETE');
   });
 });

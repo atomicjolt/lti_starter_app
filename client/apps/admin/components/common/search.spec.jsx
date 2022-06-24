@@ -1,18 +1,23 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import ReactDOM from 'react-dom';
+import TestRenderer from 'react-test-renderer';
+import ReactTestUtils, { act } from 'react-dom/test-utils';
 import Search from './search';
 
 describe('common search', () => {
   let result;
   let search;
-  let props;
+  let instance;
+
+  const searchFct = () => { search = true; };
 
   beforeEach(() => {
     search = false;
-    props = {
-      search: () => { search = true; },
-    };
-    result = shallow(<Search {...props} />);
+    result = TestRenderer.create(
+      <Search
+        search={searchFct}
+      />);
+    instance = result.root;
   });
 
   it('matches the snapshot', () => {
@@ -20,15 +25,30 @@ describe('common search', () => {
   });
 
   it('has search input', () => {
-    const input = result.find('input');
+    const input = instance.findByType('input');
     expect(input).toBeDefined();
-    expect(input.props().type).toBe('text');
-    expect(input.props().placeholder).toBe('Search...');
+    expect(input.props.type).toBe('text');
+    expect(input.props.placeholder).toBe('Search...');
   });
 
   it('search input changes', () => {
     expect(search).toBeFalsy();
-    result.find('input').simulate('change', { target: { value: 'new value' } });
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    act(() => {
+      ReactDOM.render(
+        <Search
+          search={searchFct}
+        />,
+        container
+      );
+    });
+    const inputs = document.getElementsByTagName('input');
+    expect(inputs.length).toEqual(1);
+    const input = inputs[0];
+    const event = { target: { value: 'test onChange' } };
+    ReactTestUtils.Simulate.change(input, event);
     expect(search).toBeTruthy();
+    // expect(input.onChange).toHaveBeenCalledTimes(1);
   });
 });

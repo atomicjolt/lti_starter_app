@@ -3,16 +3,21 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import SiteRow from './site_row';
 
-const List = (props) => {
-  const siteRows = _.map(props.sites, (site, index) => (
+export default function List(props) {
+  const {
+    sites,
+    deleteSite,
+  } = props;
+
+  const siteRows = _.map(sites, (site, index) => (
     <SiteRow
       key={`site_${index}`}
       site={site}
-      deleteSite={props.deleteSite}
+      deleteSite={deleteSite}
     />
   ));
 
-  if (_.isEmpty(props.sites)) {
+  if (_.isEmpty(sites)) {
     return <p className="c-alert c-alert--danger">No sites are currently configured. Please add a site.</p>;
   }
 
@@ -30,11 +35,9 @@ const List = (props) => {
       </tbody>
     </table>
   );
-};
+}
 
 List.propTypes = {
   sites: PropTypes.shape({}).isRequired,
   deleteSite: PropTypes.func.isRequired,
 };
-
-export default List;

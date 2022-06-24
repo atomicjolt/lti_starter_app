@@ -1,20 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`sites list row handles the first button onclick event 1`] = `
+exports[`application instances list row handles the opening of the modal 1`] = `
 <tr>
-  <td>
-    http://www.example.com
-    <span
-      className="c-alert c-alert--danger"
-      style={
-        Object {
-          "fontSize": "10px",
-        }
-      }
-    >
-      OAuth key and/or secret not configured
-    </span>
-  </td>
   <td>
     <button
       onClick={[Function]}
@@ -37,7 +24,22 @@ exports[`sites list row handles the first button onclick event 1`] = `
     </button>
   </td>
   <td>
+    2
+  </td>
+  <td>
+    iss
+  </td>
+  <td>
+    lti-key
+  </td>
+  <td>
+    Invalid Date
+     
+    Invalid Date
+  </td>
+  <td>
     <button
+      className="c-delete"
       onClick={[Function]}
       style={
         Object {
@@ -58,21 +60,8 @@ exports[`sites list row handles the first button onclick event 1`] = `
 </tr>
 `;
 
-exports[`sites list row handles the first button onclick event 2`] = `
+exports[`application instances list row handles the opening of the modal 2`] = `
 <tr>
-  <td>
-    http://www.example.com
-    <span
-      className="c-alert c-alert--danger"
-      style={
-        Object {
-          "fontSize": "10px",
-        }
-      }
-    >
-      OAuth key and/or secret not configured
-    </span>
-  </td>
   <td>
     <button
       onClick={[Function]}
@@ -94,15 +83,15 @@ exports[`sites list row handles the first button onclick event 2`] = `
       </i>
     </button>
     <div
-      className="ReactModal__Overlay unused"
+      className="ReactModal__Overlay c-modal__background"
       onClick={[Function]}
       onMouseDown={[Function]}
       style={Object {}}
     >
       <div
-        aria-label="Modal"
+        aria-label="Lti Install Key Modal"
         aria-modal={true}
-        className="ReactModal__Content c-modal c-modal--site is-open"
+        className="ReactModal__Content c-modal c-modal--settings is-open"
         onClick={[Function]}
         onKeyDown={[Function]}
         onMouseDown={[Function]}
@@ -114,104 +103,125 @@ exports[`sites list row handles the first button onclick event 2`] = `
         <h2
           className="c-modal__title"
         >
-          New
+          Update
            
-          Domain
+          Lti Install Key
         </h2>
-        <h3
-          className="c-modal__subtext"
-        >
-          <div>
-            <div>
-              Use the redirect URI:
-               
-            </div>
-            <div>
-              <a
-                className="c-modal__subtext-link"
-                href="http://www.example.com/accounts/site_admin/developer_keys"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                Get Canvas Developer Keys Here
-              </a>
-            </div>
-          </div>
-        </h3>
-        <h3
-          className="c-modal__subtext"
-        >
-          Url must begin with "https://"
-        </h3>
         <form>
           <div
             className="o-grid o-grid__modal-top"
           >
             <div
-              className="o-grid__item u-full"
+              className="o-grid__item u-half"
             >
               <div
                 className="c-input--container"
               >
                 <label
                   className="c-input"
-                  htmlFor="site_url"
+                  htmlFor="iss_input"
                 >
                   <span>
-                    Canvas Domain
+                    iss
                   </span>
                   <input
-                    id="site_url"
-                    name="url"
+                    id="iss_input"
+                    name="iss"
                     onChange={[Function]}
                     type="text"
-                    value="http://www.example.com"
+                    value="iss"
                   />
                 </label>
               </div>
             </div>
             <div
-              className="o-grid__item u-full"
+              className="o-grid__item u-half"
             >
               <div
                 className="c-input--container"
               >
                 <label
                   className="c-input"
-                  htmlFor="site_oauth_key"
+                  htmlFor="client_id_input"
                 >
                   <span>
-                    Canvas Developer ID
+                    client id
                   </span>
                   <input
-                    id="site_oauth_key"
-                    name="oauth_key"
+                    id="client_id_input"
+                    name="clientId"
                     onChange={[Function]}
                     type="text"
-                    value=""
+                    value="lti-key"
                   />
                 </label>
               </div>
             </div>
             <div
-              className="o-grid__item u-full"
+              className="o-grid__item u-half"
             >
               <div
                 className="c-input--container"
               >
                 <label
                   className="c-input"
-                  htmlFor="site_oauth_secret"
+                  htmlFor="jwks_url_input"
                 >
                   <span>
-                    Canvas Developer Key
+                    jwks url
                   </span>
                   <input
-                    id="site_oauth_secret"
-                    name="oauth_secret"
+                    id="jwks_url_input"
+                    name="jwksUrl"
                     onChange={[Function]}
                     type="text"
-                    value=""
+                    value="jwksUrl"
+                  />
+                </label>
+              </div>
+            </div>
+            <div
+              className="o-grid__item u-half"
+            >
+              <div
+                className="c-input--container"
+              >
+                <label
+                  className="c-input"
+                  htmlFor="token_url_input"
+                >
+                  <span>
+                    token url
+                  </span>
+                  <input
+                    id="token_url_input"
+                    name="tokenUrl"
+                    onChange={[Function]}
+                    type="text"
+                    value="tokenUrl"
+                  />
+                </label>
+              </div>
+            </div>
+            <div
+              className="o-grid__item u-half"
+            >
+              <div
+                className="c-input--container"
+              >
+                <label
+                  className="c-input"
+                  htmlFor="oidc_url_input"
+                >
+                  <span>
+                    oidc url
+                  </span>
+                  <input
+                    id="oidc_url_input"
+                    name="oidcUrl"
+                    onChange={[Function]}
+                    type="text"
+                    value="oidcUrl"
                   />
                 </label>
               </div>
@@ -222,9 +232,7 @@ exports[`sites list row handles the first button onclick event 2`] = `
             onClick={[Function]}
             type="button"
           >
-            Create
-             
-            Domain
+            Save
           </button>
           <button
             className="c-btn c-btn--gray--large u-m-right"
@@ -238,65 +246,22 @@ exports[`sites list row handles the first button onclick event 2`] = `
     </div>
   </td>
   <td>
-    <button
-      onClick={[Function]}
-      style={
-        Object {
-          "backgroundColor": "transparent",
-          "border": "none",
-          "color": "grey",
-          "cursor": "pointer",
-          "fontSize": "1.5em",
-        }
-      }
-      type="button"
-    >
-      <i
-        className="i-delete"
-      />
-    </button>
+    2
   </td>
-</tr>
-`;
-
-exports[`sites list row matches the snapshot 1`] = `
-<tr>
   <td>
-    http://www.example.com
-    <span
-      className="c-alert c-alert--danger"
-      style={
-        Object {
-          "fontSize": "10px",
-        }
-      }
-    >
-      OAuth key and/or secret not configured
-    </span>
+    iss
+  </td>
+  <td>
+    lti-key
+  </td>
+  <td>
+    Invalid Date
+     
+    Invalid Date
   </td>
   <td>
     <button
-      onClick={[Function]}
-      style={
-        Object {
-          "backgroundColor": "transparent",
-          "border": "none",
-          "color": "grey",
-          "cursor": "pointer",
-          "fontSize": "1.5em",
-        }
-      }
-      type="button"
-    >
-      <i
-        className="material-icons"
-      >
-        settings
-      </i>
-    </button>
-  </td>
-  <td>
-    <button
+      className="c-delete"
       onClick={[Function]}
       style={
         Object {

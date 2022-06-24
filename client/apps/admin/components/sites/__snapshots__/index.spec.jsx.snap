@@ -2,33 +2,278 @@
 
 exports[`sites index matches the snapshot 1`] = `
 <div>
-  <Connect(Heading) />
+  <div>
+    <header
+      className="c-head"
+    >
+      <div
+        className="aj-flex"
+      >
+        <img
+          alt="Atomic Jolt Logo"
+          className="c-head-img"
+        />
+        <nav
+          className="c-head-nav"
+        >
+          <a
+            aria-selected={null}
+            className="c-head-link"
+            href=""
+            onClick={[Function]}
+            style={Object {}}
+          >
+            Starter
+          </a>
+        </nav>
+      </div>
+      <div
+        className="c-head-profile"
+      >
+        <div
+          className="aj-menu-contain aj-menu-space "
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-label="Analytics Options"
+            className="aj-icon-btn"
+            onClick={[Function]}
+            type="button"
+          >
+            <i
+              aria-hidden="true"
+              className="material-icons-outlined"
+            >
+              account_circle
+            </i>
+          </button>
+          <ul
+            className="aj-menu"
+            role="menu"
+          >
+            <li>
+              <a>
+                <span>
+                  Admin Users
+                </span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span>
+                  Update Profile
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.example.com"
+              >
+                <span>
+                  Logout
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.example.com?destroy_authentications=true"
+              >
+                <span>
+                  Delete Canvas Authentications and Sign Out
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div
+      className="c-yellow-bar"
+    />
+    <div
+      className="c-subnav"
+    >
+      <ul>
+        <li>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+          >
+            LTI Tools
+          </a>
+        </li>
+        <li>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+          >
+            Sites
+            <span
+              className="c-alert c-alert--danger"
+            >
+               ! Setup Required
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
   <div
     className="o-contain o-contain--full"
   >
-    <Connect(SiteModal)
-      closeModal={[Function]}
-      isOpen={false}
-    />
-    <Header
-      newSite={[Function]}
-      openSettings={[Function]}
-    />
-    <List
-      deleteSite={[Function]}
-      sites={
-        Object {
-          "1": Object {
-            "id": 1,
-            "url": "bfcoder.com",
-          },
-          "2": Object {
-            "id": 2,
-            "url": "atomicjolt.com",
-          },
-        }
-      }
-    />
+    <div
+      className="c-info"
+    >
+      <div
+        className="c-title"
+      >
+        <h1>
+          Sites
+        </h1>
+      </div>
+      <button
+        className="c-btn c-btn--yellow"
+        onClick={[Function]}
+      >
+        New Site
+      </button>
+    </div>
+    <table
+      className="c-table c-table--lti"
+    >
+      <thead>
+        <tr>
+          <th>
+            <span>
+              URL
+            </span>
+          </th>
+          <th>
+            <span>
+              SETTINGS
+            </span>
+          </th>
+          <th>
+            <span>
+              DELETE
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            bfcoder.com
+            <span
+              className="c-alert c-alert--danger"
+              style={
+                Object {
+                  "fontSize": "10px",
+                }
+              }
+            >
+              OAuth key and/or secret not configured
+            </span>
+          </td>
+          <td>
+            <button
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "border": "none",
+                  "color": "grey",
+                  "cursor": "pointer",
+                  "fontSize": "1.5em",
+                }
+              }
+              type="button"
+            >
+              <i
+                className="material-icons"
+              >
+                settings
+              </i>
+            </button>
+          </td>
+          <td>
+            <button
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "border": "none",
+                  "color": "grey",
+                  "cursor": "pointer",
+                  "fontSize": "1.5em",
+                }
+              }
+              type="button"
+            >
+              <i
+                className="i-delete"
+              />
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            atomicjolt.com
+            <span
+              className="c-alert c-alert--danger"
+              style={
+                Object {
+                  "fontSize": "10px",
+                }
+              }
+            >
+              OAuth key and/or secret not configured
+            </span>
+          </td>
+          <td>
+            <button
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "border": "none",
+                  "color": "grey",
+                  "cursor": "pointer",
+                  "fontSize": "1.5em",
+                }
+              }
+              type="button"
+            >
+              <i
+                className="material-icons"
+              >
+                settings
+              </i>
+            </button>
+          </td>
+          <td>
+            <button
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "border": "none",
+                  "color": "grey",
+                  "cursor": "pointer",
+                  "fontSize": "1.5em",
+                }
+              }
+              type="button"
+            >
+              <i
+                className="i-delete"
+              />
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 `;

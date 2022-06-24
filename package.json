@@ -46,11 +46,7 @@
     },
     "setupFilesAfterEnv": [
       "<rootDir>/client/testing/shim.js",
-      "<rootDir>/client/testing/setup_env.js",
-      "<rootDir>/client/testing/setup_tests.js"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
+      "<rootDir>/client/testing/setup_env.js"
     ],
     "testEnvironment": "jsdom"
   },
@@ -66,6 +62,7 @@
     "@babel/preset-env": "^7.17.12",
     "@babel/preset-react": "^7.17.12",
     "@rails/webpacker": "^4.3.0",
+    "@testing-library/react": "^12.0.4",
     "atomic-canvas": "^1.13.3",
     "atomic-fuel": "^4.15.3",
     "babel-loader": "^8.2.5",
@@ -95,6 +92,7 @@
     "react-router-dom": "^5.3.0",
     "react-router3": "npm:react-router@3.2.3",
     "react-select": "^5.3.2",
+    "react-select-event": "^5.5.0",
     "redux": "4.2.0",
     "regenerator-runtime": "^0.13.9",
     "resize-observer-polyfill": "^1.5.1",

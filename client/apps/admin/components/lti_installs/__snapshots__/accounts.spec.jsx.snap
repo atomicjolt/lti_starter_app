@@ -4,27 +4,15 @@ exports[`lti installs accounts matches the snapshot 1`] = `
 <ul
   className="c-filter-list"
 >
-  <SubAccount
-    account={
-      Object {
-        "id": 1,
-        "name": "account_name",
-        "parent_account_id": null,
-      }
-    }
-    accounts={
-      Object {
-        "1": Object {
-          "id": 1,
-          "name": "account_name",
-          "parent_account_id": null,
-        },
-      }
-    }
-    currentAccount={null}
-    isActive={null}
-    key="account_1"
-    setAccountActive={[Function]}
-  />
+  <li
+    className="c-filter__item"
+  >
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      account_name
+    </button>
+  </li>
 </ul>
 `;

@@ -3,22 +3,20 @@
 exports[`applications application row matches the snapshot 1`] = `
 <tr>
   <td>
-    <Link
-      onlyActiveOnIndex={false}
+    <a
+      onClick={[Function]}
       style={Object {}}
-      to="/applications/314159/application_instances"
     >
       SPECNAME
-    </Link>
+    </a>
   </td>
   <td>
-    <Link
-      onlyActiveOnIndex={false}
+    <a
+      onClick={[Function]}
       style={Object {}}
-      to="/applications/314159/lti_install_keys"
     >
       Manage Keys
-    </Link>
+    </a>
   </td>
   <td>
     <span>
@@ -37,6 +35,7 @@ exports[`applications application row matches the snapshot 1`] = `
           "fontSize": "1.5em",
         }
       }
+      type="button"
     >
       <i
         className="material-icons"
@@ -44,18 +43,6 @@ exports[`applications application row matches the snapshot 1`] = `
         settings
       </i>
     </button>
-    <Modal
-      application={
-        Object {
-          "application_instances_count": 1234,
-          "id": 314159,
-          "name": "SPECNAME",
-        }
-      }
-      closeModal={[Function]}
-      isOpen={false}
-      save={[Function]}
-    />
   </td>
 </tr>
 `;

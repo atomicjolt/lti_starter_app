@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import SettingsDropDown from './settings_drop_down';
 
 describe('application instance modal', () => {
@@ -7,7 +7,7 @@ describe('application instance modal', () => {
   let result;
 
   beforeEach(() => {
-    result = shallow(<SettingsDropDown />);
+    result = TestRenderer.create(<SettingsDropDown />);
   });
 
   it('renders a list with settings', () => {

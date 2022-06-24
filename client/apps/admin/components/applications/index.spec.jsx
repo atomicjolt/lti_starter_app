@@ -1,27 +1,31 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Index } from './index';
-import sites from '../../reducers/sites';
+import TestRenderer from 'react-test-renderer';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import Index from './index';
 
 jest.mock('../../libs/assets');
+const applications = {
+  Spiderman: {
+    Power1: 'Wall Crawling',
+    Power2: 'Spidey Sense'
+  }
+};
+const settings =  {
+  sign_out_url: 'https://www.example.com',
+};
+const mockStore = configureStore([]);
+const store = mockStore({ applications, settings });
 describe('applications index', () => {
 
   let result;
-  let props;
-  const sitesData = { 1: { id: 1, oauth_key: 'akey', oauth_secret: 'secret' } };
 
   beforeEach(() => {
-    props = {
-      saveApplication: () => {},
-      applications: {
-        Spiderman: {
-          Power1: 'Wall Crawling',
-          Power2: 'Spidey Sense'
-        }
-      }
-    };
-
-    result = shallow(<Index {...props} />);
+    result = TestRenderer.create(
+      <Provider store={store}>
+        <Index />
+      </Provider>
+    );
   });
 
   it('matches the snapshot', () => {

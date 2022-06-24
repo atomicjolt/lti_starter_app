@@ -17,6 +17,7 @@ exports[`lti installs account install with account present matches the snapshot 
   <button
     className="c-btn c-btn--yellow"
     onClick={[Function]}
+    type="button"
   >
     Install Into Account
   </button>

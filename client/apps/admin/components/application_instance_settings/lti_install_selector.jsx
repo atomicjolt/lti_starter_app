@@ -55,7 +55,7 @@ export default function LtiInstallSelector(props) {
   const [sortColumn, setSortColumn] = useState('created_at');
   const [sortDirection, setSortDirection] = useState('desc');
 
-  const ltiInstallKeys = useSelector((state) => _.filter(state.ltiInstallKeys.ltiInstallKeys,
+  const ltiInstallKeys = ((state) => _.filter(state.ltiInstallKeys.ltiInstallKeys,
     { application_id: parseInt(applicationId, 10) })
   );
   const totalPages = useSelector((state) => state.ltiInstallKeys.totalPages);

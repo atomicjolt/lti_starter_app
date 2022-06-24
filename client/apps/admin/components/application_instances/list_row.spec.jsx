@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import ListRow from './list_row';
 
 describe('application instances list row', () => {
@@ -42,7 +42,7 @@ describe('application instances list row', () => {
       },
       canvasOauthURL: 'http://www.example.com',
     };
-    result = shallow(<ListRow {...props} />);
+    result = TestRenderer.create(<ListRow {...props} />);
   });
 
   it('matches the snapshot', () => {

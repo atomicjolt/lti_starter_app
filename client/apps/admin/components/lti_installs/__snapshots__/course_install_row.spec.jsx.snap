@@ -19,6 +19,7 @@ exports[`lti installs course install row matches the snapshot 1`] = `
     <button
       className="c-btn c-btn--gray"
       onClick={[Function]}
+      type="button"
     >
       Uninstall
     </button>

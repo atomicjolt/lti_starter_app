@@ -1,36 +1,52 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import Sidebar from './sidebar';
 
-describe('lti installs sidebar', () => {
+const mockStore = configureStore([]);
+const store = mockStore({});
 
+describe('lti installs sidebar', () => {
   let result;
+  let instance;
   const applicationName = 'applicationName';
+  const accounts = {
+    1: {
+      id: 1,
+      name: 'accountName',
+      sub_accounts: []
+    }
+  };
+  const application = {
+    name: applicationName
+  };
+  const applicationInstance = {
+    site: {
+      url: 'www.atomicjolt.com'
+    }
+  };
+  const saveApplicationInstance = () => {};
+  const canvasRequest = () => {};
+  const setAccountActive = () => {};
+  const sites = {};
 
   describe('should render sidebar', () => {
     beforeEach(() => {
-      const props = {
-        accounts: {
-          1: {
-            id: 1,
-            name: 'accountName',
-            sub_accounts: []
-          }
-        },
-        application: {
-          name: applicationName
-        },
-        applicationInstance: {
-          site: {
-            url: 'www.atomicjolt.com'
-          }
-        },
-        saveApplicationInstance: () => {},
-        canvasRequest: () => {},
-        setAccountActive: () => {},
-        sites: {},
-      };
-      result = shallow(<Sidebar {...props} />);
+      result = TestRenderer.create(
+        <Provider store={store}>
+          <Sidebar
+            accounts={accounts}
+            application={application}
+            applicationInstance={applicationInstance}
+            saveApplicationInstance={saveApplicationInstance}
+            canvasRequest={canvasRequest}
+            setAccountActive={setAccountActive}
+            sites={sites}
+          />
+        </Provider>
+      );
+      instance = result.root;
     });
 
     it('renders', () => {
@@ -46,15 +62,13 @@ describe('lti installs sidebar', () => {
     });
 
     it('return the title name', () => {
-      const title = result.find('.c-tool__title');
-      expect(title.props().children).toBe(applicationName);
+      const title = instance.findByProps({ className: 'c-tool__title' });
+      expect(title.props.children).toBe(applicationName);
     });
 
     it('return the site url', () => {
-      const title = result.find('.c-tool__instance');
-      expect(title.props().children).toEqual(
-        <a href="www.atomicjolt.com">www.atomicjolt.com</a>
-      );
+      const title = instance.findByProps({ className: 'c-tool__instance' });
+      expect(title.props.children.props.href).toEqual('www.atomicjolt.com');
     });
 
   });

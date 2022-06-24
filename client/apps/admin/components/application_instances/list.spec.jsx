@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import TestRenderer from 'react-test-renderer';
 import List from './list';
 
 describe('application instances list', () => {
@@ -25,7 +25,7 @@ describe('application instances list', () => {
       currentSortDirection: '',
       setSort: () => {},
     };
-    result = shallow(<List {...props} />);
+    result = TestRenderer.create(<List {...props} />);
   });
 
   it('matches the snapshot', () => {

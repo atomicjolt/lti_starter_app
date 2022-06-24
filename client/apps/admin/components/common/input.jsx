@@ -3,26 +3,40 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 export default function Input(props) {
+  const {
+    labelText,
+    inputProps,
+    className,
+    helperText: helperTextProp
+  } = props;
 
   let before;
   let after;
 
-  if (_.includes(['radio', 'checkbox'], props.inputProps.type)) {
-    after = <span>{props.labelText}</span>;
+  if (_.includes(['radio', 'checkbox'], inputProps.type)) {
+    after = <span>{labelText}</span>;
   } else {
-    before = <span>{props.labelText}</span>;
+    before = <span>{labelText}</span>;
   }
 
   let helperText;
-  if (props.helperText) {
-    helperText = <div className="helper-text">{props.helperText}</div>;
+  if (helperTextProp) {
+    helperText = <div className="helper-text">{helperTextProp}</div>;
   }
 
   return (
     <div className="c-input--container">
-      <label htmlFor={props.inputProps.id} className={props.className}>
+      <label htmlFor={inputProps.id} className={className}>
         {before}
-        <input {...props.inputProps} />
+        <input
+          id={inputProps.id}
+          value={inputProps.value}
+          checked={inputProps.checked}
+          disabled={inputProps.disabled}
+          name={inputProps.name}
+          type={inputProps.type}
+          onChange={inputProps.onChange}
+        />
         {after}
       </label>
       {helperText}

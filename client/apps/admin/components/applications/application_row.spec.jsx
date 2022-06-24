@@ -1,22 +1,35 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import ReactDOM from 'react-dom';
+import TestRenderer, { act } from 'react-test-renderer';
 import ApplicationRow from './application_row';
 
 describe('applications application row', () => {
   let result;
-  let props;
+  let instance;
+
+  const application = {
+    id: 314159,
+    name: 'SPECNAME',
+    application_instances_count: 1234
+  };
+  const saveApplication = () => {};
+
+  // https://medium.com/@amanverma.dev/mocking-create-portal-to-utilize-react-test-renderer-in-writing-snapshot-uts-c49773c88acd
+  beforeAll(() => {
+    ReactDOM.createPortal = jest.fn((element) => element);
+  });
+
+  afterEach(() => {
+    ReactDOM.createPortal.mockClear();
+  });
 
   beforeEach(() => {
-    props = {
-      application: {
-        id                          : 314159,
-        name                        : 'SPECNAME',
-        application_instances_count : 1234
-      },
-      saveApplication: () => {}
-    };
-
-    result = shallow(<ApplicationRow {...props} />);
+    result = TestRenderer.create(
+      <ApplicationRow
+        application={application}
+        saveApplication={saveApplication}
+      />);
+    instance = result.root;
   });
 
   it('matches the snapshot', () => {
@@ -24,8 +37,13 @@ describe('applications application row', () => {
   });
 
   it('button is clicked', () => {
-    expect(result.instance().state.modalOpen).toBeFalsy();
-    result.find('button').simulate('click');
-    expect(result.instance().state.modalOpen).toBeTruthy();
+    const modals = instance.findAllByProps({ className: 'c-modal__title' });
+    expect(modals.length).toEqual(0);
+
+    act(() => {
+      instance.findByType('button').props.onClick();
+    });
+
+    expect(instance.findByProps({ className: 'c-modal__title' })).toBeDefined();
   });
 });
