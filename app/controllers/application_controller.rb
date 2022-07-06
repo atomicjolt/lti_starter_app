@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
   end
 
   def record_exception(exception)
-    Rollbar.error(exception) if current_application_instance&.rollbar_enabled?
+    Rollbar.error(exception) if current_application_instance.blank? || current_application_instance.rollbar_enabled?
     Rails.logger.error "Unexpected exception during execution"
     Rails.logger.error "#{exception.class.name} (#{exception.message}):"
     Rails.logger.error "  #{exception.backtrace.join("\n  ")}"
@@ -60,8 +60,8 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
-  def not_found
-    render_error 404, "Unable to find the requested record"
+  def not_found(message = "Unable to find the requested record")
+    render_error 404, message
   end
 
   rescue_from CanCan::AccessDenied, with: :permission_denied

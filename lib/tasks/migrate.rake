@@ -10,12 +10,17 @@ def up
   end
 
   # Authentication
-  Authentication.all.each do |u|
-    u.token = u.token_2
-    u.secret = u.secret_2
-    u.refresh_token = u.refresh_token_2
-    u.save!
+  Apartment.tenant_names.each do |tenant|
+    Apartment::Tenant.switch(tenant) do
+      Authentication.all.each do |u|
+        u.token = u.token_2
+        u.secret = u.secret_2
+        u.refresh_token = u.refresh_token_2
+        u.save!
+      end
+    end
   end
+
   puts "Done"
 end
 
@@ -31,12 +36,17 @@ def down
   end
 
   # Authentication
-  Authentication.all.each do |u|
-    u.token_2 = u.token
-    u.secret_2 = u.secret
-    u.refresh_token_2 = u.refresh_token
-    u.save!
+  Apartment.tenant_names.each do |tenant|
+    Apartment::Tenant.switch(tenant) do
+      Authentication.all.each do |u|
+        u.token_2 = u.token
+        u.secret_2 = u.secret
+        u.refresh_token_2 = u.refresh_token
+        u.save!
+      end
+    end
   end
+
   puts "Done"
 end
 
