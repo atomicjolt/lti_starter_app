@@ -1,0 +1,2 @@
+# .pronto_eslint_npm.yml
+files_to_lint: '(\.js|\.jsx|\.es6)$'

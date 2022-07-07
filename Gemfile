@@ -98,7 +98,7 @@ end
 
 group :ci do
   gem "pronto"
-  gem "pronto-eslint", require: false
+  gem "pronto-eslint_npm", require: false
   gem "pronto-rubocop", require: false
 end
 

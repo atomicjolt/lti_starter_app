@@ -14,6 +14,9 @@ import initResizeHandler from '../../common/libs/resize_iframe';
 
 import './styles/styles';
 
+function linter_should_catch_this() {
+}
+
 // Polyfill es6 promises for IE
 es6Promise.polyfill();
 
