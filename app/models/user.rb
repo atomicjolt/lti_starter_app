@@ -81,7 +81,7 @@ class User < ApplicationRecord
   # https://web.archive.org/web/20210719115534/https://www.jamesridgway.co.uk/implementing-a-two-step-otp-u2f-login-workflow-with-rails-and-devise/
   #
 
-  # Generate an OTP secret it it does not already exist
+  # Generate an OTP secret if it does not already exist
   def generate_two_factor_secret_if_missing!
     return unless otp_secret.nil?
     update!(otp_secret: User.generate_otp_secret)
