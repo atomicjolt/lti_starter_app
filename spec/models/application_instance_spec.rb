@@ -192,12 +192,12 @@ RSpec.describe ApplicationInstance, type: :model do
       end
     end
     context "application instance does not have an lti deployment" do
-      it "returns the application instance" do
-        application_instance = FactoryBot.create(:application_instance, application: application)
-        ret = described_class.match_application_instance(lti_install, deployment_id)
-        expect(ret).to eq(application_instance)
-        lti_deployment = application_instance.lti_deployments.first
-        expect(lti_deployment.deployment_id).to eq(deployment_id)
+      it "throws" do
+        expect {
+          application_instance = FactoryBot.create(:application_instance, application: application)
+          ret = described_class.match_application_instance(lti_install, deployment_id)
+          lti_deployment = application_instance.lti_deployments.first
+        }.to raise_error(ApplicationInstanceNotFoundError)
       end
     end
   end
@@ -215,7 +215,8 @@ RSpec.describe ApplicationInstance, type: :model do
 
       context "when there isn't a matching ApplicationInstance" do
         before do
-          FactoryBot.create(:application_instance, application: application, site: site)
+          ai = FactoryBot.create(:application_instance, application: application, site: site)
+          dep = LtiDeployment.create(deployment_id: "foo", application_instance: ai, lti_install: lti_install)
         end
 
         it "does not create a new ApplicationInstance" do
@@ -233,7 +234,7 @@ RSpec.describe ApplicationInstance, type: :model do
         it "creates an LtiDeployment" do
           expect do
             described_class.by_client_and_deployment(client_id, deployment_id, iss)
-          end.to change(LtiDeployment, :count).from(0).to(1)
+          end.to change(LtiDeployment, :count).from(1).to(2)
         end
 
         it "associates the LtiDeployment with the correct ApplicationInstance" do
