@@ -46,13 +46,20 @@ class ApplicationInstance < ApplicationRecord
 
   # Attempts to find an existing application instance that doesn't have a matching lti deployment
   def self.match_application_instance(lti_install, deployment_id)
-    if application_instance = lti_install.application.application_instances.first
-      LtiDeployment.find_or_create_by!(
+    application_instance_ids = lti_install.lti_deployments.pluck(:application_instance_id)
+    app_instance_count = application_instance_ids.uniq.count
+    if app_instance_count == 0
+      raise ApplicationInstanceNotFoundError, "No application instance found linked to lti_install #{lti_install.id}, client_id: #{lti_install.client_id}. Deployment_id: #{deployment_id}, will not be linked"
+    elsif app_instance_count == 1
+      application_instance = ApplicationInstance.find(application_instance_ids.first)
+      LtiDeployment.create!(
         application_instance: application_instance,
         lti_install: lti_install,
         deployment_id: deployment_id,
       )
       application_instance
+    else
+      raise NonUniqueApplicationInstanceError, "Found multiple application instances: #{application_instance_ids} for #{lti_install.id}, client_id: #{lti_install.client_id}. Deployment_id: #{deployment_id} will not be linked"
     end
   end
 
@@ -196,3 +203,6 @@ class ApplicationInstance < ApplicationRecord
   end
   private :destroy_schema
 end
+
+class NonUniqueApplicationInstanceError < StandardError; end
+class ApplicationInstanceNotFoundError < StandardError; end
