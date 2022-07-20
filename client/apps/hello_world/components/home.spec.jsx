@@ -2,8 +2,6 @@ import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import { Home } from './home';
 
-jest.mock('../libs/assets.js');
-
 describe('home', () => {
   it('renders the home component', () => {
     const props = {

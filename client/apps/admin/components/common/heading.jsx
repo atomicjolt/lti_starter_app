@@ -4,10 +4,10 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router3';
 import Menu from './menu';
-import assets from '../../libs/assets';
 import SubNav from './sub_nav';
+import logo from '../../assets/images/aj-logo-emblem.svg';
 
-const select = state => ({
+const select = (state) => ({
   signOutUrl: state.settings.sign_out_url,
   userEditUrl: state.settings.user_edit_url,
   usersUrl: state.settings.users_url,
@@ -25,7 +25,7 @@ export function Heading(props) {
     application,
 
   } = props;
-  const img = assets('./images/aj-logo-emblem.svg');
+
   const apps = [
     {
       displayName: 'Starter',
@@ -38,7 +38,7 @@ export function Heading(props) {
     <div>
       <header className="c-head">
         <div className="aj-flex">
-          <img className="c-head-img" src={img} alt="Atomic Jolt Logo" />
+          <img className="c-head-img" src={logo} alt="Atomic Jolt Logo" />
           <nav className="c-head-nav">
             { _.map(apps, (app, key) => (
               <Link key={app.title + key} href={app.link} className="c-head-link" aria-selected={app.title === application ? application.name : null}>
@@ -104,6 +104,5 @@ Heading.propTypes = {
   discussionsAdminUrl: PropTypes.string,
   actAdminUrl: PropTypes.string,
 };
-
 
 export default connect(select)(Heading);

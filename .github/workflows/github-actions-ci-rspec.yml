@@ -89,6 +89,9 @@ jobs:
           PGUSER: postgres
         run: bin/rails db:migrate
 
+      - name: Prepare assets
+        run: bin/rake test:prepare
+
       - name: Run tests
         run: bin/rspec
 

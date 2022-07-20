@@ -1,7 +1,7 @@
 {
   "name": "lti_starter_app",
   "version": "1.0.0",
-  "description": "React Starter App with Rails. Uses webpacker.",
+  "description": "LTI Starter app using Ruby on Rails and React",
   "author": "atomicjolt",
   "license": "MIT",
   "homepage": "https://github.com/atomicjolt/lti_starter_app",
@@ -9,11 +9,13 @@
     "test": "jest --config package.json",
     "test_update": "jest -u --config package.json",
     "test_debug": "node inspect jest --runInBand --config package.json || SUCCESS=false",
-    "hot": "./bin/webpack-dev-server",
     "lint": "eslint client",
     "lint_fix": "eslint client --fix",
     "nuke": "rm -rf node_modules",
-    "inspect_fuel": "\"${EDITOR:-vi}\" ./node_modules/atomic-fuel"
+    "inspect_fuel": "\"${EDITOR:-vi}\" ./node_modules/atomic-fuel",
+    "build": "yarn run build_packs",
+    "hot": "node esbuild.js dev client/packs/*.*",
+    "build_packs": "node esbuild.js prod client/packs/*.*"
   },
   "repository": {
     "type": "git",
@@ -61,7 +63,6 @@
     "@babel/plugin-transform-runtime": "^7.17.12",
     "@babel/preset-env": "^7.17.12",
     "@babel/preset-react": "^7.17.12",
-    "@rails/webpacker": "^4.3.0",
     "@testing-library/react": "^12.0.4",
     "atomic-canvas": "^1.13.3",
     "atomic-fuel": "^4.15.3",
@@ -73,6 +74,8 @@
     "core-js": "^3.22.5",
     "css-loader": "^2.1.1",
     "es6-promise": "^4.2.4",
+    "esbuild": "^0.14.49",
+    "esbuild-sass-plugin": "^2.3.0",
     "file-loader": "^4.3.0",
     "graphql": "^16.5.0",
     "graphql-tag": "^2.12.6",
@@ -98,9 +101,7 @@
     "resize-observer-polyfill": "^1.5.1",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.3.0",
-    "superagent": "^7.1.3",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12"
+    "superagent": "^7.1.3"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",
@@ -121,7 +122,6 @@
     "jest-transform-graphql": "^2.1.0",
     "react-test-renderer": "^17.0.2",
     "redux-mock-store": "^1.5.4",
-    "wait-for-expect": "^3.0.2",
-    "webpack-dev-server": "^3.11.3"
+    "wait-for-expect": "^3.0.2"
   }
 }

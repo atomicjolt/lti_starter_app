@@ -82,3 +82,6 @@ db/structure.sql
 /config/credentials/production.yml.enc
 /config/credentials.yml.enc
 /config/master.key
+
+/app/assets/builds/*
+!/app/assets/builds/.keep

@@ -7,8 +7,8 @@ import { useSelector } from 'react-redux';
 
 import DeepLink from './deep_link';
 
-import assets from '../libs/assets';
 import { displayCanvasAuth } from '../../../common/components/common/canvas_auth';
+import img  from '../assets/images/atomicjolt.jpg';
 
 export const GET_WELCOME = gql`
   query getWelcome($name: String!) {
@@ -16,7 +16,7 @@ export const GET_WELCOME = gql`
   }
 `;
 
-const Home = ({ settings }) => {
+function Home({ settings }) {
   const authRequired = useSelector((state) => state.canvasErrors.canvasReAuthorizationRequired);
   const { loading, error, data } = useQuery(GET_WELCOME, {
     variables: {
@@ -26,8 +26,6 @@ const Home = ({ settings }) => {
 
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
-
-  const img = assets('./images/atomicjolt.jpg');
 
   if (settings.deep_link_settings) {
     return (
@@ -51,7 +49,7 @@ const Home = ({ settings }) => {
     </div>
   );
 
-};
+}
 
 Home.propTypes = {
   settings: PropTypes.shape({

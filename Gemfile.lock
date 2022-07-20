@@ -90,8 +90,6 @@ GEM
       rack (>= 0.9.0)
     bindata (2.4.10)
     bindex (0.8.1)
-    binding_of_caller (1.0.0)
-      debug_inspector (>= 0.0.1)
     bootsnap (1.11.1)
       msgpack (~> 1.2)
     brakeman (5.2.3)
@@ -125,7 +123,6 @@ GEM
     debase (0.2.4.1)
       debase-ruby_core_source (>= 0.10.2)
     debase-ruby_core_source (0.10.15)
-    debug_inspector (1.1.0)
     devise (4.8.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -207,6 +204,8 @@ GEM
       faraday_middleware (~> 0.8)
       json-jwt (~> 1.7)
       simple_oauth (= 0.2)
+    jsbundling-rails (1.0.3)
+      railties (>= 6.0.0)
     json (2.6.2)
     json-jwt (1.13.0)
       activesupport (>= 4.2)
@@ -265,8 +264,6 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
-    non-stupid-digest-assets (1.0.9)
-      sprockets (>= 2.0)
     notiffany (0.1.3)
       nenv (~> 0.1)
       shellany (~> 0.0)
@@ -308,6 +305,11 @@ GEM
     pronto-rubocop (0.11.1)
       pronto (~> 0.11.0)
       rubocop (>= 0.63.1, < 2.0)
+    propshaft (0.6.4)
+      actionpack (>= 7.0.0)
+      activesupport (>= 7.0.0)
+      rack
+      railties (>= 7.0.0)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -317,8 +319,6 @@ GEM
     que (1.4.0)
     racc (1.6.0)
     rack (2.2.3.1)
-    rack-proxy (0.7.2)
-      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (7.0.3)
@@ -428,14 +428,6 @@ GEM
     ruby-progressbar (1.11.0)
     rubyzip (2.3.2)
     rugged (1.0.1)
-    sassc (2.4.0)
-      ffi (~> 1.9)
-    sassc-rails (2.1.2)
-      railties (>= 4.0.0)
-      sassc (>= 2.0)
-      sprockets (> 3.0)
-      sprockets-rails
-      tilt
     sawyer (0.8.2)
       addressable (>= 2.3.5)
       faraday (> 0.8, < 2.0)
@@ -443,20 +435,12 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
-    semantic_range (3.0.0)
     sendgrid (1.2.4)
       json
     shellany (0.0.1)
     shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
     simple_oauth (0.2.0)
-    sprockets (4.0.3)
-      concurrent-ruby (~> 1.0)
-      rack (> 1, < 3)
-    sprockets-rails (3.4.2)
-      actionpack (>= 5.2)
-      activesupport (>= 5.2)
-      sprockets (>= 3.0.0)
     strong_password (0.0.10)
     strscan (3.0.3)
     terminal-table (3.0.2)
@@ -480,11 +464,6 @@ GEM
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
-    webpacker (5.4.3)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -525,6 +504,7 @@ DEPENDENCIES
   httparty
   hub
   ims-lti (~> 2.1.5)
+  jsbundling-rails
   json-jwt
   jwt
   launchy
@@ -532,13 +512,13 @@ DEPENDENCIES
   lms-api (~> 1.23.0)
   lms-graphql-api (~> 2.0.0)
   mail_view
-  non-stupid-digest-assets
   omniauth
   omniauth-canvas (~> 1.0.2)
   pg
   pronto
   pronto-eslint
   pronto-rubocop
+  propshaft
   puma
   que
   rails (~> 7.0.3)
@@ -560,17 +540,14 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   ruby-debug-ide
-  sassc-rails
   selenium-webdriver
   sendgrid
   shoulda-matchers
-  sprockets-rails
   strong_password
   tzinfo-data
   uglifier
   web-console
   webmock
-  webpacker
   will_paginate
   yajl-ruby
 

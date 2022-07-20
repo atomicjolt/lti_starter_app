@@ -4,7 +4,6 @@ import configureStore from 'redux-mock-store';
 import TestRenderer from 'react-test-renderer';
 import Index from './index';
 
-jest.mock('../../libs/assets');
 const mockStore = configureStore([]);
 const applicationId = '123';
 const applicationInstanceId = '4847';

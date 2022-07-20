@@ -100,9 +100,6 @@ create_file ".env" do
     APP_SUBDOMAIN=#{url_safe_name}
     APP_ROOT_DOMAIN=atomicjolt.xyz
     APP_PORT=#{rails_port}
-    ASSETS_SUBDOMAIN=#{url_safe_name}assets
-    ASSETS_PORT=#{assets_port}
-    ASSETS_URL=https://#{url_safe_name}assets.atomicjolt.xyz
     APP_DEFAULT_CANVAS_URL=https://atomicjolt.instructure.com
 
     # Get developer id and key from canvas

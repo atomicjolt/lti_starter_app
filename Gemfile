@@ -13,8 +13,7 @@ end
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails", "~> 7.0.3"
 
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+gem "propshaft"
 
 # Improve boot time
 gem "bootsnap", require: false
@@ -64,7 +63,7 @@ gem "httparty"
 gem "will_paginate"
 
 # Javascript
-gem "webpacker"
+gem "jsbundling-rails"
 
 gem "graphql", "~>1.13.0"
 gem "graphql-batch", "~>0.4.3"
@@ -73,7 +72,6 @@ gem "graphql-guard", "~>2.0.0"
 group :development do
   # UI
   gem "autoprefixer-rails"
-  gem "non-stupid-digest-assets" # also compile assets without digest (fixes font problem)
   gem "uglifier"
 
   gem "better_errors"
@@ -89,11 +87,6 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem "listen"
   gem "web-console"
-end
-
-group :development, :build, :ci, :test do
-  # Assets
-  gem "sassc-rails"
 end
 
 group :ci do

@@ -12,6 +12,7 @@ exports[`sites index matches the snapshot 1`] = `
         <img
           alt="Atomic Jolt Logo"
           className="c-head-img"
+          src="test-file-stub"
         />
         <nav
           className="c-head-nav"

@@ -236,34 +236,13 @@ The React Rails Starter App uses React. All client side code can be found in the
 
 ```erb
 <% content_for :head do -%>
-  <%= stylesheet_pack_tag 'styles' %>
+  <%= stylesheet_link_tag 'styles' %>
 <% end -%>
 
 <%= render 'shared/default_client_settings' %>
 <div id="main-app"></div>
-<%= javascript_packs_with_chunks_tag "app", "data-turbolinks-track": "reload" %>
+<%= javascript_include_tag "app", defer: true %>
 ```
-
-### Assets
-Any files added to the assets directory can be used by in code and assigned to a variable. This allows for referring to assets using dynamically generated strings. The assets will be built according to the rules specified in your webpack configuration. Typically, this means that in production the names will be changed to include a SHA.
-
-```js
-import assets from '../libs/assets'; # First importing the assets
-const img = assets("./images/atomicjolt.jpg"); # Then assign an asset to a variable
-```
-
-The value can then be used when rendering:
-```js
-render() {
-    const img = assets("./images/atomicjolt.jpg");
-    return(
-      <div>
-        <img src={img} />
-      </div>
-    );
-  }
-```
-
 ### Tenants
 Each application instance maintains it's own database schema. The LTI starter app uses the Apartment gem and these
 are called "tenants". In some instances multiple application instances need to share the same tenant. It is possible

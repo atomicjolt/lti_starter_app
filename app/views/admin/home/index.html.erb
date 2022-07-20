@@ -1,7 +1,8 @@
 <% content_for :head do -%>
-  <%= stylesheet_pack_tag "admin" %>
+  <%= stylesheet_link_tag "admin" %>
+  <%= stylesheet_link_tag "fontAwesome" %>
 <% end -%>
 
 <%= render 'shared/default_admin_client_settings' %>
 <div id="main-app"></div>
-<%= javascript_packs_with_chunks_tag "admin", "data-turbolinks-track": "reload" %>
+<%= javascript_include_tag "admin", defer: true %>

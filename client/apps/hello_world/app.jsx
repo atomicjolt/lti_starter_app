@@ -12,7 +12,7 @@ import configureStore from './store/configure_store';
 import Index from './components/layout/index';
 import initResizeHandler from '../../common/libs/resize_iframe';
 
-import './styles/styles';
+import './styles/styles.scss';
 
 // Polyfill es6 promises for IE
 es6Promise.polyfill();
