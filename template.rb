@@ -100,14 +100,18 @@ create_file ".env" do
     APP_SUBDOMAIN=#{url_safe_name}
     APP_ROOT_DOMAIN=atomicjolt.xyz
     APP_PORT=#{rails_port}
-    ASSETS_SUBDOMAIN=#{url_safe_name}assets
-    ASSETS_PORT=#{assets_port}
-    ASSETS_URL=https://#{url_safe_name}assets.atomicjolt.xyz
+    PORT=#{rails_port}
     APP_DEFAULT_CANVAS_URL=https://atomicjolt.instructure.com
 
     # Get developer id and key from canvas
     CANVAS_DEVELOPER_ID=1234
     CANVAS_DEVELOPER_KEY=1234
+
+    # This helps support developer features like byebug by handling concurrency
+    # issues that come along with puma
+    RAILS_MAX_THREADS=2
+    WEB_CONCURRENCY=2
+    WEB_TIMEOUT=1000
   EOF
 end
 

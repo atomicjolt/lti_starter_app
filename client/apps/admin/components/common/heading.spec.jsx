@@ -2,7 +2,6 @@ import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import { Heading } from './heading';
 
-jest.mock('../../libs/assets');
 describe('common heading', () => {
   let result;
   let props;

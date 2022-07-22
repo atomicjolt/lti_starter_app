@@ -4,8 +4,6 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import Index from './index';
 
-jest.mock('../../libs/assets');
-
 const sitesData = {
   1: {
     id: 1,

@@ -19,7 +19,6 @@ const store = mockStore({
   canvasOauthURL: 'https://www.example.com',
 });
 
-jest.mock('../../libs/assets');
 describe('application instances index', () => {
   let result;
   let instance;

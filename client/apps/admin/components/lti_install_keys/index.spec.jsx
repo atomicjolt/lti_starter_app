@@ -18,7 +18,6 @@ const store = mockStore({
   },
 });
 
-jest.mock('../../libs/assets');
 describe('application instances index', () => {
   let result;
   const params = {

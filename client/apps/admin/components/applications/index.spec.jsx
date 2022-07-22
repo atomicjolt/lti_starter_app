@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import Index from './index';
 
-jest.mock('../../libs/assets');
 const applications = {
   Spiderman: {
     Power1: 'Wall Crawling',

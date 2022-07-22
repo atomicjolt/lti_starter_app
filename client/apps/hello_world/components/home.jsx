@@ -6,11 +6,12 @@ import { listYourCourses } from 'atomic-canvas/libs/constants/courses';
 import { withSettings } from 'atomic-fuel/libs/components/settings';
 
 import { displayCanvasAuth } from '../../../common/components/common/canvas_auth';
-import assets from '../libs/assets';
 import Selector from './content_item_select/selector';
 import DeepLink from './deep_link';
 
-const select = state => ({
+import img from '../assets/images/atomicjolt.jpg';
+
+const select = (state) => ({
   courses: state.courses,
   canvasReAuthorizationRequired: state.canvasErrors.canvasReAuthorizationRequired,
 });
@@ -43,17 +44,15 @@ export class Home extends React.Component {
       return null;
     }
 
-    return this.props.courses.map(course =>
-      <li key={`course_${course.id}`}>
-        <a target="_top" href={`${this.props.settings.canvas_url}/courses/${course.id}`}>
-          {course.name}
-        </a>
-      </li>);
+    return this.props.courses.map((course) => <li key={`course_${course.id}`}>
+      <a target="_top" href={`${this.props.settings.canvas_url}/courses/${course.id}`}>
+        {course.name}
+      </a>
+                                              </li>);
   }
 
   renderLineItemErrors() {
-    return this.props.settings.line_items.errors.map(error =>
-      <li key={error.message}>{error.message}</li>);
+    return this.props.settings.line_items.errors.map((error) => <li key={error.message}>{error.message}</li>);
   }
 
   renderLineItems() {
@@ -70,30 +69,47 @@ export class Home extends React.Component {
       );
     }
 
-    return this.props.settings.line_items.map(lineItem =>
-      <li key={`line_item${lineItem.id}`}>
-        <a href={lineItem.id}>
-          {lineItem.label} ({lineItem.scoreMaximum})
-        </a>
-      </li>);
+    return this.props.settings.line_items.map((lineItem) => <li key={`line_item${lineItem.id}`}>
+      <a href={lineItem.id}>
+        {lineItem.label}
+        {' '}
+        (
+        {lineItem.scoreMaximum}
+        )
+      </a>
+                                                            </li>);
   }
 
   renderUsers() {
     if (!this.props.settings.names_and_roles) {
       return null;
     }
-    return this.props.settings.names_and_roles.members.map(nameAndRole =>
-      <li key={`name_and_role_${nameAndRole.user_id}`}>
-        <a target="_top" href={`${this.props.settings.canvas_url}/courses/${nameAndRole.id}`}>
-          {nameAndRole.user_id}
-          <img src={nameAndRole.picture} alt={nameAndRole.given_name} />
-        </a>
-        <p>Name: {nameAndRole.name || 'Anonymous'}</p>
-        <p>Email: {nameAndRole.email}</p>
-        <p>Status: {nameAndRole.status}</p>
-        <p>User Id:{nameAndRole.userId}</p>
-        <p>Roles:{nameAndRole.roles.join(', ')}</p>
-      </li>);
+    return this.props.settings.names_and_roles.members.map((nameAndRole) => <li key={`name_and_role_${nameAndRole.user_id}`}>
+      <a target="_top" href={`${this.props.settings.canvas_url}/courses/${nameAndRole.id}`}>
+        {nameAndRole.user_id}
+        <img src={nameAndRole.picture} alt={nameAndRole.given_name} />
+      </a>
+      <p>
+        Name:
+        {nameAndRole.name || 'Anonymous'}
+      </p>
+      <p>
+        Email:
+        {nameAndRole.email}
+      </p>
+      <p>
+        Status:
+        {nameAndRole.status}
+      </p>
+      <p>
+        User Id:
+        {nameAndRole.userId}
+      </p>
+      <p>
+        Roles:
+        {nameAndRole.roles.join(', ')}
+      </p>
+                                                                            </li>);
   }
 
   renderResults() {
@@ -101,17 +117,25 @@ export class Home extends React.Component {
       return null;
     }
 
-    return this.props.settings.line_item_results.map(result =>
-      <li key={`name_and_role_${result.id}`}>
-        <p>User: {result.userId}</p>
-        <p>Score: {result.resultScore}/{result.resultMaximum}</p>
-        <p>Comment: {result.comment}</p>
-      </li>);
+    return this.props.settings.line_item_results.map((result) => <li key={`name_and_role_${result.id}`}>
+      <p>
+        User:
+        {result.userId}
+      </p>
+      <p>
+        Score:
+        {result.resultScore}
+        /
+        {result.resultMaximum}
+      </p>
+      <p>
+        Comment:
+        {result.comment}
+      </p>
+                                                                 </li>);
   }
 
   renderContent() {
-    const img = assets('./images/atomicjolt.jpg');
-
     if (this.props.settings.lti_message_type === 'ContentItemSelectionRequest') {
       return <Selector />;
     }

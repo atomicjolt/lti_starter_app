@@ -6,8 +6,6 @@ import { MockedProvider } from '@apollo/client/testing';
 import waitForExpect from 'wait-for-expect';
 import Home, { GET_WELCOME } from './home';
 
-jest.mock('../libs/assets.js');
-
 const mocks = [
   {
     request: {

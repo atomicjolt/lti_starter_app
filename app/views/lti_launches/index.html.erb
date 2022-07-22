@@ -1,8 +1,8 @@
 <% content_for :head do -%>
-  <%= stylesheet_pack_tag(@app_name, @app_name) %>
+  <%= stylesheet_link_tag(@app_name, @app_name) %>
 <% end -%>
 
 <%= render 'shared/default_client_settings' %>
 <div id="main-app"></div>
 
-<%= javascript_packs_with_chunks_tag @app_name, "data-turbolinks-track": "reload" %>
+<%= javascript_include_tag @app_name, defer: true %>
