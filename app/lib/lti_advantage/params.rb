@@ -61,6 +61,10 @@ module LtiAdvantage
       end
     end
 
+    def version
+      token[LtiAdvantage::Definitions::LTI_VERSION]
+    end
+
     # This extracts the custom parameters from the jwt token from the lti launch
     # These values must be added to the developer key under "Custom Fields"
     # for example: canvas_course_id=$Canvas.course.id

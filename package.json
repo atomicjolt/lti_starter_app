@@ -13,9 +13,9 @@
     "lint_fix": "eslint client --fix",
     "nuke": "rm -rf node_modules",
     "inspect_fuel": "\"${EDITOR:-vi}\" ./node_modules/atomic-fuel",
-    "build": "yarn run build_packs",
+    "build": "cross-env NODE_ENV=production yarn run build_packs",
     "hot": "node esbuild.js dev client/packs/*.*",
-    "build_packs": "node esbuild.js prod client/packs/*.*"
+    "build_packs": "cross-env NODE_ENV=production  node esbuild.js prod client/packs/*.*"
   },
   "repository": {
     "type": "git",
@@ -106,6 +106,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",
     "babel-jest": "^28.1.0",
+    "cross-env": "^7.0.3",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "enzyme-to-json": "^3.6.2",

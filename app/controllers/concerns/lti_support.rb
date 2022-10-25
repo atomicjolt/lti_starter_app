@@ -14,6 +14,8 @@ module LtiSupport
       # Validate the state by checking the database for the nonce
       return user_not_authorized if !LtiAdvantage::OpenId.validate_open_id_state(params["state"])
 
+      # Validate the LTI version
+
       set_lti_advantage_launch_values
       user = LtiAdvantage::LtiUser.new(@lti_token, current_application_instance).user
       sign_in(user, event: :authentication, store: false)

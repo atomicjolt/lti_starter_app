@@ -1,6 +1,3 @@
-admin = CreateAdminService.new.call
-puts "CREATED ADMIN USER: " << admin.email
-
 secrets = Rails.application.secrets
 
 # Add sites
@@ -18,6 +15,9 @@ sites = [
   },
   {
     url: "https://blackboard.com",
+  },
+  {
+    url: "https://ltiadvantagevalidator.imsglobal.org",
   },
 ]
 
@@ -189,6 +189,14 @@ applications = [
         oidc_url: "https://lti-ri.imsglobal.org/platforms/275/authorizations/new",
       },
       {
+        # IMS Global Validator application
+        iss: "https://ltiadvantagevalidator.imsglobal.org",
+        client_id: "imstester_7ec088e",
+        jwks_url: "https://oauth2server.imsglobal.org/jwks",
+        token_url: "https://ltiadvantagevalidator.imsglobal.org/ltitool/authcodejwt.html",
+        oidc_url: "https://ltiadvantagevalidator.imsglobal.org/ltitool/oidcauthurl.html",
+      },
+      {
         # Blackboard
         iss: "https://blackboard.com",
         client_id: "1c81ada8-3fc4-4c09-aa2c-f7195dd019d9",
@@ -310,6 +318,13 @@ if Apartment::Tenant.current == "public"
     end
 
     setup_application_instances(application, application_instances)
+  end
+
+  # Add the admin user to the admin instance
+  admin_inst = ApplicationInstance.find_by(lti_key: Application::ADMIN)
+  Apartment::Tenant.switch(admin_inst.tenant) do
+    admin = CreateAdminService.new.call
+    puts "CREATED ADMIN USER: " << admin.email
   end
 
   bundles.each do |attrs|

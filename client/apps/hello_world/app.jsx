@@ -1,6 +1,4 @@
-import 'core-js';
-import 'regenerator-runtime/runtime';
-import es6Promise from 'es6-promise';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
@@ -14,8 +12,7 @@ import initResizeHandler from '../../common/libs/resize_iframe';
 
 import './styles/styles.scss';
 
-// Polyfill es6 promises for IE
-es6Promise.polyfill();
+
 
 class Root extends React.PureComponent {
   static propTypes = {
