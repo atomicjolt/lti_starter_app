@@ -124,6 +124,24 @@ class ApplicationController < ActionController::Base
     render "lti_deployments/index", layout: "application"
   end
 
+  rescue_from JWT::DecodeError, with: :handle_invalid_jwt
+  def handle_invalid_jwt(exception)
+    json_options = {
+      exception: exception,
+      backtrace: exception.backtrace,
+    }
+    render_error 401, "Invalid JWT: #{exception.message}", json_options
+  end
+
+  rescue_from LtiAdvantage::Exceptions::InvalidLTIVersion, with: :handle_invalid_lti_launch
+  def handle_invalid_lti_launch(exception)
+    json_options = {
+      exception: exception,
+      backtrace: exception.backtrace,
+    }
+    render_error 500, "Invalid LTI Launch: #{exception.message}", json_options
+  end
+
   def set_rollbar_scope
     if !current_application_instance&.rollbar_enabled?
       Rollbar.configure { |config| config.enabled = false }
@@ -207,6 +225,12 @@ class ApplicationController < ActionController::Base
       params[:id_token],
     )
     @lti_params = LtiAdvantage::Params.new(@lti_token)
+
+    # Validate LTI version
+    if @lti_params.version != "1.3"
+      raise LtiAdvantage::Exceptions::InvalidLTIVersion, "Invalid LTI version #{@lti_params.version}"
+    end
+
     @lti_launch_config = JSON.parse(params[:lti_launch_config]) if params[:lti_launch_config]
     @is_deep_link = true if LtiAdvantage::Definitions.deep_link_launch?(@lti_token)
     @app_name = current_application_instance.application.client_application_name

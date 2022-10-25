@@ -15,6 +15,9 @@ module LtiAdvantage
     class NoLTIDeployment < StandardError
     end
 
+    class InvalidLTIVersion < StandardError
+    end
+
     class InvalidIssuer < StandardError
     end
 
