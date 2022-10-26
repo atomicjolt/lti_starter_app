@@ -57,15 +57,6 @@ admin_api_permissions = {
   HELPER_ALL_ACCOUNTS: [],
 }
 
-bundles = [
-  {
-    name: "Hello World",
-    key: Application::HELLOWORLD,
-    applications: [Application::HELLOWORLD],
-    shared_tenant: true,
-  },
-]
-
 file_path = Rails.root.join("db/lti_advantage_configs/hello_world_lti_advantage_config.json")
 hello_lti_advantage_config = JSON.parse(File.read(file_path))
 
@@ -310,31 +301,6 @@ if Apartment::Tenant.current == "public"
     end
 
     setup_application_instances(application, application_instances)
-  end
-
-  bundles.each do |attrs|
-    current_bundle = Bundle.find_or_create_by(key: attrs[:key])
-    current_bundle.update!(name: attrs[:name], shared_tenant: attrs[:shared_tenant] == true)
-
-    attrs[:applications].reduce(current_bundle) do |bundle, key|
-      app = Application.find_by!(key: key)
-      bundle.application_bundles.find_or_create_by(bundle_id: bundle.id, application_id: app.id)
-      bundle
-    end
-  end
-
-  ApplicationInstance.where(bundle_instance_id: nil).find_each do |instance|
-    bundle = Bundle.includes(:applications).by_application_id(instance.application.id).last
-    BundleInstance.create(site: instance.site, bundle: bundle)
-  end
-
-  BundleInstance.find_each do |bundle_instance|
-    site = bundle_instance.site
-    bundle_instance.applications.each do |app|
-      if instance = app.application_instances.find_by(site: site)
-        instance.update(bundle_instance: bundle_instance) if instance.bundle_instance_id.nil?
-      end
-    end
   end
 
   begin

@@ -19,9 +19,6 @@ Apartment.configure do |config|
     ApplicationInstance
     OauthState
     Site
-    Bundle
-    BundleInstance
-    ApplicationBundle
     ImsExport
     RequestStatistic
     RequestUserStatistic

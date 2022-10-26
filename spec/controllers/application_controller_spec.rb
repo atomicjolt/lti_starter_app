@@ -19,16 +19,6 @@ RSpec.describe ApplicationController, type: :controller do
       end
     end
 
-    describe "#current_bundle_instance" do
-      it "returns the canvas url" do
-        bundle_instance = FactoryBot.create(:bundle_instance)
-        subject.params = {
-          bundle_instance_token: bundle_instance.id_token,
-        }
-        expect(subject.send(:current_bundle_instance)).to eq(bundle_instance)
-      end
-    end
-
     describe "#current_user_roles" do
       it "returns the roles for the current user when context is nil" do
         role = "admin"

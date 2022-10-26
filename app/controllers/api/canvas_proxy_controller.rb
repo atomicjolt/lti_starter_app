@@ -5,11 +5,7 @@ class Api::CanvasProxyController < Api::ApiApplicationController
   before_action :protect_canvas_api
 
   def proxy
-    api = if params[:bundle_instance_token].present?
-            canvas_api(application_instance: targeted_app_instance)
-          else
-            canvas_api
-          end
+    api = canvas_api
     result = api.proxy(params[:lms_proxy_call_type], params.to_unsafe_h, request.body.read, params[:get_all])
     allowed_headers = %w{
       content-type link p3p x-canvas-meta x-canvas-user-id

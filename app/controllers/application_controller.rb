@@ -8,10 +8,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_application_instance,
                 :current_application,
-                :current_bundle_instance,
                 :current_canvas_course,
                 :canvas_url,
-                :targeted_app_instance,
                 :current_user_roles
 
   protected
@@ -145,8 +143,7 @@ class ApplicationController < ActionController::Base
   def canvas_url
     @canvas_url ||= session[:canvas_url] ||
       custom_canvas_api_domain ||
-      current_application_instance&.site&.url ||
-      current_bundle_instance&.site&.url
+      current_application_instance&.site&.url
   end
 
   def custom_canvas_api_domain
@@ -176,13 +173,6 @@ class ApplicationController < ActionController::Base
 
   def current_application
     Application.find_by(key: request.subdomains.first)
-  end
-
-  def current_bundle_instance
-    @current_bundle ||= BundleInstance.
-      where(id_token: params[:bundle_instance_token]).
-      or(BundleInstance.where(id: params[:bundle_instance_id])).
-      first
   end
 
   def current_ability
@@ -218,15 +208,6 @@ class ApplicationController < ActionController::Base
     if locale = Localization.get_locale(@launch_locale) || Localization.get_default_locale(current_application_instance)
       I18n.locale = locale
     end
-  end
-
-  def targeted_app_instance
-    key = request.subdomains.first
-    application = Application.find_by(key: key)
-    return nil if current_bundle_instance.nil?
-    current_bundle_instance.
-      application_instances.
-      find_by(application_id: application.id)
   end
 
 end

@@ -43,20 +43,12 @@ module ApplicationInstanceHelper
 
     default_config = {}
 
-    bundle = Bundle.find_or_create_by(key: GLOBAL_LTI_KEY)
-
-    bundle_instance = FactoryBot.create(
-      :bundle_instance,
-      bundle: bundle,
-    )
-
     FactoryBot.create(
       :application_instance,
       application: application,
       lti_key: GLOBAL_LTI_KEY,
       tenant: GLOBAL_LTI_KEY,
       config: default_config,
-      bundle_instance: bundle_instance,
     )
   end
 
