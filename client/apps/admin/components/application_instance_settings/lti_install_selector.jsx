@@ -32,12 +32,12 @@ function LtiInstallRow(props) {
           ltiInstallId === ltiInstallKey.id
             ? <span className="c-btn c-btn--yellow">Selected</span>
             : <button
-              type="button"
-              className="c-btn c-btn--yellow"
-              onClick={() => setLtiInstallId(ltiInstallKey.id)}
+                type="button"
+                className="c-btn c-btn--yellow"
+                onClick={() => setLtiInstallId(ltiInstallKey.id)}
             >
               Select
-              </button>
+            </button>
         }
       </td>
     </tr>
@@ -55,8 +55,10 @@ export default function LtiInstallSelector(props) {
   const [sortColumn, setSortColumn] = useState('created_at');
   const [sortDirection, setSortDirection] = useState('desc');
 
-  const ltiInstallKeys = ((state) => _.filter(state.ltiInstallKeys.ltiInstallKeys,
-    { application_id: parseInt(applicationId, 10) })
+  const ltiInstallKeys = useSelector(
+    (state) => _.filter(state.ltiInstallKeys.ltiInstallKeys, {
+      application_id: parseInt(applicationId, 10)
+    })
   );
   const totalPages = useSelector((state) => state.ltiInstallKeys.totalPages);
 
