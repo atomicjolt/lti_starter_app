@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lti_install_selector renders the lti_install_selector component 1`] = `<lti_install_selector />`;

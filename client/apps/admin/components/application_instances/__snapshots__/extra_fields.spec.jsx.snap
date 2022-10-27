@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`extra_fields renders the extra_fields component 1`] = `<extra_fields />`;

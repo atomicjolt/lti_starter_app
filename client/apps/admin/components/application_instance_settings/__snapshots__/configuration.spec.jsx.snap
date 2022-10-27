@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`configuration renders the DownloadButton component 1`] = `<configuration />`;

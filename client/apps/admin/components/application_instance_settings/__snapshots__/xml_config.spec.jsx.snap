@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`xml_config renders the xml_config component 1`] = `<xml_config />`;

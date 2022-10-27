@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`nav_column renders the nav_column component 1`] = `<nav_column />`;
