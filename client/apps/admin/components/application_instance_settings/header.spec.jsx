@@ -1,12 +1,17 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
-import { header } from './header';
+import { Header } from './header';
 
-describe('header', () => {
-  it('renders the header component', () => {
+describe('Header', () => {
+  const applicationInstance = {
+    site: {},
+  };
+  const application = {};
+
+  it('renders the Header component', () => {
     const result = TestRenderer.create(
-        <header />
+        <Header applicationInstance={applicationInstance} application={application}/>
     );
     expect(result).toMatchSnapshot();
   });

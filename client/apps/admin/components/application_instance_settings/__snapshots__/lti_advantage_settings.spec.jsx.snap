@@ -1,3 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`LtiAdvantageSettings renders the LtiAdvantageSettings component 1`] = `
+<div
+  className="aj-columns"
+>
+  <div
+    className="aj-col-flex"
+  >
+    <div
+      className="aj-settings-title"
+    >
+      <div
+        className="aj-col-flex"
+      >
+         
+        LTI Deployments
+      </div>
+      <div
+        className="flex-center"
+      >
+        <button
+          className="aj-btn"
+          onClick={[Function]}
+        >
+          New LTI Deployment
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`lti_advantage_settings renders the lti_advantage_settings component 1`] = `<lti_advantage_settings />`;

@@ -1,12 +1,19 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 
-import { lti_deployment_modal } from './lti_deployment_modal';
+import LtiDeploymentModal from './lti_deployment_modal';
 
-describe('lti_deployment_modal', () => {
-  it('renders the lti_deployment_modal component', () => {
+const mockStore = configureStore([]);
+const store = mockStore({});
+
+describe('LtiDeploymentModal', () => {
+  it('renders the LtiDeploymentModal component', () => {
     const result = TestRenderer.create(
-        <lti_deployment_modal />
+      <Provider store={store}>
+        <LtiDeploymentModal />
+      </Provider>
     );
     expect(result).toMatchSnapshot();
   });

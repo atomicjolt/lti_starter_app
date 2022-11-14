@@ -1,3 +1,110 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Header renders the Header component 1`] = `
+<div
+  className="aj-header"
+>
+  <button
+    className="back-btn"
+    type="button"
+  >
+    <i
+      className="fas fa-chevron-left aj-icon"
+    />
+     Instances
+  </button>
+  <div
+    className="header-row space-between"
+  >
+    <div
+      className="title"
+    />
+    <div
+      className="flex-center"
+    >
+      <button
+        className="aj-btn"
+        onClick={[Function]}
+        type="button"
+      >
+        Save
+      </button>
+      <div
+        className="aj-menu-contain "
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-label="Instance Settings"
+          className="aj-icon-btn"
+          onClick={[Function]}
+          type="button"
+        >
+          <i
+            aria-hidden="true"
+            className="material-icons"
+          >
+            more_vert
+          </i>
+        </button>
+        <ul
+          className="aj-menu"
+          role="menu"
+        >
+          <li>
+            <button
+              className="c-disable"
+              onClick={[Function]}
+              type="button"
+            >
+              <i
+                className="material-icons enabled"
+              >
+                check_circle
+              </i>
+              Disable
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={[Function]}
+              type="button"
+            >
+              <i
+                className="material-icons"
+              >
+                delete
+              </i>
+              Delete
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div
+    className="header-row info"
+  >
+    <div
+      className="info-spacing"
+    >
+      <div>
+        Primary Contact
+      </div>
+      <a
+        href="mailto: undefined"
+      />
+    </div>
+    <div
+      className="info-spacing"
+    >
+      <div>
+        Canvas URL
+      </div>
+      <a />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`header renders the header component 1`] = `<header />`;

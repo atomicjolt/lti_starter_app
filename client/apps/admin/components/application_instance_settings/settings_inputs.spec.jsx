@@ -1,12 +1,12 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
-import { settings_inputs } from './settings_inputs';
+import SettingsInputs from './settings_inputs';
 
-describe('settings_inputs', () => {
-  it('renders the settings_inputs component', () => {
+describe('SettingsInputs', () => {
+  it('renders the SettingsInputs component', () => {
     const result = TestRenderer.create(
-        <settings_inputs />
+        <SettingsInputs />
     );
     expect(result).toMatchSnapshot();
   });

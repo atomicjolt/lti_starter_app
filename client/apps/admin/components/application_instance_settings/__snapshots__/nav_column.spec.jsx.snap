@@ -1,3 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`NavColumn renders the NavColumn component 1`] = `
+<div
+  className="nav-col"
+>
+  <a
+    className="tabs false"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    <i
+      className="far fa-analytics icon"
+    />
+    <p
+      className="text"
+    >
+      Overview
+    </p>
+  </a>
+  <a
+    className="tabs false"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    <i
+      className="far fa-edit icon"
+    />
+    <p
+      className="text"
+    >
+      General Settings
+    </p>
+  </a>
+  <a
+    className="tabs false"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    <i
+      className="far fa-edit icon"
+    />
+    <p
+      className="text"
+    >
+      LTI Advantage
+    </p>
+  </a>
+  <a
+    className="tabs false"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    <i
+      className="far fa-cog icon"
+    />
+    <p
+      className="text"
+    >
+      Configuration
+    </p>
+  </a>
+  <a
+    className="tabs false"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    <i
+      className="far fa-cog icon"
+    />
+    <p
+      className="text"
+    >
+      XML Config
+    </p>
+  </a>
+</div>
+`;
+
 exports[`nav_column renders the nav_column component 1`] = `<nav_column />`;

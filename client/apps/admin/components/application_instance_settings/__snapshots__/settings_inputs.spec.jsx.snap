@@ -1,3 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`SettingsInputs renders the SettingsInputs component 1`] = `
+Array [
+  <div
+    className="aj-settings-title"
+  />,
+  <div
+    className="aj-item-padding undefined"
+  />,
+]
+`;
+
 exports[`settings_inputs renders the settings_inputs component 1`] = `<settings_inputs />`;

@@ -1,12 +1,12 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
-import { authentications_modal } from './authentications_modal';
+import { AuthenticationsModal } from './authentications_modal';
 
-describe('authentications_modal', () => {
-  it('renders the authentications_modal component', () => {
+describe('AuthenticationsModal', () => {
+  it('renders the AuthenticationsModal component', () => {
     const result = TestRenderer.create(
-        <authentications_modal />
+        <AuthenticationsModal />
     );
     expect(result).toMatchSnapshot();
   });

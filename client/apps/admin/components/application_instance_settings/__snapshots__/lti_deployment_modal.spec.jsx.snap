@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`LtiDeploymentModal renders the LtiDeploymentModal component 1`] = `null`;
+
 exports[`lti_deployment_modal renders the lti_deployment_modal component 1`] = `<lti_deployment_modal />`;

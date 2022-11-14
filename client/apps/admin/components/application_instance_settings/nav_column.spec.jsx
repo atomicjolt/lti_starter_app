@@ -1,12 +1,24 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
-import { nav_column } from './nav_column';
+import NavColumn from './nav_column';
 
-describe('nav_column', () => {
-  it('renders the nav_column component', () => {
+describe('NavColumn', () => {
+  it('renders the NavColumn component', () => {
+    const application = {
+      id: 123,
+    };
+
+    const applicationInstance = {
+      id: 456,
+    };
+
+    const location = {
+      pathname: "",
+    };
+
     const result = TestRenderer.create(
-        <nav_column />
+        <NavColumn application={application} applicationInstance={applicationInstance} location={location}/>
     );
     expect(result).toMatchSnapshot();
   });

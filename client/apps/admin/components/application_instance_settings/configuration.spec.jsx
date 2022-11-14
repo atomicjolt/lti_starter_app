@@ -1,12 +1,12 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
-import { configuration } from './configuration';
+import { Configuration } from './configuration';
 
 describe('configuration', () => {
   it('renders the DownloadButton component', () => {
     const result = TestRenderer.create(
-        <configuration />
+        <Configuration />
     );
     expect(result).toMatchSnapshot();
   });

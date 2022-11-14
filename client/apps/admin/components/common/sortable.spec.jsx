@@ -1,12 +1,12 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
-import { sortable } from './sortable';
+import Sortable from './sortable';
 
-describe('sortable', () => {
-  it('renders the sortable component', () => {
+describe('Sortable', () => {
+  it('renders the Sortable component', () => {
     const result = TestRenderer.create(
-        <sortable />
+        <Sortable />
     );
     expect(result).toMatchSnapshot();
   });

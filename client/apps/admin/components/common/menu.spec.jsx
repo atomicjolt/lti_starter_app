@@ -1,12 +1,12 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
-import { menu } from './menu';
+import Menu from './menu';
 
-describe('menu', () => {
-  it('renders the menu component', () => {
+describe('Menu', () => {
+  it('renders the Menu component', () => {
     const result = TestRenderer.create(
-        <menu />
+        <Menu />
     );
     expect(result).toMatchSnapshot();
   });

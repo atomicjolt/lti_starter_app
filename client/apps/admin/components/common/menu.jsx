@@ -49,5 +49,4 @@ export default class Menu extends React.Component {
 
     return this.props.children(this.onClick, activeClass, menuOpen, this.menuRef);
   }
-
 }

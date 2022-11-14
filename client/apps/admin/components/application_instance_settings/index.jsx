@@ -87,7 +87,9 @@ Index.propTypes = {
     applicationId: PropTypes.string.isRequired,
     applicationInstanceId: PropTypes.string.isRequired,
   }).isRequired,
-  applications: PropTypes.shape({}).isRequired,
+  applications: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  }).isRequired,
   getApplicationInstance: PropTypes.func,
   applicationInstances: PropTypes.array,
   router: PropTypes.shape({
