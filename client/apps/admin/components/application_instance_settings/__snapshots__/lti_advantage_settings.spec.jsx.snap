@@ -30,5 +30,3 @@ exports[`LtiAdvantageSettings renders the LtiAdvantageSettings component 1`] = `
   </div>
 </div>
 `;
-
-exports[`lti_advantage_settings renders the lti_advantage_settings component 1`] = `<lti_advantage_settings />`;

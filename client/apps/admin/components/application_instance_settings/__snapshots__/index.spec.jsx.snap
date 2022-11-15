@@ -319,5 +319,3 @@ exports[`Index renders the Index component 1`] = `
   </div>
 </div>
 `;
-
-exports[`index renders the index component 1`] = `<index />`;

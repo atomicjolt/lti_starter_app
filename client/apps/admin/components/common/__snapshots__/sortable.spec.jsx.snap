@@ -25,5 +25,3 @@ exports[`Sortable renders the Sortable component 1`] = `
   </div>
 </th>
 `;
-
-exports[`sortable renders the sortable component 1`] = `<sortable />`;

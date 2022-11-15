@@ -6,7 +6,9 @@ import { XmlConfig } from './xml_config';
 describe('XmlConfig', () => {
   it('renders the XmlConfig component', () => {
 
-    const applicationInstance = {};
+    const applicationInstance = {
+      id: 1,
+    };
 
     const applicationInstances = [
       applicationInstance,

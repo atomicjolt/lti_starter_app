@@ -76,5 +76,3 @@ exports[`NavColumn renders the NavColumn component 1`] = `
   </a>
 </div>
 `;
-
-exports[`nav_column renders the nav_column component 1`] = `<nav_column />`;

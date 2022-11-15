@@ -10,5 +10,3 @@ Array [
   />,
 ]
 `;
-
-exports[`settings_inputs renders the settings_inputs component 1`] = `<settings_inputs />`;

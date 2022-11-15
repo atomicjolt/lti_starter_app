@@ -1,15 +1,23 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 
 import { GeneralSettings } from './general_settings';
+
+
+const mockStore = configureStore([]);
+const store = mockStore({
+  settings: {},
+});
 
 describe('GeneralSettings', () => {
   it('renders the GeneralSettings component', () => {
 
     const languagesSupported = [];
     const params = {
-      applicationId: '7',
-      applicationInstanceId: '12',
+      applicationId: '3',
+      applicationInstanceId: '3',
     }
     const loading = false;
     const loaded = true;
@@ -19,23 +27,28 @@ describe('GeneralSettings', () => {
         url: 'https://www.example.com',
       }
     };
-    const applicationInstances = [{
-      id: 12,
-      application_id: 7,
+    const applicationInstance = {
+      id: 3,
+      application_id: 3,
       site: {
         id: 3,
       },
-    }];
+    };
+    const applicationInstances = [
+      applicationInstance,
+    ];
 
     const result = TestRenderer.create(
-      <GeneralSettings 
+      <Provider store={store}>
+        <GeneralSettings 
         languagesSupported={languagesSupported}
         params={params}
         loading={loading}
         loaded={loaded}
         sites={sites}
-        applicationInstances
-      />
+        applicationInstances={applicationInstances}
+        />
+      </Provider>
     );
     expect(result).toMatchSnapshot();
   });

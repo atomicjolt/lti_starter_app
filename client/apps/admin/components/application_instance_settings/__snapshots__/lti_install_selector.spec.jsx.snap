@@ -148,5 +148,3 @@ exports[`LtiInstallSelector renders the LtiInstallSelector component 1`] = `
   </ul>
 </div>
 `;
-
-exports[`lti_install_selector renders the lti_install_selector component 1`] = `<lti_install_selector />`;

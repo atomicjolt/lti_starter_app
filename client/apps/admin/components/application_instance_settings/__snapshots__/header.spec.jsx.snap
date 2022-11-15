@@ -106,5 +106,3 @@ exports[`Header renders the Header component 1`] = `
   </div>
 </div>
 `;
-
-exports[`header renders the header component 1`] = `<header />`;

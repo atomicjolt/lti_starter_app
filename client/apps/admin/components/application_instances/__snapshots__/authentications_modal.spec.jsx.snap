@@ -1,5 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AuthenticationsModal renders the AuthenticationsModal component 1`] = `null`;
-
-exports[`authentications_modal renders the authentications_modal component 1`] = `<authentications_modal />`;
