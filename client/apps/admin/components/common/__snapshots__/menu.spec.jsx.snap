@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu renders the Menu component 1`] = `
+<div
+  className=""
+>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    <i
+      aria-hidden="true"
+      className="material-icons"
+    >
+      more_vert
+    </i>
+  </button>
+  <div
+    className="closed"
+  />
+</div>
+`;

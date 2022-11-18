@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sortable renders the Sortable component 1`] = `
+<th
+  className="sortable-header"
+>
+  <div
+    className="aj-flex"
+  >
+    <button
+      className="aj-sort-btn"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="aj-flex selected"
+      >
+        <i
+          className="material-icons aj-icon-btn-sort"
+        >
+          arrow_downward
+        </i>
+      </span>
+    </button>
+  </div>
+</th>
+`;

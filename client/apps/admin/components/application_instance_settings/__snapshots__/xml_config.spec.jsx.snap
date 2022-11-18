@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`XmlConfig renders the XmlConfig component 1`] = `
+<div>
+  <div
+    className="o-grid__item u-full"
+  >
+    <label
+      className="c-input c-input--dark"
+      htmlFor="application_instance_lti_config_xml"
+    >
+      <span>
+        LTI Config XML
+      </span>
+      <textarea
+        id="application_instance_lti_config_xml"
+        name="lti_config_xml"
+        readOnly={true}
+        rows={25}
+        value="LTI KEY: 
+
+LTI Secret: 
+  
+
+Config XML: "
+      />
+    </label>
+  </div>
+</div>
+`;

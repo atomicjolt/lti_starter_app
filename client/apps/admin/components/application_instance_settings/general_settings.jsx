@@ -26,7 +26,6 @@ export function GeneralSettings(props) {
     applicationInstances
   } = props;
 
-
   useEffect(() => {
     if (!loading && !loaded) {
       props.getApplicationInstance(params.applicationId, params.applicationInstanceId);
@@ -37,7 +36,6 @@ export function GeneralSettings(props) {
   const applicationInstance = _.filter(applicationInstances, (app) => (
     app.id === _.parseInt(params.applicationInstanceId)
   ))[0];
-
 
   const [newApplicationInstance, setNewApplicationInstance] = useState(applicationInstance || {});
   const [currentLanguage, setCurrentLanguage] = useState(applicationInstance ? applicationInstance.language : 'english');

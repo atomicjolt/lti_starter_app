@@ -1,0 +1,321 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index renders the Index component 1`] = `
+<div>
+  <div>
+    <header
+      className="c-head"
+    >
+      <div
+        className="aj-flex"
+      >
+        <img
+          alt="Atomic Jolt Logo"
+          className="c-head-img"
+          src="test-file-stub"
+        />
+        <nav
+          className="c-head-nav"
+        >
+          <a
+            aria-selected={null}
+            className="c-head-link"
+            href=""
+            onClick={[Function]}
+            style={Object {}}
+          >
+            Starter
+          </a>
+        </nav>
+      </div>
+      <div
+        className="c-head-profile"
+      >
+        <div
+          className="aj-menu-contain aj-menu-space "
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-label="Analytics Options"
+            className="aj-icon-btn"
+            onClick={[Function]}
+            type="button"
+          >
+            <i
+              aria-hidden="true"
+              className="material-icons-outlined"
+            >
+              account_circle
+            </i>
+          </button>
+          <ul
+            className="aj-menu"
+            role="menu"
+          >
+            <li>
+              <a>
+                <span>
+                  Admin Users
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.example.com"
+              >
+                <span>
+                  Update Profile
+                </span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span>
+                  Logout
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="undefined?destroy_authentications=true"
+              >
+                <span>
+                  Delete Canvas Authentications and Sign Out
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div
+      className="c-yellow-bar"
+    />
+    <div
+      className="c-subnav"
+    >
+      <ul>
+        <li>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+          >
+            LTI Tools
+          </a>
+        </li>
+        <li>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+          >
+            Sites
+            <span
+              className="c-alert c-alert--danger"
+            >
+               ! Setup Required
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="aj-admin-container"
+  >
+    <div
+      className="aj-header"
+    >
+      <button
+        className="back-btn"
+        onClick={[Function]}
+        type="button"
+      >
+        <i
+          className="fas fa-chevron-left aj-icon"
+        />
+        test application
+         Instances
+      </button>
+      <div
+        className="header-row space-between"
+      >
+        <div
+          className="title"
+        >
+          a test application instance
+        </div>
+        <div
+          className="flex-center"
+        >
+          <button
+            className="aj-btn"
+            onClick={[Function]}
+            type="button"
+          >
+            Save
+          </button>
+          <div
+            className="aj-menu-contain "
+          >
+            <button
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-label="Instance Settings"
+              className="aj-icon-btn"
+              onClick={[Function]}
+              type="button"
+            >
+              <i
+                aria-hidden="true"
+                className="material-icons"
+              >
+                more_vert
+              </i>
+            </button>
+            <ul
+              className="aj-menu"
+              role="menu"
+            >
+              <li>
+                <button
+                  className="c-disable"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <i
+                    className="material-icons enabled"
+                  >
+                    check_circle
+                  </i>
+                  Disable
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <i
+                    className="material-icons"
+                  >
+                    delete
+                  </i>
+                  Delete
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="header-row info"
+      >
+        <div
+          className="info-spacing"
+        >
+          <div>
+            Primary Contact
+          </div>
+          <a
+            href="mailto: undefined"
+          />
+        </div>
+        <div
+          className="info-spacing"
+        >
+          <div>
+            Canvas URL
+          </div>
+          <a
+            href="https://www.example.com"
+          >
+            https://www.example.com
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="aj-settings-container"
+    >
+      <div
+        className="nav-col"
+      >
+        <a
+          className="tabs false"
+          onClick={[Function]}
+          style={Object {}}
+        >
+          <i
+            className="far fa-analytics icon"
+          />
+          <p
+            className="text"
+          >
+            Overview
+          </p>
+        </a>
+        <a
+          className="tabs false"
+          onClick={[Function]}
+          style={Object {}}
+        >
+          <i
+            className="far fa-edit icon"
+          />
+          <p
+            className="text"
+          >
+            General Settings
+          </p>
+        </a>
+        <a
+          className="tabs false"
+          onClick={[Function]}
+          style={Object {}}
+        >
+          <i
+            className="far fa-edit icon"
+          />
+          <p
+            className="text"
+          >
+            LTI Advantage
+          </p>
+        </a>
+        <a
+          className="tabs false"
+          onClick={[Function]}
+          style={Object {}}
+        >
+          <i
+            className="far fa-cog icon"
+          />
+          <p
+            className="text"
+          >
+            Configuration
+          </p>
+        </a>
+        <a
+          className="tabs false"
+          onClick={[Function]}
+          style={Object {}}
+        >
+          <i
+            className="far fa-cog icon"
+          />
+          <p
+            className="text"
+          >
+            XML Config
+          </p>
+        </a>
+      </div>
+      <div
+        className="display-page"
+      />
+    </div>
+  </div>
+</div>
+`;

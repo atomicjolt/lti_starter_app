@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`configuration renders the DownloadButton component 1`] = `
+<div>
+  <div
+    className="o-grid__item u-full"
+  >
+    <label
+      className="c-input c-input--dark"
+      htmlFor="application_instance_config"
+    >
+      <span>
+        Custom Application Instance Configuration
+      </span>
+      <textarea
+        id="application_instance_config"
+        name="config"
+        onChange={[Function]}
+        placeholder="ex: { \\"foo\\": \\"bar\\" }"
+        value="{}"
+      />
+    </label>
+  </div>
+  <div
+    className="o-grid__item u-full"
+  >
+    <label
+      className="c-input c-input--dark"
+      htmlFor="application_instance_lti_config"
+    >
+      <span>
+        LTI Configuration
+      </span>
+      <textarea
+        id="application_instance_lti_config"
+        name="lti_config"
+        onChange={[Function]}
+        rows={25}
+        value="{}"
+      />
+    </label>
+  </div>
+</div>
+`;
