@@ -68,7 +68,7 @@ exports[`GeneralSettings renders the GeneralSettings component 1`] = `
             id="date_div"
             name="date_created"
             type="text"
-            value="11/16/22"
+            value="11/17/22"
           />
         </label>
       </div>

@@ -18,7 +18,7 @@ describe('GeneralSettings', () => {
     const params = {
       applicationId: '3',
       applicationInstanceId: '3',
-    }
+    };
     const loading = false;
     const loaded = true;
     const sites = {
@@ -33,6 +33,7 @@ describe('GeneralSettings', () => {
       site: {
         id: 3,
       },
+      created_at: "11/17/2022",
     };
     const applicationInstances = [
       applicationInstance,
