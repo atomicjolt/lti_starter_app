@@ -11,7 +11,6 @@ import ReactModal from 'react-modal';
 import routes from './routes';
 import configureStore from './store/configure_store';
 
-
 import './styles/styles.scss';
 
 // Polyfill es6 promises for IE
@@ -28,7 +27,7 @@ class Root extends React.PureComponent {
 
   closeMenus = () => {
     window.dispatchEvent(new CustomEvent('close-menu'));
-  }
+  };
 
   render() {
     const { store } = this.props;

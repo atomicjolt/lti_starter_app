@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import _ from 'lodash';
 import moment from 'moment';
 import SiteModal from '../sites/modal';
 import SettingsInputs from './settings_inputs';
-import * as ApplicationInstanceActions from '../../actions/application_instances';
+import { getApplicationInstance, updateNewInstance } from '../../actions/application_instances';
 
-const select = (state, props) => ({
-  loading: state.applicationInstances.loading,
-  loaded: state.applicationInstances.loaded,
-  applicationInstances: _.filter(state.applicationInstances.applicationInstances,
-    { application_id: parseInt(props.params.applicationId, 10) }),
-  sites: state.sites,
-});
-
-export function GeneralSettings(props) {
-
+export default function GeneralSettings(props) {
   const {
     languagesSupported,
     params,
-    loading,
-    loaded,
-    sites,
-    applicationInstances
   } = props;
+
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.applicationInstances.loading);
+  const loaded = useSelector((state) => state.applicationInstances.loaded);
+  const applicationInstances = useSelector(
+    (state) => _.filter(
+      state.applicationInstances.applicationInstances,
+      { application_id: parseInt(params.applicationId, 10) }
+    )
+  );
+  const sites = useSelector((state) => state.sites);
 
   useEffect(() => {
     if (!loading && !loaded) {
-      props.getApplicationInstance(params.applicationId, params.applicationInstanceId);
+      dispatch(
+        getApplicationInstance(params.applicationId, params.applicationInstanceId)
+      );
     }
   },
   []);
@@ -43,7 +43,9 @@ export function GeneralSettings(props) {
 
   useEffect(() => {
     // Redux function to store newApplicationInstance
-    props.updateNewInstance(newApplicationInstance);
+    dispatch(
+      updateNewInstance(newApplicationInstance)
+    );
   },
   [newApplicationInstance]);
 
@@ -282,14 +284,7 @@ export function GeneralSettings(props) {
   );
 }
 
-export default connect(select, ApplicationInstanceActions)(GeneralSettings);
-
-
 GeneralSettings.propTypes = {
-  loading: PropTypes.bool,
-  loaded: PropTypes.bool,
-  sites: PropTypes.shape({}).isRequired,
-  applicationInstances: PropTypes.array,
   getApplicationInstance: PropTypes.func,
   updateNewInstance: PropTypes.func,
   params: PropTypes.shape({

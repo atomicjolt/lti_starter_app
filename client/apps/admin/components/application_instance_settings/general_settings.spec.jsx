@@ -3,8 +3,7 @@ import TestRenderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import { GeneralSettings } from './general_settings';
-
+import GeneralSettings from './general_settings';
 
 const mockStore = configureStore([]);
 const store = mockStore({
@@ -33,7 +32,7 @@ describe('GeneralSettings', () => {
       site: {
         id: 3,
       },
-      created_at: "11/17/2022",
+      created_at: '11/17/2022',
     };
     const applicationInstances = [
       applicationInstance,
@@ -41,13 +40,13 @@ describe('GeneralSettings', () => {
 
     const result = TestRenderer.create(
       <Provider store={store}>
-        <GeneralSettings 
-        languagesSupported={languagesSupported}
-        params={params}
-        loading={loading}
-        loaded={loaded}
-        sites={sites}
-        applicationInstances={applicationInstances}
+        <GeneralSettings
+          languagesSupported={languagesSupported}
+          params={params}
+          loading={loading}
+          loaded={loaded}
+          sites={sites}
+          applicationInstances={applicationInstances}
         />
       </Provider>
     );
