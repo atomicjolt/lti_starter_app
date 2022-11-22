@@ -1,7 +1,7 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
-import { Configuration } from './configuration';
+import Configuration from './configuration';
 
 describe('configuration', () => {
   it('renders the DownloadButton component', () => {

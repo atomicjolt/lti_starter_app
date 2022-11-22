@@ -1,7 +1,7 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 
-import { Header } from './header';
+import Header from './header';
 
 describe('Header', () => {
   const applicationInstance = {

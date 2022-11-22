@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import _ from 'lodash';
 import EnabledButton from '../common/enabled';
 import Menu from '../common/menu';
@@ -9,19 +8,17 @@ import DeleteModal from '../common/delete_modal';
 import getExtraFields from '../application_instances/extra_fields';
 import * as ApplicationInstanceActions from '../../actions/application_instances';
 
-const select = (state) => ({
-  newApplicationInstance: state.applicationInstances.newApplicationInstance,
-});
-
-export function Header(props) {
+export default function Header(props) {
   const {
     goBack,
     applicationInstance,
     application,
     deleteInstance,
     disableInstance,
-    newApplicationInstance,
   } = props;
+
+  const dispatch = useDispatch();
+  const newApplicationInstance = useSelector((state) => state.applicationInstances.newApplicationInstance);
 
   const {
     nickname,
@@ -47,7 +44,9 @@ export function Header(props) {
 
   const saveAppInstance = () => {
     if (!_.isEmpty(newApplicationInstance)) {
-      props.saveApplicationInstance(application.id, newApplicationInstance);
+      dispatch(
+        saveApplicationInstance(application.id, newApplicationInstance)
+      )
     }
 
   };
@@ -140,8 +139,6 @@ export function Header(props) {
     </div>
   );
 }
-
-export default connect(select, ApplicationInstanceActions)(Header);
 
 Header.propTypes = {
   goBack: PropTypes.func,
