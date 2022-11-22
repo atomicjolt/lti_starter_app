@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import _ from 'lodash';
 import Heading from '../common/heading';
 import Header from './header';
@@ -8,31 +7,28 @@ import ApplicationInstanceSettings from './application_instance_settings';
 import Loader from '../../../../common/components/common/atomicjolt_loader';
 import * as ApplicationInstanceActions from '../../actions/application_instances';
 
-const select = (state, props) => ({
-  loading: state.applicationInstances.loading,
-  applicationInstances: _.filter(state.applicationInstances.applicationInstances,
-    { application_id: parseInt(props.params.applicationId, 10) }),
-  applications: state.applications,
-  sites: state.sites,
-});
-
-export function Index(props) {
+export default function Index(props) {
 
   const {
     router,
-    applicationInstances,
-    loading,
     params,
-    applications,
     deleteApplicationInstance,
     disableApplicationInstance,
-    sites,
     children,
     location,
   } = props;
 
+  const dispatch = dispatch();
+  const loading = state.applicationInstances.loading;
+  const applicationInstances = _.filter(state.applicationInstances.applicationInstances,
+    { application_id: parseInt(params.applicationId, 10) });
+  const applications = state.applications;
+  const sites = state.sites;
+
   useEffect(() => {
-    props.getApplicationInstance(params.applicationId, params.applicationInstanceId);
+    dispatch(
+      getApplicationInstance(params.applicationId, params.applicationInstanceId)
+    )
   },
   []);
 
@@ -80,23 +76,15 @@ export function Index(props) {
   );
 }
 
-export default connect(select, ApplicationInstanceActions)(Index);
-
 Index.propTypes = {
   params: PropTypes.shape({
     applicationId: PropTypes.string.isRequired,
     applicationInstanceId: PropTypes.string.isRequired,
   }).isRequired,
-  applications: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-  }).isRequired,
   getApplicationInstance: PropTypes.func,
-  applicationInstances: PropTypes.array,
   router: PropTypes.shape({
     push: PropTypes.func,
   }),
-  loading: PropTypes.bool,
-  sites: PropTypes.shape({}).isRequired,
   deleteApplicationInstance: PropTypes.func,
   disableApplicationInstance: PropTypes.func,
   children: PropTypes.element,
