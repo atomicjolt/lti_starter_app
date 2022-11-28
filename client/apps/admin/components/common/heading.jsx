@@ -1,30 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { connect } from 'react-redux';
 import { Link } from 'react-router3';
 import Menu from './menu';
 import SubNav from './sub_nav';
 import logo from '../../assets/images/aj-logo-emblem.svg';
 
-const select = (state) => ({
-  signOutUrl: state.settings.sign_out_url,
-  userEditUrl: state.settings.user_edit_url,
-  usersUrl: state.settings.users_url,
-  sites: state.sites,
-  journalsAdminUrl: state.settings.journals_admin_url,
-  poolsAdminUrl: state.settings.polls_admin_url,
-  discussionsAdminUrl: state.settings.discussions_admin_url,
-  assessmentsAdminUrl: state.settings.assessments_admin_url,
-  searchAdminUrl: state.settings.search_admin_url,
-  actAdminUrl: state.settings.act_admin_url,
-});
-
-export function Heading(props) {
+export default function Heading(props) {
   const {
     application,
 
   } = props;
+
+  const dispatch = dispatch();
+  const signOutUrl = state.settings.sign_out_url;
+  const userEditUrl = state.settings.user_edit_url;
+  const usersUrl = state.settings.users_url;
+  const sites = state.sites;
+  const journalsAdminUrl = state.settings.journals_admin_url;
+  const poolsAdminUrl = state.settings.polls_admin_url;
+  const discussionsAdminUrl = state.settings.discussions_admin_url;
+  const assessmentsAdminUrl = state.settings.assessments_admin_url;
+  const searchAdminUrl = state.settings.search_admin_url;
+  const actAdminUrl = state.settings.act_admin_url;
 
   const apps = [
     {
@@ -104,5 +102,3 @@ Heading.propTypes = {
   discussionsAdminUrl: PropTypes.string,
   actAdminUrl: PropTypes.string,
 };
-
-export default connect(select)(Heading);
