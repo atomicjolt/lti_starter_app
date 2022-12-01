@@ -5,24 +5,24 @@ import { Link } from 'react-router3';
 import Menu from './menu';
 import SubNav from './sub_nav';
 import logo from '../../assets/images/aj-logo-emblem.svg';
+import { useDispatch, useSelector } from 'react-redux'
 
 export default function Heading(props) {
   const {
     application,
-
   } = props;
 
-  const dispatch = dispatch();
-  const signOutUrl = state.settings.sign_out_url;
-  const userEditUrl = state.settings.user_edit_url;
-  const usersUrl = state.settings.users_url;
-  const sites = state.sites;
-  const journalsAdminUrl = state.settings.journals_admin_url;
-  const poolsAdminUrl = state.settings.polls_admin_url;
-  const discussionsAdminUrl = state.settings.discussions_admin_url;
-  const assessmentsAdminUrl = state.settings.assessments_admin_url;
-  const searchAdminUrl = state.settings.search_admin_url;
-  const actAdminUrl = state.settings.act_admin_url;
+  const dispatch = useDispatch();
+  const signOutUrl = useSelector((state) => state.settings.sign_out_url);
+  const userEditUrl = useSelector((state) => state.settings.user_edit_url);
+  const usersUrl = useSelector((state) => state.settings.users_url);
+  const sites = useSelector((state) => state.sites);
+  const journalsAdminUrl = useSelector((state) => state.settings.journals_admin_url);
+  const poolsAdminUrl = useSelector((state) => state.settings.polls_admin_url);
+  const discussionsAdminUrl = useSelector((state) => state.settings.discussions_admin_url);
+  const assessmentsAdminUrl = useSelector((state) => state.settings.assessments_admin_url);
+  const searchAdminUrl = useSelector((state) => state.settings.search_admin_url);
+  const actAdminUrl = useSelector((state) => state.settings.act_admin_url);
 
   const apps = [
     {
@@ -61,16 +61,16 @@ export default function Heading(props) {
                 </button>
                 <ul className="aj-menu" role="menu">
                   <li>
-                    <a href={props.usersUrl}><span>Admin Users</span></a>
+                    <a href={usersUrl}><span>Admin Users</span></a>
                   </li>
                   <li>
-                    <a href={props.userEditUrl}><span>Update Profile</span></a>
+                    <a href={userEditUrl}><span>Update Profile</span></a>
                   </li>
                   <li>
-                    <a href={props.signOutUrl}><span>Logout</span></a>
+                    <a href={signOutUrl}><span>Logout</span></a>
                   </li>
                   <li>
-                    <a href={`${props.signOutUrl}?destroy_authentications=true`}>
+                    <a href={`${signOutUrl}?destroy_authentications=true`}>
                       <span>Delete Canvas Authentications and Sign Out</span>
                     </a>
                   </li>
@@ -81,7 +81,7 @@ export default function Heading(props) {
         </div>
       </header>
       <div className="c-yellow-bar" />
-      <SubNav sites={props.sites} />
+      <SubNav sites={sites} />
     </div>
   );
 }

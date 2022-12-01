@@ -8,7 +8,6 @@ export default function ApplicationInstanceSettings(props) {
   const {
     application,
     applicationInstance,
-    sites,
     tabComponent,
     location
   } = props;
@@ -19,7 +18,6 @@ export default function ApplicationInstanceSettings(props) {
         location={location}
         application={application}
         applicationInstance={applicationInstance}
-        sites={sites}
       />
       <div className="display-page">
         {tabComponent}
@@ -36,7 +34,6 @@ ApplicationInstanceSettings.propTypes = {
   applicationInstance: PropTypes.shape({
     lti_key: PropTypes.string,
   }),
-  sites: PropTypes.shape({}).isRequired,
   tabComponent: PropTypes.element,
   location: PropTypes.shape({
     pathname: PropTypes.string,

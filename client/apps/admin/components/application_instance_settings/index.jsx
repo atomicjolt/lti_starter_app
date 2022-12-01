@@ -6,6 +6,7 @@ import Header from './header';
 import ApplicationInstanceSettings from './application_instance_settings';
 import Loader from '../../../../common/components/common/atomicjolt_loader';
 import * as ApplicationInstanceActions from '../../actions/application_instances';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function Index(props) {
 
@@ -15,15 +16,12 @@ export default function Index(props) {
     deleteApplicationInstance,
     disableApplicationInstance,
     children,
-    location,
   } = props;
 
-  const dispatch = dispatch();
-  const loading = state.applicationInstances.loading;
-  const applicationInstances = _.filter(state.applicationInstances.applicationInstances,
-    { application_id: parseInt(params.applicationId, 10) });
-  const applications = state.applications;
-  const sites = state.sites;
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.applicationInstances.loading);
+  const applicationInstances = useSelector((state) => state.applicationInstances);
+  const applications = useSelector((state) => state.applications);
 
   useEffect(() => {
     dispatch(
@@ -39,7 +37,6 @@ export default function Index(props) {
   let backPath = '';
   if (!loading) {
     backPath = `/applications/${application.id}/application_instances`;
-
   }
 
   const renderLoading = () => (
@@ -66,7 +63,6 @@ export default function Index(props) {
           <ApplicationInstanceSettings
             application={application}
             applicationInstance={applicationInstance}
-            sites={sites}
             tabComponent={children}
             location={location}
           />

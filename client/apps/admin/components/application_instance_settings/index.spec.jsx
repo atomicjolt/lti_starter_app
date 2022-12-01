@@ -5,6 +5,29 @@ import configureStore from 'redux-mock-store';
 
 import Index from './index';
 
+const application = {
+  id: 1,
+  name: 'test application',
+};
+
+const site = {
+  url: "https://www.example.com",
+};
+
+const applicationInstance = {
+  id: 1,
+  nickname: 'a test application instance',
+  site: site,
+};
+
+const params = {
+  applicationId: application.id,
+  applicationInstanceId: applicationInstance.id,
+};
+
+const applications = {};
+applications[application.id] = application;
+
 const mockStore = configureStore([]);
 const store = mockStore({
   settings: {
@@ -12,48 +35,18 @@ const store = mockStore({
   },
   applicationInstances: {
     newApplicationInstance: {},
+    applicationInstance: applicationInstance,
   },
+  application: application,
+  applications: applications,
+  location: {},
 });
 
 describe('Index', () => {
   it('renders the Index component', () => {
-    const application = {
-      id: 1,
-      name: 'test application',
-    };
-
-    const site = {
-      url: "https://www.example.com",
-    };
-
-    const applicationInstance = {
-      id: 2,
-      nickname: 'a test application instance',
-      site,
-    };
-
-    const params = {
-      applicationId: application.id,
-      applicationInstanceId: applicationInstance.id,
-    };
-
-    const applications = {};
-    applications[application.id] = application;
-    
-    const applicationInstances = [
-      applicationInstance,
-    ];
-
-    const location = {};
-
     const result = TestRenderer.create(
       <Provider store={store}>
-        <Index 
-          params={params} 
-          applications={applications}
-          applicationInstances={applicationInstances}
-          location={location}
-        />
+        <Index params={params}/>
       </Provider>
     );
     expect(result).toMatchSnapshot();

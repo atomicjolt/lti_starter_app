@@ -3,20 +3,17 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import * as ApplicationInstanceActions from '../../actions/application_instances';
 import Textarea from '../common/textarea';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function XmlConfig(props) {
   const {
     params,
   } = props;
 
-  const dispatch = dispatch();
-  const loading = state.applicationInstances.loading;
-  const loaded = state.applicationInstances.loaded;
-  const applicationInstances = _.filter(
-    state.applicationInstances.applicationInstances,
-    { application_id: parseInt(params.applicationId, 10) }
-  );
-
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.applicationInstances.loading);
+  const loaded = useSelector((state) => state.applicationInstances.loaded);
+  const applicationInstances = useSelector((state) => state.applicationInstances);
 
   useEffect(() => {
     if (!loading && !loaded) {

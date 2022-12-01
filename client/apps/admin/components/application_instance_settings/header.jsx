@@ -7,14 +7,15 @@ import DisabledButton from '../common/disabled';
 import DeleteModal from '../common/delete_modal';
 import getExtraFields from '../application_instances/extra_fields';
 import * as ApplicationInstanceActions from '../../actions/application_instances';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function Header(props) {
   const {
     goBack,
-    applicationInstance,
-    application,
     deleteInstance,
     disableInstance,
+    applicationInstance,
+    application,
   } = props;
 
   const dispatch = useDispatch();
