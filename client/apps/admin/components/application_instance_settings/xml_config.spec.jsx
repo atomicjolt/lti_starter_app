@@ -9,6 +9,7 @@ const mockStore = configureStore([]);
 
 const applicationInstance = {
   id: 1,
+  application_id: 2,
 };
 
 const store = mockStore({
@@ -20,8 +21,8 @@ const store = mockStore({
 describe('XmlConfig', () => {
   it('renders the XmlConfig component', () => {
     const params = {
-      applicationId: "1",
-      applicationInstanceId: "1",
+      applicationId: 2,
+      applicationInstanceId: 1,
     };
 
     const result = TestRenderer.create(

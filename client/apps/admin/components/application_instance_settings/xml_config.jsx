@@ -13,7 +13,10 @@ export default function XmlConfig(props) {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.applicationInstances.loading);
   const loaded = useSelector((state) => state.applicationInstances.loaded);
-  const applicationInstances = useSelector((state) => state.applicationInstances);
+  const applicationInstances = useSelector((state) => _.filter(
+    state.applicationInstances,
+    { application_id: parseInt(props.params.applicationId, 10) }
+  ));
 
   useEffect(() => {
     if (!loading && !loaded) {
