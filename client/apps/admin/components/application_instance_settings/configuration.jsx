@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
 import * as ApplicationInstanceActions from '../../actions/application_instances';
 import Textarea from '../common/textarea';
@@ -20,25 +20,25 @@ function prettyJSON(str) {
   }
 }
 
-const select = (state, props) => ({
-  loading: state.applicationInstances.loading,
-  loaded: state.applicationInstances.loaded,
-  applicationInstances: _.filter(state.applicationInstances.applicationInstances,
-    { application_id: parseInt(props.params.applicationId, 10) }),
-});
-
-export function Configuration(props) {
+export default function Configuration(props) {
 
   const {
-    loading,
-    loaded,
     params,
-    applicationInstances
   } = props;
+
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.applicationInstances.loading);
+  const loaded = useSelector((state) => state.applicationInstances.loaded);
+  const applicationInstances = useSelector((state) => _.filter(
+    state.applicationInstances.applicationInstances,
+    { application_id: parseInt(params.applicationId, 10) }
+  ));
 
   useEffect(() => {
     if (!loading && !loaded) {
-      props.getApplicationInstance(params.applicationId, params.applicationInstanceId);
+      dispatch(
+        getApplicationInstance(params.applicationId, params.applicationInstanceId)
+      )
     }
   },
   []);
@@ -52,7 +52,9 @@ export function Configuration(props) {
 
   useEffect(() => {
     // Redux function to store newApplicationInstance
-    props.updateNewInstance(newApplicationInstance);
+    dispatch(
+      updateNewInstance(newApplicationInstance)
+    );
   },
   [newApplicationInstance]);
 
@@ -135,18 +137,13 @@ export function Configuration(props) {
   );
 }
 
-export default connect(select, ApplicationInstanceActions)(Configuration);
-
 Configuration.propTypes = {
   applicationInstance: PropTypes.shape({
     config: PropTypes.string,
     lti_config: PropTypes.string,
     lti_config_xml: PropTypes.string,
   }),
-  loading: PropTypes.bool,
-  loaded: PropTypes.bool,
   updateNewInstance: PropTypes.func,
-  applicationInstances: PropTypes.array,
   getApplicationInstance: PropTypes.func,
   params: PropTypes.shape({
     applicationId: PropTypes.string.isRequired,

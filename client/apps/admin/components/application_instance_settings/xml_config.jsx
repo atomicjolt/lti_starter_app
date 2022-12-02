@@ -1,35 +1,31 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import _ from 'lodash';
 import * as ApplicationInstanceActions from '../../actions/application_instances';
 import Textarea from '../common/textarea';
+import { useDispatch, useSelector } from 'react-redux';
 
-const select = (state, props) => (
-  {
-    loading: state.applicationInstances.loading,
-    loaded: state.applicationInstances.loaded,
-    applicationInstances: _.filter(
-      state.applicationInstances.applicationInstances,
-      { application_id: parseInt(props.params.applicationId, 10) }
-    ),
-  }
-);
-
-export function XmlConfig(props) {
+export default function XmlConfig(props) {
   const {
-    loading,
-    loaded,
     params,
-    applicationInstances
   } = props;
+
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.applicationInstances.loading);
+  const loaded = useSelector((state) => state.applicationInstances.loaded);
+  const applicationInstances = useSelector((state) => _.filter(
+    state.applicationInstances,
+    { application_id: parseInt(props.params.applicationId, 10) }
+  ));
 
   useEffect(() => {
     if (!loading && !loaded) {
-      props.getApplicationInstance(
-        params.applicationId,
-        params.applicationInstanceId
-      );
+      dispatch(
+        getApplicationInstance(
+          params.applicationId,
+          params.applicationInstanceId
+        )
+      )
     }
   }, []);
 
@@ -59,8 +55,6 @@ export function XmlConfig(props) {
     </div>
   );
 }
-
-export default connect(select, ApplicationInstanceActions)(XmlConfig);
 
 XmlConfig.propTypes = {
   applicationInstance: PropTypes.shape({
