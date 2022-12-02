@@ -9,8 +9,6 @@ class Application < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :key, presence: true, uniqueness: true
 
-  has_many :application_bundles
-  has_many :bundles, through: :application_bundles
   has_many :jwks
   has_many :lti_installs
 
@@ -33,10 +31,9 @@ class Application < ApplicationRecord
   AUTH = "auth".freeze
   HELLOWORLD = "helloworld".freeze
 
-  def create_instance(site: nil, bundle_instance: nil, tenant: nil, lti_key: nil)
+  def create_instance(site: nil, tenant: nil, lti_key: nil)
     application_instance = application_instances.find_or_create_by(
       site: site,
-      bundle_instance: bundle_instance,
       lti_key: lti_key,
     )
     if tenant.present?
