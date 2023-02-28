@@ -1,9 +1,11 @@
-require:
+require: 
+  - rubocop-rspec
   - rubocop-rails
   - rubocop-performance
 
 AllCops:
   TargetRubyVersion: 2.7
+  NewCops: enable
   Exclude:
     - db/schema.rb
     - config/initializers/devise.rb
@@ -94,7 +96,6 @@ Style/ClassVars:
 Style/CollectionMethods:
   Enabled: true
   PreferredMethods:
-    find: detect
     inject: reduce
     collect: map
     find_all: select
@@ -178,6 +179,11 @@ Layout/EmptyLinesAroundModuleBody:
   Description: 'Do not allow extra lines around module body.'
   Enabled: false
 
+Layout/FirstHashElementIndentation:
+  Description: >-
+    Checks the indentation of the first Hash element
+  EnforcedStyle: consistent
+
 Naming/FileName:
   Description: 'Use snake_case for source file names.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#snake-case-files'
@@ -240,6 +246,9 @@ Style/LineEndConcatenation:
 Metrics/MethodLength:
   Description: 'Avoid methods longer than 10 lines of code.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#short-methods'
+  Enabled: false
+
+Metrics/PerceivedComplexity:
   Enabled: false
 
 Style/ModuleFunction:
@@ -636,6 +645,10 @@ Rails/HasAndBelongsToMany:
   Description: 'Prefer has_many :through to has_and_belongs_to_many.'
   Enabled: false
 
+Rails/HelperInstanceVariable:
+  Description: 'Checks for use of the helper methods which reference instance variables.'
+  Enabled: false
+
 Rails/Output:
   Description: 'Checks for calls to puts, print, etc.'
   Enabled: false
@@ -788,3 +801,7 @@ Performance/Squeeze:
 
 Performance/StringInclude:
   Enabled: true
+
+Style/RedundantInterpolation:
+  Enabled: false
+
