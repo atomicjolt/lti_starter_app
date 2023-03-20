@@ -6,6 +6,6 @@ describe('empty spec', () => {
 
     cy.visit('atomicjolt.instructure.com');
     cy.get('input[name="pseudonym_session[unique_id]"]').type(username);
-    cy.get('input[name="pseudonym_session[password]"]').type(`${password}{enter}`, {log: false});
-  })
-})
+    cy.get('input[name="pseudonym_session[password]"]').type(`${password}{enter}`, { log: false });
+  });
+});
