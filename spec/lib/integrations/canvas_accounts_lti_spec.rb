@@ -34,7 +34,7 @@ describe Integrations::CanvasAccountsLti do
       expect(result.parsed_response).to eq(@result)
     end
     it "should update an existing LTI tool in the specified account" do
-      lti_launch_url = "https://www.edu-apps.org/tool_redirect?id=ck12"
+      lti_launch_url = "https://www.edu-apps.org/tool_redirect?id=ck12" 
       lti_options = {
         launch_url: lti_launch_url,
         secure_launch_url: @lti_launch_url,
