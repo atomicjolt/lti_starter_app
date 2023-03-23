@@ -19,12 +19,12 @@ module JwtHelper
     # Only trust these values if the current request is an LTI launch
     if @lti_token
       attrs[:iss] = @lti_token["iss"]
-      attrs[:deployment_id] = @lti_token[LtiAdvantage::Definitions::DEPLOYMENT_ID]
-      attrs[:data] = @lti_token[LtiAdvantage::Definitions::DEEP_LINKING_DATA_CLAIM]
-      context_id = @lti_token.dig(LtiAdvantage::Definitions::CONTEXT_CLAIM)["id"]
+      attrs[:deployment_id] = @lti_token[AtomicLti::Definitions::DEPLOYMENT_ID]
+      attrs[:data] = @lti_token[AtomicLti::Definitions::DEEP_LINKING_DATA_CLAIM]
+      context_id = @lti_token.dig(AtomicLti::Definitions::CONTEXT_CLAIM)["id"]
       attrs[:lti_roles] = current_user_roles(context_id: context_id)
       attrs[:context_id] = context_id
-      attrs[:lms_course_id] = @lti_token.dig(LtiAdvantage::Definitions::CUSTOM_CLAIM, "canvas_course_id")
+      attrs[:lms_course_id] = @lti_token.dig(AtomicLti::Definitions::CUSTOM_CLAIM, "canvas_course_id")
       attrs[:kid] = current_application_instance.lti_key
     elsif @is_lti_launch
 

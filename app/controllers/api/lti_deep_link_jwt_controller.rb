@@ -1,19 +1,24 @@
 class Api::LtiDeepLinkJwtController < Api::ApiApplicationController
-  include DeepLinking
-
   # ###########################################################
   # Used to sign a response to the platform
   def create
-    jwt = create_deep_link_jwt(
-      application_instance: current_application_instance,
-      token: decoded_jwt_token(request),
-      params: params,
-      jwt_context_id: jwt_context_id,
-      jwt_tool_consumer_instance_guid: jwt_tool_consumer_instance_guid,
-      host: request.host,
+    token = decoded_jwt_token(request)
+
+    content_items = {
+      "type" => "html",
+      "html" => "<h1>Atomic Jolt</h1>",
+    }
+
+    jwt = AtomicLti::DeepLinking.create_deep_link_jwt(
+      iss: token["iss"],
+      deployment_id: token[AtomicLti::Definitions::DEPLOYMENT_ID],
+      content_items: content_items,
+      deep_link_claim_data: token["data"],
     )
+
     render json: {
       jwt: jwt,
     }
   end
+
 end

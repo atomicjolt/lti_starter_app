@@ -1,19 +1,24 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  include LtiSupport
-
+  before_action :sign_out_user, except: [:passthru]
   before_action :verify_oauth_response, except: [:passthru]
-  before_action :login_lti_user
-  before_action :associated_using_oauth, except: [:passthru]
+  before_action :fix_provider_url, except: [:passthru]
+  before_action :login_previous_user, except: [:passthru]
   before_action :find_using_oauth, except: [:passthru]
   before_action :create_using_oauth, except: [:passthru]
+
+  layout "omniauth"
 
   def passthru
     render file: "#{Rails.root}/public/404.html", status: :not_found, layout: false
   end
 
   def canvas
-    canvas_url = request.env["canvas.url"] || params["canvas_url"] || session[:canvas_url]
-    canvas_url = UrlHelper.scheme_host_port(canvas_url.strip)
+    if !@user
+      raise ActionController::RoutingError.new('Not Found')
+    end
+
+    site = Site.find(request.env.dig("oauth_state", "site_id"))
+    canvas_url = UrlHelper.scheme_host_port(site.url)
 
     if @user.lti_provider.blank?
       auth = @user.authentications.find_by(provider_url: canvas_url, provider: "canvas")
@@ -23,42 +28,24 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     @user.save!
     @canvas_auth_required = false
-    oauth_complete_url = nil
-    request_params = request.params.to_h
-
-    if request_params["authorization"].present? && token = AuthToken.decode(request_params["authorization"])
-      oauth_complete_url = token[0]["oauth_complete_url"]
-    end
 
     if oauth_complete_url.present?
-      redirect_to oauth_complete_url
+      redirect_to oauth_complete_url, allow_other_host: true
     else
-      set_lti_launch_values if params[:oauth_consumer_key].present?
-      set_lti_advantage_launch_values if params[:id_token].present?
-      render "lti_launches/index", layout: "client"
+      render "omniauth/complete"
     end
   end
 
   protected
 
-  # This will ensure that a user previously logged in via LTI will
-  # still be logged in after the OAuth Dance with Canvas
-  def login_lti_user
-    return true if user_signed_in?
+  # Ensure that the user isn't already logged in via a session cookie. For our apps we
+  # want the oauth return data to determine the user.
+  def sign_out_user
+    sign_out :user
+  end
 
-    if auth = request.env["omniauth.auth"]
-      if params["lms_user_id"].present?
-        if @user = User.find_by(lms_user_id: params["lms_user_id"])
-          return sign_in_or_register(auth["provider"].titleize)
-        end
-      end
-
-      if lti_user_id = User.oauth_lti_user_id(auth)
-        if @user = User.find_by(lti_user_id: lti_user_id) || User.find_by(legacy_lti_user_id: lti_user_id)
-          sign_in_or_register(auth["provider"].titleize)
-        end
-      end
-    end
+  def oauth_complete_url
+    request.env.dig("oauth_state", "oauth_complete_url")
   end
 
   def redirect_params
@@ -73,64 +60,67 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       oauth_state.destroy
     end
 
+    params = oauth_state && JSON.parse(oauth_state.payload)
+    application_instance = if params&.dig("application_instance_id")
+                             ApplicationInstance.find(params["application_instance_id"])
+                           end
+
     flash.discard
-    if error = oauth_error_message
-      flash[:error] = format_oauth_error_message(error)
-      render "shared/_omniauth_error", status: :forbidden
-    elsif origin_url = request.env["omniauth.origin"]
-      query_params = redirect_params.to_h.to_query
-      redirect_to query_params.empty? ? origin_url : "#{origin_url}?#{query_params}"
+    err = oauth_error
+
+    if oauth_complete_url
+      flash[:error] = format_oauth_error_message
+      render "omniauth/error", status: :forbidden
+    # The Global Atomic Jolt Installer key/secret is disabled
+    elsif err[:error_type] == :unauthorized_client
+      flash[:error] = "Authorization denied.  Please ensure that the Atomic Jolt Application Installer key is enabled. (#{application_instance&.site&.oauth_key})"
+      render "omniauth/error", status: :forbidden
+    # User clicked Cancel during the OAuth process
+    elsif err[:error_type] == :access_denied
+      # This displays an error to the user but for each app it should probably take the user
+      # back to their starting page
+      flash[:error] = "Authorization not granted. Please refresh the page to try again."
+      render "omniauth/error", status: :forbidden
+    # User does not have install LTI tool permissions
+    elsif err[:error_type] == :missing_permissions || err[:error_type] == :invalid_scope
+      flash[:error] = format_oauth_error_message
+      render "omniauth/error", status: :forbidden
+    # Other errors
     else
-      flash[:error] = "An unknown OAuth error has occured"
-      render "shared/_omniauth_error", status: :forbidden
+      flash[:error] = format_oauth_error_message
+      render "omniauth/error", status: :forbidden
     end
   end
 
-  def oauth_error_message
+  def fix_provider_url
+    # Ensure that the provider URL is what we're expecting. The urls might not agree if the user
+    # is using a different vanity domain than we have configured in the site.
+    site = Site.find(request.env.dig("oauth_state", "site_id"))
+
+    if request.env["omniauth.auth"]["info"]["url"] != site.url
+      request.env["omniauth.auth"]["info"]["url"] = site.url
+    end
+  end
+
+
+  def oauth_error
     # Keep these and use them for debugging omniauth.
     # exception = request.env['omniauth.error']
     # error_type = request.env['omniauth.error.type']
     # strategy = request.env['omniauth.error.strategy']
     # exception.error_reason
-    error_type = request.env["omniauth.error.type"]
-    if request.env["omniauth.strategy"].present? && request.env["omniauth.strategy"].name.present?
-      %{
-        There was a problem communicating with #{request.env['omniauth.strategy'].name.titleize}.
-        Error: #{error_type} - #{request.env['omniauth.error']&.error_reason}
-      }
-    else
-      "There was a problem communicating with the remote service. Error: #{error_type}"
-    end
+    {
+      error_type: request.env["omniauth.error.type"],
+      error: request.env["omniauth.error"].to_s,
+      strategy: request.env["omniauth.strategy"]&.name&.titleize,
+    }
   end
 
-  def format_oauth_error_message(error)
-    if request.env["omniauth.strategy"]&.name == "canvas"
-      error
-    else
-      %{#{error} If this problem persists try signing up with a different service
-        or create an #{Rails.application.secrets.application_name} account with
-        just an email and password.
-      }.html_safe
-    end
-  end
-
-  def associated_using_oauth
-    # Used at the profile#edit to integrated other networks to the same account
-    if user_signed_in?
-      @user = current_user
-      auth = request.env["omniauth.auth"]
-      kind = params[:action].titleize # Should give us Facebook, Twitter, Linked In, etc
-      authentication = current_user.associate_account(auth)
-      current_user.save!
-      flash[:notice] = "Your #{Rails.application.secrets.application_name} account has been associated with #{kind}"
-      redirect_to after_sign_in_path_for(current_user) if should_redirect?
-    end
-  rescue ActiveRecord::RecordInvalid => e
-    message = error_message(e, auth, authentication)
-    flash[:error] = %{
-      Your #{Rails.application.secrets.application_name} account could not be associated with this account: #{message}
-    }.html_safe
-    redirect_to after_sign_in_path_for(current_user)
+  def format_oauth_error_message
+    %{
+      There was a problem communicating with #{request.env['omniauth.strategy']&.name&.titleize}.
+      Error: #{request.env['omniauth.error.type']}
+    }
   end
 
   def error_message(ex, auth, authentication)
@@ -157,6 +147,31 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     message
   end
 
+  # This will ensure that a user previously logged in via LTI will
+  # still be logged in after the OAuth Dance with Canvas
+  def login_previous_user
+    auth = request.env["omniauth.auth"]
+    user_id = request.env.dig("oauth_state", "user_id")
+    if auth && user_id.present?
+      @user = User.find(user_id)
+      # Validate it's the same user
+      lms_user_id = auth["uid"].to_s
+      match = lms_user_id.present? && @user.lms_user_id == lms_user_id
+      if !match
+        flash[:error] =
+          "The Canvas user does not match who we expected. Please ensure you're logging in with the correct account."
+        render "omniauth/error", status: :forbidden
+        return
+      end
+
+      sign_in_or_register(auth["provider"].titleize)
+      @user.update_oauth(request.env["omniauth.auth"])
+      @user.save!
+    end
+  end
+
+
+  # Find a previous account by this oauth
   def find_using_oauth
     return if @user # Previous filter was successful and we already have a user
 
@@ -164,14 +179,12 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user.skip_confirmation!
       kind = params[:action].titleize
       @user.update_oauth(request.env["omniauth.auth"])
-      if kind == "Canvas"
-        @user.add_to_role("canvas_oauth_user")
-      end
       @user.save # do we want to log an error if save fails?
       sign_in_or_register(kind)
     end
   end
 
+  # Make a new account based on this oauth
   def create_using_oauth
     return if @user # Previous filter was successful and we already have a user
 
@@ -182,38 +195,19 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user.password = Devise.friendly_token(72)
     @user.password_confirmation = @user.password
     @user.create_method = User.create_methods[:oauth]
-    @user.lti_user_id = auth&.dig("extra", "raw_info", "lti_user_id")
-    @user.legacy_lti_user_id = @user.lti_user_id
     @user.apply_oauth(auth)
-    if kind == "Canvas"
-      @user.add_to_role("canvas_oauth_user")
-    end
     @user.save!
     sign_in_or_register(kind)
-  rescue ActiveRecord::RecordInvalid => e
-    # A user is already registered with the same email and he tried to sign in
-    # using facebook but the account is not connected to facebook.
-    if @user.errors[:email].include? I18n.t :taken, scope: [:errors, :messages]
-      session[:prompt_setup_service] = kind
-      flash[:notice] = "There's already an account with the same email as your #{kind} account.
-        Please login first and then connect your #{kind} account to login with #{kind} in the future."
-      redirect_to sign_in_url
-    # Sign up from social networks without email (twitter and linkedin)
-    elsif @user.errors[:email].include? I18n.t :blank, scope: [:errors, :messages]
-      session["devise.omniauth_data"] = auth
-      flash[:notice] = "Please add an email to associate with this account"
-      redirect_to new_user_registration_url
-    else
-      raise e
-    end
   end
 
   def sign_in_or_register(kind)
+    if kind == "Canvas"
+      @user.add_to_role("canvas_oauth_user")
+    end
     sign_in(@user, event: :authentication)
 
     if should_redirect?
-      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", kind: kind
-      redirect_to after_sign_in_path_for(@user)
+      redirect_to after_sign_in_path_for(@user), allow_other_host: true
     end
   end
 

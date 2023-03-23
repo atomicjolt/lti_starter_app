@@ -14,7 +14,7 @@ import Analytics from '../../common/components/account_analytics/_account_analyt
 import GeneralSettings from './components/application_instance_settings/general_settings';
 import Configuration from './components/application_instance_settings/configuration';
 import XmlConfig from './components/application_instance_settings/xml_config';
-import LtiAdvantageSettings from './components/application_instance_settings/lti_advantage_settings';
+import AtomicLtiSettings from './components/application_instance_settings/lti_advantage_settings';
 
 export default (
   <Router history={appHistory}>
@@ -27,7 +27,7 @@ export default (
         <IndexRoute component={Analytics} />
         <Route path="/applications/:applicationId/application_instances/:applicationInstanceId/settings/analytics" component={Analytics} />
         <Route path="/applications/:applicationId/application_instances/:applicationInstanceId/settings/generalSettings" component={GeneralSettings} />
-        <Route path="/applications/:applicationId/application_instances/:applicationInstanceId/settings/ltiAdvantage" component={LtiAdvantageSettings} />
+        <Route path="/applications/:applicationId/application_instances/:applicationInstanceId/settings/ltiAdvantage" component={AtomicLtiSettings} />
         <Route path="/applications/:applicationId/application_instances/:applicationInstanceId/settings/configuration" component={Configuration} />
         <Route path="/applications/:applicationId/application_instances/:applicationInstanceId/settings/xmlConfig" component={XmlConfig} />
       </Route>

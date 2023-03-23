@@ -157,6 +157,20 @@ class ApplicationInstance < ApplicationRecord
     site.oauth_secret.presence || application.oauth_secret
   end
 
+  def use_canvas_api?
+    oauth_key.present? && oauth_secret.present?
+  end
+
+  def self.purge_client(tenant)
+    raise "Unable to purge public schema" if tenant == "public"
+    raise "Invalid tenant name" if tenant.blank?
+
+    unscoped.where(tenant: tenant).destroy_all
+    Apartment::Tenant.drop(tenant)
+    RequestStatistic.where(tenant: tenant).delete_all
+    RequestUserStatistic.where(tenant: tenant).delete_all
+  end
+
   def self.admin
     find_by(lti_key: Application::ADMIN)
   end

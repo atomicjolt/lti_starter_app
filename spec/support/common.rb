@@ -98,6 +98,7 @@ def setup_application_and_instance
   @application = FactoryBot.create(
     :application,
     canvas_api_permissions: @canvas_api_permissions,
+    client_application_name: "admin",
   )
   @application_instance = FactoryBot.create(:application_instance, application: @application)
   allow(controller).to receive(:current_application_instance).and_return(@application_instance)

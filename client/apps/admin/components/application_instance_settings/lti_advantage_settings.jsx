@@ -101,7 +101,7 @@ function LtiDeployment({ ltiDeployment, setLastDeployment, applicationInstanceId
   );
 }
 
-export default function LtiAdvantageSettings(props) {
+export default function AtomicLtiSettings(props) {
   const {
     params,
   } = props;
@@ -151,7 +151,7 @@ export default function LtiAdvantageSettings(props) {
   );
 }
 
-LtiAdvantageSettings.propTypes = {
+AtomicLtiSettings.propTypes = {
   params: PropTypes.shape({
     applicationId: PropTypes.string.isRequired,
     applicationInstanceId: PropTypes.string.isRequired,

@@ -25,7 +25,8 @@ describe ApplicationController, type: :controller do
 
     context "valid LTI Advantage request" do
       before do
-        setup_canvas_lti_advantage(application_instance: @application_instance)
+        setup_canvas_lti_advantage(application_instance: @application_instance, controller_name: "anonymous")
+        setup_atomic_lti_values(application_instance: @application_instance)
       end
       context "user doesn't exist" do
         it "sets up the user, logs them in and renders the lti launch page" do
@@ -54,7 +55,6 @@ describe ApplicationController, type: :controller do
           post :index, params: @params
           expect(response).to have_http_status(200)
           user = User.find_by(email: @email)
-          expect(user.role?("http://purl.imsglobal.org/vocab/lis/v2/institution/person#Administrator", @context_id)).to be true
           expect(user.role?("http://purl.imsglobal.org/vocab/lis/v2/institution/person#Instructor", @context_id)).to be true
           expect(user.role?("http://purl.imsglobal.org/vocab/lis/v2/institution/person#Student", @context_id)).to be true
           expect(user.role?("http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor", @context_id)).to be true
@@ -69,7 +69,7 @@ describe ApplicationController, type: :controller do
           "id_token" => "yJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTktMDYtMDFUMDA6MDA6MDBaIn0.eyJodHRwczovL3B1cmwuaW1zZ2xvYmFsLm9yZy9zcGVjL2x0aS9jbGFpbS9tZXNzYWdlX3R5cGUiOiJMdGlSZXNvdXJjZUxpbmtSZXF1ZXN0IiwiaHR0cHM6Ly9wdXJsLmltc2dsb2JhbC5vcmcvc3BlYy9sdGkvY2xhaW0vdmVyc2lvbiI6IjEuMy4wIiwiaHR0cHM6Ly9wdXJsLmltc2dsb2JhbC5vcmcvc3BlYy9sdGkvY2xhaW0vcmVzb3VyY2VfbGluayI6eyJpZCI6ImFmOWI1ZTE4ZmUyNTE0MDliZTE4ZTc3MjUzZDkxOGRjZjIyZDE1NmUiLCJkZXNjcmlwdGlvbiI6bnVsbCwidGl0bGUiOm51bGwsInZhbGlkYXRpb25fY29udGV4dCI6bnVsbCwiZXJyb3JzIjp7ImVycm9ycyI6e319fSwiaHR0cHM6Ly9wdXJsLmltc2dsb2JhbC5vcmcvc3BlYy9sdGktYWdzL2NsYWltL2VuZHBvaW50Ijp7InNjb3BlIjpbImh0dHBzOi8vcHVybC5pbXNnbG9iYWwub3JnL3NwZWMvbHRpLWFncy9zY29wZS9saW5laXRlbSIsImh0dHBzOi8vcHVybC5pbXNnbG9iYWwub3JnL3NwZWMvbHRpLWFncy9zY29wZS9yZXN1bHQucmVhZG9ubHkiLCJodHRwczovL3B1cmwuaW1zZ2xvYmFsLm9yZy9zcGVjL2x0aS1hZ3Mvc2NvcGUvc2NvcmUiLCJodHRwczovL3B1cmwuaW1zZ2xvYmFsLm9yZy9zcGVjL2x0aS1hZ3Mvc2NvcGUvbGluZWl0ZW0ucmVhZG9ubHkiXSwibGluZWl0ZW1zIjoiaHR0cHM6Ly9hdG9taWNqb2x0Lmluc3RydWN0dXJlLmNvbS9hcGkvbHRpL2NvdXJzZXMvMzMzNC9saW5lX2l0ZW1zIiwidmFsaWRhdGlvbl9jb250ZXh0IjpudWxsLCJlcnJvcnMiOnsiZXJyb3JzIjp7fX19LCJhdWQiOiI0MzQ2MDAwMDAwMDAwMDE5NCIsImF6cCI6IjQzNDYwMDAwMDAwMDAwMTk0IiwiaHR0cHM6Ly9wdXJsLmltc2dsb2JhbC5vcmcvc3BlYy9sdGkvY2xhaW0vZGVwbG95bWVudF9pZCI6IjEyNjUzOmFmOWI1ZTE4ZmUyNTE0MDliZTE4ZTc3MjUzZDkxOGRjZjIyZDE1NmUiLCJleHAiOjE1NjM0MDcyMzEsImlhdCI6MTU2MzQwMzYzMSwiaXNzIjoiaHR0cHM6Ly9jYW52YXMuaW5zdHJ1Y3R1cmUuY29tIiwibm9uY2UiOiI4ZDY4MzU2MGEyMTIzM2IzYmQ0NCIsInN1YiI6ImNmY2ExNWQ4LTI5NTgtNDY0Ny1hMzNlLWE3YzRiMmRkYWIyYyIsImh0dHBzOi8vcHVybC5pbXNnbG9iYWwub3JnL3NwZWMvbHRpL2NsYWltL3RhcmdldF9saW5rX3VyaSI6Imh0dHBzOi8vaGVsbG93b3JsZC5hdG9taWNqb2x0Lnh5ei9sdGlfbGF1bmNoZXMiLCJodHRwczovL3B1cmwuaW1zZ2xvYmFsLm9yZy9zcGVjL2x0aS9jbGFpbS9jb250ZXh0Ijp7ImlkIjoiYWY5YjVlMThmZTI1MTQwOWJlMThlNzcyNTNkOTE4ZGNmMjJkMTU2ZSIsImxhYmVsIjoiSW50cm8gR2VvbG9neSIsInRpdGxlIjoiSW50cm9kdWN0aW9uIHRvIEdlb2xvZ3kgLSBCYWxsIiwidHlwZSI6WyJodHRwOi8vcHVybC5pbXNnbG9iYWwub3JnL3ZvY2FiL2xpcy92Mi9jb3Vyc2UjQ291cnNlT2ZmZXJpbmciXSwidmFsaWRhdGlvbl9jb250ZXh0IjpudWxsLCJlcnJvcnMiOnsiZXJyb3JzIjp7fX19LCJodHRwczovL3B1cmwuaW1zZ2xvYmFsLm9yZy9zcGVjL2x0aS9jbGFpbS90b29sX3BsYXRmb3JtIjp7Imd1aWQiOiI0TVJjeG54NnZRYkZYeGhMYjgwMDVtNVdYRk0yWjJpOGxRd2hKMVFUOmNhbnZhcy1sbXMiLCJuYW1lIjoiQXRvbWljIEpvbHQiLCJ2ZXJzaW9uIjoiY2xvdWQiLCJwcm9kdWN0X2ZhbWlseV9jb2RlIjoiY2FudmFzIiwidmFsaWRhdGlvbl9jb250ZXh0IjpudWxsLCJlcnJvcnMiOnsiZXJyb3JzIjp7fX19LCJodHRwczovL3B1cmwuaW1zZ2xvYmFsLm9yZy9zcGVjL2x0aS9jbGFpbS9sYXVuY2hfcHJlc2VudGF0aW9uIjp7ImRvY3VtZW50X3RhcmdldCI6ImlmcmFtZSIsImhlaWdodCI6NTAwLCJ3aWR0aCI6NTAwLCJyZXR1cm5fdXJsIjoiaHR0cHM6Ly9hdG9taWNqb2x0Lmluc3RydWN0dXJlLmNvbS9jb3Vyc2VzLzMzMzQvZXh0ZXJuYWxfY29udGVudC9zdWNjZXNzL2V4dGVybmFsX3Rvb2xfcmVkaXJlY3QiLCJsb2NhbGUiOiJlbiIsInZhbGlkYXRpb25fY29udGV4dCI6bnVsbCwiZXJyb3JzIjp7ImVycm9ycyI6e319fSwibG9jYWxlIjoiZW4iLCJodHRwczovL3B1cmwuaW1zZ2xvYmFsLm9yZy9zcGVjL2x0aS9jbGFpbS9yb2xlcyI6WyJodHRwOi8vcHVybC5pbXNnbG9iYWwub3JnL3ZvY2FiL2xpcy92Mi9pbnN0aXR1dGlvbi9wZXJzb24jQWRtaW5pc3RyYXRvciIsImh0dHA6Ly9wdXJsLmltc2dsb2JhbC5vcmcvdm9jYWIvbGlzL3YyL2luc3RpdHV0aW9uL3BlcnNvbiNJbnN0cnVjdG9yIiwiaHR0cDovL3B1cmwuaW1zZ2xvYmFsLm9yZy92b2NhYi9saXMvdjIvaW5zdGl0dXRpb24vcGVyc29uI1N0dWRlbnQiLCJodHRwOi8vcHVybC5pbXNnbG9iYWwub3JnL3ZvY2FiL2xpcy92Mi9tZW1iZXJzaGlwI0luc3RydWN0b3IiLCJodHRwOi8vcHVybC5pbXNnbG9iYWwub3JnL3ZvY2FiL2xpcy92Mi9zeXN0ZW0vcGVyc29uI1VzZXIiXSwiaHR0cHM6Ly9wdXJsLmltc2dsb2JhbC5vcmcvc3BlYy9sdGkvY2xhaW0vY3VzdG9tIjp7ImNhbnZhc19zaXNfaWQiOiIkQ2FudmFzLnVzZXIuc2lzaWQiLCJjYW52YXNfdXNlcl9pZCI6MSwiY2FudmFzX2FwaV9kb21haW4iOiJhdG9taWNqb2x0Lmluc3RydWN0dXJlLmNvbSJ9LCJodHRwczovL3B1cmwuaW1zZ2xvYmFsLm9yZy9zcGVjL2x0aS1ucnBzL2NsYWltL25hbWVzcm9sZXNlcnZpY2UiOnsiY29udGV4dF9tZW1iZXJzaGlwc191cmwiOiJodHRwczovL2F0b21pY2pvbHQuaW5zdHJ1Y3R1cmUuY29tL2FwaS9sdGkvY291cnNlcy8zMzM0L25hbWVzX2FuZF9yb2xlcyIsInNlcnZpY2VfdmVyc2lvbnMiOlsiMi4wIl0sInZhbGlkYXRpb25fY29udGV4dCI6bnVsbCwiZXJyb3JzIjp7ImVycm9ycyI6e319fSwiZXJyb3JzIjp7ImVycm9ycyI6e319fQ.dxwPkz3JF9d93QsE_My3JEhKOnsYTGRrhHOtKH31tIrN3OUk_wc9Mraj4VGtD_gZsiMcErXHtx2IRGEHcME7DYJcBx4jhTCxdUnYaEd3pUv4UEALYXIz-C6Xp7T6MsjFpW_tkknnzRZHtofd7fUy3HojW47nlZUckzv3hPdLVm3sWuLxCjd-00WY7gRmUCALiTNDVOdD0-XgwmXrCtKdo-kjPtNcGRsaksiYLHijQiyPNRp8wwvCVjpNYolhWVwtyZrwZSwzpldz367X_VMVbVbg89n7dixeZucTF01RBCWGpWqcAZ9KABfHr6fRPFexVF2iRbyEhv-rwFE5rfnx1w",
         }
         post :index, params: params
-        expect(response).to have_http_status(500)
+        expect(response).to have_http_status(401)
       end
     end
 
@@ -134,12 +134,35 @@ describe ApplicationController, type: :controller do
           user = User.find_by(email: @email)
           expect(user.role?(@role, @params["context_id"])).to be true
         end
-        it "updates the lti_user_id of a user with a matching lms_user_id" do
+        it "doesn't update the lti_user_id of a user with a matching lms_user_id" do
           user = FactoryBot.create(
             :user,
             lti_provider: @params["tool_consumer_instance_guid"],
             lms_user_id: 23459,
           )
+          old_user_id = user.lti_user_id
+          params = lti_params(
+            @application_instance.lti_key,
+            @application_instance.lti_secret,
+            {
+              "launch_url" => @launch_url,
+              "roles" => @role,
+              "lis_person_contact_email_primary" => user.email,
+              "custom_canvas_user_id" => user.lms_user_id,
+            },
+          )
+          post :index, params: params
+          expect(response).to have_http_status(200)
+          user = User.find_by(email: user.email)
+          expect(user.lti_user_id).to eq old_user_id
+        end
+        it "updates the empty lti_user_id of a user with a matching lms_user_id" do
+          user = FactoryBot.create(
+            :user,
+            lti_provider: @params["tool_consumer_instance_guid"],
+            lms_user_id: 23459,
+          )
+          user.update(lti_user_id: nil)
           params = lti_params(
             @application_instance.lti_key,
             @application_instance.lti_secret,
@@ -177,6 +200,116 @@ describe ApplicationController, type: :controller do
             expect(user.lti_user_id).to eq @params["user_id"]
           end
         end
+        context "a user's LMS id changes upstream but the LTI id stays the same" do
+          it "finds the user with the LTI id and updates the LMS id" do
+            user = FactoryBot.create(
+              :user,
+              email: @email,
+              lti_provider: @params["tool_consumer_instance_guid"],
+              lti_user_id: 111,
+              lms_user_id: 1234,
+            )
+            params = lti_params(
+              @application_instance.lti_key,
+              @application_instance.lti_secret,
+              {
+                "launch_url" => @launch_url,
+                "roles" => @role,
+                "lis_person_contact_email_primary" => user.email,
+                "custom_canvas_user_id" => 98761,
+                "user_id" => 111,
+              },
+            )
+            post :index, params: params
+            expect(response).to have_http_status(200)
+            user = User.find_by(email: @email)
+            expect(user.lms_user_id).to eq "98761"
+          end
+        end
+      end
+
+      context "an anonymous user logs in" do
+        before do
+          @role = "urn:lti:role:ims/lis/Instructor"
+          @email = FactoryBot.generate(:email)
+          @new_lti_params = lambda do
+            lti_params(
+              @application_instance.lti_key,
+              @application_instance.lti_secret,
+              {
+                "launch_url" => @launch_url,
+                "roles" => @role,
+                "lis_person_contact_email_primary" => @email,
+                "custom_canvas_user_id" => "",
+                "user_id" => "",
+              },
+            )
+          end
+        end
+        it "reuses the same user within a session" do
+          # first login, new user generated
+          post :index, params: @new_lti_params.call
+          expect(response).to have_http_status(200)
+          expect(User.count).to eq 1
+          # second login, no new user
+          post :index, params: @new_lti_params.call
+          expect(response).to have_http_status(200)
+          expect(User.count).to eq 1
+        end
+        it "generated a new user when the session is cleared" do
+          # first login, new user generated
+          post :index, params: @new_lti_params.call
+          expect(response).to have_http_status(200)
+          expect(User.count).to eq 1
+          # reset the session
+          session.clear
+          # second login, new user generated
+          post :index, params: @new_lti_params.call
+          expect(response).to have_http_status(200)
+          expect(User.count).to eq 2
+        end
+      end
+
+      context "an anonymous user logs in" do
+        before do
+          @role = "urn:lti:role:ims/lis/Instructor"
+          @email = FactoryBot.generate(:email)
+          @new_lti_params = lambda do
+            lti_params(
+              @application_instance.lti_key,
+              @application_instance.lti_secret,
+              {
+                "launch_url" => @launch_url,
+                "roles" => @role,
+                "lis_person_contact_email_primary" => @email,
+                "custom_canvas_user_id" => "",
+                "user_id" => "",
+              },
+            )
+          end
+        end
+        it "reuses the same user within a session" do
+          # first login, new user generated
+          post :index, params: @new_lti_params.call
+          expect(response).to have_http_status(200)
+          expect(User.count).to eq 1
+          # second login, no new user
+          post :index, params: @new_lti_params.call
+          expect(response).to have_http_status(200)
+          expect(User.count).to eq 1
+        end
+        it "generated a new user when the session is cleared" do
+          # first login, new user generated
+          post :index, params: @new_lti_params.call
+          expect(response).to have_http_status(200)
+          expect(User.count).to eq 1
+          # reset the session
+          session.clear
+          # second login, new user generated
+          post :index, params: @new_lti_params.call
+          expect(response).to have_http_status(200)
+          expect(User.count).to eq 2
+        end
       end
 
       context "user has invalid email" do
@@ -197,6 +330,44 @@ describe ApplicationController, type: :controller do
           post :index, params: @params
           expect(response).to have_http_status(200)
           expect(response.body).to include("User: Atomic Jolt")
+        end
+      end
+
+      context "user has a duplicate email" do
+        before do
+          @email = "bob@example.com"
+          @role = "urn:lti:role:ims/lis/Instructor"
+          @params = lti_params(
+            @application_instance.lti_key,
+            @application_instance.lti_secret,
+            {
+              "launch_url" => @launch_url,
+              "roles" => @role,
+              "lis_person_contact_email_primary" => @email,
+            },
+          )
+          FactoryBot.create(
+            :user,
+            email: @email,
+            lti_provider: @params["tool_consumer_instance_guid"],
+            lms_user_id: 1111,
+            lti_user_id: 101,
+          )
+        end
+        it "creates a new user and does the LTI launch" do
+          post :index, params: @params
+          expect(response).to have_http_status(200)
+          expect(response.body).to include("User: Atomic Jolt")
+          user = User.find_by(lti_user_id: 101)
+          user = User.find_by(lti_user_id: 101)
+
+          expect(User.count).to eq 2
+          # old user
+          user = User.find_by(lti_user_id: 101)
+          expect(user.email).to eq @email
+          # new user
+          user = User.find_by(lti_user_id: @params["user_id"])
+          expect(user.email).not_to eq @email
         end
       end
     end

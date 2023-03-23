@@ -160,7 +160,7 @@ export class Home extends React.Component {
     );
   }
 
-  renderLtiAdvantageExamples() {
+  renderAtomicLtiExamples() {
     if (this.props.settings.deep_link_settings) {
       return null;
     }
@@ -193,7 +193,7 @@ export class Home extends React.Component {
     return (
       <div>
         { content }
-        { this.renderLtiAdvantageExamples() }
+        { this.renderAtomicLtiExamples() }
       </div>
     );
   }

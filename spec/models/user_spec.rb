@@ -109,10 +109,10 @@ describe User, type: :model do
   describe "omniauth" do
     before do
       @uid = "test"
-      @provider = "facebook"
+      @provider = "canvas"
       @existing_email = "test@example.com"
       @new_email = "newtest@example.com"
-      @provider_url = "https://www.facebook.com"
+      @provider_url = "https://canvas.instructure.com"
     end
     describe "for_auth" do
       before do
@@ -124,7 +124,7 @@ describe User, type: :model do
           auth = get_omniauth(
             "uuid" => @uid,
             "provider" => @provider,
-            "facebook" => {
+            "canvas" => {
               "email" => @existing_email,
               "url" => @provider_url,
             },
@@ -139,7 +139,7 @@ describe User, type: :model do
           auth = get_omniauth(
             "uuid" => "non_existing_uid",
             "provider" => @provider,
-            "facebook" => { "email" => "other@example.com" },
+            "canvas" => { "email" => "other@example.com" },
           )
           user = User.for_auth(auth)
           expect(user).to be_nil
@@ -148,10 +148,17 @@ describe User, type: :model do
     end
     describe "apply_oauth" do
       it "should add values from the omniauth result to the user" do
-        auth = get_omniauth("uuid" => @uid, "provider" => @provider, "facebook" => { "email" => @new_email })
+        auth = get_omniauth("uuid" => @uid, "provider" => @provider, "canvas" => { "email" => @new_email })
+        user = User.new
+        user.apply_oauth(auth, store_email: true)
+        expect(user.email).to eq(@new_email)
+        expect(user.name).to eq("foo bar") # from default omniauth test data
+      end
+      it "should add values from the omniauth result to the user with fake email" do
+        auth = get_omniauth("uuid" => @uid, "provider" => @provider, "canvas" => { "email" => @new_email })
         user = User.new
         user.apply_oauth(auth)
-        expect(user.email).to eq(@new_email)
+        expect(user.email.match?(/.+@provider.example.com/)).to eq(true)
         expect(user.name).to eq("foo bar") # from default omniauth test data
       end
     end
@@ -166,12 +173,12 @@ describe User, type: :model do
       it "should extract the correct email from the auth object" do
         auth = get_canvas_omniauth
         email = User.oauth_email(auth)
-        expect(email).to eq("testguy@example.com")
+        expect(email.match?(/.+@atomicjolt.instructure.com/)).to eq(true)
       end
       it "should handle a request that doesn't include an email" do
         auth = get_canvas_omniauth_no_email
         email = User.oauth_email(auth)
-        expect(email).to eq("1@atomicjolt.instructure.com")
+        expect(email.match?(/.+@atomicjolt.instructure.com/)).to eq(true)
       end
     end
     describe "oauth_lti_user_id" do
@@ -184,15 +191,21 @@ describe User, type: :model do
     describe "params_for_create" do
       it "should get the create parameters for the user" do
         auth = get_canvas_omniauth
-        attributes = User.params_for_create(auth)
+        attributes = User.params_for_create(auth, store_email: true)
         expect(attributes[:email]).to eq(auth["extra"]["raw_info"]["primary_email"])
+        expect(attributes[:name]).to eq(auth["info"]["name"])
+      end
+      it "should get the create parameters for the user with fake email" do
+        auth = get_canvas_omniauth
+        attributes = User.params_for_create(auth)
+        expect(attributes[:email].match?(/.+@atomicjolt.instructure.com/)).to eq(true)
         expect(attributes[:name]).to eq(auth["info"]["name"])
       end
     end
     describe "associate_account" do
       before do
         @uid = "test"
-        @provider = "facebook"
+        @provider = "canvas"
         @new_email = "newtest@example.com"
       end
       it "should add an authentication for an existing user account" do
@@ -200,7 +213,7 @@ describe User, type: :model do
         auth = get_omniauth(
           "uuid" => @uid,
           "provider" => @provider,
-          "facebook" => { "email" => @new_email },
+          "canvas" => { "email" => @new_email },
         )
         count = user.authentications.length
         user.associate_account(auth)
@@ -218,7 +231,7 @@ describe User, type: :model do
         auth = get_omniauth(
           "uuid" => @uid,
           "provider" => @provider,
-          "facebook" => { "email" => @email, "url" => provider_url },
+          "canvas" => { "email" => @email, "url" => provider_url },
         )
         auth = @user.setup_authentication(auth)
         expect(auth.provider_url).to eq(provider_url)
@@ -228,7 +241,7 @@ describe User, type: :model do
         auth = get_omniauth(
           "uuid" => @uid,
           "provider" => @provider,
-          "facebook" => { "email" => @email, "url" => provider_url },
+          "canvas" => { "email" => @email, "url" => provider_url },
         )
         auth = @user.setup_authentication(auth)
         expect(auth.provider_url).to eq("http://www.example.com")
@@ -238,7 +251,7 @@ describe User, type: :model do
         auth = get_omniauth(
           "uuid" => @uid,
           "provider" => @provider,
-          "facebook" => { "email" => @email, "url" => provider_url },
+          "canvas" => { "email" => @email, "url" => provider_url },
         )
         auth = @user.setup_authentication(auth)
         expect(auth.provider_url).to eq("http://foo.example.com")
