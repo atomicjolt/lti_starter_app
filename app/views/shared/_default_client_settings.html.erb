@@ -9,10 +9,20 @@
   settings[:default_language] = Localization.get_default_locale(current_application_instance)
 
   # OAuth related params
-  settings[:canvas_oauth_url]     = user_canvas_omniauth_authorize_url(host: Integrations::CanvasApiSupport.oauth_host)
-  settings[:canvas_callback_url]  = user_canvas_omniauth_callback_url(host: Integrations::CanvasApiSupport.oauth_host)
-  settings[:oauth_consumer_key] = current_application_instance.lti_key
   settings[:canvas_auth_required] = @canvas_auth_required
+  settings[:canvas_url] = canvas_url
+
+  if signed_in? && can_oauth?
+    settings[:canvas_oauth_url]     = user_canvas_omniauth_authorize_url(host: Integrations::CanvasApiSupport.oauth_host)
+    settings[:canvas_callback_url]  = user_canvas_omniauth_callback_url(host: Integrations::CanvasApiSupport.oauth_host)
+    settings[:oauth_consumer_key] = current_application_instance.lti_key
+    settings[:oauth_authorization] = oauth_jwt(
+      application_instance: current_application_instance,
+      user: current_user,
+      canvas_url: canvas_url,
+    )
+  end
+
   # always include this token in case the client needs to re-auth
   settings[:authorization] = default_jwt
   settings[:canvas_url] = canvas_url
