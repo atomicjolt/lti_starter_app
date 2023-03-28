@@ -1,13 +1,14 @@
 class LtiLaunchesController < ApplicationController
   include CanvasSupport
   include LtiSupport
-  include OpenIdConnectSupport
 
   layout "client"
 
   skip_before_action :verify_authenticity_token
-  before_action :do_lti, except: [:init, :launch]
-  before_action :debug_data, except: [:init, :launch]
+  before_action :debug_data
+  before_action :check_disabled
+  before_action :do_lti
+  before_action :set_lti_launch_values
 
   def index
     if current_application_instance.disabled_at
@@ -16,50 +17,28 @@ class LtiLaunchesController < ApplicationController
 
     if @lti_token
       # LTI advantage example code
-      @lti_advantage_examples = LtiAdvantage::Examples.new(@lti_token, current_application_instance)
+      @lti_advantage_examples = AtomicLti::Examples.new(@lti_token, current_application_instance)
       @lti_advantage_examples.run
 
       if params[:lti_launch_token].present?
         @lti_launch = LtiLaunch.find_by(
           token: params[:lti_launch_token],
-          context_id: @lti_token[LtiAdvantage::Definitions::CONTEXT_CLAIM]["id"],
+          context_id: @lti_token[AtomicLti::Definitions::CONTEXT_CLAIM]["id"],
         )
 
         set_lti_launch_resource_link_id
       end
     end
 
-    setup_lti_response
+    check_canvas_auth
   end
 
   def show
     @lti_launch = LtiLaunch.find_by(token: params[:id], context_id: params[:context_id])
     set_lti_launch_resource_link_id
-    setup_lti_response
+    check_canvas_auth
 
     render :index
-  end
-
-  def launch
-    @launch_params = Lti::Launch.params(
-      current_application_instance.lti_key,
-      current_application_instance.lti_secret,
-      {
-        "launch_url" => lti_launches_url,
-        "roles" => "Learner",
-      },
-    )
-  end
-
-  # Support Open ID connect flow for LTI 1.3
-  def init
-    nonce = SecureRandom.hex(64)
-    state = LtiAdvantage::OpenId.state
-    url = build_response(state, params, nonce)
-    cookies[:open_id_state] = state
-    respond_to do |format|
-      format.html { redirect_to(url, allow_other_host: true) }
-    end
   end
 
   private
@@ -75,24 +54,31 @@ class LtiLaunchesController < ApplicationController
     }
   end
 
-  def setup_lti_response
+  def check_canvas_auth
+    return if lti.product_family_code != "canvas"
+
     begin
       @canvas_api = canvas_api
       @canvas_auth_required = @canvas_api.blank?
     rescue Exceptions::CanvasApiTokenRequired
       @canvas_auth_required = true
     end
-    set_lti_launch_values
   end
 
   def set_lti_launch_resource_link_id
     return unless @lti_launch
     return if @lti_launch.resource_link_id.present?
 
-    if @lti_token && @lti_token[LtiAdvantage::Definitions::RESOURCE_LINK_CLAIM].present?
-      @lti_launch.update(resource_link_id: @lti_token[LtiAdvantage::Definitions::RESOURCE_LINK_CLAIM]["id"])
+    if @lti_token && @lti_token[AtomicLti::Definitions::RESOURCE_LINK_CLAIM].present?
+      @lti_launch.update(resource_link_id: @lti_token[AtomicLti::Definitions::RESOURCE_LINK_CLAIM]["id"])
     elsif params[:resource_link_id].present?
       @lti_launch.update(resource_link_id: params[:resource_link_id])
+    end
+  end
+
+  def check_disabled
+    if current_application_instance.disabled_at
+      redirect_to "/disabled.html"
     end
   end
 end

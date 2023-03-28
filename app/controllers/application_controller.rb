@@ -12,7 +12,9 @@ class ApplicationController < ActionController::Base
                 :current_canvas_course,
                 :canvas_url,
                 :targeted_app_instance,
-                :current_user_roles
+                :current_user_roles,
+                :app_name,
+                :app_friendly_name
 
   protected
 
@@ -118,7 +120,13 @@ class ApplicationController < ActionController::Base
     render_error 500, "An error occured when calling the Canvas API: #{exception.message}", json_options
   end
 
-  rescue_from LtiAdvantage::Exceptions::NoLTIDeployment, with: :handle_no_deployment
+  rescue_from Exceptions::SignatureValidationError, with: :handle_signature_validation_error
+  def handle_signature_validation_error
+    @token = params["id_token"]
+    render_error 401, "LTI launch signature was invalid or expired"
+  end
+
+  rescue_from AtomicLti::Exceptions::NoLTIDeployment, with: :handle_no_deployment
   def handle_no_deployment
     @token = params["id_token"]
     render "lti_deployments/index", layout: "application"
@@ -143,7 +151,8 @@ class ApplicationController < ActionController::Base
   end
 
   def canvas_url
-    @canvas_url ||= session[:canvas_url] ||
+    @canvas_url ||=
+      session[:canvas_url] ||
       custom_canvas_api_domain ||
       current_application_instance&.site&.url ||
       current_bundle_instance&.site&.url
@@ -163,10 +172,21 @@ class ApplicationController < ActionController::Base
 
   def current_application_instance
     @current_application_instance ||=
-      LtiAdvantage::Authorization.application_instance_from_token(request.params["id_token"]) ||
-      ApplicationInstance.find_by(lti_key: Lti::Request.oauth_consumer_key(request)) ||
-      ApplicationInstance.find_by(domain: request.host_with_port) ||
-      ApplicationInstance.find_by(id: params[:application_instance_id])
+      if app_instance_id = request.env["atomic.validated.application_instance_id"]
+        ApplicationInstance.find(app_instance_id)
+      elsif request.env.dig("oauth_state", "application_instance_id").present?
+        # TODO move this to the atomic_tenant gem
+        ApplicationInstance.find(request.env["oauth_state"]["application_instance_id"])
+      else
+        Rails.logger.warn("Falling back to legacy current_application_instance")
+        ApplicationInstance.find_by(lti_key: Lti::Request.oauth_consumer_key(request)) ||
+          ApplicationInstance.find_by(domain: request.host_with_port) ||
+          ApplicationInstance.find_by(id: params[:application_instance_id])
+      end
+  end
+
+  def main_subdomain
+    @main_subdomain ||= request.subdomains.first
   end
 
   def current_canvas_course
@@ -176,6 +196,30 @@ class ApplicationController < ActionController::Base
 
   def current_application
     Application.find_by(key: request.subdomains.first)
+  end
+
+  def app_name
+    @app_name || current_application_instance&.application&.client_application_name
+  end
+
+  def app_friendly_name
+    if bundle = bundle_from_subdomain
+      bundle.name
+    else
+      app_name
+    end
+  end
+
+  def hyphened_subdomain?
+    main_subdomain.include?("-")
+  end
+
+  def parsed_app_name
+    main_subdomain.split("-").last
+  end
+
+  def bundle_from_subdomain
+    Bundle.find_by(key: request.subdomains.first)
   end
 
   def current_bundle_instance
@@ -196,22 +240,12 @@ class ApplicationController < ActionController::Base
   def set_lti_launch_values
     @is_lti_launch = true
     @canvas_url = current_application_instance.site.url
+    @canvas_url = if lti.canvas_api_domain.present?
+                    "https://#{lti.canvas_api_domain}"
+                  end
     @app_name = current_application_instance.application.client_application_name
     @launch_locale = params[:launch_presentation_locale]
     set_i18n_locale
-  end
-
-  def set_lti_advantage_launch_values
-    @lti_token = LtiAdvantage::Authorization.validate_token(
-      current_application_instance,
-      params[:id_token],
-    )
-    @lti_params = LtiAdvantage::Params.new(@lti_token)
-    @lti_launch_config = JSON.parse(params[:lti_launch_config]) if params[:lti_launch_config]
-    @is_deep_link = true if LtiAdvantage::Definitions.deep_link_launch?(@lti_token)
-    @app_name = current_application_instance.application.client_application_name
-    @title = current_application_instance.application.name
-    @description = current_application_instance.application.description
   end
 
   def set_i18n_locale
@@ -224,6 +258,7 @@ class ApplicationController < ActionController::Base
     key = request.subdomains.first
     application = Application.find_by(key: key)
     return nil if current_bundle_instance.nil?
+
     current_bundle_instance.
       application_instances.
       find_by(application_id: application.id)

@@ -2077,17 +2077,17 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha1-x57Zf380y48robyXkLzDZkdLS3k=
 
-atomic-canvas@^1.13.3:
-  version "1.13.3"
-  resolved "https://registry.yarnpkg.com/atomic-canvas/-/atomic-canvas-1.13.3.tgz#863a3786bc73529632a5314965e95efaa107917f"
-  integrity sha512-T+teA6rvmlyhOpWvgce6qLgtYeF30m8isPLWvMEtESa4cIkDn6vM8Sd0Xd8id3MvQYCjpI8Z9JDp5txKyG0MKg==
+atomic-canvas@^1.13.4:
+  version "1.13.4"
+  resolved "https://registry.yarnpkg.com/atomic-canvas/-/atomic-canvas-1.13.4.tgz#bdeb8d33772531158ac9a3e41ba322f9f8af92e2"
+  integrity sha512-51u3K7g/VbD4H9qFBHcPUqxf1Mf84HgVoV43StJNgUDGPnjYFDkrU1AfHy0+f9AQ3iqJHy9PturtKNlYZCoFWQ==
   dependencies:
     cli-highlight "^2.1"
 
-atomic-fuel@^4.15.3:
-  version "4.15.3"
-  resolved "https://registry.yarnpkg.com/atomic-fuel/-/atomic-fuel-4.15.3.tgz#107e6fe5465fde81c4c5cb8c58c8a4c059c3bf56"
-  integrity sha512-PRVw2S9ksWoIMVrsW7riFCaHMpR3NCg8EOpXk6oYbKTKd33KM2skJePN7HqH/h7t+tM/1KEqUt1rgbG831RACw==
+atomic-fuel@^4.18.0:
+  version "4.18.0"
+  resolved "https://registry.yarnpkg.com/atomic-fuel/-/atomic-fuel-4.18.0.tgz#58cce36063b1c5e44eadf59ba4248685709d6d66"
+  integrity sha512-WbRUBJg98w+Uz+WGel7a7BgmTeE9YKndBL28D8aNLrg/93hze8EvYKoU8tBa72RBRr3TOV+RDHD06q6VjYq8cw==
   dependencies:
     add "^2.0.6"
     node-sass "^7.0.1"

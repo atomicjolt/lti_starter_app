@@ -13,11 +13,11 @@ describe('LtiAdvantageSettings', () => {
     const params = {
       applicationId: '1',
       applicationInstanceId: '2',
-    }
+    };
 
     const result = TestRenderer.create(
       <Provider store={store}>
-        <LtiAdvantageSettings params={params}/>
+        <LtiAdvantageSettings params={params} />
       </Provider>
     );
     expect(result).toMatchSnapshot();

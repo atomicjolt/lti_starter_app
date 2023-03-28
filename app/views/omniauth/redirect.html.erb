@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script type="text/javascript">
+      window.onload=function(){document.forms[0].submit();};
+    </script>
+  </head>
+  <body>
+    <form action="<%= @auth_url -%>" method="POST">
+      <% @auth_params.each do |name, value| -%>
+        <%= hidden_field_tag(name, value) %>
+      <% end -%>
+    </form>
+  </body>
+</html>

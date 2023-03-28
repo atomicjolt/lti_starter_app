@@ -25,10 +25,14 @@ Apartment.configure do |config|
     ImsExport
     RequestStatistic
     RequestUserStatistic
-    LtiDeployment
-    LtiInstall
     Jwk
     OpenIdState
+    AtomicLti::Deployment
+    AtomicLti::Install
+    AtomicLti::Platform
+    AtomicLti::Jwk
+    AtomicTenant::PinnedPlatformGuid
+    AtomicTenant::PinnedClientId
   }
 
   # In order to migrate all of your Tenants you need to provide a list of Tenant names to Apartment.
@@ -120,9 +124,18 @@ def allowed_endpoint?(request)
 end
 
 Rails.application.config.middleware.insert_before Warden::Manager, Apartment::Elevators::Generic, lambda { |request|
-  if application_instance = LtiAdvantage::Authorization.application_instance_from_token(request.params["id_token"])
+
+  if app_instance_id = request.env["atomic.validated.application_instance_id"]
+    application_instance = ApplicationInstance.find(app_instance_id)
     return application_instance.tenant
   end
+
+  if token = request.env['atomic.validated.decoded_id_token']
+    raise Exceptions::ApartmentTenantError, "No LTI Advantage configuration found (client_id: #{token['aud']})"
+  end
+
+  ## Fall back to legacy tenant behavior
+  Rails.logger.warn("Falling back to legacy apartment elevator. #{request.host_with_port}")
 
   key = Lti::Request.oauth_consumer_key(request)
   host = request.host_with_port

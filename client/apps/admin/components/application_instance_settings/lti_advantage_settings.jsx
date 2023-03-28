@@ -69,6 +69,7 @@ function LtiDeployment({ ltiDeployment, setLastDeployment, applicationInstanceId
 
   let content = (
     <button
+      type="button"
       className="aj-btn"
       onClick={() => {
         const url = `api/application_instances/${applicationInstanceId}/lti_deployments/${ltiDeployment.id}`;
@@ -128,7 +129,7 @@ export default function LtiAdvantageSettings(props) {
         <div className="aj-settings-title">
           <Title ltiDeployments={ltiDeployments} />
           <div className="flex-center">
-            <button className="aj-btn" onClick={() => setShowNewLtiDeployment(true)}>
+            <button type="button" className="aj-btn" onClick={() => setShowNewLtiDeployment(true)}>
               New LTI Deployment
             </button>
           </div>

@@ -4,7 +4,6 @@ RSpec.describe Api::LtiDeepLinkJwtController, type: :controller do
   before do
     setup_application_instance
     setup_canvas_lti_advantage(application_instance: @application_instance)
-    setup_lti_advantage_users
   end
 
   context "without jwt token" do
@@ -17,7 +16,8 @@ RSpec.describe Api::LtiDeepLinkJwtController, type: :controller do
   context "with jwt token" do
     describe "POST create" do
       it "generates a jwt that contains an html content item" do
-        request.headers["Authorization"] = @student_token
+        token = make_deep_link_jwt(@application_instance.id, @iss, @deployment_id, @context_id)
+        request.headers["Authorization"] = token
         post :create, params: { type: "html" }, format: :json
         expect(response).to have_http_status(:success)
         result = JSON.parse(response.body)

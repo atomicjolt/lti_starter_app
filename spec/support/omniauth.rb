@@ -1,9 +1,9 @@
 # From http://wealsodocookies.com/posts/how-to-test-facebook-login-using-devise-omniauth-rspec-and-capybara
 def get_omniauth(opts = {}, credentials = nil)
   default = {
-    "provider" => "facebook",
+    "provider" => "canvas",
     "uuid"     => "1234",
-    "facebook" => {
+    "canvas" => {
       "email" => "foobar@example.com",
       "gender" => "Male",
       "first_name" => "foo",
@@ -49,7 +49,7 @@ def get_omniauth(opts = {}, credentials = nil)
 end
 
 def get_invalid_omniauth(opts = {})
-  credentials = { "provider" => "facebook",
+  credentials = { "provider" => "canvas",
                   "invalid"  => "invalid_crendentials" }.merge(opts)
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[credentials["provider"]] = credentials["invalid"]

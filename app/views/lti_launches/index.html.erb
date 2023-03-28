@@ -1,8 +1,8 @@
 <% content_for :head do -%>
-  <%= stylesheet_link_tag(@app_name, @app_name) %>
+  <%= stylesheet_link_tag(app_name, app_name) %>
 <% end -%>
 
 <%= render 'shared/default_client_settings' %>
 <div id="main-app"></div>
 
-<%= javascript_include_tag @app_name, defer: true %>
+<%= javascript_include_tag app_name, defer: true %>

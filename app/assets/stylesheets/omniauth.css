@@ -1,0 +1,35 @@
+.aj-title{
+  margin: 20px 0 16px;
+  font-family: 'Lato', 'Helvetica Nue', Helvetica, Arial sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1;
+  color: #333;
+  display: flex;
+  align-items: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+.aj-title i{
+  font-size: 24px;
+  margin-right: 8px;
+}
+.aj-title i.aj-ok{
+  color: green;
+}
+.aj-title i.aj-error{
+  color: red;
+}
+.aj-text{
+  margin: 0 0 32px;
+  font-family: 'Lato', 'Helvetica Nue', Helvetica, Arial sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #333;
+  max-width: 500px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}

@@ -13,6 +13,17 @@ end
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails", "~> 7.0.3"
 
+
+gem "atomic_lti", "~> 1.3.0"
+gem "atomic_lti_1v1",  git: "https://github.com/atomicjolt/atomic_lti_1v1.git", tag: "1.0.0"
+gem "atomic_tenant", git: "https://github.com/atomicjolt/atomic_tenant.git", tag: "1.0.3"
+gem "atomic_admin",  git: "https://github.com/atomicjolt/atomic_admin.git", tag: "0.1.0"
+
+# gem "atomic_lti", path: "../atomic_lti"
+# gem "atomic_lti_1v1", path: "../atomic_lti_1v1"
+# gem "atomic_tenant", path: "../atomic_tenant"
+# gem "atomic_admin", path: "../atomic_admin"
+
 gem "propshaft"
 
 # Improve boot time
@@ -37,7 +48,7 @@ gem "jwt"
 gem "lms-api", "~>1.23.0"
 gem "lms-graphql-api", "~>2.0.0"
 gem "omniauth"
-gem "omniauth-canvas", "~>1.0.2"
+gem "omniauth-canvas"
 gem "rolify"
 
 # Email
@@ -126,4 +137,4 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
