@@ -9,4 +9,8 @@ module OauthHelper
       canvas_url: canvas_url,
     )
   end
+
+  def can_oauth?
+    true
+  end
 end
