@@ -248,16 +248,6 @@ class ApplicationController < ActionController::Base
     set_i18n_locale
   end
 
-  def set_lti_advantage_launch_values
-    @lti_token = AtomicLti::Authorization.validate_token(params[:id_token])
-    @lti_params = AtomicLti::Params.new(@lti_token)
-    @lti_launch_config = JSON.parse(params[:lti_launch_config]) if params[:lti_launch_config]
-    @is_deep_link = true if AtomicLti::Definitions.deep_link_launch?(@lti_token)
-    @app_name = current_application_instance.application.client_application_name
-    @title = current_application_instance.application.name
-    @description = current_application_instance.application.description
-  end
-
   def set_i18n_locale
     if locale = Localization.get_locale(@launch_locale) || Localization.get_default_locale(current_application_instance)
       I18n.locale = locale
