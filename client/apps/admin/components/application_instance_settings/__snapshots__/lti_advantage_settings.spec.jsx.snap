@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtomicLtiSettings renders the AtomicLtiSettings component 1`] = `
+exports[`LtiAdvantageSettings renders the LtiAdvantageSettings component 1`] = `
 <div
   className="aj-columns"
 >
@@ -22,6 +22,7 @@ exports[`AtomicLtiSettings renders the AtomicLtiSettings component 1`] = `
         <button
           className="aj-btn"
           onClick={[Function]}
+          type="button"
         >
           New LTI Deployment
         </button>

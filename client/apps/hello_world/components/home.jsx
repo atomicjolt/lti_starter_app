@@ -48,7 +48,7 @@ export class Home extends React.Component {
       <a target="_top" href={`${this.props.settings.canvas_url}/courses/${course.id}`}>
         {course.name}
       </a>
-                                              </li>);
+    </li>);
   }
 
   renderLineItemErrors() {
@@ -77,7 +77,7 @@ export class Home extends React.Component {
         {lineItem.scoreMaximum}
         )
       </a>
-                                                            </li>);
+    </li>);
   }
 
   renderUsers() {
@@ -109,7 +109,7 @@ export class Home extends React.Component {
         Roles:
         {nameAndRole.roles.join(', ')}
       </p>
-                                                                            </li>);
+    </li>);
   }
 
   renderResults() {
@@ -132,7 +132,7 @@ export class Home extends React.Component {
         Comment:
         {result.comment}
       </p>
-                                                                 </li>);
+    </li>);
   }
 
   renderContent() {
@@ -160,7 +160,7 @@ export class Home extends React.Component {
     );
   }
 
-  renderAtomicLtiExamples() {
+  renderExamples() {
     if (this.props.settings.deep_link_settings) {
       return null;
     }
@@ -193,7 +193,7 @@ export class Home extends React.Component {
     return (
       <div>
         { content }
-        { this.renderAtomicLtiExamples() }
+        { this.renderExamples() }
       </div>
     );
   }

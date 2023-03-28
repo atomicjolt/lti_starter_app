@@ -69,6 +69,7 @@ function LtiDeployment({ ltiDeployment, setLastDeployment, applicationInstanceId
 
   let content = (
     <button
+      type="button"
       className="aj-btn"
       onClick={() => {
         const url = `api/application_instances/${applicationInstanceId}/lti_deployments/${ltiDeployment.id}`;
@@ -101,7 +102,7 @@ function LtiDeployment({ ltiDeployment, setLastDeployment, applicationInstanceId
   );
 }
 
-export default function AtomicLtiSettings(props) {
+export default function LtiAdvantageSettings(props) {
   const {
     params,
   } = props;
@@ -128,7 +129,7 @@ export default function AtomicLtiSettings(props) {
         <div className="aj-settings-title">
           <Title ltiDeployments={ltiDeployments} />
           <div className="flex-center">
-            <button className="aj-btn" onClick={() => setShowNewLtiDeployment(true)}>
+            <button type="button" className="aj-btn" onClick={() => setShowNewLtiDeployment(true)}>
               New LTI Deployment
             </button>
           </div>
@@ -151,7 +152,7 @@ export default function AtomicLtiSettings(props) {
   );
 }
 
-AtomicLtiSettings.propTypes = {
+LtiAdvantageSettings.propTypes = {
   params: PropTypes.shape({
     applicationId: PropTypes.string.isRequired,
     applicationInstanceId: PropTypes.string.isRequired,
