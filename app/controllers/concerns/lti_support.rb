@@ -17,10 +17,7 @@ module LtiSupport
     @_lti = if request.env["atomic.validated.id_token"].present?
               LtiAdvantage::Request.new(request, current_application_instance)
             else
-              # If we're in a proctorio launch the LTI params have been pulled from stored state and
-              # are already validated
-              skip_validate = request.env["oauth_code"] == "proctorio"
-              Lti::Request.new(request, current_application_instance, skip_validation: skip_validate)
+              Lti::Request.new(request, current_application_instance)
             end
     user = user_from_lti
     user.confirm unless user.confirmed?
