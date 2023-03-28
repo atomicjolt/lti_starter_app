@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import canvasRequest from 'atomic-canvas/libs/action';
 import { listYourCourses } from 'atomic-canvas/libs/constants/courses';
-import { withSettings } from 'atomic-fuel/libs/components/settings';
+import useSettings from 'atomic-fuel/libs/hooks/use_settings';
 
 import { displayCanvasAuth } from '../../../common/components/common/canvas_auth';
 import Selector from './content_item_select/selector';
@@ -11,65 +11,53 @@ import DeepLink from './deep_link';
 
 import img from '../assets/images/atomicjolt.jpg';
 
-const select = (state) => ({
-  courses: state.courses,
-  canvasReAuthorizationRequired: state.canvasErrors.canvasReAuthorizationRequired,
-});
+function CourseList({ canvasUrl }) {
+  const dispatch = useDispatch();
+  const settings = useSettings();
+  const courses = useSelector((state) => state.courses);
 
-export class Home extends React.Component {
-
-  static propTypes = {
-    settings: PropTypes.shape({
-      canvas_auth_required: PropTypes.bool,
-      lti_message_type: PropTypes.string,
-      canvas_url: PropTypes.string,
-    }).isRequired,
-    canvasRequest: PropTypes.func.isRequired,
-    courses: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-    })),
-    canvasReAuthorizationRequired: PropTypes.bool,
-  };
-
-  componentDidMount() {
-    if (!this.props.settings.canvas_auth_required) {
+  useEffect(() => {
+    if (!settings.canvas_auth_required) {
       // Example Canvas API call
-      this.props.canvasRequest(listYourCourses);
+      dispatch(canvasRequest(listYourCourses));
     }
+  }, [settings.canvas_auth_required, canvasRequest]);
+
+  if (!courses) {
+    return null;
   }
 
-  renderCourses() {
-    if (!this.props.courses) {
-      return null;
-    }
-
-    return this.props.courses.map((course) => <li key={`course_${course.id}`}>
-      <a target="_top" href={`${this.props.settings.canvas_url}/courses/${course.id}`}>
+  return courses.map((course) => (
+    <li key={`course_${course.id}`}>
+      <a target="_top" href={`${canvasUrl}/courses/${course.id}`}>
         {course.name}
       </a>
-    </li>);
+    </li>
+  ));
+}
+
+function LineItemErrors({ errors }) {
+  return errors.map((error) => <li key={error.message}>{error.message}</li>);
+}
+
+function LineItems({ lineItems }) {
+  if (!lineItems) {
+    return null;
   }
 
-  renderLineItemErrors() {
-    return this.props.settings.line_items.errors.map((error) => <li key={error.message}>{error.message}</li>);
+  if (lineItems.errors) {
+    return (
+      <div>
+        <h3>Errors:</h3>
+        <ul>
+          <LineItemErrors errors={lineItems.errors} />
+        </ul>
+      </div>
+    );
   }
 
-  renderLineItems() {
-    if (!this.props.settings.line_items) {
-      return null;
-    }
-
-    if (this.props.settings.line_items.errors) {
-      return (
-        <div>
-          <h3>Errors:</h3>
-          <ul>{this.renderLineItemErrors()}</ul>
-        </div>
-      );
-    }
-
-    return this.props.settings.line_items.map((lineItem) => <li key={`line_item${lineItem.id}`}>
+  return lineItems.map((lineItem) => (
+    <li key={`line_item${lineItem.id}`}>
       <a href={lineItem.id}>
         {lineItem.label}
         {' '}
@@ -77,15 +65,18 @@ export class Home extends React.Component {
         {lineItem.scoreMaximum}
         )
       </a>
-    </li>);
+    </li>
+  ));
+}
+
+function Users({ namesAndRoles, canvasUrl }) {
+  if (!namesAndRoles) {
+    return null;
   }
 
-  renderUsers() {
-    if (!this.props.settings.names_and_roles) {
-      return null;
-    }
-    return this.props.settings.names_and_roles.members.map((nameAndRole) => <li key={`name_and_role_${nameAndRole.user_id}`}>
-      <a target="_top" href={`${this.props.settings.canvas_url}/courses/${nameAndRole.id}`}>
+  return namesAndRoles.members.map((nameAndRole) => (
+    <li key={`name_and_role_${nameAndRole.user_id}`}>
+      <a target="_top" href={`${canvasUrl}/courses/${nameAndRole.id}`}>
         {nameAndRole.user_id}
         <img src={nameAndRole.picture} alt={nameAndRole.given_name} />
       </a>
@@ -109,21 +100,24 @@ export class Home extends React.Component {
         Roles:
         {nameAndRole.roles.join(', ')}
       </p>
-    </li>);
+    </li>
+  ));
+}
+
+function Results({ lineItemResults }) {
+  if (!lineItemResults) {
+    return null;
   }
 
-  renderResults() {
-    if (!this.props.settings.line_item_results) {
-      return null;
-    }
-
-    return this.props.settings.line_item_results.map((result) => <li key={`name_and_role_${result.id}`}>
+  return lineItemResults.map((result) => (
+    <li key={`name_and_role_${result.id}`}>
       <p>
         User:
         {result.userId}
       </p>
       <p>
         Score:
+        {' '}
         {result.resultScore}
         /
         {result.resultMaximum}
@@ -132,74 +126,86 @@ export class Home extends React.Component {
         Comment:
         {result.comment}
       </p>
-    </li>);
-  }
-
-  renderContent() {
-    if (this.props.settings.lti_message_type === 'ContentItemSelectionRequest') {
-      return <Selector />;
-    }
-
-    if (this.props.settings.deep_link_settings) {
-      return (
-        <DeepLink
-          deepLinkSettings={this.props.settings.deep_link_settings}
-        />
-      );
-    }
-
-    return (
-      <div>
-        <img src={img} alt="Atomic Jolt Logo" />
-        <hr />
-        <h2>Courses:</h2>
-        <ul>
-          { this.renderCourses() }
-        </ul>
-      </div>
-    );
-  }
-
-  renderExamples() {
-    if (this.props.settings.deep_link_settings) {
-      return null;
-    }
-
-    return (
-      <div>
-        <hr />
-        <h3>Users (LTI Advantage names and roles example):</h3>
-        <ul style={{ textAlign: 'left' }}>
-          { this.renderUsers() }
-        </ul>
-        <h3>Line items (LTI Advantage line items example):</h3>
-        <ul style={{ textAlign: 'left' }}>
-          { this.renderLineItems() }
-        </ul>
-        <h3>Results (LTI Advantage line item results example):</h3>
-        <ul style={{ textAlign: 'left' }}>
-          { this.renderResults() }
-        </ul>
-      </div>
-    );
-  }
-
-  render() {
-    const content = displayCanvasAuth(
-      this.props.settings,
-      this.props.canvasReAuthorizationRequired
-    ) || this.renderContent();
-
-    return (
-      <div>
-        { content }
-        { this.renderExamples() }
-      </div>
-    );
-  }
-
+    </li>
+  ));
 }
 
-export default withSettings(
-  connect(select, { canvasRequest })(Home)
-);
+function Examples({ settings }) {
+  if (settings.deep_link_settings) {
+    return null;
+  }
+
+  return (
+    <div>
+      <hr />
+      <h3>Users (LTI Advantage names and roles example):</h3>
+      <ul style={{ textAlign: 'left' }}>
+        <Users namesAndRoles={settings.names_and_roles} canvasUrl={settings.canvas_url} />
+      </ul>
+      <h3>Line items (LTI Advantage line items example):</h3>
+      <ul style={{ textAlign: 'left' }}>
+        <LineItems lineItems={settings.line_items} />
+      </ul>
+      <h3>Results (LTI Advantage line item results example):</h3>
+      <ul style={{ textAlign: 'left' }}>
+        <Results lineItemResults={settings.line_item_results} />
+      </ul>
+    </div>
+  );
+}
+
+function Content({ settings, courses }) {
+  const canvasUrl = settings.canvas_url;
+  if (settings.lti_message_type === 'ContentItemSelectionRequest') {
+    return <Selector />;
+  }
+
+  if (settings.deep_link_settings) {
+    return (
+      <DeepLink
+        deepLinkSettings={settings.deep_link_settings}
+      />
+    );
+  }
+
+  return (
+    <div>
+      <img src={img} alt="Atomic Jolt Logo" />
+      <hr />
+      <h2>Courses:</h2>
+      <ul>
+        <CourseList courses={courses} canvasUrl={canvasUrl} />
+      </ul>
+    </div>
+  );
+}
+
+Content.propTypes = {
+  settings: PropTypes.shape({
+    canvas_auth_required: PropTypes.bool,
+    lti_message_type: PropTypes.string,
+    canvas_url: PropTypes.string,
+  }).isRequired,
+  courses: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+  })),
+};
+
+export default function Home() {
+  const settings = useSettings();
+  const canvasReAuthorizationRequired = useSelector(
+    (state) => state.canvasErrors.canvasReAuthorizationRequired
+  );
+
+  const content = displayCanvasAuth(settings, canvasReAuthorizationRequired) || (
+    <Content settings={settings} />
+  );
+
+  return (
+    <div>
+      {content}
+      <Examples settings={settings} />
+    </div>
+  );
+}
