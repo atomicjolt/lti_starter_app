@@ -354,3 +354,34 @@ Application.all.each do |app|
   config[:language] = "en-US"
   app.update!(default_config: config)
 end
+
+# Seed JWK
+AtomicLti::Jwk.find_or_create_by(domain: nil)
+
+# Add some platforms
+AtomicLti::Platform.create_with(
+  jwks_url: "https://canvas.instructure.com/api/lti/security/jwks",
+  token_url: "https://canvas.instructure.com/login/oauth2/token",
+  oidc_url: "https://canvas.instructure.com/api/lti/authorize_redirect",
+).find_or_create_by(iss: "https://canvas.instructure.com")
+
+AtomicLti::Platform.create_with(
+  jwks_url: "https://canvas-beta.instructure.com/api/lti/security/jwks",
+  token_url: "https://canvas-beta.instructure.com/login/oauth2/token",
+  oidc_url: "https://canvas-beta.instructure.com/api/lti/authorize_redirect",
+).find_or_create_by(iss: "https://canvas-beta.instructure.com")
+
+AtomicLti::Platform.create_with(
+  jwks_url: "https://lti-service.svc.schoology.com/lti-service/.well-known/jwks",
+  token_url: "https://lti-service.svc.schoology.com/lti-service/access-token",
+  oidc_url: "https://lti-service.svc.schoology.com/lti-service/authorize-redirect",
+).find_or_create_by(iss: "https://schoology.schoology.com")
+
+if Rails.env.development?
+  # 1EdTech Certification suite
+  AtomicLti::Platform.create_with(
+    jwks_url: "https://oauth2server.imsglobal.org/jwks",
+    token_url: "https://ltiadvantagevalidator.imsglobal.org/ltitool/authcodejwt.html",
+    oidc_url: "https://ltiadvantagevalidator.imsglobal.org/ltitool/oidcauthurl.html",
+  ).find_or_create_by(iss: "https://ltiadvantagevalidator.imsglobal.org")
+end
