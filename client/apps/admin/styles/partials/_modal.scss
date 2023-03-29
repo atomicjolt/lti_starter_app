@@ -35,6 +35,12 @@
   padding: 3rem 4rem;
 }
 
+.c-modal--authentications{
+  width: 100rem;
+  padding: 3rem 4rem;
+  min-height: 46rem;
+}
+
 .c-modal--site {
   width: 80rem;
   padding: 3rem 4rem;
@@ -168,4 +174,27 @@ a.c-modal__link{
   @include bold;
   color: $dark-gray;
   margin: 0;
+}
+
+.working{
+  margin: 2rem 0;
+
+  span{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 2px;
+    background-color: $blue;
+    animation: dot 1.8s ease-in infinite;
+    animation-fill-mode: both;
+  }
+
+  span:nth-of-type(2) {
+    animation-delay: .2s;
+  }
+
+  span:nth-of-type(3) {
+    animation-delay: .4s;
+  }
 }

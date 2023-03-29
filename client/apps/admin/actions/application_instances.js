@@ -14,12 +14,16 @@ const requests = [
   'DISABLE_APPLICATION_INSTANCE',
   'SAVE_APPLICATION_INSTANCE',
   'CHECK_APPLICATION_INSTANCE_AUTH',
+  'DELETE_APPLICATION_INSTANCE_AUTH',
+  'ONBOARD_CLIENT',
+  'GET_ONBOARDING_STATUS',
+  'DELETE_APPLICATION_INSTANCE_AUTH',
   'UPDATE_NEW_INSTANCE',
 ];
 
 export const Constants = wrapper(actions, requests);
 
-export function getApplicationInstances(applicationId, page, column, direction, search) {
+export function getApplicationInstances(applicationId, page, column, direction, showPaid, search) {
   return {
     type: Constants.GET_APPLICATION_INSTANCES,
     method: Network.GET,
@@ -28,6 +32,7 @@ export function getApplicationInstances(applicationId, page, column, direction, 
       page,
       column,
       direction,
+      show_paid: showPaid,
       search,
     }
   };
@@ -109,5 +114,38 @@ export function checkApplicationInstanceAuth(
     applicationId,
     applicationInstanceId,
     authenticationId,
+  };
+}
+
+export function deleteApplicationInstanceAuth(
+  applicationId,
+  applicationInstanceId,
+  authenticationId,
+) {
+  return {
+    type   : Constants.DELETE_APPLICATION_INSTANCE_AUTH,
+    method : Network.PUT,
+    url    : `/api/applications/${applicationId}/application_instances/${applicationInstanceId}/delete_auth?authentication_id=${authenticationId}`,
+    applicationId,
+    applicationInstanceId,
+    authenticationId,
+  };
+}
+
+export function onboardClient(applicationId, applicationInstanceId) {
+  return {
+    type   : Constants.ONBOARD_CLIENT,
+    method : Network.PUT,
+    url    : `/api/applications/${applicationId}/application_instances/${applicationInstanceId}/onboard_client`,
+    applicationInstanceId,
+  };
+}
+
+export function getOnboardingStatus(applicationId, applicationInstanceId) {
+  return {
+    type   : Constants.GET_ONBOARDING_STATUS,
+    method : Network.GET,
+    url    : `/api/applications/${applicationId}/application_instances/${applicationInstanceId}/onboard_status`,
+    applicationInstanceId,
   };
 }

@@ -50,6 +50,10 @@ Rails.application.routes.draw do
     resources :jwts
     resources :oauths
 
+    namespace :admin do
+      mount AtomicAdmin::Engine => "/"
+    end
+
     resources :applications do
       resources :application_instances do
         member do

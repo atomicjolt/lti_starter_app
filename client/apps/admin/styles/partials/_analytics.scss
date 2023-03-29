@@ -41,6 +41,7 @@
     text-align: left;
     vertical-align: middle;
     padding: 0 1rem 0 1.2rem;
+    text-transform: uppercase;
 
     .aj-btn--sort {
       border: none;
@@ -102,7 +103,7 @@
   position: relative;
   width: 100%;
   margin: 1rem 1rem 2rem 1rem;
-  background: $lightest-gray;
+  background: $white;
   border-radius: 0.5rem;
 
   .aj-account-graph-background {
@@ -169,4 +170,67 @@
       width: 100%;
     }
   }
+}
+
+.aj-analytics {
+  padding-bottom: 8rem;
+}
+
+.aj-analytics-box {
+  border-radius: 1rem;
+  background-color: #EFF3F4;
+  margin-bottom: 1.65rem;
+}
+
+.aj-info-box {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 1.6rem;
+}
+
+.aj-info-title {
+  @include bold;
+  font-size: 12px;
+  color: $gray-6;
+  margin: 0
+}
+
+.aj-info-text-value {
+  font-size: 18px;
+  color: $gray-3;
+  margin: 0
+}
+
+.aj-info-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1.6rem 1.6rem 0 1.6rem;
+}
+
+.aj-info-icon {
+  margin-right: 1.2rem;
+  padding: 1.2rem;
+  background-color: $white;
+  border-radius: 5px;
+  color: #01579B;
+}
+
+.aj-graph-title {
+  @include bold;
+  font-size: 1.6rem;
+  padding: 1.65rem 1.6rem 0 1.6rem;
+  margin: 0;
+}
+
+.aj-table-title {
+  @include bold;
+  font-size: 1.6rem;
+  padding-bottom: 1.65rem;
+  margin: 0;
+}
+
+.aj-analytics-table {
+  padding-top: 4.85rem;
 }

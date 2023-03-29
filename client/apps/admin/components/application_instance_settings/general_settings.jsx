@@ -5,6 +5,7 @@ import _ from 'lodash';
 import moment from 'moment';
 import SiteModal from '../sites/modal';
 import SettingsInputs from './settings_inputs';
+import AuthenticationsModal from '../application_instances/authentications_modal';
 import * as ApplicationInstanceActions from '../../actions/application_instances';
 
 const select = (state, props) => ({
@@ -40,6 +41,7 @@ export function GeneralSettings(props) {
   const [newApplicationInstance, setNewApplicationInstance] = useState(applicationInstance || {});
   const [currentLanguage, setCurrentLanguage] = useState(applicationInstance ? applicationInstance.language : 'english');
   const [siteModalOpen, setSiteModalOpen] = useState(false);
+  const [authenticationModalOpen, setAuthenticationModalOpen] = useState(false);
 
   useEffect(() => {
     // Redux function to store newApplicationInstance
@@ -198,7 +200,7 @@ export function GeneralSettings(props) {
       labelText: 'Language',
       type: 'select',
       options: languages,
-      value:selectedLanguage,
+      value: selectedLanguage,
       name: 'language',
       placeholder: currentLanguage,
       onChange : (option) => changeLanguage(option),
@@ -273,6 +275,22 @@ export function GeneralSettings(props) {
       </div>
       <div className="aj-col-flex">
         <SettingsInputs title="LTI Key and Secret" inputs={ltiInputs} />
+        <div>
+          <button
+            className="c-btn c-btn--yellow"
+            onClick={() => setAuthenticationModalOpen(true)}
+            type="button"
+          >
+            Instance Authentications
+          </button>
+          <AuthenticationsModal
+            isOpen={authenticationModalOpen}
+            authentications={applicationInstance.authentications}
+            applicationInstance={newApplicationInstance}
+            application={{ id: params.applicationId }}
+            closeModal={() => setAuthenticationModalOpen(false)}
+          />
+        </div>
       </div>
       <SiteModal
         isOpen={siteModalOpen}
@@ -283,7 +301,6 @@ export function GeneralSettings(props) {
 }
 
 export default connect(select, ApplicationInstanceActions)(GeneralSettings);
-
 
 GeneralSettings.propTypes = {
   loading: PropTypes.bool,

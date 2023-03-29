@@ -1,6 +1,11 @@
 .c-table{
   width: 100%;
   border-collapse: collapse;
+
+  .c-email-link{
+    font-size: 1.2rem !important;
+    color: #888888 !important;
+  }
 }
 
 .c-table--lti{
@@ -401,5 +406,44 @@
       label{
         color: $gray9;
       }
+    }
+  }
+
+  .c-green-status{
+    &:before{
+      content: '';
+      background-color: #13C313;
+      border-right: 12px solid transparent;
+      border-radius: 100%;
+      font-size: 8px;
+      bottom: 2px;
+      position: relative;
+      margin-right: 1.2rem;
+    }
+  }
+
+  .c-yellow-status{
+    &:before{
+      content: '';
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 12px solid #DBBC16;
+      font-size: 8px;
+      bottom: 13px;
+      position: relative;
+      margin-right: 1.2rem;
+    }
+  }
+
+  .c-red-status{
+    &:before{
+      content: '';
+      background-color: #C31313;
+      border-right: 12px solid transparent;
+      border-radius: 3px;
+      font-size: 8px;
+      bottom: 2px;
+      position: relative;
+      margin-right: 1.2rem;
     }
   }

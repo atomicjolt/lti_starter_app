@@ -1,25 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import _ from 'lodash';
 
 import useGet from 'atomic-fuel/libs/hooks/use_get';
-import useDelete from 'atomic-fuel/libs/hooks/use_delete';
-import Loader from '../../../../common/components/common/atomicjolt_loader';
 
-import LtiDeploymentModal from './lti_deployment_modal';
-
-function Title({ ltiDeployments }) {
-  let count;
-  if (ltiDeployments) {
-    count = ltiDeployments.length;
-  }
-  return (
-    <div className="aj-col-flex">
-      {count}
-      {' '}
-      LTI Deployments
-    </div>
-  );
-}
+import PlatformGuidStrategies from '../atomic_admin/platform_guid_strategies/inline_index';
+import ClientIdStrategies from '../atomic_admin/client_id_strategies/inline_index';
+import Deployments from '../atomic_admin/deployments/inline_index';
 
 function Error({ error }) {
   if (error) {
@@ -30,124 +18,45 @@ function Error({ error }) {
   return null;
 }
 
-function LtiDeployments({ ltiDeployments, setLastDeployment, applicationInstanceId }) {
-  if (ltiDeployments) {
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th>Deployment Id</th>
-            <th>LTI Install Id</th>
-            <th>Created</th>
-            <th>Last Updated</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>
-          {
-            ltiDeployments.map((l) => <LtiDeployment
-              key={l.id}
-              ltiDeployment={l}
-              setLastDeployment={setLastDeployment}
-              applicationInstanceId={applicationInstanceId}
-            />)
-          }
-        </tbody>
-      </table>
-    );
-  }
-  return null;
-}
-
-function LtiDeployment({ ltiDeployment, setLastDeployment, applicationInstanceId }) {
-  const {
-    result,
-    error,
-    loading,
-    deleteIt,
-  } = useDelete();
-
-  let content = (
-    <button
-      type="button"
-      className="aj-btn"
-      onClick={() => {
-        const url = `api/application_instances/${applicationInstanceId}/lti_deployments/${ltiDeployment.id}`;
-        deleteIt(url);
-      }}
-    >
-      Delete
-    </button>
-  );
-
-  if (error) {
-    content = `Error deleting LTI Deployment. Status: ${error.status}`;
-  } else if (loading) {
-    content = 'Deleting...';
-  } else if (result) {
-    setLastDeployment(ltiDeployment.id);
-    return null;
-  }
-
-  return (
-    <tr key={ltiDeployment.id}>
-      <td>{ltiDeployment.deployment_id}</td>
-      <td>{ltiDeployment.lti_install_id}</td>
-      <td>{ltiDeployment.created_at}</td>
-      <td>{ltiDeployment.updated_at}</td>
-      <td>
-        {content}
-      </td>
-    </tr>
-  );
-}
-
 export default function LtiAdvantageSettings(props) {
   const {
     params,
   } = props;
   const { applicationInstanceId, applicationId } = params;
-  const [showNewLtiDeployment, setShowNewLtiDeployment] = useState(false);
-  // This is used to trigger a refresh of the displayed lti deployments
-  const [lastDeployment, setLastDeployment] = useState();
-  const {
-    result, error, loading, getIt,
-  } = useGet();
-  const payload = result ? result.body : {};
-  const {
-    lti_deployment_keys: ltiDeployments,
-  } = payload;
+  const { error, getIt } = useGet();
+  const applicationInstances = useSelector(
+    (state) => _.filter(state.applicationInstances?.applicationInstances || [],
+      { application_id: parseInt(applicationId, 10) }),
+  );
 
   useEffect(() => {
     const url = `api/application_instances/${applicationInstanceId}/lti_deployments`;
     getIt(url);
-  }, [params.applicationInstanceId, lastDeployment]);
+  }, [params.applicationInstanceId]);
+
+  const applicationInstance = applicationInstances && _.filter(applicationInstances, (app) => (
+    app.id === _.parseInt(applicationInstanceId)
+  ))[0];
 
   return (
-    <div className="aj-columns">
-      <div className="aj-col-flex">
-        <div className="aj-settings-title">
-          <Title ltiDeployments={ltiDeployments} />
-          <div className="flex-center">
-            <button type="button" className="aj-btn" onClick={() => setShowNewLtiDeployment(true)}>
-              New LTI Deployment
-            </button>
-          </div>
+    <div>
+      <div className="aj-columns">
+        <div className="aj-col-flex">
+          <Error error={error} />
         </div>
-        <Error error={error} />
-        {
-          loading
-            ? <Loader />
-            : <LtiDeployments ltiDeployments={ltiDeployments} setLastDeployment={setLastDeployment} applicationInstanceId={applicationInstanceId} />
-        }
       </div>
-      <LtiDeploymentModal
-        isOpen={showNewLtiDeployment}
-        closeModal={() => setShowNewLtiDeployment(false)}
-        applicationInstanceId={applicationInstanceId}
-        applicationId={applicationId}
-        setLastDeployment={setLastDeployment}
-      />
+      <div className="c-info">
+        <div className="c-title">
+          <h1>Installation Information </h1>
+          <label htmlFor="lti_config_url" className="c-input aj-input--border" disabled>
+            <span>Lti Config Url (For Canvas Only)</span>
+            <input id="lti_config_url" name="lti_config_url" type="text" value={applicationInstance?.canvas_lti_advantage_config_url} disabled />
+          </label>
+        </div>
+      </div>
+      <ClientIdStrategies params={params} />
+      <PlatformGuidStrategies params={params} />
+      <Deployments params={params} />
     </div>
   );
 }

@@ -31,7 +31,7 @@ export default function SettingsInputs(props) {
                 <ReactSelect
                   className={`aj-react-select ${input.className}`}
                   options={input.options}
-                  value={input.value}
+                  value={input.options.find(option => option.value === input.value)}
                   name={input.name}
                   placeholder={input.placeholder}
                   onChange={input.onChange}
@@ -58,6 +58,8 @@ export default function SettingsInputs(props) {
                   options={{
                     minDate: input.minDate,
                     maxDate: input.maxDate,
+                    allowInput: true,
+                    dateFormat: 'm-d-Y',
                   }}
                   value={input.value}
                   id={input.id}
