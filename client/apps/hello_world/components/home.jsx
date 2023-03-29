@@ -11,17 +11,16 @@ import DeepLink from './deep_link';
 
 import img from '../assets/images/atomicjolt.jpg';
 
-function CourseList({ canvasUrl }) {
+function CourseList({ canvasUrl, canvasAuthRequired }) {
   const dispatch = useDispatch();
-  const settings = useSettings();
   const courses = useSelector((state) => state.courses);
 
   useEffect(() => {
-    if (!settings.canvas_auth_required) {
+    if (!canvasAuthRequired) {
       // Example Canvas API call
       dispatch(canvasRequest(listYourCourses));
     }
-  }, [settings.canvas_auth_required, canvasRequest]);
+  }, [canvasAuthRequired, canvasRequest]);
 
   if (!courses) {
     return null;
@@ -174,7 +173,11 @@ function Content({ settings, courses }) {
       <hr />
       <h2>Courses:</h2>
       <ul>
-        <CourseList courses={courses} canvasUrl={canvasUrl} />
+        <CourseList
+          courses={courses}
+          canvasUrl={canvasUrl}
+          canvasAuthRequired={settings.canvas_auth_required}
+        />
       </ul>
     </div>
   );
