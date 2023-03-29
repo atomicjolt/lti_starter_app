@@ -21,6 +21,14 @@ exports[`sub nav matches the snapshot 1`] = `
         Sites
       </a>
     </li>
+    <li>
+      <a
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Platforms
+      </a>
+    </li>
   </ul>
 </div>
 `;
