@@ -1,9 +1,0 @@
-<form action="<%=lti_launches_url%>" method="POST">
-  <% @launch_params.each do |name, value| -%>
-    <% if name == "ext_submit" -%>
-      <%= submit_tag(value, { name: name }) %>
-    <% else -%>
-      <%= hidden_field_tag(name, value) %>
-    <% end -%>
-  <% end -%>
-</form>

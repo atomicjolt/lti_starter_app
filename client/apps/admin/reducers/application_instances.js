@@ -72,6 +72,17 @@ export default function instances(state = initialState, action) {
       return newState;
     }
 
+    case ApplicationInstancesConstants.DELETE_APPLICATION_INSTANCE_AUTH_DONE: {
+      const newState = _.cloneDeep(state);
+      const applicationInstance = _.find(newState.applicationInstances, ai => (
+        ai.id === action.original.applicationInstanceId
+      ));
+      _.remove(applicationInstance.authentications, au => (
+        au.id === action.original.authenticationId
+      ));
+      return newState;
+    }
+
     default:
       return state;
   }

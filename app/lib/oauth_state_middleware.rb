@@ -1,29 +1,32 @@
 class OauthStateMiddleware
+
+  STATE_LIFETIME = 3 * 3600  # 3 hours
+
   def initialize(app)
     @app = app
   end
 
-  def query_string(request, nonce)
+  def self.query_string(params, nonce)
     {
-      code: request.params["code"],
-      state: request.params["state"],
+      code: params["code"],
+      state: params["state"],
       nonce: nonce,
     }.to_query
   end
 
   def signed_query_string(query, secret)
-    "#{query}&signature=#{sign(query, secret)}"
+    "#{query}&oauth_redirect_signature=#{OauthStateMiddleware.sign(query, secret)}"
   end
 
   # Generates a signature given data and a secret
-  def sign(str, secret)
+  def self.sign(str, secret)
     OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new("sha256"), secret, str)
   end
 
   # Verifies the signature value in a request
   def verify!(request, secret)
-    query = query_string(request, request.params["nonce"])
-    unless request.params["signature"] == sign(query, secret)
+    query = OauthStateMiddleware.query_string(request.params, request.params["nonce"])
+    unless request.params["oauth_redirect_signature"] == OauthStateMiddleware.sign(query, secret)
       raise OauthStateMiddlewareException, "OAuth state signatures do not match"
     end
   end
@@ -36,23 +39,32 @@ class OauthStateMiddleware
     # any value provided by a client will be overwritten in that method so that we
     # don't use/trust values sent by the client
     return_url = state_params["app_callback_url"]
-    query = query_string(request, SecureRandom.hex(64))
+    query = OauthStateMiddleware.query_string(request.params, SecureRandom.hex(64))
     return_url << "?"
     return_url << signed_query_string(query, site.secret)
     response.redirect return_url
     response.finish
   end
 
-  # Adds all parameters back into the request
+  # Adds state back into the environment
   def restore_state(request, state_params, site, oauth_state, env)
     verify!(request, site.secret)
-    # Restore the param from before the OAuth dance
-    state_params.each do |key, value|
-      request.update_param(key, value)
+    # Clear all existing params and restore the params
+    # from before the OAuth dance
+    allowed_params = ["code", "nonce", "state"]
+    request.params.map { |k, _v| request.delete_param(k) if allowed_params.exclude?(k) }
+    if state_params["request_params"].present?
+      state_params["request_params"].each do |key, value|
+        request.update_param(key, value)
+      end
+    end
+    if state_params["request_env"].present?
+      env.merge!(state_params["request_env"])
     end
     oauth_state.destroy
-    env["canvas.url"] = site.url
-    env["oauth_consumer_key"] = state_params["oauth_consumer_key"]
+    env["canvas.url"] = state_params["canvas_url"]
+    env["oauth_state"] = state_params
+    env["oauth_code"] = request.params["code"]
   end
 
   # Retrieves all original app parameters (settings) from the database during
@@ -67,29 +79,25 @@ class OauthStateMiddleware
     end
   end
 
-  # Finds a site by looking for the site_id in the params or by finding an application instance by it's LTI key
+  def validate_state(oauth_state)
+    return if oauth_state.created_at > Time.now - STATE_LIFETIME
+
+    oauth_state.destroy
+    raise OauthStateMiddlewareException, "OAuth state has expired"
+  end
+
+  # Finds a site by looking for the site_id in the params
   def get_site(state_params)
-    # site id will typically be provided by apps that know the site that contains the Canvas url they want to OAuth
-    # with but they may or may not have an associated application instance.
-    if state_params["site_id"].present?
-      site = Site.find(state_params["site_id"])
-    end
-    # LTI apps will typically have the oauth_consumer_key available
-    if site.blank?
-      application_instance =
-        LtiAdvantage::Authorization.application_instance_from_token(state_params["id_token"]) ||
-        ApplicationInstance.find_by(lti_key: state_params["oauth_consumer_key"])
-      site = application_instance.site
-    end
-    site
+    Site.find(state_params["site_id"])
   end
 
   def call(env)
     request = Rack::Request.new(env)
     oauth_state, state_params = get_state(request)
     if oauth_state.present?
+      validate_state(oauth_state)
       site = get_site(state_params)
-      if request.params["signature"].present?
+      if request.params["oauth_redirect_signature"].present?
         restore_state(request, state_params, site, oauth_state, env)
       else
         return redirect_original(request, state_params, site)

@@ -59,7 +59,7 @@ describe ApplicationController, type: :controller do
     post :create, params: {}, format: :json
     expect(response).to have_http_status(:unauthorized)
     json = JSON.parse(response.body)
-    expect(json["message"]).to eq("Unauthorized: Invalid token: Signature verification raised")
+    expect(json["message"]).to eq("Unauthorized: Invalid token: Signature verification failed")
   end
 
   it "Returns true if the token is valid" do

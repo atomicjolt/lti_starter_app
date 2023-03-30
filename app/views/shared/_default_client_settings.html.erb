@@ -4,17 +4,25 @@
     csrf_token: form_authenticity_token
   }
 
-  default_jwt = jwt_token(
-    app_callback_url: user_canvas_omniauth_callback_url,
-  )
+  default_jwt = jwt_token
   settings[:language] = Localization.get_locale(params["launch_presentation_locale"]) || settings[:default_language]
   settings[:default_language] = Localization.get_default_locale(current_application_instance)
 
   # OAuth related params
-  settings[:canvas_oauth_url]     = user_canvas_omniauth_authorize_url(host: Integrations::CanvasApiSupport.oauth_host)
-  settings[:canvas_callback_url]  = user_canvas_omniauth_callback_url(host: Integrations::CanvasApiSupport.oauth_host)
-  settings[:oauth_consumer_key] = current_application_instance.lti_key
   settings[:canvas_auth_required] = @canvas_auth_required
+  settings[:canvas_url] = canvas_url
+
+  if signed_in? && can_oauth?
+    settings[:canvas_oauth_url]     = user_canvas_omniauth_authorize_url(host: Integrations::CanvasApiSupport.oauth_host)
+    settings[:canvas_callback_url]  = user_canvas_omniauth_callback_url(host: Integrations::CanvasApiSupport.oauth_host)
+    settings[:oauth_consumer_key] = current_application_instance.lti_key
+    settings[:oauth_authorization] = oauth_jwt(
+      application_instance: current_application_instance,
+      user: current_user,
+      canvas_url: canvas_url,
+    )
+  end
+
   # always include this token in case the client needs to re-auth
   settings[:authorization] = default_jwt
   settings[:canvas_url] = canvas_url
@@ -36,7 +44,7 @@
     end
 
     if @is_deep_link
-      settings[:deep_link_settings] = @lti_token[LtiAdvantage::Definitions::DEEP_LINKING_CLAIM]
+      settings[:deep_link_settings] = @lti_token[AtomicLti::Definitions::DEEP_LINKING_CLAIM]
     end
 
     # Adds LTI Advantage values to settings
@@ -45,12 +53,13 @@
     if lti_advantage?
       # LTI 1.3 Launch
       settings[:id_token] = params["id_token"]
-      settings[:context_id] = @lti_params.context_id
-      settings[:canvas_course_id] = @lti_params.course_id
-      settings[:canvas_account_id] = @lti_params.account_id
-      settings[:launch_context] = @lti_params.launch_context
-      settings[:tool_consumer_instance_guid] = @lti_params.tool_consumer_instance_guid
-      settings[:tool_consumer_instance_name] = @lti_params.tool_consumer_instance_name
+      settings[:context_id] = lti.context_id
+      settings[:context_id] = lti.context_id
+      settings[:canvas_course_id] = lti.canvas_course_id
+      settings[:canvas_account_id] = lti.canvas_account_id
+      settings[:launch_context] = lti.launch_context
+      settings[:tool_consumer_instance_guid] = lti.tool_consumer_instance_guid
+      settings[:tool_consumer_instance_name] = lti.tool_consumer_instance_name
     elsif @is_lti_launch
       # LTI 1.0 - 1.2 Launch
       settings[:oauth_consumer_key]                     = params[:oauth_consumer_key]

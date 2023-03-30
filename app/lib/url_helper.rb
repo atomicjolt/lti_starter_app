@@ -1,28 +1,33 @@
 class UrlHelper
   def self.safe_host(url)
     return nil if url.blank?
+
     UrlHelper.host(url)
   end
 
   def self.ensure_scheme(url)
     return nil unless url.present?
+
     url = "https://#{url}" unless url.start_with?("http")
     url
   end
 
   def self.host(url)
     return nil unless url.present?
+
     URI.parse(ensure_scheme(url)).host
   end
 
   def self.scheme_host(url)
     return nil unless url.present?
+
     parsed = URI.parse(ensure_scheme(url))
     "#{parsed.scheme}://#{parsed.host}"
   end
 
   def self.scheme_host_port(url)
     return nil unless url.present?
+
     parsed = URI.parse(ensure_scheme(url))
     port = parsed.port != 80 && parsed.port != 443 ? ":#{parsed.port}" : ""
     "#{parsed.scheme}://#{parsed.host}#{port}"

@@ -9,14 +9,14 @@ class LtiDynamicRegistrationsController < ApplicationController
 
     # The issuer domain must match the openid-configuration URL domain
     if URI(config_url).host != URI(platform_config["issuer"]).host
-      raise LtiAdvantage::Exceptions::InvalidIssuer
+      raise AtomicLti::Exceptions::InvalidIssuer
     end
 
     registration_endpoint = platform_config["registration_endpoint"]
     issuer = platform_config["issuer"]
 
     if !registration_endpoint.starts_with?(issuer)
-      raise LtiAdvantage::Exceptions::InvalidOIDCRegistrationEndpoint
+      raise AtomicLti::Exceptions::InvalidOIDCRegistrationEndpoint
     end
 
     site = Site.find_or_create_by(
@@ -58,7 +58,7 @@ class LtiDynamicRegistrationsController < ApplicationController
     )
 
     # Associated deployment id with the application instance and the lti install
-    deployment_id = platform_response[LtiAdvantage::Definitions::TOOL_CONFIGURATION]["deployment_id"]
+    deployment_id = platform_response[AtomicLti::Definitions::TOOL_CONFIGURATION]["deployment_id"]
 
     application_instance.lti_deployments.find_or_create_by!(
       deployment_id: deployment_id,
@@ -74,7 +74,7 @@ class LtiDynamicRegistrationsController < ApplicationController
       "application_type": "web",
       "response_types": ["id_token"],
       "grant_types": ["implict", "client_credentials"],
-      "initiate_login_uri": init_lti_launches_url,
+      "initiate_login_uri": File.join(root_url, AtomicLti.oidc_init_path),
       "redirect_uris": [
         lti_launches_url,
       ],
@@ -83,12 +83,12 @@ class LtiDynamicRegistrationsController < ApplicationController
       "logo_uri": "#{root_url}/atomicjolt.png",
       "client_uri": root_url,
       "policy_uri": "https://www.atomicjolt.com/privacy",
-      "tos_uri": "https://www.atomicjolt.com/tos",
+      "tos_uri": "https://www.atomicjolt.com/terms-of-use",
       "token_endpoint_auth_method": "private_key_jwt",
       "contacts": [
         "support@atomicjolt.com",
       ],
-      "scope": LtiAdvantage::Definitions.scopes,
+      "scope": AtomicLti::Definitions.scopes,
       "https://purl.imsglobal.org/spec/lti-tool-configuration": {
         "domain": root_url,
         "description": current_application.description,

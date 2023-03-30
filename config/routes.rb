@@ -13,9 +13,6 @@ Rails.application.routes.draw do
   resources :lti_launches do
     collection do
       post :index
-      get :launch
-      get :init
-      post :init
     end
     member do
       post :show
@@ -52,6 +49,10 @@ Rails.application.routes.draw do
   namespace :api do
     resources :jwts
     resources :oauths
+
+    namespace :admin do
+      mount AtomicAdmin::Engine => "/"
+    end
 
     resources :applications do
       resources :application_instances do

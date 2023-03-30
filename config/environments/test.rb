@@ -66,4 +66,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: "localhost" }
 
   config.active_job.queue_adapter = :test
+
+  # For rspec tests
+  config.hosts << "test.host"
 end

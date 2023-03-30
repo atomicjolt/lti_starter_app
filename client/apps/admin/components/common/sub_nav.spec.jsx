@@ -3,7 +3,6 @@ import { Link } from 'react-router3';
 import TestRenderer from 'react-test-renderer';
 import SubNav from './sub_nav';
 
-
 function findText(testRenderer, text) {
   return JSON.stringify(testRenderer.toJSON()).indexOf(text) >= 0;
 }
@@ -31,7 +30,7 @@ describe('sub nav', () => {
 
   it('renders', () => {
     expect(testRenderer).toBeDefined();
-    expect(testInstance.findAllByType(Link).length).toEqual(2);
+    expect(testInstance.findAllByType(Link).length).toEqual(3);
   });
 
   it('matches the snapshot', () => {

@@ -128,8 +128,8 @@ class User < ApplicationRecord
     Authentication.for_auth(auth)&.user
   end
 
-  def apply_oauth(auth)
-    self.attributes = User.params_for_create(auth)
+  def apply_oauth(auth, store_email: false)
+    self.attributes = User.params_for_create(auth, store_email: store_email)
     setup_authentication(auth)
   end
 
@@ -154,31 +154,33 @@ class User < ApplicationRecord
       raw_info["login_id"]
   end
 
-  def self.oauth_email(auth)
-    info, raw_info = oauth_info(auth)
-    email = info["email"] ||
-      raw_info["primary_email"] ||
-      raw_info["login_id"]
+  def self.oauth_email(auth, store_email: false)
+    if store_email
+      info, raw_info = oauth_info(auth)
+      email = info["email"] ||
+        raw_info["primary_email"] ||
+        raw_info["login_id"]
 
-    # Try a basic validation on the email
-    if email =~ /\A[^@]+@[^@]+\Z/
-      email
-    else
-      # we have to make one up
-      domain = UrlHelper.safe_host(info["url"])
-      name = auth["uid"]
-      "#{name}@#{domain}"
+      # Try a basic validation on the email
+      if email.match? /\A[^@]+@[^@]+\Z/
+        return email
+      end
     end
+
+    # Generate a random email
+    info, _raw_info = oauth_info(auth)
+    domain = UrlHelper.safe_host(info["url"])
+    "#{SecureRandom::hex(16)}@#{domain}"
   end
 
   def self.oauth_lti_user_id(auth)
-    info, raw_info = oauth_info(auth)
+    _info, raw_info = oauth_info(auth)
     raw_info["lti_user_id"]
   end
 
-  def self.params_for_create(auth)
+  def self.params_for_create(auth, store_email: false)
     {
-      email: oauth_email(auth),
+      email: oauth_email(auth, store_email: store_email),
       name: oauth_name(auth),
     }
   end
@@ -259,7 +261,7 @@ class User < ApplicationRecord
     has_role?(
       context_id,
       Lti::Roles::INSTRUCTOR,
-      *LtiAdvantage::Definitions::INSTRUCTOR_ROLES,
+      *AtomicLti::Definitions::INSTRUCTOR_ROLES,
     )
   end
 
@@ -274,7 +276,7 @@ class User < ApplicationRecord
     has_role?(
       context_id,
       *Lti::Roles::ADMIN_ROLES,
-      *LtiAdvantage::Definitions::ADMINISTRATOR_ROLES,
+      *AtomicLti::Definitions::ADMINISTRATOR_ROLES,
     )
   end
 
@@ -282,7 +284,7 @@ class User < ApplicationRecord
     has_role?(
       context_id,
       Lti::Roles::CONTENT_DEVELOPER,
-      LtiAdvantage::Definitions::CONTENT_DEVELOPER_CONTEXT_ROLE,
+      AtomicLti::Definitions::CONTENT_DEVELOPER_CONTEXT_ROLE,
     )
   end
 
@@ -303,7 +305,7 @@ class User < ApplicationRecord
     has_role?(
       context_id,
       Lti::Roles::LEARNER,
-      *LtiAdvantage::Definitions::STUDENT_ROLES,
+      *AtomicLti::Definitions::STUDENT_ROLES,
     )
   end
 

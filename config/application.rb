@@ -1,5 +1,6 @@
 require_relative "boot"
 require_relative "../app/lib/oauth_state_middleware"
+require_relative "../app/lib/error_handling_middleware"
 
 require "rails/all"
 
@@ -29,7 +30,12 @@ module LtiStarterApp
     config.action_dispatch.default_headers.delete("X-Frame-Options")
 
     # Middleware that can restore state after an OAuth request
-    config.middleware.insert_before 0, OauthStateMiddleware
+    config.middleware.insert_before Rack::Head, OauthStateMiddleware
+
+    config.middleware.insert_before Warden::Manager, AtomicTenant::CurrentApplicationInstanceMiddleware
+    config.middleware.insert_before AtomicTenant::CurrentApplicationInstanceMiddleware, AtomicLti::OpenIdMiddleware
+    config.middleware.insert_before AtomicLti::OpenIdMiddleware, AtomicLti::ErrorHandlingMiddleware
+    config.middleware.insert_before AtomicLti::OpenIdMiddleware, ErrorHandlingMiddleware
 
     ActiveRecord::Tasks::DatabaseTasks.structure_dump_flags = ['--clean', '--if-exists']
     config.active_record.schema_format = :sql

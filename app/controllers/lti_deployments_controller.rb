@@ -11,9 +11,9 @@ class LtiDeploymentsController < ApplicationController
     iss = payload["iss"]
     lti_install = application_instance.application.lti_installs.find_by(iss: iss)
 
-    deployment_id = payload[LtiAdvantage::Definitions::DEPLOYMENT_ID]
+    deployment_id = payload[AtomicLti::Definitions::DEPLOYMENT_ID]
 
-    lms_url = LtiAdvantage::Definitions.lms_url(payload)
+    lms_url = AtomicLti::Definitions.lms_url(payload)
     site = Site.find_by(url: lms_url)
 
     if params[:make_new]

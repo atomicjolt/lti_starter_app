@@ -101,9 +101,10 @@ exports[`GeneralSettings renders the GeneralSettings component 1`] = `
               className=" css-319lph-ValueContainer"
             >
               <div
-                className=" css-qc6sy-singleValue"
+                className=" css-14el2xx-placeholder"
+                id="react-select-2-placeholder"
               >
-                https://www.example.com
+                Select a Canvas Domain
               </div>
               <div
                 className=" css-6j8wv5-Input"
@@ -111,6 +112,7 @@ exports[`GeneralSettings renders the GeneralSettings component 1`] = `
               >
                 <input
                   aria-autocomplete="list"
+                  aria-describedby="react-select-2-placeholder"
                   aria-expanded={false}
                   aria-haspopup={true}
                   autoCapitalize="none"
@@ -176,7 +178,7 @@ exports[`GeneralSettings renders the GeneralSettings component 1`] = `
           <input
             name="site_id"
             type="hidden"
-            value="3"
+            value=""
           />
         </div>
       </div>
@@ -439,6 +441,15 @@ exports[`GeneralSettings renders the GeneralSettings component 1`] = `
           />
         </label>
       </div>
+    </div>
+    <div>
+      <button
+        className="c-btn c-btn--yellow"
+        onClick={[Function]}
+        type="button"
+      >
+        Instance Authentications
+      </button>
     </div>
   </div>
 </div>

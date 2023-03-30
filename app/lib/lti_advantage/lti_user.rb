@@ -12,25 +12,25 @@ module LtiAdvantage
 
       if user.blank?
         user = _generate_new_lti_user
-        _attempt_uniq_email(user)
       else
-        if user.lms_user_id.blank? && _lms_user_id.present?
+        if _lms_user_id.present?
           user.lms_user_id = _lms_user_id
         end
-        if user.legacy_lti_user_id.blank?
-          user.legacy_lti_user_id = @lti_token[LtiAdvantage::Definitions::LTI11_LEGACY_USER_ID_CLAIM]
+        if _legacy_lti11_user_id.present?
+          user.legacy_lti_user_id = _legacy_lti11_user_id
         end
         _update_roles(user)
-        user.save!
       end
+      user.save!
+
       user
     end
 
     def name
       return "anonymous" if @application_instance.anonymous?
 
-      @lti_token["name"] ||
-        "#{@lti_token['given_name']} #{@lti_token['family_name']}" || email
+      @lti_token["name"].presence ||
+        "#{@lti_token['given_name']} #{@lti_token['family_name']}".presence || email
     end
 
     def email
@@ -40,8 +40,21 @@ module LtiAdvantage
     # If a LTI 1.1 install is being migrated to an Advantage install,
     # pre-existing users won't be found correctly. So we swap out their
     # lti id with their new lti_user_id before proceeding
+    #
+    # Note: There is a case in Canvas where migration will fail:
+    #
+    # 1. User A is in course C and has launched into this tool with LTI 1.1 in C
+    # 2. User A is then merged into a user B
+    # 3. User B launches with lti 1.3
+    #
+    # At this point we will start to see B's LTI legacy user id, and not A's old legacy user id.
+    # Instead we would expect to continue to see A's old legacy user id in course C launches.
+    # This appears to be a bug in Canvas and we don't have a good workaround.
+    #
     def _migrate_lti_user
-      user = User.find_by(lti_user_id: @lti_token[LtiAdvantage::Definitions::LTI11_LEGACY_USER_ID_CLAIM])
+      return if _legacy_lti11_user_id.blank?
+
+      user = User.find_by(lti_user_id: _legacy_lti11_user_id)
       if user
         user.lti_user_id = @lti_user_id
       end
@@ -57,7 +70,7 @@ module LtiAdvantage
       user.lti_provider = _lti_provider
       user.lms_user_id = _lms_user_id
       user.create_method = ::User.create_methods[:lti]
-      user.legacy_lti_user_id = @lti_token[LtiAdvantage::Definitions::LTI11_LEGACY_USER_ID_CLAIM]
+      user.legacy_lti_user_id = _legacy_lti11_user_id
 
       # store lti roles for the user
       _add_roles(user)
@@ -66,7 +79,7 @@ module LtiAdvantage
     end
 
     def _add_roles(user)
-      roles = @lti_token.dig(LtiAdvantage::Definitions::ROLES_CLAIM)
+      roles = @lti_token[AtomicLti::Definitions::ROLES_CLAIM]
       roles.each do |role|
         user.add_to_role(role, _context_id)
       end
@@ -80,7 +93,7 @@ module LtiAdvantage
         permissions.
         where(context_id: _context_id)
 
-      roles_names = permissions.includes(:role).map { |per| per.role.name }
+      roles_names = permissions.includes(:role).map { |per| per.role&.name }.compact
       diff = roles_names - roles
       # If the user has context roles that no longer are sent from canvas,
       # then delete them.
@@ -91,43 +104,35 @@ module LtiAdvantage
     end
 
     def _generate_email
-      "generated-#{@lti_user_id}-#{::SecureRandom::hex(10)}@#{_domain_for_email}"
+      "generated-#{::SecureRandom::hex(10)}@#{_domain_for_email}"
     end
 
     def _domain_for_email
       _lti_provider ||
-        @lti_token.dig(LtiAdvantage::Definitions::CUSTOM_CLAIM, "canvas_api_domain") ||
+        @lti_token.dig(AtomicLti::Definitions::CUSTOM_CLAIM, "canvas_api_domain") ||
         Rails.application.secrets.application_main_domain
     end
 
     def _lms_user_id
-      @lti_token.dig(LtiAdvantage::Definitions::CUSTOM_CLAIM, "canvas_user_id")
+      # lms_user_id should match the identifier we get from the rostering service.
+      # For canvas that's the canvas_user_id. For Lti Advantage it's the lti_user_id
+      if @application_instance.use_canvas_api?
+        @lti_token.dig(AtomicLti::Definitions::CUSTOM_CLAIM, "canvas_user_id")
+      else
+        @lti_user_id
+      end
+    end
+
+    def _legacy_lti11_user_id
+      @lti_token[AtomicLti::Definitions::LTI11_LEGACY_USER_ID_CLAIM]
     end
 
     def _lti_provider
-      LtiAdvantage::Definitions.lms_host(@lti_token)
+      AtomicLti::Definitions.lms_host(@lti_token)
     end
 
     def _context_id
-      @lti_token.dig(LtiAdvantage::Definitions::CONTEXT_CLAIM)["id"]
-    end
-
-    def safe_save_email(user)
-      user.save!
-    rescue ActiveRecord::RecordInvalid => ex
-      if ex.to_s == "Validation failed: Email has already been taken"
-        false
-      else
-        raise ex
-      end
-    end
-
-    def _attempt_uniq_email(user)
-      count = 0 # don't go infinite
-      while !safe_save_email(user) && count < 10
-        user.email = email
-        count = count + 1
-      end
+      @lti_token.dig(AtomicLti::Definitions::CONTEXT_CLAIM, "id")
     end
 
   end

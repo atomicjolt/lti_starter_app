@@ -85,5 +85,5 @@ Shoulda::Matchers.configure do |config|
 end
 
 Devise.setup do |config|
-  config.omniauth :facebook, "1234", "1234", scope: "user"
+  config.omniauth :canvas, "1234", "1234", scope: "user"
 end

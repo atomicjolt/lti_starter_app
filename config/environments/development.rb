@@ -110,4 +110,5 @@ Rails.application.configure do
   # This removes whitelisting of domains allowed to front the application
   # config.hosts.clear
   config.hosts << ".atomicjolt.win"
+  config.hosts << ".atomicjolt.xyz"
 end

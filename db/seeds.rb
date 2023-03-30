@@ -27,7 +27,7 @@ sites = [
 # https://www.imsglobal.org/specs/ltiv1p1p1/implementation-guide#toc-41
 # A list of LTI 1.3 roles can be found here:
 # https://www.imsglobal.org/spec/lti/v1p3#role-vocabularies-0
-# LTI 1.3 roles are also defined in LtiAdvantage::Definitions.
+# LTI 1.3 roles are also defined in AtomicLti::Definitions.
 #
 # If an endpoint does not list a role then the roles listed under "default" will be used.
 # Roles included in "common" will be merged into each API endpoint's roles.
@@ -110,11 +110,11 @@ applications = [
         "urn:lti:role:ims/lis/Learner",
         # LTI 1.3 roles. NOTE these have all changed and any existing applications will need to be migrated to
         # include the new roles
-        LtiAdvantage::Definitions::ADMINISTRATOR_INSTITUTION_ROLE,
-        LtiAdvantage::Definitions::INSTRUCTOR_INSTITUTION_ROLE,
-        LtiAdvantage::Definitions::STUDENT_INSTITUTION_ROLE,
-        LtiAdvantage::Definitions::INSTRUCTOR_CONTEXT_ROLE,
-        LtiAdvantage::Definitions::USER_SYSTEM_ROLE,
+        AtomicLti::Definitions::ADMINISTRATOR_INSTITUTION_ROLE,
+        AtomicLti::Definitions::INSTRUCTOR_INSTITUTION_ROLE,
+        AtomicLti::Definitions::STUDENT_INSTITUTION_ROLE,
+        AtomicLti::Definitions::INSTRUCTOR_CONTEXT_ROLE,
+        AtomicLti::Definitions::USER_SYSTEM_ROLE,
       ],
     },
     default_config: {
@@ -152,25 +152,25 @@ applications = [
         # Canvas
         iss: "https://canvas.instructure.com",
         client_id: "43460000000000513",
-        jwks_url: LtiAdvantage::Definitions::CANVAS_PUBLIC_LTI_KEYS_URL,
-        token_url: LtiAdvantage::Definitions::CANVAS_AUTH_TOKEN_URL,
-        oidc_url: LtiAdvantage::Definitions::CANVAS_OIDC_URL,
+        jwks_url: AtomicLti::Definitions::CANVAS_PUBLIC_LTI_KEYS_URL,
+        token_url: AtomicLti::Definitions::CANVAS_AUTH_TOKEN_URL,
+        oidc_url: AtomicLti::Definitions::CANVAS_OIDC_URL,
       },
       {
         # Canvas
         iss: "https://canvas.instructure.com",
         client_id: "43460000000000378",
-        jwks_url: LtiAdvantage::Definitions::CANVAS_PUBLIC_LTI_KEYS_URL,
-        token_url: LtiAdvantage::Definitions::CANVAS_AUTH_TOKEN_URL,
-        oidc_url: LtiAdvantage::Definitions::CANVAS_OIDC_URL,
+        jwks_url: AtomicLti::Definitions::CANVAS_PUBLIC_LTI_KEYS_URL,
+        token_url: AtomicLti::Definitions::CANVAS_AUTH_TOKEN_URL,
+        oidc_url: AtomicLti::Definitions::CANVAS_OIDC_URL,
       },
       {
         # Canvas Beta
         iss: "https://canvas.beta.instructure.com",
         client_id: "43460000000000378",
-        jwks_url: LtiAdvantage::Definitions::CANVAS_BETA_PUBLIC_LTI_KEYS_URL,
-        token_url: LtiAdvantage::Definitions::CANVAS_BETA_AUTH_TOKEN_URL,
-        oidc_url: LtiAdvantage::Definitions::CANVAS_BETA_OIDC_URL,
+        jwks_url: AtomicLti::Definitions::CANVAS_BETA_PUBLIC_LTI_KEYS_URL,
+        token_url: AtomicLti::Definitions::CANVAS_BETA_AUTH_TOKEN_URL,
+        oidc_url: AtomicLti::Definitions::CANVAS_BETA_OIDC_URL,
       },
       {
         # Sakai
@@ -353,4 +353,35 @@ Application.all.each do |app|
   config = app.default_config
   config[:language] = "en-US"
   app.update!(default_config: config)
+end
+
+# Seed JWK
+AtomicLti::Jwk.find_or_create_by(domain: nil)
+
+# Add some platforms
+AtomicLti::Platform.create_with(
+  jwks_url: "https://canvas.instructure.com/api/lti/security/jwks",
+  token_url: "https://canvas.instructure.com/login/oauth2/token",
+  oidc_url: "https://canvas.instructure.com/api/lti/authorize_redirect",
+).find_or_create_by(iss: "https://canvas.instructure.com")
+
+AtomicLti::Platform.create_with(
+  jwks_url: "https://canvas-beta.instructure.com/api/lti/security/jwks",
+  token_url: "https://canvas-beta.instructure.com/login/oauth2/token",
+  oidc_url: "https://canvas-beta.instructure.com/api/lti/authorize_redirect",
+).find_or_create_by(iss: "https://canvas-beta.instructure.com")
+
+AtomicLti::Platform.create_with(
+  jwks_url: "https://lti-service.svc.schoology.com/lti-service/.well-known/jwks",
+  token_url: "https://lti-service.svc.schoology.com/lti-service/access-token",
+  oidc_url: "https://lti-service.svc.schoology.com/lti-service/authorize-redirect",
+).find_or_create_by(iss: "https://schoology.schoology.com")
+
+if Rails.env.development?
+  # 1EdTech Certification suite
+  AtomicLti::Platform.create_with(
+    jwks_url: "https://oauth2server.imsglobal.org/jwks",
+    token_url: "https://ltiadvantagevalidator.imsglobal.org/ltitool/authcodejwt.html",
+    oidc_url: "https://ltiadvantagevalidator.imsglobal.org/ltitool/oidcauthurl.html",
+  ).find_or_create_by(iss: "https://ltiadvantagevalidator.imsglobal.org")
 end

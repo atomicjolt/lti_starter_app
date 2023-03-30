@@ -76,7 +76,7 @@ class Application < ApplicationRecord
     if lti_install = lti_installs.find_by(iss: iss, client_id: client_id)
       lti_install
     else
-      raise LtiAdvantage::Exceptions::ConfigurationError,
+      raise AtomicLti::Exceptions::ConfigurationError,
             "Unable to matching LTI install for application #{name} and iss: #{iss}. Check the lti_installs table to make sure there's an entry."
     end
   end
