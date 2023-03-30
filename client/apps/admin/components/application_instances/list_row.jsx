@@ -45,8 +45,14 @@ export default function ListRow(props) {
       </td>
       <td>
         <a href={rollBarUrl(applicationInstance)} tarket="blank">
-          <div>d:{applicationInstance.request_stats?.day_1_errors}</div>
-          <div>w:{applicationInstance.request_stats?.day_7_errors}</div>
+          <div>
+            d:
+            {applicationInstance.request_stats?.day_1_errors}
+          </div>
+          <div>
+            w:
+            {applicationInstance.request_stats?.day_7_errors}
+          </div>
         </a>
       </td>
     </tr>

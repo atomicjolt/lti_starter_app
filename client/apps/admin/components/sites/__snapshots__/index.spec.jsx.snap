@@ -117,6 +117,14 @@ exports[`sites index matches the snapshot 1`] = `
             </span>
           </a>
         </li>
+        <li>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+          >
+            Platforms
+          </a>
+        </li>
       </ul>
     </div>
   </div>

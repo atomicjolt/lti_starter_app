@@ -7,5 +7,6 @@ module Exceptions
   class UnAuthorizedGraphQLCanvasRequest < GraphQL::ExecutionError; end
   class InvalidTokenError < StandardError; end
   class OauthJwtTokenException < StandardError; end
+  class ApartmentTenantError < StandardError; end
   class SignatureValidationError < StandardError; end
 end

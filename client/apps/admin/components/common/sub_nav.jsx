@@ -3,8 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router3';
 
-
-const SubNav = (props) => {
+export default function SubNav(props) {
   let warning = null;
   const { sites } = props;
   if (_.isEmpty(sites)
@@ -24,13 +23,16 @@ const SubNav = (props) => {
             {warning}
           </Link>
         </li>
+        <li>
+          <Link to="/platforms" activeClassName="is-active">
+            Platforms
+          </Link>
+        </li>
       </ul>
     </div>
   );
-};
+}
 
 SubNav.propTypes = {
   sites: PropTypes.shape({}).isRequired,
 };
-
-export default SubNav;

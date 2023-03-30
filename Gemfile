@@ -14,7 +14,7 @@ end
 gem "rails", "~> 7.0.3"
 
 
-gem "atomic_lti", "~> 1.3.0"
+gem "atomic_lti", "~> 1.3.1"
 gem "atomic_lti_1v1",  git: "https://github.com/atomicjolt/atomic_lti_1v1.git", tag: "1.0.0"
 gem "atomic_tenant", git: "https://github.com/atomicjolt/atomic_tenant.git", tag: "1.0.3"
 gem "atomic_admin",  git: "https://github.com/atomicjolt/atomic_admin.git", tag: "0.1.0"

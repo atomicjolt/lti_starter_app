@@ -9,7 +9,7 @@ import Loader from '../../../../common/components/common/atomicjolt_loader';
 import * as ApplicationInstanceActions from '../../actions/application_instances';
 
 const select = (state, props) => ({
-  loading: state.applicationInstances.loading,
+  loading: state.applicationInstances.loading || _.isEmpty(state.applications),
   applicationInstances: _.filter(state.applicationInstances.applicationInstances,
     { application_id: parseInt(props.params.applicationId, 10) }),
   applications: state.applications,

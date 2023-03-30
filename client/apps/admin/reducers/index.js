@@ -15,6 +15,10 @@ import courses from './courses';
 import loadingCourses from './loading_courses';
 import authenticationChecks from './authentication_checks';
 import accountAnalytics from '../../../common/reducers/account_analytics';
+import platforms from './atomic_admin/atomic_lti_platforms';
+import pinnedPlatformGuids from './atomic_admin/pinned_platform_guids';
+import pinnedClientIds from './atomic_admin/pinned_client_ids';
+import deployments from './atomic_admin/deployments';
 
 const rootReducer = combineReducers({
   settings,
@@ -32,6 +36,10 @@ const rootReducer = combineReducers({
   errors,
   authenticationChecks,
   accountAnalytics,
+  platforms,
+  pinnedPlatformGuids,
+  pinnedClientIds,
+  deployments
 });
 
 export default rootReducer;

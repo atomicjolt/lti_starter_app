@@ -15,6 +15,7 @@ import GeneralSettings from './components/application_instance_settings/general_
 import Configuration from './components/application_instance_settings/configuration';
 import XmlConfig from './components/application_instance_settings/xml_config';
 import LtiAdvantageSettings from './components/application_instance_settings/lti_advantage_settings';
+import LtiPlatforms from './components/atomic_admin/lti_platforms/index';
 
 export default (
   <Router history={appHistory}>
@@ -32,6 +33,7 @@ export default (
         <Route path="/applications/:applicationId/application_instances/:applicationInstanceId/settings/xmlConfig" component={XmlConfig} />
       </Route>
       <Route path="/sites" component={Sites} />
+      <Route path="/platforms" component={LtiPlatforms} />
     </Route>
   </Router>
 );

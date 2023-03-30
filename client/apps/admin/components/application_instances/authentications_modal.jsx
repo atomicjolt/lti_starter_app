@@ -3,8 +3,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
+import DeleteModal from '../common/delete_modal';
 
-import { checkApplicationInstanceAuth } from '../../actions/application_instances';
+import { checkApplicationInstanceAuth, deleteApplicationInstanceAuth } from '../../actions/application_instances';
 
 const select = state => ({
   authenticationChecks: state.authenticationChecks
@@ -16,6 +17,7 @@ export class AuthenticationsModal extends React.Component {
     closeModal: PropTypes.func.isRequired,
     authentications: PropTypes.array,
     checkApplicationInstanceAuth: PropTypes.func.isRequired,
+    deleteApplicationInstanceAuth: PropTypes.func.isRequired,
     applicationInstance: PropTypes.shape({
       id: PropTypes.number,
       config: PropTypes.string,
@@ -24,10 +26,15 @@ export class AuthenticationsModal extends React.Component {
       })
     }),
     application: PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string,
     }),
     authenticationChecks: PropTypes.shape({}),
   };
+
+  constructor(props) {
+    super(props);
+    this.state = { deleteModalOpen: false, authenticationToDelete: null };
+  }
 
   showInstanceModal() {
     if (this.props.isOpen) {
@@ -46,6 +53,15 @@ export class AuthenticationsModal extends React.Component {
       this.props.applicationInstance.id,
       authentication.id,
     );
+  }
+
+  deleteAuth(authentication) {
+    this.props.deleteApplicationInstanceAuth(
+      this.props.application.id,
+      this.props.applicationInstance.id,
+      authentication.id,
+    );
+    this.setState({ deleteModalOpen: false, authenticationToDelete: null });
   }
 
   renderAccounts(authenticationId) {
@@ -79,6 +95,15 @@ export class AuthenticationsModal extends React.Component {
               Check
             </button>
           </td>
+          <td>
+            <button
+              className="c-btn c-btn--red"
+              onClick={() => this.setState({ deleteModalOpen: true, authenticationToDelete: authentication })}
+              type="button"
+            >
+              Delete
+            </button>
+          </td>
         </tr>
         {this.renderAccounts(authentication.id)}
       </tbody>
@@ -94,7 +119,7 @@ export class AuthenticationsModal extends React.Component {
         onRequestClose={() => this.closeModal()}
         contentLabel="Application Instances Modal"
         overlayClassName="c-modal__background"
-        className={`c-modal c-modal--settings ${this.showInstanceModal()}`}
+        className={`c-modal c-modal--authentications ${this.showInstanceModal()}`}
       >
         <div className="o-grid o-grid__modal-top">
           <h2 className="c-modal__title">
@@ -109,6 +134,7 @@ export class AuthenticationsModal extends React.Component {
                 <th><span>Provider</span></th>
                 <th><span>CREATED</span></th>
                 <th />
+                <th />
               </tr>
             </thead>
             { this.renderRows() }
@@ -121,10 +147,18 @@ export class AuthenticationsModal extends React.Component {
         >
           Close
         </button>
+        <DeleteModal
+          isOpen={this.state.deleteModalOpen}
+          closeModal={() => this.setState({ deleteModalOpen: false , authenticationToDelete: null })}
+          deleteRecord={
+            () => this.deleteAuth(this.state.authenticationToDelete)
+          }
+        />
+
       </ReactModal>
     );
   }
 }
 
-export default connect(select, { checkApplicationInstanceAuth })(AuthenticationsModal);
-
+export default connect(select,
+  { checkApplicationInstanceAuth, deleteApplicationInstanceAuth })(AuthenticationsModal);

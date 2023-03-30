@@ -1,32 +1,122 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LtiAdvantageSettings renders the LtiAdvantageSettings component 1`] = `
-<div
-  className="aj-columns"
->
+<div>
   <div
-    className="aj-col-flex"
+    className="aj-columns"
   >
     <div
-      className="aj-settings-title"
+      className="aj-col-flex"
+    />
+  </div>
+  <div
+    className="c-info"
+  >
+    <div
+      className="c-title"
+    >
+      <h1>
+        Installation Information 
+      </h1>
+      <label
+        className="c-input aj-input--border"
+        disabled={true}
+        htmlFor="lti_config_url"
+      >
+        <span>
+          Lti Config Url (For Canvas Only)
+        </span>
+        <input
+          disabled={true}
+          id="lti_config_url"
+          name="lti_config_url"
+          type="text"
+        />
+      </label>
+    </div>
+  </div>
+  <div>
+    <div
+      className="__aj-admin-container"
     >
       <div
-        className="aj-col-flex"
+        className="c-info"
       >
-         
-        LTI Deployments
-      </div>
-      <div
-        className="flex-center"
-      >
-        <button
-          className="aj-btn"
-          onClick={[Function]}
-          type="button"
+        <div
+          className="c-title"
         >
-          New LTI Deployment
+          <h1>
+            Pinned Client Ids
+          </h1>
+        </div>
+        <button
+          className="c-btn c-btn--yellow"
+          onClick={[Function]}
+        >
+          New Client Id
         </button>
       </div>
+      <p
+        className="c-alert c-alert--danger"
+      >
+        No Client Ids are  currently configured.
+      </p>
+    </div>
+  </div>
+  <div>
+    <div
+      className="__aj-admin-container"
+    >
+      <div
+        className="c-info"
+      >
+        <div
+          className="c-title"
+        >
+          <h1>
+            Pinned Platform Instance Guids
+          </h1>
+        </div>
+        <button
+          className="c-btn c-btn--yellow"
+          onClick={[Function]}
+        >
+          New Platform Guid
+        </button>
+      </div>
+      <p
+        className="c-alert c-alert--danger"
+      >
+        No Platform Instance Guids are  currently configured.
+      </p>
+    </div>
+  </div>
+  <div>
+    <div
+      className="__aj-admin-container"
+    >
+      <div
+        className="c-info"
+      >
+        <div
+          className="c-title"
+        >
+          <h1>
+            Lti Deployments
+          </h1>
+        </div>
+        <button
+          className="c-btn c-btn--yellow"
+          onClick={[Function]}
+        >
+          New Deployment
+        </button>
+      </div>
+      <p
+        className="c-alert c-alert--danger"
+      >
+        No deployments exist yet.
+      </p>
     </div>
   </div>
 </div>

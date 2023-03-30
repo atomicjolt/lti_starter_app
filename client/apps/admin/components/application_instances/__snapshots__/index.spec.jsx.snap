@@ -112,6 +112,14 @@ exports[`application instances index matches the snapshot 1`] = `
             Sites
           </a>
         </li>
+        <li>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+          >
+            Platforms
+          </a>
+        </li>
       </ul>
     </div>
   </div>

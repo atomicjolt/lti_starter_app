@@ -5,8 +5,21 @@ import configureStore from 'redux-mock-store';
 
 import LtiAdvantageSettings from './lti_advantage_settings';
 
-const mockStore = configureStore([]);
-const store = mockStore({});
+const mockStore = configureStore([
+
+]);
+
+const applicationInstance = {
+  id: '2',
+  application_id: '1',
+  canvas_lti_advantage_config_url: 'https://canvas.instructure.com/',
+};
+
+const store = mockStore({
+  applicationInstances: {
+    applicationInstances: [applicationInstance],
+  },
+});
 
 describe('LtiAdvantageSettings', () => {
   it('renders the LtiAdvantageSettings component', () => {
