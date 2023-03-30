@@ -42,7 +42,7 @@ gem "devise_invitable"
 gem "devise-two-factor" # TOTP for devise
 gem "rqrcode", "~> 2.1" # Generate QR codes for TOTP
 gem "strong_password"
-gem "ims-lti", "~> 2.1.5" # IMS LTI tool consumers and providers
+gem "ims-lti", "~> 2.3.3" # IMS LTI tool consumers and providers
 gem "json-jwt"
 gem "jwt"
 gem "lms-api", "~>1.23.0"
