@@ -110,6 +110,7 @@ export function Configuration(props) {
           textareaProps={{
             id: 'application_instance_config',
             name: 'config',
+            rows: 25,
             placeholder: 'ex: { "foo": "bar" }',
             value: prettyJSON(newApplicationInstance.config || '{}'),
             onChange,
@@ -124,7 +125,6 @@ export function Configuration(props) {
           textareaProps={{
             id: 'application_instance_lti_config',
             name: 'lti_config',
-            rows: 25,
             value: prettyJSON(newApplicationInstance.lti_config || '{}'),
             onChange,
           }}

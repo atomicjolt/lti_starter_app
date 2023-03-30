@@ -17,6 +17,7 @@ exports[`configuration renders the DownloadButton component 1`] = `
         name="config"
         onChange={[Function]}
         placeholder="ex: { \\"foo\\": \\"bar\\" }"
+        rows={25}
         value="{}"
       />
     </label>
@@ -35,7 +36,6 @@ exports[`configuration renders the DownloadButton component 1`] = `
         id="application_instance_lti_config"
         name="lti_config"
         onChange={[Function]}
-        rows={25}
         value="{}"
       />
     </label>
