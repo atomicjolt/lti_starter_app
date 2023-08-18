@@ -60,6 +60,13 @@
       settings[:launch_context] = lti.launch_context
       settings[:tool_consumer_instance_guid] = lti.tool_consumer_instance_guid
       settings[:tool_consumer_instance_name] = lti.tool_consumer_instance_name
+
+      if state_validation = request.env["atomic.validated.state_validation"]&.with_indifferent_access
+        settings[:state] = state_validation["state"]
+        settings[:ltiStorageParams] = state_validation["lti_storage_params"]
+        settings[:stateVerified] = state_validation["verified_by_cookie"]
+      end
+
     elsif @is_lti_launch
       # LTI 1.0 - 1.2 Launch
       settings[:oauth_consumer_key]                     = params[:oauth_consumer_key]

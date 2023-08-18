@@ -13,11 +13,10 @@ end
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails", "~> 7.0.3"
 
-
-gem "atomic_lti", "~> 1.3.1"
-gem "atomic_lti_1v1",  git: "https://github.com/atomicjolt/atomic_lti_1v1.git", tag: "1.0.0"
-gem "atomic_tenant", git: "https://github.com/atomicjolt/atomic_tenant.git", tag: "1.0.3"
-gem "atomic_admin",  git: "https://github.com/atomicjolt/atomic_admin.git", tag: "0.1.0"
+gem "atomic_lti", "1.5.2"
+gem "atomic_lti_1v1", "1.1.0"
+gem 'atomic_tenant', "1.2.0"
+gem 'atomic_admin', "0.1.0"
 
 # gem "atomic_lti", path: "../atomic_lti"
 # gem "atomic_lti_1v1", path: "../atomic_lti_1v1"
@@ -42,7 +41,7 @@ gem "devise_invitable"
 gem "devise-two-factor" # TOTP for devise
 gem "rqrcode", "~> 2.1" # Generate QR codes for TOTP
 gem "strong_password"
-gem "ims-lti", "~> 2.1.5" # IMS LTI tool consumers and providers
+gem "ims-lti", "~> 2.3.3" # IMS LTI tool consumers and providers
 gem "json-jwt"
 gem "jwt"
 gem "lms-api", "~>1.23.0"

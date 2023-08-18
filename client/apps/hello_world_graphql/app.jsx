@@ -16,9 +16,10 @@ import {
 import { Router } from 'react-router';
 import { Route } from 'react-router-dom';
 import { Jwt } from 'atomic-fuel/libs/loaders/jwt';
+import { ltiLaunch } from '@atomicjolt/lti-client/src/client/launch';
+
 import settings from './settings';
 import configureStore from './store/configure_store';
-
 import appHistory from './history';
 import Index from './components/layout/index';
 import initResizeHandler from '../../common/libs/resize_iframe';
@@ -81,7 +82,13 @@ initResizeHandler(mainApp);
 
 const store = configureStore({ jwt: window.DEFAULT_JWT });
 
-ReactDOM.render(
-  <Root client={client} store={store} />,
-  mainApp,
-);
+ltiLaunch(window.DEFAULT_SETTINGS).then((valid) => {
+  if (valid) {
+    ReactDOM.render(
+      <Root store={store} client={client} />,
+      mainApp,
+    );
+  } else {
+    document.body.innerHTML = 'Invalid request. Please reload the page.';
+  }
+});
