@@ -82,7 +82,7 @@ initResizeHandler(mainApp);
 
 const store = configureStore({ jwt: window.DEFAULT_JWT });
 
-ltiLaunch(window.DEFAULT_SETTINGS).then((valid) => {
+ltiLaunch(window.DEFAULT_SETTINGS.state_validation).then((valid) => {
   if (valid) {
     ReactDOM.render(
       <Root store={store} client={client} />,

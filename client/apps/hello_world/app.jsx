@@ -47,7 +47,7 @@ if (window.DEFAULT_JWT) { // Setup JWT refresh
 const mainApp =  document.getElementById('main-app');
 initResizeHandler(mainApp);
 
-ltiLaunch(window.DEFAULT_SETTINGS).then((valid) => {
+ltiLaunch(window.DEFAULT_SETTINGS.state_validation).then((valid) => {
   if (valid) {
     ReactDOM.render(
       <Root store={store} />,
