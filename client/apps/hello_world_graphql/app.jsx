@@ -16,8 +16,7 @@ import {
 import { Router } from 'react-router';
 import { Route } from 'react-router-dom';
 import { Jwt } from 'atomic-fuel/libs/loaders/jwt';
-import { ltiLaunch } from '@atomicjolt/lti-client/src/client/launch';
-
+import LtiLaunchCheck from 'atomic-fuel/src/components/common/lti_launch_check';
 import settings from './settings';
 import configureStore from './store/configure_store';
 import appHistory from './history';
@@ -37,9 +36,11 @@ function Root(props) {
   return (
     <Provider store={store}>
       <ApolloProvider client={client}>
-        <Router history={appHistory}>
-          <Route path="/" component={Index} />
-        </Router>
+        <LtiLaunchCheck stateValidation={window.DEFAULT_SETTINGS.state_validation}>
+          <Router history={appHistory}>
+            <Route path="/" component={Index} />
+          </Router>
+        </LtiLaunchCheck>
       </ApolloProvider>
     </Provider>
   );
@@ -82,13 +83,7 @@ initResizeHandler(mainApp);
 
 const store = configureStore({ jwt: window.DEFAULT_JWT });
 
-ltiLaunch(window.DEFAULT_SETTINGS.state_validation).then((valid) => {
-  if (valid) {
-    ReactDOM.render(
-      <Root store={store} client={client} />,
-      mainApp,
-    );
-  } else {
-    document.body.innerHTML = 'Invalid request. Please reload the page.';
-  }
-});
+ReactDOM.render(
+  <Root store={store} client={client} />,
+  mainApp,
+);
