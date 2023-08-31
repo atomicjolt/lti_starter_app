@@ -2053,10 +2053,7 @@ atomic-canvas@^1.13.4:
     cli-highlight "^2.1"
 
 atomic-fuel@../atomic-fuel/:
-  version "5.1.0"
-
-"atomic-fuel@file:../atomic-fuel":
-  version "5.1.0"
+  version "4.19.0"
 
 available-typed-arrays@^1.0.5:
   version "1.0.5"
