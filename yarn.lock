@@ -15,7 +15,7 @@
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@apollo/client@^3.6.4", "@apollo/client@~3":
+"@apollo/client@^3.6.4":
   version "3.8.3"
   resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.8.3.tgz#7cd23307bbc788a0a9eda51e6a76f32db8282933"
   integrity sha512-mK86JM6hCpMEBGDgdO9U8ZYS8r9lPjXE1tVGpJMdSFUsIcXpmEfHUAbbFpPtYmxn8Qa7XsYy0dwDaDhpf4UUPw==
@@ -2055,10 +2055,10 @@ atomic-canvas@^1.13.4:
   dependencies:
     cli-highlight "^2.1"
 
-atomic-fuel@../atomic-fuel/:
-  version "5.0.0"
-  dependencies:
-    "@apollo/client" "~3"
+atomic-fuel@4.19.0:
+  version "4.19.0"
+  resolved "https://registry.yarnpkg.com/atomic-fuel/-/atomic-fuel-4.19.0.tgz#fa5d32dc0b2b2afbd2415b5b2ca63b32c7c73874"
+  integrity sha512-xDgwx0H9ixj3wNSi9VuUis7b9ft11LJV2W42G5cCI4/k1dmckVhR4DlS05isbFhY2yatlekpMhTdWXx5QjjfCw==
 
 available-typed-arrays@^1.0.5:
   version "1.0.5"
