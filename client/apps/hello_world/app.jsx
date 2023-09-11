@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { getInitialSettings } from 'atomic-fuel/libs/reducers/settings';
 import jwt from 'atomic-fuel/libs/loaders/jwt';
-import { ltiLaunch } from '@atomicjolt/lti-client/src/client/launch';
+import { LtiLaunchCheck } from '@atomicjolt/lti-components';
 
 import configureStore from './store/configure_store';
 import Index from './components/layout/index';
@@ -24,11 +24,13 @@ class Root extends React.PureComponent {
     const { store } = this.props;
     return (
       <Provider store={store}>
-        <Router>
-          <div>
-            <Route path="/" exact component={Index} />
-          </div>
-        </Router>
+        <LtiLaunchCheck stateValidation={window.DEFAULT_SETTINGS.state_validation}>
+          <Router>
+            <div>
+              <Route path="/" exact component={Index} />
+            </div>
+          </Router>
+        </LtiLaunchCheck>
       </Provider>
     );
   }
@@ -47,13 +49,7 @@ if (window.DEFAULT_JWT) { // Setup JWT refresh
 const mainApp =  document.getElementById('main-app');
 initResizeHandler(mainApp);
 
-ltiLaunch(window.DEFAULT_SETTINGS.state_validation).then((valid) => {
-  if (valid) {
-    ReactDOM.render(
-      <Root store={store} />,
-      mainApp,
-    );
-  } else {
-    document.body.innerHTML = 'Invalid request. Please reload the page.';
-  }
-});
+ReactDOM.render(
+  <Root store={store} />,
+  mainApp,
+);
