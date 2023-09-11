@@ -229,7 +229,9 @@ exports[`application instances index matches the snapshot 1`] = `
       </table>
     </div>
     <ul
+      aria-label="Pagination"
       className="pagination"
+      role="navigation"
     >
       <li
         className="previous disabled"
