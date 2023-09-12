@@ -24,7 +24,6 @@ import appHistory from './history';
 import Index from './components/layout/index';
 import initResizeHandler from '../../common/libs/resize_iframe';
 
-
 import './styles/styles.scss';
 
 // Polyfill es6 promises for IE
