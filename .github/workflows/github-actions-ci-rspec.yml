@@ -4,19 +4,18 @@ on: pull_request
 
 jobs:
   rspec-test:
-
-    runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        ruby-version: [2.7]
+        os: [ubuntu-latest]
+        ruby: ["3.2.2"]
+    runs-on: ${{ matrix.os }}
 
     # Service containers to run with `container-job`
     services:
       # Label used to access the service container
       postgres:
         # Docker Hub image
-        image: "postgres:14.5"
+        image: postgres:13.8
         # Provide the password for postgres
         env:
           POSTGRES_DB: postgres_test
@@ -34,34 +33,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Ruby ${{ matrix.ruby-version }}
+      - name: Set up Ruby ${{ matrix.ruby }}
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ${{ matrix.ruby-version }}
+          ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
-
-      - name: Cache Node.js modules
-        uses: actions/cache@v2
-        with:
-          # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ~/.npm
-          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-node-
-            ${{ runner.OS }}-
-
-      - name: Install dependencies
-        env:
-          RAILS_ENV: test
-          RAILS_GROUPS: build
-        run: |
-          yarn install --pure-lockfile
-          bundle install
 
       - name: Copy secrets config yml
         run: cp config/secrets.yml.example config/secrets.yml
@@ -72,27 +48,10 @@ jobs:
       - name: Copy .env
         run: cp .env.example .env
 
-      - name: Create db
-        env:
-          RAILS_ENV: test
-          RAILS_GROUPS: build
-          PGHOST: localhost
-          PGUSER: postgres
-          PGDB: postgres_test
-        run: bin/rails db:create
-
       - name: Run migrations
         env:
           RAILS_ENV: test
-          RAILS_GROUPS: build
-          PGHOST: localhost
-          PGUSER: postgres
         run: bin/rails db:migrate
 
-      - name: Prepare assets
-        run: bin/rake test:prepare
-
-      - name: Run tests
-        run: bin/rspec
-
-
+      - name: Preparing assets and running tests
+        run: bundle exec rake
