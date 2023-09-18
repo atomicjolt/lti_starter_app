@@ -1,29 +1,38 @@
-name: linter
+name: Pronto
 
-on:
-  push:
-    branches: [ i_amDisabl_ed]
+on: [pull_request]
+
+permissions:
+  contents: read
+  pull-requests: write
+  statuses: write
 
 jobs:
-  test:
-
-    runs-on: ubuntu-latest
-
+  linters:
+    name: Linters
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        ruby: ['3.2.2']
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Ruby
+      - run: |
+          git fetch --no-tags --prune --depth=60 origin +refs/heads/*:refs/remotes/origin/*
+
+      - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
+      
+      - name: Setup pronto
+        run: gem install pronto pronto-rubocop
 
-      - name: Install dependencies
+      - name: Run Pronto
+        run: bundle exec pronto run -f github_status github_pr -c origin/${{ github.base_ref }}
         env:
-          RAILS_ENV: test
-          RAILS_GROUPS: build
-        run: bundle install
-
-      - name: Run linter
-        run: git diff --name-only origin/master | bundle exec xargs rubocop --force-exclusion --parallel
+          PRONTO_PULL_REQUEST_ID: ${{ github.event.pull_request.number }}
+          PRONTO_GITHUB_ACCESS_TOKEN: "${{ github.token }}"

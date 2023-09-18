@@ -107,14 +107,12 @@ end
 
 group :development, :test do
   gem "byebug", platform: :mri
-  gem "debase"
   gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "faker"
   gem "guard-rspec", require: false
   gem "rails-controller-testing"
   gem "rspec-rails"
-  gem "ruby-debug-ide"
 end
 
 group :development, :test, :linter do
