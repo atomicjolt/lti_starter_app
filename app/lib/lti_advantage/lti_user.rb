@@ -108,8 +108,8 @@ module LtiAdvantage
     end
 
     def _domain_for_email
-      _lti_provider ||
-        @lti_token.dig(AtomicLti::Definitions::CUSTOM_CLAIM, "canvas_api_domain") ||
+      return _lti_provider if _lti_provider.present?
+      @lti_token.dig(AtomicLti::Definitions::CUSTOM_CLAIM, "canvas_api_domain") ||
         Rails.application.secrets.application_main_domain
     end
 
