@@ -34,6 +34,7 @@ module LtiStarterApp
 
     config.middleware.insert_before Warden::Manager, AtomicTenant::CurrentApplicationInstanceMiddleware
     config.middleware.insert_before AtomicTenant::CurrentApplicationInstanceMiddleware, AtomicLti::OpenIdMiddleware
+    config.middleware.insert_before AtomicTenant::CurrentApplicationInstanceMiddleware, AtomicLti1v1::Lti1v1Middleware
     config.middleware.insert_before AtomicLti::OpenIdMiddleware, AtomicLti::ErrorHandlingMiddleware
     config.middleware.insert_before AtomicLti::OpenIdMiddleware, ErrorHandlingMiddleware
 

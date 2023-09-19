@@ -16,9 +16,10 @@ import {
 import { Router } from 'react-router';
 import { Route } from 'react-router-dom';
 import { Jwt } from 'atomic-fuel/libs/loaders/jwt';
+import { LtiLaunchCheck } from '@atomicjolt/lti-components';
+
 import settings from './settings';
 import configureStore from './store/configure_store';
-
 import appHistory from './history';
 import Index from './components/layout/index';
 import initResizeHandler from '../../common/libs/resize_iframe';
@@ -36,9 +37,11 @@ function Root(props) {
   return (
     <Provider store={store}>
       <ApolloProvider client={client}>
-        <Router history={appHistory}>
-          <Route path="/" component={Index} />
-        </Router>
+        <LtiLaunchCheck stateValidation={window.DEFAULT_SETTINGS.state_validation}>
+          <Router history={appHistory}>
+            <Route path="/" component={Index} />
+          </Router>
+        </LtiLaunchCheck>
       </ApolloProvider>
     </Provider>
   );
@@ -82,6 +85,6 @@ initResizeHandler(mainApp);
 const store = configureStore({ jwt: window.DEFAULT_JWT });
 
 ReactDOM.render(
-  <Root client={client} store={store} />,
+  <Root store={store} client={client} />,
   mainApp,
 );

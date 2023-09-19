@@ -97,12 +97,8 @@ def setup_canvas_lti_advantage(
   @lti_token = JWT.decode(@id_token, nil, false)
 
   nonce = SecureRandom.hex(64)
-  AtomicLti::OpenIdState.create!(nonce: nonce)
-  state = AtomicLti::AuthToken.issue_token(
-    {
-      nonce: nonce,
-    },
-  )
+  state = SecureRandom.hex(64)
+  AtomicLti::OpenIdState.create!(nonce: nonce, state: state)
 
   # For controller specs
   if @request.present?

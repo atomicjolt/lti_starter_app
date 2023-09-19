@@ -56,7 +56,9 @@ exports[`install pane matches the snapshot 1`] = `
       <tbody />
     </table>
     <ul
+      aria-label="Pagination"
       className="pagination"
+      role="navigation"
     >
       <li
         className="previous disabled"

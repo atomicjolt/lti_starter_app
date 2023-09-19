@@ -111,7 +111,9 @@ exports[`LtiInstallSelector renders the LtiInstallSelector component 1`] = `
     <tbody />
   </table>
   <ul
+    aria-label="Pagination"
     className="pagination"
+    role="navigation"
   >
     <li
       className="previous disabled"
