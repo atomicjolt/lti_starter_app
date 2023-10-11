@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.4",
-    "@atomicjolt/lti-client": "^2.4.0",
+    "@atomicjolt/lti-client": "^2.4.3",
     "@atomicjolt/lti-components": "^1.0.1",
     "@babel/core": "^7.17.12",
     "@babel/plugin-proposal-class-properties": "^7.17.12",
